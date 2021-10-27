@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C87DAC8-9891-4BB2-818D-196BFA808144}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>crud_teste</RootNamespace>
+    <AssemblyName>crud teste</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cliente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="COLABORADOR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COLABORADOR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contato.cs" />
+    <Compile Include="vieew\FrmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\FrmCliente.Designer.cs">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\FrmColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\FrmColaborador.Designer.cs">
+      <DependentUpon>FrmColaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\ConexaoDAO.cs" />
+    <Compile Include="vieew\ConsultarColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\ConsultarColaborador.Designer.cs">
+      <DependentUpon>ConsultarColaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="crudDataSetEndereco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crudDataSetEndereco.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\ConsultarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\ConsultarCliente.Designer.cs">
+      <DependentUpon>ConsultarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Global.cs" />
+    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Colaborador.cs" />
+    <Compile Include="Model\Endereco.cs" />
+    <Compile Include="Model\Pessoa.cs" />
+    <Compile Include="vieew\Opcoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Opcoes.Designer.cs">
+      <DependentUpon>Opcoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="vieew\ConsultarCliente.resx">
+      <DependentUpon>ConsultarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\FrmCliente.resx">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\FrmColaborador.resx">
+      <DependentUpon>FrmColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\ConsultarColaborador.resx">
+      <DependentUpon>ConsultarColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Opcoes.resx">
+      <DependentUpon>Opcoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="cliente.xsc">
+      <DependentUpon>cliente.xsd</DependentUpon>
+    </None>
+    <None Include="cliente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cliente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cliente.xss">
+      <DependentUpon>cliente.xsd</DependentUpon>
+    </None>
+    <None Include="COLABORADOR.xsc">
+      <DependentUpon>COLABORADOR.xsd</DependentUpon>
+    </None>
+    <None Include="COLABORADOR.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>COLABORADOR.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="COLABORADOR.xss">
+      <DependentUpon>COLABORADOR.xsd</DependentUpon>
+    </None>
+    <None Include="crudDataSetEndereco.xsc">
+      <DependentUpon>crudDataSetEndereco.xsd</DependentUpon>
+    </None>
+    <None Include="crudDataSetEndereco.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>crudDataSetEndereco.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="crudDataSetEndereco.xss">
+      <DependentUpon>crudDataSetEndereco.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

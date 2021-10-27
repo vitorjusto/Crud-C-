@@ -1,0 +1,30 @@
+C:\Users\PC1\source\repos\crud teste\crud teste\bin\Debug\crud teste.exe.config
+C:\Users\PC1\source\repos\crud teste\crud teste\bin\Debug\crud teste.exe
+C:\Users\PC1\source\repos\crud teste\crud teste\bin\Debug\crud teste.pdb
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud teste.csproj.AssemblyReference.cache
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.Properties.Resources.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud teste.csproj.GenerateResource.cache
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud teste.csproj.CoreCompileInputs.cache
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud teste.exe
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud teste.pdb
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.LColaboradores.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.ConsultarColaborador.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.FrmColaborador.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.FrmCliente.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.ConsultarCliente.resources
+C:\Users\PC1\source\repos\crud teste\crud teste\obj\Debug\crud_teste.Opcoes.resources
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\crud teste.exe.config
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\crud teste.exe
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\crud teste.pdb
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.AssemblyReference.cache
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ConsultarCliente.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.FrmCliente.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.FrmColaborador.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ConsultarColaborador.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.LColaboradores.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.Opcoes.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.Properties.Resources.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.GenerateResource.cache
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.CoreCompileInputs.cache
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.exe
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.pdb
