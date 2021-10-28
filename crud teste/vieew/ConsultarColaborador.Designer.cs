@@ -31,12 +31,12 @@ namespace crud_teste
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
             this.Data = new System.Windows.Forms.MaskedTextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.Conta = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.Porcentagem = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@ namespace crud_teste
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Celular2 = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.Telefonee = new System.Windows.Forms.MaskedTextBox();
+            this.Telefone = new System.Windows.Forms.MaskedTextBox();
             this.emailText = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -75,11 +75,12 @@ namespace crud_teste
             this.button2 = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -97,13 +98,13 @@ namespace crud_teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.Salario);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.CPF);
             this.groupBox1.Controls.Add(this.Conta);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -120,6 +121,15 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(566, 57);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(27, 13);
+            this.label17.TabIndex = 72;
+            this.label17.Text = "CPF";
             // 
             // Salario
             // 
@@ -163,16 +173,6 @@ namespace crud_teste
             this.label12.Size = new System.Drawing.Size(86, 13);
             this.label12.TabIndex = 65;
             this.label12.Text = "Conta Bancaria: ";
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Enabled = false;
-            this.Porcentagem.Location = new System.Drawing.Point(408, 79);
-            this.Porcentagem.Mask = "000";
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(31, 20);
-            this.Porcentagem.TabIndex = 13;
-            this.Porcentagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -428,7 +428,7 @@ namespace crud_teste
             // 
             this.groupBox3.Controls.Add(this.Celular2);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.Telefonee);
+            this.groupBox3.Controls.Add(this.Telefone);
             this.groupBox3.Controls.Add(this.emailText);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label15);
@@ -457,14 +457,14 @@ namespace crud_teste
             this.label14.TabIndex = 58;
             this.label14.Text = "Telefone: ";
             // 
-            // Telefonee
+            // Telefone
             // 
-            this.Telefonee.Enabled = false;
-            this.Telefonee.Location = new System.Drawing.Point(90, 22);
-            this.Telefonee.Mask = "0000 - 0000";
-            this.Telefonee.Name = "Telefonee";
-            this.Telefonee.Size = new System.Drawing.Size(85, 20);
-            this.Telefonee.TabIndex = 59;
+            this.Telefone.Enabled = false;
+            this.Telefone.Location = new System.Drawing.Point(90, 22);
+            this.Telefone.Mask = "0000 - 0000";
+            this.Telefone.Name = "Telefone";
+            this.Telefone.Size = new System.Drawing.Size(85, 20);
+            this.Telefone.TabIndex = 59;
             // 
             // emailText
             // 
@@ -567,14 +567,13 @@ namespace crud_teste
             this.label18.TabIndex = 68;
             this.label18.Text = "Id:";
             // 
-            // label17
+            // Porcentagem
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(566, 57);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(27, 13);
-            this.label17.TabIndex = 72;
-            this.label17.Text = "CPF";
+            this.Porcentagem.DecimalPlaces = 2;
+            this.Porcentagem.Location = new System.Drawing.Point(357, 82);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(98, 20);
+            this.Porcentagem.TabIndex = 73;
             // 
             // ConsultarColaborador
             // 
@@ -604,6 +603,7 @@ namespace crud_teste
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -624,7 +624,6 @@ namespace crud_teste
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox Porcentagem;
         private System.Windows.Forms.MaskedTextBox Numero;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
@@ -640,7 +639,7 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Conta;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.MaskedTextBox Telefonee;
+        private System.Windows.Forms.MaskedTextBox Telefone;
         private System.Windows.Forms.TextBox emailText;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -658,5 +657,6 @@ namespace crud_teste
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox Salario;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown Porcentagem;
     }
 }

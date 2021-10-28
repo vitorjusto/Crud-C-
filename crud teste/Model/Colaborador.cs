@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-
+using System.Collections.Generic;
 namespace CRUD_teste.Model
 {
     public class Colaborador : Pessoa 
@@ -15,21 +15,18 @@ namespace CRUD_teste.Model
 
         public Colaborador() { }
 
-        public bool ValidarColaborador()
+        public List<string> ValidarColaborador()
         {
-            var valido = true;
-            if(!ValidarPessoa())
-            {
-                valido = false;
-            }
+            List<string> validacoes = new List<string>();
+
+            validacoes = ValidarPessoa();
 
             if(this.Salario <= 0)
             {
-                valido = false;
-                MessageBox.Show("Digite um salario valido");
+                validacoes.Add("Digite um salário valido");
             }
 
-            return valido;
+            return validacoes;
         }
     }
 }

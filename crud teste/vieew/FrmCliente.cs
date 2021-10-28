@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 namespace crud_teste
@@ -32,17 +33,13 @@ namespace crud_teste
 
 
             ConexaoDAO stmt = new ConexaoDAO();
-
-              stmt.conectar();
+            List<string> validacoes = cliente.ValidarCliente();
+            stmt.conectar();
 
 
                 try
                 {
-                    if(!cliente.ValidarCliente())
-                    {
-                        throw new Exception("Valide os dados");
-                    }
-
+                    
 
                 if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {

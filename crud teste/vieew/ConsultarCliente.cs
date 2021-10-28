@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 namespace crud_teste
@@ -136,11 +137,8 @@ namespace crud_teste
                 Cliente cliente = new Cliente();
 
                 cliente = SalvarCampos();
+                List<string> validacoes = cliente.ValidarCliente();
 
-                if (!cliente.ValidarCliente())
-                {
-                    throw new Exception("Valide os dados");
-                }
 
                 if ((int)MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {

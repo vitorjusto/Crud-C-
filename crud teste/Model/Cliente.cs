@@ -18,14 +18,20 @@ namespace CRUD_teste.Model
 
         }
 
-        public bool ValidarCliente()
+        public Cliente(string nome, decimal Limitedecompra)
         {
-            var valido = true;
-            
-            
-            valido = ValidarPessoa();
+            Nome = nome;
+            LimiteDeCompra = Limitedecompra;
+        }
 
-            return valido;
+        public List<string> ValidarCliente()
+        {
+            List<string> validacoes = new List<string>();
+            
+            
+            validacoes = ValidarPessoa();
+
+            return validacoes;
         }
     }
 }

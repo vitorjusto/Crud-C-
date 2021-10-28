@@ -82,9 +82,9 @@ namespace crud_teste
                 colaborador.PorcentagemDeComissao = (decimal)reader["PorcentagemDeComissao"];
                 colaborador.CPF = (string)reader["CPF"];
                 colaborador.DadosBancarios = (string)reader["DadosBancários"];
-                colaborador.Email = (string)reader["Email"];
-                colaborador.Telefone = (string)reader["telefone"];
-                colaborador.Celular = (string)reader["Celular"];
+                colaborador.contato.Email = (string)reader["Email"];
+                colaborador.contato.Telefone = (string)reader["telefone"];
+                colaborador.contato.Celular = (string)reader["Celular"];
                 colaborador.idEndereco = (int)reader["idEndereco"];
                 colaborador.DataDeNascimento = (string)reader["DataDeNascimento"];
 
@@ -141,9 +141,9 @@ namespace crud_teste
                 cliente.SobreNome = (string)reader["SobreNome"];
                 cliente.Sexo = (string)reader["Sexo"];
                 cliente.CPF = (string)reader["cpf"];
-                cliente.Email = (string)reader["Email"];
-                cliente.Telefone = (string)reader["telefone"];
-                cliente.Celular = (string)reader["Celular"];
+                cliente.contato.Email = (string)reader["Email"];
+                cliente.contato.Telefone = (string)reader["telefone"];
+                cliente.contato.Celular = (string)reader["Celular"];
                 cliente.idEndereco = (int)reader["idEndereco"];
                 cliente.DataDeNascimento = (string)reader["DataDeNacimento"];
                 cliente.LimiteDeCompra = (decimal)reader["ValorLimite"];

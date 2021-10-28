@@ -1,9 +1,9 @@
 ﻿using System;
 using crud_teste.Model;
+using System.Collections.Generic;
 
 
 
-    
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 namespace CRUD_teste.Model
@@ -27,61 +27,89 @@ namespace CRUD_teste.Model
 
         public Endereco endereco = new Endereco();
 
-        public string Email { get; set; }
-
-        public string Telefone { get; set; }
-
-        public string Celular { get; set; }
+       
 
         public string nomeCompleto()
         {
             return this.Nome + this.SobreNome;
         }
 
-        public bool ValidarPessoa()
+        public List<string> ValidarPessoa()
         {
-            bool valido = true;
+            List<string> validacoes = new List<string>();
             DateTime.TryParse(this.DataDeNascimento, out DateTime data);
-            if (string.IsNullOrEmpty(this.Nome))
+            if(!Testar_se_Nome_e_valido())
             {
-                valido = false;
-                MessageBox.Show("Nome Inválido", "Atenção");
+                validacoes.Add("Preencha um nome valido");
             }
-            if(string.IsNullOrEmpty(this.Sexo))
+            if(!Testar_se_sexo_e_valido())
             {
-                valido = false;
+                validacoes.Add("Campo Sexo obrigatório");
 
-                MessageBox.Show("O campo Sexo é obrigatório", "Atenção");
             }
             if(data.ToString() == "0")
             {
-                valido = false;
+                validacoes.Add("Campo Data obrigatório");
 
-                MessageBox.Show("O campo data é obrigatório", "Atenção");
+
             }
-            if(!new Regex(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").Match(this.CPF).Success)
+            if(!Testar_Se_CPF_E_Valido())
             {
-                valido = false;
-                MessageBox.Show("Digite um CPF válido", "Atenção");
+                validacoes.Add("Digite um CPF válido");
+
             }
 
-            if (!endereco.validarEndereco())
-            {
-                valido = false;
-            }
-
+           validacoes.AddRange(endereco.validarEndereco());
+            
             if (!contato.ValidarContato())
             {
-                valido = false;
-                MessageBox.Show("É obrigatorio pelo menos um campo de contato");
+                validacoes.Add("Digite Pelo menos um campo de contato");
+                
             }
 
 
            
 
 
-            return valido;
+            return validacoes;
 
+        }
+
+
+        public Pessoa(string nome)
+        {
+            Nome = nome;
+        }
+
+        public Pessoa()
+        {
+
+        }
+
+        public bool Testar_se_Nome_e_valido()
+        {
+            if (string.IsNullOrEmpty(Nome))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Testar_se_sexo_e_valido()
+        {
+            if (string.IsNullOrEmpty(this.Sexo))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Testar_Se_CPF_E_Valido()
+        {
+            if (!string.IsNullOrEmpty(this.CPF))
+                return new Regex(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").Match(this.CPF).Success;
+            else
+                return false;
         }
     }
 }

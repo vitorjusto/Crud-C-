@@ -60,9 +60,9 @@ namespace crud_teste
             Salario.Text = colaborador.Salario.ToString();
             Porcentagem.Text = colaborador.PorcentagemDeComissao.ToString();
             Conta.Text = colaborador.DadosBancarios;
-            Telefonee.Text = colaborador.Telefone;
-            Celular2.Text = colaborador.Celular;
-            emailText.Text = colaborador.Email;
+            Telefone.Text = colaborador.contato.Telefone;
+            Celular2.Text = colaborador.contato.Celular;
+            emailText.Text = colaborador.contato.Email;
             Data.Text = colaborador.DataDeNascimento.ToString();
 
             
@@ -103,7 +103,7 @@ namespace crud_teste
                 Data.Enabled = true;
                 Conta.Enabled = true;
                 CPF.Enabled = true;
-                Telefonee.Enabled = true;
+                Telefone.Enabled = true;
                 Celular2.Enabled = true;
                 emailText.Enabled = true;
                 CEP.Enabled = true;
@@ -128,7 +128,7 @@ namespace crud_teste
             Sexo.Enabled = false;
             Data.Enabled = false;
             CPF.Enabled = false;
-            Telefonee.Enabled = false;
+            Telefone.Enabled = false;
             Celular2.Enabled = false; 
             emailText.Enabled = false;
             CEP.Enabled = false;
@@ -154,7 +154,7 @@ namespace crud_teste
             Sexo.Text = "";
             Data.Text = "";
             CPF.Text = "";
-            Telefonee.Text = "";
+            Telefone.Text = "";
             Celular2.Text = "";
             emailText.Text = "";
             CEP.Text = "";
@@ -174,73 +174,20 @@ namespace crud_teste
 
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
         {
-
-            
-                ConexaoDAO stmt = new ConexaoDAO();
+            Colaborador colaborador = new Colaborador();
+            colaborador = preencherCampos();
+            List<string> validacoes = colaborador.ValidarColaborador();
+            ConexaoDAO stmt = new ConexaoDAO();
                 try
                 {
 
+                
 
-                    if (Nome.Text.Length == 0)
-                    {
-                        throw new Exception("O campo nome é obrigatorio!");
-                    }
-                    if (Sexo.Text.Length == 0)
-                    {
-                        throw new Exception("O campo sexo é obrigatório");
-                    }
-
-                    decimal.TryParse(Salario.Text, out decimal c);
-                    if (c <= 0)
-                    {
-                        throw new Exception("Digite um sálario válido");
-                    }
-
-                    decimal.TryParse(Porcentagem.Text, out c);
-
-                    if (CPF.Text.Length != 14)
-                    {
-                        throw new Exception("Digite um CPF valido!");
-                    }
-                    if (CEP.Text.Length != 9)
-                    {
-                        throw new Exception("Digite um CEP valido!");
-                    }
-
-                    if (UF.Text.Length == 0)
-                    {
-                        throw new Exception("O campo UF é Obrigatório");
-                    }
-
-                    if (Cidade.Text.Length == 0)
-                    {
-                        throw new Exception("O Campo cidade é obrigatório");
-                    }
-                    if (Bairro.Text.Length == 0)
-                    {
-                        throw new Exception("O campo bairro é obrigatório");
-                    }
-                    if (Logradouro.Text.Length == 0)
-                    {
-                        throw new Exception("O campo Logradouro é obrigatório");
-                    }
-
-                    uint.TryParse(Numero.Text, out uint a);
-                    if (a == 0)
-                    {
-                        throw new Exception("Digite um numero de casa válido!");
-                    }
-
-                    if (!((Telefonee.Text.Length == 11) || (Celular2.Text.Length == 16) || (emailText.Text.Length != 0)))
-                    {
-                        throw new Exception("Escreva apenas um campo de contato");
-                    }
-
-                    if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
                         stmt.conectar();
-                        stmt.AlterarCliente($"update colaborador set Nome = '{Nome.Text}', SobreNome = '{Sobrenome.Text}', sexo = '{Sexo.Text}', DataDeNascimento = '{Data.Text}', CPF = '{CPF.Text}', Telefone = '{Telefonee.Text}', Email = '{emailText.Text}', PorcentagemdeComissao={c}, DadosBancários='{Conta.Text}' where idColaborador = {idpesquisado}; ");
-                        stmt.AlterarCliente($"update endereco set CEP = '{CEP.Text}', Logradouro = '{Logradouro.Text}', Cidade = '{Cidade.Text}', UF = '{UF.Text}', Complemento= '{Complemento.Text}', Bairro= '{Bairro.Text}', Numero= '{Numero.Text}' where idEndereco= {enderecoPesquisado}; ");
+                        stmt.AlterarCliente($"update colaborador set Nome = '{colaborador.Nome}', SobreNome = '{colaborador.SobreNome}', sexo = '{colaborador.Sexo}', DataDeNascimento = '{colaborador.DataDeNascimento}', CPF = '{colaborador.CPF}', Telefone = '{colaborador.contato.Telefone}', Email = '{colaborador.contato.Email }', PorcentagemdeComissao={colaborador.PorcentagemDeComissao}, DadosBancários='{colaborador.DadosBancarios}',Salario={colaborador.Salario}, Celular='{ colaborador.contato.Celular}' where idColaborador = {idpesquisado}; ");
+                        stmt.AlterarCliente($"update endereco set CEP = '{colaborador.endereco.Cep}', Logradouro = '{colaborador.endereco.Logradouro}', Cidade = '{colaborador.endereco.Cidade}', UF = '{colaborador.endereco.UF}', Complemento= '{colaborador.endereco.Complemento}', Bairro= '{colaborador.endereco.Bairro}', Numero= '{colaborador.endereco.Numero}' where idEndereco= {enderecoPesquisado}; ");
                         MessageBox.Show("Dados Cadastrado com sucesso");
                         Bloquear();
                 }
@@ -318,5 +265,49 @@ namespace crud_teste
             label17.ForeColor = Global.FontColor;
             label18.ForeColor = Global.FontColor;
         }
+
+        public Colaborador preencherCampos()
+        {
+            Colaborador colaborador = new Colaborador();
+
+
+            
+
+            colaborador.Nome = Nome.Text;
+            colaborador.SobreNome = Sobrenome.Text;
+            colaborador.Sexo = Sexo.Text;
+            decimal.TryParse(Salario.Text, out decimal x);
+            colaborador.Salario = x;
+            colaborador.DataDeNascimento = Data.ToString().Remove(10);
+            colaborador.CPF = CPF.Text;
+            colaborador.DadosBancarios = Conta.Text;
+            colaborador.contato.Email = emailText.Text;
+            colaborador.contato.Telefone = Telefone.Text;
+            colaborador.contato.DDI = "0";
+            colaborador.contato.Celular = Celular2.Text;
+
+            colaborador.PorcentagemDeComissao = Porcentagem.Value;
+
+
+
+
+            colaborador.endereco.Cep = CEP.Text;
+            colaborador.endereco.Logradouro = Logradouro.Text;
+            colaborador.endereco.Cidade = Cidade.Text;
+            colaborador.endereco.UF = UF.Text;
+            colaborador.endereco.Complemento = Complemento.Text;
+            colaborador.endereco.Bairro = Bairro.Text;
+            int.TryParse(Numero.Text, out int i);
+
+            colaborador.endereco.Numero = i;
+
+
+
+            return colaborador;
+
+
+        }
     }
+
+   
 }

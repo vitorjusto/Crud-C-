@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Collections.Generic;
 namespace CRUD_teste.Model
 {
     public class Endereco
@@ -31,39 +32,73 @@ namespace CRUD_teste.Model
         }
 
 
-        public bool validarEndereco()
+        public List<string> validarEndereco()
         {
-            var valido = true;
+            List<string> validacoes = new List<string>();
 
-            if(!new Regex(@"[0-9]{5}[-][0-9]{3}").Match(this.Cep).Success)
+            if (!Validar_Se_CEP_E_Valido())
             {
-                valido = false;
-                MessageBox.Show("Digite um CEP Válido", "Atenção");
+                validacoes.Add("Campo CEP é obrigatório");
             }
-            if (string.IsNullOrEmpty(this.Logradouro))
+            if (!Validar_Se_Logradouro_E_Valido())
             {
-                valido = false;
-                MessageBox.Show("Campo Logradouro é obrigatório", "Atenção");
+                validacoes.Add("Digite um logradouro válido");
             }
-            if (string.IsNullOrEmpty(this.Cidade))
+            if (!Validar_Se_Cidade_E_Valido())
             {
-                valido = false;
-                MessageBox.Show("Campo Cidade é obrigatório", "Atenção");
+                validacoes.Add("Campo Cidade é obrigatório");
             }
-            if (string.IsNullOrEmpty(this.UF))
+            if (!Validar_Se_UF_E_Valido())
             {
-                valido = false;
-                MessageBox.Show("Campo UF é obrigatório", "Atenção");
+                validacoes.Add("Campo UF é obrigatório");
             }
             if(string.IsNullOrEmpty(this.Bairro))
             {
-                valido = false;
-                MessageBox.Show("Campo bairro é obrigatório");
+                validacoes.Add("Campo bairro é obrigatório");
             }
 
 
-            return valido;
+            return validacoes;
         }
 
+        public bool Validar_Se_CEP_E_Valido()
+        {
+            if (!string.IsNullOrEmpty(this.Cep))
+                return new Regex(@"[0-9]{5}[-][0-9]{3}").Match(this.Cep).Success;
+            else
+                return false;
+        }
+
+        public bool Validar_Se_Logradouro_E_Valido()
+        {
+            if (string.IsNullOrEmpty(this.Logradouro))
+                return false;
+            else
+                return true;
+        }
+
+        public bool Validar_Se_Cidade_E_Valido()
+        {
+            if (string.IsNullOrEmpty(this.Cidade))
+                return false;
+            else
+                return true;
+        }
+
+        public bool Validar_Se_UF_E_Valido()
+        {
+            if (string.IsNullOrEmpty(this.UF))
+                return false;
+            else
+                return true;
+        }
+
+        public bool Validar_Se_Bairro_E_Valido()
+        {
+            if (string.IsNullOrEmpty(this.Bairro))
+                return false;
+            else
+                return true;
+        }
     }
 }

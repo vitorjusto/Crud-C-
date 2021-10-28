@@ -1,6 +1,8 @@
 ﻿using System;
 using CRUD_teste.Model;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 namespace crud_teste
 {
     public partial class FrmColaborador : Form
@@ -54,44 +56,48 @@ namespace crud_teste
         {
             ConexaoDAO stmt = new ConexaoDAO();
 
-            stmt.conectar();
-            var cadastrado = false;
+            
+
             Colaborador colaborador = new Colaborador();
-
+            
             colaborador = preencherCampos();
-            try
+            List<string> validacoes = colaborador.ValidarColaborador();
+            if (validacoes.Count == 0)
             {
-
-                if (!colaborador.ValidarColaborador())
+                try
                 {
-                    throw new Exception("Valide os dados");
+
+
+
+                    stmt.conectar();
+                    if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                    {
+                        var idEndereco = stmt.GravarEndereco($"insert into Endereco OUTPUT INSERTED.idEndereco Values('{colaborador.endereco.Cep}', '{colaborador.endereco.Logradouro}', '{colaborador.endereco.Cidade}', '{colaborador.endereco.UF}', '{colaborador.endereco.Complemento}', '{colaborador.endereco.Bairro}', {colaborador.endereco.Numero});");
+                        var idColaborador = stmt.GravarColaborador($"insert into Colaborador OUTPUT INSERTED.idColaborador  Values('{colaborador.Nome}', '{colaborador.SobreNome}', '{colaborador.Sexo}',  {colaborador.Salario}, {colaborador.PorcentagemDeComissao}, '{colaborador.CPF}', '{colaborador.DadosBancarios}', '{colaborador.contato.Email}', '{colaborador.contato.Telefone}', '{colaborador.contato.DDI} {colaborador.contato.Celular}', {idEndereco}, '{colaborador.DataDeNascimento}');");
+                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {idColaborador}");
+
+                    }
                 }
-
-
-                if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                catch (Exception ex)
                 {
-                    var idEndereco = stmt.GravarEndereco($"insert into Endereco OUTPUT INSERTED.idEndereco Values('{colaborador.endereco.Cep}', '{colaborador.endereco.Logradouro}', '{colaborador.endereco.Cidade}', '{colaborador.endereco.UF}', '{colaborador.endereco.Complemento}', '{colaborador.endereco.Bairro}', {colaborador.endereco.Numero});");
-                    var idColaborador = stmt.GravarColaborador($"insert into Colaborador OUTPUT INSERTED.idColaborador  Values('{colaborador.Nome}', '{colaborador.SobreNome}', '{colaborador.Sexo}',  {colaborador.Salario}, {colaborador.PorcentagemDeComissao}, '{colaborador.CPF}', '{colaborador.DadosBancarios}', '{colaborador.contato.Email}', '{colaborador.contato.Telefone}', '{colaborador.contato.DDI} {colaborador.contato.Celular}', {idEndereco}, '{colaborador.DataDeNascimento}');");
-                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = {idColaborador}");
-                    cadastrado = true;
+                    MessageBox.Show(ex.Message, "Atenção");
+                }
+                finally
+                {
+                    stmt.desconectar();
+                    this.Close();
+                    new LColaboradores().Show();
 
                 }
-            }
-            catch(Exception ex)
+            }else
             {
-                MessageBox.Show(ex.Message, "Atenção");
+                foreach(var x in validacoes)
+                {
+                    MessageBox.Show(x, "Atenção");
+                }
+                MessageBox.Show("Valide os campos", "Atenção");
             }
-            finally
-            {
-                stmt.desconectar();
-                
-            }
-
-            if (cadastrado)
-            {
-                this.Close();
-                new LColaboradores().Show();
-            }
+            
         }
 
         public string ConverterData(string Data)

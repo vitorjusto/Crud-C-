@@ -1,0 +1,20 @@
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Teste de unidade1.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Teste de unidade1.pdb
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\crud teste.exe
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\crud teste.pdb
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\crud teste.exe.config
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.csproj.AssemblyReference.cache
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.csproj.CoreCompileInputs.cache
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.csproj.CopyComplete
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.pdb
