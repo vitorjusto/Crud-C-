@@ -202,7 +202,7 @@ namespace Teste_de_unidade1
         }
 
         [TestMethod]
-        public void Quando_O_Bairro_Tiver_Texto_Entao_Cidade_E_Valido()
+        public void Quando_O_Bairro_Tiver_Texto_Entao_Bairro_E_Valido()
         {
             Endereco endereco = new Endereco();
             endereco.Bairro = "Centro";
@@ -210,7 +210,15 @@ namespace Teste_de_unidade1
         }
 
         [TestMethod]
-        public void Quando_O_Bairro_Nao_Tiver_Texto_Entao_Cidade_E_Invalido()
+        public void Quando_O_Bairro_Tiver_Caracteres_Especificos_entao_Texto_Entao_Bairro_E_Invalido()
+        {
+            Endereco endereco = new Endereco();
+            endereco.Bairro = "çáàãâéèêíìîóòõôúùûÇÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛ -";
+            Assert.IsTrue(endereco.Validar_Se_Bairro_E_Valido());
+        }
+
+        [TestMethod]
+        public void Quando_O_Bairro_Nao_Tiver_Texto_Entao_Bairro_E_Invalido()
         {
             Endereco endereco = new Endereco();
             endereco.Bairro = "";
@@ -218,7 +226,7 @@ namespace Teste_de_unidade1
         }
 
         [TestMethod]
-        public void Quando_O_Bairro_Estiver_Nulo_Texto_Entao_Cidade_E_Invalido()
+        public void Quando_O_Bairro_Estiver_Nulo_Texto_Entao_Bairro_E_Invalido()
         {
             Endereco endereco = new Endereco();
             endereco.Bairro = null;

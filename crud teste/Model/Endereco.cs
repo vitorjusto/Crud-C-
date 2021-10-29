@@ -98,7 +98,7 @@ namespace CRUD_teste.Model
             if (string.IsNullOrEmpty(this.Bairro))
                 return false;
             else
-                return true;
+                return new Regex(@"[a-zA-ZçáàãâéèêíìîóòõôúùûÇÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛ \u002D]+").Match(this.Bairro).Success; ;
         }
     }
 }

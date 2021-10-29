@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
+using crud_teste.controller;
 namespace crud_teste
 {
     public partial class ConsultarCliente : Form
@@ -25,33 +26,29 @@ namespace crud_teste
         private void button1_Click(object sender, EventArgs e)
         {
            
-            ConexaoDAO stmt = new ConexaoDAO();
+            
            try
            {
-                stmt.conectar();
 
 
+                AlterarCliente oAlterar = new AlterarCliente();
                 Cliente cliente = new Cliente();
                 var id = Id.Text;
 
-                cliente = stmt.ConsultarCliente($"Select * from Cliente where idCliente = {id}");
+                cliente = oAlterar.consultarCliente(int.Parse(id));
 
                 AtribuirCamposClientes(cliente);
-                AtribuirCamposEnderecos(stmt.ConsultarEndereco($"Select * from Endereco where idEndereco = {cliente.endereco}"));
                 idpesquisado = cliente.idCliente;
-                enderecoPesquisado = cliente.idEndereco;
+                enderecoPesquisado = cliente.endereco.IdEndereco;
 
                 this.Text = "Consultando: " + cliente.nomeCompleto();
 
             } catch
            {
-                MessageBox.Show("Id Inválida");
+                MessageBox.Show("Id inválida");
 
             }
-           finally
-           {
-                stmt.desconectar();
-            }
+           
         }
 
         public void AtribuirCamposClientes(Cliente cliente)
@@ -64,7 +61,9 @@ namespace crud_teste
             Telefone.Text = cliente.contato.Telefone;
             Celular2.Text = cliente.contato.Celular;
             Email.Text = cliente.contato.Email;
-            data.Text = cliente.DataDeNascimento; 
+            data.Text = cliente.DataDeNascimento;
+
+            AtribuirCamposEnderecos(cliente.endereco);
         }
 
         public void AtribuirCamposEnderecos(Endereco endereco)
@@ -129,37 +128,42 @@ namespace crud_teste
 
         private void BotaoSalvar_Click(object sender, EventArgs e)
         {
-            
-                ConexaoDAO stmt = new ConexaoDAO();
+            Cliente cliente = new Cliente();
+
+            cliente = SalvarCampos();
+            List<string> validacoes = cliente.ValidarCliente();
+
+            if (validacoes.Count == 0)
+            {
                 try
                 {
 
-                Cliente cliente = new Cliente();
-
-                cliente = SalvarCampos();
-                List<string> validacoes = cliente.ValidarCliente();
 
 
-                if ((int)MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+
+                    if ((int)MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
-                        stmt.conectar();
-                        stmt.AlterarCliente($"update cliente set Nome = '{cliente.Nome}', Sobrenome = '{cliente.SobreNome}', sexo = '{cliente.Sexo}', DataDeNacimento = '{cliente.DataDeNascimento}', cpf = '{cliente.CPF}', Telefone = '{cliente.contato.Telefone}', Email = '{cliente.contato.Email}', Celular='{cliente.contato.Celular}' where idCliente = {idpesquisado}; ");
-                        stmt.AlterarCliente($"update endereco set CEP = '{cliente.endereco.Cep}', Logradouro = '{cliente.endereco.Logradouro}', Cidade = '{cliente.endereco.Cidade}', UF = '{cliente.endereco.UF}', Complemento= '{cliente.endereco.Complemento}', Bairro= '{cliente.endereco.Bairro}', Numero= '{cliente.endereco.Numero}' where idEndereco= {enderecoPesquisado}; ");
+
+                        AlterarCliente oAlterar = new AlterarCliente();
+                        oAlterar.SalvarCliente(cliente);
                         Bloquear();
-                }
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally
+                
+            }
+            else
+            {
+                foreach (var x in validacoes)
                 {
-
-                    stmt.desconectar();
-
+                    MessageBox.Show(x, "Atenção");
                 }
+                MessageBox.Show("Valide os campos", "Atenção");
+            }
 
-            
         }
 
         private void Excluir_Click(object sender, EventArgs e)
@@ -169,10 +173,8 @@ namespace crud_teste
                 ConexaoDAO stmt = new ConexaoDAO();
                 try
                 {
-
-                    stmt.conectar();
-                    stmt.AlterarCliente($"delete from Cliente where idCliente = {idpesquisado}; ");
-                    stmt.AlterarCliente($"delete from Endereco where idEndereco = {enderecoPesquisado}");
+                    AlterarCliente oAlterar = new AlterarCliente();
+                    oAlterar.excluir(idpesquisado, enderecoPesquisado);
 
                     this.Text = "Consultar Cliente";
                 }
@@ -183,7 +185,6 @@ namespace crud_teste
                 }
                 finally
                 {
-                    stmt.desconectar();
                     idpesquisado = 0;
                     enderecoPesquisado = 0;
                     Bloquear();

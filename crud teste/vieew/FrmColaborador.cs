@@ -2,7 +2,7 @@
 using CRUD_teste.Model;
 using System.Windows.Forms;
 using System.Collections.Generic;
-
+using crud_teste.controller;
 namespace crud_teste
 {
     public partial class FrmColaborador : Form
@@ -54,12 +54,12 @@ namespace crud_teste
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+
 
             
 
             Colaborador colaborador = new Colaborador();
-            
+            AlterarColaborador oCadastrar = new AlterarColaborador();
             colaborador = preencherCampos();
             List<string> validacoes = colaborador.ValidarColaborador();
             if (validacoes.Count == 0)
@@ -69,12 +69,14 @@ namespace crud_teste
 
 
 
-                    stmt.conectar();
+                    
                     if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
-                        var idEndereco = stmt.GravarEndereco($"insert into Endereco OUTPUT INSERTED.idEndereco Values('{colaborador.endereco.Cep}', '{colaborador.endereco.Logradouro}', '{colaborador.endereco.Cidade}', '{colaborador.endereco.UF}', '{colaborador.endereco.Complemento}', '{colaborador.endereco.Bairro}', {colaborador.endereco.Numero});");
-                        var idColaborador = stmt.GravarColaborador($"insert into Colaborador OUTPUT INSERTED.idColaborador  Values('{colaborador.Nome}', '{colaborador.SobreNome}', '{colaborador.Sexo}',  {colaborador.Salario}, {colaborador.PorcentagemDeComissao}, '{colaborador.CPF}', '{colaborador.DadosBancarios}', '{colaborador.contato.Email}', '{colaborador.contato.Telefone}', '{colaborador.contato.DDI} {colaborador.contato.Celular}', {idEndereco}, '{colaborador.DataDeNascimento}');");
-                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {idColaborador}");
+                        colaborador.idColaborador = oCadastrar.conectarComDAO(colaborador);
+                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
+
+                        this.Close();
+                        new LColaboradores().Show();
 
                     }
                 }
@@ -82,13 +84,7 @@ namespace crud_teste
                 {
                     MessageBox.Show(ex.Message, "Atenção");
                 }
-                finally
-                {
-                    stmt.desconectar();
-                    this.Close();
-                    new LColaboradores().Show();
-
-                }
+                
             }else
             {
                 foreach(var x in validacoes)

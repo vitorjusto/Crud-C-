@@ -23,17 +23,11 @@ namespace crud_teste
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'cOLABORADOR.Colaborador'. Você pode movê-la ou removê-la conforme necessário.
-            this.colaboradorTableAdapter.Fill(this.cOLABORADOR.Colaborador);
-            // TODO: esta linha de código carrega dados na tabela 'cliente._cliente'. Você pode movê-la ou removê-la conforme necessário.
-            this.clienteTableAdapter.Fill(this.cliente._cliente);
-            // TODO: esta linha de código carrega dados na tabela 'crudDataSetEndereco.Endereco'. Você pode movê-la ou removê-la conforme necessário.
-            this.enderecoTableAdapter.Fill(this.crudDataSetEndereco.Endereco);
+           
             // TODO: esta linha de código carrega dados na tabela 'crudDataSet.Colaborador'. Você pode movê-la ou removê-la conforme necessário.
             // TODO: esta linha de código carrega dados na tabela 'crudDataSetCliente.cliente'. Você pode movê-la ou removê-la conforme necessário.
 
             this.BackColor = Global.BackgroundColor;
-            dataGridView1.BackgroundColor = Global.BackgroundColor;
-            GridListar.BackgroundColor = Global.BackgroundColor;
             menuStrip1.ForeColor = Global.FontColor;
             label1.ForeColor = Global.FontColor;
             menuStrip1.BackColor = Global.Strip;
@@ -58,12 +52,10 @@ namespace crud_teste
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            GridListar.DataSource = clienteBindingSource8;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GridListar.DataSource = colaboradorBindingSource5;
             
         }
 

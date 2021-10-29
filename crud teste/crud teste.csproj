@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COLABORADOR.xsd</DependentUpon>
     </Compile>
+    <Compile Include="controller\AlterarCliente.cs" />
+    <Compile Include="controller\AlterarColaborador.cs" />
     <Compile Include="Model\Contato.cs" />
     <Compile Include="vieew\FrmCliente.cs">
       <SubType>Form</SubType>
@@ -166,6 +171,7 @@
     <None Include="crudDataSetEndereco.xss">
       <DependentUpon>crudDataSetEndereco.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -43,15 +43,6 @@ namespace crud_teste
             this.clienteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.clienteBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enderecoBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.crudDataSetEndereco = new crud_teste.crudDataSetEndereco();
             this.enderecoBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -69,7 +60,6 @@ namespace crud_teste
             this.colaboradorBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.clienteBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.GridListar = new System.Windows.Forms.DataGridView();
             this.enderecoTableAdapter = new crud_teste.crudDataSetEnderecoTableAdapters.EnderecoTableAdapter();
             this.cliente = new crud_teste.cliente();
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
@@ -82,7 +72,6 @@ namespace crud_teste
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crudDataSetEndereco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoBindingSource2)).BeginInit();
@@ -98,7 +87,6 @@ namespace crud_teste
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOLABORADOR)).BeginInit();
@@ -200,76 +188,6 @@ namespace crud_teste
             // 
             this.clienteBindingSource2.DataMember = "cliente";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10});
-            this.dataGridView1.DataSource = this.enderecoBindingSource3;
-            this.dataGridView1.Location = new System.Drawing.Point(429, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(843, 181);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "idEndereco";
-            this.dataGridViewTextBoxColumn2.HeaderText = "idEndereco";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Cep";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Cep";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Logradouro";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Logradouro";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Cidade";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cidade";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "UF";
-            this.dataGridViewTextBoxColumn7.HeaderText = "UF";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Complemento";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Complemento";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Bairro";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Bairro";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Numero";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Numero";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
             // enderecoBindingSource3
             // 
             this.enderecoBindingSource3.DataMember = "Endereco";
@@ -352,16 +270,6 @@ namespace crud_teste
             // 
             this.colaboradorBindingSource4.DataMember = "Colaborador";
             // 
-            // GridListar
-            // 
-            this.GridListar.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.GridListar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListar.Location = new System.Drawing.Point(12, 284);
-            this.GridListar.Name = "GridListar";
-            this.GridListar.Size = new System.Drawing.Size(1277, 260);
-            this.GridListar.TabIndex = 6;
-            // 
             // enderecoTableAdapter
             // 
             this.enderecoTableAdapter.ClearBeforeFill = true;
@@ -400,10 +308,8 @@ namespace crud_teste
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1283, 656);
-            this.Controls.Add(this.GridListar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -416,7 +322,6 @@ namespace crud_teste
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crudDataSetEndereco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoBindingSource2)).EndInit();
@@ -432,7 +337,6 @@ namespace crud_teste
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOLABORADOR)).EndInit();
@@ -455,8 +359,6 @@ namespace crud_teste
         private System.Windows.Forms.Button button1;
 
         private System.Windows.Forms.BindingSource clienteBindingSource2;
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.BindingSource enderecoBindingSource;
@@ -495,18 +397,9 @@ namespace crud_teste
         private System.Windows.Forms.BindingSource clienteBindingSource6;
         private System.Windows.Forms.BindingSource clienteBindingSource7;
         private System.Windows.Forms.BindingSource colaboradorBindingSource4;
-        private System.Windows.Forms.DataGridView GridListar;
         private crudDataSetEndereco crudDataSetEndereco;
         private System.Windows.Forms.BindingSource enderecoBindingSource3;
         private crudDataSetEnderecoTableAdapters.EnderecoTableAdapter enderecoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colaboradorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;

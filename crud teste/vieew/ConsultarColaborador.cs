@@ -1,12 +1,7 @@
 ﻿using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using crud_teste.controller;
 using System.Windows.Forms;
 
 namespace crud_teste
@@ -22,20 +17,20 @@ namespace crud_teste
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+            AlterarColaborador oColaborador = new AlterarColaborador();
             try
             {
-                stmt.conectar();
+                
 
                 Colaborador colaborador = new Colaborador();
                 var id = Id.Text;
 
-                colaborador = stmt.ConsultarColaborador($"Select * from Colaborador where idColaborador = {id}");
+                colaborador = oColaborador.consultarColaborador(int.Parse(id));
 
                 AtribuirCampos(colaborador);
-                AtribuirCamposEnderecos(stmt.ConsultarEndereco($"Select * from Endereco where idEndereco = {colaborador.idEndereco}"));
+                
                 idpesquisado = colaborador.idColaborador;
-                enderecoPesquisado = colaborador.idEndereco;
+                enderecoPesquisado = colaborador.endereco.IdEndereco;
 
                 this.Text = "Consultando: " + colaborador.nomeCompleto();
             }
@@ -43,10 +38,7 @@ namespace crud_teste
             {
                 MessageBox.Show("Id Inválida");
             }
-            finally
-            {
-                stmt.desconectar();
-            }
+            
             
 
         }
@@ -65,7 +57,9 @@ namespace crud_teste
             emailText.Text = colaborador.contato.Email;
             Data.Text = colaborador.DataDeNascimento.ToString();
 
-            
+            AtribuirCamposEnderecos(colaborador.endereco);
+
+
         }
 
         private void AtribuirCamposEnderecos(Endereco endereco)
@@ -178,47 +172,54 @@ namespace crud_teste
             colaborador = preencherCampos();
             List<string> validacoes = colaborador.ValidarColaborador();
             ConexaoDAO stmt = new ConexaoDAO();
+
+            if (validacoes.Count == 0)
+            {
                 try
                 {
+                    AlterarColaborador oColaborador = new AlterarColaborador();
 
-                
 
-                if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                    if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
-                        stmt.conectar();
-                        stmt.AlterarCliente($"update colaborador set Nome = '{colaborador.Nome}', SobreNome = '{colaborador.SobreNome}', sexo = '{colaborador.Sexo}', DataDeNascimento = '{colaborador.DataDeNascimento}', CPF = '{colaborador.CPF}', Telefone = '{colaborador.contato.Telefone}', Email = '{colaborador.contato.Email }', PorcentagemdeComissao={colaborador.PorcentagemDeComissao}, DadosBancários='{colaborador.DadosBancarios}',Salario={colaborador.Salario}, Celular='{ colaborador.contato.Celular}' where idColaborador = {idpesquisado}; ");
-                        stmt.AlterarCliente($"update endereco set CEP = '{colaborador.endereco.Cep}', Logradouro = '{colaborador.endereco.Logradouro}', Cidade = '{colaborador.endereco.Cidade}', UF = '{colaborador.endereco.UF}', Complemento= '{colaborador.endereco.Complemento}', Bairro= '{colaborador.endereco.Bairro}', Numero= '{colaborador.endereco.Numero}' where idEndereco= {enderecoPesquisado}; ");
+                        oColaborador.SalvarColaborador(colaborador);
                         MessageBox.Show("Dados Cadastrado com sucesso");
-                        Bloquear();
+                    }
                 }
-                }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
 
                 }
-                finally
+                
+            }
+            else
+            {
+                foreach (var x in validacoes)
                 {
-
-                    stmt.desconectar();
-
-  
+                    MessageBox.Show(x, "Atenção");
                 }
-            
-            
+                MessageBox.Show("Valide os campos", "Atenção");
+            }
+
+
         }
 
         private void Excluir_Click(object sender, EventArgs e)
         {
             if ((int)MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
+                AlterarColaborador oColaborador = new AlterarColaborador();
                 ConexaoDAO stmt = new ConexaoDAO();
                 try
                 {
-                    stmt.conectar();
-                    stmt.AlterarCliente($"delete from Colaborador where idColaborador = {idpesquisado}; ");
-                    stmt.AlterarCliente($"delete from Endereco where idEndereco = {enderecoPesquisado}");
+                    oColaborador.Excluir(idpesquisado, enderecoPesquisado);
                     this.Text = "Consultar Colaborador";
+                    MessageBox.Show("Dados excluidos com sucesso");
+                    idpesquisado = 0;
+                    enderecoPesquisado = 0;
+                    Bloquear();
+                    Limpar();
                 }
                 catch
                 {
@@ -226,11 +227,8 @@ namespace crud_teste
                 }
                 finally
                 {
-                    stmt.desconectar();
-                    idpesquisado = 0;
-                    enderecoPesquisado = 0;
-                    Bloquear();
-                    Limpar();
+                    
+                    
                 }
 
             }   

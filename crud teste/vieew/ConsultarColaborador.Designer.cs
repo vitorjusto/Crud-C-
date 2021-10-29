@@ -31,6 +31,7 @@ namespace crud_teste
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
             this.Data = new System.Windows.Forms.MaskedTextBox();
@@ -75,12 +76,11 @@ namespace crud_teste
             this.button2 = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -121,6 +121,15 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Porcentagem
+            // 
+            this.Porcentagem.DecimalPlaces = 2;
+            this.Porcentagem.Enabled = false;
+            this.Porcentagem.Location = new System.Drawing.Point(357, 82);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(98, 20);
+            this.Porcentagem.TabIndex = 73;
             // 
             // label17
             // 
@@ -567,14 +576,6 @@ namespace crud_teste
             this.label18.TabIndex = 68;
             this.label18.Text = "Id:";
             // 
-            // Porcentagem
-            // 
-            this.Porcentagem.DecimalPlaces = 2;
-            this.Porcentagem.Location = new System.Drawing.Point(357, 82);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(98, 20);
-            this.Porcentagem.TabIndex = 73;
-            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -597,13 +598,13 @@ namespace crud_teste
             this.Load += new System.EventHandler(this.ConsultarColaborador_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -23,7 +23,6 @@ namespace CRUD_teste.Model
 
         public Contato contato = new Contato();
 
-        public int idEndereco { get; set; }
 
         public Endereco endereco = new Endereco();
 

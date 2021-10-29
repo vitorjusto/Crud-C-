@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
+using crud_teste.controller;
 namespace crud_teste
 {
     public partial class FrmCliente : Form
@@ -32,40 +33,31 @@ namespace crud_teste
             cliente = preencherCampos();
 
 
-            ConexaoDAO stmt = new ConexaoDAO();
+
             List<string> validacoes = cliente.ValidarCliente();
-            stmt.conectar();
 
 
-                try
-                {
-                    
-
+            if (validacoes.Count == 0)
+            {
                 if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
-                    var idEndereco = stmt.GravarEndereco($"insert into Endereco OUTPUT INSERTED.idEndereco Values('{cliente.endereco.Cep}', '{cliente.endereco.Logradouro}', '{cliente.endereco.Cidade}', '{cliente.endereco.UF}', '{cliente.endereco.Complemento}', '{cliente.endereco.Bairro}', {cliente.endereco.Numero});");
+                    AlterarCliente.conectarComDAO(cliente);
 
-                    decimal.TryParse(ValorLimite.Text, out decimal b);
-
-                    var idColaborador = stmt.GravarColaborador($"insert into cliente OUTPUT INSERTED.idCliente Values('{cliente.Nome}', '{cliente.SobreNome}', '{cliente.Sexo}', '{cliente.CPF}',{cliente.LimiteDeCompra}, '{cliente.contato.Telefone}', '{cliente.contato.DDI} {cliente.contato.Celular}','{cliente.contato.Email}', {idEndereco}, '{cliente.DataDeNascimento}');");
-                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = {idColaborador}");
-                    cadastrado = true;
+                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = ");
+                    if (cadastrado)
+                    {
+                        this.Close();
+                        new LColaboradores().Show();
+                    }
                 }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Atenção");
-                }
-                finally
-                {
-                    stmt.desconectar();
-
-                }
-
-            if (cadastrado)
+            }
+            else
             {
-                this.Close();
-                new LColaboradores().Show();
+                foreach (var x in validacoes)
+                {
+                    MessageBox.Show(x, "Atenção");
+                }
+                MessageBox.Show("Valide os campos", "Atenção");
             }
         }
 
