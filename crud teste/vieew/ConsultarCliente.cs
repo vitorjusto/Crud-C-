@@ -7,8 +7,7 @@ namespace crud_teste
 {
     public partial class ConsultarCliente : Form
     {
-        public int idpesquisado;
-        public int enderecoPesquisado;
+        private Cliente clienteglobal;
         public ConsultarCliente()
         {
             InitializeComponent();
@@ -33,13 +32,12 @@ namespace crud_teste
 
                 AlterarCliente oAlterar = new AlterarCliente();
                 Cliente cliente = new Cliente();
-                var id = Id.Text;
+                 cliente.idCliente = int.Parse(Id.Text);
 
-                cliente = oAlterar.consultarCliente(int.Parse(id));
+                cliente = oAlterar.consultarCliente(cliente.idCliente);
 
                 AtribuirCamposClientes(cliente);
-                idpesquisado = cliente.idCliente;
-                enderecoPesquisado = cliente.endereco.IdEndereco;
+                clienteglobal = cliente;
 
                 this.Text = "Consultando: " + cliente.nomeCompleto();
 
@@ -60,26 +58,27 @@ namespace crud_teste
             CPF.Text = cliente.CPF;
             Telefone.Text = cliente.contato.Telefone;
             Celular2.Text = cliente.contato.Celular;
+            Celular1.Text = cliente.contato.DDI;
             Email.Text = cliente.contato.Email;
             data.Text = cliente.DataDeNascimento;
-
+            CEP.Text = cliente.endereco.Cep;
+            Logradouro.Text = cliente.endereco.Logradouro;
+            Cidade.Text = cliente.endereco.Cidade;
+            UF.Text = cliente.endereco.UF;
+            Complemento.Text = cliente.endereco.Complemento;
+            Bairro.Text = cliente.endereco.Bairro;
+            Numero.Text = cliente.endereco.Numero.ToString();
             AtribuirCamposEnderecos(cliente.endereco);
         }
 
         public void AtribuirCamposEnderecos(Endereco endereco)
         {
-            CEP.Text = endereco.Cep;
-            Logradouro.Text = endereco.Logradouro;
-            Cidade.Text = endereco.Cidade;
-            UF.Text = endereco.UF;
-            Complemento.Text = endereco.Complemento;
-            Bairro.Text = endereco.Bairro;
-            Numero.Text = endereco.Numero.ToString();
+            
         }
 
         public void button2_Click(object sender, EventArgs e)
         {
-            if (idpesquisado != 0)
+            if (clienteglobal.idCliente != 0)
             {
                 Nome.Enabled = true;
                 Sobrenome.Enabled = true;
@@ -146,6 +145,7 @@ namespace crud_teste
 
                         AlterarCliente oAlterar = new AlterarCliente();
                         oAlterar.SalvarCliente(cliente);
+                        MessageBox.Show("Dados Salvos com sucesso");
                         Bloquear();
                     }
                 }
@@ -174,7 +174,7 @@ namespace crud_teste
                 try
                 {
                     AlterarCliente oAlterar = new AlterarCliente();
-                    oAlterar.excluir(idpesquisado, enderecoPesquisado);
+                    oAlterar.excluir(clienteglobal);
 
                     this.Text = "Consultar Cliente";
                 }
@@ -185,8 +185,7 @@ namespace crud_teste
                 }
                 finally
                 {
-                    idpesquisado = 0;
-                    enderecoPesquisado = 0;
+                    clienteglobal = null;
                     Bloquear();
                     Limpar();
                 }

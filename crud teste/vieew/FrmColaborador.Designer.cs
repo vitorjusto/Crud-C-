@@ -68,16 +68,16 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
+            this.Salario = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Salario = new System.Windows.Forms.NumericUpDown();
-            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Salario)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Salario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.SuspendLayout();
             // 
             // Nome
@@ -455,6 +455,27 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
+            // Porcentagem
+            // 
+            this.Porcentagem.DecimalPlaces = 2;
+            this.Porcentagem.Location = new System.Drawing.Point(273, 87);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(47, 20);
+            this.Porcentagem.TabIndex = 44;
+            // 
+            // Salario
+            // 
+            this.Salario.DecimalPlaces = 2;
+            this.Salario.Location = new System.Drawing.Point(59, 87);
+            this.Salario.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.Salario.Name = "Salario";
+            this.Salario.Size = new System.Drawing.Size(110, 20);
+            this.Salario.TabIndex = 43;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.CEP);
@@ -494,27 +515,6 @@ namespace crud_teste
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
             // 
-            // Salario
-            // 
-            this.Salario.DecimalPlaces = 2;
-            this.Salario.Location = new System.Drawing.Point(59, 87);
-            this.Salario.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.Salario.Name = "Salario";
-            this.Salario.Size = new System.Drawing.Size(110, 20);
-            this.Salario.TabIndex = 43;
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.DecimalPlaces = 2;
-            this.Porcentagem.Location = new System.Drawing.Point(273, 87);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(47, 20);
-            this.Porcentagem.TabIndex = 44;
-            // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,12 +533,12 @@ namespace crud_teste
             this.menuStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Salario)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Salario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

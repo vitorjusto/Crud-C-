@@ -56,6 +56,7 @@ namespace crud_teste
         {
 
 
+
             
 
             Colaborador colaborador = new Colaborador();
@@ -112,7 +113,7 @@ namespace crud_teste
             colaborador.SobreNome = Sobrenome.Text;
             colaborador.Sexo = Sexo.Text;
             colaborador.Salario = Salario.Value;
-            colaborador.DataDeNascimento = Data.ToString().Remove(10);
+            colaborador.DataDeNascimento = Data.Value.ToString().Remove(10);
             colaborador.CPF = CPF.Text;
             colaborador.DadosBancarios = Dados.Text;
             colaborador.contato.Email = Email.Text;

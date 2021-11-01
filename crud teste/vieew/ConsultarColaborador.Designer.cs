@@ -31,10 +31,10 @@ namespace crud_teste
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Data = new System.Windows.Forms.DateTimePicker();
             this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
-            this.Data = new System.Windows.Forms.MaskedTextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.Conta = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,19 +63,20 @@ namespace crud_teste
             this.label10 = new System.Windows.Forms.Label();
             this.Cidade = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DDI = new System.Windows.Forms.MaskedTextBox();
             this.Celular2 = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Telefone = new System.Windows.Forms.MaskedTextBox();
             this.emailText = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,10 +99,10 @@ namespace crud_teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.Salario);
-            this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.CPF);
             this.groupBox1.Controls.Add(this.Conta);
             this.groupBox1.Controls.Add(this.label12);
@@ -121,6 +122,16 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Data
+            // 
+            this.Data.Enabled = false;
+            this.Data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Data.Location = new System.Drawing.Point(339, 51);
+            this.Data.Name = "Data";
+            this.Data.Size = new System.Drawing.Size(161, 20);
+            this.Data.TabIndex = 74;
+            this.Data.ValueChanged += new System.EventHandler(this.data_ValueChanged);
             // 
             // Porcentagem
             // 
@@ -147,15 +158,6 @@ namespace crud_teste
             this.Salario.Name = "Salario";
             this.Salario.Size = new System.Drawing.Size(98, 20);
             this.Salario.TabIndex = 71;
-            // 
-            // Data
-            // 
-            this.Data.Enabled = false;
-            this.Data.Location = new System.Drawing.Point(339, 53);
-            this.Data.Mask = "00/00/0000";
-            this.Data.Name = "Data";
-            this.Data.Size = new System.Drawing.Size(141, 20);
-            this.Data.TabIndex = 70;
             // 
             // CPF
             // 
@@ -435,6 +437,7 @@ namespace crud_teste
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.DDI);
             this.groupBox3.Controls.Add(this.Celular2);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.Telefone);
@@ -448,11 +451,20 @@ namespace crud_teste
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
             // 
+            // DDI
+            // 
+            this.DDI.Enabled = false;
+            this.DDI.Location = new System.Drawing.Point(262, 22);
+            this.DDI.Mask = "+00";
+            this.DDI.Name = "DDI";
+            this.DDI.Size = new System.Drawing.Size(24, 20);
+            this.DDI.TabIndex = 72;
+            // 
             // Celular2
             // 
             this.Celular2.Enabled = false;
-            this.Celular2.Location = new System.Drawing.Point(262, 22);
-            this.Celular2.Mask = "+00 (00)0000 - 0000";
+            this.Celular2.Location = new System.Drawing.Point(306, 23);
+            this.Celular2.Mask = "(00)0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(123, 20);
             this.Celular2.TabIndex = 71;
@@ -478,7 +490,7 @@ namespace crud_teste
             // emailText
             // 
             this.emailText.Enabled = false;
-            this.emailText.Location = new System.Drawing.Point(488, 19);
+            this.emailText.Location = new System.Drawing.Point(486, 26);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(204, 20);
             this.emailText.TabIndex = 64;
@@ -486,7 +498,7 @@ namespace crud_teste
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(445, 22);
+            this.label16.Location = new System.Drawing.Point(445, 29);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 63;
@@ -500,13 +512,6 @@ namespace crud_teste
             this.label15.Size = new System.Drawing.Size(45, 13);
             this.label15.TabIndex = 62;
             this.label15.Text = "Celular: ";
-            // 
-            // Id
-            // 
-            this.Id.Location = new System.Drawing.Point(41, 409);
-            this.Id.Name = "Id";
-            this.Id.Size = new System.Drawing.Size(171, 20);
-            this.Id.TabIndex = 4;
             // 
             // menuStrip1
             // 
@@ -576,17 +581,24 @@ namespace crud_teste
             this.label18.TabIndex = 68;
             this.label18.Text = "Id:";
             // 
+            // Id
+            // 
+            this.Id.Location = new System.Drawing.Point(40, 409);
+            this.Id.Name = "Id";
+            this.Id.Size = new System.Drawing.Size(172, 20);
+            this.Id.TabIndex = 69;
+            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Id);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.Id);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -644,7 +656,6 @@ namespace crud_teste
         private System.Windows.Forms.TextBox emailText;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox Id;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.MaskedTextBox CEP;
@@ -654,10 +665,12 @@ namespace crud_teste
         private System.Windows.Forms.Button BotaoSalvar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Excluir;
-        private System.Windows.Forms.MaskedTextBox Data;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox Salario;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown Porcentagem;
+        private System.Windows.Forms.MaskedTextBox DDI;
+        private System.Windows.Forms.DateTimePicker Data;
+        private System.Windows.Forms.TextBox Id;
     }
 }

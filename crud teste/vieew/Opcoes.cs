@@ -38,9 +38,9 @@ namespace crud_teste
                 if ((int)MessageBox.Show("Deseja mesmo excluir todo o banco de dados permanentemente", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
                     stmt.conectar();
-                    stmt.AlterarCliente($"delete from Cliente;");
-                    stmt.AlterarCliente($"delete from Colaborador;");
-                    stmt.AlterarCliente($"delete from Endereco;");
+                    //stmt.AlterarCliente($"delete from Cliente;");
+                    //stmt.AlterarCliente($"delete from Colaborador;");
+                    //stmt.AlterarCliente($"delete from Endereco;");
 
 
                     MessageBox.Show("Dados excluidos com sucesso!!");

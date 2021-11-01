@@ -3,13 +3,11 @@ using System;
 using System.Collections.Generic;
 using crud_teste.controller;
 using System.Windows.Forms;
-
 namespace crud_teste
 {
     public partial class ConsultarColaborador : Form
     {
-        public int idpesquisado;
-        public int enderecoPesquisado;
+        private Colaborador colaboradorGlobal = new Colaborador();
         public ConsultarColaborador()
         {
             InitializeComponent();
@@ -20,23 +18,21 @@ namespace crud_teste
             AlterarColaborador oColaborador = new AlterarColaborador();
             try
             {
+
+                
+               
+                colaboradorGlobal.idColaborador = int.Parse(Id.Text);
+
+                colaboradorGlobal = oColaborador.consultarColaborador(colaboradorGlobal.idColaborador);
+
+                AtribuirCampos(colaboradorGlobal);
                 
 
-                Colaborador colaborador = new Colaborador();
-                var id = Id.Text;
-
-                colaborador = oColaborador.consultarColaborador(int.Parse(id));
-
-                AtribuirCampos(colaborador);
-                
-                idpesquisado = colaborador.idColaborador;
-                enderecoPesquisado = colaborador.endereco.IdEndereco;
-
-                this.Text = "Consultando: " + colaborador.nomeCompleto();
+                this.Text = "Consultando: " + colaboradorGlobal.nomeCompleto();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Id Inválida");
+                MessageBox.Show(ex.Message);
             }
             
             
@@ -54,8 +50,9 @@ namespace crud_teste
             Conta.Text = colaborador.DadosBancarios;
             Telefone.Text = colaborador.contato.Telefone;
             Celular2.Text = colaborador.contato.Celular;
+            DDI.Text = colaborador.contato.DDI;
             emailText.Text = colaborador.contato.Email;
-            Data.Text = colaborador.DataDeNascimento.ToString();
+            Data.Text = colaborador.DataDeNascimento;
 
             AtribuirCamposEnderecos(colaborador.endereco);
 
@@ -89,7 +86,7 @@ namespace crud_teste
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (idpesquisado != 0)
+            if (colaboradorGlobal.idColaborador != 0)
             {
                 Nome.Enabled = true;
                 Sobrenome.Enabled = true;
@@ -112,6 +109,7 @@ namespace crud_teste
                 Salario.Enabled = true;
                 Conta.Enabled = true;
                 Excluir.Enabled = true;
+                DDI.Enabled = true;
             }
         }
 
@@ -137,7 +135,7 @@ namespace crud_teste
             Porcentagem.Enabled = false;
             Conta.Enabled = false;
             Salario.Enabled = false;
-
+            DDI.Enabled = false;
             Excluir.Enabled = false;
         }
 
@@ -163,7 +161,8 @@ namespace crud_teste
             Conta.Text = "";
             Salario.Text = "";
             Id.Text = "";
-  
+            DDI.Text = "";
+        
         }
 
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
@@ -183,7 +182,8 @@ namespace crud_teste
                     if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
                         oColaborador.SalvarColaborador(colaborador);
-                        MessageBox.Show("Dados Cadastrado com sucesso");
+                        MessageBox.Show("Dados Salvos com sucesso");
+                        Bloquear();
                     }
                 }
                 catch (Exception ex)
@@ -210,20 +210,18 @@ namespace crud_teste
             if ((int)MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
                 AlterarColaborador oColaborador = new AlterarColaborador();
-                ConexaoDAO stmt = new ConexaoDAO();
                 try
                 {
-                    oColaborador.Excluir(idpesquisado, enderecoPesquisado);
+                    oColaborador.Excluir(colaboradorGlobal);
                     this.Text = "Consultar Colaborador";
                     MessageBox.Show("Dados excluidos com sucesso");
-                    idpesquisado = 0;
-                    enderecoPesquisado = 0;
+                    colaboradorGlobal = null;
                     Bloquear();
                     Limpar();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Falha ao conectar com o banco de dados");
+                    MessageBox.Show(ex.Message);
                 }
                 finally
                 {
@@ -303,6 +301,11 @@ namespace crud_teste
 
             return colaborador;
 
+
+        }
+
+        private void data_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

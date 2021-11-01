@@ -41,9 +41,9 @@ namespace crud_teste
             {
                 if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
-                    AlterarCliente.conectarComDAO(cliente);
+                    var id = AlterarCliente.conectarComDAO(cliente);
 
-                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = ");
+                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
                     if (cadastrado)
                     {
                         this.Close();
