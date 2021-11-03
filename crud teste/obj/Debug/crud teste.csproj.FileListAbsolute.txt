@@ -21,7 +21,6 @@ C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ConsultarCliente.res
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.FrmCliente.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.FrmColaborador.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ConsultarColaborador.resources
-C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.LColaboradores.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.Opcoes.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.Properties.Resources.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.GenerateResource.cache
@@ -31,3 +30,6 @@ C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.pdb
 C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\Dapper.dll
 C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\Dapper.xml
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.CopyComplete
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.vieew.ListarColaboradores.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.vieew.ListarCliente.resources
+C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ListarClientes.resources

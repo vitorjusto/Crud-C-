@@ -67,12 +67,9 @@ namespace crud_teste
             this.Telefone = new System.Windows.Forms.MaskedTextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.Celular2 = new System.Windows.Forms.MaskedTextBox();
-            this.Id = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.d = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValorLimite)).BeginInit();
@@ -430,9 +427,9 @@ namespace crud_teste
             // Email
             // 
             this.Email.Enabled = false;
-            this.Email.Location = new System.Drawing.Point(465, 22);
+            this.Email.Location = new System.Drawing.Point(470, 19);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(304, 20);
+            this.Email.Size = new System.Drawing.Size(299, 20);
             this.Email.TabIndex = 81;
             // 
             // label14
@@ -447,7 +444,7 @@ namespace crud_teste
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(416, 25);
+            this.label16.Location = new System.Drawing.Point(424, 22);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 80;
@@ -480,21 +477,14 @@ namespace crud_teste
             this.Celular2.Size = new System.Drawing.Size(123, 20);
             this.Celular2.TabIndex = 78;
             // 
-            // Id
-            // 
-            this.Id.Location = new System.Drawing.Point(42, 424);
-            this.Id.Name = "Id";
-            this.Id.Size = new System.Drawing.Size(129, 20);
-            this.Id.TabIndex = 62;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(194, 367);
+            this.button2.Location = new System.Drawing.Point(13, 367);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 77);
+            this.button2.Size = new System.Drawing.Size(235, 77);
             this.button2.TabIndex = 63;
             this.button2.Text = "Editar";
             this.button2.UseVisualStyleBackColor = false;
@@ -506,9 +496,9 @@ namespace crud_teste
             this.BotaoSalvar.Enabled = false;
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.Color.White;
-            this.BotaoSalvar.Location = new System.Drawing.Point(389, 367);
+            this.BotaoSalvar.Location = new System.Drawing.Point(254, 367);
             this.BotaoSalvar.Name = "BotaoSalvar";
-            this.BotaoSalvar.Size = new System.Drawing.Size(170, 77);
+            this.BotaoSalvar.Size = new System.Drawing.Size(250, 77);
             this.BotaoSalvar.TabIndex = 64;
             this.BotaoSalvar.Text = "Salvar";
             this.BotaoSalvar.UseVisualStyleBackColor = false;
@@ -520,35 +510,13 @@ namespace crud_teste
             this.Excluir.Enabled = false;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(578, 367);
+            this.Excluir.Location = new System.Drawing.Point(510, 367);
             this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(204, 77);
+            this.Excluir.Size = new System.Drawing.Size(278, 77);
             this.Excluir.TabIndex = 65;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = false;
             this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(13, 367);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 51);
-            this.button1.TabIndex = 61;
-            this.button1.Text = "Consultar por Id";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // d
-            // 
-            this.d.AutoSize = true;
-            this.d.Location = new System.Drawing.Point(12, 427);
-            this.d.Name = "d";
-            this.d.Size = new System.Drawing.Size(22, 13);
-            this.d.TabIndex = 66;
-            this.d.Text = "Id: ";
             // 
             // ConsultarCliente
             // 
@@ -556,12 +524,9 @@ namespace crud_teste
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(800, 456);
-            this.Controls.Add(this.d);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.Id);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -618,13 +583,10 @@ namespace crud_teste
         private System.Windows.Forms.MaskedTextBox Telefone;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.MaskedTextBox Celular2;
-        private System.Windows.Forms.TextBox Id;
         private System.Windows.Forms.TextBox Nome;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button BotaoSalvar;
         private System.Windows.Forms.Button Excluir;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label d;
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.DateTimePicker data;
         private System.Windows.Forms.MaskedTextBox Celular1;

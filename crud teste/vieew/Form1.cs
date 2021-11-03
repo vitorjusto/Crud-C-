@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using CRUD_teste.Model;
-
+using crud_teste.vieew;
 
 namespace crud_teste
 {
-    public partial class LColaboradores : Form
+    public partial class ListarClientes : Form
     {
-        public LColaboradores()
+        public ListarClientes()
         {
             InitializeComponent();
         }
@@ -29,7 +29,6 @@ namespace crud_teste
 
             this.BackColor = Global.BackgroundColor;
             menuStrip1.ForeColor = Global.FontColor;
-            label1.ForeColor = Global.FontColor;
             menuStrip1.BackColor = Global.Strip;
 
 
@@ -62,19 +61,30 @@ namespace crud_teste
         private void colaboradorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new ConsultarColaborador().Show();
+            //new ConsultarColaborador().Show();
         }
 
         private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new ConsultarCliente().Show();
+            
         }
 
         private void opçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             new Opcoes().Show();
+        }
+
+        private void colaboradoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListarColaboradores().Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListarCliente().Show();
         }
     }
 }

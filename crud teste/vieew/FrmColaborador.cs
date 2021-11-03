@@ -18,7 +18,7 @@ namespace crud_teste
             if((int)MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
                 this.Close();
-                new LColaboradores().Show();
+                new ListarClientes().Show();
             }
             
            
@@ -77,7 +77,7 @@ namespace crud_teste
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
 
                         this.Close();
-                        new LColaboradores().Show();
+                        new ListarClientes().Show();
 
                     }
                 }

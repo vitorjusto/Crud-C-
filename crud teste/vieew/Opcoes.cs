@@ -26,7 +26,7 @@ namespace crud_teste
         {
         
             this.Close();
-            new LColaboradores().Show();
+            new ListarClientes().Show();
         
         }
 
@@ -35,26 +35,15 @@ namespace crud_teste
             ConexaoDAO stmt = new ConexaoDAO();
             try
             {
-                if ((int)MessageBox.Show("Deseja mesmo excluir todo o banco de dados permanentemente", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                if ((int)MessageBox.Show("Deseja mesmo excluir todos os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
-                    stmt.conectar();
-                    //stmt.AlterarCliente($"delete from Cliente;");
-                    //stmt.AlterarCliente($"delete from Colaborador;");
-                    //stmt.AlterarCliente($"delete from Endereco;");
 
-
-                    MessageBox.Show("Dados excluidos com sucesso!!");
+                    stmt.ExcluirTudo();
+                    MessageBox.Show("Dados excluidos com sucesso!");
                 }
-            }
-            catch
+            }catch
             {
-
-                MessageBox.Show("Falha ao conectar com bancos de dados");
-            }
-            finally
-            {
-                stmt.desconectar();
-
+                MessageBox.Show("Erro ao conectar com o banco de dados");
             }
         }
 

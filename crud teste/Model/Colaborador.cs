@@ -20,13 +20,21 @@ namespace CRUD_teste.Model
             List<string> validacoes = new List<string>();
 
             validacoes = ValidarPessoa();
-
-            if(this.Salario <= 0)
-            {
+            if(!Validar_Se_Salario_E_Valido())
                 validacoes.Add("Digite um salário valido");
-            }
+
 
             return validacoes;
+        }
+
+        public bool Validar_Se_Salario_E_Valido()
+        {
+            if (this.Salario <= 0)
+            {
+                return false;
+            }
+            else
+                return true;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using crud_teste.Model;
 using CRUD_teste.Model;
 namespace crud_teste.controller
 {
@@ -40,6 +40,18 @@ namespace crud_teste.controller
 
             return idCliente;
             
+        }
+
+        public List<ClienteListagem> ListarCliente()
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarCliente();
+        }
+
+        public List<ClienteListagem> ListarCliente(string nome, string param)
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarCliente(nome, param);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace crud_teste
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LColaboradores());
+            Application.Run(new ListarClientes());
         }
     }
 }

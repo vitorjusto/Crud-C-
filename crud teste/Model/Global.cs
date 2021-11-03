@@ -10,8 +10,8 @@ namespace crud_teste
     {
 
         public static Color BackgroundColor = Color.AliceBlue;
-        public static System.Drawing.Color FontColor = Color.Black;
-        public static System.Drawing.Color Strip = Color.LightBlue;
+        public static Color FontColor = Color.Black;
+        public static Color Strip = Color.LightBlue;
 
 
         public static bool teste()

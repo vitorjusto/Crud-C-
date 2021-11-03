@@ -17,7 +17,7 @@ namespace crud_teste
             if ((int)MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
                 this.Close();
-                new LColaboradores().Show();
+                new ListarClientes().Show();
             }
 
         }
@@ -47,7 +47,7 @@ namespace crud_teste
                     if (cadastrado)
                     {
                         this.Close();
-                        new LColaboradores().Show();
+                        new ListarClientes().Show();
                     }
                 }
             }

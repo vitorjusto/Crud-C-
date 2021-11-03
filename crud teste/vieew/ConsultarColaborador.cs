@@ -3,37 +3,40 @@ using System;
 using System.Collections.Generic;
 using crud_teste.controller;
 using System.Windows.Forms;
+using crud_teste.vieew;
 namespace crud_teste
 {
     public partial class ConsultarColaborador : Form
     {
         private Colaborador colaboradorGlobal = new Colaborador();
-        public ConsultarColaborador()
+        public ConsultarColaborador(int id)
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             AlterarColaborador oColaborador = new AlterarColaborador();
             try
             {
 
-                
-               
-                colaboradorGlobal.idColaborador = int.Parse(Id.Text);
+
+
+                colaboradorGlobal.idColaborador = id;
 
                 colaboradorGlobal = oColaborador.consultarColaborador(colaboradorGlobal.idColaborador);
 
                 AtribuirCampos(colaboradorGlobal);
-                
+
 
                 this.Text = "Consultando: " + colaboradorGlobal.nomeCompleto();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
             
             
 
@@ -72,10 +75,10 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if ((int)MessageBox.Show("Deseja mesmo voltar a pagina de listagem?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
                 this.Close();
-                new LColaboradores().Show();
+                new ListarColaboradores().Show();
             }
         }
 
@@ -160,16 +163,14 @@ namespace crud_teste
             Porcentagem.Text = "";
             Conta.Text = "";
             Salario.Text = "";
-            Id.Text = "";
             DDI.Text = "";
         
         }
 
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
         {
-            Colaborador colaborador = new Colaborador();
-            colaborador = preencherCampos();
-            List<string> validacoes = colaborador.ValidarColaborador();
+             preencherCampos();
+            List<string> validacoes = colaboradorGlobal.ValidarColaborador();
             ConexaoDAO stmt = new ConexaoDAO();
 
             if (validacoes.Count == 0)
@@ -181,7 +182,7 @@ namespace crud_teste
 
                     if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                     {
-                        oColaborador.SalvarColaborador(colaborador);
+                        oColaborador.SalvarColaborador(colaboradorGlobal);
                         MessageBox.Show("Dados Salvos com sucesso");
                         Bloquear();
                     }
@@ -259,47 +260,44 @@ namespace crud_teste
             label15.ForeColor = Global.FontColor;
             label16.ForeColor = Global.FontColor;
             label17.ForeColor = Global.FontColor;
-            label18.ForeColor = Global.FontColor;
         }
 
-        public Colaborador preencherCampos()
+        public void preencherCampos()
         {
-            Colaborador colaborador = new Colaborador();
 
 
-            
 
-            colaborador.Nome = Nome.Text;
-            colaborador.SobreNome = Sobrenome.Text;
-            colaborador.Sexo = Sexo.Text;
+
+            colaboradorGlobal.Nome = Nome.Text;
+            colaboradorGlobal.SobreNome = Sobrenome.Text;
+            colaboradorGlobal.Sexo = Sexo.Text;
             decimal.TryParse(Salario.Text, out decimal x);
-            colaborador.Salario = x;
-            colaborador.DataDeNascimento = Data.ToString().Remove(10);
-            colaborador.CPF = CPF.Text;
-            colaborador.DadosBancarios = Conta.Text;
-            colaborador.contato.Email = emailText.Text;
-            colaborador.contato.Telefone = Telefone.Text;
-            colaborador.contato.DDI = "0";
-            colaborador.contato.Celular = Celular2.Text;
+            colaboradorGlobal.Salario = x;
+            colaboradorGlobal.DataDeNascimento = Data.Value.ToString().Remove(10);
+            colaboradorGlobal.CPF = CPF.Text;
+            colaboradorGlobal.DadosBancarios = Conta.Text;
+            colaboradorGlobal.contato.Email = emailText.Text;
+            colaboradorGlobal.contato.Telefone = Telefone.Text;
+            colaboradorGlobal.contato.DDI = "0";
+            colaboradorGlobal.contato.Celular = Celular2.Text;
 
-            colaborador.PorcentagemDeComissao = Porcentagem.Value;
-
-
+            colaboradorGlobal.PorcentagemDeComissao = Porcentagem.Value;
 
 
-            colaborador.endereco.Cep = CEP.Text;
-            colaborador.endereco.Logradouro = Logradouro.Text;
-            colaborador.endereco.Cidade = Cidade.Text;
-            colaborador.endereco.UF = UF.Text;
-            colaborador.endereco.Complemento = Complemento.Text;
-            colaborador.endereco.Bairro = Bairro.Text;
+
+
+            colaboradorGlobal.endereco.Cep = CEP.Text;
+            colaboradorGlobal.endereco.Logradouro = Logradouro.Text;
+            colaboradorGlobal.endereco.Cidade = Cidade.Text;
+            colaboradorGlobal.endereco.UF = UF.Text;
+            colaboradorGlobal.endereco.Complemento = Complemento.Text;
+            colaboradorGlobal.endereco.Bairro = Bairro.Text;
             int.TryParse(Numero.Text, out int i);
 
-            colaborador.endereco.Numero = i;
+            colaboradorGlobal.endereco.Numero = i;
 
 
 
-            return colaborador;
 
 
         }

@@ -1,11 +1,12 @@
 ﻿using System.Data.SqlClient;
 using CRUD_teste.Model;
-
+using System.Collections.Generic;
 using Dapper;
 using System;
-using System.IO;
+using crud_teste.Model;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace crud_teste
 {
@@ -70,10 +71,11 @@ namespace crud_teste
                     cliente.idCliente = int.Parse(con.ExecuteScalar(query, cliente, tran).ToString());
 
                     tran.Commit();
-                 }catch(Exception ex)
+                 }catch
                 {
                     tran.Rollback();
-                    MessageBox.Show(ex.Message);
+                    con.Close();
+                    throw new Exception();
 
                 }
 
@@ -141,19 +143,29 @@ namespace crud_teste
             using (con)
             {
 
-
-
-
                 con.Open();
-                var query = @"update cliente set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = @CPF, ValorLimite = @LimiteDeCompra, DataDeNacimento = @DataDeNascimento where idCliente = @idCliente";
-                con.Execute(query, cliente);
+                var tran = con.BeginTransaction();
+                try
+                {
 
-                query = @"update contato set telefone = @Telefone, DDI= @DDI, Celular = @Celular where idcontato = @idContato";
-                con.Execute(query, cliente.contato);
 
-                query = @"update endereco set cep = @CEP, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
-                con.Execute(query, cliente.endereco);
+                var query = @"update cliente set nome = @Nome where idcliente = @idCliente";
+                con.Execute(query, cliente, tran);
 
+                query = @"Update contato Set telefone = @Telefone, DDI= @DDI, Celular = @Celular Where idcontato = @idContato";
+                con.Execute(query, cliente.contato, tran);
+
+                query = @"Update endereco Set cep = @CEP, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero Where idendereco = @IdEndereco";
+                con.Execute(query, cliente.endereco, tran);
+                    tran.Commit();
+                }
+                catch(Exception ex)
+                {
+                    tran.Rollback();
+                    con.Close();
+                    throw new Exception(ex.Message);
+
+                }
                 con.Close();
 
             }
@@ -162,19 +174,66 @@ namespace crud_teste
         public void ExcluirCliente(Cliente cliente)
         {
             con.Open();
-            var query = $@"delete from cliente where idcliente = {cliente.idCliente}";
-            con.Execute(query);
+            var tran = con.BeginTransaction();
+            try
+            {
+            var query = $@"delete from cliente where idcliente = @idCliente";
+            con.Execute(query,cliente , tran);
 
-            query = $@"delete from endereco where idendereco = {cliente.endereco.IdEndereco}";
-            con.Execute(query);
+            query = $@"delete from endereco where idendereco = @IdEndereco";
+            con.Execute(query,cliente.endereco, tran);
 
-            query = $@"delete from contato where idcontato = {cliente.contato.idContato}";
-            con.Execute(query);
+            query = $@"delete from contato where idcontato = @idContato";
+            con.Execute(query,cliente.contato, tran);
+
+           tran.Commit();
+            }
+            catch
+            {
+                tran.Rollback();
+
+                con.Close();
+                throw new Exception();
+
+            }
             con.Close();
-
         }
 
+        public List<ClienteListagem> ListarCliente()
+        {
+            using (con)
+            {
 
+                var query = @"select idcliente, Nome, SobreNome, Sexo, cpf, ValorLimite, DataDeNacimento, Cidade, UF, celular, email 
+                               from cliente c Left outer join Endereco e on e.idEndereco = c.IdEndereco
+                               Left outer join contato co on co.idContato = c.idContato;";
+                var resultado = con.Query<ClienteListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
+
+        public List<ClienteListagem> ListarCliente(string nome, string param)
+        {
+            using (con)
+            {
+                var queryWhere = "";
+                if(param == "id")
+                {
+                    queryWhere = $"idcliente = {nome}";
+                }
+                else
+                {
+                    queryWhere = "Nome like '{nome}%'";
+                }
+                var query = $@"select idcliente, Nome, SobreNome, Sexo, cpf, ValorLimite, DataDeNacimento, Cidade, UF, celular, email 
+                               from cliente c Left outer join Endereco e on e.idEndereco = c.IdEndereco
+                               Left outer join contato co on co.idContato = c.idContato where {queryWhere} ;";
+                var resultado = con.Query<ClienteListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
 
         public Colaborador ConsultarColaborador(int id)
         {
@@ -238,19 +297,30 @@ namespace crud_teste
             {
 
                 con.Open();
+                var tran = con.BeginTransaction();
+                try
+                {
                 var query = @"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values(@Cep,@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
-                var idendereco = con.ExecuteScalar(query, colaborador.endereco);
+                var idendereco = con.ExecuteScalar(query, colaborador.endereco, tran);
 
                 query = @"Insert Into Contato(Email, telefone, DDI, Celular) OUTPUT INSERTED.idContato  Values(@Email,@Telefone,@DDI,@Celular)";
-                var idcontato = con.ExecuteScalar(query, colaborador.contato);
+                var idcontato = con.ExecuteScalar(query, colaborador.contato, tran);
 
                 colaborador.endereco.IdEndereco = int.Parse(idendereco.ToString());
                 colaborador.contato.idContato = int.Parse(idcontato.ToString());
 
                 query = $@"Insert  Into Colaborador(Nome, Sobrenome, Sexo, Salario, PorcentagemDeComissao, CPF, DadosBancários, idEndereco, DataDeNascimento, idContato) OUTPUT INSERTED.idcolaborador Values(@Nome, @SobreNome, @Sexo, @Salario, @PorcentagemDeComissao, @CPF, @DadosBancarios, {colaborador.endereco.IdEndereco}, @DataDeNascimento, {colaborador.contato.idContato})";
-                colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, colaborador).ToString());
+                colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, colaborador, tran).ToString());
 
+                tran.Commit();
+                }
+                catch
+                {
+                    tran.Rollback();
+                    con.Close();
+                    throw new Exception();
 
+                }
 
 
                 con.Close();
@@ -264,19 +334,28 @@ namespace crud_teste
             {
 
 
-
-
                 con.Open();
+                var tran = con.BeginTransaction();
+                try
+                {
+
                 var query = @"update colaborador set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = @CPF, DataDeNascimento = @DataDeNascimento, salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao, dadosbancários = @DadosBancarios  where idColaborador = @idColaborador";
-                con.Execute(query, colaborador);
+                con.Execute(query, colaborador, tran);
 
                 query = @"update contato set telefone = @Telefone, DDI= @DDI, Celular = @Celular where idcontato = @idContato";
-                con.Execute(query, colaborador.contato);
+                con.Execute(query, colaborador.contato, tran);
 
                 query = @"update endereco set cep = @CEP, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
-                con.Execute(query, colaborador.endereco);
-
+                con.Execute(query, colaborador.endereco, tran);
+                tran.Commit();
+                }
+                catch
+                {
+                tran.Rollback();
                 con.Close();
+                throw new Exception();
+                }
+            con.Close();
 
             }
         }
@@ -284,15 +363,102 @@ namespace crud_teste
         public void ExcluirColaborador(Colaborador colaborador)
         {
             con.Open();
-            var query = $@"delete from colaborador where idcolaborador = {colaborador.idColaborador}";
-            con.Execute(query);
 
-            query = $@"delete from endereco where idendereco = {colaborador.endereco.IdEndereco}";
-            con.Execute(query);
+            var tran = con.BeginTransaction();
+            try
+            {
 
-            query = $@"delete from contato where idcontato = {colaborador.contato.idContato}";
-            con.Execute(query);
-            con.Close();
+            var query = $@"delete from colaborador where idcolaborador = @idColaborador";
+            con.Execute(query, colaborador, tran);
+
+            query = $@"delete from endereco where idendereco = @IdEndereco";
+            con.Execute(query, colaborador.endereco, tran);
+
+            query = $@"delete from contato where idcontato = @idContato";
+            con.Execute(query, colaborador.contato, tran);
+
+            tran.Commit();
+            }
+            catch
+            {
+                tran.Rollback();
+                con.Close();
+                throw new Exception();
+            }
+        con.Close();
         }
+
+        public List<ColaboradorListagem> ListarColaboradores()
+        {
+
+            using (con)
+            {
+
+                var query = @"select idcolaborador, Nome, SobreNome, Sexo, Salario, PorcentagemDeComissao, DataDeNascimento, Cidade, UF, celular, email 
+                               from Colaborador c Left outer join Endereco e on e.idEndereco = c.IdEndereco
+                               Left outer join contato co on co.idContato = c.idContato;";
+                var resultado = con.Query<ColaboradorListagem>(query);
+                return resultado.ToList();
+
+            }
+
+
+        }
+
+        public List<ColaboradorListagem> ListarColaboradores(string nome, string param)
+        {
+            using (con)
+            {
+                var queryWhere = "";
+
+                if(param == "id")
+                {
+                    queryWhere = $"idcolaborador = {nome}";
+                }else
+                {
+                    queryWhere = $"Nome like '{nome}%'";
+                }
+
+                var query = $@"select idcolaborador, Nome, SobreNome, Sexo, Salario, PorcentagemDeComissao, DataDeNascimento, Cidade, UF, celular, email 
+                               from Colaborador c Left outer join Endereco e on e.idEndereco = c.IdEndereco
+                               Left outer join contato co on co.idContato = c.idContato where {queryWhere};";
+                var resultado = con.Query<ColaboradorListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
+
+
+        public void ExcluirTudo()
+        {
+            con.Open();
+
+            var tran = con.BeginTransaction();
+            try
+            {
+                Colaborador colaborador = new Colaborador();
+                var query = $@"delete from colaborador";
+                con.Execute(query, colaborador, tran);
+
+                query = $@"delete from cliente";
+                con.Execute(query, colaborador, tran);
+
+                query = $@"delete from endereco ";
+                con.Execute(query, colaborador.endereco, tran);
+
+                query = $@"delete from contato";
+                con.Execute(query, colaborador.contato, tran);
+
+                tran.Commit();
+            }
+            catch
+            {
+                tran.Rollback();
+                con.Close();
+                throw new Exception();
+            }
+            con.Close();
+        
+    }
     }
 }

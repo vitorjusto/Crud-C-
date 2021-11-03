@@ -3,14 +3,37 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 using crud_teste.controller;
+using crud_teste.vieew;
+
 namespace crud_teste
 {
     public partial class ConsultarCliente : Form
     {
-        private Cliente clienteglobal;
-        public ConsultarCliente()
+        private Cliente clienteglobal = new Cliente();
+        public ConsultarCliente(int id)
         {
             InitializeComponent();
+            try
+            {
+
+
+                AlterarCliente oAlterar = new AlterarCliente();
+
+                clienteglobal.idCliente = id;
+
+                clienteglobal = oAlterar.consultarCliente(clienteglobal.idCliente);
+
+                AtribuirCamposClientes(clienteglobal);
+
+
+                this.Text = "Consultando: " + clienteglobal.nomeCompleto();
+
+            }
+            catch
+            {
+                MessageBox.Show("Id inválida");
+
+            }
         }
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
@@ -18,7 +41,7 @@ namespace crud_teste
             if ((int)MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.OKCancel) == 1)
             {
                 this.Close();
-                new LColaboradores().Show();
+                new ListarCliente().Show();
             }
         }
 
@@ -26,26 +49,7 @@ namespace crud_teste
         {
            
             
-           try
-           {
-
-
-                AlterarCliente oAlterar = new AlterarCliente();
-                Cliente cliente = new Cliente();
-                 cliente.idCliente = int.Parse(Id.Text);
-
-                cliente = oAlterar.consultarCliente(cliente.idCliente);
-
-                AtribuirCamposClientes(cliente);
-                clienteglobal = cliente;
-
-                this.Text = "Consultando: " + cliente.nomeCompleto();
-
-            } catch
-           {
-                MessageBox.Show("Id inválida");
-
-            }
+           
            
         }
 
@@ -68,13 +72,10 @@ namespace crud_teste
             Complemento.Text = cliente.endereco.Complemento;
             Bairro.Text = cliente.endereco.Bairro;
             Numero.Text = cliente.endereco.Numero.ToString();
-            AtribuirCamposEnderecos(cliente.endereco);
+
         }
 
-        public void AtribuirCamposEnderecos(Endereco endereco)
-        {
-            
-        }
+       
 
         public void button2_Click(object sender, EventArgs e)
         {
@@ -127,10 +128,10 @@ namespace crud_teste
 
         private void BotaoSalvar_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente();
 
-            cliente = SalvarCampos();
-            List<string> validacoes = cliente.ValidarCliente();
+            SalvarCampos();
+
+            List<string> validacoes = clienteglobal.ValidarCliente();
 
             if (validacoes.Count == 0)
             {
@@ -144,7 +145,7 @@ namespace crud_teste
                     {
 
                         AlterarCliente oAlterar = new AlterarCliente();
-                        oAlterar.SalvarCliente(cliente);
+                        oAlterar.SalvarCliente(clienteglobal);
                         MessageBox.Show("Dados Salvos com sucesso");
                         Bloquear();
                     }
@@ -209,7 +210,6 @@ namespace crud_teste
                 Numero.Text = "";
                 Bairro.Text = "";
                 Complemento.Text = "";
-                Id.Text = "";
                 ValorLimite.Text = "";
 
             }
@@ -241,35 +241,33 @@ namespace crud_teste
             label15.ForeColor = Global.FontColor;
             label16.ForeColor = Global.FontColor;
             label17.ForeColor = Global.FontColor;
-            d.ForeColor = Global.FontColor;
         }
-        public Cliente SalvarCampos()
+        public void SalvarCampos()
         {
-            Cliente cliente = new Cliente();
-            cliente.Nome = Nome.Text;
-            cliente.SobreNome = Sobrenome.Text;
-            cliente.Sexo = Sexo.Text;
-            cliente.CPF = CPF.Text;
-            cliente.contato.Telefone = Telefone.Text;
-            cliente.contato.DDI = Celular1.Text;
-            cliente.contato.Celular = Celular2.Text;
-            cliente.contato.Email = Email.Text;
-            cliente.DataDeNascimento = data.Value.ToString().Remove(10);
-            cliente.LimiteDeCompra = ValorLimite.Value;
 
-            cliente.endereco.Cep = CEP.Text;
-            cliente.endereco.Logradouro = Logradouro.Text;
-            cliente.endereco.Cidade = Cidade.Text;
-            cliente.endereco.UF = UF.Text;
-            cliente.endereco.Complemento = Complemento.Text;
-            cliente.endereco.Bairro = Bairro.Text;
-            cliente.endereco.Numero = int.Parse(Numero.Text);
+            clienteglobal.Nome = Nome.Text;
+            clienteglobal.SobreNome = Sobrenome.Text;
+            clienteglobal.Sexo = Sexo.Text;
+            clienteglobal.CPF = CPF.Text;
+            clienteglobal.contato.Telefone = Telefone.Text;
+            clienteglobal.contato.DDI = Celular1.Text;
+            clienteglobal.contato.Celular = Celular2.Text;
+            clienteglobal.contato.Email = Email.Text;
+            clienteglobal.DataDeNascimento = data.Value.ToString().Remove(10);
+            clienteglobal.LimiteDeCompra = ValorLimite.Value;
 
-
+            clienteglobal.endereco.Cep = CEP.Text;
+            clienteglobal.endereco.Logradouro = Logradouro.Text;
+            clienteglobal.endereco.Cidade = Cidade.Text;
+            clienteglobal.endereco.UF = UF.Text;
+            clienteglobal.endereco.Complemento = Complemento.Text;
+            clienteglobal.endereco.Bairro = Bairro.Text;
+            clienteglobal.endereco.Numero = int.Parse(Numero.Text);
 
 
 
-            return cliente;
+
+
 
 
         }

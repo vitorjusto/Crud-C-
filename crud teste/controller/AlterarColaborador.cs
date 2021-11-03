@@ -1,5 +1,6 @@
 ﻿using CRUD_teste.Model;
-
+using System.Collections.Generic;
+using crud_teste.Model;
 namespace crud_teste.controller
 {
     class AlterarColaborador
@@ -36,6 +37,20 @@ namespace crud_teste.controller
 
             return colaborador.idColaborador;
 
+        }
+
+        public List<ColaboradorListagem> ListarColaboradores()
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarColaboradores();
+
+
+        }
+
+        public List<ColaboradorListagem> ListarColaboradoresPesquisado(string nome, string param)
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarColaboradores(nome, param);
         }
     }
 }
