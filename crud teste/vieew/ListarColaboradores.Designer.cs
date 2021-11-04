@@ -33,8 +33,9 @@ namespace crud_teste.vieew
             this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridColaboradores = new System.Windows.Forms.DataGridView();
-            this.pe = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
+            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridColaboradores)).BeginInit();
             this.SuspendLayout();
@@ -58,11 +59,10 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(265, 43);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(74, 59);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(296, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(355, 20);
             this.CampoDePesquisa.TabIndex = 2;
-            this.CampoDePesquisa.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridColaboradores
             // 
@@ -70,35 +70,53 @@ namespace crud_teste.vieew
             this.dataGridColaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridColaboradores.Location = new System.Drawing.Point(12, 133);
             this.dataGridColaboradores.Name = "dataGridColaboradores";
+            this.dataGridColaboradores.ReadOnly = true;
+            this.dataGridColaboradores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridColaboradores.Size = new System.Drawing.Size(776, 305);
             this.dataGridColaboradores.TabIndex = 3;
+            this.dataGridColaboradores.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseDoubleClick_1);
             // 
-            // pe
+            // label
             // 
-            this.pe.AutoSize = true;
-            this.pe.Location = new System.Drawing.Point(179, 46);
-            this.pe.Name = "pe";
-            this.pe.Size = new System.Drawing.Size(56, 13);
-            this.pe.TabIndex = 4;
-            this.pe.Text = "Pesquisar:";
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(12, 62);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(56, 13);
+            this.label.TabIndex = 4;
+            this.label.Text = "Pesquisar:";
             // 
-            // textBox1
+            // textBoxinstrucao
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(581, 46);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(171, 51);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
+            this.textBoxinstrucao.Location = new System.Drawing.Point(650, 30);
+            this.textBoxinstrucao.Multiline = true;
+            this.textBoxinstrucao.Name = "textBoxinstrucao";
+            this.textBoxinstrucao.ReadOnly = true;
+            this.textBoxinstrucao.Size = new System.Drawing.Size(127, 70);
+            this.textBoxinstrucao.TabIndex = 5;
+            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
+            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(456, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 70);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ListarColaboradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.pe);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxinstrucao);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.dataGridColaboradores);
             this.Controls.Add(this.CampoDePesquisa);
             this.Controls.Add(this.menuStrip1);
@@ -119,7 +137,8 @@ namespace crud_teste.vieew
         private System.Windows.Forms.ToolStripMenuItem menuPrincipalToolStripMenuItem;
         private System.Windows.Forms.TextBox CampoDePesquisa;
         private System.Windows.Forms.DataGridView dataGridColaboradores;
-        private System.Windows.Forms.Label pe;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TextBox textBoxinstrucao;
+        private System.Windows.Forms.Button button1;
     }
 }

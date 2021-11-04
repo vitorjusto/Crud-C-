@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using crud_teste.Validation;
+
 namespace CRUD_teste.Model
 {
     public class Pessoa
@@ -33,44 +35,9 @@ namespace CRUD_teste.Model
             return this.Nome + this.SobreNome;
         }
 
-        public List<string> ValidarPessoa()
+        public void ValidarPessoa()
         {
-            List<string> validacoes = new List<string>();
-            DateTime.TryParse(this.DataDeNascimento, out DateTime data);
-            if(!Testar_se_Nome_e_valido())
-            {
-                validacoes.Add("Preencha um nome valido");
-            }
-            if(!Testar_se_sexo_e_valido())
-            {
-                validacoes.Add("Campo Sexo obrigatório");
-
-            }
-            if(data.ToString() == "0")
-            {
-                validacoes.Add("Campo Data obrigatório");
-
-
-            }
-            if(!Testar_Se_CPF_E_Valido())
-            {
-                validacoes.Add("Digite um CPF válido");
-
-            }
-
-           validacoes.AddRange(endereco.validarEndereco());
             
-            if (!contato.ValidarContato())
-            {
-                validacoes.Add("Digite Pelo menos um campo de contato");
-                
-            }
-
-
-           
-
-
-            return validacoes;
 
         }
 

@@ -18,13 +18,21 @@ namespace crud_teste.vieew
             InitializeComponent();
             AlterarColaborador oAlterar = new AlterarColaborador();
             dataGridColaboradores.DataSource =  oAlterar.ListarColaboradores();
+
+            dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void ListarColaboradores_Load(object sender, EventArgs e)
         {
             this.BackColor = Global.BackgroundColor;
             menuStrip1.BackColor = Global.Strip;
+            menuStrip1.ForeColor = Global.FontColor;
             dataGridColaboradores.BackgroundColor = Global.BackgroundColor;
+
+            label.ForeColor = Global.FontColor;
+
+            textBoxinstrucao.BackColor = Global.BackgroundColor;
+            textBoxinstrucao.ForeColor = Global.FontColor;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -38,24 +46,26 @@ namespace crud_teste.vieew
             this.Close();
         }
 
-        private void dataGridColaboradores_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
+        
 
+       
+
+        private void dataGridColaboradores_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
             var x = int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             new ConsultarColaborador(x).Show();
             this.Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             AlterarColaborador oAlterar = new AlterarColaborador();
             int.TryParse(CampoDePesquisa.Text, out int id);
-            if(id > 0)
+            if (id > 0)
                 dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
             else
                 dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
-
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace crud_teste
 {
@@ -18,5 +18,7 @@ namespace crud_teste
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ListarClientes());
         }
+
+        
     }
 }

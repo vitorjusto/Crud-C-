@@ -82,7 +82,7 @@ namespace CRUD_teste.Model
             if (string.IsNullOrEmpty(this.Cidade))
                 return false;
             else
-                return new Regex(@"[a-zA-ZÀ-úÀ-ÿ]+").Match(this.Cidade).Success; ;
+                return new Regex(@"[a-zA-ZÀ-úÀ-ÿ ]+").Match(this.Cidade).Success; ;
         }
 
         public bool Validar_Se_UF_E_Valido()

@@ -17,6 +17,7 @@ namespace crud_teste.vieew
             InitializeComponent();
             AlterarCliente oAlterar = new AlterarCliente();
             dataGridCliente.DataSource = oAlterar.ListarCliente();
+            dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void ListarCliente_Load(object sender, EventArgs e)
@@ -25,6 +26,10 @@ namespace crud_teste.vieew
             menuStrip1.BackColor = Global.Strip;
             menuStrip1.ForeColor = Global.FontColor;
             dataGridCliente.BackgroundColor = Global.BackgroundColor;
+
+
+            textBoxinstrucao.BackColor = Global.BackgroundColor;
+            textBoxinstrucao.ForeColor = Global.FontColor;
         }
 
        
@@ -48,17 +53,21 @@ namespace crud_teste.vieew
             this.Close();
         }
 
-        private void CampoDePesquisa_TextChanged(object sender, EventArgs e)
+        
+        private void button1_Click(object sender, EventArgs e)
         {
             AlterarCliente oAlterar = new AlterarCliente();
 
-
             int.TryParse(CampoDePesquisa.Text, out int id);
-            if(id > 0)
+            if (id > 0)
+            {
                 dataGridCliente.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
+            }
             else
-
+            {
                 dataGridCliente.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
+            }
+
 
         }
     }

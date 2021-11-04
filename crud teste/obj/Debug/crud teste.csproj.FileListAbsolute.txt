@@ -33,3 +33,7 @@ C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud teste.csproj.CopyComplete
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.vieew.ListarColaboradores.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.vieew.ListarCliente.resources
 C:\Users\PC1\Desktop\Backup\crud teste\obj\Debug\crud_teste.ListarClientes.resources
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\FluentValidation.dll
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\FluentValidation.xml
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\PC1\Desktop\Backup\crud teste\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml

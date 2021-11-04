@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using CRUD_teste.Model;
 using crud_teste.controller;
 using crud_teste.vieew;
+using crud_teste.Validation;
+using System.Linq;
 
 namespace crud_teste
 {
@@ -131,9 +133,11 @@ namespace crud_teste
 
             SalvarCampos();
 
-            List<string> validacoes = clienteglobal.ValidarCliente();
+            ClienteValidation validar = new ClienteValidation();
 
-            if (validacoes.Count == 0)
+            var validateres = validar.Validate(clienteglobal);
+
+            if (validateres.IsValid)
             {
                 try
                 {
@@ -150,18 +154,16 @@ namespace crud_teste
                         Bloquear();
                     }
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Falha ao conectar com o bancos de dados");
                 }
                 
             }
             else
             {
-                foreach (var x in validacoes)
-                {
-                    MessageBox.Show(x, "Atenção");
-                }
+                
+                MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
                 MessageBox.Show("Valide os campos", "Atenção");
             }
 

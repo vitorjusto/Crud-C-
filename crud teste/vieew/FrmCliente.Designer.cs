@@ -65,9 +65,9 @@ namespace crud_teste
             this.ValorLimite = new System.Windows.Forms.NumericUpDown();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Numero = new System.Windows.Forms.TextBox();
             this.Bairro = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Numero = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValorLimite)).BeginInit();
@@ -444,6 +444,13 @@ namespace crud_teste
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereço";
             // 
+            // Numero
+            // 
+            this.Numero.Location = new System.Drawing.Point(569, 59);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(103, 20);
+            this.Numero.TabIndex = 23;
+            // 
             // Bairro
             // 
             this.Bairro.Location = new System.Drawing.Point(569, 19);
@@ -466,13 +473,6 @@ namespace crud_teste
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
-            // 
-            // Numero
-            // 
-            this.Numero.Location = new System.Drawing.Point(569, 59);
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(103, 20);
-            this.Numero.TabIndex = 23;
             // 
             // FrmCliente
             // 

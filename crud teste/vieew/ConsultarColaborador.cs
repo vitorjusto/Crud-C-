@@ -196,10 +196,8 @@ namespace crud_teste
             }
             else
             {
-                foreach (var x in validacoes)
-                {
-                    MessageBox.Show(x, "Atenção");
-                }
+                
+                MessageBox.Show(String.Join("\n", validacoes.ToArray()), "Atenção");
                 MessageBox.Show("Valide os campos", "Atenção");
             }
 

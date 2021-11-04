@@ -24,14 +24,12 @@ namespace CRUD_teste.Model
             LimiteDeCompra = Limitedecompra;
         }
 
-        public List<string> ValidarCliente()
+        public void ValidarCliente()
         {
-            List<string> validacoes = new List<string>();
             
-            
-            validacoes = ValidarPessoa();
 
-            return validacoes;
+
+
         }
     }
 }

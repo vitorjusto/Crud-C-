@@ -204,7 +204,7 @@ namespace crud_teste
             using (con)
             {
 
-                var query = @"select idcliente, Nome, SobreNome, Sexo, cpf, ValorLimite, DataDeNacimento, Cidade, UF, celular, email 
+                var query = @"select idcliente, Nome, SobreNome, Sexo, ValorLimite, DataDeNacimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
                                from cliente c Left outer join Endereco e on e.idEndereco = c.IdEndereco
                                Left outer join contato co on co.idContato = c.idContato;";
                 var resultado = con.Query<ClienteListagem>(query);
@@ -224,9 +224,10 @@ namespace crud_teste
                 }
                 else
                 {
-                    queryWhere = "Nome like '{nome}%'";
+                    
+                    queryWhere = $"Nome like '{nome}%'";
                 }
-                var query = $@"select idcliente, Nome, SobreNome, Sexo, cpf, ValorLimite, DataDeNacimento, Cidade, UF, celular, email 
+                var query = $@"select idcliente, Nome, SobreNome, Sexo, DataDeNacimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
                                from cliente c Left outer join Endereco e on e.idEndereco = c.IdEndereco
                                Left outer join contato co on co.idContato = c.idContato where {queryWhere} ;";
                 var resultado = con.Query<ClienteListagem>(query);
@@ -394,7 +395,7 @@ namespace crud_teste
             using (con)
             {
 
-                var query = @"select idcolaborador, Nome, SobreNome, Sexo, Salario, PorcentagemDeComissao, DataDeNascimento, Cidade, UF, celular, email 
+                var query = @"select idcolaborador, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone 
                                from Colaborador c Left outer join Endereco e on e.idEndereco = c.IdEndereco
                                Left outer join contato co on co.idContato = c.idContato;";
                 var resultado = con.Query<ColaboradorListagem>(query);
@@ -419,7 +420,7 @@ namespace crud_teste
                     queryWhere = $"Nome like '{nome}%'";
                 }
 
-                var query = $@"select idcolaborador, Nome, SobreNome, Sexo, Salario, PorcentagemDeComissao, DataDeNascimento, Cidade, UF, celular, email 
+                var query = $@"select idcolaborador, Nome, SobreNome, Sexo, Salario,  DataDeNascimento, Cidade, UF ,bairro, logradouro, numero, celular, email, telefone 
                                from Colaborador c Left outer join Endereco e on e.idEndereco = c.IdEndereco
                                Left outer join contato co on co.idContato = c.idContato where {queryWhere};";
                 var resultado = con.Query<ColaboradorListagem>(query);

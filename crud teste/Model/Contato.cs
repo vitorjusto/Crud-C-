@@ -1,4 +1,5 @@
 ﻿
+using crud_teste.Validation;
 using System.Text.RegularExpressions;
 namespace crud_teste.Model
 {
@@ -12,31 +13,9 @@ namespace crud_teste.Model
         public string Celular { get; set; }
 
         public string DDI { get; set; }
-        public bool ValidarContato()
+        public void ValidarContato()
         {
-            bool valido = false;
-            if (Testar_Se_Email_E_Valido())
-            {
-                valido = true;
-            }
-
-            if(Testar_Se_Telefone_E_Valido())
-            {
-                valido = true;
-            }
-
-           
-
-            if(Testar_Se_DDI_E_Valido())
-            {
-
-                if(Testar_Se_Celular_E_Valido())
-                {
-                    valido = true;
-                }
-            }
-
-            return valido;
+            
         }
 
         public Contato()

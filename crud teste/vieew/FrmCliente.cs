@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 using crud_teste.controller;
+using crud_teste.Validation;
+using System.Linq;
+using FluentValidation;
+
 namespace crud_teste
 {
     public partial class FrmCliente : Form
@@ -31,13 +35,11 @@ namespace crud_teste
             var cadastrado = false;
             var cliente = new Cliente();
             cliente = preencherCampos();
+            ClienteValidation validar = new ClienteValidation();
 
-
-
-            List<string> validacoes = cliente.ValidarCliente();
-
-
-            if (validacoes.Count == 0)
+            var validateres = validar.Validate(cliente);
+            
+            if (validateres.IsValid)
             {
                 if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
@@ -53,11 +55,8 @@ namespace crud_teste
             }
             else
             {
-                foreach (var x in validacoes)
-                {
-                    MessageBox.Show(x, "Atenção");
-                }
-                MessageBox.Show("Valide os campos", "Atenção");
+                MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
+                
             }
         }
 
