@@ -3,6 +3,9 @@ using CRUD_teste.Model;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using crud_teste.controller;
+using crud_teste.Validation;
+using System.Linq;
+
 namespace crud_teste
 {
     public partial class FrmColaborador : Form
@@ -62,8 +65,11 @@ namespace crud_teste
             Colaborador colaborador = new Colaborador();
             AlterarColaborador oCadastrar = new AlterarColaborador();
             colaborador = preencherCampos();
-            List<string> validacoes = colaborador.ValidarColaborador();
-            if (validacoes.Count == 0)
+            ColaboradorValidator validar = new ColaboradorValidator();
+
+            var validateres = validar.Validate(colaborador);
+
+            if (validateres.IsValid)
             {
                 try
                 {
@@ -76,8 +82,8 @@ namespace crud_teste
                         colaborador.idColaborador = oCadastrar.conectarComDAO(colaborador);
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
 
-                        this.Close();
                         new ListarClientes().Show();
+                        this.Close();
 
                     }
                 }
@@ -89,9 +95,8 @@ namespace crud_teste
             }else
             {
 
-                    MessageBox.Show(String.Join("\n", validacoes.ToArray()), "Atenção");
+                    MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
                 
-                MessageBox.Show("Valide os campos", "Atenção");
             }
             
         }

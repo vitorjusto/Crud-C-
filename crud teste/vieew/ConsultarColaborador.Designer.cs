@@ -448,7 +448,7 @@ namespace crud_teste
             // 
             this.Celular2.Enabled = false;
             this.Celular2.Location = new System.Drawing.Point(306, 23);
-            this.Celular2.Mask = "(00)0000 - 0000";
+            this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(123, 20);
             this.Celular2.TabIndex = 71;

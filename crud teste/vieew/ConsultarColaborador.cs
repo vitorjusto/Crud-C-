@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using crud_teste.controller;
 using System.Windows.Forms;
 using crud_teste.vieew;
+using crud_teste.Validation;
+using System.Linq;
+
 namespace crud_teste
 {
     public partial class ConsultarColaborador : Form
@@ -47,7 +50,7 @@ namespace crud_teste
             Nome.Text = colaborador.Nome.ToString();
             Sobrenome.Text = colaborador.SobreNome;
             Sexo.Text = colaborador.Sexo;
-            CPF.Text = colaborador.CPF;
+            CPF.Text = colaborador.CPF.ToString();
             Salario.Text = colaborador.Salario.ToString();
             Porcentagem.Text = colaborador.PorcentagemDeComissao.ToString();
             Conta.Text = colaborador.DadosBancarios;
@@ -170,10 +173,11 @@ namespace crud_teste
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
         {
              preencherCampos();
-            List<string> validacoes = colaboradorGlobal.ValidarColaborador();
             ConexaoDAO stmt = new ConexaoDAO();
+            ColaboradorValidator validator = new ColaboradorValidator();
+            var validadores = validator.Validate(colaboradorGlobal);
 
-            if (validacoes.Count == 0)
+            if (validadores.IsValid)
             {
                 try
                 {
@@ -197,8 +201,8 @@ namespace crud_teste
             else
             {
                 
-                MessageBox.Show(String.Join("\n", validacoes.ToArray()), "Atenção");
-                MessageBox.Show("Valide os campos", "Atenção");
+                MessageBox.Show(validadores.Errors.FirstOrDefault().ToString(), "Atenção");
+
             }
 
 
@@ -276,7 +280,7 @@ namespace crud_teste
             colaboradorGlobal.DadosBancarios = Conta.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
             colaboradorGlobal.contato.Telefone = Telefone.Text;
-            colaboradorGlobal.contato.DDI = "0";
+            colaboradorGlobal.contato.DDI = DDI.Text;
             colaboradorGlobal.contato.Celular = Celular2.Text;
 
             colaboradorGlobal.PorcentagemDeComissao = Porcentagem.Value;

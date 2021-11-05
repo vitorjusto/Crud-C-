@@ -1,5 +1,6 @@
 ﻿using crud_teste.Model;
 using FluentValidation;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,10 @@ namespace crud_teste.Validation
 
             RuleFor(x => x.Celular).Matches(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").WithMessage("Celular inválida");
 
+
+
         }
+        
 
     }
 }

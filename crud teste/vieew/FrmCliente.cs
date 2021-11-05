@@ -101,7 +101,6 @@ namespace crud_teste
             cliente.contato.Email = Email.Text;
             cliente.DataDeNascimento = data.Value.ToString().Remove(10);
             cliente.LimiteDeCompra = ValorLimite.Value;
-
             cliente.endereco.Cep = CEP.Text;
             cliente.endereco.Logradouro = Logradouro.Text;
             cliente.endereco.Cidade = Cidade.Text;

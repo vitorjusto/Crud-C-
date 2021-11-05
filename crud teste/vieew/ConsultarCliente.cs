@@ -61,7 +61,7 @@ namespace crud_teste
             Sobrenome.Text = cliente.SobreNome;
             Sexo.Text = cliente.Sexo;
             ValorLimite.Text = cliente.LimiteDeCompra.ToString();
-            CPF.Text = cliente.CPF;
+            CPF.Text = cliente.CPF.ToString() ;
             Telefone.Text = cliente.contato.Telefone;
             Celular2.Text = cliente.contato.Celular;
             Celular1.Text = cliente.contato.DDI;
@@ -154,9 +154,9 @@ namespace crud_teste
                         Bloquear();
                     }
                 }
-                catch 
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Falha ao conectar com o bancos de dados");
+                    MessageBox.Show("Falha ao conectar com o bancos de dados" + ex.Message);
                 }
                 
             }
@@ -164,7 +164,6 @@ namespace crud_teste
             {
                 
                 MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
-                MessageBox.Show("Valide os campos", "Atenção");
             }
 
         }

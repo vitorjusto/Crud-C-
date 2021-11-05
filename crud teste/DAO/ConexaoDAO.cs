@@ -67,7 +67,7 @@ namespace crud_teste
 
                     cliente.endereco.IdEndereco = int.Parse(idendereco.ToString());
                     cliente.contato.idContato = int.Parse(idcontato.ToString());
-                    query = $@"Insert  Into  cliente(Nome, sobrenome, sexo, cpf, valorlimite, idendereco, datadenacimento, idcontato) OUTPUT INSERTED.idcliente Values(@Nome, @SobreNome, @Sexo, @CPF, @LimiteDeCompra, {cliente.endereco.IdEndereco}, @DataDeNascimento, {cliente.contato.idContato})";
+                    query = $@"Insert  Into  cliente(Nome, sobrenome, sexo, cpf, valorlimite, idendereco, datadenacimento, idcontato) OUTPUT INSERTED.idcliente Values(@Nome, @SobreNome, @Sexo, '{Convert.ToString(cliente.CPF)}', @LimiteDeCompra, {cliente.endereco.IdEndereco}, @DataDeNascimento, {cliente.contato.idContato})";
                     cliente.idCliente = int.Parse(con.ExecuteScalar(query, cliente, tran).ToString());
 
                     tran.Commit();
@@ -149,7 +149,8 @@ namespace crud_teste
                 {
 
 
-                var query = @"update cliente set nome = @Nome where idcliente = @idCliente";
+                var query = $@"update cliente set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = '{Convert.ToString(cliente.CPF)}',
+                                DataDeNacimento = @DataDeNascimento, Valorlimite = @LimiteDeCompra  where idCliente = @idCliente";
                 con.Execute(query, cliente, tran);
 
                 query = @"Update contato Set telefone = @Telefone, DDI= @DDI, Celular = @Celular Where idcontato = @idContato";
@@ -254,7 +255,7 @@ namespace crud_teste
                     colaborador.Sexo = (string)reader["Sexo"];
                     colaborador.Salario = (decimal)reader["Salario"];
                     colaborador.PorcentagemDeComissao = (decimal)reader["PorcentagemDeComissao"];
-                    colaborador.CPF = (string)reader["CPF"];
+                    colaborador.CPF= (string)reader["CPF"];
                     colaborador.DadosBancarios = (string)reader["DadosBancários"];
                     colaborador.endereco.IdEndereco = (int)reader["idEndereco"];
                     colaborador.DataDeNascimento = (string)reader["DataDeNascimento"];
@@ -301,25 +302,25 @@ namespace crud_teste
                 var tran = con.BeginTransaction();
                 try
                 {
-                var query = @"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values(@Cep,@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
-                var idendereco = con.ExecuteScalar(query, colaborador.endereco, tran);
+                    var query = @"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values(@Cep,@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
+                    var idendereco = con.ExecuteScalar(query, colaborador.endereco, tran);
 
-                query = @"Insert Into Contato(Email, telefone, DDI, Celular) OUTPUT INSERTED.idContato  Values(@Email,@Telefone,@DDI,@Celular)";
-                var idcontato = con.ExecuteScalar(query, colaborador.contato, tran);
+                    query = @"Insert Into Contato(Email, telefone, DDI, Celular) OUTPUT INSERTED.idContato  Values(@Email,@Telefone,@DDI,@Celular)";
+                    var idcontato = con.ExecuteScalar(query, colaborador.contato, tran);
 
-                colaborador.endereco.IdEndereco = int.Parse(idendereco.ToString());
-                colaborador.contato.idContato = int.Parse(idcontato.ToString());
-
-                query = $@"Insert  Into Colaborador(Nome, Sobrenome, Sexo, Salario, PorcentagemDeComissao, CPF, DadosBancários, idEndereco, DataDeNascimento, idContato) OUTPUT INSERTED.idcolaborador Values(@Nome, @SobreNome, @Sexo, @Salario, @PorcentagemDeComissao, @CPF, @DadosBancarios, {colaborador.endereco.IdEndereco}, @DataDeNascimento, {colaborador.contato.idContato})";
+                    colaborador.endereco.IdEndereco = int.Parse(idendereco.ToString());
+                    colaborador.contato.idContato = int.Parse(idcontato.ToString());
+                    var cpf = colaborador.CPF.ToString();
+                    query = $@"Insert  Into Colaborador(Nome, Sobrenome, Sexo, Salario, PorcentagemDeComissao, CPF, DadosBancários, idEndereco, DataDeNascimento, idContato) OUTPUT INSERTED.idcolaborador Values(@Nome, @SobreNome, @Sexo, @Salario, @PorcentagemDeComissao, '{Convert.ToString(colaborador.CPF)}' , @DadosBancarios, {colaborador.endereco.IdEndereco}, @DataDeNascimento, {colaborador.contato.idContato})";
                 colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, colaborador, tran).ToString());
 
                 tran.Commit();
                 }
-                catch
+                catch(Exception ex)
                 {
                     tran.Rollback();
                     con.Close();
-                    throw new Exception();
+                    throw new Exception(ex.Message);
 
                 }
 
@@ -340,7 +341,7 @@ namespace crud_teste
                 try
                 {
 
-                var query = @"update colaborador set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = @CPF, DataDeNascimento = @DataDeNascimento, salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao, dadosbancários = @DadosBancarios  where idColaborador = @idColaborador";
+                var query = $@"update colaborador set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = '{Convert.ToString(colaborador.CPF)}', DataDeNascimento = @DataDeNascimento, salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao, dadosbancários = @DadosBancarios  where idColaborador = @idColaborador";
                 con.Execute(query, colaborador, tran);
 
                 query = @"update contato set telefone = @Telefone, DDI= @DDI, Celular = @Celular where idcontato = @idContato";

@@ -21,7 +21,8 @@ namespace CRUD_teste.Model
 
         public string DataDeNascimento { get; set; }
 
-        public string CPF { get; set; }
+        public MyCPF CPF { get; set; }
+
 
         public Contato contato = new Contato();
 
@@ -70,12 +71,6 @@ namespace CRUD_teste.Model
             return true;
         }
 
-        public bool Testar_Se_CPF_E_Valido()
-        {
-            if (!string.IsNullOrEmpty(this.CPF))
-                return new Regex(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").Match(this.CPF).Success;
-            else
-                return false;
-        }
+       
     }
 }
