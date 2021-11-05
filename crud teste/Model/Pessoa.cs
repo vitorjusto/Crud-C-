@@ -36,11 +36,7 @@ namespace CRUD_teste.Model
             return this.Nome + this.SobreNome;
         }
 
-        public void ValidarPessoa()
-        {
-            
-
-        }
+        
 
 
         public Pessoa(string nome)
@@ -53,24 +49,7 @@ namespace CRUD_teste.Model
 
         }
 
-        public bool Testar_se_Nome_e_valido()
-        {
-            if (string.IsNullOrEmpty(Nome))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public bool Testar_se_sexo_e_valido()
-        {
-            if (string.IsNullOrEmpty(this.Sexo))
-            {
-                return false;
-            }
-            return true;
-        }
-
+       
        
     }
 }

@@ -72,7 +72,6 @@ namespace crud_teste
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BotaoSalvar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
@@ -109,7 +108,6 @@ namespace crud_teste
             // 
             // Data
             // 
-            this.Data.Enabled = false;
             this.Data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Data.Location = new System.Drawing.Point(339, 51);
             this.Data.Name = "Data";
@@ -120,7 +118,6 @@ namespace crud_teste
             // Porcentagem
             // 
             this.Porcentagem.DecimalPlaces = 2;
-            this.Porcentagem.Enabled = false;
             this.Porcentagem.Location = new System.Drawing.Point(357, 82);
             this.Porcentagem.Name = "Porcentagem";
             this.Porcentagem.Size = new System.Drawing.Size(98, 20);
@@ -137,7 +134,6 @@ namespace crud_teste
             // 
             // Salario
             // 
-            this.Salario.Enabled = false;
             this.Salario.Location = new System.Drawing.Point(51, 82);
             this.Salario.Name = "Salario";
             this.Salario.Size = new System.Drawing.Size(98, 20);
@@ -145,7 +141,6 @@ namespace crud_teste
             // 
             // CPF
             // 
-            this.CPF.Enabled = false;
             this.CPF.Location = new System.Drawing.Point(635, 54);
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
@@ -154,7 +149,6 @@ namespace crud_teste
             // 
             // Conta
             // 
-            this.Conta.Enabled = false;
             this.Conta.Location = new System.Drawing.Point(569, 82);
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(180, 20);
@@ -198,7 +192,6 @@ namespace crud_teste
             // 
             // Sexo
             // 
-            this.Sexo.Enabled = false;
             this.Sexo.FormattingEnabled = true;
             this.Sexo.Items.AddRange(new object[] {
             "Masculino",
@@ -220,7 +213,6 @@ namespace crud_teste
             // 
             // Sobrenome
             // 
-            this.Sobrenome.Enabled = false;
             this.Sobrenome.Location = new System.Drawing.Point(339, 19);
             this.Sobrenome.Name = "Sobrenome";
             this.Sobrenome.Size = new System.Drawing.Size(410, 20);
@@ -237,10 +229,9 @@ namespace crud_teste
             // 
             // Nome
             // 
-            this.Nome.Enabled = false;
             this.Nome.Location = new System.Drawing.Point(49, 20);
             this.Nome.Name = "Nome";
-            this.Nome.Size = new System.Drawing.Size(100, 20);
+            this.Nome.Size = new System.Drawing.Size(142, 20);
             this.Nome.TabIndex = 1;
             // 
             // label1
@@ -277,7 +268,6 @@ namespace crud_teste
             // 
             // CEP
             // 
-            this.CEP.Enabled = false;
             this.CEP.Location = new System.Drawing.Point(65, 22);
             this.CEP.Mask = "00000-000";
             this.CEP.Name = "CEP";
@@ -295,7 +285,6 @@ namespace crud_teste
             // 
             // Complemento
             // 
-            this.Complemento.Enabled = false;
             this.Complemento.Location = new System.Drawing.Point(262, 73);
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(331, 20);
@@ -303,7 +292,6 @@ namespace crud_teste
             // 
             // Numero
             // 
-            this.Numero.Enabled = false;
             this.Numero.Location = new System.Drawing.Point(681, 72);
             this.Numero.Mask = "0000";
             this.Numero.Name = "Numero";
@@ -330,7 +318,6 @@ namespace crud_teste
             // 
             // Bairro
             // 
-            this.Bairro.Enabled = false;
             this.Bairro.Location = new System.Drawing.Point(569, 19);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(161, 20);
@@ -356,7 +343,6 @@ namespace crud_teste
             // 
             // Logradouro
             // 
-            this.Logradouro.Enabled = false;
             this.Logradouro.Location = new System.Drawing.Point(90, 73);
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(75, 20);
@@ -364,7 +350,6 @@ namespace crud_teste
             // 
             // UF
             // 
-            this.UF.Enabled = false;
             this.UF.FormattingEnabled = true;
             this.UF.Items.AddRange(new object[] {
             "AC",
@@ -413,7 +398,6 @@ namespace crud_teste
             // 
             // Cidade
             // 
-            this.Cidade.Enabled = false;
             this.Cidade.Location = new System.Drawing.Point(255, 22);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(120, 20);
@@ -437,7 +421,6 @@ namespace crud_teste
             // 
             // DDI
             // 
-            this.DDI.Enabled = false;
             this.DDI.Location = new System.Drawing.Point(262, 22);
             this.DDI.Mask = "+00";
             this.DDI.Name = "DDI";
@@ -446,7 +429,6 @@ namespace crud_teste
             // 
             // Celular2
             // 
-            this.Celular2.Enabled = false;
             this.Celular2.Location = new System.Drawing.Point(306, 23);
             this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
@@ -464,7 +446,6 @@ namespace crud_teste
             // 
             // Telefone
             // 
-            this.Telefone.Enabled = false;
             this.Telefone.Location = new System.Drawing.Point(90, 22);
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
@@ -473,7 +454,6 @@ namespace crud_teste
             // 
             // emailText
             // 
-            this.emailText.Enabled = false;
             this.emailText.Location = new System.Drawing.Point(486, 26);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(204, 20);
@@ -518,10 +498,9 @@ namespace crud_teste
             // BotaoSalvar
             // 
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.BotaoSalvar.Enabled = false;
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BotaoSalvar.Location = new System.Drawing.Point(257, 350);
+            this.BotaoSalvar.Location = new System.Drawing.Point(12, 350);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(259, 79);
             this.BotaoSalvar.TabIndex = 66;
@@ -529,23 +508,9 @@ namespace crud_teste
             this.BotaoSalvar.UseVisualStyleBackColor = false;
             this.BotaoSalvar.Click += new System.EventHandler(this.BotaoSalvar_Click_1);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(12, 350);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(239, 79);
-            this.button2.TabIndex = 65;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Excluir
             // 
             this.Excluir.BackColor = System.Drawing.Color.Red;
-            this.Excluir.Enabled = false;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Excluir.Location = new System.Drawing.Point(529, 350);
@@ -564,7 +529,6 @@ namespace crud_teste
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -626,7 +590,6 @@ namespace crud_teste
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
         private System.Windows.Forms.Button BotaoSalvar;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Excluir;
         private System.Windows.Forms.TextBox Salario;
         private System.Windows.Forms.Label label17;

@@ -60,14 +60,13 @@ namespace crud_teste
             this.UF = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Celular1 = new System.Windows.Forms.MaskedTextBox();
+            this.DDI = new System.Windows.Forms.MaskedTextBox();
             this.Email = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.Telefone = new System.Windows.Forms.MaskedTextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.Celular2 = new System.Windows.Forms.MaskedTextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Celular = new System.Windows.Forms.MaskedTextBox();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -119,7 +118,6 @@ namespace crud_teste
             // ValorLimite
             // 
             this.ValorLimite.DecimalPlaces = 2;
-            this.ValorLimite.Enabled = false;
             this.ValorLimite.Location = new System.Drawing.Point(427, 72);
             this.ValorLimite.Maximum = new decimal(new int[] {
             1215752192,
@@ -132,7 +130,6 @@ namespace crud_teste
             // 
             // data
             // 
-            this.data.Enabled = false;
             this.data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.data.Location = new System.Drawing.Point(413, 106);
             this.data.Name = "data";
@@ -141,7 +138,6 @@ namespace crud_teste
             // 
             // CPF
             // 
-            this.CPF.Enabled = false;
             this.CPF.Location = new System.Drawing.Point(81, 109);
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
@@ -150,7 +146,6 @@ namespace crud_teste
             // 
             // Nome
             // 
-            this.Nome.Enabled = false;
             this.Nome.Location = new System.Drawing.Point(81, 35);
             this.Nome.Name = "Nome";
             this.Nome.Size = new System.Drawing.Size(125, 20);
@@ -176,7 +171,6 @@ namespace crud_teste
             // 
             // Sobrenome
             // 
-            this.Sobrenome.Enabled = false;
             this.Sobrenome.Location = new System.Drawing.Point(357, 32);
             this.Sobrenome.Name = "Sobrenome";
             this.Sobrenome.Size = new System.Drawing.Size(345, 20);
@@ -193,7 +187,6 @@ namespace crud_teste
             // 
             // Sexo
             // 
-            this.Sexo.Enabled = false;
             this.Sexo.FormattingEnabled = true;
             this.Sexo.Items.AddRange(new object[] {
             "Masculino",
@@ -256,7 +249,6 @@ namespace crud_teste
             // 
             // Numero
             // 
-            this.Numero.Enabled = false;
             this.Numero.Location = new System.Drawing.Point(621, 15);
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(100, 20);
@@ -266,7 +258,6 @@ namespace crud_teste
             // 
             // CEP
             // 
-            this.CEP.Enabled = false;
             this.CEP.Location = new System.Drawing.Point(61, 15);
             this.CEP.Mask = "00000-000";
             this.CEP.Name = "CEP";
@@ -293,7 +284,6 @@ namespace crud_teste
             // 
             // Bairro
             // 
-            this.Bairro.Enabled = false;
             this.Bairro.Location = new System.Drawing.Point(621, 68);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(148, 20);
@@ -319,7 +309,6 @@ namespace crud_teste
             // 
             // Logradouro
             // 
-            this.Logradouro.Enabled = false;
             this.Logradouro.Location = new System.Drawing.Point(100, 68);
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(86, 20);
@@ -327,7 +316,6 @@ namespace crud_teste
             // 
             // Complemento
             // 
-            this.Complemento.Enabled = false;
             this.Complemento.Location = new System.Drawing.Point(295, 68);
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(251, 20);
@@ -335,7 +323,6 @@ namespace crud_teste
             // 
             // Cidade
             // 
-            this.Cidade.Enabled = false;
             this.Cidade.Location = new System.Drawing.Point(279, 15);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(113, 20);
@@ -361,7 +348,6 @@ namespace crud_teste
             // 
             // UF
             // 
-            this.UF.Enabled = false;
             this.UF.FormattingEnabled = true;
             this.UF.Items.AddRange(new object[] {
             "AC",
@@ -401,13 +387,13 @@ namespace crud_teste
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.Celular1);
+            this.groupBox3.Controls.Add(this.DDI);
             this.groupBox3.Controls.Add(this.Email);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.Telefone);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.Celular2);
+            this.groupBox3.Controls.Add(this.Celular);
             this.groupBox3.Location = new System.Drawing.Point(13, 306);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(775, 55);
@@ -415,18 +401,16 @@ namespace crud_teste
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
             // 
-            // Celular1
+            // DDI
             // 
-            this.Celular1.Enabled = false;
-            this.Celular1.Location = new System.Drawing.Point(263, 19);
-            this.Celular1.Mask = "+00";
-            this.Celular1.Name = "Celular1";
-            this.Celular1.Size = new System.Drawing.Size(23, 20);
-            this.Celular1.TabIndex = 82;
+            this.DDI.Location = new System.Drawing.Point(263, 19);
+            this.DDI.Mask = "+00";
+            this.DDI.Name = "DDI";
+            this.DDI.Size = new System.Drawing.Size(23, 20);
+            this.DDI.TabIndex = 82;
             // 
             // Email
             // 
-            this.Email.Enabled = false;
             this.Email.Location = new System.Drawing.Point(470, 19);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(299, 20);
@@ -452,7 +436,6 @@ namespace crud_teste
             // 
             // Telefone
             // 
-            this.Telefone.Enabled = false;
             this.Telefone.Location = new System.Drawing.Point(82, 19);
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
@@ -468,37 +451,22 @@ namespace crud_teste
             this.label15.TabIndex = 79;
             this.label15.Text = "Celular: ";
             // 
-            // Celular2
+            // Celular
             // 
-            this.Celular2.Enabled = false;
-            this.Celular2.Location = new System.Drawing.Point(295, 19);
-            this.Celular2.Mask = "(00) 0000 - 0000";
-            this.Celular2.Name = "Celular2";
-            this.Celular2.Size = new System.Drawing.Size(123, 20);
-            this.Celular2.TabIndex = 78;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(13, 367);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(235, 77);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Celular.Location = new System.Drawing.Point(295, 19);
+            this.Celular.Mask = "(00) 0000 - 0000";
+            this.Celular.Name = "Celular";
+            this.Celular.Size = new System.Drawing.Size(123, 20);
+            this.Celular.TabIndex = 78;
             // 
             // BotaoSalvar
             // 
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.BotaoSalvar.Enabled = false;
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.Color.White;
-            this.BotaoSalvar.Location = new System.Drawing.Point(254, 367);
+            this.BotaoSalvar.Location = new System.Drawing.Point(12, 367);
             this.BotaoSalvar.Name = "BotaoSalvar";
-            this.BotaoSalvar.Size = new System.Drawing.Size(250, 77);
+            this.BotaoSalvar.Size = new System.Drawing.Size(236, 77);
             this.BotaoSalvar.TabIndex = 64;
             this.BotaoSalvar.Text = "Salvar";
             this.BotaoSalvar.UseVisualStyleBackColor = false;
@@ -507,7 +475,6 @@ namespace crud_teste
             // Excluir
             // 
             this.Excluir.BackColor = System.Drawing.Color.Red;
-            this.Excluir.Enabled = false;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Excluir.Location = new System.Drawing.Point(510, 367);
@@ -526,7 +493,6 @@ namespace crud_teste
             this.ClientSize = new System.Drawing.Size(800, 456);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -582,14 +548,13 @@ namespace crud_teste
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.MaskedTextBox Telefone;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.MaskedTextBox Celular2;
+        private System.Windows.Forms.MaskedTextBox Celular;
         private System.Windows.Forms.TextBox Nome;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button BotaoSalvar;
         private System.Windows.Forms.Button Excluir;
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.DateTimePicker data;
-        private System.Windows.Forms.MaskedTextBox Celular1;
+        private System.Windows.Forms.MaskedTextBox DDI;
         private System.Windows.Forms.NumericUpDown ValorLimite;
         private System.Windows.Forms.TextBox Numero;
     }

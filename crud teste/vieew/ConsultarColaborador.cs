@@ -55,8 +55,8 @@ namespace crud_teste
             Porcentagem.Text = colaborador.PorcentagemDeComissao.ToString();
             Conta.Text = colaborador.DadosBancarios;
             Telefone.Text = colaborador.contato.Telefone;
-            Celular2.Text = colaborador.contato.Celular;
-            DDI.Text = colaborador.contato.DDI;
+            Celular2.Text = colaborador.contato.Celular.Celular;
+            DDI.Text = colaborador.contato.Celular.DDI;
             emailText.Text = colaborador.contato.Email;
             Data.Text = colaborador.DataDeNascimento;
 
@@ -67,7 +67,7 @@ namespace crud_teste
 
         private void AtribuirCamposEnderecos(Endereco endereco)
         {
-            CEP.Text = endereco.Cep;
+            CEP.Text = endereco.Cep.ToString();
             Logradouro.Text = endereco.Logradouro;
             Cidade.Text = endereco.Cidade;
             UF.Text = endereco.UF;
@@ -90,89 +90,11 @@ namespace crud_teste
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (colaboradorGlobal.idColaborador != 0)
-            {
-                Nome.Enabled = true;
-                Sobrenome.Enabled = true;
-                Sexo.Enabled = true;
-                Data.Enabled = true;
-                Conta.Enabled = true;
-                CPF.Enabled = true;
-                Telefone.Enabled = true;
-                Celular2.Enabled = true;
-                emailText.Enabled = true;
-                CEP.Enabled = true;
-                Logradouro.Enabled = true;
-                Cidade.Enabled = true;
-                UF.Enabled = true;
-                Numero.Enabled = true;
-                Bairro.Enabled = true;
-                Complemento.Enabled = true;
-                BotaoSalvar.Enabled = true;
-                Porcentagem.Enabled = true;
-                Salario.Enabled = true;
-                Conta.Enabled = true;
-                Excluir.Enabled = true;
-                DDI.Enabled = true;
-            }
-        }
-
-        public void Bloquear()
-        {
-            Nome.Enabled = false;
-            Sobrenome.Enabled = false;
-            Sexo.Enabled = false;
-            Data.Enabled = false;
-            CPF.Enabled = false;
-            Telefone.Enabled = false;
-            Celular2.Enabled = false; 
-            emailText.Enabled = false;
-            CEP.Enabled = false;
-            Logradouro.Enabled = false;
-            Cidade.Enabled = false;
-            UF.Enabled = false;
-            Numero.Enabled = false;
-            Bairro.Enabled = false;
-            Complemento.Enabled = false;
-            BotaoSalvar.Enabled = false;
-            Conta.Enabled = false;
-            Porcentagem.Enabled = false;
-            Conta.Enabled = false;
-            Salario.Enabled = false;
-            DDI.Enabled = false;
-            Excluir.Enabled = false;
-        }
-
-        public void Limpar()
-        {
-            Nome.Text= "";
-            Sobrenome.Text = "";
-            Sexo.Text = "";
-            Data.Text = "";
-            CPF.Text = "";
-            Telefone.Text = "";
-            Celular2.Text = "";
-            emailText.Text = "";
-            CEP.Text = "";
-            Logradouro.Text = "";
-            Cidade.Text = "";
-            UF.Text = "";
-            Numero.Text = "";
-            Bairro.Text = "";
-            Complemento.Text = "";
-            Conta.Text = "";
-            Porcentagem.Text = "";
-            Conta.Text = "";
-            Salario.Text = "";
-            DDI.Text = "";
         
-        }
 
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
         {
-             preencherCampos();
+            preencherCampos();
             ConexaoDAO stmt = new ConexaoDAO();
             ColaboradorValidator validator = new ColaboradorValidator();
             var validadores = validator.Validate(colaboradorGlobal);
@@ -188,7 +110,8 @@ namespace crud_teste
                     {
                         oColaborador.SalvarColaborador(colaboradorGlobal);
                         MessageBox.Show("Dados Salvos com sucesso");
-                        Bloquear();
+                        new ListarColaboradores().Show();
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
@@ -219,8 +142,8 @@ namespace crud_teste
                     this.Text = "Consultar Colaborador";
                     MessageBox.Show("Dados excluidos com sucesso");
                     colaboradorGlobal = null;
-                    Bloquear();
-                    Limpar();
+                    new ListarColaboradores().Show();
+                    this.Close();
                 }
                 catch(Exception ex)
                 {
@@ -280,9 +203,9 @@ namespace crud_teste
             colaboradorGlobal.DadosBancarios = Conta.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
             colaboradorGlobal.contato.Telefone = Telefone.Text;
-            colaboradorGlobal.contato.DDI = DDI.Text;
             colaboradorGlobal.contato.Celular = Celular2.Text;
 
+            colaboradorGlobal.contato.Celular.DDI = DDI.Text;
             colaboradorGlobal.PorcentagemDeComissao = Porcentagem.Value;
 
 

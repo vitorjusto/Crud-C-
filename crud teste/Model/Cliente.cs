@@ -24,12 +24,6 @@ namespace CRUD_teste.Model
             LimiteDeCompra = Limitedecompra;
         }
 
-        public void ValidarCliente()
-        {
-            
-
-
-
-        }
+        
     }
 }

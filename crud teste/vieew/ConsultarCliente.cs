@@ -31,9 +31,9 @@ namespace crud_teste
                 this.Text = "Consultando: " + clienteglobal.nomeCompleto();
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Id inválida");
+                MessageBox.Show(ex.Message);
 
             }
         }
@@ -63,11 +63,11 @@ namespace crud_teste
             ValorLimite.Text = cliente.LimiteDeCompra.ToString();
             CPF.Text = cliente.CPF.ToString() ;
             Telefone.Text = cliente.contato.Telefone;
-            Celular2.Text = cliente.contato.Celular;
-            Celular1.Text = cliente.contato.DDI;
+            Celular.Text = cliente.contato.Celular.Celular;
+            DDI.Text = cliente.contato.Celular.DDI;
             Email.Text = cliente.contato.Email;
             data.Text = cliente.DataDeNascimento;
-            CEP.Text = cliente.endereco.Cep;
+            CEP.Text = cliente.endereco.Cep.ToString();
             Logradouro.Text = cliente.endereco.Logradouro;
             Cidade.Text = cliente.endereco.Cidade;
             UF.Text = cliente.endereco.UF;
@@ -79,59 +79,15 @@ namespace crud_teste
 
        
 
-        public void button2_Click(object sender, EventArgs e)
-        {
-            if (clienteglobal.idCliente != 0)
-            {
-                Nome.Enabled = true;
-                Sobrenome.Enabled = true;
-                Sexo.Enabled = true;
-                data.Enabled = true;
-                ValorLimite.Enabled = true;
-                CPF.Enabled = true;
-                Telefone.Enabled = true;
-                Celular2.Enabled = true;
-                Email.Enabled = true;
-                CEP.Enabled = true;
-                Logradouro.Enabled = true;
-                Cidade.Enabled = true;
-                UF.Enabled = true;
-                Numero.Enabled = true;
-                Bairro.Enabled = true;
-                Complemento.Enabled = true;
-                BotaoSalvar.Enabled = true;
-                Excluir.Enabled = true;
-            }
+        
 
-        }
-
-        public void Bloquear()
-        {
-            Nome.Enabled = false;
-            Sobrenome.Enabled = false;
-            Sexo.Enabled = false;
-            data.Enabled = false;
-            ValorLimite.Enabled = false;
-            CPF.Enabled = false;
-            Telefone.Enabled = false;
-            Celular2.Enabled = false;
-            Email.Enabled = false;
-            CEP.Enabled = false;
-            Logradouro.Enabled = false;
-            Cidade.Enabled = false;
-            UF.Enabled = false;
-            Numero.Enabled = false;
-            Bairro.Enabled = false;
-            Complemento.Enabled = false;
-            BotaoSalvar.Enabled = false;
-
-            Excluir.Enabled = false;
-        }
+       
 
         private void BotaoSalvar_Click(object sender, EventArgs e)
         {
 
-            SalvarCampos();
+            clienteglobal = SalvarCampos();
+
 
             ClienteValidation validar = new ClienteValidation();
 
@@ -151,7 +107,8 @@ namespace crud_teste
                         AlterarCliente oAlterar = new AlterarCliente();
                         oAlterar.SalvarCliente(clienteglobal);
                         MessageBox.Show("Dados Salvos com sucesso");
-                        Bloquear();
+                        new ListarCliente().Show();
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
@@ -177,8 +134,9 @@ namespace crud_teste
                 {
                     AlterarCliente oAlterar = new AlterarCliente();
                     oAlterar.excluir(clienteglobal);
-
-                    this.Text = "Consultar Cliente";
+                    clienteglobal = null;
+                    new ListarCliente().Show();
+                    this.Close();
                 }
                 catch
                 {
@@ -187,33 +145,13 @@ namespace crud_teste
                 }
                 finally
                 {
-                    clienteglobal = null;
-                    Bloquear();
-                    Limpar();
+                    
                 }
             }
             
         }
 
-            public void Limpar()
-            {
-                Nome.Text = "";
-                Sobrenome.Text = "";
-                Sexo.Text = "";
-                CPF.Text = "";
-                Telefone.Text = "";
-                Celular2.Text = "";
-                Email.Text = "";
-                CEP.Text = "";
-                Logradouro.Text = "";
-                Cidade.Text = "";
-                UF.Text = "";
-                Numero.Text = "";
-                Bairro.Text = "";
-                Complemento.Text = "";
-                ValorLimite.Text = "";
-
-            }
+           
 
         private void ConsultarCliente_Load(object sender, EventArgs e)
         {
@@ -243,7 +181,7 @@ namespace crud_teste
             label16.ForeColor = Global.FontColor;
             label17.ForeColor = Global.FontColor;
         }
-        public void SalvarCampos()
+        public Cliente SalvarCampos()
         {
 
             clienteglobal.Nome = Nome.Text;
@@ -251,11 +189,14 @@ namespace crud_teste
             clienteglobal.Sexo = Sexo.Text;
             clienteglobal.CPF = CPF.Text;
             clienteglobal.contato.Telefone = Telefone.Text;
-            clienteglobal.contato.DDI = Celular1.Text;
-            clienteglobal.contato.Celular = Celular2.Text;
             clienteglobal.contato.Email = Email.Text;
             clienteglobal.DataDeNascimento = data.Value.ToString().Remove(10);
             clienteglobal.LimiteDeCompra = ValorLimite.Value;
+
+
+            clienteglobal.contato.Celular = Celular.Text;
+
+            clienteglobal.contato.Celular.DDI = DDI.Text;
 
             clienteglobal.endereco.Cep = CEP.Text;
             clienteglobal.endereco.Logradouro = Logradouro.Text;
@@ -268,7 +209,7 @@ namespace crud_teste
 
 
 
-
+            return clienteglobal;
 
 
         }

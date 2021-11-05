@@ -59,11 +59,14 @@ namespace crud_teste
                 {
 
 
-                    var query = @"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values(@Cep,@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
+                    var query = $@"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values('{Convert.ToString(cliente.endereco.Cep)}',@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
                     var idendereco = con.ExecuteScalar(query, cliente.endereco, tran);
 
-                    query = @"Insert Into Contato(Email, telefone, DDI, Celular) OUTPUT INSERTED.idContato  Values(@Email,@Telefone,@DDI,@Celular)";
+                    query = @"Insert Into Contato(Email, telefone) OUTPUT INSERTED.idContato  Values(@Email,@Telefone)";
                     var idcontato = con.ExecuteScalar(query, cliente.contato, tran);
+
+                    query = $@"update contato set celular = @celular, ddi = @DDI where idcontato = {idcontato}";
+                    con.ExecuteScalar(query, cliente.contato.Celular, tran);
 
                     cliente.endereco.IdEndereco = int.Parse(idendereco.ToString());
                     cliente.contato.idContato = int.Parse(idcontato.ToString());
@@ -71,11 +74,11 @@ namespace crud_teste
                     cliente.idCliente = int.Parse(con.ExecuteScalar(query, cliente, tran).ToString());
 
                     tran.Commit();
-                 }catch
+                 }catch(Exception ex)
                 {
                     tran.Rollback();
                     con.Close();
-                    throw new Exception();
+                    throw new Exception(ex.Message);
 
                 }
 
@@ -132,7 +135,7 @@ namespace crud_teste
                     cliente.contato.Email = (string)reader["email"];
                     cliente.contato.Telefone = (string)reader["telefone"];
                     cliente.contato.Celular = (string)reader["celular"];
-                    cliente.contato.DDI = (string)reader["DDI"];
+                    cliente.contato.Celular.DDI = (string)reader["DDI"];
                 }
             }
             return cliente;
@@ -153,10 +156,14 @@ namespace crud_teste
                                 DataDeNacimento = @DataDeNascimento, Valorlimite = @LimiteDeCompra  where idCliente = @idCliente";
                 con.Execute(query, cliente, tran);
 
-                query = @"Update contato Set telefone = @Telefone, DDI= @DDI, Celular = @Celular Where idcontato = @idContato";
+                query = @"Update contato Set telefone = @Telefone Where idcontato = @idContato";
                 con.Execute(query, cliente.contato, tran);
 
-                query = @"Update endereco Set cep = @CEP, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero Where idendereco = @IdEndereco";
+
+                 query = $@"update contato set celular = @celular, ddi = @ddi where idcontato = {cliente.contato.idContato}";
+                con.ExecuteScalar(query, cliente.contato.Celular, tran);
+
+                    query = $@"Update endereco Set cep = '{Convert.ToString(cliente.endereco.Cep)}', Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero Where idendereco = @IdEndereco";
                 con.Execute(query, cliente.endereco, tran);
                     tran.Commit();
                 }
@@ -286,7 +293,7 @@ namespace crud_teste
                     colaborador.contato.Email = (string)reader["email"];
                     colaborador.contato.Telefone = (string)reader["telefone"];
                     colaborador.contato.Celular = (string)reader["celular"];
-                    colaborador.contato.DDI = (string)reader["DDI"];
+                    colaborador.contato.Celular.DDI = (string)reader["DDI"];
                 }
             }
             return colaborador;
@@ -302,11 +309,16 @@ namespace crud_teste
                 var tran = con.BeginTransaction();
                 try
                 {
-                    var query = @"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values(@Cep,@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
+                    var query = $@"Insert Into Endereco(Cep, Logradouro, Cidade, UF, Complemento, Bairro, numero) OUTPUT INSERTED.idendereco Values('{Convert.ToString(colaborador.endereco.Cep)}',@Logradouro,@Cidade,@UF, @Complemento, @Bairro, @Numero) ";
                     var idendereco = con.ExecuteScalar(query, colaborador.endereco, tran);
 
-                    query = @"Insert Into Contato(Email, telefone, DDI, Celular) OUTPUT INSERTED.idContato  Values(@Email,@Telefone,@DDI,@Celular)";
+                    query = @"Insert Into Contato(Email, telefone) OUTPUT INSERTED.idContato  Values(@Email,@Telefone)";
                     var idcontato = con.ExecuteScalar(query, colaborador.contato, tran);
+
+                    query = $@"update contato set celular = @celular, ddi = @ddi where idcontato = {idcontato}";
+                    con.ExecuteScalar(query, colaborador.contato.Celular, tran);
+
+
 
                     colaborador.endereco.IdEndereco = int.Parse(idendereco.ToString());
                     colaborador.contato.idContato = int.Parse(idcontato.ToString());
@@ -344,18 +356,21 @@ namespace crud_teste
                 var query = $@"update colaborador set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = '{Convert.ToString(colaborador.CPF)}', DataDeNascimento = @DataDeNascimento, salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao, dadosbancários = @DadosBancarios  where idColaborador = @idColaborador";
                 con.Execute(query, colaborador, tran);
 
-                query = @"update contato set telefone = @Telefone, DDI= @DDI, Celular = @Celular where idcontato = @idContato";
+                query = @"update contato set telefone = @Telefone  where idcontato = @idContato";
                 con.Execute(query, colaborador.contato, tran);
 
-                query = @"update endereco set cep = @CEP, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
+                    query = $@"update contato set celular = @celular, ddi = @ddi where idcontato = {colaborador.contato.idContato}";
+                    con.ExecuteScalar(query, colaborador.contato.Celular, tran);
+
+                    query = $@"update endereco set cep = '{Convert.ToString(colaborador.endereco.Cep)}', Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
                 con.Execute(query, colaborador.endereco, tran);
                 tran.Commit();
                 }
-                catch
+                catch (Exception ex)
                 {
                 tran.Rollback();
                 con.Close();
-                throw new Exception();
+                throw new Exception(ex.Message);
                 }
             con.Close();
 

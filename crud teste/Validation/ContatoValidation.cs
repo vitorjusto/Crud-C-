@@ -1,4 +1,5 @@
 ﻿using crud_teste.Model;
+using crud_teste.Validation.Object_Values_Validations;
 using FluentValidation;
 using NPOI.SS.Formula.Functions;
 using System;
@@ -17,10 +18,7 @@ namespace crud_teste.Validation
 
             RuleFor(x => x.Telefone).Matches(@"[0-9]{4} - [0-9]{4}").WithMessage("Telefone Invalido");
 
-            RuleFor(x => x.DDI).Matches(@"\+[0-9]{2}").WithMessage("DDI inválida");
-
-            RuleFor(x => x.Celular).Matches(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").WithMessage("Celular inválida");
-
+            RuleFor(x => x.Celular).SetValidator(new CelularValidation());
 
 
         }

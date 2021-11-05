@@ -122,9 +122,9 @@ namespace crud_teste
             colaborador.DadosBancarios = Dados.Text;
             colaborador.contato.Email = Email.Text;
             colaborador.contato.Telefone = Telefone.Text;
-            colaborador.contato.DDI = Celular1.Text;
             colaborador.contato.Celular = Celular2.Text;
-            
+
+            colaborador.contato.Celular.DDI = Celular1.Text;
             colaborador.PorcentagemDeComissao = Porcentagem.Value;
 
 

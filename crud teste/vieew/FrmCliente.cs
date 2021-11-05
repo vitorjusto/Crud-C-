@@ -43,13 +43,22 @@ namespace crud_teste
             {
                 if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
                 {
-                    var id = AlterarCliente.conectarComDAO(cliente);
-
-                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
-                    if (cadastrado)
+                    try
                     {
-                        this.Close();
-                        new ListarClientes().Show();
+                        var id = AlterarCliente.conectarComDAO(cliente);
+
+                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
+                        if (cadastrado)
+                        {
+
+                            new ListarClientes().Show();
+                            this.Close();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -96,8 +105,8 @@ namespace crud_teste
             cliente.Sexo = Sexo.Text;
             cliente.CPF = CPF.Text;
             cliente.contato.Telefone = Telefone.Text;
-            cliente.contato.DDI = Celular1.Text;
             cliente.contato.Celular = Celular2.Text;
+            cliente.contato.Celular.DDI = Celular1.Text;
             cliente.contato.Email = Email.Text;
             cliente.DataDeNascimento = data.Value.ToString().Remove(10);
             cliente.LimiteDeCompra = ValorLimite.Value;

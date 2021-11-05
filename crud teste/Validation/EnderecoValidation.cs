@@ -12,7 +12,8 @@ namespace crud_teste.Validation
     {
         public EnderecoValidation()
         {
-            RuleFor(x => x.Cep).Matches(@"[0-9]{5}[-][0-9]{3}").WithMessage("Cep inválido");
+            RuleFor(x => x.Cep).SetValidator(new CEPValidation()).WithMessage("CEP inválida");
+
 
             RuleFor(x => x.Logradouro).Matches(@"[a-zA-ZÀ-úÀ-ÿ0-9 ]+").WithMessage("Logradouro invalido");
 
