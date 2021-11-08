@@ -41,9 +41,9 @@ namespace crud_teste
                     stmt.ExcluirTudo();
                     MessageBox.Show("Dados excluidos com sucesso!");
                 }
-            }catch
+            }catch(Exception ex)
             {
-                MessageBox.Show("Erro ao conectar com o banco de dados");
+                MessageBox.Show(ex.Message);
             }
         }
 

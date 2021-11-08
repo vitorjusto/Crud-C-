@@ -20,7 +20,7 @@ namespace crud_teste.Model
         
 
 
-        public string DataDeNacimento { get; set; }
+        public string DataDeNascimento { get; set; }
 
 
         private string Cidade { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace crud_teste.Validation
 {
-    class ColaboradorValidator : AbstractValidator<Colaborador>
+    public class ColaboradorValidator : AbstractValidator<Colaborador>
     {
         public ColaboradorValidator()
         {

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace crud_teste.Validation
 {
-    class CPFValidation : AbstractValidator<MyCPF>
+    public class CPFValidation : AbstractValidator<MyCPF>
     {
         public CPFValidation()
         {
-            RuleFor(x => x.ToString()).Matches(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").WithMessage("CPF Inválido");
+            RuleFor(x => x.ToString()).NotEmpty().Matches(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").WithMessage("CPF Inválido");
 
 
         }

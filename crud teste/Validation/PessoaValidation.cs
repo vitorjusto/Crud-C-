@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
 
 namespace crud_teste.Validation
 {
-    class PessoaValidation : AbstractValidator<Pessoa>
+    public class PessoaValidation : AbstractValidator<Pessoa>
     {
         public PessoaValidation()
         {
@@ -31,5 +32,6 @@ namespace crud_teste.Validation
 
         }
 
+        
     }
 }

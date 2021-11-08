@@ -20,3 +20,5 @@ C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.dll
 C:\Users\PC1\Desktop\Backup\Teste de unidade1\obj\Debug\Teste de unidade1.pdb
 C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Dapper.dll
 C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\Dapper.xml
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\FluentValidation.dll
+C:\Users\PC1\Desktop\Backup\Teste de unidade1\bin\Debug\FluentValidation.xml

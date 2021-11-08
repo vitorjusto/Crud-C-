@@ -1,8 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using crud_teste;
-using CRUD_teste.Model;
+﻿using crud_teste;
 using crud_teste.Model;
+using crud_teste.Model.Object_Values;
+using crud_teste.Validation;
+using crud_teste.Validation.Object_Values_Validations;
+using CRUD_teste.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Teste_de_unidade1
 {
     [TestClass]
@@ -17,119 +20,86 @@ namespace Teste_de_unidade1
         [TestMethod]
         public void Quando_O_Nome_Tiver_Texto_Entao_O_Nome_E_Valido()
         {
-            Pessoa pessoa = new Pessoa("Vitor");
+            Pessoa pessoa = new Pessoa("vitor");
+            PessoaValidation validacao = new PessoaValidation();
 
-            var resultado = pessoa.Testar_se_Nome_e_valido();
+            var resultado = validacao.Validate(pessoa);
 
-            Assert.IsTrue(resultado);
+
+            Assert.IsFalse(resultado.ToString().Contains("Nome não pode ser vazio"));
 
         }
-        [TestMethod]
-        public void Quando_O_Nome_Nao_Tiver_Texto_Entao_O_Nome_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        public void Quando_O_Nome_Nao_Tiver_Texto_Ou_Nulo_Entao_O_Nome_E_Invalido(string nome)
         {
-            Pessoa pessoa = new Pessoa("");
+            Pessoa pessoa = new Pessoa(nome);
+            PessoaValidation validacao = new PessoaValidation();
 
-            var resultado = pessoa.Testar_se_Nome_e_valido();
+            var resultado = validacao.Validate(pessoa);
 
-            Assert.IsFalse( resultado);
-        }
-        [TestMethod]
-        public void Quando_O_Nome_Estiver_Nulo_Entao_O_Nome_E_Invalido()
-        {
-            Pessoa pessoa = new Pessoa(null);
-
-            var resultado = pessoa.Testar_se_Nome_e_valido();
-
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Nome não pode ser vazio"));
         }
 
-        [TestMethod]
-        public void validacao()
-        {
-            Cliente cliente = new Cliente("Vitor", 1000);
 
-            var resultado = cliente.Testar_se_Nome_e_valido();
 
-            Assert.IsTrue(resultado);
-
-        }
         [TestMethod]
         public void Quando_O_Sexo_Tiver_Texto_Entao_O_Sexo_E_Valido()
         {
             Pessoa pessoa = new Pessoa();
             pessoa.Sexo = "Masculino";
+            PessoaValidation validacao = new PessoaValidation();
 
-            var resultado = pessoa.Testar_se_sexo_e_valido();
+            var resultado = validacao.Validate(pessoa); ;
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Sexo não pode ser vazio"));
         }
-        [TestMethod]
-        public void Quando_O_Sexo_Nao_Tiver_Texto_Entao_O_Sexo_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        public void Quando_O_Sexo_Nao_Tiver_Texto_Entao_O_Sexo_E_Invalido(string sexo)
         {
             Pessoa pessoa = new Pessoa();
-            pessoa.Sexo = "";
+            pessoa.Sexo = sexo;
+            PessoaValidation validacao = new PessoaValidation();
 
-            var resultado = pessoa.Testar_se_sexo_e_valido();
+            var resultado = validacao.Validate(pessoa); ;
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Sexo não pode ser vazio"));
         }
-        [TestMethod]
-        public void Quando_O_Sexo_Tiver_Nulo_Entao_O_Sexo_E_Invalido()
-        {
-            Pessoa pessoa = new Pessoa();
-            pessoa.Sexo = null;
 
-            var resultado = pessoa.Testar_se_sexo_e_valido();
-
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_CPF_Tiver_Texto_Especifico_Entao_O_CPF_E_Valido()
         {
-            Pessoa pessoa = new Pessoa();
-            pessoa.CPF = "123,456,789-90";
+            MyCPF CPF = new MyCPF("123,456,789-90");
+            CPFValidation validacao = new CPFValidation();
 
-            var resultado = pessoa.Testar_Se_CPF_E_Valido();
+            var resultado = validacao.Validate(CPF); 
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("CPF Inválido"));
         }
-        [TestMethod]
-        public void Quando_O_CPF_Nao_Tiver_O_Texto_Especificado_Entao_O_CPF_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("2345234234")]
+
+
+        public void Quando_O_CPF_Nao_Tiver_O_Texto_ou_Incorreto_Especificado_Entao_O_CPF_E_Invalido(string cpf)
         {
-            Pessoa pessoa = new Pessoa();
-            pessoa.CPF = "123456789901234";
+            MyCPF CPF = new MyCPF(cpf);
+            CPFValidation validacao = new CPFValidation();
 
-            var resultado = pessoa.Testar_Se_CPF_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
-        [TestMethod]
-        public void Quando_O_CPF_Estiver_Vazio_Entao_o_CPF_E_Invalido()
-        {
-            Pessoa pessoa = new Pessoa();
-            pessoa.CPF = "";
-
-            var resultado = pessoa.Testar_Se_CPF_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void Quando_O_CPF_Estiver_Nulo_Entao_o_CPF_E_Invalido()
-        {
-            Pessoa pessoa = new Pessoa();
-            pessoa.CPF = null;
-
-            var resultado = pessoa.Testar_Se_CPF_E_Valido();
-
-            Assert.IsFalse(resultado);
+            var resultado = validacao.Validate(CPF);
+            Assert.IsTrue(resultado.ToString().Contains("CPF Inválido"));
         }
 
 
 
 
-        //VALIDAR CLASSE ENDERECO
+
+
+        ////VALIDAR CLASSE ENDERECO
 
 
 
@@ -138,354 +108,248 @@ namespace Teste_de_unidade1
         [TestMethod]
         public void Quando_O_CEP_Tiver_Texto_Especifico_Entao_O_CEP_E_Valido()
         {
-            Endereco endereco = new Endereco();
-            endereco.Cep = "12345-123";
+            MyCEP CEP = new MyCEP("12345-123");
+            CEPValidation validacao = new CEPValidation();
 
-            var resultado = endereco.Validar_Se_CEP_E_Valido();
 
-            Assert.IsTrue(resultado);
+            var resultado = validacao.Validate(CEP);
+
+            Assert.IsFalse(resultado.ToString().Contains("Cep inválido"));
         }
-        [TestMethod]
-        public void Quando_O_CEP_Nao_Tiver_O_Texto_Especificado_Entao_O_CEP_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("2345234")]
+        public void Quando_O_CEP_Nao_Tiver_O_Texto_Ou_Incorreto_Especificado_Entao_O_CEP_E_Invalido(string cep)
         {
-            Endereco endereco = new Endereco();
-            endereco.Cep = "123456789";
+            MyCEP CEP = new MyCEP(cep);
+            CEPValidation validacao = new CEPValidation();
 
-            var resultado = endereco.Validar_Se_CEP_E_Valido();
 
-            Assert.IsFalse(resultado);
-        }
-        [TestMethod]
-        public void Quando_O_CEP_Estiver_Vazio_Entao_o_CEP_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Cep = "";
+            var resultado = validacao.Validate(CEP);
 
-            var resultado = endereco.Validar_Se_CEP_E_Valido();
-
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Cep inválido"));
         }
 
-        [TestMethod]
-        public void Quando_O_CEP_Estiver_Nulo_Entao_o_CEP_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Cep = null;
 
-            var resultado = endereco.Validar_Se_CEP_E_Valido();
 
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_Logradouro_Tiver_Texto_Entao_O_Logradouro_E_Valido()
         {
             Endereco endereco = new Endereco();
+            EnderecoValidation validacao = new EnderecoValidation();
             endereco.Logradouro = "Rua 16 á";
 
-            var resultado = endereco.Validar_Se_Logradouro_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Logradouro invalido"));
         }
-        [TestMethod]
-        public void Quando_O_Logradouro_Nao_Tiver_Texto_Entao_O_Logradouro_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        public void Quando_O_Logradouro_Nao_Tiver_Texto_Entao_O_Logradouro_E_Invalido(string logradouro)
         {
             Endereco endereco = new Endereco();
-            endereco.Logradouro = "";
+            EnderecoValidation validacao = new EnderecoValidation();
+            endereco.Logradouro = logradouro;
 
-            var resultado = endereco.Validar_Se_Logradouro_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Logradouro invalido"));
         }
-        [TestMethod]
-        public void Quando_O_Logradouro_Tiver_Nulo_Entao_O_Logradouro_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Logradouro = null;
 
-            var resultado = endereco.Validar_Se_Logradouro_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
         [TestMethod]
         public void Quando_A_Cidade_Tiver_Texto_Entao_Cidade_E_Valido()
         {
             Endereco endereco = new Endereco();
+            EnderecoValidation validacao = new EnderecoValidation();
             endereco.Cidade = "Jales";
 
-            var resultado = endereco.Validar_Se_Cidade_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Cidade inválida"));
         }
-        
-        [TestMethod]
-        public void Quando_A_Cidade_Nao_Tiver_Texto_Entao_Cidade_E_Invalido()
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("12")]
+        public void Quando_A_Cidade_Nao_Tiver_Texto_Ou_Tiver_Invalida_Entao_Cidade_E_Invalido(string cidade)
         {
             Endereco endereco = new Endereco();
-            endereco.Cidade = "";
+            EnderecoValidation validacao = new EnderecoValidation();
+            endereco.Cidade = cidade;
 
-            var resultado = endereco.Validar_Se_Cidade_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Cidade inválida"));
         }
 
-        [TestMethod]
-        public void Quando_A_Cidade_Estiver_Nulo_Texto_Entao_Cidade_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Cidade = null;
 
-            var resultado = endereco.Validar_Se_Cidade_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_UF_Tiver_Texto_Entao_Cidade_E_Valido()
         {
             Endereco endereco = new Endereco();
+            EnderecoValidation validacao = new EnderecoValidation();
             endereco.UF = "SP";
 
-            var resultado = endereco.Validar_Se_UF_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Campo UF é obrigatório"));
         }
 
         [TestMethod]
         public void Quando_O_UF_Nao_Tiver_Texto_Entao_Cidade_E_Invalido()
         {
             Endereco endereco = new Endereco();
+            EnderecoValidation validacao = new EnderecoValidation();
             endereco.UF = "";
 
-            var resultado = endereco.Validar_Se_UF_E_Valido();
-
-            Assert.IsFalse(resultado);
+            var resultado = validacao.Validate(endereco);
+    
+            Assert.IsTrue(resultado.ToString().Contains("Campo UF é obrigatório"));
         }
 
-        [TestMethod]
-        public void Quando_O_UF_Estiver_Nulo_Texto_Entao_Cidade_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.UF = null;
 
-            var resultado = endereco.Validar_Se_UF_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_Bairro_Tiver_Texto_Entao_Bairro_E_Valido()
         {
             Endereco endereco = new Endereco();
+            EnderecoValidation validacao = new EnderecoValidation();
             endereco.Bairro = "Bairro";
 
-            var resultado = endereco.Validar_Se_Bairro_E_Valido();
+            var resultado = validacao.Validate(endereco);
 
-            Assert.IsTrue(resultado);
-        }
-
-        
-
-        [TestMethod]
-        public void Quando_O_Bairro_Nao_Tiver_Texto_Entao_Bairro_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Bairro = "";
-
-            var resultado = endereco.Validar_Se_Bairro_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void Quando_O_Bairro_Estiver_Nulo_Texto_Entao_Bairro_E_Invalido()
-        {
-            Endereco endereco = new Endereco();
-            endereco.Bairro = null;
-
-            var resultado = endereco.Validar_Se_Bairro_E_Valido();
-
-            Assert.IsFalse(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Campo bairro é obrigatório"));
         }
 
 
-        //VALIDAR CLASSE CONTATO
+
+
+
+
+
+        ////VALIDAR CLASSE CONTATO
 
         [TestMethod]
         public void Quando_O_Email_Tiver_Texto_Especificado_Entao_O_Email_E_Valido()
         {
             Contato contato = new Contato();
+            ContatoValidation validacao = new ContatoValidation();
             contato.Email = "Vitohugojusto1@Gmail.com";
 
-            var resultado = contato.Testar_Se_Email_E_Valido();
+            var resultado = validacao.Validate(contato);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Email inválido"));
         }
-        [TestMethod]
-        public void Quando_O_Email_Nao_Tiver_Texto_Especificado_Entao_O_Email_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("12")]
+        public void Quando_O_Email_Nao_Tiver_Texto_Especificado_Entao_O_Email_E_Invalido(string email)
         {
             Contato contato = new Contato();
-            contato.Email = "Vitohugojusto1Gmailcom";
+            ContatoValidation validacao = new ContatoValidation();
+            contato.Email = email;
 
-            var resultado = contato.Testar_Se_Email_E_Valido();
+            var resultado = validacao.Validate(contato);
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Email inválido"));
         }
-    
-        [TestMethod]
-        public void Quando_O_Email_Nao_Tiver_Texto_Entao_O_Email_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Email = "";
 
-            var resultado = contato.Testar_Se_Email_E_Valido();
 
-            Assert.IsFalse(resultado);
-        }
-    
-        [TestMethod]
-        public void Quando_O_Email_Estiver_Nulo_Entao_O_Email_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Email = null;
 
-            var resultado = contato.Testar_Se_Email_E_Valido();
 
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_Telefone_Tiver_Texto_Especificado_Entao_O_Telefone_E_Valido()
         {
             Contato contato = new Contato();
+            ContatoValidation validacao = new ContatoValidation();
             contato.Telefone = "1234 - 1234";
 
-            var resultado = contato.Testar_Se_Telefone_E_Valido();
 
-            Assert.IsTrue(resultado);
+            var resultado = validacao.Validate(contato);
+
+            Assert.IsFalse(resultado.ToString().Contains("Telefone Invalido"));
         }
-        [TestMethod]
-        public void Quando_O_Telefone_Nao_Tiver_Texto_Especificado_Entao_O_Telefone_E_Invalido()
+
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("12")]
+        public void Quando_O_Telefone_Nao_Tiver_Texto_Especificado_Entao_O_Telefone_E_Valido(string telefone)
         {
             Contato contato = new Contato();
-            contato.Telefone = "123456789";
+            ContatoValidation validacao = new ContatoValidation();
+            contato.Telefone =telefone;
 
-            var resultado = contato.Testar_Se_Telefone_E_Valido();
 
-            Assert.IsFalse(resultado);
+            var resultado = validacao.Validate(contato);
+
+            Assert.IsTrue(resultado.ToString().Contains("Telefone Invalido"));
         }
 
-        [TestMethod]
-        public void Quando_O_Telefone_Nao_Tiver_Texto_Entao_O_Telefone_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Telefone = "";
 
-            var resultado = contato.Testar_Se_Telefone_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void Quando_O_Telefone_Estiver_Nulo_Entao_O_Telefone_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Telefone = null;
-
-            var resultado = contato.Testar_Se_Telefone_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
 
         [TestMethod]
         public void Quando_O_DDI_Tiver_Texto_Especificado_Entao_O_DDI_E_Valido()
         {
-            Contato contato = new Contato();
-            contato.DDI = "+55";
+            MyCelular celular = new MyCelular("SDD");
+            CelularValidation validacao = new CelularValidation();
+            celular.DDI = "+55";
 
-            var resultado = contato.Testar_Se_DDI_E_Valido();
+            var resultado = validacao.Validate(celular);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("DDI inválida"));
         }
-        [TestMethod]
-        public void Quando_O_DDI_Nao_Tiver_Texto_Especificado_Entao_O_DDI_E_Invalido()
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("12")]
+        public void Quando_O_DDI_Nao_Tiver_Texto_Especificado_Entao_O_DDI_E_Invalido(string ddi)
         {
-            Contato contato = new Contato();
-            contato.DDI = "123456789";
+            MyCelular celular = new MyCelular("SDD");
+            CelularValidation validacao = new CelularValidation();
+            celular.DDI = ddi;
 
-            var resultado = contato.Testar_Se_DDI_E_Valido();
+            var resultado = validacao.Validate(celular);
 
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("DDI inválida"));
         }
 
-        [TestMethod]
-        public void Quando_O_DDI_Nao_Tiver_Texto_Entao_O_DDI_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.DDI = "";
 
-            var resultado = contato.Testar_Se_DDI_E_Valido();
 
-            Assert.IsFalse(resultado);
-        }
 
-        [TestMethod]
-        public void Quando_O_DDI_Estiver_Nulo_Entao_O_DDI_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.DDI = null;
-
-            var resultado = contato.Testar_Se_DDI_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
         [TestMethod]
         public void Quando_O_Celular_Tiver_Texto_Especificado_Entao_O_Celular_E_Valido()
         {
-            Contato contato = new Contato();
-            contato.Celular = "(11) 9123 - 1234";
+            MyCelular celular = new MyCelular("(11) 9123 - 1234");
+            CelularValidation validacao = new CelularValidation();
 
-            var resultado = contato.Testar_Se_Celular_E_Valido();
+            var resultado = validacao.Validate(celular);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Celular inválida"));
         }
-        [TestMethod]
-        public void Quando_O_Celular_Nao_Tiver_Texto_Especificado_Entao_O_Celular_E_Invalido()
+
+
+
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("12")]
+        public void Quando_O_Celular_Estiver_Nulo_Entao_O_Celular_E_Invalido(string Strcelular)
         {
-            Contato contato = new Contato();
-            contato.Celular = "123456789";
+            MyCelular celular = new MyCelular(Strcelular);
+            CelularValidation validacao = new CelularValidation();
 
-            var resultado = contato.Testar_Se_Celular_E_Valido();
+            var resultado = validacao.Validate(celular);
 
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void Quando_O_Celular_Nao_Tiver_Texto_Entao_O_Celular_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Celular = "";
-
-            var resultado = contato.Testar_Se_Celular_E_Valido();
-
-            Assert.IsFalse(resultado);
-        }
-
-        [TestMethod]
-        public void Quando_O_Celular_Estiver_Nulo_Entao_O_Celular_E_Invalido()
-        {
-            Contato contato = new Contato();
-            contato.Celular = null;
-
-            var resultado = contato.Testar_Se_Celular_E_Valido();
-
-            Assert.IsFalse(resultado);
+            Assert.IsTrue(resultado.ToString().Contains("Celular inválida"));
         }
 
 
 
 
-        //Colaborador
+        ////Colaborador
 
 
         [TestMethod]
@@ -493,11 +357,12 @@ namespace Teste_de_unidade1
         public void Quando_O_Salario_For_Maior_Que_Zero_Entao_E_Valido()
         {
             Colaborador colaborador = new Colaborador();
+            ColaboradorValidator validacao = new ColaboradorValidator();
             colaborador.Salario = 12.0M;
 
-            var resultado = colaborador.Validar_Se_Salario_E_Valido();
+            var resultado = validacao.Validate(colaborador);
 
-            Assert.IsTrue(resultado);
+            Assert.IsFalse(resultado.ToString().Contains("Salário deve ser Maior que zero"));
 
         }
         [DataTestMethod]
@@ -506,12 +371,12 @@ namespace Teste_de_unidade1
         public void Quando_O_Salario_For_Menor_Ou_Igual_A_Zero_Entao_E_Invalido(double n)
         {
             Colaborador colaborador = new Colaborador();
+            ColaboradorValidator validacao = new ColaboradorValidator();
             colaborador.Salario = (decimal)n;
 
-            var resultado = colaborador.Validar_Se_Salario_E_Valido();
+            var resultado = validacao.Validate(colaborador);
 
-            Assert.IsFalse(resultado);
-
+            Assert.IsTrue(resultado.ToString().Contains("Salário deve ser Maior que zero"));
         }
 
 
