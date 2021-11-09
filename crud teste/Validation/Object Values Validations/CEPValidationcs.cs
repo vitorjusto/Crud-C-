@@ -8,7 +8,11 @@ namespace crud_teste.Validation
     {
         public CEPValidation()
         {
-            RuleFor(x => x.ToString()).NotEmpty().Matches(@"[0-9]{5}[-][0-9]{3}").WithMessage("Cep inválido");
+            RuleFor(x => x.RetornarFormatado()).Matches(@"[0-9]{5}-[0-9]{3}").WithMessage("Cep inválido");
+
+            
         }
+
+
     }
 }

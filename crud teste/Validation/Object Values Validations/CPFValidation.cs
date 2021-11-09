@@ -12,7 +12,7 @@ namespace crud_teste.Validation
     {
         public CPFValidation()
         {
-            RuleFor(x => x.ToString()).NotEmpty().Matches(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}\-[0-9]{2}").WithMessage("CPF Inválido");
+            RuleFor(x => x.RetornarFormatado()).NotEmpty().Matches(@"[0-9]{3}[,][0-9]{3}[,][0-9]{3}[-][0-9]{2}").WithMessage("CPF Inválido");
 
 
         }

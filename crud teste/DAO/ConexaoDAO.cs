@@ -75,9 +75,9 @@ namespace crud_teste
                     var idcontato = con.ExecuteScalar(query, new
                     {
                         Email = cliente.contato.Email,
-                        Telefone = cliente.contato.Telefone,
-                        DDI = cliente.contato.Celular.DDI,
-                        Celular = cliente.contato.Celular.Celular,
+                        Telefone = cliente.contato.Telefone.ToString(),
+                        DDI = cliente.contato.Celular.RetornarDDI(),
+                        Celular = cliente.contato.Celular.RetornarCelular(),
 
                     }, tran) ;
 
@@ -155,7 +155,7 @@ namespace crud_teste
                     cliente.Sexo = (string)reader["Sexo"];
                     cliente.CPF = (string)reader["CPF"];
                     cliente.endereco.IdEndereco = (int)reader["idEndereco"];
-                    cliente.DataDeNascimento = (string)reader["DataDeNascimento"];
+                    cliente.DataDeNascimento = (DateTime)reader["DataDeNascimento"];
                     cliente.contato.idContato = (int)reader["idContato"];
 
 
@@ -218,18 +218,18 @@ namespace crud_teste
                  }, tran);
 
 
-                    query = @"Update contato Set telefone = @Telefone Where idcontato = @idContato";
-                con.Execute(query, cliente.contato, tran);
-
-
-                 query = @"update contato set celular = @celular, ddi = @ddi where idcontato = idContato";
-                    con.ExecuteScalar(query, new
-                    {
-                        celular = cliente.contato.Celular.ToString(),
-                        DDI = cliente.contato.Celular.DDI,
+                    query = @"Update contato Set telefone = @Telefone, celular = @celular, ddi = @ddi, email = @email Where idcontato = @idContato";
+                    con.Execute(query, new {
+                        Telefone = cliente.contato.Telefone.ToString(),
+                        celular = cliente.contato.Celular.RetornarCelular(),
+                        DDI = cliente.contato.Celular.RetornarDDI(),
+                        Email = cliente.contato.Email,
                         idContato = cliente.contato.idContato,
 
-                    }, tran) ;
+                    }, tran); ;
+
+
+                 
 
                     query = $@"Update endereco Set cep = @cep, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero Where idendereco = @IdEndereco";
                 con.Execute(query, new { 
@@ -343,7 +343,7 @@ namespace crud_teste
                     colaborador.PorcentagemDeComissao = (decimal)reader["PorcentagemDeComissao"];
 
                     colaborador.Salario = (decimal)reader["Salario"];
-                    colaborador.DadosBancarios = (string)reader["DadosBancários"];
+                    //colaborador.DadosBancarios = (string)reader["DadosBancários"];
                     colaborador.IdPessoa = (int)reader["idPessoa"];
 
 
@@ -359,7 +359,7 @@ namespace crud_teste
                     colaborador.Sexo = (string)reader["Sexo"];
                     colaborador.CPF = (string)reader["CPF"];
                     colaborador.endereco.IdEndereco = (int)reader["idEndereco"];
-                    colaborador.DataDeNascimento = (string)reader["DataDeNascimento"];
+                    colaborador.DataDeNascimento = (DateTime)reader["DataDeNascimento"];
                     colaborador.contato.idContato = (int)reader["idContato"];
 
 
@@ -422,11 +422,14 @@ namespace crud_teste
                     var idcontato = con.ExecuteScalar(query, new
                     {
                         Email = colaborador.contato.Email,
-                        Telefone = colaborador.contato.Telefone,
-                        DDI = colaborador.contato.Celular.DDI,
-                        Celular = colaborador.contato.Celular.Celular,
+                        Telefone = colaborador.contato.Telefone.ToString(),
+                        DDI = colaborador.contato.Celular.RetornarDDI(),
+                        Celular = colaborador.contato.Celular.RetornarCelular(),
 
-                    }, tran);
+                    }, tran) ;
+
+                    query = @"Insert Into DadosBancarios(Banco, Agencia, conta, digito) OUTPUT INSERTED.idDadosBancarios  Values(@Banco,@Agencia, @Conta, @Digito)";
+                    var idBanco = con.ExecuteScalar(query, colaborador.DadosBancarios, tran);
 
 
                     colaborador.endereco.IdEndereco = int.Parse(idendereco.ToString());
@@ -446,8 +449,15 @@ namespace crud_teste
 
                     colaborador.IdPessoa = int.Parse(idpessoa.ToString());
                     var cpf = colaborador.CPF.ToString();
-                    query = $@"Insert  Into Colaborador(Salario, PorcentagemDeComissao, DadosBancários, idPessoa) OUTPUT INSERTED.idcolaborador Values( @Salario, @PorcentagemDeComissao, @DadosBancarios, @idPessoa)";
-                colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, colaborador, tran).ToString());
+                    query = $@"Insert  Into Colaborador(Salario, PorcentagemDeComissao, idPessoa, idDadosBancarios) OUTPUT INSERTED.idcolaborador Values( @Salario, @PorcentagemDeComissao, @idPessoa, @idDadosBancarios)";
+                    colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, new
+                    {
+                        Salario = colaborador.Salario,
+                        PorcentagemDeComissao = colaborador.PorcentagemDeComissao,
+                        idpessoa = idpessoa,
+                        idDadosBancarios = idBanco,
+
+                    }, tran).ToString()) ;;
 
                 tran.Commit();
                 }
@@ -483,18 +493,44 @@ namespace crud_teste
 
 
 
-                    query = $@"update pessoa set nome = @nome, sobrenome = @SobreNome, sexo = @sexo, cpf = '{Convert.ToString(colaborador.CPF)}', DataDeNascimento = @DataDeNascimento where idPessoa = @idPessoa";
-                    con.Execute(query, colaborador, tran);
+                    query = $@"update pessoa set nome = @nome, sobrenome = @SobreNome, sexo = @sexo, cpf = @cpf, DataDeNascimento = @DataDeNascimento where idPessoa = @idPessoa";
+                    con.Execute(query, new
+                    {
+                        nome = colaborador.Nome,
+                        SobreNome = colaborador.SobreNome,
+                        sexo = colaborador.Sexo,
+                        cpf = colaborador.CPF.ToString(),
+                        DataDeNascimento = colaborador.DataDeNascimento,
+                        idPessoa = colaborador.IdPessoa,
+
+                    }, tran) ;
 
 
-                    query = @"update contato set telefone = @Telefone  where idcontato = @idContato";
-                con.Execute(query, colaborador.contato, tran);
+                    query = @"update contato set telefone = @Telefone, celular = @celular, ddi = @ddi, email = @email where idcontato = @idContato";
+                    con.Execute(query, new
+                    {
+                        telefone = colaborador.contato.Telefone.ToString(),
+                        celular = colaborador.contato.Celular.RetornarCelular(),
+                        DDI = colaborador.contato.Celular.RetornarDDI(),
+                        Email =colaborador.contato.Email,
+                        idContato = colaborador.contato.idContato,
 
-                    query = $@"update contato set celular = @celular, ddi = @ddi where idcontato = {colaborador.contato.idContato}";
-                    con.ExecuteScalar(query, colaborador.contato.Celular, tran);
+                    }, tran) ;
 
-                    query = $@"update endereco set cep = '{Convert.ToString(colaborador.endereco.Cep)}', Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
-                con.Execute(query, colaborador.endereco, tran);
+                   
+
+                    query = $@"update endereco set cep = @cep, Logradouro = @Logradouro, cidade = @Cidade, UF = @UF, complemento = @Complemento, bairro = @Bairro, numero = @numero where idendereco = @IdEndereco";
+                con.Execute(query, new {
+                cep = colaborador.endereco.Cep.ToString(),
+                logradouro = colaborador.endereco.Logradouro,
+                cidade = colaborador.endereco.Cidade,
+                UF = colaborador.endereco.UF,
+                complemento = colaborador.endereco.Complemento,
+                Bairro = colaborador.endereco.Bairro,
+                Numero = colaborador.endereco.Numero,
+                IdEndereco = colaborador.endereco.IdEndereco,
+                
+                }, tran);
                 tran.Commit();
                 }
                 catch (Exception ex)

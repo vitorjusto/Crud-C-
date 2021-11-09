@@ -9,9 +9,11 @@ namespace crud_teste.Model
     class ColaboradorListagem
     {
         public int idColaborador { get; set; }
-        public string nome { get; set; }
+       private string nome { get; set; }
 
-        public string sobrenome {get; set;}
+        private string sobrenome {get; set;}
+
+        public string NomeCompleto { get { return nome + sobrenome; } set { } }
 
         public string sexo { get; set; }
 

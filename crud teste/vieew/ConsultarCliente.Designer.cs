@@ -464,7 +464,7 @@ namespace crud_teste
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.Color.White;
-            this.BotaoSalvar.Location = new System.Drawing.Point(12, 367);
+            this.BotaoSalvar.Location = new System.Drawing.Point(13, 461);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(236, 77);
             this.BotaoSalvar.TabIndex = 64;
@@ -477,9 +477,9 @@ namespace crud_teste
             this.Excluir.BackColor = System.Drawing.Color.Red;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(510, 367);
+            this.Excluir.Location = new System.Drawing.Point(546, 461);
             this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(278, 77);
+            this.Excluir.Size = new System.Drawing.Size(236, 77);
             this.Excluir.TabIndex = 65;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = false;
@@ -490,7 +490,7 @@ namespace crud_teste
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(800, 456);
+            this.ClientSize = new System.Drawing.Size(800, 557);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.groupBox3);

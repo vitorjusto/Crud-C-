@@ -50,15 +50,15 @@ namespace crud_teste
             Nome.Text = colaborador.Nome.ToString();
             Sobrenome.Text = colaborador.SobreNome;
             Sexo.Text = colaborador.Sexo;
-            CPF.Text = colaborador.CPF.ToString();
+            CPF.Text = colaborador.CPF.RetornarFormatado();
             Salario.Text = colaborador.Salario.ToString();
             Porcentagem.Text = colaborador.PorcentagemDeComissao.ToString();
-            Conta.Text = colaborador.DadosBancarios;
-            Telefone.Text = colaborador.contato.Telefone;
+            //Conta.Text = colaborador.DadosBancarios;
+            Telefone.Text = colaborador.contato.Telefone.ToString();
             Celular2.Text = colaborador.contato.Celular.Celular;
             DDI.Text = colaborador.contato.Celular.DDI;
             emailText.Text = colaborador.contato.Email;
-            Data.Text = colaborador.DataDeNascimento;
+            Data.Value = colaborador.DataDeNascimento;
 
             AtribuirCamposEnderecos(colaborador.endereco);
 
@@ -67,7 +67,7 @@ namespace crud_teste
 
         private void AtribuirCamposEnderecos(Endereco endereco)
         {
-            CEP.Text = endereco.Cep.ToString();
+            CEP.Text = endereco.Cep.RetornarFormatado();
             Logradouro.Text = endereco.Logradouro;
             Cidade.Text = endereco.Cidade;
             UF.Text = endereco.UF;
@@ -198,9 +198,9 @@ namespace crud_teste
             colaboradorGlobal.Sexo = Sexo.Text;
             decimal.TryParse(Salario.Text, out decimal x);
             colaboradorGlobal.Salario = x;
-            colaboradorGlobal.DataDeNascimento = Data.Value.ToString().Remove(10);
+            colaboradorGlobal.DataDeNascimento = Data.Value;
             colaboradorGlobal.CPF = CPF.Text;
-            colaboradorGlobal.DadosBancarios = Conta.Text;
+            //colaboradorGlobal.DadosBancarios = Conta.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
             colaboradorGlobal.contato.Telefone = Telefone.Text;
             colaboradorGlobal.contato.Celular = Celular2.Text;

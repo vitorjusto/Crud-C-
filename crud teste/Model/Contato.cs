@@ -9,7 +9,7 @@ namespace crud_teste.Model
         public int idContato { get; set; }
         public string Email { get; set; }
 
-        public string Telefone { get; set; }
+        public MyTelefone Telefone;
 
         public MyCelular Celular { get; set; }
 

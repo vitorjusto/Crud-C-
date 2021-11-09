@@ -78,9 +78,12 @@
     <Compile Include="Model\ClienteListagem.cs" />
     <Compile Include="Model\ColaboradorListagem.cs" />
     <Compile Include="Model\Contato.cs" />
+    <Compile Include="Model\DadosBancarioscs.cs" />
     <Compile Include="Model\Object Values\MyCelular.cs" />
     <Compile Include="Model\Object Values\MyCEP.cs" />
     <Compile Include="Model\Object Values\MyCPF.cs" />
+    <Compile Include="Model\Object Values\MyTelefone.cs" />
+    <Compile Include="Validation\DadosBancariosValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CelularValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CEPValidationcs.cs" />
     <Compile Include="Validation\ClienteValidation.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Validation\ContatoValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CPFValidation.cs" />
     <Compile Include="Validation\EnderecoValidation.cs" />
+    <Compile Include="Validation\Object Values Validations\TelefoneValidation.cs" />
     <Compile Include="Validation\PessoaValidation.cs" />
     <Compile Include="vieew\FrmCliente.cs">
       <SubType>Form</SubType>

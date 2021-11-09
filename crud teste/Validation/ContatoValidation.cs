@@ -16,7 +16,7 @@ namespace crud_teste.Validation
         {
             RuleFor(x => x.Email).NotEmpty().Matches(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").WithMessage("Email inválido");
 
-            RuleFor(x => x.Telefone).NotEmpty().Matches(@"[0-9]{4} - [0-9]{4}").WithMessage("Telefone Invalido");
+            RuleFor(x => x.Telefone).SetValidator(new TelefoneValidation());
 
             RuleFor(x => x.Celular).SetValidator(new CelularValidation());
 

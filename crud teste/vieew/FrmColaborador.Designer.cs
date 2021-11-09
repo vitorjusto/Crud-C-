@@ -72,12 +72,22 @@ namespace crud_teste
             this.Salario = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.Digito = new System.Windows.Forms.TextBox();
+            this.Conta = new System.Windows.Forms.TextBox();
+            this.Agencia = new System.Windows.Forms.TextBox();
+            this.Banco = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Salario)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // Nome
@@ -109,7 +119,7 @@ namespace crud_teste
             // 
             this.Sobrenome.Location = new System.Drawing.Point(261, 19);
             this.Sobrenome.Name = "Sobrenome";
-            this.Sobrenome.Size = new System.Drawing.Size(369, 20);
+            this.Sobrenome.Size = new System.Drawing.Size(469, 20);
             this.Sobrenome.TabIndex = 3;
             // 
             // Sexo
@@ -204,7 +214,7 @@ namespace crud_teste
             // 
             // Cidade
             // 
-            this.Cidade.Location = new System.Drawing.Point(244, 19);
+            this.Cidade.Location = new System.Drawing.Point(273, 18);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(130, 20);
             this.Cidade.TabIndex = 18;
@@ -212,7 +222,7 @@ namespace crud_teste
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(391, 21);
+            this.label10.Location = new System.Drawing.Point(429, 21);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(24, 13);
             this.label10.TabIndex = 20;
@@ -244,7 +254,7 @@ namespace crud_teste
             "RS",
             "SC",
             "SP"});
-            this.UF.Location = new System.Drawing.Point(421, 19);
+            this.UF.Location = new System.Drawing.Point(486, 18);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(49, 21);
             this.UF.TabIndex = 21;
@@ -262,12 +272,12 @@ namespace crud_teste
             // 
             this.Complemento.Location = new System.Drawing.Point(261, 70);
             this.Complemento.Name = "Complemento";
-            this.Complemento.Size = new System.Drawing.Size(211, 20);
+            this.Complemento.Size = new System.Drawing.Size(274, 20);
             this.Complemento.TabIndex = 23;
             // 
             // Bairro
             // 
-            this.Bairro.Location = new System.Drawing.Point(516, 19);
+            this.Bairro.Location = new System.Drawing.Point(625, 14);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(105, 20);
             this.Bairro.TabIndex = 24;
@@ -275,7 +285,7 @@ namespace crud_teste
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(476, 21);
+            this.label12.Location = new System.Drawing.Point(570, 21);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 13);
             this.label12.TabIndex = 25;
@@ -284,7 +294,7 @@ namespace crud_teste
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(490, 73);
+            this.label13.Location = new System.Drawing.Point(631, 77);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 26;
@@ -292,7 +302,7 @@ namespace crud_teste
             // 
             // Numero
             // 
-            this.Numero.Location = new System.Drawing.Point(560, 70);
+            this.Numero.Location = new System.Drawing.Point(687, 70);
             this.Numero.Mask = "0000";
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(43, 20);
@@ -301,7 +311,7 @@ namespace crud_teste
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 22);
+            this.label14.Location = new System.Drawing.Point(12, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
             this.label14.TabIndex = 28;
@@ -309,7 +319,7 @@ namespace crud_teste
             // 
             // Telefone
             // 
-            this.Telefone.Location = new System.Drawing.Point(84, 19);
+            this.Telefone.Location = new System.Drawing.Point(84, 23);
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(85, 20);
@@ -317,7 +327,7 @@ namespace crud_teste
             // 
             // Celular1
             // 
-            this.Celular1.Location = new System.Drawing.Point(249, 19);
+            this.Celular1.Location = new System.Drawing.Point(247, 23);
             this.Celular1.Mask = "+00";
             this.Celular1.Name = "Celular1";
             this.Celular1.Size = new System.Drawing.Size(39, 20);
@@ -326,7 +336,7 @@ namespace crud_teste
             // 
             // Celular2
             // 
-            this.Celular2.Location = new System.Drawing.Point(306, 19);
+            this.Celular2.Location = new System.Drawing.Point(303, 23);
             this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(86, 20);
@@ -344,7 +354,7 @@ namespace crud_teste
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 74);
+            this.label16.Location = new System.Drawing.Point(408, 26);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 33;
@@ -352,14 +362,14 @@ namespace crud_teste
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(84, 71);
+            this.Email.Location = new System.Drawing.Point(472, 23);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(204, 20);
             this.Email.TabIndex = 34;
             // 
             // CPF
             // 
-            this.CPF.Location = new System.Drawing.Point(526, 53);
+            this.CPF.Location = new System.Drawing.Point(626, 53);
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
             this.CPF.Size = new System.Drawing.Size(104, 20);
@@ -368,7 +378,7 @@ namespace crud_teste
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(469, 54);
+            this.label17.Location = new System.Drawing.Point(570, 56);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(30, 13);
             this.label17.TabIndex = 36;
@@ -377,7 +387,7 @@ namespace crud_teste
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(326, 90);
+            this.label18.Location = new System.Drawing.Point(429, 89);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(86, 13);
             this.label18.TabIndex = 37;
@@ -385,7 +395,7 @@ namespace crud_teste
             // 
             // Dados
             // 
-            this.Dados.Location = new System.Drawing.Point(428, 87);
+            this.Dados.Location = new System.Drawing.Point(527, 86);
             this.Dados.Name = "Dados";
             this.Dados.Size = new System.Drawing.Size(202, 20);
             this.Dados.TabIndex = 38;
@@ -398,7 +408,7 @@ namespace crud_teste
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(686, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(807, 24);
             this.menuStrip2.TabIndex = 40;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -414,9 +424,9 @@ namespace crud_teste
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(24, 392);
+            this.button1.Location = new System.Drawing.Point(24, 434);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 50);
+            this.button1.Size = new System.Drawing.Size(224, 71);
             this.button1.TabIndex = 41;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -450,7 +460,7 @@ namespace crud_teste
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(24, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(636, 124);
+            this.groupBox1.Size = new System.Drawing.Size(755, 124);
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
@@ -494,7 +504,7 @@ namespace crud_teste
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Location = new System.Drawing.Point(24, 157);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(636, 116);
+            this.groupBox2.Size = new System.Drawing.Size(755, 116);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereco";
@@ -510,17 +520,102 @@ namespace crud_teste
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Location = new System.Drawing.Point(24, 284);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(636, 100);
+            this.groupBox3.Size = new System.Drawing.Size(755, 65);
             this.groupBox3.TabIndex = 45;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.Digito);
+            this.groupBox4.Controls.Add(this.Conta);
+            this.groupBox4.Controls.Add(this.Agencia);
+            this.groupBox4.Controls.Add(this.Banco);
+            this.groupBox4.Location = new System.Drawing.Point(24, 355);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(755, 73);
+            this.groupBox4.TabIndex = 69;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Dados Bancários";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(653, 37);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(37, 13);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "Digito:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(483, 37);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(38, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Conta:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 37);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "Banco:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(354, 37);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(49, 13);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Agencia:";
+            // 
+            // Digito
+            // 
+            this.Digito.Location = new System.Drawing.Point(703, 34);
+            this.Digito.MaxLength = 1;
+            this.Digito.Name = "Digito";
+            this.Digito.Size = new System.Drawing.Size(27, 20);
+            this.Digito.TabIndex = 3;
+            // 
+            // Conta
+            // 
+            this.Conta.Location = new System.Drawing.Point(527, 34);
+            this.Conta.MaxLength = 5;
+            this.Conta.Name = "Conta";
+            this.Conta.Size = new System.Drawing.Size(120, 20);
+            this.Conta.TabIndex = 2;
+            // 
+            // Agencia
+            // 
+            this.Agencia.Location = new System.Drawing.Point(432, 34);
+            this.Agencia.MaxLength = 3;
+            this.Agencia.Name = "Agencia";
+            this.Agencia.Size = new System.Drawing.Size(35, 20);
+            this.Agencia.TabIndex = 1;
+            // 
+            // Banco
+            // 
+            this.Banco.Location = new System.Drawing.Point(65, 34);
+            this.Banco.Name = "Banco";
+            this.Banco.Size = new System.Drawing.Size(221, 20);
+            this.Banco.TabIndex = 0;
             // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(686, 454);
+            this.ClientSize = new System.Drawing.Size(807, 509);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -539,6 +634,8 @@ namespace crud_teste
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,5 +686,14 @@ namespace crud_teste
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown Salario;
         private System.Windows.Forms.NumericUpDown Porcentagem;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox Digito;
+        private System.Windows.Forms.TextBox Conta;
+        private System.Windows.Forms.TextBox Agencia;
+        private System.Windows.Forms.TextBox Banco;
     }
 }

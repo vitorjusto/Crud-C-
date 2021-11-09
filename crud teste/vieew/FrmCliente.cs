@@ -108,7 +108,7 @@ namespace crud_teste
             cliente.contato.Celular = Celular2.Text;
             cliente.contato.Celular.DDI = Celular1.Text;
             cliente.contato.Email = Email.Text;
-            cliente.DataDeNascimento = data.Value.ToString().Remove(10);
+            cliente.DataDeNascimento = data.Value;
             cliente.LimiteDeCompra = ValorLimite.Value;
             cliente.endereco.Cep = CEP.Text;
             cliente.endereco.Logradouro = Logradouro.Text;
@@ -124,6 +124,11 @@ namespace crud_teste
 
             return cliente;
 
+
+        }
+
+        private void Telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
 
         }
     }

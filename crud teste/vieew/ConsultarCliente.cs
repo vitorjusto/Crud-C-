@@ -61,13 +61,13 @@ namespace crud_teste
             Sobrenome.Text = cliente.SobreNome;
             Sexo.Text = cliente.Sexo;
             ValorLimite.Text = cliente.LimiteDeCompra.ToString();
-            CPF.Text = cliente.CPF.ToString() ;
-            Telefone.Text = cliente.contato.Telefone;
+            CPF.Text = cliente.CPF.RetornarFormatado() ;
+            Telefone.Text = cliente.contato.Telefone.ToString();
             Celular.Text = cliente.contato.Celular.Celular;
             DDI.Text = cliente.contato.Celular.DDI;
             Email.Text = cliente.contato.Email;
-            data.Text = cliente.DataDeNascimento;
-            CEP.Text = cliente.endereco.Cep.ToString();
+            data.Value = cliente.DataDeNascimento;
+            CEP.Text = cliente.endereco.Cep.RetornarFormatado();
             Logradouro.Text = cliente.endereco.Logradouro;
             Cidade.Text = cliente.endereco.Cidade;
             UF.Text = cliente.endereco.UF;
@@ -190,7 +190,7 @@ namespace crud_teste
             clienteglobal.CPF = CPF.Text;
             clienteglobal.contato.Telefone = Telefone.Text;
             clienteglobal.contato.Email = Email.Text;
-            clienteglobal.DataDeNascimento = data.Value.ToString().Remove(10);
+            clienteglobal.DataDeNascimento = data.Value;
             clienteglobal.LimiteDeCompra = ValorLimite.Value;
 
 

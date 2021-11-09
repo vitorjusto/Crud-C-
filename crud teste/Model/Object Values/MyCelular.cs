@@ -8,8 +8,23 @@ namespace crud_teste.Model.Object_Values
 {
     public class MyCelular
     {
-        public string Celular { get; set; }
-        public string DDI { get; set; }
+        private string _Celular { get; set; }
+
+        private List<string> TirarCaracteres = new List<string> { "(", ")", " ", "-", "+" };
+        private string _DDI { get; set; }
+
+        public string Celular { get { return RetornarCelularComFormatacao(); }
+            
+
+            set {
+                 _Celular = value;
+                foreach(var x in TirarCaracteres)
+                {
+                    _Celular = _Celular.Replace(x, "");
+                }
+                    
+                } }
+        public string DDI { get { return RetornarDDIComFormatacao(); } set { _DDI = value.Replace("+", ""); } }
         public MyCelular(string celular )
         {
             Celular = celular;
@@ -18,10 +33,32 @@ namespace crud_teste.Model.Object_Values
         public static implicit operator MyCelular(string value)
             => new MyCelular( value);
 
-
-        public override string ToString()
+        public string RetornarCelular()
         {
-            return DDI + " " + Celular;
+            return _Celular;
+        }
+        
+        public string RetornarDDI()
+        {
+            return _DDI;
+        }
+
+
+        public string RetornarCelularComFormatacao()
+        {
+            if (RetornarCelular().Length == 10)
+                return string.Format("{0:(##) #### - ####}", long.Parse(_Celular));
+            else
+                return "Celular Inválida";
+        }
+
+        public string RetornarDDIComFormatacao()
+        {
+
+            if (RetornarDDI().Length == 2)
+                return string.Format("{0:+##}", int.Parse(_DDI));
+            else
+                return "DDI Inválida";
         }
     }
 }

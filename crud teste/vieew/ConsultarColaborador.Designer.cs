@@ -35,7 +35,6 @@ namespace crud_teste
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
-            this.Conta = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -73,11 +72,21 @@ namespace crud_teste
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Banco = new System.Windows.Forms.TextBox();
+            this.Agencia = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,7 +96,6 @@ namespace crud_teste
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.Salario);
             this.groupBox1.Controls.Add(this.CPF);
-            this.groupBox1.Controls.Add(this.Conta);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -148,12 +156,7 @@ namespace crud_teste
             this.CPF.TabIndex = 66;
             // 
             // Conta
-            // 
-            this.Conta.Location = new System.Drawing.Point(569, 82);
-            this.Conta.Name = "Conta";
-            this.Conta.Size = new System.Drawing.Size(180, 20);
-            this.Conta.TabIndex = 66;
-            // 
+            
             // label12
             // 
             this.label12.AutoSize = true;
@@ -398,7 +401,7 @@ namespace crud_teste
             // 
             // Cidade
             // 
-            this.Cidade.Location = new System.Drawing.Point(255, 22);
+            this.Cidade.Location = new System.Drawing.Point(262, 21);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(120, 20);
             this.Cidade.TabIndex = 44;
@@ -500,7 +503,7 @@ namespace crud_teste
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BotaoSalvar.Location = new System.Drawing.Point(12, 350);
+            this.BotaoSalvar.Location = new System.Drawing.Point(12, 429);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(259, 79);
             this.BotaoSalvar.TabIndex = 66;
@@ -513,7 +516,7 @@ namespace crud_teste
             this.Excluir.BackColor = System.Drawing.Color.Red;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(529, 350);
+            this.Excluir.Location = new System.Drawing.Point(535, 429);
             this.Excluir.Name = "Excluir";
             this.Excluir.Size = new System.Drawing.Size(232, 79);
             this.Excluir.TabIndex = 67;
@@ -521,12 +524,94 @@ namespace crud_teste
             this.Excluir.UseVisualStyleBackColor = false;
             this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.Agencia);
+            this.groupBox4.Controls.Add(this.Banco);
+            this.groupBox4.Location = new System.Drawing.Point(12, 350);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(755, 73);
+            this.groupBox4.TabIndex = 68;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Dados Bancários";
+            // 
+            // Banco
+            // 
+            this.Banco.Location = new System.Drawing.Point(65, 34);
+            this.Banco.Name = "Banco";
+            this.Banco.Size = new System.Drawing.Size(221, 20);
+            this.Banco.TabIndex = 0;
+            // 
+            // Agencia
+            // 
+            this.Agencia.Location = new System.Drawing.Point(432, 34);
+            this.Agencia.Name = "Agencia";
+            this.Agencia.Size = new System.Drawing.Size(35, 20);
+            this.Agencia.TabIndex = 1;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(527, 34);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(120, 20);
+            this.textBox3.TabIndex = 2;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(703, 34);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(27, 20);
+            this.textBox4.TabIndex = 3;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(354, 37);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(49, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Agencia:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 37);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "Banco:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(483, 37);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(38, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Conta:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(653, 37);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(37, 13);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "Digito:";
+            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 557);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.groupBox3);
@@ -546,6 +631,8 @@ namespace crud_teste
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,5 +683,14 @@ namespace crud_teste
         private System.Windows.Forms.NumericUpDown Porcentagem;
         private System.Windows.Forms.MaskedTextBox DDI;
         private System.Windows.Forms.DateTimePicker Data;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Agencia;
+        private System.Windows.Forms.TextBox Banco;
     }
 }

@@ -117,9 +117,8 @@ namespace crud_teste
             colaborador.SobreNome = Sobrenome.Text;
             colaborador.Sexo = Sexo.Text;
             colaborador.Salario = Salario.Value;
-            colaborador.DataDeNascimento = Data.Value.ToString().Remove(10);
+            colaborador.DataDeNascimento = Data.Value;
             colaborador.CPF = CPF.Text;
-            colaborador.DadosBancarios = Dados.Text;
             colaborador.contato.Email = Email.Text;
             colaborador.contato.Telefone = Telefone.Text;
             colaborador.contato.Celular = Celular2.Text;
@@ -139,6 +138,12 @@ namespace crud_teste
             int.TryParse(Numero.Text, out int i);
 
             colaborador.endereco.Numero = i;
+
+
+            colaborador.DadosBancarios.Banco = Banco.Text;
+            colaborador.DadosBancarios.Agencia = Agencia.Text;
+            colaborador.DadosBancarios.Conta = Conta.Text;
+            colaborador.DadosBancarios.Digito = Digito.Text;
 
 
 

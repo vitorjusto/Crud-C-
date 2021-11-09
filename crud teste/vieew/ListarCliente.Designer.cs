@@ -115,7 +115,7 @@ namespace crud_teste.vieew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 456);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);
             this.Controls.Add(this.label1);

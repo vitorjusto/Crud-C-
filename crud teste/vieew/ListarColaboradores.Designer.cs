@@ -59,27 +59,27 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(74, 59);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 60);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(355, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
             this.CampoDePesquisa.TabIndex = 2;
             // 
             // dataGridColaboradores
             // 
             this.dataGridColaboradores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridColaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridColaboradores.Location = new System.Drawing.Point(12, 133);
+            this.dataGridColaboradores.Location = new System.Drawing.Point(12, 128);
             this.dataGridColaboradores.Name = "dataGridColaboradores";
             this.dataGridColaboradores.ReadOnly = true;
             this.dataGridColaboradores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridColaboradores.Size = new System.Drawing.Size(776, 305);
+            this.dataGridColaboradores.Size = new System.Drawing.Size(776, 310);
             this.dataGridColaboradores.TabIndex = 3;
             this.dataGridColaboradores.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseDoubleClick_1);
             // 
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 62);
+            this.label.Location = new System.Drawing.Point(12, 63);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(56, 13);
             this.label.TabIndex = 4;
@@ -87,11 +87,11 @@ namespace crud_teste.vieew
             // 
             // textBoxinstrucao
             // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(650, 30);
+            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
             this.textBoxinstrucao.Multiline = true;
             this.textBoxinstrucao.Name = "textBoxinstrucao";
             this.textBoxinstrucao.ReadOnly = true;
-            this.textBoxinstrucao.Size = new System.Drawing.Size(127, 70);
+            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
             this.textBoxinstrucao.TabIndex = 5;
             this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
             this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -101,9 +101,9 @@ namespace crud_teste.vieew
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(456, 30);
+            this.button1.Location = new System.Drawing.Point(437, 32);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 70);
+            this.button1.Size = new System.Drawing.Size(176, 69);
             this.button1.TabIndex = 6;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
@@ -113,7 +113,7 @@ namespace crud_teste.vieew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 456);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);
             this.Controls.Add(this.label);

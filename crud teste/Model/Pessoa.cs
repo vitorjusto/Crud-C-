@@ -1,12 +1,7 @@
-﻿using System;
+﻿
 using crud_teste.Model;
-using System.Collections.Generic;
-
-
-
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using crud_teste.Validation;
+using crud_teste.Model.Object_Values;
+using System;
 
 namespace CRUD_teste.Model
 {
@@ -20,7 +15,7 @@ namespace CRUD_teste.Model
 
         public string Sexo { get; set; }
 
-        public string DataDeNascimento { get; set; }
+        public DateTime DataDeNascimento { get; set; }
 
         public MyCPF CPF { get; set; }
 

@@ -329,6 +329,7 @@ namespace crud_teste
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(103, 20);
             this.Telefone.TabIndex = 40;
+            this.Telefone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Telefone_MaskInputRejected);
             // 
             // label14
             // 
