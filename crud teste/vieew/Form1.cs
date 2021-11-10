@@ -86,5 +86,23 @@ namespace crud_teste
             this.Hide();
             new ListarCliente().Show();
         }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmProduto().Show();
+
+        }
+
+        private void produtoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListarProduto().Show();
+        }
+
+        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

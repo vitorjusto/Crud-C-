@@ -77,10 +77,10 @@ namespace crud_teste
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.Digito = new System.Windows.Forms.TextBox();
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
+            this.Digito = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
@@ -527,11 +527,11 @@ namespace crud_teste
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.Digito);
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.Digito);
             this.groupBox4.Controls.Add(this.Conta);
             this.groupBox4.Controls.Add(this.Agencia);
             this.groupBox4.Controls.Add(this.Banco);
@@ -578,14 +578,6 @@ namespace crud_teste
             this.label19.TabIndex = 4;
             this.label19.Text = "Agencia:";
             // 
-            // Digito
-            // 
-            this.Digito.Location = new System.Drawing.Point(703, 34);
-            this.Digito.MaxLength = 1;
-            this.Digito.Name = "Digito";
-            this.Digito.Size = new System.Drawing.Size(27, 20);
-            this.Digito.TabIndex = 3;
-            // 
             // Conta
             // 
             this.Conta.Location = new System.Drawing.Point(527, 34);
@@ -608,6 +600,13 @@ namespace crud_teste
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
+            // 
+            // Digito
+            // 
+            this.Digito.Location = new System.Drawing.Point(697, 34);
+            this.Digito.Name = "Digito";
+            this.Digito.Size = new System.Drawing.Size(32, 20);
+            this.Digito.TabIndex = 8;
             // 
             // FrmColaborador
             // 
@@ -691,9 +690,9 @@ namespace crud_teste
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox Digito;
         private System.Windows.Forms.TextBox Conta;
         private System.Windows.Forms.TextBox Agencia;
         private System.Windows.Forms.TextBox Banco;
+        private System.Windows.Forms.TextBox Digito;
     }
 }

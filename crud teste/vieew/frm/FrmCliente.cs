@@ -18,7 +18,7 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if (MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
                 new ListarClientes().Show();
@@ -32,7 +32,6 @@ namespace crud_teste
         {
 
 
-            var cadastrado = false;
             var cliente = new Cliente();
             cliente = preencherCampos();
             ClienteValidation validar = new ClienteValidation();
@@ -41,20 +40,18 @@ namespace crud_teste
             
             if (validateres.IsValid)
             {
-                if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     try
                     {
                         var id = AlterarCliente.conectarComDAO(cliente);
 
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
-                        if (cadastrado)
-                        {
+                       
 
                             new ListarClientes().Show();
                             this.Close();
 
-                        }
                     }
                     catch (Exception ex)
                     {

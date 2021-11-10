@@ -18,7 +18,7 @@ namespace crud_teste
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if((int)MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if(MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
                 new ListarClientes().Show();
@@ -77,7 +77,7 @@ namespace crud_teste
 
 
                     
-                    if ((int)MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                    if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         colaborador.idColaborador = oCadastrar.conectarComDAO(colaborador);
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
@@ -141,9 +141,9 @@ namespace crud_teste
 
 
             colaborador.DadosBancarios.Banco = Banco.Text;
-            colaborador.DadosBancarios.Agencia = Agencia.Text;
-            colaborador.DadosBancarios.Conta = Conta.Text;
-            colaborador.DadosBancarios.Digito = Digito.Text;
+            colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text);
+            colaborador.DadosBancarios.Conta = int.Parse(Conta.Text);
+            colaborador.DadosBancarios.Digito = int.Parse(Digito.Text);
 
 
 

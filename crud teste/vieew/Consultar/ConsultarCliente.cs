@@ -40,7 +40,7 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if (MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
                 new ListarCliente().Show();
@@ -101,7 +101,7 @@ namespace crud_teste
 
 
 
-                    if ((int)MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                    if (MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
 
                         AlterarCliente oAlterar = new AlterarCliente();
@@ -127,7 +127,7 @@ namespace crud_teste
 
         private void Excluir_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ConexaoDAO stmt = new ConexaoDAO();
                 try

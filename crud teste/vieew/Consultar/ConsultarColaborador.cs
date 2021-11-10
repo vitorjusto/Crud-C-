@@ -53,7 +53,6 @@ namespace crud_teste
             CPF.Text = colaborador.CPF.RetornarFormatado();
             Salario.Text = colaborador.Salario.ToString();
             Porcentagem.Text = colaborador.PorcentagemDeComissao.ToString();
-            //Conta.Text = colaborador.DadosBancarios;
             Telefone.Text = colaborador.contato.Telefone.ToString();
             Celular2.Text = colaborador.contato.Celular.Celular;
             DDI.Text = colaborador.contato.Celular.DDI;
@@ -63,6 +62,10 @@ namespace crud_teste
             AtribuirCamposEnderecos(colaborador.endereco);
 
 
+            Banco.Text = colaborador.DadosBancarios.Banco;
+            Agencia.Text = colaborador.DadosBancarios.Agencia.ToString() ;
+            Conta.Text = colaborador.DadosBancarios.Conta.ToString();
+            Digito.Text = colaborador.DadosBancarios.Digito.ToString();
         }
 
         private void AtribuirCamposEnderecos(Endereco endereco)
@@ -78,7 +81,7 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo voltar a pagina de listagem?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if (MessageBox.Show("Deseja mesmo voltar a pagina de listagem?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
                 new ListarColaboradores().Show();
@@ -106,7 +109,7 @@ namespace crud_teste
                     AlterarColaborador oColaborador = new AlterarColaborador();
 
 
-                    if ((int)MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                    if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         oColaborador.SalvarColaborador(colaboradorGlobal);
                         MessageBox.Show("Dados Salvos com sucesso");
@@ -133,7 +136,7 @@ namespace crud_teste
 
         private void Excluir_Click(object sender, EventArgs e)
         {
-            if ((int)MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+            if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 AlterarColaborador oColaborador = new AlterarColaborador();
                 try
@@ -200,7 +203,6 @@ namespace crud_teste
             colaboradorGlobal.Salario = x;
             colaboradorGlobal.DataDeNascimento = Data.Value;
             colaboradorGlobal.CPF = CPF.Text;
-            //colaboradorGlobal.DadosBancarios = Conta.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
             colaboradorGlobal.contato.Telefone = Telefone.Text;
             colaboradorGlobal.contato.Celular = Celular2.Text;
@@ -221,7 +223,10 @@ namespace crud_teste
 
             colaboradorGlobal.endereco.Numero = i;
 
-
+            colaboradorGlobal.DadosBancarios.Banco = Banco.Text;
+            colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text);
+            colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text);
+            colaboradorGlobal.DadosBancarios.Digito = int.Parse(Digito.Text);
 
 
 

@@ -343,10 +343,21 @@ namespace crud_teste
                     colaborador.PorcentagemDeComissao = (decimal)reader["PorcentagemDeComissao"];
 
                     colaborador.Salario = (decimal)reader["Salario"];
-                    //colaborador.DadosBancarios = (string)reader["DadosBancários"];
                     colaborador.IdPessoa = (int)reader["idPessoa"];
+                    colaborador.DadosBancarios.IdDadosBancarios = (int)reader["idDadosBancarios"];
 
 
+                }
+
+                query = $"Select * from DadosBancarios where idDadosBancarios = @idDadosBancarios";
+                reader = con.ExecuteReader(query, colaborador.DadosBancarios);
+                reader.Read();
+                using (reader)
+                {
+                    colaborador.DadosBancarios.Banco = (string)reader["Banco"];
+                    colaborador.DadosBancarios.Agencia = (int)reader["Agencia"];
+                    colaborador.DadosBancarios.Conta = (int)reader["Conta"];
+                    colaborador.DadosBancarios.Digito = (int)reader["Digito"];
                 }
 
                 query = $"Select * from pessoa where idPessoa = @IdPessoa";
@@ -486,10 +497,12 @@ namespace crud_teste
                 try
                 {
 
-                var query = $@"update colaborador set   salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao, dadosbancários = @DadosBancarios  where idColaborador = @idColaborador";
+                var query = $@"update colaborador set   salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao  where idColaborador = @idColaborador";
                 con.Execute(query, colaborador, tran);
 
 
+                query = @"update DadosBancarios set Banco = @Banco, Agencia = @Agencia, Conta = @Conta, Digito = @Digito where  idDadosBancarios = @idDadosBancarios";
+                con.Execute(query, colaborador.DadosBancarios, tran) ;
 
 
 
@@ -551,12 +564,14 @@ namespace crud_teste
             var tran = con.BeginTransaction();
             try
             {
-           
 
 
             var query = $@"delete from colaborador where idcolaborador = @idColaborador";
             con.Execute(query, colaborador, tran);
 
+            query = $@"delete from dadosBancarios where idDadosBancarios = @idDadosBancarios";
+            con.Execute(query, colaborador.DadosBancarios, tran);
+                
             query = $@"delete from pessoa where idpessoa = @idPessoa";
             con.Execute(query, colaborador, tran);
 
@@ -629,6 +644,9 @@ namespace crud_teste
                 var query = $@"delete from colaborador";
                 con.Execute(query, colaborador, tran);
 
+
+                query = $@"delete from dadosBancarios";
+                con.Execute(query, colaborador, tran);
                 query = $@"delete from cliente";
                 con.Execute(query, colaborador, tran);
 

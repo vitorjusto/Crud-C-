@@ -11,11 +11,11 @@ namespace crud_teste.Model
         public int IdDadosBancarios { get; set; } 
         public string Banco { get; set; }
 
-        public string Agencia { get; set; }
+        public int Agencia { get; set; }
 
-        public string Conta { get; set; }
+        public int Conta { get; set; }
 
-        public string Digito { get; set; }
+        public int Digito { get; set; }
 
 
         public DadosBancarios()

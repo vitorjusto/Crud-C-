@@ -35,7 +35,7 @@ namespace crud_teste
             ConexaoDAO stmt = new ConexaoDAO();
             try
             {
-                if ((int)MessageBox.Show("Deseja mesmo excluir todos os dados?", "Atenção", MessageBoxButtons.OKCancel) == 1)
+                if (MessageBox.Show("Deseja mesmo excluir todos os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
 
                     stmt.ExcluirTudo();
