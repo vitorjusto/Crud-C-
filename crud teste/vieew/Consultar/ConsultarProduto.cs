@@ -1,6 +1,8 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Validation;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew.Consultar
@@ -46,18 +48,28 @@ namespace crud_teste.vieew.Consultar
         private void BotaoSalvar_Click(object sender, EventArgs e)
         {
             RecuperarCampos();
-            try
+            ProdutoValidation validar = new ProdutoValidation();
+            var validares = validar.Validate(produtoGlobal);
+            if (validares.IsValid)
             {
-                if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                try
                 {
-                    oAlterar.Salvar(produtoGlobal);
-                    MessageBox.Show("Produto alterado com sucesso");
-                    new ListarProduto().Show();
-                    this.Close();
+                    if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        oAlterar.Salvar(produtoGlobal);
+                        MessageBox.Show("Produto alterado com sucesso");
+                        new ListarProduto().Show();
+                        this.Close();
+                    }
                 }
-            }catch
+                catch
+                {
+                    MessageBox.Show("Fala ao conectar com o banco de dados");
+                }
+            }
+            else
             {
-                MessageBox.Show("Fala ao conectar com o banco de dados");
+                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
         }
 
@@ -85,6 +97,16 @@ namespace crud_teste.vieew.Consultar
             catch
             {
                 MessageBox.Show("Fala ao conectar com o banco de dados");
+            }
+        }
+
+        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             if (char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                
+                e.Handled = true;
+
             }
         }
     }

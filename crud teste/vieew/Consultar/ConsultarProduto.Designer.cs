@@ -140,10 +140,12 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.TabIndex = 22;
+            this.PrecoDeVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeVenda_KeyPress);
             // 
             // CodigoDeBarras
             // 
             this.CodigoDeBarras.Location = new System.Drawing.Point(117, 104);
+            this.CodigoDeBarras.MaxLength = 15;
             this.CodigoDeBarras.Name = "CodigoDeBarras";
             this.CodigoDeBarras.Size = new System.Drawing.Size(674, 20);
             this.CodigoDeBarras.TabIndex = 21;

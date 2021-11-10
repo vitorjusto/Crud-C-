@@ -1,6 +1,8 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Validation;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew
@@ -16,28 +18,35 @@ namespace crud_teste.vieew
         {
             var produto = new Produto();
             produto = AtribuirCampos();
-            var oProduto = new AlterarProduto();
-            try
+            ProdutoValidation validar = new ProdutoValidation();
+            var validares = validar.Validate(produto);
+            if (validares.IsValid)
             {
-
-
-
-
-                if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                try
                 {
-                    produto.IdProduto = oProduto.Inserir(produto);
-                    MessageBox.Show($"Dados Cadastrados com sucesso\nid = {produto.IdProduto}");
 
-                    new ListarClientes().Show();
-                    this.Close();
 
+                    var oProduto = new AlterarProduto();
+
+                    if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        produto.IdProduto = oProduto.Inserir(produto);
+                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {produto.IdProduto}");
+
+                        new ListarClientes().Show();
+                        this.Close();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Atenção");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Atenção");
+                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
-
         
 }
 
@@ -65,6 +74,33 @@ namespace crud_teste.vieew
                 new ListarClientes().Show();
                 this.Close();
             }
+        }
+
+        private void PrecoDeVenda_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Estoque_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isIntChar(e.KeyChar);
+           
+        }
+
+        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isFloatText(e.KeyChar, PrecoDeVenda.Text);
+        }
+
+        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isFloatText(e.KeyChar, PrecoDeCusto.Text);
+        }
+
+        private void DescontoAVista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isFloatText(e.KeyChar, DescontoAVista.Text);
         }
     }
 }

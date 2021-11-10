@@ -95,6 +95,7 @@ namespace crud_teste.vieew
             // CodigoDeBarras
             // 
             this.CodigoDeBarras.Location = new System.Drawing.Point(114, 93);
+            this.CodigoDeBarras.MaxLength = 15;
             this.CodigoDeBarras.Name = "CodigoDeBarras";
             this.CodigoDeBarras.Size = new System.Drawing.Size(674, 20);
             this.CodigoDeBarras.TabIndex = 4;
@@ -105,6 +106,8 @@ namespace crud_teste.vieew
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.TabIndex = 5;
+            this.PrecoDeVenda.TextChanged += new System.EventHandler(this.PrecoDeVenda_TextChanged);
+            this.PrecoDeVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeVenda_KeyPress);
             // 
             // label3
             // 
@@ -130,6 +133,7 @@ namespace crud_teste.vieew
             this.DescontoAVista.Name = "DescontoAVista";
             this.DescontoAVista.Size = new System.Drawing.Size(106, 20);
             this.DescontoAVista.TabIndex = 8;
+            this.DescontoAVista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoAVista_KeyPress);
             // 
             // PrecoDeCusto
             // 
@@ -137,6 +141,7 @@ namespace crud_teste.vieew
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.TabIndex = 9;
+            this.PrecoDeCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeCusto_KeyPress);
             // 
             // label5
             // 
@@ -162,6 +167,7 @@ namespace crud_teste.vieew
             this.Estoque.Name = "Estoque";
             this.Estoque.Size = new System.Drawing.Size(238, 20);
             this.Estoque.TabIndex = 12;
+            this.Estoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Estoque_KeyPress);
             // 
             // Ativo
             // 

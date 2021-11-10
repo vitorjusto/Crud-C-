@@ -88,6 +88,7 @@
     <Compile Include="Model\Object Values\MyTelefone.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Validation\DadosBancariosValidation.cs" />
+    <Compile Include="Validation\ProdutoValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CelularValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CEPValidationcs.cs" />
     <Compile Include="Validation\ClienteValidation.cs" />
