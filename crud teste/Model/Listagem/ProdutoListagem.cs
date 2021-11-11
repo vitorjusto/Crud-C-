@@ -14,10 +14,10 @@ namespace crud_teste.Model.Listagem
         public float PrecodeVenda { get; set; }
 
         public float DescontoAVista { get; set; }
-        
-        public string fabricante { get; set; }
 
         public long Estoque { get; set; }
+        public string fabricante { get; set; }
+
 
         public bool Ativo { get; set; }
 

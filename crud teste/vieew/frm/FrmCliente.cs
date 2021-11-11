@@ -106,7 +106,7 @@ namespace crud_teste
             cliente.contato.Celular.DDI = Celular1.Text;
             cliente.contato.Email = Email.Text;
             cliente.DataDeNascimento = data.Value;
-            cliente.LimiteDeCompra = ValorLimite.Value;
+            cliente.LimiteDeCompra = decimal.Parse(ValorLimite.Text);
             cliente.endereco.Cep = CEP.Text;
             cliente.endereco.Logradouro = Logradouro.Text;
             cliente.endereco.Cidade = Cidade.Text;
@@ -127,6 +127,17 @@ namespace crud_teste
         private void Telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotIntChar(e.KeyChar);
+        }
+
+        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
         }
     }
 

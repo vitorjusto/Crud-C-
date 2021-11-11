@@ -102,12 +102,20 @@ namespace crud_teste.vieew.Consultar
 
         private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
         {
-             if (char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
-            {
-                
-                e.Handled = true;
 
-            }
+            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
+        }
+
+        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
+        }
+
+        private void DescontoAVista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, DescontoAVista.Text);
         }
     }
 }

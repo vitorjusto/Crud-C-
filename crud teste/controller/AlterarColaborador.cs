@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using crud_teste.Model;
 namespace crud_teste.controller
 {
-    class AlterarColaborador
+    public class AlterarColaborador
     {
         public Colaborador consultarColaborador(int id)
         {

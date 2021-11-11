@@ -48,9 +48,11 @@ namespace crud_teste.vieew
         private void dataGridCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var x = int.Parse(dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            new ConsultarCliente(x).Show();
-            this.Close();
+           
+                new ConsultarCliente(x).Show();
+                this.Close();
+            
+            
         }
 
         

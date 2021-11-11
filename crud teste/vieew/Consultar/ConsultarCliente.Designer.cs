@@ -32,7 +32,6 @@ namespace crud_teste
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ValorLimite = new System.Windows.Forms.NumericUpDown();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.Nome = new System.Windows.Forms.TextBox();
@@ -69,9 +68,9 @@ namespace crud_teste
             this.Celular = new System.Windows.Forms.MaskedTextBox();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
+            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorLimite)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -114,19 +113,6 @@ namespace crud_teste
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
-            // 
-            // ValorLimite
-            // 
-            this.ValorLimite.DecimalPlaces = 2;
-            this.ValorLimite.Location = new System.Drawing.Point(427, 72);
-            this.ValorLimite.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Size = new System.Drawing.Size(120, 20);
-            this.ValorLimite.TabIndex = 87;
             // 
             // data
             // 
@@ -485,6 +471,14 @@ namespace crud_teste
             this.Excluir.UseVisualStyleBackColor = false;
             this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
             // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(428, 70);
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
+            this.ValorLimite.TabIndex = 87;
+            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
+            // 
             // ConsultarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +499,6 @@ namespace crud_teste
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorLimite)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -555,7 +548,7 @@ namespace crud_teste
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.DateTimePicker data;
         private System.Windows.Forms.MaskedTextBox DDI;
-        private System.Windows.Forms.NumericUpDown ValorLimite;
         private System.Windows.Forms.TextBox Numero;
+        private System.Windows.Forms.TextBox ValorLimite;
     }
 }

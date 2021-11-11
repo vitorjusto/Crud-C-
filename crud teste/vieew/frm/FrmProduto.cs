@@ -84,23 +84,23 @@ namespace crud_teste.vieew
         private void Estoque_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            e.Handled = Global.isIntChar(e.KeyChar);
+            e.Handled = Global.isNotIntChar(e.KeyChar);
            
         }
 
         private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Global.isFloatText(e.KeyChar, PrecoDeVenda.Text);
+            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
         }
 
         private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Global.isFloatText(e.KeyChar, PrecoDeCusto.Text);
+            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
         }
 
         private void DescontoAVista_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Global.isFloatText(e.KeyChar, DescontoAVista.Text);
+            e.Handled = Global.isNotFloatText(e.KeyChar, DescontoAVista.Text);
         }
     }
 }

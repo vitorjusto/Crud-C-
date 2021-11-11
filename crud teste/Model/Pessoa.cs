@@ -29,7 +29,7 @@ namespace CRUD_teste.Model
 
         public string nomeCompleto()
         {
-            return this.Nome + this.SobreNome;
+            return this.Nome + " " + this.SobreNome;
         }
 
         

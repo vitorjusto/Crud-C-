@@ -108,6 +108,7 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.TabIndex = 26;
+            this.PrecoDeCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeCusto_KeyPress);
             // 
             // DescontoAVista
             // 
@@ -115,6 +116,7 @@ namespace crud_teste.vieew.Consultar
             this.DescontoAVista.Name = "DescontoAVista";
             this.DescontoAVista.Size = new System.Drawing.Size(106, 20);
             this.DescontoAVista.TabIndex = 25;
+            this.DescontoAVista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoAVista_KeyPress);
             // 
             // label4
             // 

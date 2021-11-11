@@ -191,7 +191,7 @@ namespace crud_teste
             clienteglobal.contato.Telefone = Telefone.Text;
             clienteglobal.contato.Email = Email.Text;
             clienteglobal.DataDeNascimento = data.Value;
-            clienteglobal.LimiteDeCompra = ValorLimite.Value;
+            clienteglobal.LimiteDeCompra = decimal.Parse(ValorLimite.Text);
 
 
             clienteglobal.contato.Celular = Celular.Text;
@@ -217,17 +217,21 @@ namespace crud_teste
         private void Numero_KeyPress(object sender, KeyPressEventArgs e)
         {
  
-            if (char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar) || char.IsSymbol(e.KeyChar) || char.IsPunctuation(e.KeyChar))
-            {
+            
                 
-                e.Handled = true;
+                e.Handled = Global.isNotIntChar(e.KeyChar);
 
-            }
+            
         }
 
         private void Numero_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
         }
     }
       

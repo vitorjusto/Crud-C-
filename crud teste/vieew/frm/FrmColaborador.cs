@@ -116,7 +116,7 @@ namespace crud_teste
             colaborador.Nome = Nome.Text;
             colaborador.SobreNome = Sobrenome.Text;
             colaborador.Sexo = Sexo.Text;
-            colaborador.Salario = Salario.Value;
+            colaborador.Salario = decimal.Parse(Salario.Text);
             colaborador.DataDeNascimento = Data.Value;
             colaborador.CPF = CPF.Text;
             colaborador.contato.Email = Email.Text;
@@ -124,7 +124,7 @@ namespace crud_teste
             colaborador.contato.Celular = Celular2.Text;
 
             colaborador.contato.Celular.DDI = Celular1.Text;
-            colaborador.PorcentagemDeComissao = Porcentagem.Value;
+            colaborador.PorcentagemDeComissao = decimal.Parse(Porcentagem.Text);
 
 
            
@@ -152,6 +152,21 @@ namespace crud_teste
 
         }
 
-       
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotIntChar(e.KeyChar);
+        }
+
+        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
+        }
+
+        private void Salario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
+        }
     }
 }

@@ -104,5 +104,11 @@ namespace crud_teste
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new CadastroDePedidos().Show();
+        }
     }
 }

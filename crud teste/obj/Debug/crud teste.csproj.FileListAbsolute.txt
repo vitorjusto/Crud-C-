@@ -94,3 +94,5 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud teste.csproj.CopyCom
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.FrmProduto.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.ListarProduto.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Consultar.ConsultarProduto.resources
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.CadastroDePedidos.resources
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.TelaDeVenda.ListarVendaCliente.resources

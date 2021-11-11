@@ -597,9 +597,10 @@ namespace crud_teste
 
             using (con)
             {
+                
 
                 var query = @"select idcolaborador, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone 
-                               from Colaborador c Right outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
+                               from Colaborador c Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato;";
                 var resultado = con.Query<ColaboradorListagem>(query);
                 return resultado.ToList();

@@ -29,13 +29,12 @@ namespace crud_teste
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Data = new System.Windows.Forms.DateTimePicker();
-            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@ namespace crud_teste
             this.CEP = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.Complemento = new System.Windows.Forms.TextBox();
-            this.Numero = new System.Windows.Forms.MaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.Bairro = new System.Windows.Forms.TextBox();
@@ -81,8 +79,10 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
+            this.Porcentagem = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Numero = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -91,12 +91,11 @@ namespace crud_teste
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.Porcentagem);
+            this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.Salario);
             this.groupBox1.Controls.Add(this.CPF);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -123,14 +122,6 @@ namespace crud_teste
             this.Data.TabIndex = 74;
             this.Data.ValueChanged += new System.EventHandler(this.data_ValueChanged);
             // 
-            // Porcentagem
-            // 
-            this.Porcentagem.DecimalPlaces = 2;
-            this.Porcentagem.Location = new System.Drawing.Point(357, 82);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(98, 20);
-            this.Porcentagem.TabIndex = 73;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -146,6 +137,7 @@ namespace crud_teste
             this.Salario.Name = "Salario";
             this.Salario.Size = new System.Drawing.Size(98, 20);
             this.Salario.TabIndex = 71;
+            this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
             // 
             // CPF
             // 
@@ -154,15 +146,6 @@ namespace crud_teste
             this.CPF.Name = "CPF";
             this.CPF.Size = new System.Drawing.Size(114, 20);
             this.CPF.TabIndex = 66;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(461, 85);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 13);
-            this.label12.TabIndex = 65;
-            this.label12.Text = "Conta Bancaria: ";
             // 
             // label6
             // 
@@ -246,10 +229,10 @@ namespace crud_teste
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Numero);
             this.groupBox2.Controls.Add(this.CEP);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.Complemento);
-            this.groupBox2.Controls.Add(this.Numero);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.Bairro);
@@ -290,14 +273,6 @@ namespace crud_teste
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(331, 20);
             this.Complemento.TabIndex = 55;
-            // 
-            // Numero
-            // 
-            this.Numero.Location = new System.Drawing.Point(681, 72);
-            this.Numero.Mask = "0000";
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(49, 20);
-            this.Numero.TabIndex = 51;
             // 
             // label13
             // 
@@ -545,6 +520,7 @@ namespace crud_teste
             this.Digito.Name = "Digito";
             this.Digito.Size = new System.Drawing.Size(42, 20);
             this.Digito.TabIndex = 8;
+            this.Digito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digito_KeyPress);
             // 
             // label22
             // 
@@ -588,6 +564,7 @@ namespace crud_teste
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(120, 20);
             this.Conta.TabIndex = 2;
+            this.Conta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // Agencia
             // 
@@ -595,6 +572,7 @@ namespace crud_teste
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(35, 20);
             this.Agencia.TabIndex = 1;
+            this.Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Agencia_KeyPress);
             // 
             // Banco
             // 
@@ -602,6 +580,27 @@ namespace crud_teste
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
+            // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(367, 82);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
+            this.Porcentagem.TabIndex = 75;
+            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // Numero
+            // 
+            this.Numero.Location = new System.Drawing.Point(668, 72);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(62, 20);
+            this.Numero.TabIndex = 60;
+            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ConsultarColaborador
             // 
@@ -622,7 +621,6 @@ namespace crud_teste
             this.Load += new System.EventHandler(this.ConsultarColaborador_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -649,7 +647,6 @@ namespace crud_teste
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox Numero;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Bairro;
@@ -661,7 +658,6 @@ namespace crud_teste
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox Cidade;
         private System.Windows.Forms.TextBox Complemento;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.MaskedTextBox Telefone;
         private System.Windows.Forms.TextBox emailText;
@@ -677,7 +673,6 @@ namespace crud_teste
         private System.Windows.Forms.Button Excluir;
         private System.Windows.Forms.TextBox Salario;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown Porcentagem;
         private System.Windows.Forms.MaskedTextBox DDI;
         private System.Windows.Forms.DateTimePicker Data;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -689,5 +684,8 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Agencia;
         private System.Windows.Forms.TextBox Banco;
         private System.Windows.Forms.TextBox Digito;
+        private System.Windows.Forms.TextBox Porcentagem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox Numero;
     }
 }

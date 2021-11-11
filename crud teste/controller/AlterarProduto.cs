@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace crud_teste.controller
 {
-    class AlterarProduto
+    public class AlterarProduto
     {
         public int Inserir(Produto produto)
         {

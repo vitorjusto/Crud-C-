@@ -51,7 +51,6 @@ namespace crud_teste
             this.Bairro = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.Numero = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Telefone = new System.Windows.Forms.MaskedTextBox();
             this.Celular1 = new System.Windows.Forms.MaskedTextBox();
@@ -68,11 +67,12 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Porcentagem = new System.Windows.Forms.NumericUpDown();
-            this.Salario = new System.Windows.Forms.NumericUpDown();
+            this.Porcentagem = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Numero = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Digito = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -80,11 +80,9 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
-            this.Digito = new System.Windows.Forms.TextBox();
+            this.Salario = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Salario)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -300,14 +298,6 @@ namespace crud_teste
             this.label13.TabIndex = 26;
             this.label13.Text = "Numero: ";
             // 
-            // Numero
-            // 
-            this.Numero.Location = new System.Drawing.Point(687, 70);
-            this.Numero.Mask = "0000";
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(43, 20);
-            this.Numero.TabIndex = 27;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -442,8 +432,8 @@ namespace crud_teste
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.Salario);
+            this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.Sobrenome);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.Nome);
@@ -467,27 +457,15 @@ namespace crud_teste
             // 
             // Porcentagem
             // 
-            this.Porcentagem.DecimalPlaces = 2;
-            this.Porcentagem.Location = new System.Drawing.Point(273, 87);
+            this.Porcentagem.Location = new System.Drawing.Point(289, 86);
             this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(47, 20);
+            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
             this.Porcentagem.TabIndex = 44;
-            // 
-            // Salario
-            // 
-            this.Salario.DecimalPlaces = 2;
-            this.Salario.Location = new System.Drawing.Point(59, 87);
-            this.Salario.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.Salario.Name = "Salario";
-            this.Salario.Size = new System.Drawing.Size(110, 20);
-            this.Salario.TabIndex = 43;
+            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Numero);
             this.groupBox2.Controls.Add(this.CEP);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
@@ -500,7 +478,6 @@ namespace crud_teste
             this.groupBox2.Controls.Add(this.Complemento);
             this.groupBox2.Controls.Add(this.Bairro);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.Numero);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Location = new System.Drawing.Point(24, 157);
             this.groupBox2.Name = "groupBox2";
@@ -508,6 +485,14 @@ namespace crud_teste
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereco";
+            // 
+            // Numero
+            // 
+            this.Numero.Location = new System.Drawing.Point(687, 74);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(43, 20);
+            this.Numero.TabIndex = 27;
+            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // groupBox3
             // 
@@ -541,6 +526,13 @@ namespace crud_teste
             this.groupBox4.TabIndex = 69;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dados Bancários";
+            // 
+            // Digito
+            // 
+            this.Digito.Location = new System.Drawing.Point(697, 34);
+            this.Digito.Name = "Digito";
+            this.Digito.Size = new System.Drawing.Size(32, 20);
+            this.Digito.TabIndex = 8;
             // 
             // label22
             // 
@@ -601,12 +593,13 @@ namespace crud_teste
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
             // 
-            // Digito
+            // Salario
             // 
-            this.Digito.Location = new System.Drawing.Point(697, 34);
-            this.Digito.Name = "Digito";
-            this.Digito.Size = new System.Drawing.Size(32, 20);
-            this.Digito.TabIndex = 8;
+            this.Salario.Location = new System.Drawing.Point(60, 86);
+            this.Salario.Name = "Salario";
+            this.Salario.Size = new System.Drawing.Size(100, 20);
+            this.Salario.TabIndex = 45;
+            this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
             // 
             // FrmColaborador
             // 
@@ -627,8 +620,6 @@ namespace crud_teste
             this.menuStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Porcentagem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Salario)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -664,7 +655,6 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Bairro;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MaskedTextBox Numero;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.MaskedTextBox Telefone;
         private System.Windows.Forms.MaskedTextBox Celular1;
@@ -683,8 +673,6 @@ namespace crud_teste
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown Salario;
-        private System.Windows.Forms.NumericUpDown Porcentagem;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
@@ -694,5 +682,8 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Agencia;
         private System.Windows.Forms.TextBox Banco;
         private System.Windows.Forms.TextBox Digito;
+        private System.Windows.Forms.TextBox Numero;
+        private System.Windows.Forms.TextBox Porcentagem;
+        private System.Windows.Forms.TextBox Salario;
     }
 }

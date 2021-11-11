@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace crud_teste.Model
 {
-    class ColaboradorListagem
+    public class ColaboradorListagem
     {
         public int idColaborador { get; set; }
        private string nome { get; set; }

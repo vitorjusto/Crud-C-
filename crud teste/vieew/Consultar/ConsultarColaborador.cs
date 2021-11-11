@@ -183,7 +183,6 @@ namespace crud_teste
             label9.ForeColor = Global.FontColor;
             label10.ForeColor = Global.FontColor;
             label11.ForeColor = Global.FontColor;
-            label12.ForeColor = Global.FontColor;
             label14.ForeColor = Global.FontColor;
             label15.ForeColor = Global.FontColor;
             label16.ForeColor = Global.FontColor;
@@ -208,8 +207,6 @@ namespace crud_teste
             colaboradorGlobal.contato.Celular = Celular2.Text;
 
             colaboradorGlobal.contato.Celular.DDI = DDI.Text;
-            colaboradorGlobal.PorcentagemDeComissao = Porcentagem.Value;
-
 
 
 
@@ -235,6 +232,39 @@ namespace crud_teste
         private void data_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
+        }
+
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotIntChar(e.KeyChar);
+        }
+
+        private void Agencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, Agencia.Text);
+        }
+
+        private void Conta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = Global.isNotFloatText(e.KeyChar, Conta.Text);
+        }
+
+        private void Digito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotFloatText(e.KeyChar, Digito.Text);
+        }
+
+        private void Salario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotFloatText(e.KeyChar, Digito.Text);
         }
     }
 

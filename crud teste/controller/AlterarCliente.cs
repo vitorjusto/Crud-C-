@@ -6,7 +6,7 @@ using crud_teste.Model;
 using CRUD_teste.Model;
 namespace crud_teste.controller
 {
-    class AlterarCliente
+    public class AlterarCliente
     {
         public Cliente consultarCliente(int id)
         {

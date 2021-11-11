@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace crud_teste.Model
 {
-    class ClienteListagem
+    public class ClienteListagem
     {
         public int idcliente { get; set; }
 

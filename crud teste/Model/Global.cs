@@ -19,7 +19,7 @@ namespace crud_teste
             return true;
         }
 
-        public static bool isIntChar(char c)
+        public static bool isNotIntChar(char c)
         {
             if(char.IsDigit(c) || c.ToString() == "\b")
             {
@@ -31,7 +31,7 @@ namespace crud_teste
 
         }
 
-        public static bool isFloatText(char c, string text)
+        public static bool isNotFloatText(char c, string text)
         {
             if (char.IsDigit(c) || c.ToString() == "\b" || (c.ToString() == "," && !text.Contains(",")))
             {

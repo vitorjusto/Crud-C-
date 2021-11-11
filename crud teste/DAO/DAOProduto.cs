@@ -58,7 +58,7 @@ namespace crud_teste.DAO
         {
             using (con)
             {
-                var query = @"select idproduto, nomeProduto, precodevenda, descontoavista, fabricante, estoque from produto";
+                var query = @"select idproduto, nomeProduto, precodevenda, descontoavista, fabricante, estoque, ativo from produto";
                 var resultado = con.Query<ProdutoListagem>(query);
                 return resultado.ToList();
 
