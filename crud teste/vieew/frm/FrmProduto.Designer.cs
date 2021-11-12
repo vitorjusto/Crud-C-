@@ -37,8 +37,6 @@ namespace crud_teste.vieew
             this.CodigoDeBarras = new System.Windows.Forms.TextBox();
             this.PrecoDeVenda = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.DescontoAVista = new System.Windows.Forms.TextBox();
             this.PrecoDeCusto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -117,23 +115,6 @@ namespace crud_teste.vieew
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Preço De Venda:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(584, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Desconto A Vista:";
-            // 
-            // DescontoAVista
-            // 
-            this.DescontoAVista.Location = new System.Drawing.Point(682, 147);
-            this.DescontoAVista.Name = "DescontoAVista";
-            this.DescontoAVista.Size = new System.Drawing.Size(106, 20);
-            this.DescontoAVista.TabIndex = 8;
-            this.DescontoAVista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoAVista_KeyPress);
             // 
             // PrecoDeCusto
             // 
@@ -221,8 +202,6 @@ namespace crud_teste.vieew
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.PrecoDeCusto);
-            this.Controls.Add(this.DescontoAVista);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.PrecoDeVenda);
             this.Controls.Add(this.CodigoDeBarras);
@@ -250,8 +229,6 @@ namespace crud_teste.vieew
         private System.Windows.Forms.TextBox CodigoDeBarras;
         private System.Windows.Forms.TextBox PrecoDeVenda;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox DescontoAVista;
         private System.Windows.Forms.TextBox PrecoDeCusto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

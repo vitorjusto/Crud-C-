@@ -62,12 +62,12 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
             this.Bairro = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -400,6 +400,14 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(363, 58);
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
+            this.ValorLimite.TabIndex = 53;
+            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
+            // 
             // CPF
             // 
             this.CPF.Location = new System.Drawing.Point(54, 89);
@@ -437,6 +445,7 @@ namespace crud_teste
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(103, 20);
             this.Numero.TabIndex = 23;
+            this.Numero.TextChanged += new System.EventHandler(this.Numero_TextChanged);
             this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // Bairro
@@ -461,14 +470,6 @@ namespace crud_teste
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
-            // 
-            // ValorLimite
-            // 
-            this.ValorLimite.Location = new System.Drawing.Point(363, 58);
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
-            this.ValorLimite.TabIndex = 53;
-            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
             // 
             // FrmCliente
             // 

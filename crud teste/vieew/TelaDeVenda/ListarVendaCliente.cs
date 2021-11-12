@@ -1,5 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace crud_teste.vieew.TelaDeVenda
         public AlterarProduto oAlterarProduto = new AlterarProduto();
         public string Buscar { get; set; }
 
+        public List<Carrinho> carrinhos = new List<Carrinho>();
+
+
         public Produto produto = new Produto();
         public Cliente cliente = new Cliente();
         public Colaborador colaborador = new Colaborador();
@@ -28,41 +32,23 @@ namespace crud_teste.vieew.TelaDeVenda
             InitializeComponent();
             Buscar = busca;
             if (Buscar == "cliente")
-                dataGridGeral.DataSource = oAlterar.ListarCliente();
+                ListarClientes(oAlterar.ListarCliente());
             else if (Buscar == "colaborador")
-                dataGridGeral.DataSource = oAlterarColaborador.ListarColaboradores();
-            else
+                ListarColaboradores(oAlterarColaborador.ListarColaboradores());
+            else if (Buscar == "produto")
             {
-                dataGridGeral.Columns.Add("IdProduto", "Id do Produto");
-                dataGridGeral.Columns.Add("Nome", "nome");
-                dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
-                dataGridGeral.Columns.Add("Desconto", "Desconto a Vista");
-                dataGridGeral.Columns.Add("Estoque", "Estoque");
-                dataGridGeral.Columns.Add("Fabricante", "Fabricante");
-
-                var lista = oAlterarProduto.Listar();
-                int i = 0;
-                foreach(var produto in lista )
-                {
-                    if(produto.Ativo)
-                    {
-                        dataGridGeral.Rows.Add();
-                        dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
-                        dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
-                        dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
-                        dataGridGeral.Rows[i].Cells[3].Value = produto.DescontoAVista;
-                        dataGridGeral.Rows[i].Cells[4].Value = produto.Estoque;
-                        dataGridGeral.Rows[i].Cells[5].Value = produto.fabricante;
-                        i++;
-                    }
-
-                }
+                ListarProdutos(oAlterarProduto.Listar());
             }
 
             dataGridGeral.AllowUserToAddRows = false;
             dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
+
+        public ListarVendaCliente(List<Carrinho> carrinhos, List<Produto> produtos)
+        {
+            ListarCarrinhos(carrinhos);
+        }
 
         private void ListarCliente_Load(object sender, EventArgs e)
         {
@@ -75,12 +61,52 @@ namespace crud_teste.vieew.TelaDeVenda
         }
 
 
+        public void ListarClientes(List<ClienteListagem> clientes)
+        {
 
+            dataGridGeral.DataSource = clientes;
+        }
         
+
+        public void ListarColaboradores(List<ColaboradorListagem> colaboradores)
+        {
+            dataGridGeral.DataSource = colaboradores;
+        }
 
        
+        public void ListarProdutos(List<ProdutoListagem> produtos)
+        {
+            dataGridGeral.Columns.Add("IdProduto", "Id do Produto");
+            dataGridGeral.Columns.Add("Nome", "nome");
+            dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
+            dataGridGeral.Columns.Add("Desconto", "Desconto a Vista");
+            dataGridGeral.Columns.Add("Estoque", "Estoque");
+            dataGridGeral.Columns.Add("Fabricante", "Fabricante");
 
+  
+            int i = 0;
+            foreach (var produto in produtos)
+            {
+                if (produto.Ativo)
+                {
+                    dataGridGeral.Rows.Add();
+                    dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
+                    dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
+                    dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
+                    dataGridGeral.Rows[i].Cells[3].Value = produto.DescontoAVista;
+                    dataGridGeral.Rows[i].Cells[4].Value = produto.Estoque;
+                    dataGridGeral.Rows[i].Cells[5].Value = produto.fabricante;
+                    i++;
+                }
+
+            }
+        }  
         
+        public void ListarCarrinhos(List<Carrinho> carrinho)
+        {
+            
+           
+        }
         
 
         private void dataGridCliente_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
@@ -92,7 +118,7 @@ namespace crud_teste.vieew.TelaDeVenda
                 cliente = oAlterar.consultarCliente(x);
             else if (Buscar == "colaborador")
                 colaborador = oAlterarColaborador.consultarColaborador(x);
-            else
+            else if (Buscar == "produto")
                 produto = oAlterarProduto.Consultar(x);
 
             this.Dispose();
@@ -106,15 +132,45 @@ namespace crud_teste.vieew.TelaDeVenda
             int.TryParse(CampoDePesquisa.Text, out int id);
             if (id > 0)
             {
-                dataGridGeral.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
+                if (Buscar == "cliente")
+                    ListarClientes(oAlterar.ListarCliente(CampoDePesquisa.Text, "id"));
+                else if (Buscar == "colaborador")
+                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id"));
+                else if (Buscar == "produto")
+                    ListarProdutos(oAlterarProduto.Listar(CampoDePesquisa.Text, "id"));
             }
             else
             {
-                dataGridGeral.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
+                if (Buscar == "cliente")
+                    ListarClientes(oAlterar.ListarCliente(CampoDePesquisa.Text, "nome"));
+                else if (Buscar == "colaborador")
+                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "nome"));
+                else if (Buscar == "produto")
+                    ListarProdutos(oAlterarProduto.Listar(CampoDePesquisa.Text, "nome"));
             }
         }
 
         private void ListarVendaCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridGeral_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CampoDePesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxinstrucao_TextChanged(object sender, EventArgs e)
         {
 
         }

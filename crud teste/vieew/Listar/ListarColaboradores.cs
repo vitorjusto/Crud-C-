@@ -67,5 +67,20 @@ namespace crud_teste.vieew
             else
                 dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
         }
+
+        private void CampoDePesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListarColaboradores_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void CampoDePesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
     }
 }

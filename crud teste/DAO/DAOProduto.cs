@@ -58,7 +58,7 @@ namespace crud_teste.DAO
         {
             using (con)
             {
-                var query = @"select idproduto, nomeProduto, precodevenda, descontoavista, fabricante, estoque, ativo from produto";
+                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque, ativo from produto";
                 var resultado = con.Query<ProdutoListagem>(query);
                 return resultado.ToList();
 
@@ -102,7 +102,6 @@ namespace crud_teste.DAO
                     produto.CodigoDeBarras = (string)reader["CodigoDeBarras"];
                     produto.PrecoDeCusto = float.Parse(reader["PrecoDeCusto"].ToString());
                     produto.PrecoDeVenda = float.Parse(reader["Precodevenda"].ToString());
-                    produto.DescontoAVista = float.Parse(reader["Descontoavista"].ToString());
                     produto.Estoque = (long)reader["Estoque"];
                     produto.Ativo = (bool)reader["Ativo"];
                     produto.Fabricante = (string)reader["fabricante"];

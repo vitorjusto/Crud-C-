@@ -19,7 +19,6 @@ namespace crud_teste.Validation
 
             RuleFor(x => x.PrecoDeVenda).GreaterThan(0).WithMessage("O preço da venda deve ser maior que zero");
             RuleFor(x => x.PrecoDeCusto).GreaterThan(0).WithMessage("O preco de custo deve ser maior que zero");
-            RuleFor(x => x.DescontoAVista).GreaterThanOrEqualTo(0).WithMessage("O preco de Desconto deve ser maior ou igual a zero");
             RuleFor(x => x.Estoque).GreaterThanOrEqualTo(0).WithMessage("O Estoque não pode ser vazio");
 
             RuleFor(x => x.Fabricante).NotEmpty().WithMessage("Fabricante não deve ser vazio");

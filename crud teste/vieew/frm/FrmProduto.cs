@@ -58,7 +58,6 @@ namespace crud_teste.vieew
             produto.CodigoDeBarras = CodigoDeBarras.Text;
             produto.PrecoDeVenda =float.Parse(PrecoDeVenda.Text);
             produto.PrecoDeCusto =float.Parse(PrecoDeCusto.Text);
-            produto.DescontoAVista =float.Parse(DescontoAVista.Text);
             produto.Estoque = long.Parse(Estoque.Text);
             produto.Ativo = Ativo.Checked;
             produto.Fabricante = Fabricante.Text;
@@ -98,9 +97,5 @@ namespace crud_teste.vieew
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
         }
 
-        private void DescontoAVista_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = Global.isNotFloatText(e.KeyChar, DescontoAVista.Text);
-        }
     }
 }

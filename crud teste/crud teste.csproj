@@ -73,10 +73,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\AlterarCarrinho.cs" />
     <Compile Include="controller\AlterarCliente.cs" />
     <Compile Include="controller\AlterarColaborador.cs" />
     <Compile Include="controller\AlterarProduto.cs" />
+    <Compile Include="DAO\CarrinhoDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
+    <Compile Include="Model\Carrinho.cs" />
+    <Compile Include="Model\Listagem\CarrinhoListagem.cs" />
     <Compile Include="Model\Listagem\ClienteListagem.cs" />
     <Compile Include="Model\Listagem\ColaboradorListagem.cs" />
     <Compile Include="Model\Contato.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="Model\Object Values\MyCPF.cs" />
     <Compile Include="Model\Object Values\MyTelefone.cs" />
     <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\Venda.cs" />
     <Compile Include="Validation\DadosBancariosValidation.cs" />
     <Compile Include="Validation\ProdutoValidation.cs" />
     <Compile Include="Validation\Object Values Validations\CelularValidation.cs" />
@@ -178,6 +183,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vieew\TelaDeVenda\ListarCarrinho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\TelaDeVenda\ListarCarrinho.Designer.cs">
+      <DependentUpon>ListarCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\TelaDeVenda\ListarVendaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +240,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vieew\TelaDeVenda\ListarCarrinho.resx">
+      <DependentUpon>ListarCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\ListarVendaCliente.resx">
       <DependentUpon>ListarVendaCliente.cs</DependentUpon>
     </EmbeddedResource>

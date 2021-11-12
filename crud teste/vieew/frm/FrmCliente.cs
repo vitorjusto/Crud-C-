@@ -139,6 +139,11 @@ namespace crud_teste
         {
             e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
         }
+
+        private void Numero_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

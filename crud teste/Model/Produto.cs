@@ -16,7 +16,6 @@ namespace crud_teste.Model
 
         public float PrecoDeVenda { get; set; }
 
-        public float DescontoAVista { get; set; }
 
         public float PrecoDeCusto { get; set; }
 

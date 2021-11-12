@@ -37,9 +37,9 @@ namespace crud_teste.vieew
             this.label3 = new System.Windows.Forms.Label();
             this.FormaDePagamento = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PrecoBruto = new System.Windows.Forms.TextBox();
             this.QuantidadeRestante = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.PrecoBruto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.PrecoUnitario = new System.Windows.Forms.TextBox();
@@ -55,29 +55,30 @@ namespace crud_teste.vieew
             this.label4 = new System.Windows.Forms.Label();
             this.NomeDoProduto = new System.Windows.Forms.TextBox();
             this.DescontoAVista = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labeledit = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.LimiteDeCompraaPraso = new System.Windows.Forms.TextBox();
+            this.labelLimite = new System.Windows.Forms.Label();
+            this.TotalLiquido = new System.Windows.Forms.TextBox();
+            this.TotalDesconto = new System.Windows.Forms.TextBox();
+            this.TotalBruto = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.QuantidadeTotal = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.QuantidadeUnitario = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // NomeCliente
@@ -131,19 +132,22 @@ namespace crud_teste.vieew
             this.FormaDePagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FormaDePagamento.FormattingEnabled = true;
             this.FormaDePagamento.Items.AddRange(new object[] {
-            "Masculino",
-            "Feminino",
-            "Outros"});
+            "A vista",
+            "A Prazo",
+            "Cartão De Credito",
+            "Cheque",
+            "Vale"});
             this.FormaDePagamento.Location = new System.Drawing.Point(674, 36);
             this.FormaDePagamento.Name = "FormaDePagamento";
             this.FormaDePagamento.Size = new System.Drawing.Size(100, 21);
             this.FormaDePagamento.TabIndex = 6;
+            this.FormaDePagamento.TextChanged += new System.EventHandler(this.FormaDePagamento_TextChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.PrecoBruto);
             this.groupBox1.Controls.Add(this.QuantidadeRestante);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.PrecoBruto);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.PrecoUnitario);
@@ -165,6 +169,15 @@ namespace crud_teste.vieew
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
             // 
+            // PrecoBruto
+            // 
+            this.PrecoBruto.Location = new System.Drawing.Point(471, 65);
+            this.PrecoBruto.Name = "PrecoBruto";
+            this.PrecoBruto.ReadOnly = true;
+            this.PrecoBruto.Size = new System.Drawing.Size(100, 20);
+            this.PrecoBruto.TabIndex = 26;
+            this.PrecoBruto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // QuantidadeRestante
             // 
             this.QuantidadeRestante.Location = new System.Drawing.Point(160, 158);
@@ -182,14 +195,6 @@ namespace crud_teste.vieew
             this.label20.TabIndex = 24;
             this.label20.Text = "Quantidade Restante: ";
             this.label20.Click += new System.EventHandler(this.label20_Click);
-            // 
-            // PrecoBruto
-            // 
-            this.PrecoBruto.Location = new System.Drawing.Point(471, 70);
-            this.PrecoBruto.Name = "PrecoBruto";
-            this.PrecoBruto.ReadOnly = true;
-            this.PrecoBruto.Size = new System.Drawing.Size(100, 20);
-            this.PrecoBruto.TabIndex = 9;
             // 
             // label5
             // 
@@ -242,6 +247,7 @@ namespace crud_teste.vieew
             this.button1.TabIndex = 17;
             this.button1.Text = "Adicionar no carrinho";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Quantidade
             // 
@@ -274,6 +280,7 @@ namespace crud_teste.vieew
             // 
             this.PrecoLiquido.Location = new System.Drawing.Point(471, 161);
             this.PrecoLiquido.Name = "PrecoLiquido";
+            this.PrecoLiquido.ReadOnly = true;
             this.PrecoLiquido.Size = new System.Drawing.Size(100, 20);
             this.PrecoLiquido.TabIndex = 13;
             // 
@@ -283,6 +290,8 @@ namespace crud_teste.vieew
             this.Desconto.Name = "Desconto";
             this.Desconto.Size = new System.Drawing.Size(100, 20);
             this.Desconto.TabIndex = 12;
+            this.Desconto.TextChanged += new System.EventHandler(this.Desconto_TextChanged);
+            this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
             // 
             // label6
             // 
@@ -314,60 +323,46 @@ namespace crud_teste.vieew
             // 
             // DescontoAVista
             // 
-            this.DescontoAVista.Location = new System.Drawing.Point(674, 75);
+            this.DescontoAVista.Location = new System.Drawing.Point(674, 79);
             this.DescontoAVista.Name = "DescontoAVista";
-            this.DescontoAVista.ReadOnly = true;
             this.DescontoAVista.Size = new System.Drawing.Size(100, 20);
             this.DescontoAVista.TabIndex = 16;
+            this.DescontoAVista.Visible = false;
+            this.DescontoAVista.TextChanged += new System.EventHandler(this.DescontoAVista_TextChanged);
+            this.DescontoAVista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoAVista_KeyPress);
             // 
-            // label8
+            // labeledit
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(560, 82);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Desconto a Vista:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(791, 40);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(165, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(627, 43);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Limite De Compra a Prazo:";
+            this.labeledit.AutoSize = true;
+            this.labeledit.Location = new System.Drawing.Point(560, 82);
+            this.labeledit.Name = "labeledit";
+            this.labeledit.Size = new System.Drawing.Size(91, 13);
+            this.labeledit.TabIndex = 15;
+            this.labeledit.Text = "Desconto a Vista:";
+            this.labeledit.Visible = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox12);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.textBox11);
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.LimiteDeCompraaPraso);
+            this.groupBox2.Controls.Add(this.labelLimite);
+            this.groupBox2.Controls.Add(this.TotalLiquido);
+            this.groupBox2.Controls.Add(this.TotalDesconto);
+            this.groupBox2.Controls.Add(this.TotalBruto);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.FormaDePagamento);
             this.groupBox2.Controls.Add(this.DescontoAVista);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.labeledit);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.QuantidadeTotal);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.QuantidadeUnitario);
             this.groupBox2.Location = new System.Drawing.Point(27, 372);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1002, 163);
@@ -392,46 +387,50 @@ namespace crud_teste.vieew
             this.button2.TabIndex = 14;
             this.button2.Text = "Cadastrar Pedido";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox12
+            // LimiteDeCompraaPraso
             // 
-            this.textBox12.Location = new System.Drawing.Point(674, 126);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 13;
+            this.LimiteDeCompraaPraso.Location = new System.Drawing.Point(674, 126);
+            this.LimiteDeCompraaPraso.Name = "LimiteDeCompraaPraso";
+            this.LimiteDeCompraaPraso.ReadOnly = true;
+            this.LimiteDeCompraaPraso.Size = new System.Drawing.Size(100, 20);
+            this.LimiteDeCompraaPraso.TabIndex = 13;
+            this.LimiteDeCompraaPraso.Visible = false;
             // 
-            // label19
+            // labelLimite
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(560, 133);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(83, 13);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Meses a Prazo: ";
+            this.labelLimite.AutoSize = true;
+            this.labelLimite.Location = new System.Drawing.Point(522, 133);
+            this.labelLimite.Name = "labelLimite";
+            this.labelLimite.Size = new System.Drawing.Size(132, 13);
+            this.labelLimite.TabIndex = 12;
+            this.labelLimite.Text = "Limite De Compra a Prazo:";
+            this.labelLimite.Visible = false;
             // 
-            // textBox11
+            // TotalLiquido
             // 
-            this.textBox11.Location = new System.Drawing.Point(415, 127);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 11;
+            this.TotalLiquido.Location = new System.Drawing.Point(415, 127);
+            this.TotalLiquido.Name = "TotalLiquido";
+            this.TotalLiquido.ReadOnly = true;
+            this.TotalLiquido.Size = new System.Drawing.Size(100, 20);
+            this.TotalLiquido.TabIndex = 11;
             // 
-            // textBox10
+            // TotalDesconto
             // 
-            this.textBox10.Location = new System.Drawing.Point(415, 79);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 10;
+            this.TotalDesconto.Location = new System.Drawing.Point(415, 79);
+            this.TotalDesconto.Name = "TotalDesconto";
+            this.TotalDesconto.ReadOnly = true;
+            this.TotalDesconto.Size = new System.Drawing.Size(100, 20);
+            this.TotalDesconto.TabIndex = 10;
             // 
-            // textBox9
+            // TotalBruto
             // 
-            this.textBox9.Location = new System.Drawing.Point(415, 37);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 9;
+            this.TotalBruto.Location = new System.Drawing.Point(415, 37);
+            this.TotalBruto.Name = "TotalBruto";
+            this.TotalBruto.ReadOnly = true;
+            this.TotalBruto.Size = new System.Drawing.Size(100, 20);
+            this.TotalBruto.TabIndex = 9;
             // 
             // label18
             // 
@@ -476,14 +475,15 @@ namespace crud_teste.vieew
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 4;
+            this.textBox8.Click += new System.EventHandler(this.textBox8_Click);
             // 
-            // textBox7
+            // QuantidadeTotal
             // 
-            this.textBox7.Location = new System.Drawing.Point(160, 79);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 3;
+            this.QuantidadeTotal.Location = new System.Drawing.Point(160, 79);
+            this.QuantidadeTotal.Name = "QuantidadeTotal";
+            this.QuantidadeTotal.ReadOnly = true;
+            this.QuantidadeTotal.Size = new System.Drawing.Size(100, 20);
+            this.QuantidadeTotal.TabIndex = 3;
             // 
             // label14
             // 
@@ -503,32 +503,49 @@ namespace crud_teste.vieew
             this.label13.TabIndex = 1;
             this.label13.Text = "Quantidade unitário:";
             // 
-            // textBox6
+            // QuantidadeUnitario
             // 
-            this.textBox6.Location = new System.Drawing.Point(160, 34);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 0;
+            this.QuantidadeUnitario.Location = new System.Drawing.Point(160, 34);
+            this.QuantidadeUnitario.Name = "QuantidadeUnitario";
+            this.QuantidadeUnitario.ReadOnly = true;
+            this.QuantidadeUnitario.Size = new System.Drawing.Size(100, 20);
+            this.QuantidadeUnitario.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paginaInicialToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // paginaInicialToolStripMenuItem
+            // 
+            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
+            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
+            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
+            // 
             // CadastroDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 547);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.NomeDoColaborador);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NomeCliente);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "CadastroDePedidos";
             this.Text = "CadastroDePedidos";
             this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
@@ -536,6 +553,8 @@ namespace crud_teste.vieew
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,42 +571,42 @@ namespace crud_teste.vieew
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox DescontoAVista;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labeledit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PrecoLiquido;
         private System.Windows.Forms.TextBox Desconto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox PrecoBruto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox NomeDoProduto;
         private System.Windows.Forms.TextBox QuantidadeEmEstoque;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox Quantidade;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox PrecoUnitario;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox LimiteDeCompraaPraso;
+        private System.Windows.Forms.Label labelLimite;
+        private System.Windows.Forms.TextBox TotalLiquido;
+        private System.Windows.Forms.TextBox TotalDesconto;
+        private System.Windows.Forms.TextBox TotalBruto;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox QuantidadeTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox QuantidadeUnitario;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox QuantidadeRestante;
+        private System.Windows.Forms.TextBox PrecoBruto;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
     }
 }
