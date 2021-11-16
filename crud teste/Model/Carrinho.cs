@@ -11,6 +11,11 @@ namespace crud_teste.Model
         public int IdCarrinho { get; set; }
         public float Desconto{ get; set; }
 
+
+        public float precoDeCusto { get; set; }
+
+        public float precoDeVenda { get; set; }
+
         public int quantidade { get; set; }
         public float PrecoBruto { get; set; }
         public float PrecoLiquido { get; set; }

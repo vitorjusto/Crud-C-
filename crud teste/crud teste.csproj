@@ -77,14 +77,17 @@
     <Compile Include="controller\AlterarCliente.cs" />
     <Compile Include="controller\AlterarColaborador.cs" />
     <Compile Include="controller\AlterarProduto.cs" />
+    <Compile Include="controller\AlterarVenda.cs" />
     <Compile Include="DAO\CarrinhoDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
+    <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Model\Carrinho.cs" />
     <Compile Include="Model\Listagem\CarrinhoListagem.cs" />
     <Compile Include="Model\Listagem\ClienteListagem.cs" />
     <Compile Include="Model\Listagem\ColaboradorListagem.cs" />
     <Compile Include="Model\Contato.cs" />
     <Compile Include="Model\DadosBancarioscs.cs" />
+    <Compile Include="Model\Listagem\PedidoListagemProduto.cs" />
     <Compile Include="Model\Listagem\ProdutoListagem.cs" />
     <Compile Include="Model\Object Values\MyCelular.cs" />
     <Compile Include="Model\Object Values\MyCEP.cs" />
@@ -103,6 +106,12 @@
     <Compile Include="Validation\EnderecoValidation.cs" />
     <Compile Include="Validation\Object Values Validations\TelefoneValidation.cs" />
     <Compile Include="Validation\PessoaValidation.cs" />
+    <Compile Include="vieew\ListaDePedidos\ListagemDePedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\ListaDePedidos\ListagemDePedidos.Designer.cs">
+      <DependentUpon>ListagemDePedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\TelaDeVenda\CadastroDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +204,9 @@
     <Compile Include="vieew\TelaDeVenda\ListarVendaCliente.Designer.cs">
       <DependentUpon>ListarVendaCliente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vieew\ListaDePedidos\ListagemDePedidos.resx">
+      <DependentUpon>ListagemDePedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\CadastroDePedidos.resx">
       <DependentUpon>CadastroDePedidos.cs</DependentUpon>
     </EmbeddedResource>

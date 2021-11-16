@@ -176,7 +176,6 @@ namespace crud_teste.vieew
             this.PrecoBruto.ReadOnly = true;
             this.PrecoBruto.Size = new System.Drawing.Size(100, 20);
             this.PrecoBruto.TabIndex = 26;
-            this.PrecoBruto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // QuantidadeRestante
             // 
@@ -378,6 +377,7 @@ namespace crud_teste.vieew
             this.button3.TabIndex = 15;
             this.button3.Text = "Cancelar pedido";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -415,6 +415,7 @@ namespace crud_teste.vieew
             this.TotalLiquido.ReadOnly = true;
             this.TotalLiquido.Size = new System.Drawing.Size(100, 20);
             this.TotalLiquido.TabIndex = 11;
+            this.TotalLiquido.TextChanged += new System.EventHandler(this.TotalLiquido_TextChanged);
             // 
             // TotalDesconto
             // 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using CRUD_teste.Model;
 using crud_teste.vieew;
+using crud_teste.vieew.ListaDePedidos;
 
 namespace crud_teste
 {
@@ -109,6 +110,12 @@ namespace crud_teste
         {
             this.Hide();
             new CadastroDePedidos().Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListagemDePedidos().Show();
         }
     }
 }

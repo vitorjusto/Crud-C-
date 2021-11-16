@@ -11,9 +11,9 @@ namespace crud_teste.controller
     public class AlterarCarrinho
     {
         public CarrinhoDAO stmt = new CarrinhoDAO();
-        public int Salvar(Carrinho carrinho)
+        public void Salvar(Carrinho carrinho)
         {
-            return  stmt.Salvar(carrinho);
+            stmt.Salvar(carrinho);
             
         }
     }

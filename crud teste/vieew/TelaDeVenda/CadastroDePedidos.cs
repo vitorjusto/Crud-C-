@@ -17,8 +17,9 @@ namespace crud_teste.vieew
 {
     public partial class CadastroDePedidos : Form
     {
-        public List<CarrinhoListagem> carrinhos = new List<CarrinhoListagem>();
-
+        public List<CarrinhoListagem> carrinhosL = new List<CarrinhoListagem>();
+        public List<Carrinho> carrinhos = new List<Carrinho>();
+        public Carrinho carrinho = new Carrinho();
 
 
         public Cliente cliente = new Cliente();
@@ -52,9 +53,10 @@ namespace crud_teste.vieew
         }
         private void textBox8_Click(object sender, EventArgs e)
         {
-            var listar = new ListarCarrinho(carrinhos);
+            var listar = new ListarCarrinho(carrinhosL, carrinhos);
             listar.ShowDialog();
 
+            carrinhosL = listar.carrinhosL;
             carrinhos = listar.carrinhos;
 
             AdicionarNaVenda();
@@ -98,55 +100,62 @@ namespace crud_teste.vieew
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (Quantidade.Text != "" && QuantidadeEmEstoque.Text != "")
-            {
-                QuantidadeRestante.Text = (long.Parse(QuantidadeEmEstoque.Text) - long.Parse(Quantidade.Text)).ToString();
-                PrecoBruto.Text = (produto.PrecoDeVenda * long.Parse(Quantidade.Text)).ToString();
-                PrecoLiquido.Text = (float.Parse(PrecoBruto.Text) - float.Parse(Desconto.Text == "" ? "0" : Desconto.Text)).ToString();
-            }
-            else
-            {
 
-                QuantidadeRestante.Text = "";
-                PrecoBruto.Text = "";
-                PrecoLiquido.Text = "";
-            }
+
+            PreencherValoresCarrinhos();
+            
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public void PreencherValoresCarrinhos()
         {
+            carrinho.quantidade = int.Parse(Quantidade.Text == "" ? "0" : Quantidade.Text);
 
+            QuantidadeRestante.Text = (long.Parse(QuantidadeEmEstoque.Text == ""? "0": QuantidadeEmEstoque.Text) - carrinho.quantidade).ToString();
+            PrecoBruto.Text = (produto.PrecoDeVenda * carrinho.quantidade).ToString();
+            carrinho.Desconto = float.Parse(Desconto.Text == "" ? "0" : Desconto.Text);
+
+            PrecoLiquido.Text = (float.Parse(PrecoBruto.Text) - carrinho.Desconto).ToString();
         }
 
         private void Desconto_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Global.isNotFloatText(e.KeyChar, Desconto.Text);
 
-
-            PrecoLiquido.Text = (float.Parse(PrecoBruto.Text) - float.Parse(Desconto.Text == "" ? "0" : Desconto.Text)).ToString();
+            
         }
 
         private void Desconto_TextChanged(object sender, EventArgs e)
         {
+            PreencherValoresCarrinhos();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CarrinhoListagem carrinho = new CarrinhoListagem();
+            CarrinhoListagem carrinhoL = new CarrinhoListagem();
+            Carrinho carrinho = new Carrinho();
             var oAlterar = new AlterarCarrinho();
 
             carrinho.PrecoBruto = float.Parse(PrecoBruto.Text);
-            carrinho.Desconto = int.Parse(Desconto.Text);
+            carrinho.Desconto = int.Parse(Desconto.Text == ""? "0" : Desconto.Text );
             carrinho.PrecoLiquido = float.Parse(PrecoLiquido.Text);
             carrinho.idProduto = produto.IdProduto;
             carrinho.quantidade = int.Parse(Quantidade.Text);
-            carrinho.NomeProduto = produto.NomeDoProduto;
-            carrinho.PrecoDeVenda = produto.PrecoDeVenda;
+            carrinho.precoDeCusto = produto.PrecoDeCusto;
+            carrinho.precoDeVenda = produto.PrecoDeVenda;
+
+
+            carrinhoL.PrecoBruto = float.Parse(PrecoBruto.Text);
+            carrinhoL.Desconto = int.Parse(Desconto.Text == "" ? "0" : Desconto.Text);
+            carrinhoL.PrecoLiquido = float.Parse(PrecoLiquido.Text);
+            carrinhoL.idProduto = produto.IdProduto;
+            carrinhoL.quantidade = int.Parse(Quantidade.Text);
+            carrinhoL.NomeProduto = produto.NomeDoProduto;
+            carrinhoL.PrecoDeVenda = produto.PrecoDeVenda;
 
             try
             {
                 carrinhos.Add(carrinho);
-
+                carrinhosL.Add(carrinhoL);
                 LimparGroupBoxProduto();
 
 
@@ -174,6 +183,8 @@ namespace crud_teste.vieew
             PrecoLiquido.Text = "";
             PrecoUnitario.Text = "";
             Desconto.Text = "";
+
+            produto = new Produto();
         }
 
 
@@ -184,7 +195,7 @@ namespace crud_teste.vieew
             QuantidadeTotal.Text = carrinhos.Sum(x => x.quantidade).ToString();
 
             TotalBruto.Text = carrinhos.Sum(x => x.PrecoBruto).ToString();
-            TotalLiquido.Text = carrinhos.Sum(x => x.PrecoLiquido).ToString();
+            TotalLiquido.Text = carrinhos.Sum(x => x.PrecoLiquido - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != ""? DescontoAVista.Text: "0")).ToString();
             TotalDesconto.Text = carrinhos.Sum(x => x.Desconto).ToString();
 
         }
@@ -212,6 +223,7 @@ namespace crud_teste.vieew
 
                 labelLimite.Visible= true;
                 LimiteDeCompraaPraso.Visible = true;
+                LimiteDeCompraaPraso.Text = cliente.LimiteDeCompra.ToString();
             }else
             {
                 labeledit.Visible = false;
@@ -221,6 +233,7 @@ namespace crud_teste.vieew
                 labelLimite.Visible = false;
                 LimiteDeCompraaPraso.Visible = false;
                 DescontoAVista.Text = "";
+                LimiteDeCompraaPraso.Text = "";
             }
         }
 
@@ -236,6 +249,44 @@ namespace crud_teste.vieew
             Venda venda = new Venda();
             venda = receberCampos();
 
+            try
+            {
+                if(MessageBox.Show("Deseja Mesmo Efetuar Venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    AlterarVenda alterarVenda = new AlterarVenda();
+                    alterarVenda.cadastrar(venda, carrinhos);
+                    MessageBox.Show("Venda Efetuada com sucesso!");
+                    LimparVenda();
+                }
+
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void LimparVenda()
+        {
+             carrinhosL = new List<CarrinhoListagem>();
+             carrinhos = new List<Carrinho>();
+             carrinho = new Carrinho();
+
+
+            cliente = new Cliente();
+            colaborador = new Colaborador();
+
+            NomeCliente.Text = "";
+            NomeDoColaborador.Text = "";
+
+            QuantidadeUnitario.Text = "";
+            QuantidadeTotal.Text = "";
+            TotalBruto.Text = "";
+            TotalDesconto.Text = "";
+            TotalLiquido.Text = "";
+
+            FormaDePagamento.Text = "";
+            LimparGroupBoxProduto();
 
         }
 
@@ -282,6 +333,18 @@ namespace crud_teste.vieew
 
         private void DescontoAVista_TextChanged(object sender, EventArgs e)
         {
+            AdicionarNaVenda();
+            
+        }
+
+        private void TotalLiquido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimparVenda();
         }
     }
 }

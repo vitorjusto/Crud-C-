@@ -79,7 +79,6 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridGeral.Columns.Add("IdProduto", "Id do Produto");
             dataGridGeral.Columns.Add("Nome", "nome");
             dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
-            dataGridGeral.Columns.Add("Desconto", "Desconto a Vista");
             dataGridGeral.Columns.Add("Estoque", "Estoque");
             dataGridGeral.Columns.Add("Fabricante", "Fabricante");
 
@@ -93,9 +92,8 @@ namespace crud_teste.vieew.TelaDeVenda
                     dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
                     dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
                     dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
-                    dataGridGeral.Rows[i].Cells[3].Value = produto.DescontoAVista;
-                    dataGridGeral.Rows[i].Cells[4].Value = produto.Estoque;
-                    dataGridGeral.Rows[i].Cells[5].Value = produto.fabricante;
+                    dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
+                    dataGridGeral.Rows[i].Cells[4].Value = produto.fabricante;
                     i++;
                 }
 

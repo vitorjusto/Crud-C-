@@ -16,11 +16,13 @@ namespace crud_teste.vieew.TelaDeVenda
     public partial class ListarCarrinho : Form
     {
         public AlterarCarrinho oAlterar = new AlterarCarrinho();
-        public List<CarrinhoListagem> carrinhos = new List<CarrinhoListagem>();
-        public ListarCarrinho(List<CarrinhoListagem> carrinhosparam)
+        public List<CarrinhoListagem> carrinhosL = new List<CarrinhoListagem>();
+        public List<Carrinho> carrinhos = new List<Carrinho>();
+        public ListarCarrinho(List<CarrinhoListagem> carrinhosLparam, List<Carrinho> carrinhosparam)
         {
             InitializeComponent();
             this.carrinhos = carrinhosparam;
+            this.carrinhosL = carrinhosLparam;
             DataGridViewButtonColumn BotaoExcluir = new DataGridViewButtonColumn();
             BotaoExcluir.Name = "Remover";
             BotaoExcluir.Text = "Remover";
@@ -30,7 +32,7 @@ namespace crud_teste.vieew.TelaDeVenda
 
             var i = 0;
 
-            foreach (var carrinho in carrinhos)
+            foreach (var carrinho in carrinhosL)
             {
                 dataGridCarrinho.Rows.Add();
                 dataGridCarrinho.Rows[i].Cells[0].Value = carrinho.NomeProduto;
@@ -69,6 +71,7 @@ namespace crud_teste.vieew.TelaDeVenda
                 {
                     dataGridCarrinho.Rows.RemoveAt(e.RowIndex);
                     carrinhos.RemoveRange(e.RowIndex, 1);
+                    carrinhosL.RemoveRange(e.RowIndex, 1);
                 }
             }
         }

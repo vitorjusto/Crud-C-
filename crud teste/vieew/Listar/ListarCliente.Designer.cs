@@ -44,7 +44,7 @@ namespace crud_teste.vieew
             // 
             this.dataGridCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCliente.Location = new System.Drawing.Point(12, 128);
+            this.dataGridCliente.Location = new System.Drawing.Point(12, 119);
             this.dataGridCliente.MultiSelect = false;
             this.dataGridCliente.Name = "dataGridCliente";
             this.dataGridCliente.ReadOnly = true;

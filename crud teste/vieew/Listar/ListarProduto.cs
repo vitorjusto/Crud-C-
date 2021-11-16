@@ -35,9 +35,8 @@ namespace crud_teste.vieew
                 dataGridProduto.Rows[i].Cells[0].Value = produto.IdProduto;
                 dataGridProduto.Rows[i].Cells[1].Value = produto.nomeProduto;
                 dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda ;
-                dataGridProduto.Rows[i].Cells[3].Value = produto.DescontoAVista;
-                dataGridProduto.Rows[i].Cells[4].Value = produto.Estoque;
-                dataGridProduto.Rows[i].Cells[5].Value = produto.fabricante;
+                dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
+                dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
 
                 i++;
             }
