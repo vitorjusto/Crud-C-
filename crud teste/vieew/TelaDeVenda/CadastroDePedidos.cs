@@ -1,6 +1,7 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
+using crud_teste.Validation;
 using crud_teste.vieew.TelaDeVenda;
 using CRUD_teste.Model;
 using System;
@@ -135,35 +136,42 @@ namespace crud_teste.vieew
             Carrinho carrinho = new Carrinho();
             var oAlterar = new AlterarCarrinho();
 
-            carrinho.PrecoBruto = float.Parse(PrecoBruto.Text);
-            carrinho.Desconto = int.Parse(Desconto.Text == ""? "0" : Desconto.Text );
-            carrinho.PrecoLiquido = float.Parse(PrecoLiquido.Text);
+            carrinho.PrecoBruto = float.Parse(PrecoBruto.Text == "" ? "0" : PrecoBruto.Text);
+            carrinho.Desconto = int.Parse(Desconto.Text == "" ? "0" : Desconto.Text);
+            carrinho.PrecoLiquido = float.Parse(PrecoLiquido.Text == "" ? "0" : PrecoLiquido.Text);
             carrinho.idProduto = produto.IdProduto;
-            carrinho.quantidade = int.Parse(Quantidade.Text);
+            carrinho.quantidade = int.Parse(Quantidade.Text == "" ? "0" : Quantidade.Text);
             carrinho.precoDeCusto = produto.PrecoDeCusto;
             carrinho.precoDeVenda = produto.PrecoDeVenda;
+            carrinho.quantidadeRestante = Convert.ToInt32(produto.Estoque) - carrinho.quantidade;
 
-
-            carrinhoL.PrecoBruto = float.Parse(PrecoBruto.Text);
-            carrinhoL.Desconto = int.Parse(Desconto.Text == "" ? "0" : Desconto.Text);
-            carrinhoL.PrecoLiquido = float.Parse(PrecoLiquido.Text);
+            carrinhoL.PrecoBruto = carrinho.PrecoBruto;
+            carrinhoL.Desconto = carrinho.Desconto;
+            carrinhoL.PrecoLiquido = carrinho.PrecoLiquido;
             carrinhoL.idProduto = produto.IdProduto;
-            carrinhoL.quantidade = int.Parse(Quantidade.Text);
+            carrinhoL.quantidade = carrinho.quantidade;
             carrinhoL.NomeProduto = produto.NomeDoProduto;
             carrinhoL.PrecoDeVenda = produto.PrecoDeVenda;
 
-            try
-            {
+            var validar = new CarrinhoValidation();
+
+
+            var validares = validar.Validate(carrinho);
+
+            if (validares.IsValid)
+            { 
                 carrinhos.Add(carrinho);
                 carrinhosL.Add(carrinhoL);
+
+
                 LimparGroupBoxProduto();
 
 
                 AdicionarNaVenda();
-            }
-            catch (Exception ex)
+
+            }else
             {
-                MessageBox.Show(ex.Message, "Atenção");
+                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
 
 

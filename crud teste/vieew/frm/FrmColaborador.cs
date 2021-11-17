@@ -141,9 +141,9 @@ namespace crud_teste
 
 
             colaborador.DadosBancarios.Banco = Banco.Text;
-            colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text);
-            colaborador.DadosBancarios.Conta = int.Parse(Conta.Text);
-            colaborador.DadosBancarios.Digito = int.Parse(Digito.Text);
+            colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text == ""? "0": Agencia.Text);
+            colaborador.DadosBancarios.Conta = int.Parse(Conta.Text == ""? "0" : Conta.Text);
+            colaborador.DadosBancarios.Digito = int.Parse(Digito.Text == "" ? "0" : Digito.Text);
 
 
 

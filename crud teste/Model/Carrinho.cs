@@ -22,6 +22,7 @@ namespace crud_teste.Model
         public int idVenda { get; set; }
         public int idProduto { get; set; }
 
+        public int quantidadeRestante { get; set; }
 
     }
 }

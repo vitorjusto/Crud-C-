@@ -60,13 +60,12 @@ namespace crud_teste
             this.Email = new System.Windows.Forms.TextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.Dados = new System.Windows.Forms.TextBox();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Salario = new System.Windows.Forms.TextBox();
             this.Porcentagem = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
@@ -80,7 +79,6 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
-            this.Salario = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -374,22 +372,6 @@ namespace crud_teste
             this.label17.TabIndex = 36;
             this.label17.Text = "CPF:";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(429, 89);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(86, 13);
-            this.label18.TabIndex = 37;
-            this.label18.Text = "Conta Bancaria: ";
-            // 
-            // Dados
-            // 
-            this.Dados.Location = new System.Drawing.Point(527, 86);
-            this.Dados.Name = "Dados";
-            this.Dados.Size = new System.Drawing.Size(202, 20);
-            this.Dados.TabIndex = 38;
-            // 
             // menuStrip2
             // 
             this.menuStrip2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -437,8 +419,6 @@ namespace crud_teste
             this.groupBox1.Controls.Add(this.Sobrenome);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.Nome);
-            this.groupBox1.Controls.Add(this.Dados);
-            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.Sexo);
@@ -454,6 +434,14 @@ namespace crud_teste
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
+            // 
+            // Salario
+            // 
+            this.Salario.Location = new System.Drawing.Point(60, 86);
+            this.Salario.Name = "Salario";
+            this.Salario.Size = new System.Drawing.Size(100, 20);
+            this.Salario.TabIndex = 45;
+            this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
             // 
             // Porcentagem
             // 
@@ -593,14 +581,6 @@ namespace crud_teste
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
             // 
-            // Salario
-            // 
-            this.Salario.Location = new System.Drawing.Point(60, 86);
-            this.Salario.Name = "Salario";
-            this.Salario.Size = new System.Drawing.Size(100, 20);
-            this.Salario.TabIndex = 45;
-            this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
-            // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -664,8 +644,6 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox Dados;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
         private System.Windows.Forms.Button button1;

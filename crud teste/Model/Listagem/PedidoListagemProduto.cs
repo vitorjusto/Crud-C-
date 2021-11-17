@@ -13,15 +13,37 @@ namespace crud_teste.Model.Listagem
 
         public Venda venda = new Venda();
 
-        private string nomeColaborador { get; set; }
+        public string nomeColaborador { get; set; }
 
-        private string SobrenomeColaborador { get; set; }
+        public string SobrenomeColaborador { get; set; }
 
 
-        private string nomeCliente { get; set; }
-        
-        private string sobrenomeCliente { get; set; }
+        public   string nomeCliente { get; set; }
 
+        public string sobrenomeCliente { get; set; }
+
+
+        public float TotalGasto()
+        {
+            float total = 0;
+            foreach(var carrinho in carrinhos)
+            {
+                total += carrinho.precoDeCusto;
+            }
+
+            return total;
+        }
+
+        public float TotalReceita()
+        {
+            float total = 0;
+            foreach(var carrinho in carrinhos)
+            {
+                total += carrinho.precoDeVenda;
+            }
+
+            return total;
+        }
         public string NomeCompletoCliente()
         {
             return nomeCliente + sobrenomeCliente;

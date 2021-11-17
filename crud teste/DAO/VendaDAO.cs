@@ -22,21 +22,29 @@ namespace crud_teste.DAO
 
         public void cadastrar(Venda venda, List<Carrinho> carrinhos)
         {
+
+
+            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista) OUTPUT INSERTED.idVenda Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
+            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
+            var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             con.Open();
             var tran = con.BeginTransaction();
             try
             {
                 
-
-                var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista) OUTPUT INSERTED.idVenda Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
-
                 var idVenda = int.Parse(con.ExecuteScalar(query, venda, tran).ToString());
-                query = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
                 
                 foreach (var carrinho in carrinhos)
                 {
                     carrinho.idVenda = idVenda;
-                    con.Execute(query, carrinho, tran);
+                    con.Execute(querycarrinho, carrinho, tran);
+                    con.Execute(queryproduto, new
+                    {
+                        Quantidade = carrinho.quantidade,
+                        IdProduto = carrinho.idProduto,
+
+                    }, tran);
+
                 }
                 tran.Commit();
                 con.Close();
@@ -52,36 +60,98 @@ namespace crud_teste.DAO
         public List<PedidoListagem> ListarPedidos()
         {
             List<PedidoListagem> pedidos = new List<PedidoListagem>();
-            con.Open();
+
             try
             {
 
                 var query = @"select idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
-                            v.idCliente, v.idColaborador, DescontoAVista, P.Nome, P.Sobrenome, P2.Nome, P2.Sobrenome from Venda v
+                            v.idCliente, v.idColaborador, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
+                            P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador'
+                            from Venda v
                             Left outer join cliente Cl on Cl.idCliente = v.idCliente Left outer join pessoa P on Cl.IdPessoa = P.idPessoa
                             Left outer join Colaborador Co on Co.idColaborador = v.idColaborador Left outer join pessoa P2 on Co.IdPessoa = P2.idPessoa";
-                
-                
 
-                var resultado = con.ExecuteReader(query);
-                resultado.Read();
 
-                using (resultado)
+
+                con.Open();
+                var resultados = con.Query<dynamic>(query);
+                con.Close();
+
+
+                var listaid = new List<int>();
+                
+                foreach(var resultado in resultados)
                 {
-                    var i = 0;
-                    var lista = true;
+                    PedidoListagem pedido = new PedidoListagem();
+                    pedido.venda.IdVenda = resultado.idVenda;
+                    pedido.venda.TotalBruto = (float)resultado.TotalBruto;
+                    pedido.venda.TotalDeDesconto = (float)resultado.TotalDeDesconto;
+                    pedido.venda.TotalLiquido = (float)resultado.totalLiquido;
+                    pedido.venda.MesesAPrazo = (int)resultado.mesesaprazo;
+                    pedido.venda.QuantidadeDeTotal = (int)resultado.quantidadetotal;
+                    pedido.venda.TipoDeVenda = resultado.tipodevenda;
+                    pedido.venda.IdCliente = (int)resultado.idCliente;
+                    pedido.venda.IdColaborador = resultado.idColaborador;
+                    pedido.venda.DescontoAVIsta = (float)resultado.DescontoAVista;
+                    pedido.nomeCliente = resultado.NomeCliente;
+                    pedido.sobrenomeCliente = resultado.sobrenomeCliente;
+                    pedido.nomeColaborador = resultado.NomeColaborador;
+                    pedido.SobrenomeColaborador = resultado.sobrenomeColaborador;
 
-                    while (lista)
-                    {
-                        pedidos.Add(new PedidoListagem());
-                        pedidos[i].venda.IdVenda = (int)resultado["idVenda"];
-                        resultado.NextResult();
-                    }
+                   
+
+
+
+
+
+                    pedidos.Add(pedido);
+                    listaid.Add(pedido.venda.IdVenda);
+
                 }
 
-                    con.Close();
-                //return resultado.ToList();
-                return new List<PedidoListagem>();
+
+
+                query = "select * from Carrinho where idVenda in @listaid";
+
+                con.Open();
+                resultados = con.Query<dynamic>(query, new
+                {
+                    listaid = listaid.ToArray()
+                }
+                );
+                
+                con.Close();
+
+                var index = 0;
+
+                while(index < pedidos.Count())
+                {
+                    foreach(var resultado in resultados)
+                    {
+                        if(resultado.idVenda == pedidos[index].venda.IdVenda)
+                        {
+
+                            Carrinho carrinho = new Carrinho();
+                            carrinho.Desconto = (float)resultado.Desconto;
+                            carrinho.quantidade = (int)resultado.Quantidade;
+                            carrinho.PrecoBruto = (float)resultado.precobruto;
+                            carrinho.PrecoLiquido = (float)resultado.precoliquido;
+                            carrinho.idProduto = (int)resultado.idProduto;
+                            carrinho.idVenda = (int)resultado.idVenda;
+                            carrinho.precoDeCusto = (float)resultado.PrecoDeCusto;
+                            carrinho.precoDeVenda = (float)resultado.PrecoDeVenda;
+                            carrinho.IdCarrinho = (int)resultado.IdCarrinho;
+                            pedidos[index].carrinhos.Add(carrinho);
+                        }
+
+                        
+                    }
+                    index++;
+                }
+
+
+
+                return pedidos;
             }
             catch (Exception ex)
             {
