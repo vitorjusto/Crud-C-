@@ -212,6 +212,7 @@ namespace crud_teste.vieew
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmProduto";
             this.Text = "FrmProduto";
+            this.Load += new System.EventHandler(this.FrmProduto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

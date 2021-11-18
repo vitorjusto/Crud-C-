@@ -36,11 +36,22 @@ namespace crud_teste.DAO
                 {
 
 
-                    var query = @"Insert into produto(CodigoDeBarras, NomeProduto, PrecoDeVenda, DescontoAVista, PrecoDeCusto, Estoque, Ativo, Fabricante)
+                    var query = @"Insert into produto(CodigoDeBarras, NomeProduto, PrecoDeVenda, PrecoDeCusto, Estoque, Ativo, Fabricante)
                                     OUTPUT INSERTED.idProduto
-                                    Values(@CodigoDeBarras, @NomeDoProduto, @PrecoDeVenda, @DescontoAVista, @PrecoDeCusto, @Estoque, @Ativo, @Fabricante)";
+                                    Values(@CodigoDeBarras, @NomeDoProduto, @PrecoDeVenda, @PrecoDeCusto, @Estoque, @Ativo, @Fabricante)";
 
-                    var IdProduto = int.Parse(con.ExecuteScalar(query, produto).ToString());
+                    var IdProduto = int.Parse(con.ExecuteScalar(query, new
+                    {
+                        CodigoDeBarras = produto.CodigoDeBarras,
+                        NomeDoProduto = produto.NomeDoProduto,
+                        PrecoDeVenda = produto.PrecoDeVenda.GetAsDouble(),
+                        PrecoDeCusto = produto.PrecoDeCusto.GetAsDouble(),
+                        Estoque = produto.Estoque,
+                        Ativo = produto.Ativo,
+                        Fabricante = produto.Fabricante,
+
+
+                    }).ToString()) ; ;
 
                     con.Close();
                     return IdProduto;
@@ -100,8 +111,8 @@ namespace crud_teste.DAO
                 {
                     produto.NomeDoProduto = (string)reader["NomeProduto"];
                     produto.CodigoDeBarras = (string)reader["CodigoDeBarras"];
-                    produto.PrecoDeCusto = float.Parse(reader["PrecoDeCusto"].ToString());
-                    produto.PrecoDeVenda = float.Parse(reader["Precodevenda"].ToString());
+                    produto.PrecoDeCusto.setFromDouble(double.Parse(reader["PrecoDeCusto"].ToString()));
+                    produto.PrecoDeVenda.setFromDouble(double.Parse(reader["Precodevenda"].ToString()));
                     produto.Estoque = (long)reader["Estoque"];
                     produto.Ativo = (bool)reader["Ativo"];
                     produto.Fabricante = (string)reader["fabricante"];
@@ -125,7 +136,18 @@ namespace crud_teste.DAO
 
                     var query = @"update Produto set NomeProduto = @NomeDoProduto, CodigoDeBarras = @CodigoDeBarras, DescontoAVista = @DescontoAVista, precodecusto = @PrecoDeCusto, Estoque = @Estoque, Fabricante= @Fabricante, Ativo = @Ativo where idProduto = @IdProduto";
 
-                    con.Execute(query, produto);
+                    con.Execute(query, new
+                    {
+                        CodigoDeBarras = produto.CodigoDeBarras,
+                        NomeDoProduto = produto.NomeDoProduto,
+                        PrecoDeVenda = produto.PrecoDeVenda.GetAsDouble(),
+                        PrecoDeCusto = produto.PrecoDeCusto.GetAsDouble(),
+                        Estoque = produto.Estoque,
+                        Ativo = produto.Ativo,
+                        Fabricante = produto.Fabricante,
+
+
+                    });
 
                     con.Close();
 

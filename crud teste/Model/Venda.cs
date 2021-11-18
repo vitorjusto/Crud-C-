@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_teste.Model.Object_Values;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace crud_teste.Model
     public class Venda
     {
         public int IdVenda { get; set; }
-        public float TotalBruto{ get; set; }
-        public float TotalDeDesconto{ get; set; }
-        public float TotalLiquido{ get; set; }
+        public MyDinheiro TotalBruto = new MyDinheiro();
+        public MyDinheiro TotalDeDesconto = new MyDinheiro();
+        public MyDinheiro TotalLiquido = new MyDinheiro();
         public int MesesAPrazo{ get; set; }
         public int QuantidadeDeTotal{ get; set; }
         public int QuantidadeUnitario{ get; set; }

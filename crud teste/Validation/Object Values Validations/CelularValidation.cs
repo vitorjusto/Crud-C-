@@ -13,9 +13,9 @@ namespace crud_teste.Validation.Object_Values_Validations
         public CelularValidation()
         {
 
-            RuleFor(x => x.DDI).NotEmpty().Matches(@"\+[0-9]{2}").WithMessage("DDI inválida");
+            RuleFor(x => x.RetornarDDIComFormatacao()).NotEmpty().Matches(@"\+[0-9]{2}").WithMessage("DDI inválida");
 
-            RuleFor(x => x.Celular).NotEmpty().Matches(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").WithMessage("Celular inválida");
+            RuleFor(x => x.RetornarCelularComFormatacao()).NotEmpty().Matches(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").WithMessage("Celular inválida");
         }
     }
 }

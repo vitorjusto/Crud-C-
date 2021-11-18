@@ -17,7 +17,7 @@ namespace crud_teste.vieew
             InitializeComponent();
             AlterarCliente oAlterar = new AlterarCliente();
             dataGridCliente.DataSource = oAlterar.ListarCliente();
-            dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void ListarCliente_Load(object sender, EventArgs e)

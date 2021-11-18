@@ -46,7 +46,7 @@ namespace crud_teste.Model.Object_Values
 
         public string RetornarCelularComFormatacao()
         {
-            if (RetornarCelular().Length == 10)
+            if (!string.IsNullOrEmpty(RetornarCelular()))
                 return string.Format("{0:(##) #### - ####}", long.Parse(_Celular));
             else
                 return "Celular Inválida";
@@ -55,7 +55,7 @@ namespace crud_teste.Model.Object_Values
         public string RetornarDDIComFormatacao()
         {
 
-            if (RetornarDDI().Length == 2)
+            if (!string.IsNullOrEmpty(RetornarDDI()))
                 return string.Format("{0:+##}", int.Parse(_DDI));
             else
                 return "DDI Inválida";

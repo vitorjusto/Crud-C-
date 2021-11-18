@@ -12,6 +12,19 @@ namespace crud_teste.vieew
         public FrmProduto()
         {
             InitializeComponent();
+
+            this.BackColor = Global.BackgroundColor;
+            menuStrip1.BackColor = Global.Strip;
+            menuStrip1.ForeColor = Global.FontColor;
+
+            label1.ForeColor = Global.FontColor;
+            label2.ForeColor = Global.FontColor;
+            label3.ForeColor = Global.FontColor;
+            label5.ForeColor = Global.FontColor;
+            label6.ForeColor = Global.FontColor;
+            label7.ForeColor = Global.FontColor;
+            Ativo.ForeColor = Global.FontColor;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,8 +69,8 @@ namespace crud_teste.vieew
 
             produto.NomeDoProduto = NomeDoProduto.Text;
             produto.CodigoDeBarras = CodigoDeBarras.Text;
-            produto.PrecoDeVenda =float.Parse(PrecoDeVenda.Text);
-            produto.PrecoDeCusto =float.Parse(PrecoDeCusto.Text);
+            produto.PrecoDeVenda.setFromDouble(double.Parse(PrecoDeVenda.Text));
+            produto.PrecoDeCusto.setFromDouble(double.Parse(PrecoDeCusto.Text));
             produto.Estoque = long.Parse(Estoque.Text);
             produto.Ativo = Ativo.Checked;
             produto.Fabricante = Fabricante.Text;
@@ -97,5 +110,9 @@ namespace crud_teste.vieew
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
         }
 
+        private void FrmProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

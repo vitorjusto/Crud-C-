@@ -60,6 +60,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // ListarPedidos
             // 
+            this.ListarPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListarPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListarPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdVenda,
@@ -74,6 +75,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.QuantidadeTotal});
             this.ListarPedidos.Location = new System.Drawing.Point(12, 44);
             this.ListarPedidos.Name = "ListarPedidos";
+            this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListarPedidos.Size = new System.Drawing.Size(1044, 276);
             this.ListarPedidos.TabIndex = 0;
             // 
@@ -167,7 +169,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(771, 352);
+            this.label6.Location = new System.Drawing.Point(771, 359);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 16;
@@ -184,7 +186,8 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // NumeroDePedidos
             // 
-            this.NumeroDePedidos.Location = new System.Drawing.Point(149, 359);
+            this.NumeroDePedidos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NumeroDePedidos.Location = new System.Drawing.Point(149, 356);
             this.NumeroDePedidos.Name = "NumeroDePedidos";
             this.NumeroDePedidos.ReadOnly = true;
             this.NumeroDePedidos.Size = new System.Drawing.Size(189, 20);
@@ -192,6 +195,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtTotalBruto
             // 
+            this.txtTotalBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalBruto.Location = new System.Drawing.Point(464, 356);
             this.txtTotalBruto.Name = "txtTotalBruto";
             this.txtTotalBruto.ReadOnly = true;
@@ -200,6 +204,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtDesconto
             // 
+            this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesconto.Location = new System.Drawing.Point(464, 421);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.ReadOnly = true;
@@ -208,7 +213,8 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtTotalGasto
             // 
-            this.txtTotalGasto.Location = new System.Drawing.Point(853, 352);
+            this.txtTotalGasto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalGasto.Location = new System.Drawing.Point(853, 357);
             this.txtTotalGasto.Name = "txtTotalGasto";
             this.txtTotalGasto.ReadOnly = true;
             this.txtTotalGasto.Size = new System.Drawing.Size(203, 20);
@@ -216,6 +222,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txttotalLiquido
             // 
+            this.txttotalLiquido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txttotalLiquido.Location = new System.Drawing.Point(853, 421);
             this.txttotalLiquido.Name = "txttotalLiquido";
             this.txttotalLiquido.ReadOnly = true;
@@ -224,6 +231,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtLucro
             // 
+            this.txtLucro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLucro.Location = new System.Drawing.Point(853, 482);
             this.txtLucro.Name = "txtLucro";
             this.txtLucro.ReadOnly = true;
@@ -236,7 +244,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1085, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1069, 24);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -251,7 +259,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 514);
+            this.ClientSize = new System.Drawing.Size(1069, 514);
             this.Controls.Add(this.txtLucro);
             this.Controls.Add(this.txttotalLiquido);
             this.Controls.Add(this.txtTotalGasto);

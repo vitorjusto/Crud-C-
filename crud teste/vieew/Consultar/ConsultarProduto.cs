@@ -14,6 +14,17 @@ namespace crud_teste.vieew.Consultar
         public ConsultarProduto(int id)
         {
             InitializeComponent();
+            this.BackColor = Global.BackgroundColor;
+            menuStrip1.BackColor = Global.Strip;
+            menuStrip1.ForeColor = Global.FontColor;
+
+            label1.ForeColor = Global.FontColor;
+            label2.ForeColor = Global.FontColor;
+            label3.ForeColor = Global.FontColor;
+            label5.ForeColor = Global.FontColor;
+            label6.ForeColor = Global.FontColor;
+            label7.ForeColor = Global.FontColor;
+            Ativo.ForeColor = Global.FontColor;
 
             produtoGlobal.IdProduto = id;
             produtoGlobal = oAlterar.Consultar(id);
@@ -25,8 +36,8 @@ namespace crud_teste.vieew.Consultar
         {
             NomeDoProduto.Text = produto.NomeDoProduto;
             CodigoDeBarras.Text = produto.CodigoDeBarras;
-            PrecoDeVenda.Text = produto.PrecoDeVenda.ToString();
-            PrecoDeCusto.Text = produto.PrecoDeCusto.ToString();
+            PrecoDeVenda.Text = produto.PrecoDeVenda.GetAsString();
+            PrecoDeCusto.Text = produto.PrecoDeCusto.GetAsString();
             Estoque.Text = produto.Estoque.ToString();
             Ativo.Checked = produto.Ativo;
             Fabricante.Text = produto.Fabricante;
@@ -36,8 +47,8 @@ namespace crud_teste.vieew.Consultar
         {
             produtoGlobal.NomeDoProduto = NomeDoProduto.Text;
             produtoGlobal.CodigoDeBarras = CodigoDeBarras.Text ;
-            produtoGlobal.PrecoDeVenda = float.Parse(PrecoDeVenda.Text);
-            produtoGlobal.PrecoDeCusto = float.Parse(PrecoDeCusto.Text);
+            produtoGlobal.PrecoDeVenda.setFromDouble(double.Parse(PrecoDeVenda.Text));
+            produtoGlobal.PrecoDeCusto.setFromDouble(double.Parse(PrecoDeCusto.Text));
             produtoGlobal.Estoque = long.Parse(Estoque.Text);
             produtoGlobal.Ativo = Ativo.Checked ;
             produtoGlobal.Fabricante = Fabricante.Text ;
@@ -110,5 +121,9 @@ namespace crud_teste.vieew.Consultar
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
         }
 
+        private void ConsultarProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

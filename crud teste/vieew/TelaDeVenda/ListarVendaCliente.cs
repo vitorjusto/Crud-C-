@@ -30,6 +30,11 @@ namespace crud_teste.vieew.TelaDeVenda
         public ListarVendaCliente(string busca)
         {
             InitializeComponent();
+
+            this.BackColor = Global.BackgroundColor;
+            dataGridGeral.BackgroundColor = Global.BackgroundColor;
+
+
             Buscar = busca;
             if (Buscar == "cliente")
                 ListarClientes(oAlterar.ListarCliente());
@@ -41,7 +46,7 @@ namespace crud_teste.vieew.TelaDeVenda
             }
 
             dataGridGeral.AllowUserToAddRows = false;
-            dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
 

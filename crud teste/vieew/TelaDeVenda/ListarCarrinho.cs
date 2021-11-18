@@ -51,9 +51,7 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridCarrinho.Columns.Insert(6, BotaoExcluir);
             dataGridCarrinho.AllowUserToAddRows = false;
 
-
-
-            dataGridCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 
         }

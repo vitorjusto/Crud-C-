@@ -19,7 +19,7 @@ namespace crud_teste.vieew
             AlterarColaborador oAlterar = new AlterarColaborador();
             dataGridColaboradores.DataSource =  oAlterar.ListarColaboradores();
 
-            dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void ListarColaboradores_Load(object sender, EventArgs e)

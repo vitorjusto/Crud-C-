@@ -15,12 +15,21 @@ namespace crud_teste.vieew
 {
     public partial class ListarProduto : Form
     {
+        public List<ProdutoListagem> produtos = new List<ProdutoListagem>();
+
         public ListarProduto()
         {
             InitializeComponent();
+            this.BackColor = Global.BackgroundColor;
+            menuStrip1.BackColor = Global.Strip;
+            menuStrip1.ForeColor = Global.FontColor;
+            dataGridProduto.BackgroundColor = Global.BackgroundColor;
+            BuscarAtivo.ForeColor = Global.FontColor;
+            textBoxinstrucao.BackColor = Global.BackgroundColor;
+
             AlterarProduto oAlterar = new AlterarProduto();
-            var produtos = oAlterar.Listar();
-            preencherDataGrid(produtos);
+            produtos = oAlterar.Listar();
+            Buscarsoativo(produtos);
             
         }
 
@@ -34,9 +43,10 @@ namespace crud_teste.vieew
                 dataGridProduto.Rows.Add();
                 dataGridProduto.Rows[i].Cells[0].Value = produto.IdProduto;
                 dataGridProduto.Rows[i].Cells[1].Value = produto.nomeProduto;
-                dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda ;
+                dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda;
                 dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
                 dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
+                dataGridProduto.Rows[i].Cells[5].Value = produto.Ativo;
 
                 i++;
             }
@@ -44,8 +54,36 @@ namespace crud_teste.vieew
 
 
 
-            dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        public void Buscarsoativo(List<ProdutoListagem> produtos)
+        {
+            dataGridProduto.Rows.Clear();
+            var i = 0;
+            foreach (var produto in produtos)
+            {
+                if (produto.Ativo)
+                {
+                    dataGridProduto.Rows.Add();
+                    dataGridProduto.Rows[i].Cells[0].Value = produto.IdProduto;
+                    dataGridProduto.Rows[i].Cells[1].Value = produto.nomeProduto;
+                    dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda;
+                    dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
+                    dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
+                    dataGridProduto.Rows[i].Cells[5].Value = produto.Ativo;
+
+                    i++;
+                }
+            }
+            dataGridProduto.AllowUserToAddRows = false;
+
+
+
+            dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+    
+
         private void ListaProduto_Load(object sender, EventArgs e)
         {
 
@@ -89,6 +127,17 @@ namespace crud_teste.vieew
 
             new ConsultarProduto(x).Show();
             this.Close();
+        }
+
+        private void BuscarAtivo_CheckedChanged(object sender, EventArgs e)
+        {
+            if(BuscarAtivo.Checked)
+            {
+                Buscarsoativo(produtos);
+            }else
+            {
+                preencherDataGrid(produtos);
+            }
         }
     }
 }

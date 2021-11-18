@@ -92,6 +92,7 @@
     <Compile Include="Model\Object Values\MyCelular.cs" />
     <Compile Include="Model\Object Values\MyCEP.cs" />
     <Compile Include="Model\Object Values\MyCPF.cs" />
+    <Compile Include="Model\Object Values\MyDinheiro.cs" />
     <Compile Include="Model\Object Values\MyTelefone.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\Venda.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Validation\EnderecoValidation.cs" />
     <Compile Include="Validation\Object Values Validations\TelefoneValidation.cs" />
     <Compile Include="Validation\PessoaValidation.cs" />
+    <Compile Include="Validation\VendaValidation.cs" />
     <Compile Include="vieew\ListaDePedidos\ListagemDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>

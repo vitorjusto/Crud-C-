@@ -224,6 +224,7 @@ namespace crud_teste.vieew.Consultar
             this.Controls.Add(this.menuStrip1);
             this.Name = "ConsultarProduto";
             this.Text = "ConsultarProduto";
+            this.Load += new System.EventHandler(this.ConsultarProduto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

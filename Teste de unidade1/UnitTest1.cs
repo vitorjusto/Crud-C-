@@ -286,7 +286,7 @@ namespace Teste_de_unidade1
 
             var resultado = validacao.Validate(contato);
 
-            Assert.IsTrue(resultado.ToString().Contains("Telefone Invalido"));
+            Assert.IsTrue(resultado.ToString().Contains("Telefone Inválido"));
         }
 
 
@@ -294,7 +294,7 @@ namespace Teste_de_unidade1
         [TestMethod]
         public void Quando_O_DDI_Tiver_Texto_Especificado_Entao_O_DDI_E_Valido()
         {
-            MyCelular celular = new MyCelular("SDD");
+            MyCelular celular = new MyCelular("(00) 9000 - 0000");
             CelularValidation validacao = new CelularValidation();
             celular.DDI = "+55";
 
@@ -304,10 +304,9 @@ namespace Teste_de_unidade1
         }
         [DataTestMethod]
         [DataRow("")]
-        [DataRow("12")]
         public void Quando_O_DDI_Nao_Tiver_Texto_Especificado_Entao_O_DDI_E_Invalido(string ddi)
         {
-            MyCelular celular = new MyCelular("SDD");
+            MyCelular celular = new MyCelular("12");
             CelularValidation validacao = new CelularValidation();
             celular.DDI = ddi;
 
@@ -380,5 +379,183 @@ namespace Teste_de_unidade1
         }
 
 
+        //Produto
+
+
+        [TestMethod]
+        public void Quando_O_Nome_Do_Produto_Tiver_Text_Entao_o_produto_e_valido()
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.NomeDoProduto = "Camiseta";
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("Nome não pode ser vazio"));
+
+        }
+
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        public void Quando_O_Nome_Do_Produto_nao_Tiver_Text_Entao_o_produto_e_Invalido(string nome)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.NomeDoProduto = nome;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("Nome não pode ser vazio"));
+        }
+
+        [DataTestMethod]
+        [DataRow("1234567890123")]
+        [DataRow("12345678901234")]
+        [DataRow("1234567890123456")]
+        public void Quando_O_CodigoDeBarras_Texto_Especificado_Entao_o_produto_e_valido(string codDeBarras)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.CodigoDeBarras = codDeBarras;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("Codigo De Barras Não Pode Ser Vazio") || resultado.ToString().Contains("Codigo De Barras deve ter entre 13 e 16 caracteres"));
+
+        }
+
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        [DataRow("123456789012345611")]
+        [DataRow("123456")]
+        public void Quando_O_CodigoDeBarras_Texto_nao_Especificado_Entao_o_produto_e_valido(string codDeBarras)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.CodigoDeBarras = codDeBarras;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("Codigo De Barras Não Pode Ser Vazio") || resultado.ToString().Contains("Codigo De Barras deve ter entre 13 e 16 caracteres"));
+
+        }
+
+        [TestMethod]
+        public void Quando_O_Preco_De_Venda_For_Maior_Que_zero_entao_O_preco_de_venda_e_valido()
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.PrecoDeVenda.setFromDouble(12.0F);
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("O preço da venda deve ser maior que zero"));
+
+        }
+
+        [DataTestMethod]
+        [DataRow(0.0F)]
+        [DataRow(-12.0F)]
+        
+        public void Quando_O_Preco_De_Venda_For_Menor_Ou_Igual_A_zero_entao_O_preco_de_venda_e_valido(float preco)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.PrecoDeVenda.setFromDouble(preco);
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("O preço da venda deve ser maior que zero"));
+
+        }
+        [TestMethod]
+        public void Quando_O_Preco_De_Custo_For_Maior_Que_zero_entao_O_preco_de_Custo_e_valido()
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.PrecoDeCusto.setFromDouble(12.0F);
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("O preco de custo deve ser maior que zero"));
+
+        }
+
+        [DataTestMethod]
+        [DataRow(0.0F)]
+        [DataRow(-12.0F)]
+
+        public void Quando_O_Preco_De_Custo_For_Menor_Ou_Igual_A_zero_entao_O_preco_de_Custo_e_valido(float preco)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.PrecoDeCusto.setFromDouble(preco);
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("O preco de custo deve ser maior que zero"));
+
+        }
+
+        [DataTestMethod]
+        [DataRow(0)]
+        [DataRow(12)]
+        public void Quando_O_Estoque_For_Maior_Ou_Igual_A_zero_entao_O_Estoque_e_valido(int estoque)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.Estoque = estoque;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("O Estoque não pode ser vazio"));
+
+        }
+
+        [DataTestMethod]
+        [DataRow(-12)]
+        public void Quando_O_Estoque_For_Menor_Que_zero_entao_O_Estoque_e_invalido(int estoque)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.Estoque = estoque;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("O Estoque não pode ser vazio"));
+
+        }
+
+        [TestMethod]
+        public void Quando_O_Fabricante_Tiver_Texto_entao_Fabricante_e_valido()
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.Fabricante = "Avon";
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsFalse(resultado.ToString().Contains("Fabricante não deve ser vazio"));
+
+        }
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        public void Quando_O_Fabricante_nao_Tiver_Texto_entao_Fabricante_e_invalido(string nome)
+        {
+            Produto produto = new Produto();
+            ProdutoValidation validacao = new ProdutoValidation();
+            produto.Fabricante = nome;
+
+            var resultado = validacao.Validate(produto);
+
+            Assert.IsTrue(resultado.ToString().Contains("Fabricante não deve ser vazio"));
+
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_teste.Model.Object_Values;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,10 @@ namespace crud_teste.Model
 
         public string NomeDoProduto { get; set; }
 
-        public float PrecoDeVenda { get; set; }
+        public MyDinheiro PrecoDeVenda = new MyDinheiro();
 
 
-        public float PrecoDeCusto { get; set; }
+        public MyDinheiro PrecoDeCusto = new MyDinheiro();
 
         public long Estoque { get; set; }
 

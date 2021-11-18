@@ -88,6 +88,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.dataGridGeral.MultiSelect = false;
             this.dataGridGeral.Name = "dataGridGeral";
             this.dataGridGeral.ReadOnly = true;
+            this.dataGridGeral.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridGeral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridGeral.Size = new System.Drawing.Size(776, 310);
             this.dataGridGeral.TabIndex = 8;

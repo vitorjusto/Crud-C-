@@ -24,7 +24,8 @@ namespace crud_teste.DAO
         {
 
 
-            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista) OUTPUT INSERTED.idVenda Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
+            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista) OUTPUT INSERTED.idVenda 
+                          Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
             var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             con.Open();
@@ -32,7 +33,19 @@ namespace crud_teste.DAO
             try
             {
                 
-                var idVenda = int.Parse(con.ExecuteScalar(query, venda, tran).ToString());
+                var idVenda = int.Parse(con.ExecuteScalar(query, new {
+                    TotalBruto = venda.TotalBruto.GetAsDouble(),
+                    TotalDeDesconto = venda.TotalDeDesconto.GetAsDouble(),
+                    TotalLiquido = venda.TotalLiquido.GetAsDouble(),
+                    mesesaprazo = venda.MesesAPrazo,
+                    quantidadedetotal = venda.QuantidadeDeTotal,
+                    quantidadeunitario = venda.QuantidadeUnitario,
+                    tipodevenda = venda.TipoDeVenda,
+                    idCliente = venda.IdCliente,
+                    IdColaborador = venda.IdColaborador,
+                    DescontoAVista = venda.DescontoAVIsta,
+                }
+                , tran).ToString());
                 
                 foreach (var carrinho in carrinhos)
                 {
@@ -84,9 +97,9 @@ namespace crud_teste.DAO
                 {
                     PedidoListagem pedido = new PedidoListagem();
                     pedido.venda.IdVenda = resultado.idVenda;
-                    pedido.venda.TotalBruto = (float)resultado.TotalBruto;
-                    pedido.venda.TotalDeDesconto = (float)resultado.TotalDeDesconto;
-                    pedido.venda.TotalLiquido = (float)resultado.totalLiquido;
+                    pedido.venda.TotalBruto.setFromDouble((double)resultado.TotalBruto);
+                    pedido.venda.TotalDeDesconto.setFromDouble((double)resultado.TotalDeDesconto);
+                    pedido.venda.TotalLiquido.setFromDouble((double)resultado.totalLiquido);
                     pedido.venda.MesesAPrazo = (int)resultado.mesesaprazo;
                     pedido.venda.QuantidadeDeTotal = (int)resultado.quantidadetotal;
                     pedido.venda.TipoDeVenda = resultado.tipodevenda;

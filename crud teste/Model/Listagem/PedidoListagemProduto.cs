@@ -46,12 +46,12 @@ namespace crud_teste.Model.Listagem
         }
         public string NomeCompletoCliente()
         {
-            return nomeCliente + sobrenomeCliente;
+            return $"{nomeCliente} {sobrenomeCliente}";
         }
 
         public string NomeCompletoColaborador()
         {
-            return nomeColaborador + SobrenomeColaborador;
+            return $"{nomeColaborador} {SobrenomeColaborador}";
         }
     }
 }
