@@ -33,15 +33,15 @@ namespace crud_teste
 
         public static bool isNotIntText(char c, string text)
         {
-            if ((char.IsDigit(c) || c.ToString() == "\b") && (text.Length) < 10)
+            if (char.IsDigit(c) && (text.Length) < 10)
             {
                 return false;
             }
-            else
+            else if(c.ToString() == "\b" && text.Length <= 10)
             {
-                return true;
+                return false;
             }
-
+            return true;
         }
 
         public static bool isNotFloatText(char c, string text)

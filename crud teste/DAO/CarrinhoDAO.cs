@@ -18,7 +18,7 @@ namespace crud_teste.DAO
             con.ConnectionString = "Data Source=ESTAGIO1;Initial Catalog=crud;Integrated Security=True";
         }
 
-        public void Salvar(Carrinho carrinho)
+        public void Salvar(Pedido_Produto carrinho)
         {
             using (con)
             {

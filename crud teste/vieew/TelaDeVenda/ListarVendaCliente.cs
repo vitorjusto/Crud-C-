@@ -21,7 +21,7 @@ namespace crud_teste.vieew.TelaDeVenda
         public AlterarProduto oAlterarProduto = new AlterarProduto();
         public string Buscar { get; set; }
 
-        public List<Carrinho> carrinhos = new List<Carrinho>();
+        public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
 
 
         public Produto produto = new Produto();
@@ -50,7 +50,7 @@ namespace crud_teste.vieew.TelaDeVenda
         }
 
 
-        public ListarVendaCliente(List<Carrinho> carrinhos, List<Produto> produtos)
+        public ListarVendaCliente(List<Pedido_Produto> carrinhos, List<Produto> produtos)
         {
             ListarCarrinhos(carrinhos);
         }
@@ -105,7 +105,7 @@ namespace crud_teste.vieew.TelaDeVenda
             }
         }  
         
-        public void ListarCarrinhos(List<Carrinho> carrinho)
+        public void ListarCarrinhos(List<Pedido_Produto> carrinho)
         {
             
            

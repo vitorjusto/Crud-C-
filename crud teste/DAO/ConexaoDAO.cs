@@ -290,6 +290,47 @@ namespace crud_teste
             con.Close();
         }
 
+        public void ExcluirCliente(int id)
+        {
+            Cliente cliente = new Cliente();
+
+
+            con.Open();
+            var tran = con.BeginTransaction();
+            try
+            {
+                var query = @"select c.idCliente, p.idpessoa, p.idContato, p.idendereco from cliente c left outer join pessoa p on p.idPessoa = c.IdPessoa
+                            where c.idCliente = @idCliente";
+
+                var reader = con.ExecuteReader(query, new
+                {
+                    idCliente = id,
+                }, tran);
+
+
+                reader.Read();
+                using (reader)
+                {
+
+                     cliente.IdPessoa = (int)reader["idpessoa"];
+                     cliente.contato.idContato = (int)reader["idcontato"];
+                     cliente.endereco.IdEndereco = (int)reader["idendereco"]; 
+                }
+
+                tran.Commit();
+            }
+            catch(Exception ex)
+            {
+                tran.Rollback();
+
+                con.Close();
+                throw new Exception(ex.Message);
+
+            }
+            con.Close();
+        }
+
+
         public List<ClienteListagem> ListarCliente()
         {
             using (con)
@@ -660,6 +701,11 @@ namespace crud_teste
                 query = $@"delete from contato";
                 con.Execute(query, colaborador.contato, tran);
 
+                query = @"delete from carrinho";
+                con.Execute(query, colaborador, tran);
+
+                query = @"delete from venda";
+                con.Execute(query, colaborador, tran);
 
                 tran.Commit();
             }

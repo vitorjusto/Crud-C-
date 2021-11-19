@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_teste.Model.Object_Values;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,15 @@ namespace crud_teste.Model.Listagem
     public class CarrinhoListagem
     {
         public int IdCarrinho { get; set; }
-        public float Desconto { get; set; }
+        public MyDinheiro Desconto = new MyDinheiro();
 
         public string NomeProduto { get; set; }
 
-        public float PrecoDeVenda { get; set; }
+        public MyDinheiro PrecoDeVenda = new MyDinheiro();
 
-        public int quantidade { get; set; }
-        public float PrecoBruto { get; set; }
-        public float PrecoLiquido { get; set; }
+        public long quantidade { get; set; }
+        public MyDinheiro PrecoBruto = new MyDinheiro();
+        public MyDinheiro PrecoLiquido = new MyDinheiro();
         public int idProduto { get; set; }
     }
 }

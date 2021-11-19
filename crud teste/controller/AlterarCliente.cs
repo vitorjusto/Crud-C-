@@ -31,6 +31,13 @@ namespace crud_teste.controller
             stmt.ExcluirCliente(cliente);
         }
 
+        public void excluir(int id)
+        {
+
+            ConexaoDAO stmt = new ConexaoDAO();
+            stmt.ExcluirCliente(id);
+        }
+
         public static int conectarComDAO(Cliente cliente)
         {
             ConexaoDAO stmt = new ConexaoDAO();

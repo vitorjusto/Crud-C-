@@ -29,7 +29,17 @@ namespace crud_teste.vieew
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridCliente = new System.Windows.Forms.DataGridView();
+            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDeNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
@@ -42,17 +52,100 @@ namespace crud_teste.vieew
             // 
             // dataGridCliente
             // 
+            this.dataGridCliente.AllowUserToAddRows = false;
             this.dataGridCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idcliente,
+            this.Nome,
+            this.Sexo,
+            this.DataDeNascimento,
+            this.Endereco,
+            this.Contato,
+            this.Editar,
+            this.Excluir});
             this.dataGridCliente.Location = new System.Drawing.Point(12, 119);
             this.dataGridCliente.MultiSelect = false;
             this.dataGridCliente.Name = "dataGridCliente";
             this.dataGridCliente.ReadOnly = true;
             this.dataGridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridCliente.Size = new System.Drawing.Size(776, 310);
+            this.dataGridCliente.Size = new System.Drawing.Size(1012, 310);
             this.dataGridCliente.TabIndex = 0;
             this.dataGridCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCliente_CellContentClick_1);
+            this.dataGridCliente.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseClick);
             this.dataGridCliente.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseDoubleClick);
+            // 
+            // idcliente
+            // 
+            this.idcliente.HeaderText = "Id Cliente";
+            this.idcliente.Name = "idcliente";
+            this.idcliente.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // Sexo
+            // 
+            this.Sexo.HeaderText = "Sexo";
+            this.Sexo.Name = "Sexo";
+            this.Sexo.ReadOnly = true;
+            // 
+            // DataDeNascimento
+            // 
+            this.DataDeNascimento.HeaderText = "Data De Nascimento";
+            this.DataDeNascimento.Name = "DataDeNascimento";
+            this.DataDeNascimento.ReadOnly = true;
+            // 
+            // Endereco
+            // 
+            this.Endereco.HeaderText = "Endereço";
+            this.Endereco.Name = "Endereco";
+            this.Endereco.ReadOnly = true;
+            // 
+            // Contato
+            // 
+            this.Contato.HeaderText = "Contato";
+            this.Contato.Name = "Contato";
+            this.Contato.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Editar.Text = "Editar";
+            this.Editar.UseColumnTextForButtonValue = true;
+            // 
+            // Excluir
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Excluir.HeaderText = "Excluir";
+            this.Excluir.Name = "Excluir";
+            this.Excluir.ReadOnly = true;
+            this.Excluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Excluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseColumnTextForButtonValue = true;
             // 
             // menuStrip1
             // 
@@ -60,7 +153,7 @@ namespace crud_teste.vieew
             this.menuPrincipalToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1036, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,9 +166,9 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 60);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(176, 60);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(415, 20);
             this.CampoDePesquisa.TabIndex = 2;
             // 
             // label1
@@ -89,7 +182,7 @@ namespace crud_teste.vieew
             // 
             // textBoxinstrucao
             // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
+            this.textBoxinstrucao.Location = new System.Drawing.Point(878, 32);
             this.textBoxinstrucao.Multiline = true;
             this.textBoxinstrucao.Name = "textBoxinstrucao";
             this.textBoxinstrucao.ReadOnly = true;
@@ -103,7 +196,7 @@ namespace crud_teste.vieew
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(437, 32);
+            this.button1.Location = new System.Drawing.Point(648, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 69);
             this.button1.TabIndex = 7;
@@ -115,7 +208,7 @@ namespace crud_teste.vieew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 456);
+            this.ClientSize = new System.Drawing.Size(1036, 456);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);
             this.Controls.Add(this.label1);
@@ -143,5 +236,13 @@ namespace crud_teste.vieew
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxinstrucao;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDeNascimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Endereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contato;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewButtonColumn Excluir;
     }
 }

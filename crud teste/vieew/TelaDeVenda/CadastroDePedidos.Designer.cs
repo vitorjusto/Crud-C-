@@ -168,6 +168,7 @@ namespace crud_teste.vieew
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // PrecoBruto
             // 
@@ -220,6 +221,7 @@ namespace crud_teste.vieew
             this.PrecoUnitario.ReadOnly = true;
             this.PrecoUnitario.Size = new System.Drawing.Size(100, 20);
             this.PrecoUnitario.TabIndex = 22;
+            this.PrecoUnitario.TextChanged += new System.EventHandler(this.PrecoUnitario_TextChanged);
             // 
             // QuantidadeEmEstoque
             // 
@@ -294,7 +296,10 @@ namespace crud_teste.vieew
             this.Desconto.Size = new System.Drawing.Size(100, 20);
             this.Desconto.TabIndex = 12;
             this.Desconto.TextChanged += new System.EventHandler(this.Desconto_TextChanged);
+            this.Desconto.Enter += new System.EventHandler(this.Desconto_Enter);
             this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
+            this.Desconto.Leave += new System.EventHandler(this.Desconto_Leave);
+            this.Desconto.MouseEnter += new System.EventHandler(this.Desconto_MouseEnter);
             // 
             // label6
             // 

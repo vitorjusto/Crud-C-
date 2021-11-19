@@ -9,7 +9,7 @@ namespace crud_teste.Model.Listagem
 {
     public class PedidoListagem
     {
-        public List<Carrinho> carrinhos = new List<Carrinho>();
+        public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
 
         public Venda venda = new Venda();
 
@@ -28,7 +28,7 @@ namespace crud_teste.Model.Listagem
             float total = 0;
             foreach(var carrinho in carrinhos)
             {
-                total += carrinho.precoDeCusto;
+                total += (float)carrinho.precoDeCusto.GetAsDouble();
             }
 
             return total;
@@ -39,7 +39,7 @@ namespace crud_teste.Model.Listagem
             float total = 0;
             foreach(var carrinho in carrinhos)
             {
-                total += carrinho.precoDeVenda;
+                total += (float)carrinho.precoDeVenda.GetAsDouble();
             }
 
             return total;

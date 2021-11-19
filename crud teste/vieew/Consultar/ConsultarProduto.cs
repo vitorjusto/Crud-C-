@@ -47,8 +47,8 @@ namespace crud_teste.vieew.Consultar
         {
             produtoGlobal.NomeDoProduto = NomeDoProduto.Text;
             produtoGlobal.CodigoDeBarras = CodigoDeBarras.Text ;
-            produtoGlobal.PrecoDeVenda.setFromDouble(double.Parse(PrecoDeVenda.Text));
-            produtoGlobal.PrecoDeCusto.setFromDouble(double.Parse(PrecoDeCusto.Text));
+            produtoGlobal.PrecoDeVenda = PrecoDeVenda.Text;
+            produtoGlobal.PrecoDeCusto = PrecoDeCusto.Text;
             produtoGlobal.Estoque = long.Parse(Estoque.Text);
             produtoGlobal.Ativo = Ativo.Checked ;
             produtoGlobal.Fabricante = Fabricante.Text ;
@@ -71,9 +71,9 @@ namespace crud_teste.vieew.Consultar
                         this.Close();
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Fala ao conectar com o banco de dados");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else

@@ -17,16 +17,22 @@ namespace crud_teste.vieew.TelaDeVenda
     {
         public AlterarCarrinho oAlterar = new AlterarCarrinho();
         public List<CarrinhoListagem> carrinhosL = new List<CarrinhoListagem>();
-        public List<Carrinho> carrinhos = new List<Carrinho>();
-        public ListarCarrinho(List<CarrinhoListagem> carrinhosLparam, List<Carrinho> carrinhosparam)
+        public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
+        public ListarCarrinho(List<CarrinhoListagem> carrinhosLparam, List<Pedido_Produto> carrinhosparam)
         {
             InitializeComponent();
             this.carrinhos = carrinhosparam;
             this.carrinhosL = carrinhosLparam;
-            DataGridViewButtonColumn BotaoExcluir = new DataGridViewButtonColumn();
-            BotaoExcluir.Name = "Remover";
-            BotaoExcluir.Text = "Remover";
-            BotaoExcluir.UseColumnTextForButtonValue = true;
+
+            this.BackColor = Global.BackgroundColor;
+            dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
+
+
+            textBoxinstrucao.BackColor = Global.BackgroundColor;
+            textBoxinstrucao.ForeColor = Global.FontColor;
+
+
+            
             
 
 
@@ -37,18 +43,16 @@ namespace crud_teste.vieew.TelaDeVenda
                 dataGridCarrinho.Rows.Add();
                 dataGridCarrinho.Rows[i].Cells[0].Value = carrinho.NomeProduto;
                 dataGridCarrinho.Rows[i].Cells[1].Value = carrinho.quantidade;
-                dataGridCarrinho.Rows[i].Cells[2].Value = carrinho.PrecoDeVenda;
-                dataGridCarrinho.Rows[i].Cells[3].Value = carrinho.PrecoBruto;
-                dataGridCarrinho.Rows[i].Cells[4].Value = carrinho.Desconto;
-                dataGridCarrinho.Rows[i].Cells[5].Value = carrinho.PrecoLiquido;
-
+                dataGridCarrinho.Rows[i].Cells[2].Value = carrinho.PrecoDeVenda.GetAsString();
+                dataGridCarrinho.Rows[i].Cells[3].Value = carrinho.PrecoBruto.GetAsString();
+                dataGridCarrinho.Rows[i].Cells[4].Value = carrinho.Desconto.GetAsString();
+                dataGridCarrinho.Rows[i].Cells[5].Value = carrinho.PrecoLiquido.GetAsString();
 
                 
                 
 
                 i++;
             }
-            dataGridCarrinho.Columns.Insert(6, BotaoExcluir);
             dataGridCarrinho.AllowUserToAddRows = false;
 
             dataGridCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

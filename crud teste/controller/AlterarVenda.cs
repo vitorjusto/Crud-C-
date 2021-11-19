@@ -11,7 +11,7 @@ namespace crud_teste.controller
 {
     public class AlterarVenda
     {
-        public void cadastrar(Venda venda, List<Carrinho> carrinho)
+        public void cadastrar(Venda venda, List<Pedido_Produto> carrinho)
         {
             var stmt = new VendaDAO();
             stmt.cadastrar(venda, carrinho);

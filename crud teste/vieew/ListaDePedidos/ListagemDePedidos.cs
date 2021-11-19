@@ -30,9 +30,12 @@ namespace crud_teste.vieew.ListaDePedidos
 
             public MyDinheiro totalReceita { get; set; }
 
-            public double lucro ()
+            public MyDinheiro lucro ()
             {
-                return totalReceita.GetAsDouble() - totalBruto.GetAsDouble();
+                MyDinheiro resultado = new MyDinheiro();
+                resultado.Increment(totalReceita.GetAsDouble());
+                resultado.Decrement(totalGasto.GetAsDouble());
+                return  resultado;
             }
 
             
@@ -47,7 +50,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
             this.BackColor = Global.BackgroundColor;
             ListarPedidos.BackgroundColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.BackgroundColor;
+            menuStrip1.BackColor = Global.Strip;
             NumeroDePedidos.BackColor = Global.BackgroundColor;
             NumeroDePedidos.ForeColor = Global.FontColor;
 
@@ -108,12 +111,12 @@ namespace crud_teste.vieew.ListaDePedidos
             txtDesconto.Text = valoresTotais.totalDesconto.GetAsString();
             txtTotalGasto.Text = valoresTotais.totalGasto.GetAsString();
             txttotalLiquido.Text = valoresTotais.totalReceita.GetAsString();
-            txtLucro.Text = valoresTotais.lucro().ToString(); 
+            txtLucro.Text = valoresTotais.lucro().GetAsString(); 
             
-            if(valoresTotais.lucro() > 0)
+            if(valoresTotais.lucro().GetAsDouble() > 0)
             {
                 txtLucro.ForeColor = Color.Green;
-            }else if(valoresTotais.lucro() < 0)
+            }else if(valoresTotais.lucro().GetAsDouble() < 0)
             {
                 txtLucro.ForeColor = Color.Red;
             }else

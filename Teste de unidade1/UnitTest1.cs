@@ -449,7 +449,7 @@ namespace Teste_de_unidade1
         {
             Produto produto = new Produto();
             ProdutoValidation validacao = new ProdutoValidation();
-            produto.PrecoDeVenda.setFromDouble(12.0F);
+            produto.PrecoDeVenda = 12.0F;
 
             var resultado = validacao.Validate(produto);
 
@@ -465,7 +465,7 @@ namespace Teste_de_unidade1
         {
             Produto produto = new Produto();
             ProdutoValidation validacao = new ProdutoValidation();
-            produto.PrecoDeVenda.setFromDouble(preco);
+            produto.PrecoDeVenda = preco;
 
             var resultado = validacao.Validate(produto);
 
@@ -477,7 +477,7 @@ namespace Teste_de_unidade1
         {
             Produto produto = new Produto();
             ProdutoValidation validacao = new ProdutoValidation();
-            produto.PrecoDeCusto.setFromDouble(12.0F);
+            produto.PrecoDeCusto = 12.0F;
 
             var resultado = validacao.Validate(produto);
 
@@ -493,7 +493,7 @@ namespace Teste_de_unidade1
         {
             Produto produto = new Produto();
             ProdutoValidation validacao = new ProdutoValidation();
-            produto.PrecoDeCusto.setFromDouble(preco);
+            produto.PrecoDeCusto = preco;
 
             var resultado = validacao.Validate(produto);
 

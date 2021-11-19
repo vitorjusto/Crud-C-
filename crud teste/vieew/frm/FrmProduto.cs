@@ -69,8 +69,8 @@ namespace crud_teste.vieew
 
             produto.NomeDoProduto = NomeDoProduto.Text;
             produto.CodigoDeBarras = CodigoDeBarras.Text;
-            produto.PrecoDeVenda.setFromDouble(double.Parse(PrecoDeVenda.Text));
-            produto.PrecoDeCusto.setFromDouble(double.Parse(PrecoDeCusto.Text));
+            produto.PrecoDeVenda = PrecoDeVenda.Text;
+            produto.PrecoDeCusto = PrecoDeCusto.Text;
             produto.Estoque = long.Parse(Estoque.Text);
             produto.Ativo = Ativo.Checked;
             produto.Fabricante = Fabricante.Text;

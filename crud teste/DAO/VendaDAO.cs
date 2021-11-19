@@ -20,7 +20,7 @@ namespace crud_teste.DAO
             con.ConnectionString = "Data Source=ESTAGIO1;Initial Catalog=crud;Integrated Security=True";
         }
 
-        public void cadastrar(Venda venda, List<Carrinho> carrinhos)
+        public void cadastrar(Venda venda, List<Pedido_Produto> carrinhos)
         {
 
 
@@ -43,14 +43,24 @@ namespace crud_teste.DAO
                     tipodevenda = venda.TipoDeVenda,
                     idCliente = venda.IdCliente,
                     IdColaborador = venda.IdColaborador,
-                    DescontoAVista = venda.DescontoAVIsta,
+                    DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
                 }
                 , tran).ToString());
                 
                 foreach (var carrinho in carrinhos)
                 {
                     carrinho.idVenda = idVenda;
-                    con.Execute(querycarrinho, carrinho, tran);
+                    con.Execute(querycarrinho, new
+                    {
+                        Quantidade = carrinho.quantidade,
+                        Desconto = carrinho.Desconto.GetAsDouble(),
+                        precoBruto = carrinho.PrecoBruto.GetAsDouble(),
+                        precoLiquido = carrinho.PrecoLiquido.GetAsDouble(),
+                        idVenda = carrinho.idVenda,
+                        idProduto = carrinho.idProduto,
+                        precodecusto = carrinho.precoDeCusto.GetAsDouble(),
+                        precodevenda = carrinho.precoDeVenda.GetAsDouble()
+                    }, tran) ;
                     con.Execute(queryproduto, new
                     {
                         Quantidade = carrinho.quantidade,
@@ -97,9 +107,9 @@ namespace crud_teste.DAO
                 {
                     PedidoListagem pedido = new PedidoListagem();
                     pedido.venda.IdVenda = resultado.idVenda;
-                    pedido.venda.TotalBruto.setFromDouble((double)resultado.TotalBruto);
-                    pedido.venda.TotalDeDesconto.setFromDouble((double)resultado.TotalDeDesconto);
-                    pedido.venda.TotalLiquido.setFromDouble((double)resultado.totalLiquido);
+                    pedido.venda.TotalBruto = (double)resultado.TotalBruto;
+                    pedido.venda.TotalDeDesconto = (double)resultado.TotalDeDesconto;
+                    pedido.venda.TotalLiquido = (double)resultado.totalLiquido;
                     pedido.venda.MesesAPrazo = (int)resultado.mesesaprazo;
                     pedido.venda.QuantidadeDeTotal = (int)resultado.quantidadetotal;
                     pedido.venda.TipoDeVenda = resultado.tipodevenda;
@@ -144,7 +154,7 @@ namespace crud_teste.DAO
                         if(resultado.idVenda == pedidos[index].venda.IdVenda)
                         {
 
-                            Carrinho carrinho = new Carrinho();
+                            Pedido_Produto carrinho = new Pedido_Produto();
                             carrinho.Desconto = (float)resultado.Desconto;
                             carrinho.quantidade = (int)resultado.Quantidade;
                             carrinho.PrecoBruto = (float)resultado.precobruto;

@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Dinheiro.cs" />
     <Compile Include="controller\AlterarCarrinho.cs" />
     <Compile Include="controller\AlterarCliente.cs" />
     <Compile Include="controller\AlterarColaborador.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="DAO\CarrinhoDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
-    <Compile Include="Model\Carrinho.cs" />
+    <Compile Include="Model\Pedido_Produto.cs" />
     <Compile Include="Model\Listagem\CarrinhoListagem.cs" />
     <Compile Include="Model\Listagem\ClienteListagem.cs" />
     <Compile Include="Model\Listagem\ColaboradorListagem.cs" />
@@ -109,6 +110,12 @@
     <Compile Include="Validation\Object Values Validations\TelefoneValidation.cs" />
     <Compile Include="Validation\PessoaValidation.cs" />
     <Compile Include="Validation\VendaValidation.cs" />
+    <Compile Include="vieew\ListaDePedidos\ConsultarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\ListaDePedidos\ConsultarVenda.Designer.cs">
+      <DependentUpon>ConsultarVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\ListaDePedidos\ListagemDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,7 +165,7 @@
     <Compile Include="vieew\Consultar\ConsultarCliente.Designer.cs">
       <DependentUpon>ConsultarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Global.cs" />
+    <Compile Include="Config\Global.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Colaborador.cs" />
     <Compile Include="Model\Endereco.cs" />
@@ -207,6 +214,9 @@
     <Compile Include="vieew\TelaDeVenda\ListarVendaCliente.Designer.cs">
       <DependentUpon>ListarVendaCliente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vieew\ListaDePedidos\ConsultarVenda.resx">
+      <DependentUpon>ConsultarVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vieew\ListaDePedidos\ListagemDePedidos.resx">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
     </EmbeddedResource>

@@ -111,8 +111,8 @@ namespace crud_teste.DAO
                 {
                     produto.NomeDoProduto = (string)reader["NomeProduto"];
                     produto.CodigoDeBarras = (string)reader["CodigoDeBarras"];
-                    produto.PrecoDeCusto.setFromDouble(double.Parse(reader["PrecoDeCusto"].ToString()));
-                    produto.PrecoDeVenda.setFromDouble(double.Parse(reader["Precodevenda"].ToString()));
+                    produto.PrecoDeCusto = (reader["PrecoDeCusto"].ToString());
+                    produto.PrecoDeVenda = (reader["Precodevenda"].ToString());
                     produto.Estoque = (long)reader["Estoque"];
                     produto.Ativo = (bool)reader["Ativo"];
                     produto.Fabricante = (string)reader["fabricante"];
@@ -134,7 +134,7 @@ namespace crud_teste.DAO
                 {
 
 
-                    var query = @"update Produto set NomeProduto = @NomeDoProduto, CodigoDeBarras = @CodigoDeBarras, DescontoAVista = @DescontoAVista, precodecusto = @PrecoDeCusto, Estoque = @Estoque, Fabricante= @Fabricante, Ativo = @Ativo where idProduto = @IdProduto";
+                    var query = @"update Produto set NomeProduto = @NomeDoProduto, CodigoDeBarras = @CodigoDeBarras, precodecusto = @PrecoDeCusto, Estoque = @Estoque, Fabricante= @Fabricante, Ativo = @Ativo where idProduto = @IdProduto";
 
                     con.Execute(query, new
                     {
@@ -145,7 +145,7 @@ namespace crud_teste.DAO
                         Estoque = produto.Estoque,
                         Ativo = produto.Ativo,
                         Fabricante = produto.Fabricante,
-
+                        IdProduto = produto.IdProduto,
 
                     });
 
