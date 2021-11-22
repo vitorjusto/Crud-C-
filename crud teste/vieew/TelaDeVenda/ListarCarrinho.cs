@@ -28,8 +28,6 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
 
 
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
-            textBoxinstrucao.ForeColor = Global.FontColor;
 
 
             

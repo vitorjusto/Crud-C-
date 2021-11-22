@@ -10,16 +10,30 @@ namespace crud_teste.Model
     public class Pedido_Produto
     {
         public int IdCarrinho { get; set; }
-        public MyDinheiro Desconto = new MyDinheiro();
 
+        public MyDinheiro Desconto { get; set; }
 
-        public MyDinheiro precoDeCusto = new MyDinheiro();
+        public Produto produto = new Produto();
 
-        public MyDinheiro precoDeVenda = new MyDinheiro();
+        public MyDinheiro precoDeCusto { get; set; }
+
+    public MyDinheiro precoDeVenda { get; set; }
 
         public long quantidade { get; set; }
-        public MyDinheiro PrecoBruto = new MyDinheiro();
-        public MyDinheiro PrecoLiquido = new MyDinheiro();
+        public MyDinheiro PrecoBruto { get; set; }
+        public MyDinheiro PrecoBrutoAtual
+        {
+            get => produto.PrecoDeVenda.GetAsDouble() * quantidade;
+        }
+
+        public MyDinheiro PrecoLiquido { get; set; }
+
+        public MyDinheiro PrecoLiquidoAtual
+        {
+            get => PrecoBrutoAtual.GetAsDouble() - Desconto.GetAsDouble();
+        }
+
+
         public int idVenda { get; set; }
         public int idProduto { get; set; }
 
@@ -30,6 +44,8 @@ namespace crud_teste.Model
 
         }
 
+        
+        
         public Pedido_Produto(MyDinheiro desconto, MyDinheiro precoDeCusto, MyDinheiro precoDeVenda, long quantidade, MyDinheiro PrecoBruto, MyDinheiro PrecoLiquido, int idVenda, int idProduto, long quantidadeRestante)
         {
             Desconto = desconto;

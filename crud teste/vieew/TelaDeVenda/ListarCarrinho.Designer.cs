@@ -31,10 +31,6 @@ namespace crud_teste.vieew.TelaDeVenda
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridCarrinho = new System.Windows.Forms.DataGridView();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,45 +41,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrinho)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(437, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 69);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBoxinstrucao
-            // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 22);
-            this.textBoxinstrucao.Multiline = true;
-            this.textBoxinstrucao.Name = "textBoxinstrucao";
-            this.textBoxinstrucao.ReadOnly = true;
-            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
-            this.textBoxinstrucao.TabIndex = 16;
-            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
-            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Pesquisar :";
-            // 
-            // CampoDePesquisa
-            // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 50);
-            this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
-            this.CampoDePesquisa.TabIndex = 14;
             // 
             // dataGridCarrinho
             // 
@@ -170,26 +127,16 @@ namespace crud_teste.vieew.TelaDeVenda
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBoxinstrucao);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.CampoDePesquisa);
             this.Controls.Add(this.dataGridCarrinho);
             this.Name = "ListarCarrinho";
             this.Text = "ListarCarrinho";
             this.Load += new System.EventHandler(this.ListarCarrinho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrinho)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBoxinstrucao;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox CampoDePesquisa;
         private System.Windows.Forms.DataGridView dataGridCarrinho;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;

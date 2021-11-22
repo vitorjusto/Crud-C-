@@ -57,6 +57,11 @@ namespace crud_teste.Model.Object_Values
             return _value.ToString("C2");
         }
 
+        public override string ToString()
+        {
+            return _value.ToString("C2");
+        }
+
         public void setFromDinheiro(MyDinheiro value)
         {
             _value = value.GetAsDouble(); 

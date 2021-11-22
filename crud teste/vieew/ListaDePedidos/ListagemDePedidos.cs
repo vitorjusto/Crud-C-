@@ -128,20 +128,23 @@ namespace crud_teste.vieew.ListaDePedidos
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListagemDePedidos_Load(object sender, EventArgs e)
-        {
-
-        }
+        
+        
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
             new ListarClientes().Show();
+        }
+
+        
+
+        
+        private void ListarPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
+            this.Close();
+            new ConsultarVenda(x).Show();
         }
     }
 }

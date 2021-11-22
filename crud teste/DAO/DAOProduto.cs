@@ -186,5 +186,23 @@ namespace crud_teste.DAO
                 }
             }
         }
+
+        public void aumentarEstoque(int id, int quantidade)
+        {
+            var query = "update produto set estoque += @quantidade where idProduto = @idProduto";
+            try
+            {
+                con.Open();
+                con.Execute(query, new {
+                    quantidade = quantidade,
+                    idProduto = id,
+                });
+                con.Close();
+
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }      

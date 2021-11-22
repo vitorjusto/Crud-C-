@@ -109,6 +109,8 @@ namespace crud_teste.vieew
             NomeDoProduto.Text = produto.NomeDoProduto;
             QuantidadeEmEstoque.Text = produto.Estoque.ToString();
             PrecoUnitario.Text =  produto.PrecoDeVenda.GetAsString();
+            carrinho.precoDeVenda = produto.PrecoDeVenda.GetAsDouble();
+            carrinho.precoDeCusto = produto.PrecoDeCusto.GetAsDouble();
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -229,14 +231,15 @@ namespace crud_teste.vieew
         public void AdicionarNaVenda()
         {
 
+            
 
-            //QuantidadeUnitario.Text = carrinhos.Count().ToString();
+            QuantidadeUnitario.Text = venda.Pedido_Produto.Count().ToString();
 
-            //QuantidadeTotal.Text = carrinhos.Sum(x => x.quantidade).ToString();
+            QuantidadeTotal.Text = venda.Pedido_Produto.Sum(x => x.quantidade).ToString();
 
-            //TotalBruto.Text = carrinhos.Sum(x => x.PrecoBruto.GetAsDouble()).ToString();
-            //TotalLiquido.Text = carrinhos.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != ""? DescontoAVista.Text: "0")).ToString();
-            //TotalDesconto.Text = carrinhos.Sum(x => x.Desconto.GetAsDouble()).ToString();
+            TotalBruto.Text = venda.Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble()).ToString();
+            TotalLiquido.Text = venda.Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != "" ? DescontoAVista.Text : "0")).ToString();
+            TotalDesconto.Text = venda.Pedido_Produto.Sum(x => x.Desconto.GetAsDouble()).ToString();
 
         }
 
@@ -286,8 +289,8 @@ namespace crud_teste.vieew
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Venda venda = new Venda();
-            venda = receberCampos();
+            
+           receberCampos();
             var validar = new VendaValidation(cliente.LimiteDeCompra, venda);
 
 
@@ -299,10 +302,10 @@ namespace crud_teste.vieew
                 {
                     if (MessageBox.Show("Deseja Mesmo Efetuar Venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        //AlterarVenda alterarVenda = new AlterarVenda();
-                        ////alterarVenda.cadastrar(venda);
-                        //MessageBox.Show("Venda Efetuada com sucesso!");
-                        //LimparVenda();
+                        AlterarVenda alterarvenda = new AlterarVenda();
+                        alterarvenda.cadastrar(venda);
+                        MessageBox.Show("venda efetuada com sucesso!");
+                        LimparVenda();
                     }
 
 
@@ -343,7 +346,6 @@ namespace crud_teste.vieew
 
         public Venda receberCampos()
         {
-            Venda venda = new Venda();
 
             venda.IdCliente = cliente.idCliente;
             venda.IdColaborador = colaborador.idColaborador;

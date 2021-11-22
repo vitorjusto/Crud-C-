@@ -20,7 +20,9 @@ namespace crud_teste.DAO
             con.ConnectionString = "Data Source=ESTAGIO1;Initial Catalog=crud;Integrated Security=True";
         }
 
-        public void cadastrar(Venda venda, List<Pedido_Produto> carrinhos)
+        
+
+        public void cadastrar(Venda venda)
         {
 
 
@@ -47,7 +49,7 @@ namespace crud_teste.DAO
                 }
                 , tran).ToString());
                 
-                foreach (var carrinho in carrinhos)
+                foreach (var carrinho in venda.Pedido_Produto)
                 {
                     carrinho.idVenda = idVenda;
                     con.Execute(querycarrinho, new
@@ -111,6 +113,7 @@ namespace crud_teste.DAO
                     pedido.venda.TotalDeDesconto = (double)resultado.TotalDeDesconto;
                     pedido.venda.TotalLiquido = (double)resultado.totalLiquido;
                     pedido.venda.MesesAPrazo = (int)resultado.mesesaprazo;
+                    pedido.venda.QuantidadeUnitario = (int)resultado.quantidadeunitario;
                     pedido.venda.QuantidadeDeTotal = (int)resultado.quantidadetotal;
                     pedido.venda.TipoDeVenda = resultado.tipodevenda;
                     pedido.venda.IdCliente = (int)resultado.idCliente;
@@ -182,6 +185,115 @@ namespace crud_teste.DAO
                 throw new Exception(ex.Message);
             }
 
+        }
+
+
+        public Venda ConsultarVenda(int id)
+        {
+            Venda venda = new Venda();
+            venda.IdVenda = id;
+            using (con)
+            {
+               
+                var query = @"select * from venda where idvenda = @IdVenda";
+                con.Open();
+                var reader = con.ExecuteReader(query, venda);
+                
+                reader.Read();
+                using (reader)
+                {
+                    venda.TotalBruto = (double)reader["TotalBruto"];
+                    venda.TotalDeDesconto = (double)reader["TotalDeDesconto"];
+                    venda.TotalLiquido = (double)reader["TotalLiquido"];
+                    venda.MesesAPrazo = (int)reader["mesesaprazo"];
+                    venda.QuantidadeDeTotal = (int)reader["quantidadetotal"];
+                    venda.QuantidadeUnitario = (int)reader["quantidadeunitario"];
+                    venda.IdCliente = (int)reader["idCliente"];
+                    venda.IdColaborador = (int)reader["idColaborador"];
+                    venda.DescontoAVIsta = (double)reader["DescontoAVista"];
+                    venda.TipoDeVenda = (string)reader["TipoDeVenda"];
+                }
+
+
+                query = "select c.IdCarrinho, c.Quantidade, c.Desconto, c.precobruto, c.precoliquido, c.idVenda, c.idProduto, c.PrecoDeCusto as 'carrinhoPrecoDeCusto'," +
+                    " c.PrecoDeVenda as 'carrinhoPrecoDeVenda', p.CodigoDeBarras, p.NomeProduto, p.PrecoDeVenda as 'produtoPrecoDeVenda', p.PrecoDeCusto as 'produtoPrecoDeCusto'," +
+                    " p.Estoque, p.Ativo, p.Fabricante from Carrinho" +
+                    " c left outer join Produto p on p.IdProduto = c.idProduto where idVenda = @IdVenda";
+                var resultados = con.Query<dynamic>(query, new
+                {
+                    IdVenda = id,
+                });
+                con.Close();
+
+                
+                foreach (var resultado in resultados)
+                {
+                    Pedido_Produto lista = new Pedido_Produto();
+
+                    lista.IdCarrinho = (int)resultado.IdCarrinho;
+                    lista.quantidade = (long)resultado.Quantidade;
+                    lista.Desconto = (double)resultado.Desconto;
+                    lista.PrecoBruto = (double)resultado.precobruto;
+                    lista.PrecoLiquido = (double)resultado.precoliquido;
+                    lista.idProduto = (int)resultado.idProduto;
+                    lista.precoDeCusto = (double)resultado.carrinhoPrecoDeCusto;
+                    lista.precoDeVenda = (double)resultado.carrinhoPrecoDeVenda;
+                    lista.idVenda = id;
+
+                    lista.produto.CodigoDeBarras = (string)resultado.CodigoDeBarras;
+                    lista.produto.NomeDoProduto = (string)resultado.NomeProduto;
+                    lista.produto.PrecoDeVenda = (double)resultado.produtoPrecoDeVenda;
+                    lista.produto.PrecoDeCusto = (double)resultado.produtoPrecoDeCusto;
+                    lista.produto.Estoque = (long)resultado.Estoque;
+                    lista.produto.Ativo = (bool)resultado.Ativo;
+                    lista.produto.Fabricante = (string)resultado.Fabricante;
+                    lista.produto.IdProduto = (int)resultado.idProduto;
+                    venda.Pedido_Produto.Add(lista);
+                }
+
+
+                ConexaoDAO stmt = new ConexaoDAO();
+
+
+          
+
+
+
+                return venda;
+            }
+        }
+
+
+        public void reembolso(Pedido_Produto pedido)
+        {
+            var query = "update produto set estoque += @quantidade where idProduto = @idProduto";
+            con.Open();
+
+            var tran = con.BeginTransaction();
+            try
+            {
+                
+                con.Execute(query, new
+                {
+                    quantidade = pedido.quantidade,
+                    idProduto = pedido.produto.IdProduto,
+                }, tran);
+
+                query = "delete from Carrinho where idCarrinho = @idCarrinho";
+                con.Execute(query, new
+                {
+                    idCarrinho = pedido.IdCarrinho,
+                }, tran) ;
+                tran.Commit();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                con.Close();
+                throw new Exception(ex.Message);
+            }
         }
 
     }

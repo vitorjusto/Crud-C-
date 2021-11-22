@@ -11,10 +11,10 @@ namespace crud_teste.controller
 {
     public class AlterarVenda
     {
-        public void cadastrar(Venda venda, List<Pedido_Produto> carrinho)
+        public void cadastrar(Venda venda)
         {
             var stmt = new VendaDAO();
-            stmt.cadastrar(venda, carrinho);
+            stmt.cadastrar(venda);
 
         }
 
@@ -27,6 +27,22 @@ namespace crud_teste.controller
             return pedidos;
         }
 
+        public Venda Consultar(int id)
+        {
+            var stmt = new VendaDAO();
+            ConexaoDAO stmtpessoa = new ConexaoDAO();
+            var venda = stmt.ConsultarVenda(id);
 
+            venda.cliente = stmtpessoa.ConsultarCliente(venda.IdCliente);
+            stmtpessoa = new ConexaoDAO();
+            venda.colaborador = stmtpessoa.ConsultarColaborador(venda.IdColaborador);
+            return venda;
+        }
+
+        public void aumentarEstoque(Pedido_Produto pedido)
+        {
+            var stmt = new VendaDAO();
+            stmt.reembolso(pedido);
+        }
     }
 }

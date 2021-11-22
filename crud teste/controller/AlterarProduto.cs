@@ -53,5 +53,7 @@ namespace crud_teste.controller
             var stmt = new DAOProduto();
             stmt.Excluir(id);
         }
+
+        
     }
 }

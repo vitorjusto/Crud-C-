@@ -75,59 +75,71 @@ namespace crud_teste.vieew.ListaDePedidos
             this.QuantidadeTotal});
             this.ListarPedidos.Location = new System.Drawing.Point(12, 44);
             this.ListarPedidos.Name = "ListarPedidos";
+            this.ListarPedidos.ReadOnly = true;
             this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListarPedidos.Size = new System.Drawing.Size(1044, 276);
             this.ListarPedidos.TabIndex = 0;
+            this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
             // 
             // IdVenda
             // 
             this.IdVenda.HeaderText = "IdVenda";
             this.IdVenda.Name = "IdVenda";
+            this.IdVenda.ReadOnly = true;
             // 
             // NomeCliente
             // 
             this.NomeCliente.HeaderText = "Nome Do Cliente";
             this.NomeCliente.Name = "NomeCliente";
+            this.NomeCliente.ReadOnly = true;
             // 
             // NomeColaborador
             // 
             this.NomeColaborador.HeaderText = "Nome Do Colaborador";
             this.NomeColaborador.Name = "NomeColaborador";
+            this.NomeColaborador.ReadOnly = true;
             // 
             // TipoDeVenda
             // 
             this.TipoDeVenda.HeaderText = "Tipo De Venda";
             this.TipoDeVenda.Name = "TipoDeVenda";
+            this.TipoDeVenda.ReadOnly = true;
             // 
             // mesesAPrazo
             // 
             this.mesesAPrazo.HeaderText = "Meses A Prazo";
             this.mesesAPrazo.Name = "mesesAPrazo";
+            this.mesesAPrazo.ReadOnly = true;
             // 
             // TotalBruto
             // 
             this.TotalBruto.HeaderText = "Total Bruto";
             this.TotalBruto.Name = "TotalBruto";
+            this.TotalBruto.ReadOnly = true;
             // 
             // TotalDeDesconto
             // 
             this.TotalDeDesconto.HeaderText = "Total De Desconto";
             this.TotalDeDesconto.Name = "TotalDeDesconto";
+            this.TotalDeDesconto.ReadOnly = true;
             // 
             // TotalLiquido
             // 
             this.TotalLiquido.HeaderText = "Total Liquido";
             this.TotalLiquido.Name = "TotalLiquido";
+            this.TotalLiquido.ReadOnly = true;
             // 
             // QuantidadeUnitario
             // 
             this.QuantidadeUnitario.HeaderText = "Quantidade Unitario";
             this.QuantidadeUnitario.Name = "QuantidadeUnitario";
+            this.QuantidadeUnitario.ReadOnly = true;
             // 
             // QuantidadeTotal
             // 
             this.QuantidadeTotal.HeaderText = "Quantidade Total";
             this.QuantidadeTotal.Name = "QuantidadeTotal";
+            this.QuantidadeTotal.ReadOnly = true;
             // 
             // label2
             // 
@@ -164,7 +176,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "total Liquido(receita)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -277,7 +288,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListagemDePedidos";
             this.Text = "ListagemDePedidos";
-            this.Load += new System.EventHandler(this.ListagemDePedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

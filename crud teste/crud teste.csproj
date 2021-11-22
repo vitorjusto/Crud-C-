@@ -122,6 +122,12 @@
     <Compile Include="vieew\ListaDePedidos\ListagemDePedidos.Designer.cs">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="vieew\ListaDePedidos\ListarItens.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\ListaDePedidos\ListarItens.Designer.cs">
+      <DependentUpon>ListarItens.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\TelaDeVenda\CadastroDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\ListaDePedidos\ListagemDePedidos.resx">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\ListaDePedidos\ListarItens.resx">
+      <DependentUpon>ListarItens.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\CadastroDePedidos.resx">
       <DependentUpon>CadastroDePedidos.cs</DependentUpon>

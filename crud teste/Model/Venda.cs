@@ -1,4 +1,5 @@
 ﻿using crud_teste.Model.Object_Values;
+using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,12 @@ namespace crud_teste.Model
 
 
         public int IdCliente { get; set; }
+
+        public Cliente cliente = new Cliente();
+
         public int IdColaborador { get; set; }
 
+        public Colaborador colaborador = new Colaborador();
 
        public void calcularTotalLiquido()
         {
