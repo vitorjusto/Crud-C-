@@ -83,19 +83,19 @@ namespace crud_teste.vieew.ListaDePedidos
             foreach(var pedido in pedidos)
             {
                 ListarPedidos.Rows.Add();
-                ListarPedidos.Rows[index].Cells[0].Value = pedido.venda.IdVenda;
+                ListarPedidos.Rows[index].Cells[0].Value = pedido.IdVenda;
                 ListarPedidos.Rows[index].Cells[1].Value = pedido.NomeCompletoCliente();
                 ListarPedidos.Rows[index].Cells[2].Value = pedido.NomeCompletoColaborador();
-                ListarPedidos.Rows[index].Cells[3].Value = pedido.venda.TipoDeVenda;
-                ListarPedidos.Rows[index].Cells[4].Value = pedido.venda.MesesAPrazo == 0? "-": pedido.venda.MesesAPrazo.ToString();
-                ListarPedidos.Rows[index].Cells[5].Value = pedido.venda.TotalBruto.GetAsString();
-                ListarPedidos.Rows[index].Cells[6].Value = pedido.venda.TotalDeDesconto.GetAsString();
-                ListarPedidos.Rows[index].Cells[7].Value = pedido.venda.TotalLiquido.GetAsString();
-                ListarPedidos.Rows[index].Cells[8].Value = pedido.venda.QuantidadeUnitario;
-                ListarPedidos.Rows[index].Cells[9].Value = pedido.venda.QuantidadeDeTotal;
+                ListarPedidos.Rows[index].Cells[3].Value = pedido.TipoDeVenda;
+                ListarPedidos.Rows[index].Cells[4].Value = pedido.MesesAPrazo == 0? "-": pedido.MesesAPrazo.ToString();
+                ListarPedidos.Rows[index].Cells[5].Value = pedido.TotalBruto.GetAsString();
+                ListarPedidos.Rows[index].Cells[6].Value = pedido.TotalDeDesconto.GetAsString();
+                ListarPedidos.Rows[index].Cells[7].Value = pedido.TotalLiquido.GetAsString();
+                ListarPedidos.Rows[index].Cells[8].Value = pedido.QuantidadeUnitaria;
+                ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
 
-                valoresTotais.totalBruto.Increment(pedido.venda.TotalBruto);
-                valoresTotais.totalDesconto.Increment(pedido.venda.TotalDeDesconto);
+                valoresTotais.totalBruto.Increment(pedido.TotalBruto);
+                valoresTotais.totalDesconto.Increment(pedido.TotalDeDesconto);
                 valoresTotais.totalGasto.Increment(pedido.TotalGasto());
                 valoresTotais.totalReceita.Increment(pedido.TotalReceita()) ;
 
@@ -145,6 +145,11 @@ namespace crud_teste.vieew.ListaDePedidos
             var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
             this.Close();
             new ConsultarVenda(x).Show();
+        }
+
+        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

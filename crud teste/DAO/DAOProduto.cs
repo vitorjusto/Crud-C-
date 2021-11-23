@@ -134,7 +134,7 @@ namespace crud_teste.DAO
                 {
 
 
-                    var query = @"update Produto set NomeProduto = @NomeDoProduto, CodigoDeBarras = @CodigoDeBarras, precodecusto = @PrecoDeCusto, Estoque = @Estoque, Fabricante= @Fabricante, Ativo = @Ativo where idProduto = @IdProduto";
+                    var query = @"update Produto set NomeProduto = @NomeDoProduto, CodigoDeBarras = @CodigoDeBarras, precodecusto = @PrecoDeCusto, precodevenda = @PrecodeVenda, Estoque = @Estoque, Fabricante= @Fabricante, Ativo = @Ativo where idProduto = @IdProduto";
 
                     con.Execute(query, new
                     {

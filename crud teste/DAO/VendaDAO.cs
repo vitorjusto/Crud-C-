@@ -5,8 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace crud_teste.DAO
 {
@@ -14,7 +13,6 @@ namespace crud_teste.DAO
     {
         SqlConnection con = new SqlConnection();
 
-        public CarrinhoDAO stmtcarrinho = new CarrinhoDAO();
         public VendaDAO()
         {
             con.ConnectionString = "Data Source=ESTAGIO1;Initial Catalog=crud;Integrated Security=True";
@@ -81,6 +79,109 @@ namespace crud_teste.DAO
             }
         }
 
+        internal void SalvarVenda(Venda venda)
+        {
+            var query = "update venda set TotalBruto = @TotalBruto, TotalDeDesconto = @TotalDeDesconto, TotalLiquido = @TotalLiquido, " +
+                "mesesaprazo = @MesesAPrazo, quantidadetotal = @quantidadetotal, quantidadeunitario = @quantidadeunitario, TipoDeVenda = @TipoDeVenda, " +
+                "idCliente = @idCliente, idColaborador = @idColaborador, DescontoAVista = @DescontoAVista where idVenda = @idVenda";
+
+            var queryPedido_Produto = "update Carrinho set Quantidade = @quantidade, Desconto = @desconto, precoBruto = @precoBruto, precoLiquido = @precoLiquido, " +
+                "PrecoDeCusto = @precoDeCusto, PrecoDeVenda = @PrecoDeVenda where idVenda = @idVenda";
+
+            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  
+                                Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
+
+            var updateEstoque = @"update Produto set Estoque = @estoque where idProduto = @idProduto";
+            con.Open();
+            var tran = con.BeginTransaction();
+            try
+            {
+                
+                
+                con.Execute(query, new
+                {
+                    TotalBruto = venda.TotalBruto.GetAsDouble(),
+                    TotalDeDesconto = venda.TotalDeDesconto.GetAsDouble(),
+                    TotalLiquido = venda.TotalLiquido.GetAsDouble(),
+                    MesesAPrazo = venda.MesesAPrazo,
+                    quantidadetotal = venda.QuantidadeDeTotal,
+                    quantidadeunitario = venda.QuantidadeUnitario,
+                    TipoDeVenda = venda.TipoDeVenda,
+                    idCliente = venda.cliente.idCliente,
+                    idColaborador = venda.colaborador.idColaborador,
+                    DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
+                    idVenda = venda.IdVenda,
+                }, tran) ;
+
+                foreach(var pedido in venda.Pedido_Produto)
+                {
+                    if (pedido.IdCarrinho == 0)
+                    {
+                        con.Execute(querycarrinho, new
+                        {
+                            quantidade = pedido.quantidade,
+                            desconto = pedido.Desconto.GetAsDouble(),
+                            precoBruto = pedido.PrecoBruto.GetAsDouble(),
+                            precoLiquido = pedido.PrecoLiquido.GetAsDouble(),
+                            precoDeCusto = pedido.precoDeCusto.GetAsDouble(),
+                            precoDeVenda = pedido.precoDeVenda.GetAsDouble(),
+                            idVenda = venda.IdVenda,
+                            idProduto = pedido.produto.IdProduto,
+                        }, tran);
+                    }
+                    else
+                    {
+                        con.Execute(queryPedido_Produto, new
+                        {
+                            quantidade = pedido.quantidade,
+                            desconto = pedido.Desconto.GetAsDouble(),
+                            precoBruto = pedido.PrecoBruto.GetAsDouble(),
+                            precoLiquido = pedido.PrecoLiquido.GetAsDouble(),
+                            precoDeCusto = pedido.precoDeCusto.GetAsDouble(),
+                            precoDeVenda = pedido.precoDeVenda.GetAsDouble(),
+                            idVenda = pedido.idVenda,
+                        }, tran);
+                    }
+
+                    con.Execute(updateEstoque, new
+                    {
+                        estoque = pedido.quantidadeRestante,
+                        idProduto = pedido.produto.IdProduto,
+                    }, tran);
+
+                }
+
+                tran.Commit();
+                con.Close();
+               
+            }catch(Exception ex)
+            {
+                
+                tran.Rollback();
+                con.Close();
+                throw new Exception(ex.Message);
+            }
+
+
+        }
+
+        internal void ExcluirVenda(int id)
+        {
+            try
+            {
+                var query = @"delete from venda where idVenda = @idVenda";
+                con.Open();
+                con.Execute(query, new {
+                    idVenda = id,
+                });
+                con.Close();
+
+            }catch(Exception ex)
+            {
+                con.Close();
+                throw new Exception(ex.Message); 
+            }
+        }
 
         public List<PedidoListagem> ListarPedidos()
         {
@@ -108,22 +209,21 @@ namespace crud_teste.DAO
                 foreach(var resultado in resultados)
                 {
                     PedidoListagem pedido = new PedidoListagem();
-                    pedido.venda.IdVenda = resultado.idVenda;
-                    pedido.venda.TotalBruto = (double)resultado.TotalBruto;
-                    pedido.venda.TotalDeDesconto = (double)resultado.TotalDeDesconto;
-                    pedido.venda.TotalLiquido = (double)resultado.totalLiquido;
-                    pedido.venda.MesesAPrazo = (int)resultado.mesesaprazo;
-                    pedido.venda.QuantidadeUnitario = (int)resultado.quantidadeunitario;
-                    pedido.venda.QuantidadeDeTotal = (int)resultado.quantidadetotal;
-                    pedido.venda.TipoDeVenda = resultado.tipodevenda;
-                    pedido.venda.IdCliente = (int)resultado.idCliente;
-                    pedido.venda.IdColaborador = resultado.idColaborador;
-                    pedido.venda.DescontoAVIsta = (float)resultado.DescontoAVista;
+                    pedido.IdVenda = resultado.idVenda;
+                    pedido.TotalBruto = (double)resultado.TotalBruto;
+                    pedido.TotalDeDesconto = (double)resultado.TotalDeDesconto;
+                    pedido.TotalLiquido = (double)resultado.totalLiquido;
+                    pedido.MesesAPrazo = (int)resultado.mesesaprazo;
+                    pedido.TipoDeVenda = resultado.tipodevenda;
+                    pedido.IdCliente = (int)resultado.idCliente;
+                    pedido.IdColaborador = resultado.idColaborador;
+                    pedido.DescontoAVIsta = (float)resultado.DescontoAVista;
                     pedido.nomeCliente = resultado.NomeCliente;
                     pedido.sobrenomeCliente = resultado.sobrenomeCliente;
                     pedido.nomeColaborador = resultado.NomeColaborador;
                     pedido.SobrenomeColaborador = resultado.sobrenomeColaborador;
-
+                    pedido.QuantidadeTotal = (long)resultado.quantidadetotal;
+                    pedido.QuantidadeUnitaria = (long)resultado.quantidadeunitario;
                    
 
 
@@ -131,7 +231,7 @@ namespace crud_teste.DAO
 
 
                     pedidos.Add(pedido);
-                    listaid.Add(pedido.venda.IdVenda);
+                    listaid.Add(pedido.IdVenda);
 
                 }
 
@@ -154,7 +254,7 @@ namespace crud_teste.DAO
                 {
                     foreach(var resultado in resultados)
                     {
-                        if(resultado.idVenda == pedidos[index].venda.IdVenda)
+                        if(resultado.idVenda == pedidos[index].IdVenda)
                         {
 
                             Pedido_Produto carrinho = new Pedido_Produto();
@@ -202,12 +302,7 @@ namespace crud_teste.DAO
                 reader.Read();
                 using (reader)
                 {
-                    venda.TotalBruto = (double)reader["TotalBruto"];
-                    venda.TotalDeDesconto = (double)reader["TotalDeDesconto"];
-                    venda.TotalLiquido = (double)reader["TotalLiquido"];
                     venda.MesesAPrazo = (int)reader["mesesaprazo"];
-                    venda.QuantidadeDeTotal = (int)reader["quantidadetotal"];
-                    venda.QuantidadeUnitario = (int)reader["quantidadeunitario"];
                     venda.IdCliente = (int)reader["idCliente"];
                     venda.IdColaborador = (int)reader["idColaborador"];
                     venda.DescontoAVIsta = (double)reader["DescontoAVista"];
@@ -279,6 +374,17 @@ namespace crud_teste.DAO
                     idProduto = pedido.produto.IdProduto,
                 }, tran);
 
+                query = "update venda set totalBruto -= @PrecoBruto, Totaldedesconto -= @Desconto, TotalLiquido -= (@PrecoLiquido)," +
+                        " QuantidadeTotal -= @quantidade, quantidadeunitario-= 1 where idVenda = @idvenda";
+                con.Execute(query, new
+                {
+                    PrecoBruto = pedido.PrecoBruto.GetAsDouble(),
+                    Desconto = pedido.Desconto.GetAsDouble(),
+                    PrecoLiquido = pedido.PrecoLiquido.GetAsDouble(),
+                    quantidade = pedido.quantidade,
+                    idvenda = pedido.idVenda,
+                }, tran);
+
                 query = "delete from Carrinho where idCarrinho = @idCarrinho";
                 con.Execute(query, new
                 {
@@ -295,6 +401,9 @@ namespace crud_teste.DAO
                 throw new Exception(ex.Message);
             }
         }
+
+
+
 
     }
 }

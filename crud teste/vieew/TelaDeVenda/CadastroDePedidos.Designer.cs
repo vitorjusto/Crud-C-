@@ -300,6 +300,7 @@ namespace crud_teste.vieew
             this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
             this.Desconto.Leave += new System.EventHandler(this.Desconto_Leave);
             this.Desconto.MouseEnter += new System.EventHandler(this.Desconto_MouseEnter);
+            this.Desconto.MouseLeave += new System.EventHandler(this.Desconto_MouseLeave);
             // 
             // label6
             // 

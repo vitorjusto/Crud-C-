@@ -15,13 +15,14 @@ namespace crud_teste.vieew.ListaDePedidos
 {
     public partial class ListarItens : Form
     {
-        public List<Pedido_Produto> produtodoCarrinho = new List<Pedido_Produto>();
-
-        public int selectedIndex;
-        public ListarItens(List<Pedido_Produto> carrinhosLparam)
+        public Venda venda = new Venda();
+        public int selectedIndex = -1;
+        public ListarItens(Venda carrinhosLparam)
         {
             InitializeComponent();
-            this.produtodoCarrinho = carrinhosLparam;
+            this.BackColor = Global.BackgroundColor;
+            dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
+            this.venda = carrinhosLparam;
             AtualizarGrid();
 
 
@@ -30,7 +31,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private void AtualizarGrid()
         {
             var index = 0;
-            foreach (var carrinho in produtodoCarrinho)
+            foreach (var carrinho in venda.Pedido_Produto)
             {
                 dataGridCarrinho.Rows.Add();
                 dataGridCarrinho.Rows[index].Cells[0].Value = carrinho.produto.NomeDoProduto;
@@ -77,9 +78,9 @@ namespace crud_teste.vieew.ListaDePedidos
 
 
                         AlterarVenda oalterar = new AlterarVenda();
-                        oalterar.aumentarEstoque(produtodoCarrinho[e.RowIndex]);
+                        oalterar.aumentarEstoque(venda.Pedido_Produto[e.RowIndex]);
                         dataGridCarrinho.Rows.RemoveAt(e.RowIndex);
-                        produtodoCarrinho.RemoveRange(e.RowIndex, 1);
+                        venda.Pedido_Produto.RemoveRange(e.RowIndex, 1);
                     }catch(Exception ex)
                     {
                         MessageBox.Show(ex.Message);

@@ -82,7 +82,6 @@ namespace crud_teste.vieew
             carrinhosL = listar.carrinhosL;
             venda.Pedido_Produto = listar.carrinhos;
 
-            venda.AdicionarNaVenda(FormaDePagamento.Text);
 
         }
         private void NomeDoColaborador_DoubleClick(object sender, EventArgs e)
@@ -111,6 +110,7 @@ namespace crud_teste.vieew
             PrecoUnitario.Text =  produto.PrecoDeVenda.GetAsString();
             carrinho.precoDeVenda = produto.PrecoDeVenda.GetAsDouble();
             carrinho.precoDeCusto = produto.PrecoDeCusto.GetAsDouble();
+            
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -174,7 +174,7 @@ namespace crud_teste.vieew
                 (produto.Estoque) - carrinho.quantidade
 
            );
-            var oAlterar = new AlterarCarrinho();
+            ocarrinho.produto = produto;
 
 
             carrinhoL.PrecoBruto = carrinho.PrecoBruto;
@@ -349,13 +349,8 @@ namespace crud_teste.vieew
 
             venda.IdCliente = cliente.idCliente;
             venda.IdColaborador = colaborador.idColaborador;
-            venda.QuantidadeDeTotal = int.Parse(QuantidadeTotal.Text == "" ? "0": QuantidadeTotal.Text) ;
-            venda.QuantidadeUnitario = int.Parse(QuantidadeUnitario.Text == "" ? "0" : QuantidadeUnitario.Text );
             venda.TipoDeVenda = FormaDePagamento.Text;
 
-            venda.TotalBruto = TotalBruto.Text;
-            venda.TotalDeDesconto = TotalDesconto.Text;
-            venda.TotalLiquido = TotalLiquido.Text ;
 
 
             if (venda.TipoDeVenda.Equals("A vista"))
@@ -423,6 +418,11 @@ namespace crud_teste.vieew
         private void PrecoUnitario_TextChanged(object sender, EventArgs e)
         {
             PreencherValoresCarrinhos();
+        }
+
+        private void Desconto_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

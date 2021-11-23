@@ -8,7 +8,7 @@ namespace crud_teste.Model.Object_Values
         double _value;
         public MyDinheiro(string value)
         {
-            var converter = value.Replace("R$", "");
+            var converter = value.Replace("R$ ", "");
             if (string.IsNullOrEmpty(converter))
             {
                 _value = 0;

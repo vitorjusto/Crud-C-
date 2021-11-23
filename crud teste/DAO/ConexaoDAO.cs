@@ -13,7 +13,6 @@ namespace crud_teste
     class ConexaoDAO
     {
         SqlConnection con = new SqlConnection();
-        SqlCommand cmd = new SqlCommand();
 
 
         public ConexaoDAO()

@@ -15,7 +15,6 @@ namespace crud_teste.vieew.TelaDeVenda
 {
     public partial class ListarCarrinho : Form
     {
-        public AlterarCarrinho oAlterar = new AlterarCarrinho();
         public List<CarrinhoListagem> carrinhosL = new List<CarrinhoListagem>();
         public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
         public ListarCarrinho(List<CarrinhoListagem> carrinhosLparam, List<Pedido_Produto> carrinhosparam)

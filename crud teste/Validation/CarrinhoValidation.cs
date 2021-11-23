@@ -13,7 +13,7 @@ namespace crud_teste.Validation
         public CarrinhoValidation()
         {
 
-            RuleFor(x => x.idProduto).GreaterThan(0).WithMessage("Escolha um produto primeiro!");
+            RuleFor(x => x.produto.IdProduto).GreaterThan(0).WithMessage("Escolha um produto primeiro!");
             
             RuleFor(x => x.Desconto.GetAsDouble()).GreaterThanOrEqualTo(0).WithMessage("Desconto não deve ser menor que zero");
 

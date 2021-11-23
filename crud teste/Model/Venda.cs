@@ -11,12 +11,19 @@ namespace crud_teste.Model
     public class Venda
     {
         public int IdVenda { get; set; }
-        public MyDinheiro TotalBruto = new MyDinheiro();
-        public MyDinheiro TotalDeDesconto = new MyDinheiro();
-        public MyDinheiro TotalLiquido = 0;
+        public MyDinheiro TotalBruto {
+            get => Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble());
+        }
+        public MyDinheiro TotalDeDesconto {
+
+            get => Pedido_Produto.Sum(x => x.Desconto.GetAsDouble());
+        }
+        public MyDinheiro TotalLiquido {
+            get => Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble());
+        }
         public int MesesAPrazo{ get; set; }
-        public long QuantidadeDeTotal{ get; set; }
-        public int QuantidadeUnitario{ get; set; }
+        public long QuantidadeDeTotal{ get => Pedido_Produto.Sum(x => x.quantidade); }
+        public int QuantidadeUnitario{ get => Pedido_Produto.Count; }
         public string TipoDeVenda{ get; set; }
 
         public MyDinheiro DescontoAVIsta = new MyDinheiro();
@@ -32,26 +39,12 @@ namespace crud_teste.Model
 
         public Colaborador colaborador = new Colaborador();
 
-       public void calcularTotalLiquido()
-        {
-            TotalLiquido = TotalBruto.GetAsDouble() - TotalDeDesconto.GetAsDouble();
-        }
+       
 
 
-        public void AdicionarNaVenda(string formaDePagamento)
-        {
+        
 
-            TipoDeVenda = formaDePagamento;
-
-            QuantidadeUnitario = Pedido_Produto.Count();
-
-            QuantidadeDeTotal = Pedido_Produto.Sum(x => x.quantidade);
-
-            TotalBruto = Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble());
-            TotalLiquido = Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble()) - (TipoDeVenda.Equals("A vista") ? DescontoAVIsta.GetAsDouble() : 0.0);
-            TotalDeDesconto = Pedido_Produto.Sum(x => x.Desconto.GetAsDouble());
-
-        }
+        
 
     }
 }
