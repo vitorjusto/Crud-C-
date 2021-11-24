@@ -4,6 +4,7 @@ using crud_teste.Model;
 using crud_teste.Validation;
 using crud_teste.vieew.TelaDeVenda;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace crud_teste.vieew.ListaDePedidos
     {
         private Venda _venda = new Venda();
         private Pedido_Produto _pedido = new Pedido_Produto();
+        private List<Pedido_Produto> oldList = new List<Pedido_Produto>();
         public ConsultarVenda(int id)
         {
             InitializeComponent();
@@ -24,7 +26,11 @@ namespace crud_teste.vieew.ListaDePedidos
 
             _venda = oAlterar.Consultar(id);
 
+            oldList.AddRange(_venda.Pedido_Produto);
+
             gbProduto.Visible = false;
+
+           
 
             preencherCampos();
 
@@ -122,6 +128,7 @@ namespace crud_teste.vieew.ListaDePedidos
                     oalterar.aumentarEstoque(_pedido);
 
                     _venda.Pedido_Produto.Remove(_pedido);
+                    oldList.Remove(_pedido);
                 }
                 catch (Exception ex)
                 {
@@ -179,7 +186,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.quantidade = Convert.ToInt64(txtquantidade.Text == "" ? "0" : txtquantidade.Text);
-            pedido.quantidadeRestante = Convert.ToInt64(txtQuantidadeRestante.Text);
+            pedido.quantidadeRestante = Convert.ToInt64(txtQuantidadeRestante.Text == ""? "0" : txtQuantidadeRestante.Text);
             pedido.precoDeCusto = txtPrecoUnitario.Text;
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.Desconto = txtDesconto.Text;
@@ -281,6 +288,41 @@ namespace crud_teste.vieew.ListaDePedidos
             txtnomeProduto.Visible = true;
             gbProduto.Visible = true;
 
+        }
+
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+           
+            if (MessageBox.Show("Deseja Mesmo Inativar esta venda, todos os produtos retornarão no estoque e não fazerá parte do lucro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    AlterarVenda oAlterar = new AlterarVenda();
+
+                    oAlterar.MudarAtivacao(_venda);
+
+                    foreach (var item in oldList)
+                    {
+                        oAlterar.aumentarEstoque(item);
+                    }
+
+
+
+                    if (MessageBox.Show("Deseja salvar alterações ( mais possivel alterar)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+                    {
+                        oAlterar.SalvarProduto(_venda);
+                        
+                    }
+
+                    this.Close();
+                    new ListagemDePedidos().Show();
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

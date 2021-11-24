@@ -39,7 +39,7 @@ namespace crud_teste.Model
 
         public Colaborador colaborador = new Colaborador();
 
-       
+       public bool Ativo { get; set; }
 
 
         

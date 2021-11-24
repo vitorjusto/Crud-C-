@@ -77,5 +77,7 @@ namespace crud_teste.Model.Listagem
         {
             return $"{nomeColaborador} {SobrenomeColaborador}";
         }
+
+        public bool ativo { get; set; }
     }
 }

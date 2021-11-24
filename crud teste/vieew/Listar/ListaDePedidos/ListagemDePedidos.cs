@@ -78,7 +78,12 @@ namespace crud_teste.vieew.ListaDePedidos
             valoresTotais.totalDesconto = new MyDinheiro();
             valoresTotais.totalGasto = new MyDinheiro();
             valoresTotais.totalReceita = new MyDinheiro();
-            
+
+            DataGridViewCellStyle vendainativa = new DataGridViewCellStyle();
+            vendainativa.BackColor = Color.SlateGray;
+            vendainativa.ForeColor = Color.White;
+
+
             var index = 0;
             foreach(var pedido in pedidos)
             {
@@ -93,11 +98,23 @@ namespace crud_teste.vieew.ListaDePedidos
                 ListarPedidos.Rows[index].Cells[7].Value = pedido.TotalLiquido.GetAsString();
                 ListarPedidos.Rows[index].Cells[8].Value = pedido.QuantidadeUnitaria;
                 ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
+                
 
-                valoresTotais.totalBruto.Increment(pedido.TotalBruto);
-                valoresTotais.totalDesconto.Increment(pedido.TotalDeDesconto);
-                valoresTotais.totalGasto.Increment(pedido.TotalGasto());
-                valoresTotais.totalReceita.Increment(pedido.TotalReceita()) ;
+                if (pedido.ativo)
+                {
+                    valoresTotais.totalBruto.Increment(pedido.TotalBruto);
+                    valoresTotais.totalDesconto.Increment(pedido.TotalDeDesconto);
+                    valoresTotais.totalGasto.Increment(pedido.TotalGasto());
+                    valoresTotais.totalReceita.Increment(pedido.TotalReceita());
+                }else
+                {
+                    var j = 0;
+                    while (j < 10)
+                    {
+                        ListarPedidos.Rows[index].Cells[j].Style = vendainativa;
+                        j++;
+                    }
+                }
 
                 index++;
 
@@ -143,8 +160,15 @@ namespace crud_teste.vieew.ListaDePedidos
         private void ListarPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            this.Close();
-            new ConsultarVenda(x).Show();
+            if (pedidos[e.RowIndex].ativo)
+            {
+                this.Close();
+                new ConsultarVenda(x).Show();
+            }
+            else
+            {
+                MessageBox.Show("Não pode alterar um produto inativo");
+            }
         }
 
         private void ListagemDePedidos_Load(object sender, EventArgs e)

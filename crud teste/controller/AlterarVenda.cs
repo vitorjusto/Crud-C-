@@ -55,5 +55,10 @@ namespace crud_teste.controller
         {
             stmt.SalvarVenda(venda);
         }
+
+        public void MudarAtivacao(Venda venda)
+        {
+            stmt.MudarAtivacao(venda);
+        }
     }
 }

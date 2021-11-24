@@ -68,6 +68,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnAtivar = new System.Windows.Forms.Button();
             this.gbProduto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -437,11 +438,22 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // btnAtivar
+            // 
+            this.btnAtivar.Location = new System.Drawing.Point(874, 362);
+            this.btnAtivar.Name = "btnAtivar";
+            this.btnAtivar.Size = new System.Drawing.Size(181, 59);
+            this.btnAtivar.TabIndex = 21;
+            this.btnAtivar.Text = "Inativar Venda";
+            this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
+            // 
             // ConsultarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 531);
+            this.Controls.Add(this.btnAtivar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbProduto);
@@ -516,5 +528,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.Button btnAlterarProduto;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAtivar;
     }
 }

@@ -54,6 +54,12 @@ namespace crud_teste.controller
             stmt.Excluir(id);
         }
 
-        
+        public List<ProdutoListagem> ListarAtivo()
+        {
+            var stmt = new DAOProduto();
+            var lista = stmt.ListarAtivo();
+
+            return lista;
+        }
     }
 }

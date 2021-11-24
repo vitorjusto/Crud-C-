@@ -192,7 +192,7 @@ namespace crud_teste.DAO
 
                 var query = @"select idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
                             v.idCliente, v.idColaborador, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
-                            P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador'
+                            P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador', v.ativo
                             from Venda v
                             Left outer join cliente Cl on Cl.idCliente = v.idCliente Left outer join pessoa P on Cl.IdPessoa = P.idPessoa
                             Left outer join Colaborador Co on Co.idColaborador = v.idColaborador Left outer join pessoa P2 on Co.IdPessoa = P2.idPessoa";
@@ -224,7 +224,7 @@ namespace crud_teste.DAO
                     pedido.SobrenomeColaborador = resultado.sobrenomeColaborador;
                     pedido.QuantidadeTotal = (long)resultado.quantidadetotal;
                     pedido.QuantidadeUnitaria = (long)resultado.quantidadeunitario;
-                   
+                    pedido.ativo = (bool)resultado.ativo;
 
 
 
@@ -307,6 +307,7 @@ namespace crud_teste.DAO
                     venda.IdColaborador = (int)reader["idColaborador"];
                     venda.DescontoAVIsta = (double)reader["DescontoAVista"];
                     venda.TipoDeVenda = (string)reader["TipoDeVenda"];
+                    venda.Ativo = (bool)reader["ativo"];
                 }
 
 
@@ -403,7 +404,31 @@ namespace crud_teste.DAO
         }
 
 
+        public void MudarAtivacao(Venda venda)
+        {
+            try
+            {
+                var query = "";
+                if (venda.Ativo)
+                {
+                    query = @"Update venda set Ativo = 0 where idVenda = @IdVenda";
+                }else
+                {
+                    query = @"Update venda set Ativo = 1 where idVenda = @idVenda";
+                }
 
+                con.Open();
+                con.Execute(query, new
+                {
+                    idVenda = venda.IdVenda,
+                });
+                con.Close();
+            }catch(Exception ex)
+            {
+                con.Close();
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

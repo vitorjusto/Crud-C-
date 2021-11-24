@@ -42,7 +42,7 @@ namespace crud_teste.vieew.TelaDeVenda
                 ListarColaboradores(oAlterarColaborador.ListarColaboradores());
             else if (Buscar == "produto")
             {
-                ListarProdutos(oAlterarProduto.Listar());
+                ListarProdutos(oAlterarProduto.ListarAtivo());
             }
 
             dataGridGeral.AllowUserToAddRows = false;
@@ -91,8 +91,7 @@ namespace crud_teste.vieew.TelaDeVenda
             int i = 0;
             foreach (var produto in produtos)
             {
-                if (produto.Ativo)
-                {
+               
                     dataGridGeral.Rows.Add();
                     dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
                     dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
@@ -100,7 +99,7 @@ namespace crud_teste.vieew.TelaDeVenda
                     dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
                     dataGridGeral.Rows[i].Cells[4].Value = produto.fabricante;
                     i++;
-                }
+               
 
             }
         }  

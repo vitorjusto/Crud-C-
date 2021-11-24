@@ -161,6 +161,17 @@ namespace crud_teste.DAO
             }
         }
 
+        public List<ProdutoListagem> ListarAtivo()
+        {
+            using (con)
+            {
+                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where ativo = 1";
+                var resultado = con.Query<ProdutoListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
+
         public void Excluir(int id)
         {
             using (con)
