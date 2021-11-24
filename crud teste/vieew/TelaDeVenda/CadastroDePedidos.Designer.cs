@@ -88,7 +88,6 @@ namespace crud_teste.vieew
             this.NomeCliente.ReadOnly = true;
             this.NomeCliente.Size = new System.Drawing.Size(334, 20);
             this.NomeCliente.TabIndex = 0;
-            this.NomeCliente.TextChanged += new System.EventHandler(this.NomeCliente_TextChanged);
             this.NomeCliente.DoubleClick += new System.EventHandler(this.NomeCliente_DoubleClick);
             // 
             // label1
@@ -194,7 +193,6 @@ namespace crud_teste.vieew
             this.label20.Size = new System.Drawing.Size(114, 13);
             this.label20.TabIndex = 24;
             this.label20.Text = "Quantidade Restante: ";
-            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label5
             // 
@@ -327,7 +325,6 @@ namespace crud_teste.vieew
             this.NomeDoProduto.ReadOnly = true;
             this.NomeDoProduto.Size = new System.Drawing.Size(197, 20);
             this.NomeDoProduto.TabIndex = 7;
-            this.NomeDoProduto.TextChanged += new System.EventHandler(this.NomeDoProduto_TextChanged);
             this.NomeDoProduto.DoubleClick += new System.EventHandler(this.NomeDoProduto_DoubleClick);
             // 
             // DescontoAVista
@@ -565,7 +562,6 @@ namespace crud_teste.vieew
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CadastroDePedidos";
             this.Text = "CadastroDePedidos";
-            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

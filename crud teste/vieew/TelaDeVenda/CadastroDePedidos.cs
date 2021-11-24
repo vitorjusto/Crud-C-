@@ -7,12 +7,7 @@ using crud_teste.vieew.TelaDeVenda;
 using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew
@@ -25,7 +20,6 @@ namespace crud_teste.vieew
 
         public Cliente cliente = new Cliente();
         public Colaborador colaborador = new Colaborador();
-        public Produto produto = new Produto();
         public CadastroDePedidos()
         {
             InitializeComponent();
@@ -65,15 +59,7 @@ namespace crud_teste.vieew
 
         }
 
-        private void CadastroDePedidos_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void NomeCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void textBox8_Click(object sender, EventArgs e)
         {
             var listar = new ListarCarrinho(carrinhosL, venda.Pedido_Produto);
@@ -81,7 +67,19 @@ namespace crud_teste.vieew
 
             carrinhosL = listar.carrinhosL;
             venda.Pedido_Produto = listar.carrinhos;
+            if(listar.alterar)
+            {
+                carrinho = listar.carrinho;
 
+                Desconto.Text = carrinho.Desconto.GetAsString();
+                Quantidade.Text = carrinho.quantidade.ToString();
+
+                preenchervaloresnoproduto();
+
+                PreencherValoresCarrinhos();
+            }
+
+            AdicionarNaVenda();
 
         }
         private void NomeDoColaborador_DoubleClick(object sender, EventArgs e)
@@ -93,30 +91,31 @@ namespace crud_teste.vieew
 
         }
 
-        private void NomeDoProduto_TextChanged(object sender, EventArgs e)
+        public void preenchervaloresnoproduto()
         {
             
+            NomeDoProduto.Text = carrinho.produto.NomeDoProduto;
+            QuantidadeEmEstoque.Text = carrinho.produto.Estoque.ToString();
+            PrecoUnitario.Text = carrinho.produto.PrecoDeVenda.GetAsString();
+            carrinho.precoDeVenda = carrinho.produto.PrecoDeVenda.GetAsDouble();
+            carrinho.precoDeCusto = carrinho.produto.PrecoDeCusto.GetAsDouble();
+
 
         }
+
+      
 
         private void NomeDoProduto_DoubleClick(object sender, EventArgs e)
         {
             var listar = new ListarVendaCliente("produto");
             listar.ShowDialog();
+            carrinho.produto = listar.produto;
+            preenchervaloresnoproduto();
 
-            produto = listar.produto;
-            NomeDoProduto.Text = produto.NomeDoProduto;
-            QuantidadeEmEstoque.Text = produto.Estoque.ToString();
-            PrecoUnitario.Text =  produto.PrecoDeVenda.GetAsString();
-            carrinho.precoDeVenda = produto.PrecoDeVenda.GetAsDouble();
-            carrinho.precoDeCusto = produto.PrecoDeCusto.GetAsDouble();
-            
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
 
         }
+
+       
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -126,16 +125,16 @@ namespace crud_teste.vieew
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
-
+            carrinho.quantidade = long.Parse(Quantidade.Text == "" ? "0" : Quantidade.Text);
             PreencherValoresCarrinhos();
             
         }
 
         public void PreencherValoresCarrinhos()
         {
-            carrinho.quantidade = long.Parse(Quantidade.Text == "" ? "0" : Quantidade.Text);
+            
             carrinho.PrecoBruto = (Dinheiro.ConverterParaDecimal(PrecoUnitario.Text) * carrinho.quantidade).ToString();
-            carrinho.Desconto = Desconto.Text;
+
             carrinho.PrecoLiquido = ( carrinho.PrecoBruto.GetAsDouble() - carrinho.Desconto.GetAsDouble());
 
 
@@ -156,6 +155,7 @@ namespace crud_teste.vieew
 
         private void Desconto_TextChanged(object sender, EventArgs e)
         {
+            carrinho.Desconto = Desconto.Text;
             PreencherValoresCarrinhos();
         }
 
@@ -170,20 +170,19 @@ namespace crud_teste.vieew
                 carrinho.PrecoBruto,
                 carrinho.PrecoLiquido,
                 0,
-                produto.IdProduto,
-                (produto.Estoque) - carrinho.quantidade
+                (carrinho.produto.Estoque) - carrinho.quantidade
 
            );
-            ocarrinho.produto = produto;
+            ocarrinho.produto = carrinho.produto;
 
 
             carrinhoL.PrecoBruto = carrinho.PrecoBruto;
             carrinhoL.Desconto = carrinho.Desconto.GetAsDouble();
             carrinhoL.PrecoLiquido = carrinho.PrecoLiquido;
-            carrinhoL.idProduto = produto.IdProduto;
+            carrinhoL.idProduto = carrinho.produto.IdProduto;
             carrinhoL.quantidade = carrinho.quantidade;
-            carrinhoL.NomeProduto = produto.NomeDoProduto;
-            carrinhoL.PrecoDeVenda = (float)produto.PrecoDeVenda.GetAsDouble();
+            carrinhoL.NomeProduto = carrinho.produto.NomeDoProduto;
+            carrinhoL.PrecoDeVenda = (float)carrinho.produto.PrecoDeVenda.GetAsDouble();
 
             var validar = new CarrinhoValidation();
 
@@ -224,7 +223,7 @@ namespace crud_teste.vieew
             PrecoUnitario.Text = "";
             Desconto.Text = "";
 
-            produto = new Produto();
+            carrinho.produto = new Produto();
         }
 
 

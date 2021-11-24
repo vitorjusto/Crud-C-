@@ -45,7 +45,7 @@ namespace crud_teste.Model
 
         
         
-        public Pedido_Produto(MyDinheiro desconto, MyDinheiro precoDeCusto, MyDinheiro precoDeVenda, long quantidade, MyDinheiro PrecoBruto, MyDinheiro PrecoLiquido, int idVenda, int idProduto, long quantidadeRestante)
+        public Pedido_Produto(MyDinheiro desconto, MyDinheiro precoDeCusto, MyDinheiro precoDeVenda, long quantidade, MyDinheiro PrecoBruto, MyDinheiro PrecoLiquido, int idVenda, long quantidadeRestante)
         {
             this.Desconto = desconto;
             this.precoDeCusto = precoDeCusto.GetAsDouble();
@@ -54,7 +54,6 @@ namespace crud_teste.Model
             this.PrecoBruto = PrecoBruto.GetAsDouble();
             this.PrecoLiquido = PrecoLiquido.GetAsDouble();
             this.idVenda = idVenda;
-            this.produto.IdProduto = idProduto;
             this.quantidadeRestante = quantidadeRestante;
 
         }

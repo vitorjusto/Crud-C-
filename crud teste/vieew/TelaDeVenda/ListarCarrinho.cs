@@ -17,6 +17,9 @@ namespace crud_teste.vieew.TelaDeVenda
     {
         public List<CarrinhoListagem> carrinhosL = new List<CarrinhoListagem>();
         public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
+        public Pedido_Produto carrinho = new Pedido_Produto();
+        public bool alterar { get; set; }
+
         public ListarCarrinho(List<CarrinhoListagem> carrinhosLparam, List<Pedido_Produto> carrinhosparam)
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.BackColor = Global.BackgroundColor;
             dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
 
-
+            alterar = false;
 
 
             
@@ -64,7 +67,7 @@ namespace crud_teste.vieew.TelaDeVenda
 
         private void dataGridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 6)
+            if(e.ColumnIndex == 7)
             {
                 if(MessageBox.Show("Deseja mesmo remover esse item?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -72,6 +75,13 @@ namespace crud_teste.vieew.TelaDeVenda
                     carrinhos.RemoveRange(e.RowIndex, 1);
                     carrinhosL.RemoveRange(e.RowIndex, 1);
                 }
+            }else if(e.ColumnIndex == 6)
+            {
+                carrinho = carrinhos[e.RowIndex];
+                carrinhos.RemoveRange(e.RowIndex, 1);
+                carrinhosL.RemoveRange(e.RowIndex, 1);
+                alterar = true;
+                this.Dispose();
             }
         }
     }
