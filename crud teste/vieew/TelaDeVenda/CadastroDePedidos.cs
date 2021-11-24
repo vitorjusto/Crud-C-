@@ -347,8 +347,8 @@ namespace crud_teste.vieew
         public Venda receberCampos()
         {
 
-            venda.IdCliente = cliente.idCliente;
-            venda.IdColaborador = colaborador.idColaborador;
+            venda.cliente.idCliente = cliente.idCliente;
+            venda.colaborador.idColaborador = colaborador.idColaborador;
             venda.TipoDeVenda = FormaDePagamento.Text;
 
 

@@ -105,7 +105,6 @@ namespace crud_teste.vieew
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProduto.Size = new System.Drawing.Size(776, 310);
             this.dataGridProduto.TabIndex = 8;
-            this.dataGridProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduto_CellContentClick);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
             // 
             // menuStrip1
@@ -189,7 +188,6 @@ namespace crud_teste.vieew
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListarProduto";
             this.Text = "ListaProduto";
-            this.Load += new System.EventHandler(this.ListaProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

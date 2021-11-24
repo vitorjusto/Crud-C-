@@ -203,12 +203,15 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(874, 427);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(874, 440);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 74);
+            this.button1.Size = new System.Drawing.Size(181, 61);
             this.button1.TabIndex = 16;
             this.button1.Text = "Alterar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gbProduto
@@ -240,22 +243,28 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // btnAlterarProduto
             // 
+            this.btnAlterarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAlterarProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterarProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAlterarProduto.Location = new System.Drawing.Point(878, 127);
             this.btnAlterarProduto.Name = "btnAlterarProduto";
             this.btnAlterarProduto.Size = new System.Drawing.Size(146, 61);
             this.btnAlterarProduto.TabIndex = 18;
             this.btnAlterarProduto.Text = "Alterar Produto";
-            this.btnAlterarProduto.UseVisualStyleBackColor = true;
+            this.btnAlterarProduto.UseVisualStyleBackColor = false;
             this.btnAlterarProduto.Click += new System.EventHandler(this.button2_Click);
             // 
             // ExcluirProduto
             // 
+            this.ExcluirProduto.BackColor = System.Drawing.Color.Red;
+            this.ExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExcluirProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ExcluirProduto.Location = new System.Drawing.Point(878, 37);
             this.ExcluirProduto.Name = "ExcluirProduto";
-            this.ExcluirProduto.Size = new System.Drawing.Size(146, 73);
+            this.ExcluirProduto.Size = new System.Drawing.Size(146, 59);
             this.ExcluirProduto.TabIndex = 17;
             this.ExcluirProduto.Text = "Excluir Produto";
-            this.ExcluirProduto.UseVisualStyleBackColor = true;
+            this.ExcluirProduto.UseVisualStyleBackColor = false;
             this.ExcluirProduto.Click += new System.EventHandler(this.ExcluirProduto_Click);
             // 
             // txtQuantidadeRestante
@@ -430,22 +439,28 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(694, 97);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(143, 45);
             this.button2.TabIndex = 20;
             this.button2.Text = "Adicionar Produto";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // btnAtivar
             // 
+            this.btnAtivar.BackColor = System.Drawing.Color.Red;
+            this.btnAtivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAtivar.Location = new System.Drawing.Point(874, 362);
             this.btnAtivar.Name = "btnAtivar";
             this.btnAtivar.Size = new System.Drawing.Size(181, 59);
             this.btnAtivar.TabIndex = 21;
             this.btnAtivar.Text = "Inativar Venda";
-            this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.UseVisualStyleBackColor = false;
             this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
             // 
             // ConsultarVenda

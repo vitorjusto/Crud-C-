@@ -308,7 +308,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
 
 
-                    if (MessageBox.Show("Deseja salvar alterações ( mais possivel alterar)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+                    if (MessageBox.Show("Deseja salvar alterações ( mais possivel alterar)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes) 
                     {
                         oAlterar.SalvarProduto(_venda);
                         

@@ -159,6 +159,9 @@ namespace crud_teste.vieew.ListaDePedidos
         
         private void ListarPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
             if (pedidos[e.RowIndex].ativo)
             {

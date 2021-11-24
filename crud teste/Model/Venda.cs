@@ -31,11 +31,7 @@ namespace crud_teste.Model
         public List<Pedido_Produto> Pedido_Produto = new List<Pedido_Produto>();
 
 
-        public int IdCliente { get; set; }
-
         public Cliente cliente = new Cliente();
-
-        public int IdColaborador { get; set; }
 
         public Colaborador colaborador = new Colaborador();
 

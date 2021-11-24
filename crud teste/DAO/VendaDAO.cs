@@ -41,8 +41,8 @@ namespace crud_teste.DAO
                     quantidadedetotal = venda.QuantidadeDeTotal,
                     quantidadeunitario = venda.QuantidadeUnitario,
                     tipodevenda = venda.TipoDeVenda,
-                    idCliente = venda.IdCliente,
-                    IdColaborador = venda.IdColaborador,
+                    idCliente = venda.cliente.idCliente,
+                    IdColaborador = venda.colaborador.idColaborador,
                     DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
                 }
                 , tran).ToString());
@@ -57,14 +57,14 @@ namespace crud_teste.DAO
                         precoBruto = carrinho.PrecoBruto.GetAsDouble(),
                         precoLiquido = carrinho.PrecoLiquido.GetAsDouble(),
                         idVenda = carrinho.idVenda,
-                        idProduto = carrinho.idProduto,
+                        idProduto = carrinho.produto.IdProduto,
                         precodecusto = carrinho.precoDeCusto.GetAsDouble(),
                         precodevenda = carrinho.precoDeVenda.GetAsDouble()
                     }, tran) ;
                     con.Execute(queryproduto, new
                     {
                         Quantidade = carrinho.quantidade,
-                        IdProduto = carrinho.idProduto,
+                        IdProduto = carrinho.produto.IdProduto,
 
                     }, tran);
 
@@ -262,7 +262,7 @@ namespace crud_teste.DAO
                             carrinho.quantidade = (int)resultado.Quantidade;
                             carrinho.PrecoBruto = (float)resultado.precobruto;
                             carrinho.PrecoLiquido = (float)resultado.precoliquido;
-                            carrinho.idProduto = (int)resultado.idProduto;
+                            carrinho.produto.IdProduto = (int)resultado.idProduto;
                             carrinho.idVenda = (int)resultado.idVenda;
                             carrinho.precoDeCusto = (float)resultado.PrecoDeCusto;
                             carrinho.precoDeVenda = (float)resultado.PrecoDeVenda;
@@ -303,8 +303,8 @@ namespace crud_teste.DAO
                 using (reader)
                 {
                     venda.MesesAPrazo = (int)reader["mesesaprazo"];
-                    venda.IdCliente = (int)reader["idCliente"];
-                    venda.IdColaborador = (int)reader["idColaborador"];
+                    venda.cliente.idCliente = (int)reader["idCliente"];
+                    venda.colaborador.idColaborador = (int)reader["idColaborador"];
                     venda.DescontoAVIsta = (double)reader["DescontoAVista"];
                     venda.TipoDeVenda = (string)reader["TipoDeVenda"];
                     venda.Ativo = (bool)reader["ativo"];
@@ -331,7 +331,7 @@ namespace crud_teste.DAO
                     lista.Desconto = (double)resultado.Desconto;
                     lista.PrecoBruto = (double)resultado.precobruto;
                     lista.PrecoLiquido = (double)resultado.precoliquido;
-                    lista.idProduto = (int)resultado.idProduto;
+                    lista.produto.IdProduto = (int)resultado.idProduto;
                     lista.precoDeCusto = (double)resultado.carrinhoPrecoDeCusto;
                     lista.precoDeVenda = (double)resultado.carrinhoPrecoDeVenda;
                     lista.idVenda = id;

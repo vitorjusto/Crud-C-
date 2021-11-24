@@ -60,7 +60,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.textBoxinstrucao.TabIndex = 11;
             this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
             this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxinstrucao.TextChanged += new System.EventHandler(this.textBoxinstrucao_TextChanged);
             // 
             // label1
             // 
@@ -70,7 +69,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Pesquisar :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // CampoDePesquisa
             // 
@@ -78,7 +76,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.CampoDePesquisa.Name = "CampoDePesquisa";
             this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
             this.CampoDePesquisa.TabIndex = 9;
-            this.CampoDePesquisa.TextChanged += new System.EventHandler(this.CampoDePesquisa_TextChanged);
             // 
             // dataGridGeral
             // 
@@ -92,7 +89,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.dataGridGeral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridGeral.Size = new System.Drawing.Size(776, 310);
             this.dataGridGeral.TabIndex = 8;
-            this.dataGridGeral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGeral_CellContentClick);
             this.dataGridGeral.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseDoubleClick_1);
             // 
             // ListarVendaCliente
@@ -107,7 +103,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.Controls.Add(this.dataGridGeral);
             this.Name = "ListarVendaCliente";
             this.Text = "Listar Usuario";
-            this.Load += new System.EventHandler(this.ListarVendaCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGeral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

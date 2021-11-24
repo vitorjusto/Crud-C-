@@ -35,10 +35,7 @@ namespace crud_teste.vieew
             textBoxinstrucao.ForeColor = Global.FontColor;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -52,6 +49,9 @@ namespace crud_teste.vieew
 
         private void dataGridColaboradores_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             var x = int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             new ConsultarColaborador(x).Show();
@@ -68,19 +68,6 @@ namespace crud_teste.vieew
                 dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
         }
 
-        private void CampoDePesquisa_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListarColaboradores_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void CampoDePesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
+       
     }
 }

@@ -113,8 +113,9 @@ namespace crud_teste.vieew.TelaDeVenda
 
         private void dataGridCliente_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
-          
+            if (e.RowIndex == -1)
+                return;
+
             var x = int.Parse(dataGridGeral.Rows[e.RowIndex].Cells[0].Value.ToString());
             if (Buscar == "cliente")
                 cliente = oAlterar.consultarCliente(x);
@@ -152,29 +153,6 @@ namespace crud_teste.vieew.TelaDeVenda
             }
         }
 
-        private void ListarVendaCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridGeral_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void CampoDePesquisa_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxinstrucao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

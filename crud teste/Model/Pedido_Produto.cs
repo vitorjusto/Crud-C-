@@ -35,7 +35,6 @@ namespace crud_teste.Model
 
 
         public int idVenda { get; set; }
-        public int idProduto { get; set; }
 
         public long quantidadeRestante { get; set; }
 
@@ -55,7 +54,7 @@ namespace crud_teste.Model
             this.PrecoBruto = PrecoBruto.GetAsDouble();
             this.PrecoLiquido = PrecoLiquido.GetAsDouble();
             this.idVenda = idVenda;
-            this.idProduto = idProduto;
+            this.produto.IdProduto = idProduto;
             this.quantidadeRestante = quantidadeRestante;
 
         }

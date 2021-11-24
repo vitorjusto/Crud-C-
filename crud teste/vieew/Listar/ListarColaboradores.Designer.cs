@@ -63,8 +63,6 @@ namespace crud_teste.vieew
             this.CampoDePesquisa.Name = "CampoDePesquisa";
             this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
             this.CampoDePesquisa.TabIndex = 2;
-            this.CampoDePesquisa.TextChanged += new System.EventHandler(this.CampoDePesquisa_TextChanged);
-            this.CampoDePesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CampoDePesquisa_KeyDown);
             // 
             // dataGridColaboradores
             // 
@@ -126,7 +124,6 @@ namespace crud_teste.vieew
             this.Name = "ListarColaboradores";
             this.Text = "ListarColaboradores";
             this.Load += new System.EventHandler(this.ListarColaboradores_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ListarColaboradores_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridColaboradores)).EndInit();

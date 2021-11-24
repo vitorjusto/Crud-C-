@@ -32,9 +32,9 @@ namespace crud_teste.controller
             ConexaoDAO stmtpessoa = new ConexaoDAO();
             var venda = stmt.ConsultarVenda(id);
 
-            venda.cliente = stmtpessoa.ConsultarCliente(venda.IdCliente);
+            venda.cliente = stmtpessoa.ConsultarCliente(venda.cliente.idCliente);
             stmtpessoa = new ConexaoDAO();
-            venda.colaborador = stmtpessoa.ConsultarColaborador(venda.IdColaborador);
+            venda.colaborador = stmtpessoa.ConsultarColaborador(venda.colaborador.idColaborador);
             return venda;
         }
 

@@ -14,9 +14,9 @@ namespace crud_teste.Validation
 
         public VendaValidation()
         {
-            RuleFor(x => x.IdCliente).GreaterThan(0).WithMessage("Selecione um cliente");
+            RuleFor(x => x.cliente.idCliente).GreaterThan(0).WithMessage("Selecione um cliente");
 
-            RuleFor(x => x.IdColaborador).GreaterThan(0).WithMessage("Selecione um colaborador");
+            RuleFor(x => x.colaborador.idColaborador).GreaterThan(0).WithMessage("Selecione um colaborador");
 
             RuleFor(x => x.TipoDeVenda).NotEmpty().WithMessage("Selecione um tipo de venda");
 
@@ -34,9 +34,9 @@ namespace crud_teste.Validation
 
         public VendaValidation(decimal valorLimite, Venda venda)
         {
-            RuleFor(x => x.IdCliente).GreaterThan(0).WithMessage("Selecione um cliente");
+            RuleFor(x => x.cliente.idCliente).GreaterThan(0).WithMessage("Selecione um cliente");
 
-            RuleFor(x => x.IdColaborador).GreaterThan(0).WithMessage("Selecione um colaborador");
+            RuleFor(x => x.colaborador.idColaborador).GreaterThan(0).WithMessage("Selecione um colaborador");
 
             RuleFor(x => x.QuantidadeUnitario).GreaterThan(0).WithMessage("Adicione um produto");
 

@@ -84,15 +84,7 @@ namespace crud_teste.vieew
         }
     
 
-        private void ListaProduto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -123,6 +115,9 @@ namespace crud_teste.vieew
 
         private void dataGridProduto_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             var x = int.Parse(dataGridProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             new ConsultarProduto(x).Show();
