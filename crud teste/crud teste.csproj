@@ -78,6 +78,7 @@
     <Compile Include="controller\AlterarColaborador.cs" />
     <Compile Include="controller\AlterarProduto.cs" />
     <Compile Include="controller\AlterarVenda.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Model\Pedido_Produto.cs" />
@@ -150,7 +151,7 @@
     <Compile Include="vieew\frm\FrmColaborador.Designer.cs">
       <DependentUpon>FrmColaborador.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAO\ConexaoDAO.cs" />
+    <Compile Include="DAO\ColaboradorDAO.cs" />
     <Compile Include="vieew\Consultar\ConsultarColaborador.cs">
       <SubType>Form</SubType>
     </Compile>

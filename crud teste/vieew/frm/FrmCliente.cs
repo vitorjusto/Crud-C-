@@ -44,7 +44,8 @@ namespace crud_teste
                 {
                     try
                     {
-                        var id = AlterarCliente.conectarComDAO(cliente);
+                        AlterarCliente oAlterar = new AlterarCliente();
+                        var id = oAlterar.conectarComDAO(cliente);
 
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
                        

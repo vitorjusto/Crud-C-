@@ -1,25 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using crud_teste;
 using System.Windows.Forms;
 using crud_teste.controller;
+using crud_teste.Model;
+
 namespace crud_teste.vieew
 {
     public partial class ListarColaboradores : Form
     {
+        List<ColaboradorListagem> listagem = new List<ColaboradorListagem>();
         public ListarColaboradores()
         {
 
             InitializeComponent();
             AlterarColaborador oAlterar = new AlterarColaborador();
-            dataGridColaboradores.DataSource =  oAlterar.ListarColaboradores();
+            listagem =  oAlterar.ListarColaboradores();
+
+            var index = 0;
+            foreach(var colaborador in listagem)
+            {
+                dataGridColaboradores.Rows.Add();
+
+                dataGridColaboradores.Rows[index].Cells[0].Value = colaborador.idColaborador;
+                dataGridColaboradores.Rows[index].Cells[1].Value = colaborador.NomeCompleto;
+                dataGridColaboradores.Rows[index].Cells[2].Value = colaborador.sexo;
+                dataGridColaboradores.Rows[index].Cells[3].Value = colaborador.DataDeNascimento;
+                dataGridColaboradores.Rows[index].Cells[4].Value = colaborador.Endereço;
+                dataGridColaboradores.Rows[index].Cells[5].Value = colaborador.Contato;
+
+                index++;
+
+            }
+
 
             dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridColaboradores.AllowUserToAddRows = false;
+
         }
 
         private void ListarColaboradores_Load(object sender, EventArgs e)
@@ -53,8 +69,14 @@ namespace crud_teste.vieew
                 return;
 
             var x = int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString());
+            consultar(x)
 
-            new ConsultarColaborador(x).Show();
+
+        }
+
+        private void consultar(int id)
+        {
+            new ConsultarColaborador(id).Show();
             this.Close();
         }
 
@@ -68,6 +90,36 @@ namespace crud_teste.vieew
                 dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
         }
 
-       
+        private void dataGridColaboradores_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.ColumnIndex == 6)
+            {
+                consultar(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()))
+            }else if(e.ColumnIndex == 7)
+            {
+                if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    AlterarColaborador oColaborador = new AlterarColaborador();
+                    try
+                    {
+                        oColaborador.Excluir(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                        this.Text = "Consultar Colaborador";
+                        MessageBox.Show("Dados excluidos com sucesso");
+                        new ListarColaboradores().Show();
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+
+
+                    }
+
+                }
+            }
+        }
     }
 }

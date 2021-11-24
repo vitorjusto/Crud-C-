@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using crud_teste.DAO;
 using crud_teste.Model;
 using CRUD_teste.Model;
 namespace crud_teste.controller
 {
     public class AlterarCliente
     {
+        ClienteDAO stmt = new ClienteDAO();
+
         public Cliente consultarCliente(int id)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             Cliente cliente = new Cliente();
             cliente = stmt.ConsultarCliente(id);
            
@@ -19,29 +19,26 @@ namespace crud_teste.controller
 
         public void SalvarCliente(Cliente cliente)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             stmt.SalvarCliente(cliente);
 
         }
 
         public void excluir(Cliente cliente)
         {
-
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             stmt.ExcluirCliente(cliente);
         }
 
         public void excluir(int id)
         {
-
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             stmt.ExcluirCliente(id);
         }
 
-        public static int conectarComDAO(Cliente cliente)
+        public int conectarComDAO(Cliente cliente)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
-            
+            ClienteDAO stmt = new ClienteDAO();
             var idCliente = stmt.GravarCliente(cliente);
 
 
@@ -51,13 +48,13 @@ namespace crud_teste.controller
 
         public List<ClienteListagem> ListarCliente()
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             return stmt.ListarCliente();
         }
 
         public List<ClienteListagem> ListarCliente(string nome, string param)
         {
-            ConexaoDAO stmt = new ConexaoDAO();
+            ClienteDAO stmt = new ClienteDAO();
             return stmt.ListarCliente(nome, param);
         }
     }

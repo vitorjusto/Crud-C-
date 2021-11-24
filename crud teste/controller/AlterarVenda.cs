@@ -29,12 +29,13 @@ namespace crud_teste.controller
 
         public Venda Consultar(int id)
         {
-            ConexaoDAO stmtpessoa = new ConexaoDAO();
+            ClienteDAO stmtpessoa = new ClienteDAO();
+            ConexaoDAO stmtcolaborador = new ConexaoDAO();
             var venda = stmt.ConsultarVenda(id);
 
             venda.cliente = stmtpessoa.ConsultarCliente(venda.cliente.idCliente);
-            stmtpessoa = new ConexaoDAO();
-            venda.colaborador = stmtpessoa.ConsultarColaborador(venda.colaborador.idColaborador);
+
+            venda.colaborador = stmtcolaborador.ConsultarColaborador(venda.colaborador.idColaborador);
             return venda;
         }
 
