@@ -84,6 +84,8 @@ namespace crud_teste
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtcomissao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,6 +95,8 @@ namespace crud_teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtcomissao);
+            this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.Porcentagem);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.label17);
@@ -620,6 +624,23 @@ namespace crud_teste
             this.txtAtivo.Size = new System.Drawing.Size(193, 20);
             this.txtAtivo.TabIndex = 70;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(566, 85);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.TabIndex = 76;
+            this.label23.Text = "Comissão: ";
+            // 
+            // txtcomissao
+            // 
+            this.txtcomissao.Location = new System.Drawing.Point(635, 82);
+            this.txtcomissao.Name = "txtcomissao";
+            this.txtcomissao.ReadOnly = true;
+            this.txtcomissao.Size = new System.Drawing.Size(114, 20);
+            this.txtcomissao.TabIndex = 77;
+            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,5 +730,7 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Numero;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtAtivo;
+        private System.Windows.Forms.TextBox txtcomissao;
+        private System.Windows.Forms.Label label23;
     }
 }

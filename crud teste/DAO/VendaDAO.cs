@@ -28,6 +28,7 @@ namespace crud_teste.DAO
                           Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
             var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
+            var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
             con.Open();
             var tran = con.BeginTransaction();
             try
@@ -69,6 +70,14 @@ namespace crud_teste.DAO
                     }, tran);
 
                 }
+
+                con.Execute(DarCommissao, new
+                {
+                    comissao = venda.colaborador.PorcentagemDeComissao * venda.QuantidadeDeTotal,
+                    idColaborador = venda.colaborador.idColaborador,
+                }, tran);
+
+
                 tran.Commit();
                 con.Close();
             }catch(Exception ex)
@@ -92,6 +101,8 @@ namespace crud_teste.DAO
                                 Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
 
             var updateEstoque = @"update Produto set Estoque = @estoque where idProduto = @idProduto";
+
+          
             con.Open();
             var tran = con.BeginTransaction();
             try
@@ -149,8 +160,10 @@ namespace crud_teste.DAO
                         idProduto = pedido.produto.IdProduto,
                     }, tran);
 
-                }
+                    
 
+                }
+                
                 tran.Commit();
                 con.Close();
                

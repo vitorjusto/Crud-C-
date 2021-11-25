@@ -61,7 +61,7 @@ namespace crud_teste
                     colaborador.Salario = (decimal)reader["Salario"];
                     colaborador.IdPessoa = (int)reader["idPessoa"];
                     colaborador.DadosBancarios.IdDadosBancarios = (int)reader["idDadosBancarios"];
-                    
+                    colaborador.comissao = (double)reader["comissao"];
 
 
                 }
@@ -356,7 +356,7 @@ namespace crud_teste
             {
                 
 
-                var query = @"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone, Ativo 
+                var query = @"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular,PorcentagemDeComissao, email, telefone, Ativo 
                                from Colaborador c Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato;";
                 var resultado = con.Query<ColaboradorListagem>(query);

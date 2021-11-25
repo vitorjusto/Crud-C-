@@ -31,6 +31,8 @@ namespace crud_teste.Model
 
         private int numero { get; set; }
 
+        public int PorcentagemDeComissao { get; set; }
+
         public bool Ativo { get; set; }
 
         public string Endereço { get { return $"{this.Cidade} - {this.UF} \n Bairro: {this.bairro}  Rua: {this.logradouro}  Numero: {this.numero}"; } set { } }

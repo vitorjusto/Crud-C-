@@ -36,6 +36,9 @@ namespace crud_teste.vieew
             this.label1 = new System.Windows.Forms.Label();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridProduto = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BuscarAtivo = new System.Windows.Forms.CheckBox();
             this.IdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +46,6 @@ namespace crud_teste.vieew
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alterar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Inativar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BuscarAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -112,6 +112,34 @@ namespace crud_teste.vieew
             this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseClick_1);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paginaInicialToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // paginaInicialToolStripMenuItem
+            // 
+            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
+            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
+            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
+            // 
+            // BuscarAtivo
+            // 
+            this.BuscarAtivo.AutoSize = true;
+            this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
+            this.BuscarAtivo.Name = "BuscarAtivo";
+            this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
+            this.BuscarAtivo.TabIndex = 14;
+            this.BuscarAtivo.Text = "Buscar com Inativo";
+            this.BuscarAtivo.UseVisualStyleBackColor = true;
+            this.BuscarAtivo.CheckedChanged += new System.EventHandler(this.BuscarAtivo_CheckedChanged);
+            // 
             // IdProduto
             // 
             this.IdProduto.HeaderText = "IdProduto";
@@ -161,44 +189,16 @@ namespace crud_teste.vieew
             // Inativar
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Inativar.DefaultCellStyle = dataGridViewCellStyle2;
             this.Inativar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Inativar.HeaderText = "Inativar";
             this.Inativar.Name = "Inativar";
             this.Inativar.ReadOnly = true;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paginaInicialToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 13;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // paginaInicialToolStripMenuItem
-            // 
-            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
-            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
-            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
-            // 
-            // BuscarAtivo
-            // 
-            this.BuscarAtivo.AutoSize = true;
-            this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
-            this.BuscarAtivo.Name = "BuscarAtivo";
-            this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
-            this.BuscarAtivo.TabIndex = 14;
-            this.BuscarAtivo.Text = "Buscar com Inativo";
-            this.BuscarAtivo.UseVisualStyleBackColor = true;
-            this.BuscarAtivo.CheckedChanged += new System.EventHandler(this.BuscarAtivo_CheckedChanged);
             // 
             // ListarProduto
             // 

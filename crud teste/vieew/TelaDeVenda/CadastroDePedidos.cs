@@ -88,6 +88,7 @@ namespace crud_teste.vieew
             listar.ShowDialog();
             colaborador = listar.colaborador;
             NomeDoColaborador.Text = colaborador.nomeCompleto();
+            venda.colaborador.PorcentagemDeComissao = listar.colaborador.PorcentagemDeComissao;
 
         }
 
@@ -420,6 +421,11 @@ namespace crud_teste.vieew
         }
 
         private void Desconto_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CadastroDePedidos_Load(object sender, EventArgs e)
         {
 
         }

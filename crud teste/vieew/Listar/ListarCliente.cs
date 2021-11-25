@@ -30,8 +30,8 @@ namespace crud_teste.vieew
             DataGridViewCellStyle clienteinativo = new DataGridViewCellStyle();
             clienteinativo.BackColor = Color.SlateGray;
             clienteinativo.ForeColor = Color.White;
-
-           
+         
+          
 
             var index = 0;
             dataGridCliente.Rows.Clear();
@@ -53,9 +53,13 @@ namespace crud_teste.vieew
                     {
                         
                         dataGridCliente.Rows[index].Cells[j].Style = clienteinativo;
+                        
+
                         j++;
                     }
+
                     dataGridCliente.Rows[index].Cells[7].Value = "Ativar";
+                    
                 }else if(!comAtivo && !cliente.Ativo)
                 {
                     dataGridCliente.Rows[index].Visible = false;

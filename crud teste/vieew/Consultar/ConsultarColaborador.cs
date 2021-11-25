@@ -59,7 +59,7 @@ namespace crud_teste
             emailText.Text = colaborador.contato.Email;
             Data.Value = colaborador.DataDeNascimento;
 
-
+            txtcomissao.Text = colaborador.comissao.GetAsString();
             txtAtivo.Text = colaboradorGlobal.Ativo ? "Ativo" : "Não Ativo";
             Excluir.Text = colaboradorGlobal.Ativo ? "Desativar" : "Ativar";
 
@@ -195,7 +195,7 @@ namespace crud_teste
             colaboradorGlobal.contato.Celular.DDI = DDI.Text;
 
 
-
+            
             colaboradorGlobal.endereco.Cep = CEP.Text;
             colaboradorGlobal.endereco.Logradouro = Logradouro.Text;
             colaboradorGlobal.endereco.Cidade = Cidade.Text;

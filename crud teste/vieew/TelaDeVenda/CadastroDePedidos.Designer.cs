@@ -562,6 +562,7 @@ namespace crud_teste.vieew
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CadastroDePedidos";
             this.Text = "CadastroDePedidos";
+            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
