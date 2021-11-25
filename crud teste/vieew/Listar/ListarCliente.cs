@@ -20,8 +20,22 @@ namespace crud_teste.vieew
             AlterarCliente oAlterar = new AlterarCliente();
 
             clientes = oAlterar.ListarCliente();
+
+
+            ListarNaDatagrid(cbInativo.Checked);
+        }
+
+        public void ListarNaDatagrid(bool comAtivo)
+        {
+            DataGridViewCellStyle clienteinativo = new DataGridViewCellStyle();
+            clienteinativo.BackColor = Color.SlateGray;
+            clienteinativo.ForeColor = Color.White;
+
+           
+
             var index = 0;
-            foreach(var cliente in clientes )
+            dataGridCliente.Rows.Clear();
+            foreach (var cliente in clientes)
             {
                 dataGridCliente.Rows.Add();
 
@@ -32,10 +46,30 @@ namespace crud_teste.vieew
                 dataGridCliente.Rows[index].Cells[4].Value = cliente.Endereço;
                 dataGridCliente.Rows[index].Cells[5].Value = cliente.Contato;
 
+                if(comAtivo && !cliente.Ativo)
+                {
+                    var j = 0;
+                    while (j < 6)
+                    {
+                        
+                        dataGridCliente.Rows[index].Cells[j].Style = clienteinativo;
+                        j++;
+                    }
+                    dataGridCliente.Rows[index].Cells[7].Value = "Ativar";
+                }else if(!comAtivo && !cliente.Ativo)
+                {
+                    dataGridCliente.Rows[index].Visible = false;
+                }else
+                {
+                    dataGridCliente.Rows[index].Cells[7].Value = "Inativar";
+                }
+
                 index++;
             }
             dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+
 
         private void ListarCliente_Load(object sender, EventArgs e)
         {
@@ -57,10 +91,6 @@ namespace crud_teste.vieew
             this.Close();
         }
 
-        private void dataGridCliente_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
 
         private void dataGridCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -90,13 +120,13 @@ namespace crud_teste.vieew
             int.TryParse(CampoDePesquisa.Text, out int id);
             if (id > 0)
             {
-                dataGridCliente.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
+                clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
             }
             else
             {
-                dataGridCliente.DataSource = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
+                clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
             }
-
+            ListarNaDatagrid(cbInativo.Checked);
 
         }
 
@@ -107,12 +137,24 @@ namespace crud_teste.vieew
                 Consultar(int.Parse(dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString()));
             }else if(e.ColumnIndex == 7)
             {
-                if(MessageBox.Show($"Deseja mesmo Excluir o {clientes[e.RowIndex].nomecompleto}?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+
+                var mensagem = clientes[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {clientes[e.RowIndex].nomecompleto}" : $"Deseja Mesmo Reativar o {clientes[e.RowIndex].nomecompleto}";
+
+                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     AlterarCliente oAlterar = new AlterarCliente();
-                    oAlterar.excluir(clientes[e.RowIndex].idcliente);
+                    oAlterar.AlterarAtivo(clientes[e.RowIndex]);
+                    clientes[e.RowIndex].Ativo = !clientes[e.RowIndex].Ativo;
+
+                    ListarNaDatagrid(cbInativo.Checked);
                 }
             }
+        }
+
+        private void cbInativo_CheckedChanged(object sender, EventArgs e)
+        {
+            ListarNaDatagrid(cbInativo.Checked);
         }
     }
 }

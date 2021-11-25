@@ -75,6 +75,8 @@ namespace crud_teste
             Bairro.Text = cliente.endereco.Bairro;
             Numero.Text = cliente.endereco.Numero.ToString();
 
+            txtAtivo.Text = cliente.Ativo ? "Ativo" : "Não Ativo";
+            Excluir.Text = cliente.Ativo ? "Desativar" : "Ativar";
         }
 
        
@@ -127,28 +129,12 @@ namespace crud_teste
 
         private void Excluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                ConexaoDAO stmt = new ConexaoDAO();
-                try
-                {
-                    AlterarCliente oAlterar = new AlterarCliente();
-                    oAlterar.excluir(clienteglobal);
-                    clienteglobal = null;
-                    new ListarCliente().Show();
-                    this.Close();
-                }
-                catch
-                {
+            clienteglobal.Ativo = !clienteglobal.Ativo;
 
-                    MessageBox.Show("Falha ao conectar com bancos de dados");
-                }
-                finally
-                {
-                    
-                }
-            }
-            
+
+            txtAtivo.Text = clienteglobal.Ativo ? "Ativo" : "Não Ativo";
+            Excluir.Text = clienteglobal.Ativo ? "Desativar" : "Ativar";
+
         }
 
            

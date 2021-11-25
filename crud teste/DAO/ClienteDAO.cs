@@ -104,63 +104,63 @@ namespace crud_teste.DAO
 
             Cliente cliente = new Cliente();
             cliente.idCliente = id;
-           
-                con.Open();
-                var query = @"Select * from cliente where idCliente = @idCliente";
-                var reader = con.ExecuteReader(query, cliente);
-                reader.Read();
-                using (reader)
-                {
-                    cliente.idCliente = (int)reader["idCliente"];
-                    cliente.LimiteDeCompra = (decimal)reader["ValorLimite"];
-                    cliente.IdPessoa = (int)reader["idPessoa"];
+
+            con.Open();
+            var query = @"Select * from cliente where idCliente = @idCliente";
+            var reader = con.ExecuteReader(query, cliente);
+            reader.Read();
+            using (reader)
+            {
+                cliente.idCliente = (int)reader["idCliente"];
+                cliente.LimiteDeCompra = (decimal)reader["ValorLimite"];
+                cliente.IdPessoa = (int)reader["idPessoa"];
 
 
-                }
+            }
 
-                query = @"Select * from pessoa where IdPessoa = @IdPessoa";
-                reader = con.ExecuteReader(query, cliente);
-                reader.Read();
+            query = @"Select * from pessoa where IdPessoa = @IdPessoa";
+            reader = con.ExecuteReader(query, cliente);
+            reader.Read();
 
-                using (reader)
-                {
-                    cliente.Nome = (string)reader["Nome"];
-                    cliente.SobreNome = (string)reader["SobreNome"];
-                    cliente.Sexo = (string)reader["Sexo"];
-                    cliente.CPF = (string)reader["CPF"];
-                    cliente.endereco.IdEndereco = (int)reader["idEndereco"];
-                    cliente.DataDeNascimento = (DateTime)reader["DataDeNascimento"];
-                    cliente.contato.idContato = (int)reader["idContato"];
+            using (reader)
+            {
+                cliente.Nome = (string)reader["Nome"];
+                cliente.SobreNome = (string)reader["SobreNome"];
+                cliente.Sexo = (string)reader["Sexo"];
+                cliente.CPF = (string)reader["CPF"];
+                cliente.endereco.IdEndereco = (int)reader["idEndereco"];
+                cliente.DataDeNascimento = (DateTime)reader["DataDeNascimento"];
+                cliente.contato.idContato = (int)reader["idContato"];
+                cliente.Ativo = (bool)reader["Ativo"];
 
+            }
 
-                }
+            query = @"select * from Endereco where idEndereco = @IdEndereco ";
+            reader = con.ExecuteReader(query, cliente.endereco);
+            reader.Read();
+            using (reader)
+            {
+                cliente.endereco.Logradouro = (string)reader["Logradouro"];
+                cliente.endereco.UF = (string)reader["UF"];
+                cliente.endereco.Cep = (string)reader["CEP"];
+                cliente.endereco.Cidade = (string)reader["Cidade"];
+                cliente.endereco.Complemento = (string)reader["Complemento"];
+                cliente.endereco.Bairro = (string)reader["bairro"];
+                cliente.endereco.Numero = (int)reader["numero"];
+            }
 
-                query = @"select * from Endereco where idEndereco = @IdEndereco ";
-                reader = con.ExecuteReader(query, cliente.endereco);
-                reader.Read();
-                using (reader)
-                {
-                    cliente.endereco.Logradouro = (string)reader["Logradouro"];
-                    cliente.endereco.UF = (string)reader["UF"];
-                    cliente.endereco.Cep = (string)reader["CEP"];
-                    cliente.endereco.Cidade = (string)reader["Cidade"];
-                    cliente.endereco.Complemento = (string)reader["Complemento"];
-                    cliente.endereco.Bairro = (string)reader["bairro"];
-                    cliente.endereco.Numero = (int)reader["numero"];
-                }
+            query = @"select * from Contato where idcontato = @idContato ";
+            reader = con.ExecuteReader(query, cliente.contato);
+            reader.Read();
 
-                query = @"select * from Contato where idcontato = @idContato ";
-                reader = con.ExecuteReader(query, cliente.contato);
-                reader.Read();
+            using (reader)
+            {
+                cliente.contato.Email = (string)reader["email"];
+                cliente.contato.Telefone = (string)reader["telefone"];
+                cliente.contato.Celular = (string)reader["celular"];
+                cliente.contato.Celular.DDI = (string)reader["DDI"];
+            }
 
-                using (reader)
-                {
-                    cliente.contato.Email = (string)reader["email"];
-                    cliente.contato.Telefone = (string)reader["telefone"];
-                    cliente.contato.Celular = (string)reader["celular"];
-                    cliente.contato.Celular.DDI = (string)reader["DDI"];
-                }
-            
             return cliente;
 
         }
@@ -179,7 +179,7 @@ namespace crud_teste.DAO
                     con.Execute(query, cliente, tran);
 
                     query = @"update pessoa set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = @cpf,
-                                DataDeNascimento = @DataDeNascimento where idPessoa = @idPessoa";
+                                DataDeNascimento = @DataDeNascimento, Ativo = @Ativo where idPessoa = @idPessoa";
                     con.Execute(query, new
                     {
 
@@ -189,6 +189,7 @@ namespace crud_teste.DAO
                         cpf = cliente.CPF.ToString(),
                         DataDeNascimento = cliente.DataDeNascimento,
                         idPessoa = cliente.IdPessoa,
+                        Ativo = cliente.Ativo,
 
                     }, tran);
 
@@ -231,6 +232,30 @@ namespace crud_teste.DAO
                 }
                 con.Close();
 
+            }
+        }
+
+        public void AlterarAtivo(ClienteListagem cliente)
+        {
+            try
+            {
+                var query = "";
+
+                if (cliente.Ativo)
+                    query = @"update Pessoa set Ativo = 0 where IdPessoa = @IdPessoa";
+                else
+                    query = @"update Pessoa set Ativo = 1 where IdPessoa = @IdPessoa";
+                con.Open();
+                con.Execute(query, new
+                {
+                    IdPessoa = cliente.idPessoa,
+                });
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
@@ -312,12 +337,42 @@ namespace crud_teste.DAO
         {
             using (con)
             {
+                try
+                {
 
-                var query = @"select idcliente, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+
+                    var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato;";
-                var resultado = con.Query<ClienteListagem>(query);
-                return resultado.ToList();
+                    var resultado = con.Query<ClienteListagem>(query);
+                    return resultado.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+
+            }
+        }
+
+        public List<ClienteListagem> ListarClienteAtivos()
+        {
+            using (con)
+            {
+                try
+                {
+
+
+                    var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                               from cliente c  inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
+                               inner join contato co on co.idContato = p.idContato where Ativo = 1;";
+                    var resultado = con.Query<ClienteListagem>(query);
+                    return resultado.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
 
             }
         }
@@ -336,7 +391,7 @@ namespace crud_teste.DAO
 
                     queryWhere = $"Nome like '{nome}%'";
                 }
-                var query = $@"select idcliente, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
                                from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato where {queryWhere} ";
                 var resultado = con.Query<ClienteListagem>(query);
@@ -345,5 +400,28 @@ namespace crud_teste.DAO
             }
         }
 
+        public List<ClienteListagem> ListarClienteAtivos(string nome, string param)
+        {
+            using (con)
+            {
+                var queryWhere = "";
+                if (param == "id")
+                {
+                    queryWhere = $"idcliente = {nome}";
+                }
+                else
+                {
+
+                    queryWhere = $"Nome like '{nome}%'";
+                }
+                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                               from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
+                               Left outer join contato co on co.idContato = p.idContato where {queryWhere} and Ativo = 1 ";
+                var resultado = con.Query<ClienteListagem>(query);
+                return resultado.ToList();
+
+            }
+
+        }
     }
 }

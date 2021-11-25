@@ -32,6 +32,7 @@ namespace crud_teste
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.Nome = new System.Windows.Forms.TextBox();
@@ -68,7 +69,8 @@ namespace crud_teste
             this.Celular = new System.Windows.Forms.MaskedTextBox();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
-            this.ValorLimite = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAtivo = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,6 +115,14 @@ namespace crud_teste
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
+            // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(428, 70);
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
+            this.ValorLimite.TabIndex = 87;
+            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
             // 
             // data
             // 
@@ -460,7 +470,7 @@ namespace crud_teste
             // 
             // Excluir
             // 
-            this.Excluir.BackColor = System.Drawing.Color.Red;
+            this.Excluir.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Excluir.Location = new System.Drawing.Point(546, 461);
@@ -471,13 +481,22 @@ namespace crud_teste
             this.Excluir.UseVisualStyleBackColor = false;
             this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
             // 
-            // ValorLimite
+            // label13
             // 
-            this.ValorLimite.Location = new System.Drawing.Point(428, 70);
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
-            this.ValorLimite.TabIndex = 87;
-            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(546, 419);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 66;
+            this.label13.Text = "Status: ";
+            // 
+            // txtAtivo
+            // 
+            this.txtAtivo.Location = new System.Drawing.Point(595, 416);
+            this.txtAtivo.Name = "txtAtivo";
+            this.txtAtivo.ReadOnly = true;
+            this.txtAtivo.Size = new System.Drawing.Size(187, 20);
+            this.txtAtivo.TabIndex = 67;
             // 
             // ConsultarCliente
             // 
@@ -485,6 +504,8 @@ namespace crud_teste
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(800, 557);
+            this.Controls.Add(this.txtAtivo);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.groupBox3);
@@ -550,5 +571,7 @@ namespace crud_teste
         private System.Windows.Forms.MaskedTextBox DDI;
         private System.Windows.Forms.TextBox Numero;
         private System.Windows.Forms.TextBox ValorLimite;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtAtivo;
     }
 }

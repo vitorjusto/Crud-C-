@@ -1,14 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
-using crud_teste.Model.Listagem;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew.ListaDePedidos

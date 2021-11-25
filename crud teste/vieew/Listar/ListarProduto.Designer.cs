@@ -29,19 +29,22 @@ namespace crud_teste.vieew
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxinstrucao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridProduto = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alterar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Inativar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BuscarAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -97,7 +100,8 @@ namespace crud_teste.vieew
             this.PrecoDeVenda,
             this.Estoque,
             this.Fabricante,
-            this.Ativo});
+            this.Alterar,
+            this.Inativar});
             this.dataGridProduto.Location = new System.Drawing.Point(15, 138);
             this.dataGridProduto.MultiSelect = false;
             this.dataGridProduto.Name = "dataGridProduto";
@@ -105,24 +109,8 @@ namespace crud_teste.vieew
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProduto.Size = new System.Drawing.Size(776, 310);
             this.dataGridProduto.TabIndex = 8;
+            this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseClick_1);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paginaInicialToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 13;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // paginaInicialToolStripMenuItem
-            // 
-            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
-            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
-            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
             // 
             // IdProduto
             // 
@@ -154,22 +142,61 @@ namespace crud_teste.vieew
             this.Fabricante.Name = "Fabricante";
             this.Fabricante.ReadOnly = true;
             // 
-            // Ativo
+            // Alterar
             // 
-            this.Ativo.HeaderText = "Ativo";
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Alterar.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Alterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Alterar.HeaderText = "Alterar";
+            this.Alterar.Name = "Alterar";
+            this.Alterar.ReadOnly = true;
+            this.Alterar.Text = "Alterar";
+            this.Alterar.UseColumnTextForButtonValue = true;
+            // 
+            // Inativar
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Inativar.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Inativar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Inativar.HeaderText = "Inativar";
+            this.Inativar.Name = "Inativar";
+            this.Inativar.ReadOnly = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paginaInicialToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // paginaInicialToolStripMenuItem
+            // 
+            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
+            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
+            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
             // 
             // BuscarAtivo
             // 
             this.BuscarAtivo.AutoSize = true;
-            this.BuscarAtivo.Checked = true;
-            this.BuscarAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
             this.BuscarAtivo.Name = "BuscarAtivo";
-            this.BuscarAtivo.Size = new System.Drawing.Size(125, 17);
+            this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
             this.BuscarAtivo.TabIndex = 14;
-            this.BuscarAtivo.Text = "Buscar Apenas Ativo";
+            this.BuscarAtivo.Text = "Buscar com Inativo";
             this.BuscarAtivo.UseVisualStyleBackColor = true;
             this.BuscarAtivo.CheckedChanged += new System.EventHandler(this.BuscarAtivo_CheckedChanged);
             // 
@@ -205,12 +232,13 @@ namespace crud_teste.vieew
         private System.Windows.Forms.DataGridView dataGridProduto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
+        private System.Windows.Forms.CheckBox BuscarAtivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoDeVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estoque;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fabricante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ativo;
-        private System.Windows.Forms.CheckBox BuscarAtivo;
+        private System.Windows.Forms.DataGridViewButtonColumn Alterar;
+        private System.Windows.Forms.DataGridViewButtonColumn Inativar;
     }
 }

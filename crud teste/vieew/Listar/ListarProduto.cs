@@ -29,16 +29,20 @@ namespace crud_teste.vieew
 
             AlterarProduto oAlterar = new AlterarProduto();
             produtos = oAlterar.Listar();
-            Buscarsoativo(produtos);
-            
+            preencherDataGrid(BuscarAtivo.Checked);
+
         }
 
 
-        public void preencherDataGrid(List<ProdutoListagem> produtos)
+        public void preencherDataGrid(bool comAtivo)
         {
+            DataGridViewCellStyle colaboradorinativo = new DataGridViewCellStyle();
+            colaboradorinativo.BackColor = Color.SlateGray;
+            colaboradorinativo.ForeColor = Color.White;
+
             dataGridProduto.Rows.Clear();
             var i = 0;
-            foreach(var produto in produtos)
+            foreach (var produto in produtos)
             {
                 dataGridProduto.Rows.Add();
                 dataGridProduto.Rows[i].Cells[0].Value = produto.IdProduto;
@@ -46,8 +50,29 @@ namespace crud_teste.vieew
                 dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda;
                 dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
                 dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
-                dataGridProduto.Rows[i].Cells[5].Value = produto.Ativo;
 
+
+
+
+                if (comAtivo && !produto.Ativo)
+                {
+                    var j = 0;
+                    while (j < 5)
+                    {
+
+                        dataGridProduto.Rows[i].Cells[j].Style = colaboradorinativo;
+                        j++;
+                    }
+                    dataGridProduto.Rows[i].Cells[6].Value = "Ativar";
+                }
+                else if (!comAtivo && !produto.Ativo)
+                {
+                    dataGridProduto.Rows[i].Visible = false;
+                }
+                else
+                {
+                    dataGridProduto.Rows[i].Cells[6].Value = "Inativar";
+                }
                 i++;
             }
             dataGridProduto.AllowUserToAddRows = false;
@@ -57,34 +82,10 @@ namespace crud_teste.vieew
             dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        public void Buscarsoativo(List<ProdutoListagem> produtos)
-        {
-            dataGridProduto.Rows.Clear();
-            var i = 0;
-            foreach (var produto in produtos)
-            {
-                if (produto.Ativo)
-                {
-                    dataGridProduto.Rows.Add();
-                    dataGridProduto.Rows[i].Cells[0].Value = produto.IdProduto;
-                    dataGridProduto.Rows[i].Cells[1].Value = produto.nomeProduto;
-                    dataGridProduto.Rows[i].Cells[2].Value = produto.PrecodeVenda;
-                    dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
-                    dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
-                    dataGridProduto.Rows[i].Cells[5].Value = produto.Ativo;
-
-                    i++;
-                }
-            }
-            dataGridProduto.AllowUserToAddRows = false;
 
 
 
-            dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-    
 
-       
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,17 +100,20 @@ namespace crud_teste.vieew
 
             int.TryParse(CampoDePesquisa.Text, out int id);
 
-            if(CampoDePesquisa.Text == "")
+            if (CampoDePesquisa.Text == "")
             {
-                preencherDataGrid(oAlterar.Listar());
+                produtos = oAlterar.Listar();
+                preencherDataGrid(BuscarAtivo.Checked);
             }
-            else if(id == 0 )
+            else if (id == 0)
             {
-                preencherDataGrid(oAlterar.Listar(CampoDePesquisa.Text, "nome"));
+                produtos = oAlterar.Listar(CampoDePesquisa.Text, "nome");
+                preencherDataGrid(BuscarAtivo.Checked);
             }
             else
             {
-                preencherDataGrid(oAlterar.Listar(CampoDePesquisa.Text, "id"));
+                produtos = oAlterar.Listar(CampoDePesquisa.Text, "id");
+                preencherDataGrid(BuscarAtivo.Checked);
             }
         }
 
@@ -126,12 +130,51 @@ namespace crud_teste.vieew
 
         private void BuscarAtivo_CheckedChanged(object sender, EventArgs e)
         {
-            if(BuscarAtivo.Checked)
+
+            preencherDataGrid(BuscarAtivo.Checked);
+
+        }
+
+
+
+        
+
+        private void dataGridProduto_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
             {
-                Buscarsoativo(produtos);
-            }else
+                var x = int.Parse(dataGridProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                new ConsultarProduto(x).Show();
+                this.Close();
+            }
+            else if (e.ColumnIndex == 6)
             {
-                preencherDataGrid(produtos);
+                var mensagem = produtos[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {produtos[e.RowIndex].nomeProduto}" : $"Deseja Mesmo Reativar o {produtos[e.RowIndex].nomeProduto}";
+
+                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    AlterarProduto oAlterar = new AlterarProduto();
+                    try
+                    {
+                        oAlterar.AlterarAtivo(produtos[e.RowIndex]);
+
+                        produtos[e.RowIndex].Ativo = !produtos[e.RowIndex].Ativo;
+
+
+                        preencherDataGrid(BuscarAtivo.Checked);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+
+
+                    }
+
+                }
             }
         }
     }

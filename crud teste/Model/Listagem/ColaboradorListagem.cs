@@ -8,6 +8,7 @@ namespace crud_teste.Model
 {
     public class ColaboradorListagem
     {
+        public int idPessoa { get; set; }
         public int idColaborador { get; set; }
        private string nome { get; set; }
 
@@ -29,6 +30,8 @@ namespace crud_teste.Model
         private string bairro { get; set; }
 
         private int numero { get; set; }
+
+        public bool Ativo { get; set; }
 
         public string Endereço { get { return $"{this.Cidade} - {this.UF} \n Bairro: {this.bairro}  Rua: {this.logradouro}  Numero: {this.numero}"; } set { } }
 

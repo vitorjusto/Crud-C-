@@ -59,6 +59,10 @@ namespace crud_teste
             emailText.Text = colaborador.contato.Email;
             Data.Value = colaborador.DataDeNascimento;
 
+
+            txtAtivo.Text = colaboradorGlobal.Ativo ? "Ativo" : "Não Ativo";
+            Excluir.Text = colaboradorGlobal.Ativo ? "Desativar" : "Ativar";
+
             AtribuirCamposEnderecos(colaborador.endereco);
 
 
@@ -136,29 +140,11 @@ namespace crud_teste
 
         private void Excluir_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                AlterarColaborador oColaborador = new AlterarColaborador();
-                try
-                {
-                    oColaborador.Excluir(colaboradorGlobal);
-                    this.Text = "Consultar Colaborador";
-                    MessageBox.Show("Dados excluidos com sucesso");
-                    colaboradorGlobal = null;
-                    new ListarColaboradores().Show();
-                    this.Close();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    
-                    
-                }
+            colaboradorGlobal.Ativo = !colaboradorGlobal.Ativo;
 
-            }   
+
+            txtAtivo.Text = colaboradorGlobal.Ativo ? "Ativo" : "Não Ativo";
+            Excluir.Text = colaboradorGlobal.Ativo ? "Desativar" : "Ativar";
         }
 
         private void ConsultarColaborador_Load(object sender, EventArgs e)
@@ -229,10 +215,7 @@ namespace crud_teste
 
         }
 
-        private void data_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e)
         {

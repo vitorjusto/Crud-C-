@@ -61,6 +61,7 @@ namespace crud_teste
                     colaborador.Salario = (decimal)reader["Salario"];
                     colaborador.IdPessoa = (int)reader["idPessoa"];
                     colaborador.DadosBancarios.IdDadosBancarios = (int)reader["idDadosBancarios"];
+                    
 
 
                 }
@@ -88,7 +89,7 @@ namespace crud_teste
                     colaborador.endereco.IdEndereco = (int)reader["idEndereco"];
                     colaborador.DataDeNascimento = (DateTime)reader["DataDeNascimento"];
                     colaborador.contato.idContato = (int)reader["idContato"];
-
+                    colaborador.Ativo = (bool)reader["Ativo"];
 
                 }
 
@@ -222,7 +223,7 @@ namespace crud_teste
 
 
 
-                    query = $@"update pessoa set nome = @nome, sobrenome = @SobreNome, sexo = @sexo, cpf = @cpf, DataDeNascimento = @DataDeNascimento where idPessoa = @idPessoa";
+                    query = $@"update pessoa set nome = @nome, sobrenome = @SobreNome, sexo = @sexo, cpf = @cpf, DataDeNascimento = @DataDeNascimento, Ativo = @Ativo where idPessoa = @idPessoa";
                     con.Execute(query, new
                     {
                         nome = colaborador.Nome,
@@ -231,6 +232,7 @@ namespace crud_teste
                         cpf = colaborador.CPF.ToString(),
                         DataDeNascimento = colaborador.DataDeNascimento,
                         idPessoa = colaborador.IdPessoa,
+                        Ativo = colaborador.Ativo,
 
                     }, tran) ;
 
@@ -354,9 +356,27 @@ namespace crud_teste
             {
                 
 
-                var query = @"select idcolaborador, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone 
+                var query = @"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone, Ativo 
                                from Colaborador c Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato;";
+                var resultado = con.Query<ColaboradorListagem>(query);
+                return resultado.ToList();
+
+            }
+
+
+        }
+
+        public List<ColaboradorListagem> ListarColaboradoresAtivos()
+        {
+
+            using (con)
+            {
+
+
+                var query = @"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario, DataDeNascimento, Cidade, UF,bairro, logradouro, numero, celular, email, telefone, Ativo 
+                               from Colaborador c Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
+                               Left outer join contato co on co.idContato = p.idContato where Ativo = 1;";
                 var resultado = con.Query<ColaboradorListagem>(query);
                 return resultado.ToList();
 
@@ -379,15 +399,38 @@ namespace crud_teste
                     queryWhere = $"Nome like '{nome}%'";
                 }
 
-                var query = $@"select idcolaborador, Nome, SobreNome, Sexo, Salario,  DataDeNascimento, Cidade, UF ,bairro, logradouro, numero, celular, email, telefone 
-                               from Colaborador c Right outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
-                               Left outer join contato co on co.idContato = p.idContato where {queryWhere};";
+                var query = $@"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario,  DataDeNascimento, Cidade, UF ,bairro, logradouro, numero, celular, email, telefone, Ativo
+                               from Colaborador c inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
+                               inner join contato co on co.idContato = p.idContato where {queryWhere};";
                 var resultado = con.Query<ColaboradorListagem>(query);
                 return resultado.ToList();
 
             }
         }
 
+        public List<ColaboradorListagem> ListarColaboradoresAtivos(string nome, string param)
+        {
+            using (con)
+            {
+                var queryWhere = "";
+
+                if (param == "id")
+                {
+                    queryWhere = $"idcolaborador = {nome}";
+                }
+                else
+                {
+                    queryWhere = $"Nome like '{nome}%'";
+                }
+
+                var query = $@"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario,  DataDeNascimento, Cidade, UF ,bairro, logradouro, numero, celular, email, telefone, Ativo
+                               from Colaborador c inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
+                               inner join contato co on co.idContato = p.idContato where {queryWhere} and Ativo = 1;";
+                var resultado = con.Query<ColaboradorListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
 
         public void ExcluirTudo()
         {
@@ -432,5 +475,29 @@ namespace crud_teste
             con.Close();
         
     }
+
+        public void AlterarAtivo(ColaboradorListagem colaborador)
+        {
+            try
+            {
+                var query = "";
+
+                if (colaborador.Ativo)
+                    query = @"update Pessoa set Ativo = 0 where IdPessoa = @IdPessoa";
+                else
+                    query = @"update Pessoa set Ativo = 1 where IdPessoa = @IdPessoa";
+                con.Open();
+                con.Execute(query, new
+                {
+                    IdPessoa = colaborador.idPessoa,
+                });
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

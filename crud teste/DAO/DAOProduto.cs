@@ -90,12 +90,36 @@ namespace crud_teste.DAO
                     queryWhere = $"IdProduto = {pesquisa}";
                 }
 
-                var query = $@"select idproduto, nomeProduto, precodevenda, descontoavista, fabricante, estoque from produto where {queryWhere}";
+                var query = $@"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where {queryWhere}";
                 var resultado = con.Query<ProdutoListagem>(query);
                 return resultado.ToList();
 
             }
         }
+
+        public List<ProdutoListagem> ListarAtivo(string pesquisa, string param)
+        {
+            {
+                using (con)
+                {
+                    string queryWhere = "";
+                    if (param == "nome")
+                    {
+                        queryWhere = $"nomeProduto like '{pesquisa}%'";
+                    }
+                    else
+                    {
+                        queryWhere = $"IdProduto = {pesquisa}";
+                    }
+
+                    var query = $@"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where {queryWhere} and Ativo = 1 and Estoque > 0";
+                    var resultado = con.Query<ProdutoListagem>(query);
+                    return resultado.ToList();
+
+                }
+            }
+        }
+
 
         public Produto Consultar(int id)
         {
@@ -165,7 +189,7 @@ namespace crud_teste.DAO
         {
             using (con)
             {
-                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where ativo = 1";
+                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where ativo = 1 and Estoque > 0";
                 var resultado = con.Query<ProdutoListagem>(query);
                 return resultado.ToList();
 
@@ -215,5 +239,30 @@ namespace crud_teste.DAO
                 throw new Exception(ex.Message);
             }
         }
+
+        public void AlterarAtivo(ProdutoListagem produto)
+        {
+            try
+            {
+                var query = "";
+
+                if (produto.Ativo)
+                    query = @"update Produto set Ativo = 0 where IdProduto = @IdProduto";
+                else
+                    query = @"update Produto set Ativo = 1 where IdProduto = @IdProduto";
+                con.Open();
+                con.Execute(query, new
+                {
+                    IdProduto = produto.IdProduto, 
+                });
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }      

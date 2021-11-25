@@ -26,11 +26,15 @@ namespace crud_teste.vieew.ListaDePedidos
 
             _venda = oAlterar.Consultar(id);
 
+
+            txtCliente.Text = _venda.cliente.nomeCompleto();
+            txtColaborador.Text = _venda.colaborador.nomeCompleto();
+
             oldList.AddRange(_venda.Pedido_Produto);
 
             gbProduto.Visible = false;
 
-           
+            txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
 
             preencherCampos();
 
@@ -39,8 +43,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private void preencherCampos()
         {
      
-            txtCliente.Text = _venda.cliente.nomeCompleto();
-            txtColaborador.Text = _venda.colaborador.nomeCompleto();
 
 
             txtTotalUnitaria.Text = _venda.QuantidadeUnitario.ToString();
@@ -69,6 +71,12 @@ namespace crud_teste.vieew.ListaDePedidos
 
                 abrirProduto();
             }
+            else
+            {
+                ApagarCampoDoProduto();
+            }
+
+            preencherCampos();
 
         }
 
@@ -292,31 +300,19 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void btnAtivar_Click(object sender, EventArgs e)
         {
-           
-            if (MessageBox.Show("Deseja Mesmo Inativar esta venda, todos os produtos retornarão no estoque e não fazerá parte do lucro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            var mensagem = _venda.Ativo ? "Deseja Mesmo Inativar esta venda, todos os produtos retornarão no estoque e não fazerá parte do lucro?" : "Deseja Mesmo Reativar Venda?";
+
+            if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
                     AlterarVenda oAlterar = new AlterarVenda();
 
                     oAlterar.MudarAtivacao(_venda);
+                    _venda.Ativo = !_venda.Ativo;
 
-                    foreach (var item in oldList)
-                    {
-                        oAlterar.aumentarEstoque(item);
-                    }
-
-
-
-                    if (MessageBox.Show("Deseja salvar alterações ( mais possivel alterar)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes) 
-                    {
-                        oAlterar.SalvarProduto(_venda);
-                        
-                    }
-
-                    this.Close();
-                    new ListagemDePedidos().Show();
-
+                    txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
                 }
                 catch(Exception ex)
                 {

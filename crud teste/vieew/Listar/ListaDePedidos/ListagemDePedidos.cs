@@ -163,20 +163,13 @@ namespace crud_teste.vieew.ListaDePedidos
                 return;
 
             var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            if (pedidos[e.RowIndex].ativo)
-            {
+
                 this.Close();
                 new ConsultarVenda(x).Show();
-            }
-            else
-            {
-                MessageBox.Show("Não pode alterar um produto inativo");
-            }
+
+            
         }
 
-        private void ListagemDePedidos_Load(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

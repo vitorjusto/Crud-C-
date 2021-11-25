@@ -29,8 +29,8 @@ namespace crud_teste.vieew
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
@@ -38,6 +38,7 @@ namespace crud_teste.vieew
             this.label = new System.Windows.Forms.Label();
             this.textBoxinstrucao = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbAtivo = new System.Windows.Forms.CheckBox();
             this.IdColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +70,7 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 60);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 32);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
             this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
             this.CampoDePesquisa.TabIndex = 2;
@@ -99,7 +100,7 @@ namespace crud_teste.vieew
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 63);
+            this.label.Location = new System.Drawing.Point(12, 35);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(56, 13);
             this.label.TabIndex = 4;
@@ -128,6 +129,17 @@ namespace crud_teste.vieew
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbAtivo
+            // 
+            this.cbAtivo.AutoSize = true;
+            this.cbAtivo.Location = new System.Drawing.Point(86, 86);
+            this.cbAtivo.Name = "cbAtivo";
+            this.cbAtivo.Size = new System.Drawing.Size(118, 17);
+            this.cbAtivo.TabIndex = 7;
+            this.cbAtivo.Text = "Buscar Com Inativo";
+            this.cbAtivo.UseVisualStyleBackColor = true;
+            this.cbAtivo.CheckedChanged += new System.EventHandler(this.cbAtivo_CheckedChanged);
             // 
             // IdColaborador
             // 
@@ -167,13 +179,13 @@ namespace crud_teste.vieew
             // 
             // Editar
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Editar.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
             this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
@@ -183,25 +195,25 @@ namespace crud_teste.vieew
             // 
             // Excluir
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
             this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excluir.HeaderText = "Excluir";
             this.Excluir.Name = "Excluir";
             this.Excluir.ReadOnly = true;
             this.Excluir.Text = "Excluir";
-            this.Excluir.UseColumnTextForButtonValue = true;
             // 
             // ListarColaboradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 456);
+            this.Controls.Add(this.cbAtivo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);
             this.Controls.Add(this.label);
@@ -228,6 +240,7 @@ namespace crud_teste.vieew
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.TextBox textBoxinstrucao;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbAtivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColaborador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;

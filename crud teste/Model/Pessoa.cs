@@ -25,7 +25,7 @@ namespace CRUD_teste.Model
 
         public Endereco endereco = new Endereco();
 
-       
+       public bool Ativo { get; set; }
 
         public string nomeCompleto()
         {

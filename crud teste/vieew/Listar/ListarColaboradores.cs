@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using crud_teste.controller;
 using crud_teste.Model;
@@ -16,8 +17,18 @@ namespace crud_teste.vieew
             AlterarColaborador oAlterar = new AlterarColaborador();
             listagem =  oAlterar.ListarColaboradores();
 
+            listarNaGrid(cbAtivo.Checked);
+
+        }
+        public void listarNaGrid(bool comAtivo)
+        {
+            DataGridViewCellStyle colaboradorinativo = new DataGridViewCellStyle();
+            colaboradorinativo.BackColor = Color.SlateGray;
+            colaboradorinativo.ForeColor = Color.White;
+
             var index = 0;
-            foreach(var colaborador in listagem)
+            dataGridColaboradores.Rows.Clear();
+            foreach (var colaborador in listagem)
             {
                 dataGridColaboradores.Rows.Add();
 
@@ -28,6 +39,26 @@ namespace crud_teste.vieew
                 dataGridColaboradores.Rows[index].Cells[4].Value = colaborador.Endereço;
                 dataGridColaboradores.Rows[index].Cells[5].Value = colaborador.Contato;
 
+                if (comAtivo && !colaborador.Ativo)
+                {
+                    var j = 0;
+                    while (j < 6)
+                    {
+
+                        dataGridColaboradores.Rows[index].Cells[j].Style = colaboradorinativo;
+                        j++;
+                    }
+                    dataGridColaboradores.Rows[index].Cells[7].Value = "Ativar";
+                }
+                else if (!comAtivo && !colaborador.Ativo)
+                {
+                    dataGridColaboradores.Rows[index].Visible = false;
+                }
+                else
+                {
+                    dataGridColaboradores.Rows[index].Cells[7].Value = "Inativar";
+                }
+
                 index++;
 
             }
@@ -35,8 +66,8 @@ namespace crud_teste.vieew
 
             dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridColaboradores.AllowUserToAddRows = false;
-
         }
+
 
         private void ListarColaboradores_Load(object sender, EventArgs e)
         {
@@ -69,7 +100,7 @@ namespace crud_teste.vieew
                 return;
 
             var x = int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString());
-            consultar(x)
+            consultar(x);
 
 
         }
@@ -85,28 +116,33 @@ namespace crud_teste.vieew
             AlterarColaborador oAlterar = new AlterarColaborador();
             int.TryParse(CampoDePesquisa.Text, out int id);
             if (id > 0)
-                dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
+               listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
             else
-                dataGridColaboradores.DataSource = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
+                listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
+
+            listarNaGrid(cbAtivo.Checked);
         }
 
         private void dataGridColaboradores_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if(e.ColumnIndex == 6)
             {
-                consultar(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()))
+                consultar(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()));
             }else if(e.ColumnIndex == 7)
             {
-                if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos permanente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
+                var mensagem = listagem[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {listagem[e.RowIndex].NomeCompleto}" : $"Deseja Mesmo Reativar o {listagem[e.RowIndex].NomeCompleto}";
+
+                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                { 
                     AlterarColaborador oColaborador = new AlterarColaborador();
                     try
                     {
-                        oColaborador.Excluir(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()));
-                        this.Text = "Consultar Colaborador";
-                        MessageBox.Show("Dados excluidos com sucesso");
-                        new ListarColaboradores().Show();
-                        this.Close();
+                        oColaborador.AlterarAtivo(listagem[e.RowIndex]);
+
+                        listagem[e.RowIndex].Ativo = !listagem[e.RowIndex].Ativo;
+
+
+                        listarNaGrid(cbAtivo.Checked);
                     }
                     catch (Exception ex)
                     {
@@ -120,6 +156,11 @@ namespace crud_teste.vieew
 
                 }
             }
+        }
+
+        private void cbAtivo_CheckedChanged(object sender, EventArgs e)
+        {
+            listarNaGrid(cbAtivo.Checked);
         }
     }
 }

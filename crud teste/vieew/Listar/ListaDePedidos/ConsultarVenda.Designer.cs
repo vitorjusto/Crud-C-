@@ -69,6 +69,8 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAtivar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtAtivo = new System.Windows.Forms.TextBox();
             this.gbProduto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -206,9 +208,9 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(874, 440);
+            this.button1.Location = new System.Drawing.Point(874, 466);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 61);
+            this.button1.Size = new System.Drawing.Size(181, 48);
             this.button1.TabIndex = 16;
             this.button1.Text = "Alterar";
             this.button1.UseVisualStyleBackColor = false;
@@ -452,22 +454,41 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // btnAtivar
             // 
-            this.btnAtivar.BackColor = System.Drawing.Color.Red;
+            this.btnAtivar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAtivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAtivar.Location = new System.Drawing.Point(874, 362);
+            this.btnAtivar.Location = new System.Drawing.Point(874, 406);
             this.btnAtivar.Name = "btnAtivar";
-            this.btnAtivar.Size = new System.Drawing.Size(181, 59);
+            this.btnAtivar.Size = new System.Drawing.Size(181, 49);
             this.btnAtivar.TabIndex = 21;
             this.btnAtivar.Text = "Inativar Venda";
             this.btnAtivar.UseVisualStyleBackColor = false;
             this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(816, 372);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Status: ";
+            // 
+            // txtAtivo
+            // 
+            this.txtAtivo.Location = new System.Drawing.Point(874, 368);
+            this.txtAtivo.Name = "txtAtivo";
+            this.txtAtivo.ReadOnly = true;
+            this.txtAtivo.Size = new System.Drawing.Size(181, 20);
+            this.txtAtivo.TabIndex = 23;
             // 
             // ConsultarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 531);
+            this.Controls.Add(this.txtAtivo);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnAtivar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
@@ -544,5 +565,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Button btnAlterarProduto;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAtivar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtAtivo;
     }
 }

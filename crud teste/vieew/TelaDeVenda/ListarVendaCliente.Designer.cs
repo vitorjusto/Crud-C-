@@ -103,6 +103,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.Controls.Add(this.dataGridGeral);
             this.Name = "ListarVendaCliente";
             this.Text = "Listar Usuario";
+            this.Load += new System.EventHandler(this.ListarVendaCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGeral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

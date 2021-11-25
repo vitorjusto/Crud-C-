@@ -55,10 +55,29 @@ namespace crud_teste.controller
 
         }
 
+        public List<ColaboradorListagem> ListarColaboradoresAtivos()
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarColaboradoresAtivos();
+
+
+        }
+
         public List<ColaboradorListagem> ListarColaboradoresPesquisado(string nome, string param)
         {
             ConexaoDAO stmt = new ConexaoDAO();
             return stmt.ListarColaboradores(nome, param);
+        }
+
+        public List<ColaboradorListagem> ListarColaboradoresAtivos(string nome, string param)
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            return stmt.ListarColaboradoresAtivos(nome, param);
+        }
+        public void AlterarAtivo(ColaboradorListagem colaborador)
+        {
+            ConexaoDAO stmt = new ConexaoDAO();
+            stmt.AlterarAtivo(colaborador);
         }
     }
 }

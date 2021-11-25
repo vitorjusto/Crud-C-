@@ -35,6 +35,14 @@ namespace crud_teste.controller
             return lista;
         }
 
+        public List<ProdutoListagem> ListarAtivos(string pesquisa, string param)
+        {
+            var stmt = new DAOProduto();
+            var lista = stmt.ListarAtivo(pesquisa, param);
+
+            return lista;
+        }
+
         public Produto Consultar(int id)
         {
             var stmt = new DAOProduto();
@@ -61,5 +69,12 @@ namespace crud_teste.controller
 
             return lista;
         }
+
+        public void AlterarAtivo(ProdutoListagem produto)
+        {
+            var stmt = new DAOProduto();
+            stmt.AlterarAtivo(produto);
+        }
+
     }
 }

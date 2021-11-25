@@ -31,6 +31,7 @@ namespace crud_teste
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Porcentagem = new System.Windows.Forms.TextBox();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
@@ -45,6 +46,7 @@ namespace crud_teste
             this.Nome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Numero = new System.Windows.Forms.TextBox();
             this.CEP = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.Complemento = new System.Windows.Forms.TextBox();
@@ -79,9 +81,9 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
-            this.Porcentagem = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Numero = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtAtivo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -113,6 +115,14 @@ namespace crud_teste
             this.groupBox1.Text = "Dados Pessoais";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(367, 82);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
+            this.Porcentagem.TabIndex = 75;
+            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
+            // 
             // Data
             // 
             this.Data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -120,7 +130,6 @@ namespace crud_teste
             this.Data.Name = "Data";
             this.Data.Size = new System.Drawing.Size(161, 20);
             this.Data.TabIndex = 74;
-            this.Data.ValueChanged += new System.EventHandler(this.data_ValueChanged);
             // 
             // label17
             // 
@@ -249,6 +258,14 @@ namespace crud_teste
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereço";
+            // 
+            // Numero
+            // 
+            this.Numero.Location = new System.Drawing.Point(668, 72);
+            this.Numero.Name = "Numero";
+            this.Numero.Size = new System.Drawing.Size(62, 20);
+            this.Numero.TabIndex = 60;
+            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // CEP
             // 
@@ -476,9 +493,9 @@ namespace crud_teste
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BotaoSalvar.Location = new System.Drawing.Point(12, 456);
+            this.BotaoSalvar.Location = new System.Drawing.Point(9, 467);
             this.BotaoSalvar.Name = "BotaoSalvar";
-            this.BotaoSalvar.Size = new System.Drawing.Size(259, 79);
+            this.BotaoSalvar.Size = new System.Drawing.Size(259, 96);
             this.BotaoSalvar.TabIndex = 66;
             this.BotaoSalvar.Text = "Salvar";
             this.BotaoSalvar.UseVisualStyleBackColor = false;
@@ -486,12 +503,12 @@ namespace crud_teste
             // 
             // Excluir
             // 
-            this.Excluir.BackColor = System.Drawing.Color.Red;
+            this.Excluir.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(508, 456);
+            this.Excluir.Location = new System.Drawing.Point(508, 501);
             this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(259, 79);
+            this.Excluir.Size = new System.Drawing.Size(259, 62);
             this.Excluir.TabIndex = 67;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = false;
@@ -581,33 +598,36 @@ namespace crud_teste
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
             // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Location = new System.Drawing.Point(367, 82);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
-            this.Porcentagem.TabIndex = 75;
-            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Numero
+            // label12
             // 
-            this.Numero.Location = new System.Drawing.Point(668, 72);
-            this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(62, 20);
-            this.Numero.TabIndex = 60;
-            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(511, 470);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 69;
+            this.label12.Text = "Status";
+            // 
+            // txtAtivo
+            // 
+            this.txtAtivo.Location = new System.Drawing.Point(574, 467);
+            this.txtAtivo.Name = "txtAtivo";
+            this.txtAtivo.ReadOnly = true;
+            this.txtAtivo.Size = new System.Drawing.Size(193, 20);
+            this.txtAtivo.TabIndex = 70;
             // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(800, 557);
+            this.ClientSize = new System.Drawing.Size(800, 595);
+            this.Controls.Add(this.txtAtivo);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
@@ -687,5 +707,7 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Porcentagem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox Numero;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtAtivo;
     }
 }

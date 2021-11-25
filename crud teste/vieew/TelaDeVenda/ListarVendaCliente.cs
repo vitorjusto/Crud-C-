@@ -4,12 +4,6 @@ using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew.TelaDeVenda
@@ -36,10 +30,11 @@ namespace crud_teste.vieew.TelaDeVenda
 
 
             Buscar = busca;
+            
             if (Buscar == "cliente")
-                ListarClientes(oAlterar.ListarCliente());
+                ListarClientes(oAlterar.ListarClientesAtivos());
             else if (Buscar == "colaborador")
-                ListarColaboradores(oAlterarColaborador.ListarColaboradores());
+                ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos());
             else if (Buscar == "produto")
             {
                 ListarProdutos(oAlterarProduto.ListarAtivo());
@@ -69,18 +64,74 @@ namespace crud_teste.vieew.TelaDeVenda
         public void ListarClientes(List<ClienteListagem> clientes)
         {
 
-            dataGridGeral.DataSource = clientes;
+            dataGridGeral.Rows.Clear();
+            dataGridGeral.Columns.Clear();
+
+            dataGridGeral.Columns.Add("IdCliente", "Id do Cliente");
+            dataGridGeral.Columns.Add("Nome", "Nome Completo");
+            dataGridGeral.Columns.Add("Sexo", "Sexo");
+            dataGridGeral.Columns.Add("DataDeNascimento", "Data De Nascimento");
+            dataGridGeral.Columns.Add("Endereco", "Endereço");
+            dataGridGeral.Columns.Add("Contato", "Contato");
+
+
+            int i = 0;
+            foreach (var cliente in clientes)
+            {
+
+                dataGridGeral.Rows.Add();
+                dataGridGeral.Rows[i].Cells[0].Value = cliente.idcliente;
+                dataGridGeral.Rows[i].Cells[1].Value = cliente.nomecompleto;
+                dataGridGeral.Rows[i].Cells[2].Value = cliente.Sexo;
+                dataGridGeral.Rows[i].Cells[3].Value = cliente.DataDeNascimento;
+                dataGridGeral.Rows[i].Cells[4].Value = cliente.Endereço;
+                dataGridGeral.Rows[i].Cells[5].Value = cliente.Contato;
+                i++;
+
+
+            }
         }
         
 
         public void ListarColaboradores(List<ColaboradorListagem> colaboradores)
         {
-            dataGridGeral.DataSource = colaboradores;
+            dataGridGeral.Rows.Clear();
+            dataGridGeral.Columns.Clear();
+
+            dataGridGeral.Columns.Add("IdCliente", "Id do Cliente");
+            dataGridGeral.Columns.Add("Nome", "Nome Completo");
+            dataGridGeral.Columns.Add("Sexo", "Sexo");
+            dataGridGeral.Columns.Add("Salario", "Salário");
+            dataGridGeral.Columns.Add("DataDeNascimento", "Data De Nascimento");
+            dataGridGeral.Columns.Add("Endereco", "Endereço");
+            dataGridGeral.Columns.Add("Contato", "Contato");
+
+
+            int i = 0;
+            foreach (var colaborador in colaboradores)
+            {
+
+                dataGridGeral.Rows.Add();
+                dataGridGeral.Rows[i].Cells[0].Value = colaborador.idColaborador;
+                dataGridGeral.Rows[i].Cells[1].Value = colaborador.NomeCompleto;
+                dataGridGeral.Rows[i].Cells[2].Value = colaborador.sexo;
+                dataGridGeral.Rows[i].Cells[3].Value = colaborador.salario;
+                dataGridGeral.Rows[i].Cells[4].Value = colaborador.DataDeNascimento;
+                dataGridGeral.Rows[i].Cells[5].Value = colaborador.Endereço;
+                dataGridGeral.Rows[i].Cells[6].Value = colaborador.Contato;
+                i++;
+
+
+            }
         }
 
        
         public void ListarProdutos(List<ProdutoListagem> produtos)
         {
+
+            dataGridGeral.Rows.Clear();
+            dataGridGeral.Columns.Clear();
+
             dataGridGeral.Columns.Add("IdProduto", "Id do Produto");
             dataGridGeral.Columns.Add("Nome", "nome");
             dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
@@ -136,23 +187,26 @@ namespace crud_teste.vieew.TelaDeVenda
             if (id > 0)
             {
                 if (Buscar == "cliente")
-                    ListarClientes(oAlterar.ListarCliente(CampoDePesquisa.Text, "id"));
+                    ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "id"));
                 else if (Buscar == "colaborador")
-                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id"));
+                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "id"));
                 else if (Buscar == "produto")
-                    ListarProdutos(oAlterarProduto.Listar(CampoDePesquisa.Text, "id"));
+                    ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "id"));
             }
             else
             {
                 if (Buscar == "cliente")
-                    ListarClientes(oAlterar.ListarCliente(CampoDePesquisa.Text, "nome"));
+                    ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "nome"));
                 else if (Buscar == "colaborador")
-                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "nome"));
+                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "nome"));
                 else if (Buscar == "produto")
-                    ListarProdutos(oAlterarProduto.Listar(CampoDePesquisa.Text, "nome"));
+                    ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "nome"));
             }
         }
 
-        
+        private void ListarVendaCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace crud_teste.Model
     {
         public int idcliente { get; set; }
 
+        public int idPessoa { get; set; }
+
         public string nomecompleto { get { return this.nome + "  " + this.sobrenome; } set { } }
         
         private string nome { get; set; }
@@ -41,6 +43,8 @@ namespace crud_teste.Model
         private string email { get; set; }
 
         public string Contato { get { return $"{procurarContato()}"; } set { } }
+
+        public bool Ativo { get; set; }
 
         private string procurarContato()
         {

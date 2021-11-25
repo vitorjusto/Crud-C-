@@ -52,10 +52,28 @@ namespace crud_teste.controller
             return stmt.ListarCliente();
         }
 
+        public List<ClienteListagem> ListarClientesAtivos()
+        {
+            ClienteDAO stmt = new ClienteDAO();
+            return stmt.ListarClienteAtivos();
+        }
+
         public List<ClienteListagem> ListarCliente(string nome, string param)
         {
             ClienteDAO stmt = new ClienteDAO();
             return stmt.ListarCliente(nome, param);
+        }
+
+        public List<ClienteListagem> ListarClienteAtivos(string nome, string param)
+        {
+            ClienteDAO stmt = new ClienteDAO();
+            return stmt.ListarClienteAtivos(nome, param);
+        }
+
+        public void AlterarAtivo(ClienteListagem cliente)
+        {
+            ClienteDAO stmt = new ClienteDAO();
+            stmt.AlterarAtivo(cliente);
         }
     }
 }
