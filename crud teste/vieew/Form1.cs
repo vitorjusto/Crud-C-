@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using CRUD_teste.Model;
-using crud_teste.vieew;
+﻿using crud_teste.vieew;
 using crud_teste.vieew.ListaDePedidos;
+using System;
+using System.Windows.Forms;
 
 namespace crud_teste
 {
@@ -41,8 +32,6 @@ namespace crud_teste
             new FrmCliente().Show();
 
         }
-
-       
 
         private void opçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {

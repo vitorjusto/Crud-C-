@@ -1,14 +1,6 @@
-﻿using crud_teste.controller;
-using crud_teste.Model;
+﻿using crud_teste.Model;
 using crud_teste.Model.Listagem;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew.TelaDeVenda
@@ -30,12 +22,6 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
 
             alterar = false;
-
-
-            
-            
-
-
             var i = 0;
 
             foreach (var carrinho in carrinhosL)
@@ -47,22 +33,10 @@ namespace crud_teste.vieew.TelaDeVenda
                 dataGridCarrinho.Rows[i].Cells[3].Value = carrinho.PrecoBruto.GetAsString();
                 dataGridCarrinho.Rows[i].Cells[4].Value = carrinho.Desconto.GetAsString();
                 dataGridCarrinho.Rows[i].Cells[5].Value = carrinho.PrecoLiquido.GetAsString();
-
-                
-                
-
                 i++;
             }
             dataGridCarrinho.AllowUserToAddRows = false;
-
             dataGridCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-
-        }
-
-        private void ListarCarrinho_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)

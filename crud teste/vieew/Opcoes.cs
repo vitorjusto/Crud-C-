@@ -47,8 +47,6 @@ namespace crud_teste
             }
         }
 
-            
-
         private void Opcoes_Load(object sender, EventArgs e)
         {
             this.BackColor = Global.BackgroundColor;

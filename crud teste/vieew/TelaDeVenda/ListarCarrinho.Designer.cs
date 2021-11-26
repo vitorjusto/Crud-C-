@@ -151,7 +151,6 @@ namespace crud_teste.vieew.TelaDeVenda
             this.Name = "ListarCarrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarCarrinho";
-            this.Load += new System.EventHandler(this.ListarCarrinho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrinho)).EndInit();
             this.ResumeLayout(false);
 

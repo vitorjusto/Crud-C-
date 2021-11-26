@@ -167,7 +167,6 @@ namespace crud_teste.vieew
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // PrecoBruto
             // 
@@ -297,8 +296,6 @@ namespace crud_teste.vieew
             this.Desconto.Enter += new System.EventHandler(this.Desconto_Enter);
             this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
             this.Desconto.Leave += new System.EventHandler(this.Desconto_Leave);
-            this.Desconto.MouseEnter += new System.EventHandler(this.Desconto_MouseEnter);
-            this.Desconto.MouseLeave += new System.EventHandler(this.Desconto_MouseLeave);
             // 
             // label6
             // 
@@ -428,7 +425,6 @@ namespace crud_teste.vieew
             this.TotalLiquido.ReadOnly = true;
             this.TotalLiquido.Size = new System.Drawing.Size(100, 20);
             this.TotalLiquido.TabIndex = 11;
-            this.TotalLiquido.TextChanged += new System.EventHandler(this.TotalLiquido_TextChanged);
             // 
             // TotalDesconto
             // 
@@ -563,7 +559,6 @@ namespace crud_teste.vieew
             this.Name = "CadastroDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroDePedidos";
-            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

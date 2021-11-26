@@ -44,23 +44,6 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-
-        public ListarVendaCliente(List<Pedido_Produto> carrinhos, List<Produto> produtos)
-        {
-            ListarCarrinhos(carrinhos);
-        }
-
-        private void ListarCliente_Load(object sender, EventArgs e)
-        {
-            this.BackColor = Global.BackgroundColor;
-            dataGridGeral.BackgroundColor = Global.BackgroundColor;
-
-
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
-            textBoxinstrucao.ForeColor = Global.FontColor;
-        }
-
-
         public void ListarClientes(List<ClienteListagem> clientes)
         {
 
@@ -88,11 +71,9 @@ namespace crud_teste.vieew.TelaDeVenda
                 dataGridGeral.Rows[i].Cells[5].Value = cliente.Contato;
                 i++;
 
-
             }
         }
         
-
         public void ListarColaboradores(List<ColaboradorListagem> colaboradores)
         {
             dataGridGeral.Rows.Clear();
@@ -154,13 +135,6 @@ namespace crud_teste.vieew.TelaDeVenda
 
             }
         }  
-        
-        public void ListarCarrinhos(List<Pedido_Produto> carrinho)
-        {
-            
-           
-        }
-        
 
         private void dataGridCliente_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -176,7 +150,6 @@ namespace crud_teste.vieew.TelaDeVenda
                 produto = oAlterarProduto.Consultar(x);
 
             this.Dispose();
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -202,11 +175,6 @@ namespace crud_teste.vieew.TelaDeVenda
                 else if (Buscar == "produto")
                     ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "nome"));
             }
-        }
-
-        private void ListarVendaCliente_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
