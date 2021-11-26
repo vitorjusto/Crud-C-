@@ -39,6 +39,9 @@ namespace crud_teste
             this.colaboradoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -60,8 +63,6 @@ namespace crud_teste
             this.colaboradorBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
@@ -91,6 +92,7 @@ namespace crud_teste
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inserirToolStripMenuItem,
             this.listarToolStripMenuItem,
+            this.vendaToolStripMenuItem,
             this.opçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -134,11 +136,11 @@ namespace crud_teste
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colaboradoresToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.produtoToolStripMenuItem1});
+            this.produtoToolStripMenuItem1,
+            this.pedidosToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.listarToolStripMenuItem.Text = "Listar";
-            this.listarToolStripMenuItem.Click += new System.EventHandler(this.listarToolStripMenuItem_Click);
             // 
             // colaboradoresToolStripMenuItem
             // 
@@ -160,6 +162,28 @@ namespace crud_teste
             this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.produtoToolStripMenuItem1.Text = "Produto";
             this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
+            // 
+            // pedidosToolStripMenuItem
+            // 
+            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pedidosToolStripMenuItem.Text = "Pedidos";
+            this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidosToolStripMenuItem_Click);
+            // 
+            // vendaToolStripMenuItem
+            // 
+            this.vendaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoPedidoToolStripMenuItem});
+            this.vendaToolStripMenuItem.Name = "vendaToolStripMenuItem";
+            this.vendaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.vendaToolStripMenuItem.Text = "Venda";
+            // 
+            // novoPedidoToolStripMenuItem
+            // 
+            this.novoPedidoToolStripMenuItem.Name = "novoPedidoToolStripMenuItem";
+            this.novoPedidoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.novoPedidoToolStripMenuItem.Text = "Novo Pedido";
+            this.novoPedidoToolStripMenuItem.Click += new System.EventHandler(this.novoPedidoToolStripMenuItem_Click);
             // 
             // opçõesToolStripMenuItem
             // 
@@ -246,34 +270,12 @@ namespace crud_teste
             // 
             this.colaboradorBindingSource5.DataMember = "Colaborador";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(73, 140);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(351, 148);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Novo Pedido";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(503, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(322, 141);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Listar Pedidos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // ListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1283, 656);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListarClientes";
@@ -362,8 +364,9 @@ namespace crud_teste
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem vendaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
     }
 }
 

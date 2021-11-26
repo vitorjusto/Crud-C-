@@ -14,7 +14,7 @@ namespace crud_teste.Model
 
         private string sobrenome {get; set;}
 
-        public string NomeCompleto { get { return nome + sobrenome; } set { } }
+        public string NomeCompleto { get { return nome + " " + sobrenome; } set { } }
 
         public string sexo { get; set; }
 
