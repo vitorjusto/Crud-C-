@@ -10,7 +10,7 @@ namespace crud_teste.Model
     {
         public int idPessoa { get; set; }
         public int idColaborador { get; set; }
-       private string nome { get; set; }
+        private string nome { get; set; }
 
         private string sobrenome {get; set;}
 

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 using crud_teste.controller;
 using crud_teste.Validation;
 using System.Linq;
-using FluentValidation;
 
 namespace crud_teste
 {
@@ -26,7 +24,7 @@ namespace crud_teste
 
         }
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -37,7 +35,7 @@ namespace crud_teste
             ClienteValidation validar = new ClienteValidation();
 
             var validateres = validar.Validate(cliente);
-            
+
             if (validateres.IsValid)
             {
                 if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -48,10 +46,10 @@ namespace crud_teste
                         var id = oAlterar.conectarComDAO(cliente);
 
                         MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
-                       
 
-                            new ListarClientes().Show();
-                            this.Close();
+
+                        new ListarClientes().Show();
+                        this.Close();
 
                     }
                     catch (Exception ex)
@@ -63,7 +61,6 @@ namespace crud_teste
             else
             {
                 MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
-                
             }
         }
 
@@ -107,48 +104,30 @@ namespace crud_teste
             cliente.contato.Celular.DDI = Celular1.Text;
             cliente.contato.Email = Email.Text;
             cliente.DataDeNascimento = data.Value;
-            cliente.LimiteDeCompra = decimal.Parse(ValorLimite.Text);
+            cliente.LimiteDeCompra = decimal.Parse(ValorLimite.Text == ""? "0" : ValorLimite.Text);
             cliente.endereco.Cep = CEP.Text;
             cliente.endereco.Logradouro = Logradouro.Text;
             cliente.endereco.Cidade = Cidade.Text;
             cliente.endereco.UF = UF.Text;
             cliente.endereco.Complemento = Complemento.Text;
             cliente.endereco.Bairro = Bairro.Text;
+
             int.TryParse(Numero.Text, out int i);
-
             cliente.endereco.Numero = i;
-
-
 
             return cliente;
 
-
         }
 
-        private void Telefone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e)=>
             e.Handled = Global.isNotIntChar(e.KeyChar);
-        }
 
-        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)
-        {
+
+        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)=>
             e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
-        }
 
-        private void Numero_TextChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 
-
-    
-     
-    }
+}
 

@@ -104,7 +104,6 @@ namespace crud_teste.vieew
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.TabIndex = 5;
-            this.PrecoDeVenda.TextChanged += new System.EventHandler(this.PrecoDeVenda_TextChanged);
             this.PrecoDeVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeVenda_KeyPress);
             // 
             // label3
@@ -213,7 +212,6 @@ namespace crud_teste.vieew
             this.Name = "FrmProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProduto";
-            this.Load += new System.EventHandler(this.FrmProduto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

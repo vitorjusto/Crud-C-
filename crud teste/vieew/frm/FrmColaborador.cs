@@ -18,13 +18,12 @@ namespace crud_teste
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if(MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
                 new ListarClientes().Show();
             }
-            
-           
+
         }
 
         private void Colaborador_Load(object sender, EventArgs e)
@@ -58,10 +57,6 @@ namespace crud_teste
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-
-            
-
             Colaborador colaborador = new Colaborador();
             AlterarColaborador oCadastrar = new AlterarColaborador();
             colaborador = preencherCampos();
@@ -74,9 +69,6 @@ namespace crud_teste
                 try
                 {
 
-
-
-                    
                     if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         colaborador.idColaborador = oCadastrar.conectarComDAO(colaborador);
@@ -91,27 +83,18 @@ namespace crud_teste
                 {
                     MessageBox.Show(ex.Message, "Atenção");
                 }
-                
-            }else
-            {
 
-                    MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
-                
             }
-            
-        }
+            else
+            {
+                MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
+            }
 
-        public string ConverterData(string Data)
-        {
-            return $"{Data[6]}{Data[7]}{Data[8]}{Data[9]}-{Data[0]}{Data[1]}-{Data[3]}{Data[4]}";
         }
 
         public Colaborador preencherCampos()
         {
             Colaborador colaborador = new Colaborador();
-
-
-
 
             colaborador.Nome = Nome.Text;
             colaborador.SobreNome = Sobrenome.Text;
@@ -126,47 +109,33 @@ namespace crud_teste
             colaborador.contato.Celular.DDI = Celular1.Text;
             colaborador.PorcentagemDeComissao = decimal.Parse(Porcentagem.Text);
 
-
-           
-
             colaborador.endereco.Cep = CEP.Text;
             colaborador.endereco.Logradouro = Logradouro.Text;
             colaborador.endereco.Cidade = Cidade.Text;
             colaborador.endereco.UF = UF.Text;
             colaborador.endereco.Complemento = Complemento.Text;
-            colaborador.endereco.Bairro = Bairro.Text; 
+            colaborador.endereco.Bairro = Bairro.Text;
             int.TryParse(Numero.Text, out int i);
 
             colaborador.endereco.Numero = i;
 
-
             colaborador.DadosBancarios.Banco = Banco.Text;
-            colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text == ""? "0": Agencia.Text);
-            colaborador.DadosBancarios.Conta = int.Parse(Conta.Text == ""? "0" : Conta.Text);
+            colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0" : Agencia.Text);
+            colaborador.DadosBancarios.Conta = int.Parse(Conta.Text == "" ? "0" : Conta.Text);
             colaborador.DadosBancarios.Digito = int.Parse(Digito.Text == "" ? "0" : Digito.Text);
-
-
 
             return colaborador;
 
-
         }
 
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntChar(e.KeyChar);
-        }
 
-        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e)
-        {
 
+        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
-        }
 
-        private void Salario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Salario_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
-        }
     }
 }

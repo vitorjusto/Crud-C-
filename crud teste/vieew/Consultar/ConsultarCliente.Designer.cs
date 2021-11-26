@@ -249,7 +249,6 @@ namespace crud_teste
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(100, 20);
             this.Numero.TabIndex = 74;
-            this.Numero.TextChanged += new System.EventHandler(this.Numero_TextChanged);
             this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // CEP

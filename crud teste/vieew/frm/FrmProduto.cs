@@ -29,16 +29,13 @@ namespace crud_teste.vieew
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var produto = new Produto();
-            produto = AtribuirCampos();
+            var produto = AtribuirCampos();
             ProdutoValidation validar = new ProdutoValidation();
             var validares = validar.Validate(produto);
             if (validares.IsValid)
             {
                 try
                 {
-
-
                     var oProduto = new AlterarProduto();
 
                     if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -48,7 +45,6 @@ namespace crud_teste.vieew
 
                         new ListarClientes().Show();
                         this.Close();
-
                     }
                 }
                 catch (Exception ex)
@@ -60,8 +56,8 @@ namespace crud_teste.vieew
             {
                 MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
-        
-}
+
+        }
 
         private Produto AtribuirCampos()
         {
@@ -71,7 +67,7 @@ namespace crud_teste.vieew
             produto.CodigoDeBarras = CodigoDeBarras.Text;
             produto.PrecoDeVenda = PrecoDeVenda.Text;
             produto.PrecoDeCusto = PrecoDeCusto.Text;
-            produto.Estoque = long.Parse(Estoque.Text);
+            produto.Estoque = long.Parse(Estoque.Text == ""? "0": Estoque.Text);
             produto.Ativo = Ativo.Checked;
             produto.Fabricante = Fabricante.Text;
 
@@ -88,31 +84,13 @@ namespace crud_teste.vieew
             }
         }
 
-        private void PrecoDeVenda_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Estoque_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Estoque_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntChar(e.KeyChar);
-           
-        }
 
-        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
-        }
 
-        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
-        }
-
-        private void FrmProduto_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

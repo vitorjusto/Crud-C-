@@ -37,14 +37,6 @@ namespace crud_teste
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            
-            
-
-        }
-
         private void AtribuirCampos(Colaborador colaborador)
         {
             Nome.Text = colaborador.Nome.ToString();
@@ -92,13 +84,6 @@ namespace crud_teste
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
         private void BotaoSalvar_Click_1(object sender, EventArgs e)
         {
             preencherCampos();
@@ -112,7 +97,6 @@ namespace crud_teste
                 {
                     AlterarColaborador oColaborador = new AlterarColaborador();
 
-
                     if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         oColaborador.SalvarColaborador(colaboradorGlobal);
@@ -124,7 +108,6 @@ namespace crud_teste
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-
                 }
                 
             }
@@ -134,7 +117,6 @@ namespace crud_teste
                 MessageBox.Show(validadores.Errors.FirstOrDefault().ToString(), "Atenção");
 
             }
-
 
         }
 
@@ -178,77 +160,52 @@ namespace crud_teste
         public void preencherCampos()
         {
 
-
-
-
             colaboradorGlobal.Nome = Nome.Text;
             colaboradorGlobal.SobreNome = Sobrenome.Text;
             colaboradorGlobal.Sexo = Sexo.Text;
+
             decimal.TryParse(Salario.Text, out decimal x);
             colaboradorGlobal.Salario = x;
+
             colaboradorGlobal.DataDeNascimento = Data.Value;
             colaboradorGlobal.CPF = CPF.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
             colaboradorGlobal.contato.Telefone = Telefone.Text;
             colaboradorGlobal.contato.Celular = Celular2.Text;
-
             colaboradorGlobal.contato.Celular.DDI = DDI.Text;
-
-
-            
             colaboradorGlobal.endereco.Cep = CEP.Text;
             colaboradorGlobal.endereco.Logradouro = Logradouro.Text;
             colaboradorGlobal.endereco.Cidade = Cidade.Text;
             colaboradorGlobal.endereco.UF = UF.Text;
             colaboradorGlobal.endereco.Complemento = Complemento.Text;
             colaboradorGlobal.endereco.Bairro = Bairro.Text;
-            int.TryParse(Numero.Text, out int i);
 
+            int.TryParse(Numero.Text, out int i);
             colaboradorGlobal.endereco.Numero = i;
 
             colaboradorGlobal.DadosBancarios.Banco = Banco.Text;
             colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text);
             colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text);
             colaboradorGlobal.DadosBancarios.Digito = int.Parse(Digito.Text);
-
-
-
         }
 
-        
-
-        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) => 
             e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
-        }
 
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntChar(e.KeyChar);
-        }
 
-        private void Agencia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Agencia_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Agencia.Text);
-        }
 
-        private void Conta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void Conta_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Conta.Text);
-        }
 
-        private void Digito_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void Digito_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Digito.Text);
-        }
 
-        private void Salario_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void Salario_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Digito.Text);
-        }
     }
 
    

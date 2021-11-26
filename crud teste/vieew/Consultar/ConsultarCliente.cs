@@ -18,7 +18,6 @@ namespace crud_teste
             try
             {
 
-
                 AlterarCliente oAlterar = new AlterarCliente();
 
                 clienteglobal.idCliente = id;
@@ -46,15 +45,6 @@ namespace crud_teste
                 new ListarCliente().Show();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-            
-           
-           
-        }
-
         public void AtribuirCamposClientes(Cliente cliente)
         {
             Nome.Text = cliente.Nome;
@@ -78,18 +68,10 @@ namespace crud_teste
             txtAtivo.Text = cliente.Ativo ? "Ativo" : "Não Ativo";
             Excluir.Text = cliente.Ativo ? "Desativar" : "Ativar";
         }
-
-       
-
-        
-
-       
-
         private void BotaoSalvar_Click(object sender, EventArgs e)
         {
 
             clienteglobal = SalvarCampos();
-
 
             ClienteValidation validar = new ClienteValidation();
 
@@ -99,9 +81,6 @@ namespace crud_teste
             {
                 try
                 {
-
-
-
 
                     if (MessageBox.Show("Deseja Alterar esses dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
@@ -136,8 +115,6 @@ namespace crud_teste
             Excluir.Text = clienteglobal.Ativo ? "Desativar" : "Ativar";
 
         }
-
-           
 
         private void ConsultarCliente_Load(object sender, EventArgs e)
         {
@@ -192,33 +169,15 @@ namespace crud_teste
             clienteglobal.endereco.Bairro = Bairro.Text;
             clienteglobal.endereco.Numero = int.Parse(Numero.Text);
 
-
-
-
             return clienteglobal;
 
-
         }
 
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e)
-        {
- 
-            
-                
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
                 e.Handled = Global.isNotIntChar(e.KeyChar);
 
-            
-        }
-
-        private void Numero_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
-        }
     }
       
         

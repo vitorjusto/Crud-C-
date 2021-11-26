@@ -46,12 +46,12 @@ namespace crud_teste.vieew.Consultar
         public void RecuperarCampos()
         {
             produtoGlobal.NomeDoProduto = NomeDoProduto.Text;
-            produtoGlobal.CodigoDeBarras = CodigoDeBarras.Text ;
+            produtoGlobal.CodigoDeBarras = CodigoDeBarras.Text;
             produtoGlobal.PrecoDeVenda = PrecoDeVenda.Text;
             produtoGlobal.PrecoDeCusto = PrecoDeCusto.Text;
             produtoGlobal.Estoque = long.Parse(Estoque.Text);
-            produtoGlobal.Ativo = Ativo.Checked ;
-            produtoGlobal.Fabricante = Fabricante.Text ;
+            produtoGlobal.Ativo = Ativo.Checked;
+            produtoGlobal.Fabricante = Fabricante.Text;
         }
 
         private void BotaoSalvar_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace crud_teste.vieew.Consultar
                         this.Close();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -109,21 +109,11 @@ namespace crud_teste.vieew.Consultar
             }
         }
 
-        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
-        }
 
-        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
-        }
 
-        private void ConsultarProduto_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

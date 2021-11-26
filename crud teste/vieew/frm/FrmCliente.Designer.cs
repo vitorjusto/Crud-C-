@@ -328,7 +328,6 @@ namespace crud_teste
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(103, 20);
             this.Telefone.TabIndex = 40;
-            this.Telefone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Telefone_MaskInputRejected);
             // 
             // label14
             // 
@@ -445,7 +444,6 @@ namespace crud_teste
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(103, 20);
             this.Numero.TabIndex = 23;
-            this.Numero.TextChanged += new System.EventHandler(this.Numero_TextChanged);
             this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // Bairro
