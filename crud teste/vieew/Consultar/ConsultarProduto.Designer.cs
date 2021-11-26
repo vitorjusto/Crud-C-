@@ -223,6 +223,7 @@ namespace crud_teste.vieew.Consultar
             this.Controls.Add(this.NomeDoProduto);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ConsultarProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarProduto";
             this.Load += new System.EventHandler(this.ConsultarProduto_Load);
             this.menuStrip1.ResumeLayout(false);

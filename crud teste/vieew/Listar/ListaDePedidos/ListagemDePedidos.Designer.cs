@@ -287,6 +287,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListagemDePedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListagemDePedidos";
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);

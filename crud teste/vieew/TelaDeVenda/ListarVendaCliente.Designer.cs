@@ -102,6 +102,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.Controls.Add(this.CampoDePesquisa);
             this.Controls.Add(this.dataGridGeral);
             this.Name = "ListarVendaCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar Usuario";
             this.Load += new System.EventHandler(this.ListarVendaCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGeral)).EndInit();

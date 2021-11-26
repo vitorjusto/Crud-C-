@@ -149,6 +149,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridCarrinho);
             this.Name = "ListarCarrinho";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarCarrinho";
             this.Load += new System.EventHandler(this.ListarCarrinho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrinho)).EndInit();

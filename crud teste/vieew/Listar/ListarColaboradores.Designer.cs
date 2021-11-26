@@ -35,10 +35,6 @@ namespace crud_teste.vieew
             this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridColaboradores = new System.Windows.Forms.DataGridView();
-            this.label = new System.Windows.Forms.Label();
-            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbAtivo = new System.Windows.Forms.CheckBox();
             this.IdColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +43,10 @@ namespace crud_teste.vieew
             this.Contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label = new System.Windows.Forms.Label();
+            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbAtivo = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridColaboradores)).BeginInit();
             this.SuspendLayout();
@@ -96,50 +96,6 @@ namespace crud_teste.vieew
             this.dataGridColaboradores.TabIndex = 3;
             this.dataGridColaboradores.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseClick);
             this.dataGridColaboradores.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseDoubleClick_1);
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 35);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(56, 13);
-            this.label.TabIndex = 4;
-            this.label.Text = "Pesquisar:";
-            // 
-            // textBoxinstrucao
-            // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
-            this.textBoxinstrucao.Multiline = true;
-            this.textBoxinstrucao.Name = "textBoxinstrucao";
-            this.textBoxinstrucao.ReadOnly = true;
-            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
-            this.textBoxinstrucao.TabIndex = 5;
-            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
-            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(437, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 69);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbAtivo
-            // 
-            this.cbAtivo.AutoSize = true;
-            this.cbAtivo.Location = new System.Drawing.Point(86, 86);
-            this.cbAtivo.Name = "cbAtivo";
-            this.cbAtivo.Size = new System.Drawing.Size(118, 17);
-            this.cbAtivo.TabIndex = 7;
-            this.cbAtivo.Text = "Buscar Com Inativo";
-            this.cbAtivo.UseVisualStyleBackColor = true;
-            this.cbAtivo.CheckedChanged += new System.EventHandler(this.cbAtivo_CheckedChanged);
             // 
             // IdColaborador
             // 
@@ -208,6 +164,50 @@ namespace crud_teste.vieew
             this.Excluir.ReadOnly = true;
             this.Excluir.Text = "Excluir";
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(12, 35);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(56, 13);
+            this.label.TabIndex = 4;
+            this.label.Text = "Pesquisar:";
+            // 
+            // textBoxinstrucao
+            // 
+            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
+            this.textBoxinstrucao.Multiline = true;
+            this.textBoxinstrucao.Name = "textBoxinstrucao";
+            this.textBoxinstrucao.ReadOnly = true;
+            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
+            this.textBoxinstrucao.TabIndex = 5;
+            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
+            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(437, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 69);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbAtivo
+            // 
+            this.cbAtivo.AutoSize = true;
+            this.cbAtivo.Location = new System.Drawing.Point(86, 86);
+            this.cbAtivo.Name = "cbAtivo";
+            this.cbAtivo.Size = new System.Drawing.Size(118, 17);
+            this.cbAtivo.TabIndex = 7;
+            this.cbAtivo.Text = "Buscar Com Inativo";
+            this.cbAtivo.UseVisualStyleBackColor = true;
+            this.cbAtivo.CheckedChanged += new System.EventHandler(this.cbAtivo_CheckedChanged);
+            // 
             // ListarColaboradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +222,7 @@ namespace crud_teste.vieew
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListarColaboradores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarColaboradores";
             this.Load += new System.EventHandler(this.ListarColaboradores_Load);
             this.menuStrip1.ResumeLayout(false);

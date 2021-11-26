@@ -31,6 +31,8 @@ namespace crud_teste
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtcomissao = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.Porcentagem = new System.Windows.Forms.TextBox();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@ namespace crud_teste
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtcomissao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -118,6 +118,23 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtcomissao
+            // 
+            this.txtcomissao.Location = new System.Drawing.Point(635, 82);
+            this.txtcomissao.Name = "txtcomissao";
+            this.txtcomissao.ReadOnly = true;
+            this.txtcomissao.Size = new System.Drawing.Size(114, 20);
+            this.txtcomissao.TabIndex = 77;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(566, 85);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.TabIndex = 76;
+            this.label23.Text = "Comissão: ";
             // 
             // Porcentagem
             // 
@@ -624,23 +641,6 @@ namespace crud_teste
             this.txtAtivo.Size = new System.Drawing.Size(193, 20);
             this.txtAtivo.TabIndex = 70;
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(566, 85);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(58, 13);
-            this.label23.TabIndex = 76;
-            this.label23.Text = "Comissão: ";
-            // 
-            // txtcomissao
-            // 
-            this.txtcomissao.Location = new System.Drawing.Point(635, 82);
-            this.txtcomissao.Name = "txtcomissao";
-            this.txtcomissao.ReadOnly = true;
-            this.txtcomissao.Size = new System.Drawing.Size(114, 20);
-            this.txtcomissao.TabIndex = 77;
-            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,6 +658,7 @@ namespace crud_teste
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ConsultarColaborador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Colaborador";
             this.Load += new System.EventHandler(this.ConsultarColaborador_Load);
             this.groupBox1.ResumeLayout(false);

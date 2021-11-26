@@ -88,6 +88,7 @@ namespace crud_teste
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Opcoes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Opcoes";
             this.Load += new System.EventHandler(this.Opcoes_Load);
             this.menuStrip1.ResumeLayout(false);

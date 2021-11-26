@@ -561,6 +561,7 @@ namespace crud_teste.vieew
             this.Controls.Add(this.NomeCliente);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CadastroDePedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroDePedidos";
             this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);

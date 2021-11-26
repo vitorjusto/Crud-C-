@@ -512,6 +512,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ConsultarVenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarVenda";
             this.Load += new System.EventHandler(this.ConsultarVenda_Load);
             this.gbProduto.ResumeLayout(false);

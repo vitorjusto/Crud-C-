@@ -514,6 +514,7 @@ namespace crud_teste
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ConsultarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Cliente";
             this.Load += new System.EventHandler(this.ConsultarCliente_Load);
             this.menuStrip1.ResumeLayout(false);

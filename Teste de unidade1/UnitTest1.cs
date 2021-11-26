@@ -12,17 +12,7 @@ namespace Teste_de_unidade1
     public class UnitTest1
     {
         private Pedido_Produto PedidoExemplo1 = new Pedido_Produto
-            (
-                -12.2,
-                -14.5,
-                -35.4,
-                -23,
-                -12.3,
-                -145.5,
-                -1,
-                -1,
-                -13
-            );
+            (-12.2, -12.2, -12.2, -12, -12.1, -12.1, -1, -123);
 
         
 
@@ -774,7 +764,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Id_Do_Cliente_For_Maior_Que_Zero_Então_O_Cliente_é_Valido()
         {
             Venda venda = new Venda();
-            venda.IdCliente = 1;
+            venda.cliente.idCliente = 1;
             VendaValidation validar = new VendaValidation();
 
             var resultado = validar.Validate(venda);
@@ -790,7 +780,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Id_Do_Cliente_For_Menor_Ou_Igual_A_Zero_Então_O_Cliente_é_Invalido(int id)
         {
             Venda venda = new Venda();
-            venda.IdCliente = id;
+            venda.cliente.idCliente = id;
             VendaValidation validar = new VendaValidation();
 
             var resultado = validar.Validate(venda);
@@ -804,7 +794,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Id_Do_Colaborador_For_Maior_Que_Zero_Então_O_Colaborador_é_Valido()
         {
             Venda venda = new Venda();
-            venda.IdColaborador = 1;
+            venda.colaborador.idColaborador = 1;
             VendaValidation validar = new VendaValidation();
 
             var resultado = validar.Validate(venda);
@@ -820,7 +810,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Id_Do_Colaborador_For_Menor_Ou_Igual_A_Zero_Então_O_Colaborador_é_Invalido(int id)
         {
             Venda venda = new Venda();
-            venda.IdColaborador = id;
+            venda.colaborador.idColaborador = id;
             VendaValidation validar = new VendaValidation();
 
             var resultado = validar.Validate(venda);

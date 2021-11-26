@@ -32,13 +32,6 @@ namespace crud_teste.vieew
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridCliente = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CampoDePesquisa = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbInativo = new System.Windows.Forms.CheckBox();
             this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +40,13 @@ namespace crud_teste.vieew
             this.Contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Excluir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CampoDePesquisa = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxinstrucao = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbInativo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCliente)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,74 +74,6 @@ namespace crud_teste.vieew
             this.dataGridCliente.TabIndex = 0;
             this.dataGridCliente.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseClick);
             this.dataGridCliente.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseDoubleClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuPrincipalToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1036, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuPrincipalToolStripMenuItem
-            // 
-            this.menuPrincipalToolStripMenuItem.Name = "menuPrincipalToolStripMenuItem";
-            this.menuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.menuPrincipalToolStripMenuItem.Text = "Menu Principal";
-            this.menuPrincipalToolStripMenuItem.Click += new System.EventHandler(this.menuPrincipalToolStripMenuItem_Click);
-            // 
-            // CampoDePesquisa
-            // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(176, 35);
-            this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(415, 20);
-            this.CampoDePesquisa.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Pesquisar :";
-            // 
-            // textBoxinstrucao
-            // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(878, 32);
-            this.textBoxinstrucao.Multiline = true;
-            this.textBoxinstrucao.Name = "textBoxinstrucao";
-            this.textBoxinstrucao.ReadOnly = true;
-            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
-            this.textBoxinstrucao.TabIndex = 6;
-            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
-            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(648, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 69);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbInativo
-            // 
-            this.cbInativo.AutoSize = true;
-            this.cbInativo.Location = new System.Drawing.Point(176, 84);
-            this.cbInativo.Name = "cbInativo";
-            this.cbInativo.Size = new System.Drawing.Size(118, 17);
-            this.cbInativo.TabIndex = 8;
-            this.cbInativo.Text = "Buscar Com Inativo";
-            this.cbInativo.UseVisualStyleBackColor = true;
-            this.cbInativo.CheckedChanged += new System.EventHandler(this.cbInativo_CheckedChanged);
             // 
             // idcliente
             // 
@@ -214,6 +146,74 @@ namespace crud_teste.vieew
             this.Excluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Excluir.Text = "Inativar";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuPrincipalToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1036, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuPrincipalToolStripMenuItem
+            // 
+            this.menuPrincipalToolStripMenuItem.Name = "menuPrincipalToolStripMenuItem";
+            this.menuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.menuPrincipalToolStripMenuItem.Text = "Menu Principal";
+            this.menuPrincipalToolStripMenuItem.Click += new System.EventHandler(this.menuPrincipalToolStripMenuItem_Click);
+            // 
+            // CampoDePesquisa
+            // 
+            this.CampoDePesquisa.Location = new System.Drawing.Point(176, 35);
+            this.CampoDePesquisa.Name = "CampoDePesquisa";
+            this.CampoDePesquisa.Size = new System.Drawing.Size(415, 20);
+            this.CampoDePesquisa.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pesquisar :";
+            // 
+            // textBoxinstrucao
+            // 
+            this.textBoxinstrucao.Location = new System.Drawing.Point(878, 32);
+            this.textBoxinstrucao.Multiline = true;
+            this.textBoxinstrucao.Name = "textBoxinstrucao";
+            this.textBoxinstrucao.ReadOnly = true;
+            this.textBoxinstrucao.Size = new System.Drawing.Size(124, 69);
+            this.textBoxinstrucao.TabIndex = 6;
+            this.textBoxinstrucao.Text = "Digite qualquer nome ou digite numeros se quiser pesquisar por Id";
+            this.textBoxinstrucao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(648, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 69);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbInativo
+            // 
+            this.cbInativo.AutoSize = true;
+            this.cbInativo.Location = new System.Drawing.Point(176, 84);
+            this.cbInativo.Name = "cbInativo";
+            this.cbInativo.Size = new System.Drawing.Size(118, 17);
+            this.cbInativo.TabIndex = 8;
+            this.cbInativo.Text = "Buscar Com Inativo";
+            this.cbInativo.UseVisualStyleBackColor = true;
+            this.cbInativo.CheckedChanged += new System.EventHandler(this.cbInativo_CheckedChanged);
+            // 
             // ListarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +228,7 @@ namespace crud_teste.vieew
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarCliente";
             this.Load += new System.EventHandler(this.ListarCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCliente)).EndInit();

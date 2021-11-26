@@ -594,6 +594,7 @@ namespace crud_teste
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip2);
             this.Name = "FrmColaborador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Colaborador";
             this.Load += new System.EventHandler(this.Colaborador_Load);
             this.menuStrip2.ResumeLayout(false);

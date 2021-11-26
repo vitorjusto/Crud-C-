@@ -136,6 +136,9 @@ namespace crud_teste.vieew
 
         private void dataGridCliente_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             if(e.ColumnIndex == 6)
             {
                 Consultar(int.Parse(dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString()));

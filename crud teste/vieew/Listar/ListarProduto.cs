@@ -141,6 +141,9 @@ namespace crud_teste.vieew
 
         private void dataGridProduto_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.ColumnIndex == -1)
+                return;
+
             if (e.ColumnIndex == 5)
             {
                 var x = int.Parse(dataGridProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
