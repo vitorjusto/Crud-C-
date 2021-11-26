@@ -30,9 +30,7 @@ namespace crud_teste.vieew
             AlterarProduto oAlterar = new AlterarProduto();
             produtos = oAlterar.Listar();
             preencherDataGrid(BuscarAtivo.Checked);
-
         }
-
 
         public void preencherDataGrid(bool comAtivo)
         {
@@ -51,9 +49,6 @@ namespace crud_teste.vieew
                 dataGridProduto.Rows[i].Cells[3].Value = produto.Estoque;
                 dataGridProduto.Rows[i].Cells[4].Value = produto.fabricante;
 
-
-
-
                 if (comAtivo && !produto.Ativo)
                 {
                     var j = 0;
@@ -66,26 +61,15 @@ namespace crud_teste.vieew
                     dataGridProduto.Rows[i].Cells[6].Value = "Ativar";
                 }
                 else if (!comAtivo && !produto.Ativo)
-                {
                     dataGridProduto.Rows[i].Visible = false;
-                }
                 else
-                {
                     dataGridProduto.Rows[i].Cells[6].Value = "Inativar";
-                }
+
                 i++;
             }
             dataGridProduto.AllowUserToAddRows = false;
-
-
-
             dataGridProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-
-
-
-
-
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -128,16 +112,7 @@ namespace crud_teste.vieew
             this.Close();
         }
 
-        private void BuscarAtivo_CheckedChanged(object sender, EventArgs e)
-        {
-
-            preencherDataGrid(BuscarAtivo.Checked);
-
-        }
-
-
-
-        
+        private void BuscarAtivo_CheckedChanged(object sender, EventArgs e) => preencherDataGrid(BuscarAtivo.Checked);
 
         private void dataGridProduto_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -171,12 +146,6 @@ namespace crud_teste.vieew
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally
-                    {
-
-
-                    }
-
                 }
             }
         }

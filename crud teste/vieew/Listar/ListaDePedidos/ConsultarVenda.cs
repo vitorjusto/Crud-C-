@@ -42,8 +42,6 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void preencherCampos()
         {
-     
-
 
             txtTotalUnitaria.Text = _venda.QuantidadeUnitario.ToString();
             txtQuantidadeTotal.Text = _venda.QuantidadeDeTotal.ToString();
@@ -60,7 +58,7 @@ namespace crud_teste.vieew.ListaDePedidos
             var janeladocarrinho = new ListarItens(_venda);
             janeladocarrinho.ShowDialog();
 
-            
+
             if (janeladocarrinho.selectedIndex != -1)
             {
                 lbNomeProduto.Visible = false;
@@ -92,7 +90,6 @@ namespace crud_teste.vieew.ListaDePedidos
             txtDesconto.Text = _pedido.Desconto.GetAsString();
             txtPrecoLiquido.Text = _pedido.PrecoLiquidoAtual.GetAsString();
 
-
             gbProduto.Visible = true;
         }
 
@@ -101,18 +98,14 @@ namespace crud_teste.vieew.ListaDePedidos
             var listadeProduto = new ListarVendaCliente("produto");
             listadeProduto.ShowDialog();
             _pedido.produto = listadeProduto.produto;
-           
 
             abrirProduto();
         }
 
-        
-
         private void txtquantidade_TextChanged(object sender, EventArgs e)
         {
 
-
-            _pedido.quantidade = Convert.ToInt64(txtquantidade.Text == ""? "0": txtquantidade.Text);
+            _pedido.quantidade = Convert.ToInt64(txtquantidade.Text == "" ? "0" : txtquantidade.Text);
             txtQuantidadeRestante.Text = (_pedido.produto.Estoque - _pedido.quantidade).ToString();
 
             CalcularCampos();
@@ -154,10 +147,8 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void txtDesconto_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, txtDesconto.Text);
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sair();
-        }
+        private void voltarToolStripMenuItem_Click(object sender, EventArgs e) => sair();
+
 
 
         private void sair()
@@ -194,7 +185,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.quantidade = Convert.ToInt64(txtquantidade.Text == "" ? "0" : txtquantidade.Text);
-            pedido.quantidadeRestante = Convert.ToInt64(txtQuantidadeRestante.Text == ""? "0" : txtQuantidadeRestante.Text);
+            pedido.quantidadeRestante = Convert.ToInt64(txtQuantidadeRestante.Text == "" ? "0" : txtQuantidadeRestante.Text);
             pedido.precoDeCusto = txtPrecoUnitario.Text;
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.Desconto = txtDesconto.Text;
@@ -238,15 +229,11 @@ namespace crud_teste.vieew.ListaDePedidos
 
                     preencherCampos();
                 }
-            }else
+            }
+            else
             {
                 MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
-        }
-
-        private void ConsultarVenda_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void txtDesconto_TextChanged(object sender, EventArgs e)
@@ -259,7 +246,7 @@ namespace crud_teste.vieew.ListaDePedidos
             var validar = new VendaValidation(_venda.cliente.LimiteDeCompra, _venda);
             var validares = validar.Validate(_venda);
 
-            if(validares.IsValid)
+            if (validares.IsValid)
             {
                 try
                 {
@@ -272,7 +259,8 @@ namespace crud_teste.vieew.ListaDePedidos
                     }
 
 
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -281,11 +269,6 @@ namespace crud_teste.vieew.ListaDePedidos
             {
                 MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -314,7 +297,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
                     txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }

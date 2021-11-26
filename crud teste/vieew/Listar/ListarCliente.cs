@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using crud_teste.controller;
-using System.Windows.Forms;
+﻿using crud_teste.controller;
 using crud_teste.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace crud_teste.vieew
 {
@@ -30,8 +26,8 @@ namespace crud_teste.vieew
             DataGridViewCellStyle clienteinativo = new DataGridViewCellStyle();
             clienteinativo.BackColor = Color.SlateGray;
             clienteinativo.ForeColor = Color.White;
-         
-          
+
+
 
             var index = 0;
             dataGridCliente.Rows.Clear();
@@ -46,24 +42,24 @@ namespace crud_teste.vieew
                 dataGridCliente.Rows[index].Cells[4].Value = cliente.Endereço;
                 dataGridCliente.Rows[index].Cells[5].Value = cliente.Contato;
 
-                if(comAtivo && !cliente.Ativo)
+                if (comAtivo && !cliente.Ativo)
                 {
                     var j = 0;
                     while (j < 6)
                     {
-                        
-                        dataGridCliente.Rows[index].Cells[j].Style = clienteinativo;
-                        
 
+                        dataGridCliente.Rows[index].Cells[j].Style = clienteinativo;
                         j++;
                     }
 
                     dataGridCliente.Rows[index].Cells[7].Value = "Ativar";
-                    
-                }else if(!comAtivo && !cliente.Ativo)
+
+                }
+                else if (!comAtivo && !cliente.Ativo)
                 {
                     dataGridCliente.Rows[index].Visible = false;
-                }else
+                }
+                else
                 {
                     dataGridCliente.Rows[index].Cells[7].Value = "Inativar";
                 }
@@ -73,8 +69,6 @@ namespace crud_teste.vieew
             dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-
-
         private void ListarCliente_Load(object sender, EventArgs e)
         {
             this.BackColor = Global.BackgroundColor;
@@ -82,19 +76,15 @@ namespace crud_teste.vieew
             menuStrip1.ForeColor = Global.FontColor;
             dataGridCliente.BackgroundColor = Global.BackgroundColor;
 
-
             textBoxinstrucao.BackColor = Global.BackgroundColor;
             textBoxinstrucao.ForeColor = Global.FontColor;
         }
-
-       
 
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ListarClientes().Show();
             this.Close();
         }
-
 
         private void dataGridCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -105,18 +95,14 @@ namespace crud_teste.vieew
 
             Consultar(x);
 
-                
-            
-            
         }
-
 
         private void Consultar(int index)
         {
             new ConsultarCliente(index).Show();
             this.Close();
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             AlterarCliente oAlterar = new AlterarCliente();
@@ -139,12 +125,12 @@ namespace crud_teste.vieew
             if (e.RowIndex == -1)
                 return;
 
-            if(e.ColumnIndex == 6)
+            if (e.ColumnIndex == 6)
             {
                 Consultar(int.Parse(dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            }else if(e.ColumnIndex == 7)
+            }
+            else if (e.ColumnIndex == 7)
             {
-
 
                 var mensagem = clientes[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {clientes[e.RowIndex].nomecompleto}" : $"Deseja Mesmo Reativar o {clientes[e.RowIndex].nomecompleto}";
 

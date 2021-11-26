@@ -1,15 +1,10 @@
 ﻿using crud_teste.controller;
-using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using crud_teste.Model.Object_Values;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_teste.vieew.ListaDePedidos
@@ -38,8 +33,6 @@ namespace crud_teste.vieew.ListaDePedidos
                 return  resultado;
             }
 
-            
-            
         };
 
         private ValoresTotais valoresTotais = new ValoresTotais();
@@ -122,7 +115,6 @@ namespace crud_teste.vieew.ListaDePedidos
 
             ListarPedidos.AllowUserToAddRows = false;
            
-
             NumeroDePedidos.Text = pedidos.Count().ToString();
             txtTotalBruto.Text = valoresTotais.totalBruto.GetAsString();
             txtDesconto.Text = valoresTotais.totalDesconto.GetAsString();
@@ -131,22 +123,13 @@ namespace crud_teste.vieew.ListaDePedidos
             txtLucro.Text = valoresTotais.lucro().GetAsString(); 
             
             if(valoresTotais.lucro().GetAsDouble() > 0)
-            {
                 txtLucro.ForeColor = Color.Green;
-            }else if(valoresTotais.lucro().GetAsDouble() < 0)
-            {
+            else if(valoresTotais.lucro().GetAsDouble() < 0)
                 txtLucro.ForeColor = Color.Red;
-            }else
-            {
+            else
                 txtLucro.ForeColor = Global.FontColor;
-            }
-
-
 
         }
-
-        
-        
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -154,9 +137,6 @@ namespace crud_teste.vieew.ListaDePedidos
             new ListarClientes().Show();
         }
 
-        
-
-        
         private void ListarPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -167,9 +147,7 @@ namespace crud_teste.vieew.ListaDePedidos
                 this.Close();
                 new ConsultarVenda(x).Show();
 
-            
         }
 
-     
     }
 }

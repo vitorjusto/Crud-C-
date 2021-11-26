@@ -17,7 +17,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.venda = carrinhosLparam;
             AtualizarGrid();
 
-
         }
 
         private void AtualizarGrid()
@@ -37,43 +36,29 @@ namespace crud_teste.vieew.ListaDePedidos
                 index++;
             }
 
-
-
-
-
-
-
             dataGridCarrinho.AllowUserToAddRows = false;
         }
 
-       
-
-        private void ListarItens_Load(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
         private void dataGridCarrinho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 7)
+            if (e.ColumnIndex == 7)
             {
                 selectedIndex = e.RowIndex;
                 this.Dispose();
-            }else if(e.ColumnIndex == 8)
+            }
+            else if (e.ColumnIndex == 8)
             {
-                if(MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     try
                     {
-
 
                         AlterarVenda oalterar = new AlterarVenda();
                         oalterar.aumentarEstoque(venda.Pedido_Produto[e.RowIndex]);
                         dataGridCarrinho.Rows.RemoveAt(e.RowIndex);
                         venda.Pedido_Produto.RemoveRange(e.RowIndex, 1);
-                    }catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }

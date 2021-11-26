@@ -1,9 +1,9 @@
-﻿using System;
+﻿using crud_teste.controller;
+using crud_teste.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using crud_teste.controller;
-using crud_teste.Model;
 
 namespace crud_teste.vieew
 {
@@ -15,10 +15,9 @@ namespace crud_teste.vieew
 
             InitializeComponent();
             AlterarColaborador oAlterar = new AlterarColaborador();
-            listagem =  oAlterar.ListarColaboradores();
+            listagem = oAlterar.ListarColaboradores();
 
             listarNaGrid(cbAtivo.Checked);
-
         }
         public void listarNaGrid(bool comAtivo)
         {
@@ -63,11 +62,9 @@ namespace crud_teste.vieew
 
             }
 
-
             dataGridColaboradores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridColaboradores.AllowUserToAddRows = false;
         }
-
 
         private void ListarColaboradores_Load(object sender, EventArgs e)
         {
@@ -82,17 +79,11 @@ namespace crud_teste.vieew
             textBoxinstrucao.ForeColor = Global.FontColor;
         }
 
-        
-
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ListarClientes().Show();
             this.Close();
         }
-
-        
-
-       
 
         private void dataGridColaboradores_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -101,7 +92,6 @@ namespace crud_teste.vieew
 
             var x = int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString());
             consultar(x);
-
 
         }
 
@@ -116,7 +106,7 @@ namespace crud_teste.vieew
             AlterarColaborador oAlterar = new AlterarColaborador();
             int.TryParse(CampoDePesquisa.Text, out int id);
             if (id > 0)
-               listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
+                listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
             else
                 listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
 
@@ -128,15 +118,16 @@ namespace crud_teste.vieew
             if (e.RowIndex == -1)
                 return;
 
-            if(e.ColumnIndex == 6)
+            if (e.ColumnIndex == 6)
             {
                 consultar(int.Parse(dataGridColaboradores.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            }else if(e.ColumnIndex == 7)
+            }
+            else if (e.ColumnIndex == 7)
             {
                 var mensagem = listagem[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {listagem[e.RowIndex].NomeCompleto}" : $"Deseja Mesmo Reativar o {listagem[e.RowIndex].NomeCompleto}";
 
                 if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                { 
+                {
                     AlterarColaborador oColaborador = new AlterarColaborador();
                     try
                     {
@@ -144,19 +135,13 @@ namespace crud_teste.vieew
 
                         listagem[e.RowIndex].Ativo = !listagem[e.RowIndex].Ativo;
 
-
                         listarNaGrid(cbAtivo.Checked);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally
-                    {
-
-
-                    }
-
+                    
                 }
             }
         }

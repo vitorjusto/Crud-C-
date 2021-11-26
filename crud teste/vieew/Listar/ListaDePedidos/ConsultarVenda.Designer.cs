@@ -419,7 +419,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.textBox1.Size = new System.Drawing.Size(181, 24);
             this.textBox1.TabIndex = 18;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.DoubleClick += new System.EventHandler(this.textBox1_DoubleClick);
             // 
             // menuStrip1
@@ -514,7 +513,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ConsultarVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarVenda";
-            this.Load += new System.EventHandler(this.ConsultarVenda_Load);
             this.gbProduto.ResumeLayout(false);
             this.gbProduto.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
