@@ -4,6 +4,7 @@ using CRUD_teste.Model;
 using crud_teste.controller;
 using crud_teste.Validation;
 using System.Linq;
+using crud_teste.Model.Object_Values;
 
 namespace crud_teste
 {
@@ -12,6 +13,7 @@ namespace crud_teste
         public FrmCliente()
         {
             InitializeComponent();
+
         }
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,6 +93,8 @@ namespace crud_teste
             label15.ForeColor = Global.FontColor;
             label16.ForeColor = Global.FontColor;
 
+            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
+
         }
         public Cliente preencherCampos()
         {
@@ -104,7 +108,7 @@ namespace crud_teste
             cliente.contato.Celular.DDI = Celular1.Text;
             cliente.contato.Email = Email.Text;
             cliente.DataDeNascimento = data.Value;
-            cliente.LimiteDeCompra = decimal.Parse(ValorLimite.Text == ""? "0" : ValorLimite.Text);
+            cliente.LimiteDeCompra = ValorLimite.Text;
             cliente.endereco.Cep = CEP.Text;
             cliente.endereco.Logradouro = Logradouro.Text;
             cliente.endereco.Cidade = Cidade.Text;
@@ -126,7 +130,10 @@ namespace crud_teste
         private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)=>
             e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
 
-
+        private void ValorLimite_Leave(object sender, EventArgs e)
+        {
+            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
+        }
     }
 
 }

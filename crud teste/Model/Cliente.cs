@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using crud_teste.Model.Object_Values;
+
 
 namespace CRUD_teste.Model
 {
@@ -11,7 +8,7 @@ namespace CRUD_teste.Model
         public int idCliente { get; set; }
 
 
-        public decimal LimiteDeCompra { get; set; }
+        public MyDinheiro LimiteDeCompra = new MyDinheiro();
 
         public Cliente()
         {
@@ -21,7 +18,7 @@ namespace CRUD_teste.Model
         public Cliente(string nome, decimal Limitedecompra)
         {
             Nome = nome;
-            LimiteDeCompra = Limitedecompra;
+            LimiteDeCompra = (double)Limitedecompra;
         }
 
         

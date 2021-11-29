@@ -123,6 +123,7 @@ namespace crud_teste
             this.ValorLimite.Size = new System.Drawing.Size(100, 20);
             this.ValorLimite.TabIndex = 87;
             this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
+            this.ValorLimite.Leave += new System.EventHandler(this.ValorLimite_Leave);
             // 
             // data
             // 

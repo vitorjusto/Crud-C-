@@ -293,7 +293,6 @@ namespace crud_teste.vieew
             this.Desconto.Size = new System.Drawing.Size(100, 20);
             this.Desconto.TabIndex = 12;
             this.Desconto.TextChanged += new System.EventHandler(this.Desconto_TextChanged);
-            this.Desconto.Enter += new System.EventHandler(this.Desconto_Enter);
             this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
             this.Desconto.Leave += new System.EventHandler(this.Desconto_Leave);
             // 
@@ -333,6 +332,7 @@ namespace crud_teste.vieew
             this.DescontoAVista.Visible = false;
             this.DescontoAVista.TextChanged += new System.EventHandler(this.DescontoAVista_TextChanged);
             this.DescontoAVista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescontoAVista_KeyPress);
+            this.DescontoAVista.Leave += new System.EventHandler(this.DescontoAVista_Leave);
             // 
             // labeledit
             // 

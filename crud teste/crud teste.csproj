@@ -81,6 +81,7 @@
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
+    <Compile Include="Model\Object Values\MyPorcento.cs" />
     <Compile Include="Model\Pedido_Produto.cs" />
     <Compile Include="Model\Listagem\CarrinhoListagem.cs" />
     <Compile Include="Model\Listagem\ClienteListagem.cs" />

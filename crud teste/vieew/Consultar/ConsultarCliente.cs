@@ -6,6 +6,7 @@ using crud_teste.controller;
 using crud_teste.vieew;
 using crud_teste.Validation;
 using System.Linq;
+using crud_teste.Model.Object_Values;
 
 namespace crud_teste
 {
@@ -143,6 +144,8 @@ namespace crud_teste
             label15.ForeColor = Global.FontColor;
             label16.ForeColor = Global.FontColor;
             label17.ForeColor = Global.FontColor;
+
+            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
         }
         public Cliente SalvarCampos()
         {
@@ -154,7 +157,7 @@ namespace crud_teste
             clienteglobal.contato.Telefone = Telefone.Text;
             clienteglobal.contato.Email = Email.Text;
             clienteglobal.DataDeNascimento = data.Value;
-            clienteglobal.LimiteDeCompra = decimal.Parse(ValorLimite.Text);
+            clienteglobal.LimiteDeCompra = double.Parse(ValorLimite.Text);
 
 
             clienteglobal.contato.Celular = Celular.Text;
@@ -178,6 +181,11 @@ namespace crud_teste
 
         private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
+
+        private void ValorLimite_Leave(object sender, EventArgs e)
+        {
+            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
+        }
     }
       
         

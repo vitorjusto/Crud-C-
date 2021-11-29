@@ -99,6 +99,7 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.TabIndex = 26;
             this.PrecoDeCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeCusto_KeyPress);
+            this.PrecoDeCusto.Leave += new System.EventHandler(this.PrecoDeCusto_Leave);
             // 
             // label3
             // 
@@ -116,6 +117,7 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.TabIndex = 22;
             this.PrecoDeVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeVenda_KeyPress);
+            this.PrecoDeVenda.Leave += new System.EventHandler(this.PrecoDeVenda_Leave);
             // 
             // CodigoDeBarras
             // 
@@ -249,6 +251,7 @@ namespace crud_teste.vieew.Consultar
             this.Name = "ConsultarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarProduto";
+            this.Load += new System.EventHandler(this.ConsultarProduto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

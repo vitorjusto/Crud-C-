@@ -1,6 +1,7 @@
 ﻿using crud_teste.Config;
 using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
 using crud_teste.vieew.TelaDeVenda;
 using System;
@@ -120,32 +121,33 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void ExcluirProduto_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!txtnomeProduto.Visible)
             {
-                try
+                if (MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    try
+                    {
 
-                    AlterarVenda oalterar = new AlterarVenda();
-                    oalterar.aumentarEstoque(_pedido);
+                        AlterarVenda oalterar = new AlterarVenda();
+                        oalterar.aumentarEstoque(_pedido);
 
-                    _venda.Pedido_Produto.Remove(_pedido);
-                    oldList.Remove(_pedido);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                        _venda.Pedido_Produto.Remove(_pedido);
+                        oldList.Remove(_pedido);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
+
+            gbProduto.Visible = false;
         }
 
         private void txtquantidade_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntText(e.KeyChar, txtquantidade.Text);
 
+        private void txtDesconto_Leave(object sender, EventArgs e) => txtDesconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtDesconto.Text);
 
-        private void txtDesconto_Enter(object sender, EventArgs e) => txtDesconto.Text = (Dinheiro.ConverterParaDecimal(txtDesconto.Text)).ToString();
-
-        private void txtDesconto_Leave(object sender, EventArgs e) => txtDesconto.Text = Dinheiro.converterParaDinheiro(txtDesconto.Text);
-
-        private void txtDesconto_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, txtDesconto.Text);
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e) => sair();
 
@@ -198,15 +200,15 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             gbProduto.Visible = false;
 
-            txtnomeProduto.Text = "";
+            txtnomeProduto.Text = "" ;
             txtquantidade.Text = "";
             txtquantidadeemestoque.Text = "";
             txtQuantidadeRestante.Text = "";
 
-            txtPrecoUnitario.Text = "";
-            txtValorBruto.Text = "";
-            txtDesconto.Text = "";
-            txtPrecoLiquido.Text = "";
+            txtPrecoUnitario.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+            txtValorBruto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+            txtDesconto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+            txtPrecoLiquido.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -243,7 +245,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var validar = new VendaValidation(_venda.cliente.LimiteDeCompra, _venda);
+            var validar = new VendaValidation((decimal)_venda.cliente.LimiteDeCompra.GetAsDouble(), _venda);
             var validares = validar.Validate(_venda);
 
             if (validares.IsValid)
@@ -304,5 +306,9 @@ namespace crud_teste.vieew.ListaDePedidos
             }
         }
 
+        private void ConsultarVenda_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
 using System;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace crud_teste.vieew
             label7.ForeColor = Global.FontColor;
             Ativo.ForeColor = Global.FontColor;
 
+            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
+            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,5 +95,20 @@ namespace crud_teste.vieew
 
         private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
+
+        private void PrecoDeVenda_Leave(object sender, EventArgs e)
+        {
+            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
+        }
+
+        private void PrecoDeCusto_Leave(object sender, EventArgs e)
+        {
+            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
+        }
+
+        private void FrmProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

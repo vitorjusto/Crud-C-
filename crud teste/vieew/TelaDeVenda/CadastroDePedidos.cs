@@ -2,6 +2,7 @@
 using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
+using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
 using crud_teste.vieew.TelaDeVenda;
 using CRUD_teste.Model;
@@ -45,6 +46,14 @@ namespace crud_teste.vieew
             label17.ForeColor = Global.FontColor;
             label18.ForeColor = Global.FontColor;
             label20.ForeColor = Global.FontColor;
+
+            Desconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(Desconto.Text);
+            PrecoUnitario.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+
+            TotalBruto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+            TotalDesconto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+            TotalLiquido.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
+
         }
 
         private void NomeCliente_DoubleClick(object sender, EventArgs e)
@@ -206,9 +215,9 @@ namespace crud_teste.vieew
 
             QuantidadeTotal.Text = venda.Pedido_Produto.Sum(x => x.quantidade).ToString();
 
-            TotalBruto.Text = venda.Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble()).ToString();
-            TotalLiquido.Text = venda.Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != "" ? DescontoAVista.Text : "0")).ToString();
-            TotalDesconto.Text = venda.Pedido_Produto.Sum(x => x.Desconto.GetAsDouble()).ToString();
+            TotalBruto.Text = venda.Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble()).ToString("C2");
+            TotalLiquido.Text = venda.Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != "" ? DescontoAVista.Text : "0")).ToString("c2");
+            TotalDesconto.Text = venda.Pedido_Produto.Sum(x => x.Desconto.GetAsDouble()).ToString("c2");
 
         }
 
@@ -222,8 +231,9 @@ namespace crud_teste.vieew
 
                 labeledit.Text = "Desconto a Vista: ";
                 labeledit.Visible = true;
+                
 
-                DescontoAVista.Text = "";
+                DescontoAVista.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
                 DescontoAVista.Visible = true;
             }
             else if (FormaDePagamento.Text.Equals("A Prazo"))
@@ -260,7 +270,7 @@ namespace crud_teste.vieew
         {
 
             receberCampos();
-            var validar = new VendaValidation(cliente.LimiteDeCompra, venda);
+            var validar = new VendaValidation((decimal)cliente.LimiteDeCompra.GetAsDouble(), venda);
             var validares = validar.Validate(venda);
 
             if (validares.IsValid)
@@ -345,16 +355,19 @@ namespace crud_teste.vieew
         private void button3_Click(object sender, EventArgs e) =>
             LimparVenda();
 
-        private void Desconto_Enter(object sender, EventArgs e) =>
-            Desconto.Text = (Dinheiro.ConverterParaDecimal(Desconto.Text)).ToString();
-
 
         private void Desconto_Leave(object sender, EventArgs e) =>
-            Desconto.Text = Dinheiro.converterParaDinheiro(Desconto.Text);
+            Desconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(Desconto.Text);
 
 
         private void PrecoUnitario_TextChanged(object sender, EventArgs e) =>
             PreencherValoresCarrinhos();
+
+        private void DescontoAVista_Leave(object sender, EventArgs e)
+        {
+            if (FormaDePagamento.Text.Equals("A vista"))
+                DescontoAVista.Text = MyDinheiro.SetTextBoxAsMoneyValue(DescontoAVista.Text);
+        }
 
         private void CadastroDePedidos_Load(object sender, EventArgs e)
         {

@@ -82,7 +82,11 @@ namespace crud_teste.DAO
 
                     cliente.IdPessoa = int.Parse(idpessoa.ToString());
                     query = @"Insert  Into  cliente( valorlimite, idPessoa) OUTPUT INSERTED.idcliente Values(@LimiteDeCompra, @IdPessoa)";
-                    cliente.idCliente = int.Parse(con.ExecuteScalar(query, cliente, tran).ToString());
+                    cliente.idCliente = int.Parse(con.ExecuteScalar(query, new
+                    {
+                        LimiteDeCompra = cliente.LimiteDeCompra.GetAsDouble(),
+                        IdPessoa = cliente.IdPessoa,
+                    }, tran).ToString()) ;
 
                     tran.Commit();
                 }
@@ -176,7 +180,11 @@ namespace crud_teste.DAO
 
 
                     var query = @"update cliente set Valorlimite = @LimiteDeCompra  where idCliente = @idCliente";
-                    con.Execute(query, cliente, tran);
+                    con.Execute(query, new
+                    {
+                        LimiteDeCompra = cliente.LimiteDeCompra.GetAsDouble(),
+                        idCliente = cliente.idCliente,
+                    }, tran);
 
                     query = @"update pessoa set nome = @nome , sobrenome = @SobreNome, sexo = @sexo, cpf = @cpf,
                                 DataDeNascimento = @DataDeNascimento, Ativo = @Ativo where idPessoa = @idPessoa";

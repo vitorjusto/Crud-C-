@@ -337,8 +337,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtDesconto.Size = new System.Drawing.Size(170, 20);
             this.txtDesconto.TabIndex = 8;
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
-            this.txtDesconto.Enter += new System.EventHandler(this.txtDesconto_Enter);
-            this.txtDesconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesconto_KeyPress);
             this.txtDesconto.Leave += new System.EventHandler(this.txtDesconto_Leave);
             // 
             // txtValorBruto
@@ -514,6 +512,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ConsultarVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarVenda";
+            this.Load += new System.EventHandler(this.ConsultarVenda_Load);
             this.gbProduto.ResumeLayout(false);
             this.gbProduto.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

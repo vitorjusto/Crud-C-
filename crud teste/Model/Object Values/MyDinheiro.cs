@@ -5,7 +5,7 @@ namespace crud_teste.Model.Object_Values
 {
     public class MyDinheiro
     {
-        double _value;
+        decimal _value;
         public MyDinheiro(string value)
         {
             var converter = new string((from c in value where char.IsDigit(c) || c == ',' || c == '.' select c).ToArray()); 
@@ -14,11 +14,11 @@ namespace crud_teste.Model.Object_Values
                 _value = 0;
             } else
             {
-                _value = Math.Round(double.Parse(converter), 2);
+                _value = Math.Round(decimal.Parse(converter), 2);
             }
         }
 
-        public MyDinheiro(double value)
+        public MyDinheiro(decimal value)
         {
             _value = Math.Round(value, 2);
         }
@@ -27,14 +27,20 @@ namespace crud_teste.Model.Object_Values
 
         public MyDinheiro()
         {
-            _value = 0.00;
+            _value = 0.00M;
         }
 
         public static implicit operator MyDinheiro(string value)
             => new MyDinheiro(value);
 
-        public static implicit operator MyDinheiro(double value)
+        public static implicit operator MyDinheiro(decimal value)
             => new MyDinheiro(value);
+
+        public static implicit operator MyDinheiro(float value)
+            => new MyDinheiro(Convert.ToDecimal(value));
+
+        public static implicit operator MyDinheiro(double value)
+            => new MyDinheiro((decimal) value);
 
        
 
@@ -45,11 +51,22 @@ namespace crud_teste.Model.Object_Values
             return Math.Round(double.Parse(value), 2); 
         }
 
+        private decimal convertToDecimal(string value)
+        {
+
+
+            return Math.Round(decimal.Parse(value), 2);
+        }
+
         public double GetAsDouble()
+        {
+            return (double)_value;
+        }
+
+        public decimal GetAsDecimal()
         {
             return _value;
         }
-
 
        
         public string GetAsString()
@@ -64,38 +81,18 @@ namespace crud_teste.Model.Object_Values
 
         public void setFromDinheiro(MyDinheiro value)
         {
-            _value = value.GetAsDouble(); 
+            _value = value.GetAsDecimal(); 
         }
 
 
-        public void Increment(double value)
+
+        public static string SetTextBoxAsMoneyValue(string value)
         {
-            _value += value;
-        }
-        public void Increment(string value)
-        {
-            var dvalue = convertToDouble(value);
-            _value += dvalue;
+            value = new string((from c in value where char.IsDigit(c) || c == ',' || c == '.' select c).ToArray());
+            double dvalue = Convert.ToDouble(value == "" ? "0" : value);
+
+            return dvalue.ToString("C2");
         }
 
-        public void Increment(MyDinheiro value)
-        {
-            _value += value.GetAsDouble();
-        }
-
-        public void Decrement(double value)
-        {
-            _value -= value;
-        }
-        public void Decrement(string value)
-        {
-            var dvalue = convertToDouble(value);
-            _value -= dvalue;
-        }
-
-        public void Decrement(MyDinheiro value)
-        {
-            _value += value.GetAsDouble();
-        }
     }
 }

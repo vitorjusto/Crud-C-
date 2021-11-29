@@ -37,6 +37,7 @@ namespace crud_teste.vieew.ListaDePedidos
             }
 
             dataGridCarrinho.AllowUserToAddRows = false;
+            dataGridCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void dataGridCarrinho_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -64,6 +65,11 @@ namespace crud_teste.vieew.ListaDePedidos
                     }
                 }
             }
+        }
+
+        private void ListarItens_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model;
+using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
 using System;
 using System.Linq;
@@ -24,6 +25,9 @@ namespace crud_teste.vieew.Consultar
             label5.ForeColor = Global.FontColor;
             label6.ForeColor = Global.FontColor;
             label7.ForeColor = Global.FontColor;
+
+            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
+            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
 
             produtoGlobal.IdProduto = id;
             produtoGlobal = oAlterar.Consultar(id);
@@ -124,6 +128,21 @@ namespace crud_teste.vieew.Consultar
             txtAtivo.Text = produtoGlobal.Ativo ? "Ativo" : "Inativo";
             btnAtivo.Text = produtoGlobal.Ativo ? "Inativar" : "Reativar";
 
+        }
+
+        private void ConsultarProduto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PrecoDeVenda_Leave(object sender, EventArgs e)
+        {
+            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
+        }
+
+        private void PrecoDeCusto_Leave(object sender, EventArgs e)
+        {
+            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
         }
     }
 }

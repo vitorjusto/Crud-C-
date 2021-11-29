@@ -102,6 +102,8 @@ namespace crud_teste.vieew.ListaDePedidos
 
             }
 
+            ListarPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             ListarPedidos.AllowUserToAddRows = false;
            
             NumeroDePedidos.Text = pedidos.Count().ToString();
