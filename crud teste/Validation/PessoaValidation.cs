@@ -1,14 +1,6 @@
 ﻿using CRUD_teste.Model;
 using FluentValidation;
 
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System;
-
 namespace crud_teste.Validation
 {
     public class PessoaValidation : AbstractValidator<Pessoa>
@@ -27,6 +19,8 @@ namespace crud_teste.Validation
 
 
             RuleFor(x => x.endereco).SetValidator(new EnderecoValidation()).WithMessage("Endereços invalidos");
+
+          
 
             RuleFor(x => x.contato).SetValidator(new ContatoValidation()).WithMessage("Digite pelo menos um campo de contato");
 

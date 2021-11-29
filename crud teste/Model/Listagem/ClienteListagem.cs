@@ -19,9 +19,6 @@ namespace crud_teste.Model
         private string sobrenome { get; set; }
         public string Sexo { get; set; }
 
-        
-
-
         public string DataDeNascimento { get; set; }
 
 

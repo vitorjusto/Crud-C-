@@ -30,16 +30,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private void InitializeComponent()
         {
             this.ListarPedidos = new System.Windows.Forms.DataGridView();
-            this.IdVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mesesAPrazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalDeDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantidadeUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantidadeTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,6 +44,16 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtLucro = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IdVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesesAPrazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalDeDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,9 +77,135 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ListarPedidos.Name = "ListarPedidos";
             this.ListarPedidos.ReadOnly = true;
             this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ListarPedidos.Size = new System.Drawing.Size(1044, 276);
+            this.ListarPedidos.Size = new System.Drawing.Size(1226, 276);
             this.ListarPedidos.TabIndex = 0;
             this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 359);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Numeros de Pedidos:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(498, 360);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Total Bruto:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(477, 425);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Total Desconto:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(916, 424);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "total Liquido(receita)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(953, 359);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Total Gasto:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(981, 485);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Lucro:";
+            // 
+            // NumeroDePedidos
+            // 
+            this.NumeroDePedidos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NumeroDePedidos.Location = new System.Drawing.Point(149, 356);
+            this.NumeroDePedidos.Name = "NumeroDePedidos";
+            this.NumeroDePedidos.ReadOnly = true;
+            this.NumeroDePedidos.Size = new System.Drawing.Size(189, 20);
+            this.NumeroDePedidos.TabIndex = 18;
+            // 
+            // txtTotalBruto
+            // 
+            this.txtTotalBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalBruto.Location = new System.Drawing.Point(566, 357);
+            this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.ReadOnly = true;
+            this.txtTotalBruto.Size = new System.Drawing.Size(217, 20);
+            this.txtTotalBruto.TabIndex = 19;
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDesconto.Location = new System.Drawing.Point(566, 422);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.ReadOnly = true;
+            this.txtDesconto.Size = new System.Drawing.Size(217, 20);
+            this.txtDesconto.TabIndex = 20;
+            // 
+            // txtTotalGasto
+            // 
+            this.txtTotalGasto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalGasto.Location = new System.Drawing.Point(1035, 357);
+            this.txtTotalGasto.Name = "txtTotalGasto";
+            this.txtTotalGasto.ReadOnly = true;
+            this.txtTotalGasto.Size = new System.Drawing.Size(203, 20);
+            this.txtTotalGasto.TabIndex = 21;
+            // 
+            // txttotalLiquido
+            // 
+            this.txttotalLiquido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotalLiquido.Location = new System.Drawing.Point(1035, 421);
+            this.txttotalLiquido.Name = "txttotalLiquido";
+            this.txttotalLiquido.ReadOnly = true;
+            this.txttotalLiquido.Size = new System.Drawing.Size(203, 20);
+            this.txttotalLiquido.TabIndex = 22;
+            // 
+            // txtLucro
+            // 
+            this.txtLucro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLucro.Location = new System.Drawing.Point(1035, 482);
+            this.txtLucro.Name = "txtLucro";
+            this.txtLucro.ReadOnly = true;
+            this.txtLucro.Size = new System.Drawing.Size(203, 20);
+            this.txtLucro.TabIndex = 23;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.voltarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1254, 24);
+            this.menuStrip1.TabIndex = 24;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // voltarToolStripMenuItem
+            // 
+            this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
+            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.voltarToolStripMenuItem.Text = "Voltar";
+            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
             // IdVenda
             // 
@@ -141,136 +267,11 @@ namespace crud_teste.vieew.ListaDePedidos
             this.QuantidadeTotal.Name = "QuantidadeTotal";
             this.QuantidadeTotal.ReadOnly = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 359);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Numeros de Pedidos:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(396, 359);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Total Bruto:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(375, 424);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Total Desconto:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(734, 424);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "total Liquido(receita)";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(771, 359);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Total Gasto:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(799, 485);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Lucro:";
-            // 
-            // NumeroDePedidos
-            // 
-            this.NumeroDePedidos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NumeroDePedidos.Location = new System.Drawing.Point(149, 356);
-            this.NumeroDePedidos.Name = "NumeroDePedidos";
-            this.NumeroDePedidos.ReadOnly = true;
-            this.NumeroDePedidos.Size = new System.Drawing.Size(189, 20);
-            this.NumeroDePedidos.TabIndex = 18;
-            // 
-            // txtTotalBruto
-            // 
-            this.txtTotalBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalBruto.Location = new System.Drawing.Point(464, 356);
-            this.txtTotalBruto.Name = "txtTotalBruto";
-            this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(217, 20);
-            this.txtTotalBruto.TabIndex = 19;
-            // 
-            // txtDesconto
-            // 
-            this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDesconto.Location = new System.Drawing.Point(464, 421);
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.ReadOnly = true;
-            this.txtDesconto.Size = new System.Drawing.Size(217, 20);
-            this.txtDesconto.TabIndex = 20;
-            // 
-            // txtTotalGasto
-            // 
-            this.txtTotalGasto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalGasto.Location = new System.Drawing.Point(853, 357);
-            this.txtTotalGasto.Name = "txtTotalGasto";
-            this.txtTotalGasto.ReadOnly = true;
-            this.txtTotalGasto.Size = new System.Drawing.Size(203, 20);
-            this.txtTotalGasto.TabIndex = 21;
-            // 
-            // txttotalLiquido
-            // 
-            this.txttotalLiquido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttotalLiquido.Location = new System.Drawing.Point(853, 421);
-            this.txttotalLiquido.Name = "txttotalLiquido";
-            this.txttotalLiquido.ReadOnly = true;
-            this.txttotalLiquido.Size = new System.Drawing.Size(203, 20);
-            this.txttotalLiquido.TabIndex = 22;
-            // 
-            // txtLucro
-            // 
-            this.txtLucro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLucro.Location = new System.Drawing.Point(853, 482);
-            this.txtLucro.Name = "txtLucro";
-            this.txtLucro.ReadOnly = true;
-            this.txtLucro.Size = new System.Drawing.Size(203, 20);
-            this.txtLucro.TabIndex = 23;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.voltarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1069, 24);
-            this.menuStrip1.TabIndex = 24;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // voltarToolStripMenuItem
-            // 
-            this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.voltarToolStripMenuItem.Text = "Voltar";
-            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
-            // 
             // ListagemDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 514);
+            this.ClientSize = new System.Drawing.Size(1254, 514);
             this.Controls.Add(this.txtLucro);
             this.Controls.Add(this.txttotalLiquido);
             this.Controls.Add(this.txtTotalGasto);
@@ -313,6 +314,8 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.TextBox txtTotalGasto;
         private System.Windows.Forms.TextBox txttotalLiquido;
         private System.Windows.Forms.TextBox txtLucro;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeColaborador;
@@ -323,7 +326,5 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalLiquido;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeTotal;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
     }
 }

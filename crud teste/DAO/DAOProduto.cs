@@ -264,5 +264,23 @@ namespace crud_teste.DAO
             }
         }
 
+        public void AlterarEstoque(int id, long estoque)
+        {
+            try
+            {
+                var query = "update Produto set Estoque = @Estoque where idProduto = @IdProduto";
+                con.Open();
+                con.Execute(query, new
+                {
+                    Estoque = estoque,
+                    IdProduto = id,
+                });
+                con.Close();
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }      

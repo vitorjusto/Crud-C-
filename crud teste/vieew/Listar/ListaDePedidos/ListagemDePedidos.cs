@@ -83,7 +83,7 @@ namespace crud_teste.vieew.ListaDePedidos
                 ListarPedidos.Rows[index].Cells[7].Value = pedido.TotalLiquido.GetAsString();
                 ListarPedidos.Rows[index].Cells[8].Value = pedido.quantidadeunitario;
                 ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
-                
+
 
                 if (pedido.ativo)
                 {
@@ -139,6 +139,11 @@ namespace crud_teste.vieew.ListaDePedidos
         }
 
         private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

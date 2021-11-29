@@ -127,6 +127,12 @@
     <Compile Include="vieew\Listar\ListaDePedidos\ListarItens.Designer.cs">
       <DependentUpon>ListarItens.cs</DependentUpon>
     </Compile>
+    <Compile Include="vieew\Listar\ListarProduto\AlterarEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Listar\ListarProduto\AlterarEstoque.Designer.cs">
+      <DependentUpon>AlterarEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\TelaDeVenda\CadastroDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,10 +187,10 @@
     <Compile Include="vieew\frm\FrmProduto.Designer.cs">
       <DependentUpon>FrmProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="vieew\Listar\ListarProduto.cs">
+    <Compile Include="vieew\Listar\ListarProduto\ListarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vieew\Listar\ListarProduto.Designer.cs">
+    <Compile Include="vieew\Listar\ListarProduto\ListarProduto.Designer.cs">
       <DependentUpon>ListarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="vieew\Listar\ListarCliente.cs">
@@ -228,6 +234,9 @@
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListarItens.resx">
       <DependentUpon>ListarItens.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Listar\ListarProduto\AlterarEstoque.resx">
+      <DependentUpon>AlterarEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\CadastroDePedidos.resx">
       <DependentUpon>CadastroDePedidos.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,7 +261,7 @@
     <EmbeddedResource Include="vieew\frm\FrmProduto.resx">
       <DependentUpon>FrmProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vieew\Listar\ListarProduto.resx">
+    <EmbeddedResource Include="vieew\Listar\ListarProduto\ListarProduto.resx">
       <DependentUpon>ListarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListarCliente.resx">

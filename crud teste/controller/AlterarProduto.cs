@@ -76,5 +76,11 @@ namespace crud_teste.controller
             stmt.AlterarAtivo(produto);
         }
 
+        public void AlterarEstoque(int id, long estoque)
+        {
+            var stmt = new DAOProduto();
+            stmt.AlterarEstoque(id, estoque);
+        }
+
     }
 }

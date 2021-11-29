@@ -31,21 +31,23 @@ namespace crud_teste.vieew
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxinstrucao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CampoDePesquisa = new System.Windows.Forms.TextBox();
             this.dataGridProduto = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BuscarAtivo = new System.Windows.Forms.CheckBox();
             this.IdProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alterar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AlterarEstoque = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Inativar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BuscarAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +57,7 @@ namespace crud_teste.vieew
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(444, 39);
+            this.button1.Location = new System.Drawing.Point(588, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 69);
             this.button1.TabIndex = 12;
@@ -65,7 +67,7 @@ namespace crud_teste.vieew
             // 
             // textBoxinstrucao
             // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(647, 39);
+            this.textBoxinstrucao.Location = new System.Drawing.Point(808, 39);
             this.textBoxinstrucao.Multiline = true;
             this.textBoxinstrucao.Name = "textBoxinstrucao";
             this.textBoxinstrucao.ReadOnly = true;
@@ -87,7 +89,7 @@ namespace crud_teste.vieew
             // 
             this.CampoDePesquisa.Location = new System.Drawing.Point(89, 67);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(414, 20);
             this.CampoDePesquisa.TabIndex = 9;
             // 
             // dataGridProduto
@@ -101,16 +103,45 @@ namespace crud_teste.vieew
             this.Estoque,
             this.Fabricante,
             this.Alterar,
+            this.AlterarEstoque,
             this.Inativar});
             this.dataGridProduto.Location = new System.Drawing.Point(15, 138);
             this.dataGridProduto.MultiSelect = false;
             this.dataGridProduto.Name = "dataGridProduto";
             this.dataGridProduto.ReadOnly = true;
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProduto.Size = new System.Drawing.Size(776, 310);
+            this.dataGridProduto.Size = new System.Drawing.Size(917, 310);
             this.dataGridProduto.TabIndex = 8;
             this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseClick_1);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paginaInicialToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(944, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // paginaInicialToolStripMenuItem
+            // 
+            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
+            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
+            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
+            // 
+            // BuscarAtivo
+            // 
+            this.BuscarAtivo.AutoSize = true;
+            this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
+            this.BuscarAtivo.Name = "BuscarAtivo";
+            this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
+            this.BuscarAtivo.TabIndex = 14;
+            this.BuscarAtivo.Text = "Buscar com Inativo";
+            this.BuscarAtivo.UseVisualStyleBackColor = true;
+            this.BuscarAtivo.CheckedChanged += new System.EventHandler(this.BuscarAtivo_CheckedChanged);
             // 
             // IdProduto
             // 
@@ -158,53 +189,41 @@ namespace crud_teste.vieew
             this.Alterar.Text = "Alterar";
             this.Alterar.UseColumnTextForButtonValue = true;
             // 
-            // Inativar
+            // AlterarEstoque
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Inativar.DefaultCellStyle = dataGridViewCellStyle2;
+            this.AlterarEstoque.DefaultCellStyle = dataGridViewCellStyle2;
+            this.AlterarEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AlterarEstoque.HeaderText = "Alterar Estoque";
+            this.AlterarEstoque.Name = "AlterarEstoque";
+            this.AlterarEstoque.ReadOnly = true;
+            this.AlterarEstoque.Text = "Alterar Estoque";
+            this.AlterarEstoque.UseColumnTextForButtonValue = true;
+            // 
+            // Inativar
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Inativar.DefaultCellStyle = dataGridViewCellStyle3;
             this.Inativar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Inativar.HeaderText = "Inativar";
             this.Inativar.Name = "Inativar";
             this.Inativar.ReadOnly = true;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paginaInicialToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 13;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // paginaInicialToolStripMenuItem
-            // 
-            this.paginaInicialToolStripMenuItem.Name = "paginaInicialToolStripMenuItem";
-            this.paginaInicialToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
-            this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
-            // 
-            // BuscarAtivo
-            // 
-            this.BuscarAtivo.AutoSize = true;
-            this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
-            this.BuscarAtivo.Name = "BuscarAtivo";
-            this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
-            this.BuscarAtivo.TabIndex = 14;
-            this.BuscarAtivo.Text = "Buscar com Inativo";
-            this.BuscarAtivo.UseVisualStyleBackColor = true;
-            this.BuscarAtivo.CheckedChanged += new System.EventHandler(this.BuscarAtivo_CheckedChanged);
-            // 
             // ListarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 468);
+            this.ClientSize = new System.Drawing.Size(944, 468);
             this.Controls.Add(this.BuscarAtivo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);
@@ -216,6 +235,7 @@ namespace crud_teste.vieew
             this.Name = "ListarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaProduto";
+            this.Load += new System.EventHandler(this.ListarProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -240,6 +260,7 @@ namespace crud_teste.vieew
         private System.Windows.Forms.DataGridViewTextBoxColumn Estoque;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fabricante;
         private System.Windows.Forms.DataGridViewButtonColumn Alterar;
+        private System.Windows.Forms.DataGridViewButtonColumn AlterarEstoque;
         private System.Windows.Forms.DataGridViewButtonColumn Inativar;
     }
 }

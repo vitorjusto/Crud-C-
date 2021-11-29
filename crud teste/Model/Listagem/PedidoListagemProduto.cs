@@ -1,10 +1,6 @@
 ﻿using crud_teste.Model.Object_Values;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace crud_teste.Model.Listagem
 {

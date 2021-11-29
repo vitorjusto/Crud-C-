@@ -1,6 +1,7 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Consultar;
+using crud_teste.vieew.Listar.ListarProduto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,12 +59,12 @@ namespace crud_teste.vieew
                         dataGridProduto.Rows[i].Cells[j].Style = colaboradorinativo;
                         j++;
                     }
-                    dataGridProduto.Rows[i].Cells[6].Value = "Ativar";
+                    dataGridProduto.Rows[i].Cells[7].Value = "Ativar";
                 }
                 else if (!comAtivo && !produto.Ativo)
                     dataGridProduto.Rows[i].Visible = false;
                 else
-                    dataGridProduto.Rows[i].Cells[6].Value = "Inativar";
+                    dataGridProduto.Rows[i].Cells[7].Value = "Inativar";
 
                 i++;
             }
@@ -126,7 +127,7 @@ namespace crud_teste.vieew
                 new ConsultarProduto(x).Show();
                 this.Close();
             }
-            else if (e.ColumnIndex == 6)
+            else if (e.ColumnIndex == 7)
             {
                 var mensagem = produtos[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {produtos[e.RowIndex].nomeProduto}" : $"Deseja Mesmo Reativar o {produtos[e.RowIndex].nomeProduto}";
 
@@ -147,7 +148,19 @@ namespace crud_teste.vieew
                         MessageBox.Show(ex.Message);
                     }
                 }
+            }else if(e.ColumnIndex == 6)
+            {
+                AlterarEstoque formAlterar = new AlterarEstoque(produtos[e.RowIndex]);
+
+                formAlterar.ShowDialog();
+
+                dataGridProduto.Rows[e.RowIndex].Cells[3].Value = formAlterar.Produto.Estoque;
             }
+        }
+
+        private void ListarProduto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
