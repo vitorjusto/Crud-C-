@@ -17,21 +17,15 @@ namespace crud_teste.vieew.ListaDePedidos
 
         public struct ValoresTotais
         {
-        
-            public MyDinheiro totalBruto { get; set; }
-            public MyDinheiro totalDesconto { get; set; }
+            public List<PedidoListagem> pedidosAtivos { get; set; }
+            public double totalBruto { get => pedidosAtivos.Sum(x => x.TotalBruto.GetAsDouble()); }
+            public double totalDesconto { get => pedidosAtivos.Sum(x => x.TotalDeDesconto.GetAsDouble()); }
 
-            public MyDinheiro totalGasto { get; set; }
+            public double totalGasto { get => pedidosAtivos.Sum(x => x.TotalGasto()); }
 
-            public MyDinheiro totalReceita { get; set; }
+            public double totalReceita { get => pedidosAtivos.Sum(x => x.TotalReceita()); }
 
-            public MyDinheiro lucro ()
-            {
-                MyDinheiro resultado = new MyDinheiro();
-                resultado.Increment(totalReceita.GetAsDouble());
-                resultado.Decrement(totalGasto.GetAsDouble());
-                return  resultado;
-            }
+            public double lucro { get => totalReceita - totalGasto; }
 
         };
 
@@ -67,16 +61,14 @@ namespace crud_teste.vieew.ListaDePedidos
 
             pedidos = oAlterar.Listar();
 
-            valoresTotais.totalBruto = new MyDinheiro();
-            valoresTotais.totalDesconto = new MyDinheiro();
-            valoresTotais.totalGasto = new MyDinheiro();
-            valoresTotais.totalReceita = new MyDinheiro();
 
             DataGridViewCellStyle vendainativa = new DataGridViewCellStyle();
             vendainativa.BackColor = Color.SlateGray;
             vendainativa.ForeColor = Color.White;
 
-
+            ValoresTotais valoresTotais = new ValoresTotais();
+            valoresTotais.pedidosAtivos = new List<PedidoListagem>();
+           
             var index = 0;
             foreach(var pedido in pedidos)
             {
@@ -89,16 +81,13 @@ namespace crud_teste.vieew.ListaDePedidos
                 ListarPedidos.Rows[index].Cells[5].Value = pedido.TotalBruto.GetAsString();
                 ListarPedidos.Rows[index].Cells[6].Value = pedido.TotalDeDesconto.GetAsString();
                 ListarPedidos.Rows[index].Cells[7].Value = pedido.TotalLiquido.GetAsString();
-                ListarPedidos.Rows[index].Cells[8].Value = pedido.QuantidadeUnitaria;
+                ListarPedidos.Rows[index].Cells[8].Value = pedido.quantidadeunitario;
                 ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
                 
 
                 if (pedido.ativo)
                 {
-                    valoresTotais.totalBruto.Increment(pedido.TotalBruto);
-                    valoresTotais.totalDesconto.Increment(pedido.TotalDeDesconto);
-                    valoresTotais.totalGasto.Increment(pedido.TotalGasto());
-                    valoresTotais.totalReceita.Increment(pedido.TotalReceita());
+                    valoresTotais.pedidosAtivos.Add(pedido);
                 }else
                 {
                     var j = 0;
@@ -116,15 +105,15 @@ namespace crud_teste.vieew.ListaDePedidos
             ListarPedidos.AllowUserToAddRows = false;
            
             NumeroDePedidos.Text = pedidos.Count().ToString();
-            txtTotalBruto.Text = valoresTotais.totalBruto.GetAsString();
-            txtDesconto.Text = valoresTotais.totalDesconto.GetAsString();
-            txtTotalGasto.Text = valoresTotais.totalGasto.GetAsString();
-            txttotalLiquido.Text = valoresTotais.totalReceita.GetAsString();
-            txtLucro.Text = valoresTotais.lucro().GetAsString(); 
+            txtTotalBruto.Text = valoresTotais.totalBruto.ToString("C2");
+            txtDesconto.Text = valoresTotais.totalDesconto.ToString("C2");
+            txtTotalGasto.Text = valoresTotais.totalGasto.ToString("C2");
+            txttotalLiquido.Text = valoresTotais.totalReceita.ToString("C2");
+            txtLucro.Text = valoresTotais.lucro.ToString("C2"); 
             
-            if(valoresTotais.lucro().GetAsDouble() > 0)
+            if(valoresTotais.lucro > 0)
                 txtLucro.ForeColor = Color.Green;
-            else if(valoresTotais.lucro().GetAsDouble() < 0)
+            else if(valoresTotais.lucro < 0)
                 txtLucro.ForeColor = Color.Red;
             else
                 txtLucro.ForeColor = Global.FontColor;
@@ -149,5 +138,9 @@ namespace crud_teste.vieew.ListaDePedidos
 
         }
 
+        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

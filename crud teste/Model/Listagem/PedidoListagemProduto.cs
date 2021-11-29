@@ -44,7 +44,7 @@ namespace crud_teste.Model.Listagem
 
         public string sobrenomeCliente { get; set; }
 
-        public long QuantidadeUnitaria { get; set; }
+        public long quantidadeunitario { get; set; }
         public long QuantidadeTotal { get; set; }
 
         public float TotalGasto()

@@ -17,6 +17,7 @@ namespace crud_teste.vieew.TelaDeVenda
 
         public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
 
+        public List<ProdutoListagem> produtos = new List<ProdutoListagem>();
 
         public Produto produto = new Produto();
         public Cliente cliente = new Cliente();
@@ -43,6 +44,70 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridGeral.AllowUserToAddRows = false;
             dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+
+        public ListarVendaCliente(string busca, List<Pedido_Produto> carrinhos)
+        {
+
+
+            InitializeComponent();
+
+            this.BackColor = Global.BackgroundColor;
+            dataGridGeral.BackgroundColor = Global.BackgroundColor;
+
+            dataGridGeral.Rows.Clear();
+            dataGridGeral.Columns.Clear();
+
+            Buscar = busca;
+
+            dataGridGeral.Columns.Add("IdProduto", "Id do Produto");
+            dataGridGeral.Columns.Add("Nome", "nome");
+            dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
+            dataGridGeral.Columns.Add("Estoque", "Estoque");
+            dataGridGeral.Columns.Add("Fabricante", "Fabricante");
+            produtos = oAlterarProduto.ListarAtivo();
+
+            int i = 0;
+            foreach (var produto in produtos)
+            {
+
+                dataGridGeral.Rows.Add();
+                dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
+                dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
+                dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
+                dataGridGeral.Rows[i].Cells[4].Value = produto.fabricante;
+                foreach (var item in carrinhos)
+                {
+                    if (produto.IdProduto == item.produto.IdProduto)
+                    {
+                        produto.Estoque -= item.quantidade;
+                        produtos[i].Estoque = produto.Estoque;
+                    }
+
+                }
+
+                dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
+
+                i++;
+
+
+            }
+
+
+            dataGridGeral.AllowUserToAddRows = false;
+            dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void ListarCliente_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Global.BackgroundColor;
+            dataGridGeral.BackgroundColor = Global.BackgroundColor;
+
+
+            textBoxinstrucao.BackColor = Global.BackgroundColor;
+            textBoxinstrucao.ForeColor = Global.FontColor;
+        }
+
 
         public void ListarClientes(List<ClienteListagem> clientes)
         {
@@ -71,9 +136,11 @@ namespace crud_teste.vieew.TelaDeVenda
                 dataGridGeral.Rows[i].Cells[5].Value = cliente.Contato;
                 i++;
 
+
             }
         }
         
+
         public void ListarColaboradores(List<ColaboradorListagem> colaboradores)
         {
             dataGridGeral.Rows.Clear();
@@ -135,6 +202,13 @@ namespace crud_teste.vieew.TelaDeVenda
 
             }
         }  
+        
+        public void ListarCarrinhos(List<Pedido_Produto> carrinho)
+        {
+            
+           
+        }
+        
 
         private void dataGridCliente_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -147,9 +221,13 @@ namespace crud_teste.vieew.TelaDeVenda
             else if (Buscar == "colaborador")
                 colaborador = oAlterarColaborador.consultarColaborador(x);
             else if (Buscar == "produto")
+            {
                 produto = oAlterarProduto.Consultar(x);
+                produto.Estoque = produtos[e.RowIndex].Estoque;
+            }
 
             this.Dispose();
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -176,5 +254,6 @@ namespace crud_teste.vieew.TelaDeVenda
                     ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "nome"));
             }
         }
+
     }
 }

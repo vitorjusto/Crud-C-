@@ -9,8 +9,7 @@ namespace crud_teste.controller
         {
             ConexaoDAO stmt = new ConexaoDAO();
 
-            Colaborador colaborador = new Colaborador();
-            colaborador = stmt.ConsultarColaborador(id);
+            Colaborador colaborador = stmt.ConsultarColaborador(id);
            
             return colaborador;
         }

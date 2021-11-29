@@ -363,7 +363,7 @@ namespace crud_teste.DAO
                 {
 
 
-                    var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                    var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
                                inner join contato co on co.idContato = p.idContato where Ativo = 1;";
                     var resultado = con.Query<ClienteListagem>(query);
@@ -391,7 +391,7 @@ namespace crud_teste.DAO
 
                     queryWhere = $"Nome like '{nome}%'";
                 }
-                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato where {queryWhere} ";
                 var resultado = con.Query<ClienteListagem>(query);
@@ -414,7 +414,7 @@ namespace crud_teste.DAO
 
                     queryWhere = $"Nome like '{nome}%'";
                 }
-                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone
+                var query = $@"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato where {queryWhere} and Ativo = 1 ";
                 var resultado = con.Query<ClienteListagem>(query);

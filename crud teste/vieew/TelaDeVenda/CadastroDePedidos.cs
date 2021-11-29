@@ -100,7 +100,7 @@ namespace crud_teste.vieew
 
         private void NomeDoProduto_DoubleClick(object sender, EventArgs e)
         {
-            var listar = new ListarVendaCliente("produto");
+            var listar = new ListarVendaCliente("produto", venda.Pedido_Produto);
             listar.ShowDialog();
             carrinho.produto = listar.produto;
             preenchervaloresnoproduto();
@@ -356,5 +356,9 @@ namespace crud_teste.vieew
         private void PrecoUnitario_TextChanged(object sender, EventArgs e) =>
             PreencherValoresCarrinhos();
 
+        private void CadastroDePedidos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

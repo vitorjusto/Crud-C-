@@ -198,7 +198,7 @@ namespace crud_teste.DAO
 
         public List<PedidoListagem> ListarPedidos()
         {
-            List<PedidoListagem> pedidos = new List<PedidoListagem>();
+            List<PedidoListagem> resultados = new List<PedidoListagem>();
 
             try
             {
@@ -213,84 +213,33 @@ namespace crud_teste.DAO
 
 
                 con.Open();
-                var resultados = con.Query<dynamic>(query);
+                resultados = con.Query<PedidoListagem>(query).ToList();
                 con.Close();
 
 
-                var listaid = new List<int>();
-                
-                foreach(var resultado in resultados)
-                {
-                    PedidoListagem pedido = new PedidoListagem();
-                    pedido.IdVenda = resultado.idVenda;
-                    pedido.TotalBruto = (double)resultado.TotalBruto;
-                    pedido.TotalDeDesconto = (double)resultado.TotalDeDesconto;
-                    pedido.TotalLiquido = (double)resultado.totalLiquido;
-                    pedido.MesesAPrazo = (int)resultado.mesesaprazo;
-                    pedido.TipoDeVenda = resultado.tipodevenda;
-                    pedido.IdCliente = (int)resultado.idCliente;
-                    pedido.IdColaborador = resultado.idColaborador;
-                    pedido.DescontoAVIsta = (float)resultado.DescontoAVista;
-                    pedido.nomeCliente = resultado.NomeCliente;
-                    pedido.sobrenomeCliente = resultado.sobrenomeCliente;
-                    pedido.nomeColaborador = resultado.NomeColaborador;
-                    pedido.SobrenomeColaborador = resultado.sobrenomeColaborador;
-                    pedido.QuantidadeTotal = (long)resultado.quantidadetotal;
-                    pedido.QuantidadeUnitaria = (long)resultado.quantidadeunitario;
-                    pedido.ativo = (bool)resultado.ativo;
+               
 
 
 
-
-
-                    pedidos.Add(pedido);
-                    listaid.Add(pedido.IdVenda);
-
-                }
-
-
-
-                query = "select * from Carrinho where idVenda in @listaid";
-
-                con.Open();
-                resultados = con.Query<dynamic>(query, new
-                {
-                    listaid = listaid.ToArray()
-                }
-                );
-                
-                con.Close();
-
+                query = "select * from Carrinho where idVenda = @idVenda";
                 var index = 0;
-
-                while(index < pedidos.Count())
+                con.Open();
+                foreach (var resultado in resultados)
                 {
-                    foreach(var resultado in resultados)
+
+                    resultados[index].carrinhos = con.Query<Pedido_Produto>(query, new
                     {
-                        if(resultado.idVenda == pedidos[index].IdVenda)
-                        {
-
-                            Pedido_Produto carrinho = new Pedido_Produto();
-                            carrinho.Desconto = (float)resultado.Desconto;
-                            carrinho.quantidade = (int)resultado.Quantidade;
-                            carrinho.PrecoBruto = (float)resultado.precobruto;
-                            carrinho.PrecoLiquido = (float)resultado.precoliquido;
-                            carrinho.produto.IdProduto = (int)resultado.idProduto;
-                            carrinho.idVenda = (int)resultado.idVenda;
-                            carrinho.precoDeCusto = (float)resultado.PrecoDeCusto;
-                            carrinho.precoDeVenda = (float)resultado.PrecoDeVenda;
-                            carrinho.IdCarrinho = (int)resultado.IdCarrinho;
-                            pedidos[index].carrinhos.Add(carrinho);
-                        }
-
-                        
-                    }
-                    index++;
+                        idVenda = resultado.IdVenda,
+                    }).ToList() ;
                 }
+                
+                con.Close();
+
+                
 
 
 
-                return pedidos;
+                return resultados;
             }
             catch (Exception ex)
             {

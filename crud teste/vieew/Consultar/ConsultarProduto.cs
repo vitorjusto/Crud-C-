@@ -24,7 +24,6 @@ namespace crud_teste.vieew.Consultar
             label5.ForeColor = Global.FontColor;
             label6.ForeColor = Global.FontColor;
             label7.ForeColor = Global.FontColor;
-            Ativo.ForeColor = Global.FontColor;
 
             produtoGlobal.IdProduto = id;
             produtoGlobal = oAlterar.Consultar(id);
@@ -39,7 +38,10 @@ namespace crud_teste.vieew.Consultar
             PrecoDeVenda.Text = produto.PrecoDeVenda.GetAsString();
             PrecoDeCusto.Text = produto.PrecoDeCusto.GetAsString();
             Estoque.Text = produto.Estoque.ToString();
-            Ativo.Checked = produto.Ativo;
+
+            txtAtivo.Text = produto.Ativo? "Ativo" : "Inativo";
+            btnAtivo.Text = produto.Ativo ? "Inativar" : "Reativar";
+
             Fabricante.Text = produto.Fabricante;
         }
 
@@ -50,7 +52,6 @@ namespace crud_teste.vieew.Consultar
             produtoGlobal.PrecoDeVenda = PrecoDeVenda.Text;
             produtoGlobal.PrecoDeCusto = PrecoDeCusto.Text;
             produtoGlobal.Estoque = long.Parse(Estoque.Text);
-            produtoGlobal.Ativo = Ativo.Checked;
             produtoGlobal.Fabricante = Fabricante.Text;
         }
 
@@ -115,5 +116,14 @@ namespace crud_teste.vieew.Consultar
         private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
 
+        private void btnAtivo_Click(object sender, EventArgs e) 
+        {
+            produtoGlobal.Ativo = !produtoGlobal.Ativo;
+
+
+            txtAtivo.Text = produtoGlobal.Ativo ? "Ativo" : "Inativo";
+            btnAtivo.Text = produtoGlobal.Ativo ? "Inativar" : "Reativar";
+
+        }
     }
 }

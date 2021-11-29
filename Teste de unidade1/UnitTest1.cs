@@ -14,8 +14,6 @@ namespace Teste_de_unidade1
         private Pedido_Produto PedidoExemplo1 = new Pedido_Produto
             (-12.2, -12.2, -12.2, -12, -12.1, -12.1, -1, -123);
 
-        
-
         [TestMethod]
         public void TestMethod1()
         {

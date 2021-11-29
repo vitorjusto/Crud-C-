@@ -93,7 +93,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtTotalUnitaria
             // 
-            this.txtTotalUnitaria.Location = new System.Drawing.Point(123, 375);
+            this.txtTotalUnitaria.Location = new System.Drawing.Point(130, 375);
             this.txtTotalUnitaria.Name = "txtTotalUnitaria";
             this.txtTotalUnitaria.ReadOnly = true;
             this.txtTotalUnitaria.Size = new System.Drawing.Size(149, 20);
@@ -101,7 +101,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtQuantidadeTotal
             // 
-            this.txtQuantidadeTotal.Location = new System.Drawing.Point(123, 424);
+            this.txtQuantidadeTotal.Location = new System.Drawing.Point(130, 424);
             this.txtQuantidadeTotal.Name = "txtQuantidadeTotal";
             this.txtQuantidadeTotal.ReadOnly = true;
             this.txtQuantidadeTotal.Size = new System.Drawing.Size(149, 20);
@@ -128,16 +128,16 @@ namespace crud_teste.vieew.ListaDePedidos
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 102);
+            this.label3.Location = new System.Drawing.Point(12, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "produtos:";
+            this.label3.Text = "Produtos:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 375);
+            this.label4.Location = new System.Drawing.Point(19, 375);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 8;
@@ -146,7 +146,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 427);
+            this.label5.Location = new System.Drawing.Point(19, 427);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 13);
             this.label5.TabIndex = 9;
@@ -323,6 +323,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // txtquantidade
             // 
             this.txtquantidade.Location = new System.Drawing.Point(180, 78);
+            this.txtquantidade.MaxLength = 14;
             this.txtquantidade.Name = "txtquantidade";
             this.txtquantidade.Size = new System.Drawing.Size(123, 20);
             this.txtquantidade.TabIndex = 9;

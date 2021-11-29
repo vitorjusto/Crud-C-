@@ -31,7 +31,6 @@ namespace crud_teste.vieew.Consultar
         {
             this.Fabricante = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.Ativo = new System.Windows.Forms.CheckBox();
             this.Estoque = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,6 +45,9 @@ namespace crud_teste.vieew.Consultar
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Excluir = new System.Windows.Forms.Button();
             this.BotaoSalvar = new System.Windows.Forms.Button();
+            this.btnAtivo = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAtivo = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,16 +66,6 @@ namespace crud_teste.vieew.Consultar
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 31;
             this.label7.Text = "Fabricante: ";
-            // 
-            // Ativo
-            // 
-            this.Ativo.AutoSize = true;
-            this.Ativo.Location = new System.Drawing.Point(425, 216);
-            this.Ativo.Name = "Ativo";
-            this.Ativo.Size = new System.Drawing.Size(50, 17);
-            this.Ativo.TabIndex = 30;
-            this.Ativo.Text = "Ativo";
-            this.Ativo.UseVisualStyleBackColor = true;
             // 
             // Estoque
             // 
@@ -180,9 +172,9 @@ namespace crud_teste.vieew.Consultar
             this.Excluir.BackColor = System.Drawing.Color.Red;
             this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(526, 342);
+            this.Excluir.Location = new System.Drawing.Point(296, 370);
             this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(259, 79);
+            this.Excluir.Size = new System.Drawing.Size(251, 79);
             this.Excluir.TabIndex = 69;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = false;
@@ -193,7 +185,7 @@ namespace crud_teste.vieew.Consultar
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BotaoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotaoSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BotaoSalvar.Location = new System.Drawing.Point(18, 342);
+            this.BotaoSalvar.Location = new System.Drawing.Point(18, 370);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(259, 79);
             this.BotaoSalvar.TabIndex = 68;
@@ -201,16 +193,48 @@ namespace crud_teste.vieew.Consultar
             this.BotaoSalvar.UseVisualStyleBackColor = false;
             this.BotaoSalvar.Click += new System.EventHandler(this.BotaoSalvar_Click);
             // 
+            // btnAtivo
+            // 
+            this.btnAtivo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAtivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtivo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAtivo.Location = new System.Drawing.Point(553, 370);
+            this.btnAtivo.Name = "btnAtivo";
+            this.btnAtivo.Size = new System.Drawing.Size(232, 79);
+            this.btnAtivo.TabIndex = 70;
+            this.btnAtivo.Text = "Inativar";
+            this.btnAtivo.UseVisualStyleBackColor = false;
+            this.btnAtivo.Click += new System.EventHandler(this.btnAtivo_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(550, 344);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "Status: ";
+            // 
+            // txtAtivo
+            // 
+            this.txtAtivo.Location = new System.Drawing.Point(599, 341);
+            this.txtAtivo.Name = "txtAtivo";
+            this.txtAtivo.ReadOnly = true;
+            this.txtAtivo.Size = new System.Drawing.Size(186, 20);
+            this.txtAtivo.TabIndex = 72;
+            // 
             // ConsultarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.txtAtivo);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnAtivo);
             this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.Fabricante);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.Ativo);
             this.Controls.Add(this.Estoque);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -236,7 +260,6 @@ namespace crud_teste.vieew.Consultar
 
         private System.Windows.Forms.TextBox Fabricante;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox Ativo;
         private System.Windows.Forms.TextBox Estoque;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -251,5 +274,8 @@ namespace crud_teste.vieew.Consultar
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
         private System.Windows.Forms.Button Excluir;
         private System.Windows.Forms.Button BotaoSalvar;
+        private System.Windows.Forms.Button btnAtivo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtAtivo;
     }
 }

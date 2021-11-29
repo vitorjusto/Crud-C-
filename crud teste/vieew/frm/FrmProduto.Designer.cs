@@ -144,6 +144,7 @@ namespace crud_teste.vieew
             // Estoque
             // 
             this.Estoque.Location = new System.Drawing.Point(113, 202);
+            this.Estoque.MaxLength = 14;
             this.Estoque.Name = "Estoque";
             this.Estoque.Size = new System.Drawing.Size(238, 20);
             this.Estoque.TabIndex = 12;

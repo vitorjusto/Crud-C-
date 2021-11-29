@@ -11,8 +11,7 @@ namespace crud_teste.controller
         public Cliente consultarCliente(int id)
         {
             ClienteDAO stmt = new ClienteDAO();
-            Cliente cliente = new Cliente();
-            cliente = stmt.ConsultarCliente(id);
+            Cliente cliente = stmt.ConsultarCliente(id);
            
             return cliente;
         }
@@ -40,7 +39,6 @@ namespace crud_teste.controller
         {
             ClienteDAO stmt = new ClienteDAO();
             var idCliente = stmt.GravarCliente(cliente);
-
 
             return idCliente;
             

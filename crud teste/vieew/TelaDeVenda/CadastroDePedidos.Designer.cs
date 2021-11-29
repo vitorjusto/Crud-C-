@@ -120,7 +120,7 @@ namespace crud_teste.vieew
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(560, 44);
+            this.label3.Location = new System.Drawing.Point(543, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 5;
@@ -253,7 +253,7 @@ namespace crud_teste.vieew
             // Quantidade
             // 
             this.Quantidade.Location = new System.Drawing.Point(160, 72);
-            this.Quantidade.MaxLength = 32000;
+            this.Quantidade.MaxLength = 14;
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.Size = new System.Drawing.Size(197, 20);
             this.Quantidade.TabIndex = 19;
@@ -463,7 +463,7 @@ namespace crud_teste.vieew
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(306, 41);
+            this.label16.Location = new System.Drawing.Point(295, 39);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 13);
             this.label16.TabIndex = 6;
@@ -559,6 +559,7 @@ namespace crud_teste.vieew
             this.Name = "CadastroDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroDePedidos";
+            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
