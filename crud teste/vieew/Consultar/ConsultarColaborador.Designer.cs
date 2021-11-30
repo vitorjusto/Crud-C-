@@ -580,6 +580,7 @@ namespace crud_teste
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label20.Location = new System.Drawing.Point(6, 37);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(41, 13);

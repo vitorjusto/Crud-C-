@@ -12,8 +12,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
         public AlterarEstoque(ProdutoListagem produto)
         {
             InitializeComponent();
-
-            this.BackColor = Global.BackgroundColor;
+            Global.AtribuirTema(this);
             Produto = produto;
             nudEstoque.Value = Produto.Estoque;
 

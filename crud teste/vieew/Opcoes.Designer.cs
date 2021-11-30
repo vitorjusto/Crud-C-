@@ -75,7 +75,6 @@ namespace crud_teste
             this.Tema.TabIndex = 4;
             this.Tema.Text = "Tema Escuro";
             this.Tema.UseVisualStyleBackColor = true;
-            this.Tema.CheckedChanged += new System.EventHandler(this.Tema_CheckedChanged);
             // 
             // Opcoes
             // 

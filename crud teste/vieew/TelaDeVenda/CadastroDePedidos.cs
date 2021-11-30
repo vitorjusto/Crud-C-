@@ -25,27 +25,7 @@ namespace crud_teste.vieew
         {
             InitializeComponent();
 
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-
-            label1.ForeColor = Global.FontColor;
-            label2.ForeColor = Global.FontColor;
-            label3.ForeColor = Global.FontColor;
-            label4.ForeColor = Global.FontColor;
-            label5.ForeColor = Global.FontColor;
-            label6.ForeColor = Global.FontColor;
-            label7.ForeColor = Global.FontColor;
-            label10.ForeColor = Global.FontColor;
-            label11.ForeColor = Global.FontColor;
-            label12.ForeColor = Global.FontColor;
-            label13.ForeColor = Global.FontColor;
-            label14.ForeColor = Global.FontColor;
-            label15.ForeColor = Global.FontColor;
-            label16.ForeColor = Global.FontColor;
-            label17.ForeColor = Global.FontColor;
-            label18.ForeColor = Global.FontColor;
-            label20.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
 
             Desconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(Desconto.Text);
             PrecoUnitario.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
@@ -214,9 +194,9 @@ namespace crud_teste.vieew
             QuantidadeUnitario.Text = venda.Pedido_Produto.Count().ToString();
 
             QuantidadeTotal.Text = venda.Pedido_Produto.Sum(x => x.quantidade).ToString();
-
+            var desconto = new MyDinheiro(DescontoAVista.Text);
             TotalBruto.Text = venda.Pedido_Produto.Sum(x => x.PrecoBruto.GetAsDouble()).ToString("C2");
-            TotalLiquido.Text = venda.Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != "" ? DescontoAVista.Text : "0")).ToString("c2");
+            TotalLiquido.Text = venda.Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble() - float.Parse(FormaDePagamento.Text.Equals("A vista") && DescontoAVista.Text != "" ? desconto.GetAsDouble().ToString(): "0")).ToString("c2");
             TotalDesconto.Text = venda.Pedido_Produto.Sum(x => x.Desconto.GetAsDouble()).ToString("c2");
 
         }
@@ -328,7 +308,7 @@ namespace crud_teste.vieew
 
             if (venda.TipoDeVenda.Equals("A vista"))
             {
-                venda.DescontoAVIsta = DescontoAVista.Text.Equals("") ? 0 : float.Parse(DescontoAVista.Text);
+                venda.DescontoAVIsta = DescontoAVista.Text.Equals("") ? "0.0" : DescontoAVista.Text;
                 venda.MesesAPrazo = 0;
             }
             else if (venda.TipoDeVenda.Equals("A Prazo"))

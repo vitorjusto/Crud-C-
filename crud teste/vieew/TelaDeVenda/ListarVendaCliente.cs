@@ -26,8 +26,7 @@ namespace crud_teste.vieew.TelaDeVenda
         {
             InitializeComponent();
 
-            this.BackColor = Global.BackgroundColor;
-            dataGridGeral.BackgroundColor = Global.BackgroundColor;
+            Global.AtribuirTema(this);
 
 
             Buscar = busca;
@@ -255,5 +254,9 @@ namespace crud_teste.vieew.TelaDeVenda
             }
         }
 
+        private void ListarVendaCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -19,9 +19,7 @@ namespace crud_teste.vieew.ListaDePedidos
         public ConsultarVenda(int id)
         {
             InitializeComponent();
-
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
+            Global.AtribuirTema(this);
 
             AlterarVenda oAlterar = new AlterarVenda();
 

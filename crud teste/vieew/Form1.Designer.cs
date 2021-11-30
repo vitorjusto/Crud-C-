@@ -63,6 +63,7 @@ namespace crud_teste
             this.colaboradorBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
@@ -270,12 +271,24 @@ namespace crud_teste
             // 
             this.colaboradorBindingSource5.DataMember = "Colaborador";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(648, 263);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 17);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Tema Escuro";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // ListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1283, 656);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListarClientes";
@@ -367,6 +380,7 @@ namespace crud_teste
         private System.Windows.Forms.ToolStripMenuItem vendaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novoPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

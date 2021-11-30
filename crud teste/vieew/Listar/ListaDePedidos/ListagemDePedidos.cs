@@ -35,29 +35,7 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             InitializeComponent();
 
-            this.BackColor = Global.BackgroundColor;
-            ListarPedidos.BackgroundColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            NumeroDePedidos.BackColor = Global.BackgroundColor;
-            NumeroDePedidos.ForeColor = Global.FontColor;
-
-            txtTotalBruto.BackColor = Global.BackgroundColor;
-            txtTotalBruto.ForeColor = Global.FontColor;
-
-            txtDesconto.BackColor = Global.BackgroundColor;
-            txtDesconto.ForeColor = Global.FontColor;
-
-            txtTotalGasto.BackColor = Global.BackgroundColor;
-            txtTotalGasto.ForeColor = Global.FontColor;
-
-            txtTotalGasto.BackColor = Global.BackgroundColor;
-            txtTotalGasto.ForeColor = Global.FontColor;
-
-            txttotalLiquido.BackColor = Global.BackgroundColor;
-            txttotalLiquido.ForeColor = Global.FontColor;
-
-            txtLucro.BackColor = Global.BackgroundColor;
-           
+            Global.AtribuirTema(this);
 
             pedidos = oAlterar.Listar();
 

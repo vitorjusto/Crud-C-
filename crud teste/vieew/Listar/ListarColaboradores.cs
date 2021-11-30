@@ -68,15 +68,7 @@ namespace crud_teste.vieew
 
         private void ListarColaboradores_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-            dataGridColaboradores.BackgroundColor = Global.BackgroundColor;
-
-            label.ForeColor = Global.FontColor;
-
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
-            textBoxinstrucao.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
         }
 
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)

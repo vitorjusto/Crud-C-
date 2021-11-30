@@ -21,12 +21,7 @@ namespace crud_teste.vieew
         public ListarProduto()
         {
             InitializeComponent();
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-            dataGridProduto.BackgroundColor = Global.BackgroundColor;
-            BuscarAtivo.ForeColor = Global.FontColor;
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
+            Global.AtribuirTema(this);
 
             AlterarProduto oAlterar = new AlterarProduto();
             produtos = oAlterar.Listar();
@@ -158,9 +153,5 @@ namespace crud_teste.vieew
             }
         }
 
-        private void ListarProduto_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -71,13 +71,7 @@ namespace crud_teste.vieew
 
         private void ListarCliente_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-            dataGridCliente.BackgroundColor = Global.BackgroundColor;
-
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
-            textBoxinstrucao.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
         }
 
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)

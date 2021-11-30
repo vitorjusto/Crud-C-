@@ -235,7 +235,6 @@ namespace crud_teste.vieew
             this.Name = "ListarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaProduto";
-            this.Load += new System.EventHandler(this.ListarProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

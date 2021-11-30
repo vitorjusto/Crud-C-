@@ -49,34 +49,12 @@ namespace crud_teste
 
         private void Opcoes_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-            Tema.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
         }
 
-        private void Tema_CheckedChanged(object sender, EventArgs e)
-        {
-            
-                if (Tema.Checked)
-                {
-                    Global.BackgroundColor = Color.FromArgb(38, 38, 38);
-                    Global.FontColor = Color.White;
-                    Global.Strip = Color.FromArgb(64, 64, 64);
+       
 
-                    
-                }else
-                {
-                Global.BackgroundColor = Color.AliceBlue;
-                Global.FontColor = Color.Black;
-                Global.Strip = Color.LightBlue;
-                 }
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-            Tema.ForeColor = Global.FontColor;
-
-        }
+        
     }
 }
 

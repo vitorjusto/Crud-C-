@@ -12,8 +12,7 @@ namespace crud_teste.vieew.ListaDePedidos
         public ListarItens(Venda carrinhosLparam)
         {
             InitializeComponent();
-            this.BackColor = Global.BackgroundColor;
-            dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
+            Global.AtribuirTema(this);
             this.venda = carrinhosLparam;
             AtualizarGrid();
 

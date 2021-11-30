@@ -18,8 +18,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.carrinhos = carrinhosparam;
             this.carrinhosL = carrinhosLparam;
 
-            this.BackColor = Global.BackgroundColor;
-            dataGridCarrinho.BackgroundColor = Global.BackgroundColor;
+            Global.AtribuirTema(this);
 
             alterar = false;
             var i = 0;
@@ -57,6 +56,11 @@ namespace crud_teste.vieew.TelaDeVenda
                 alterar = true;
                 this.Dispose();
             }
+        }
+
+        private void ListarCarrinho_Load(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

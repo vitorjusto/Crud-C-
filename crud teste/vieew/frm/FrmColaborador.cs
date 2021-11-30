@@ -28,30 +28,7 @@ namespace crud_teste
 
         private void Colaborador_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            groupBox1.ForeColor = Global.FontColor;
-            groupBox2.ForeColor = Global.FontColor;
-            groupBox3.ForeColor = Global.FontColor;
-
-            menuStrip2.ForeColor = Global.FontColor;
-            label1.ForeColor = Global.FontColor;
-            menuStrip2.BackColor = Global.Strip;
-            menuStrip2.BackColor = Global.Strip;
-            label1.ForeColor = Global.FontColor;
-            label2.ForeColor = Global.FontColor;
-            label3.ForeColor = Global.FontColor;
-            label4.ForeColor = Global.FontColor;
-            label5.ForeColor = Global.FontColor;
-            label6.ForeColor = Global.FontColor;
-            label7.ForeColor = Global.FontColor;
-            label8.ForeColor = Global.FontColor;
-            label9.ForeColor = Global.FontColor;
-            label10.ForeColor = Global.FontColor;
-            label11.ForeColor = Global.FontColor;
-            label12.ForeColor = Global.FontColor;
-            label14.ForeColor = Global.FontColor;
-            label15.ForeColor = Global.FontColor;
-            label16.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

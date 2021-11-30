@@ -14,9 +14,7 @@ namespace crud_teste
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.ForeColor = Global.FontColor;
-            menuStrip1.BackColor = Global.Strip;
+            Global.AtribuirTema(this);
         }
 
         private void colaboradorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,6 +72,12 @@ namespace crud_teste
         {
             this.Hide();
             new CadastroDePedidos().Show();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Global.AlterarTema(checkBox1.Checked);
+            Global.AtribuirTema(this);
         }
     }
 }

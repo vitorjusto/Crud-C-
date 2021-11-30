@@ -29,8 +29,8 @@ namespace crud_teste.vieew
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridCliente = new System.Windows.Forms.DataGridView();
             this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +54,7 @@ namespace crud_teste.vieew
             // dataGridCliente
             // 
             this.dataGridCliente.AllowUserToAddRows = false;
+            this.dataGridCliente.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
             this.dataGridCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -113,13 +114,13 @@ namespace crud_teste.vieew
             // 
             // Editar
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Editar.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Editar.DefaultCellStyle = dataGridViewCellStyle3;
             this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
@@ -131,13 +132,13 @@ namespace crud_teste.vieew
             // 
             // Excluir
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Excluir.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Excluir.DefaultCellStyle = dataGridViewCellStyle4;
             this.Excluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excluir.HeaderText = "Excluir";
             this.Excluir.Name = "Excluir";
@@ -165,7 +166,7 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(176, 35);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(98, 48);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
             this.CampoDePesquisa.Size = new System.Drawing.Size(415, 20);
             this.CampoDePesquisa.TabIndex = 2;
@@ -173,7 +174,7 @@ namespace crud_teste.vieew
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 35);
+            this.label1.Location = new System.Drawing.Point(9, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 3;

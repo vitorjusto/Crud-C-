@@ -14,17 +14,7 @@ namespace crud_teste.vieew
         {
             InitializeComponent();
 
-            this.BackColor = Global.BackgroundColor;
-            menuStrip1.BackColor = Global.Strip;
-            menuStrip1.ForeColor = Global.FontColor;
-
-            label1.ForeColor = Global.FontColor;
-            label2.ForeColor = Global.FontColor;
-            label3.ForeColor = Global.FontColor;
-            label5.ForeColor = Global.FontColor;
-            label6.ForeColor = Global.FontColor;
-            label7.ForeColor = Global.FontColor;
-            Ativo.ForeColor = Global.FontColor;
+            Global.AtribuirTema(this);
 
             PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
             PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
