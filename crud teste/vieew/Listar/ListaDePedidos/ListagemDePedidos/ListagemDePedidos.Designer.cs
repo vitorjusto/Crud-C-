@@ -30,6 +30,16 @@ namespace crud_teste.vieew.ListaDePedidos
         private void InitializeComponent()
         {
             this.ListarPedidos = new System.Windows.Forms.DataGridView();
+            this.IdVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesesAPrazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalDeDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,16 +54,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtLucro = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.IdVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoDeVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mesesAPrazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalDeDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantidadeUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantidadeTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +82,66 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ListarPedidos.TabIndex = 0;
             this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
             // 
+            // IdVenda
+            // 
+            this.IdVenda.HeaderText = "IdVenda";
+            this.IdVenda.Name = "IdVenda";
+            this.IdVenda.ReadOnly = true;
+            // 
+            // NomeCliente
+            // 
+            this.NomeCliente.HeaderText = "Nome Do Cliente";
+            this.NomeCliente.Name = "NomeCliente";
+            this.NomeCliente.ReadOnly = true;
+            // 
+            // NomeColaborador
+            // 
+            this.NomeColaborador.HeaderText = "Nome Do Colaborador";
+            this.NomeColaborador.Name = "NomeColaborador";
+            this.NomeColaborador.ReadOnly = true;
+            // 
+            // TipoDeVenda
+            // 
+            this.TipoDeVenda.HeaderText = "Tipo De Venda";
+            this.TipoDeVenda.Name = "TipoDeVenda";
+            this.TipoDeVenda.ReadOnly = true;
+            // 
+            // mesesAPrazo
+            // 
+            this.mesesAPrazo.HeaderText = "Meses A Prazo";
+            this.mesesAPrazo.Name = "mesesAPrazo";
+            this.mesesAPrazo.ReadOnly = true;
+            // 
+            // TotalBruto
+            // 
+            this.TotalBruto.HeaderText = "Total Bruto";
+            this.TotalBruto.Name = "TotalBruto";
+            this.TotalBruto.ReadOnly = true;
+            // 
+            // TotalDeDesconto
+            // 
+            this.TotalDeDesconto.HeaderText = "Total De Desconto";
+            this.TotalDeDesconto.Name = "TotalDeDesconto";
+            this.TotalDeDesconto.ReadOnly = true;
+            // 
+            // TotalLiquido
+            // 
+            this.TotalLiquido.HeaderText = "Total Liquido";
+            this.TotalLiquido.Name = "TotalLiquido";
+            this.TotalLiquido.ReadOnly = true;
+            // 
+            // QuantidadeUnitario
+            // 
+            this.QuantidadeUnitario.HeaderText = "Quantidade Unitario";
+            this.QuantidadeUnitario.Name = "QuantidadeUnitario";
+            this.QuantidadeUnitario.ReadOnly = true;
+            // 
+            // QuantidadeTotal
+            // 
+            this.QuantidadeTotal.HeaderText = "Quantidade Total";
+            this.QuantidadeTotal.Name = "QuantidadeTotal";
+            this.QuantidadeTotal.ReadOnly = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -98,7 +159,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Total Bruto:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -207,71 +267,25 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem.Text = "Voltar";
             this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
-            // IdVenda
+            // button1
             // 
-            this.IdVenda.HeaderText = "IdVenda";
-            this.IdVenda.Name = "IdVenda";
-            this.IdVenda.ReadOnly = true;
-            // 
-            // NomeCliente
-            // 
-            this.NomeCliente.HeaderText = "Nome Do Cliente";
-            this.NomeCliente.Name = "NomeCliente";
-            this.NomeCliente.ReadOnly = true;
-            // 
-            // NomeColaborador
-            // 
-            this.NomeColaborador.HeaderText = "Nome Do Colaborador";
-            this.NomeColaborador.Name = "NomeColaborador";
-            this.NomeColaborador.ReadOnly = true;
-            // 
-            // TipoDeVenda
-            // 
-            this.TipoDeVenda.HeaderText = "Tipo De Venda";
-            this.TipoDeVenda.Name = "TipoDeVenda";
-            this.TipoDeVenda.ReadOnly = true;
-            // 
-            // mesesAPrazo
-            // 
-            this.mesesAPrazo.HeaderText = "Meses A Prazo";
-            this.mesesAPrazo.Name = "mesesAPrazo";
-            this.mesesAPrazo.ReadOnly = true;
-            // 
-            // TotalBruto
-            // 
-            this.TotalBruto.HeaderText = "Total Bruto";
-            this.TotalBruto.Name = "TotalBruto";
-            this.TotalBruto.ReadOnly = true;
-            // 
-            // TotalDeDesconto
-            // 
-            this.TotalDeDesconto.HeaderText = "Total De Desconto";
-            this.TotalDeDesconto.Name = "TotalDeDesconto";
-            this.TotalDeDesconto.ReadOnly = true;
-            // 
-            // TotalLiquido
-            // 
-            this.TotalLiquido.HeaderText = "Total Liquido";
-            this.TotalLiquido.Name = "TotalLiquido";
-            this.TotalLiquido.ReadOnly = true;
-            // 
-            // QuantidadeUnitario
-            // 
-            this.QuantidadeUnitario.HeaderText = "Quantidade Unitario";
-            this.QuantidadeUnitario.Name = "QuantidadeUnitario";
-            this.QuantidadeUnitario.ReadOnly = true;
-            // 
-            // QuantidadeTotal
-            // 
-            this.QuantidadeTotal.HeaderText = "Quantidade Total";
-            this.QuantidadeTotal.Name = "QuantidadeTotal";
-            this.QuantidadeTotal.ReadOnly = true;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(26, 397);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 76);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Relatorio de Produtos";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ListagemDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 514);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtLucro);
             this.Controls.Add(this.txttotalLiquido);
             this.Controls.Add(this.txtTotalGasto);
@@ -290,7 +304,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ListagemDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListagemDePedidos";
-            this.Load += new System.EventHandler(this.ListagemDePedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -326,5 +339,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalLiquido;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeTotal;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -12,16 +12,13 @@ namespace CRUD_teste.Model
 
         public string SobreNome { get; set; }
 
-
         public string Sexo { get; set; }
 
         public DateTime DataDeNascimento { get; set; }
 
         public MyCPF CPF { get; set; }
 
-
         public Contato contato = new Contato();
-
 
         public Endereco endereco = new Endereco();
 
@@ -32,9 +29,6 @@ namespace CRUD_teste.Model
             return this.Nome + " " + this.SobreNome;
         }
 
-        
-
-
         public Pessoa(string nome)
         {
             Nome = nome;
@@ -43,6 +37,11 @@ namespace CRUD_teste.Model
         public Pessoa()
         {
 
+        }
+
+        public bool Aniversariante()
+        {
+            return DataDeNascimento.Day.Equals(DateTime.Today.Day) && DataDeNascimento.Month.Equals(DateTime.Today.Month);
         }
 
        

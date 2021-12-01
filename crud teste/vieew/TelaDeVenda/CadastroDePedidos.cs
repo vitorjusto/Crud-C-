@@ -42,6 +42,8 @@ namespace crud_teste.vieew
             listar.ShowDialog();
 
             cliente = listar.cliente;
+            if (cliente.Aniversariante())
+                MessageBox.Show($"Parabéns {cliente.nomeCompleto()}, Hoje é seu aniversário", "Parabéns");
             NomeCliente.Text = cliente.nomeCompleto();
             LimiteDeCompraaPraso.Text = cliente.LimiteDeCompra.ToString();
         }
@@ -226,7 +228,7 @@ namespace crud_teste.vieew
 
                 labelLimite.Visible = true;
                 LimiteDeCompraaPraso.Visible = true;
-                LimiteDeCompraaPraso.Text = cliente.LimiteDeCompra.ToString();
+                LimiteDeCompraaPraso.Text = cliente.LimiteRestante.ToString();
             }
             else
             {
@@ -250,7 +252,7 @@ namespace crud_teste.vieew
         {
 
             receberCampos();
-            var validar = new VendaValidation((decimal)cliente.LimiteDeCompra.GetAsDouble(), venda);
+            var validar = new VendaValidation((decimal)cliente.LimiteRestante.GetAsDouble(), venda);
             var validares = validar.Validate(venda);
 
             if (validares.IsValid)
@@ -347,6 +349,11 @@ namespace crud_teste.vieew
         {
             if (FormaDePagamento.Text.Equals("A vista"))
                 DescontoAVista.Text = MyDinheiro.SetTextBoxAsMoneyValue(DescontoAVista.Text);
+        }
+
+        private void NomeCliente_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void CadastroDePedidos_Load(object sender, EventArgs e)

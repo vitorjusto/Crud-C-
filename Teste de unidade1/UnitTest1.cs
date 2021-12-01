@@ -596,7 +596,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Desconto_For_Maior_Ou_Igual_A_Zero_Então_o_Desconto_é_Valido(int desconto)
         {
             Pedido_Produto pedido = new Pedido_Produto();
-            pedido.Desconto = desconto;
+            pedido.Desconto = (decimal)desconto;
             CarrinhoValidation validar = new CarrinhoValidation();
 
             var resultado = validar.Validate(pedido);
@@ -610,7 +610,7 @@ namespace Teste_de_unidade1
         public void Quando_O_Desconto_For_Menor_Que_Zero_Então_o_Desconto_é_Invalido(int desconto)
         {
             Pedido_Produto pedido = new Pedido_Produto();
-            pedido.Desconto = desconto;
+            pedido.Desconto = (decimal)desconto;
             CarrinhoValidation validar = new CarrinhoValidation();
 
             var resultado = validar.Validate(pedido);

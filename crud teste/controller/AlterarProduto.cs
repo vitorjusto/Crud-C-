@@ -82,5 +82,14 @@ namespace crud_teste.controller
             stmt.AlterarEstoque(id, estoque);
         }
 
+
+        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos()
+        {
+            var stmt = new DAOProduto();
+            var resultado = stmt.RelatorioDeVendaDosProdutos();
+
+            return resultado;
+        }
+
     }
 }

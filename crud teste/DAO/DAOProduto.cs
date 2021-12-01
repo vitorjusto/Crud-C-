@@ -282,5 +282,16 @@ namespace crud_teste.DAO
             }
         }
 
+        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos()
+        {
+            using (con)
+            {
+                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where ativo = 1 and Estoque > 0";
+                var resultado = con.Query<RelatorioProdutosVendaListagem>(query);
+                return resultado.ToList();
+
+            }
+        }
+
     }
 }      

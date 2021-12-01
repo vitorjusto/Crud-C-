@@ -10,6 +10,7 @@ namespace crud_teste
         public static Color FontColor = Color.Black;
         public static Color Strip = Color.LightBlue;
         public static Color TextBoxBackColor = Color.White;
+        public static Color GroupBoxBackColor = Color.FromArgb(245, 247, 247);
 
         public static bool teste()
         {
@@ -57,10 +58,10 @@ namespace crud_teste
             if (escuro)
             {
                 BackgroundColor = Color.FromArgb(38, 38, 38);
-                FontColor = Color.White;
+                FontColor = Color.FromArgb(230, 230, 230);
                 Strip = Color.FromArgb(64, 64, 64);
                 TextBoxBackColor = Color.FromArgb(89, 89, 89);
-
+                GroupBoxBackColor = Color.FromArgb(40, 40, 40);
             }
             else
             {
@@ -68,6 +69,7 @@ namespace crud_teste
                 FontColor = Color.Black;
                 Strip = Color.LightBlue;
                 TextBoxBackColor = Color.White;
+                GroupBoxBackColor = Color.FromArgb(245, 247, 247);
             }
         }
         
@@ -87,7 +89,8 @@ namespace crud_teste
             }else if(control is GroupBox)
             {
                 control.ForeColor = FontColor;
-                
+                control.BackColor = GroupBoxBackColor;
+
                 for (int i = 0; i < control.Controls.Count; i++)
                 {
                     AlterarTemaSozinho(control.Controls[i]);

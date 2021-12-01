@@ -1,6 +1,10 @@
 ﻿using crud_teste.vieew;
 using crud_teste.vieew.ListaDePedidos;
 using System;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Net.Configuration;
+using System.Net;
 using System.Windows.Forms;
 
 namespace crud_teste
@@ -78,6 +82,11 @@ namespace crud_teste
         {
             Global.AlterarTema(checkBox1.Checked);
             Global.AtribuirTema(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

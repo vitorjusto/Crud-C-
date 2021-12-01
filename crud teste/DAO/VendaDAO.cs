@@ -29,6 +29,8 @@ namespace crud_teste.DAO
             var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
+            var AlterarLimite = @"update Cliente set LimiteRestante -= @ValorTotal where idCliente = @idCliente";
+
             con.Open();
             var tran = con.BeginTransaction();
             try
@@ -57,7 +59,7 @@ namespace crud_teste.DAO
                         Desconto = carrinho.Desconto.GetAsDouble(),
                         precoBruto = carrinho.PrecoBruto.GetAsDouble(),
                         precoLiquido = carrinho.PrecoLiquido.GetAsDouble(),
-                        idVenda = carrinho.idVenda,
+                        carrinho.idVenda,
                         idProduto = carrinho.produto.IdProduto,
                         precodecusto = carrinho.precoDeCusto.GetAsDouble(),
                         precodevenda = carrinho.precoDeVenda.GetAsDouble()
@@ -65,7 +67,7 @@ namespace crud_teste.DAO
                     con.Execute(queryproduto, new
                     {
                         Quantidade = carrinho.quantidade,
-                        IdProduto = carrinho.produto.IdProduto,
+                        carrinho.produto.IdProduto,
 
                     }, tran);
 
@@ -74,9 +76,15 @@ namespace crud_teste.DAO
                 con.Execute(DarCommissao, new
                 {
                     comissao = venda.colaborador.PorcentagemDeComissao * venda.QuantidadeDeTotal,
-                    idColaborador = venda.colaborador.idColaborador,
+                    venda.colaborador.idColaborador,
                 }, tran);
 
+                if (venda.TipoDeVenda.Equals("A Prazo"))
+                    con.Execute(AlterarLimite, new
+                    {
+                        ValorTotal = venda.TotalLiquido.GetAsDecimal(),
+                        venda.cliente.idCliente,
+                    }, tran);
 
                 tran.Commit();
                 con.Close();

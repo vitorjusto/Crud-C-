@@ -1,6 +1,7 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.Model.Object_Values;
+using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -113,19 +114,15 @@ namespace crud_teste.vieew.ListaDePedidos
 
             var x = int.Parse(ListarPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                this.Close();
-                new ConsultarVenda(x).Show();
+            this.Close();
+            new ConsultarVenda(x).Show();
 
         }
 
-        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
+            new RelatorioDeProdutos().Show();
         }
     }
 }

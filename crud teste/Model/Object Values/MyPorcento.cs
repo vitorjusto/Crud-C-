@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace crud_teste.Model.Object_Values
 {
-    class MyPorcento
+    public class MyPorcento
     {
         decimal _value;
 
         public MyPorcento(string value)
         {
-            var converter = new string((from c in value where char.IsDigit(c) || c == ',' || c == '.' select c).ToArray());
+            var converter = RemoveFormatting(value);
             if (string.IsNullOrEmpty(converter))
             {
                 _value = 0;
@@ -62,6 +62,11 @@ namespace crud_teste.Model.Object_Values
             var dvalue = Convert.ToDecimal(new string((from c in value where char.IsDigit(c) || c == ',' || c == '.' select c).ToArray()));
 
             _value = Math.Round(dvalue, 2);
+        }
+
+        private string RemoveFormatting(string value)
+        {
+            return new string((from c in value where char.IsDigit(c) || c == ',' || c == '.' select c).ToArray());
         }
 
     }

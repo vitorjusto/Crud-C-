@@ -88,6 +88,7 @@ namespace crud_teste.vieew
             this.NomeCliente.ReadOnly = true;
             this.NomeCliente.Size = new System.Drawing.Size(334, 20);
             this.NomeCliente.TabIndex = 0;
+            this.NomeCliente.TextChanged += new System.EventHandler(this.NomeCliente_TextChanged);
             this.NomeCliente.DoubleClick += new System.EventHandler(this.NomeCliente_DoubleClick);
             // 
             // label1

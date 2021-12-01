@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace crud_teste.DAO
 {
@@ -81,11 +79,12 @@ namespace crud_teste.DAO
 
 
                     cliente.IdPessoa = int.Parse(idpessoa.ToString());
-                    query = @"Insert  Into  cliente( valorlimite, idPessoa) OUTPUT INSERTED.idcliente Values(@LimiteDeCompra, @IdPessoa)";
+                    query = @"Insert  Into  cliente( valorlimite, idPessoa, LimiteRestante) OUTPUT INSERTED.idcliente Values(@LimiteDeCompra, @IdPessoa, @LimiteRestante)";
                     cliente.idCliente = int.Parse(con.ExecuteScalar(query, new
                     {
                         LimiteDeCompra = cliente.LimiteDeCompra.GetAsDouble(),
-                        IdPessoa = cliente.IdPessoa,
+                        cliente.IdPessoa,
+                        LimiteRestante = cliente.LimiteDeCompra.GetAsDecimal(),
                     }, tran).ToString()) ;
 
                     tran.Commit();
@@ -117,10 +116,11 @@ namespace crud_teste.DAO
             {
                 cliente.idCliente = (int)reader["idCliente"];
                 cliente.LimiteDeCompra = (decimal)reader["ValorLimite"];
+                cliente.LimiteRestante = (decimal)reader["LimiteRestante"];
                 cliente.IdPessoa = (int)reader["idPessoa"];
-
-
             }
+
+            cliente.LimiteAcumulado = cliente.LimiteDeCompra.GetAsDecimal() - cliente.LimiteRestante.GetAsDecimal();
 
             query = @"Select * from pessoa where IdPessoa = @IdPessoa";
             reader = con.ExecuteReader(query, cliente);

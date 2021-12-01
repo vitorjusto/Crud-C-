@@ -29,9 +29,12 @@ namespace crud_teste
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtLimiteRestante = new System.Windows.Forms.TextBox();
             this.ValorLimite = new System.Windows.Forms.TextBox();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
@@ -71,6 +74,7 @@ namespace crud_teste
             this.Excluir = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -97,6 +101,8 @@ namespace crud_teste
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtLimiteRestante);
             this.groupBox1.Controls.Add(this.ValorLimite);
             this.groupBox1.Controls.Add(this.data);
             this.groupBox1.Controls.Add(this.CPF);
@@ -116,9 +122,26 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(522, 74);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(110, 13);
+            this.label18.TabIndex = 89;
+            this.label18.Text = "Valor Limite Restante:";
+            // 
+            // txtLimiteRestante
+            // 
+            this.txtLimiteRestante.Location = new System.Drawing.Point(654, 70);
+            this.txtLimiteRestante.Name = "txtLimiteRestante";
+            this.txtLimiteRestante.ReadOnly = true;
+            this.txtLimiteRestante.Size = new System.Drawing.Size(102, 20);
+            this.txtLimiteRestante.TabIndex = 88;
+            // 
             // ValorLimite
             // 
-            this.ValorLimite.Location = new System.Drawing.Point(428, 70);
+            this.ValorLimite.Location = new System.Drawing.Point(404, 71);
             this.ValorLimite.Name = "ValorLimite";
             this.ValorLimite.Size = new System.Drawing.Size(100, 20);
             this.ValorLimite.TabIndex = 87;
@@ -170,7 +193,7 @@ namespace crud_teste
             // 
             this.Sobrenome.Location = new System.Drawing.Point(357, 32);
             this.Sobrenome.Name = "Sobrenome";
-            this.Sobrenome.Size = new System.Drawing.Size(345, 20);
+            this.Sobrenome.Size = new System.Drawing.Size(399, 20);
             this.Sobrenome.TabIndex = 51;
             // 
             // label3
@@ -282,7 +305,7 @@ namespace crud_teste
             // 
             this.Bairro.Location = new System.Drawing.Point(621, 68);
             this.Bairro.Name = "Bairro";
-            this.Bairro.Size = new System.Drawing.Size(148, 20);
+            this.Bairro.Size = new System.Drawing.Size(134, 20);
             this.Bairro.TabIndex = 72;
             // 
             // label7
@@ -409,7 +432,7 @@ namespace crud_teste
             // 
             this.Email.Location = new System.Drawing.Point(470, 19);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(299, 20);
+            this.Email.Size = new System.Drawing.Size(285, 20);
             this.Email.TabIndex = 81;
             // 
             // label14
@@ -498,6 +521,11 @@ namespace crud_teste
             this.txtAtivo.Size = new System.Drawing.Size(187, 20);
             this.txtAtivo.TabIndex = 67;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // ConsultarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -574,5 +602,8 @@ namespace crud_teste
         private System.Windows.Forms.TextBox ValorLimite;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtAtivo;
+        private System.Windows.Forms.TextBox txtLimiteRestante;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label label18;
     }
 }

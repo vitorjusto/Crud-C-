@@ -66,6 +66,8 @@ namespace crud_teste
             Bairro.Text = cliente.endereco.Bairro;
             Numero.Text = cliente.endereco.Numero.ToString();
 
+            txtLimiteRestante.Text = cliente.LimiteRestante.ToString();
+
             txtAtivo.Text = cliente.Ativo ? "Ativo" : "Não Ativo";
             Excluir.Text = cliente.Ativo ? "Desativar" : "Ativar";
         }
@@ -135,7 +137,7 @@ namespace crud_teste
             clienteglobal.contato.Telefone = Telefone.Text;
             clienteglobal.contato.Email = Email.Text;
             clienteglobal.DataDeNascimento = data.Value;
-            clienteglobal.LimiteDeCompra = double.Parse(ValorLimite.Text);
+            clienteglobal.LimiteDeCompra = ValorLimite.Text;
 
 
             clienteglobal.contato.Celular = Celular.Text;
@@ -163,6 +165,9 @@ namespace crud_teste
         private void ValorLimite_Leave(object sender, EventArgs e)
         {
             ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
+            clienteglobal.LimiteDeCompra = ValorLimite.Text;
+            clienteglobal.CalcularRestante();
+            txtLimiteRestante.Text = clienteglobal.LimiteRestante.ToString();
         }
     }
       
