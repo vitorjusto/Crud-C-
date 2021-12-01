@@ -286,7 +286,12 @@ namespace crud_teste.DAO
         {
             using (con)
             {
-                var query = @"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where ativo = 1 and Estoque > 0";
+                var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
+                              Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
+                              Sum(precoLiquido) as 'TotalLiquido',
+                              Sum(c.precoDeCusto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' from Produto p 
+                              inner join Carrinho c on c.idProduto = p.idProduto 
+                              GROUP BY p.IdProduto, p.NomeProduto, p.Ativo; ";
                 var resultado = con.Query<RelatorioProdutosVendaListagem>(query);
                 return resultado.ToList();
 

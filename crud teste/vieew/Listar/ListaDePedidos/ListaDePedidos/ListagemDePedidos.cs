@@ -1,6 +1,5 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model.Listagem;
-using crud_teste.Model.Object_Values;
 using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
 using System;
 using System.Collections.Generic;
@@ -122,7 +121,12 @@ namespace crud_teste.vieew.ListaDePedidos
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            new RelatorioDeProdutos().Show();
+            new RelatorioDosProdutos().Show();
+        }
+
+        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

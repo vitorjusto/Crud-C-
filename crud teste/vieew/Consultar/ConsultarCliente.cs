@@ -165,6 +165,11 @@ namespace crud_teste
         private void ValorLimite_Leave(object sender, EventArgs e)
         {
             ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
+            
+        }
+
+        private void ValorLimite_TextChanged(object sender, EventArgs e)
+        {
             clienteglobal.LimiteDeCompra = ValorLimite.Text;
             clienteglobal.CalcularRestante();
             txtLimiteRestante.Text = clienteglobal.LimiteRestante.ToString();

@@ -12,7 +12,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
         public AlterarEstoque(ProdutoListagem produto)
         {
             InitializeComponent();
-            Global.AtribuirTema(this);
+            
             Produto = produto;
             nudEstoque.Value = Produto.Estoque;
 
@@ -20,7 +20,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
 
         private void AlterarEstoque_Load(object sender, EventArgs e)
         {
-
+            Global.AtribuirTema(this);
         }
 
         private void button2_Click(object sender, EventArgs e)

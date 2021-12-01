@@ -153,5 +153,9 @@ namespace crud_teste.vieew
             }
         }
 
+        private void ListarProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

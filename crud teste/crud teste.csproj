@@ -117,17 +117,17 @@
     <Compile Include="vieew\Listar\ListaDePedidos\ConsultarVenda.Designer.cs">
       <DependentUpon>ConsultarVenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\ListagemDePedidos.cs">
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\ListagemDePedidos.Designer.cs">
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.Designer.cs">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\RelatorioDeProdutos.cs">
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDosProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\RelatorioDeProdutos.Designer.cs">
-      <DependentUpon>RelatorioDeProdutos.cs</DependentUpon>
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDosProdutos.Designer.cs">
+      <DependentUpon>RelatorioDosProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="vieew\Listar\ListaDePedidos\ListarItens.cs">
       <SubType>Form</SubType>
@@ -236,11 +236,11 @@
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ConsultarVenda.resx">
       <DependentUpon>ConsultarVenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\ListagemDePedidos.resx">
+    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.resx">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListagemDePedidos\RelatorioDeProdutos.resx">
-      <DependentUpon>RelatorioDeProdutos.cs</DependentUpon>
+    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDosProdutos.resx">
+      <DependentUpon>RelatorioDosProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListarItens.resx">
       <DependentUpon>ListarItens.cs</DependentUpon>

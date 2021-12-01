@@ -145,6 +145,7 @@ namespace crud_teste
             this.ValorLimite.Name = "ValorLimite";
             this.ValorLimite.Size = new System.Drawing.Size(100, 20);
             this.ValorLimite.TabIndex = 87;
+            this.ValorLimite.TextChanged += new System.EventHandler(this.ValorLimite_TextChanged);
             this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
             this.ValorLimite.Leave += new System.EventHandler(this.ValorLimite_Leave);
             // 

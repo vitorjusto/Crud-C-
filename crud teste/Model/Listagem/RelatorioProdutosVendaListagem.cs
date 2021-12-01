@@ -9,6 +9,7 @@ namespace crud_teste.Model.Listagem
 {
     public class RelatorioProdutosVendaListagem
     { 
+        public int idProduto { get; set; }
         public string nomeProduto { get; set; }
 
         public long Quantidade { get; set; }
@@ -19,8 +20,12 @@ namespace crud_teste.Model.Listagem
         public MyDinheiro TotalLiquido { get; set; }
         public MyDinheiro TotalCusto { get; set; }
 
-        public MyPorcento LucroEmPorcento { get; set; }
-        public MyDinheiro LucroEmDinheiro { get; set; }
+        public MyDinheiro TotalPrecoDeVenda { get; set; }
+
+        public MyPorcento LucroEmPorcento { get => (( TotalPrecoDeVenda.GetAsDecimal() - TotalCusto.GetAsDecimal()) / TotalCusto.GetAsDecimal()) * 100; }
+        public MyDinheiro LucroEmDinheiro { get => TotalPrecoDeVenda.GetAsDecimal() - TotalCusto.GetAsDecimal(); }
+
+        public bool Ativo { get; set; }
 
         public RelatorioProdutosVendaListagem()
         {
@@ -28,8 +33,6 @@ namespace crud_teste.Model.Listagem
             Desconto = new MyDinheiro();
             TotalLiquido = new MyDinheiro();
             TotalCusto = new MyDinheiro();
-            LucroEmDinheiro = new MyDinheiro();
-            LucroEmPorcento = new MyPorcento();
         }
     }
 }

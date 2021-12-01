@@ -179,10 +179,11 @@ namespace crud_teste.DAO
                 {
 
 
-                    var query = @"update cliente set Valorlimite = @LimiteDeCompra  where idCliente = @idCliente";
+                    var query = @"update cliente set Valorlimite = @LimiteDeCompra, LimiteRestante = @LimiteRestante  where idCliente = @idCliente";
                     con.Execute(query, new
                     {
                         LimiteDeCompra = cliente.LimiteDeCompra.GetAsDouble(),
+                        LimiteRestante = cliente.LimiteRestante.GetAsDouble(),
                         idCliente = cliente.idCliente,
                     }, tran);
 
