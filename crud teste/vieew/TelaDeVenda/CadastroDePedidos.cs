@@ -262,6 +262,7 @@ namespace crud_teste.vieew
                     if (MessageBox.Show("Deseja Mesmo Efetuar Venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         AlterarVenda alterarvenda = new AlterarVenda();
+                        venda.DiaDaVenda = DateTime.Now;
                         alterarvenda.cadastrar(venda);
                         MessageBox.Show("venda efetuada com sucesso!");
                         LimparVenda();

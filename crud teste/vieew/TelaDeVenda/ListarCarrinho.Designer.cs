@@ -46,6 +46,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // dataGridCarrinho
             // 
+            this.dataGridCarrinho.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridCarrinho.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCarrinho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

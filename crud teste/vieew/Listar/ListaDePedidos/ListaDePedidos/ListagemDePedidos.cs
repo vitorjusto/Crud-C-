@@ -15,6 +15,15 @@ namespace crud_teste.vieew.ListaDePedidos
 
         public AlterarVenda oAlterar = new AlterarVenda();
 
+        public struct pesquisar
+        {
+            public string nomeCliente { get; set; }
+            public string nomeColaborador { get; set; }
+            public string nomeProduto { get; set; }
+            public DateTime dataInicial { get; set; }
+            public DateTime dataFinal { get; set; }
+        }
+
         public struct ValoresTotais
         {
             public List<PedidoListagem> pedidosAtivos { get; set; }
@@ -29,7 +38,6 @@ namespace crud_teste.vieew.ListaDePedidos
 
         };
 
-        private ValoresTotais valoresTotais = new ValoresTotais();
        
         public ListagemDePedidos()
         {
@@ -39,6 +47,12 @@ namespace crud_teste.vieew.ListaDePedidos
 
             pedidos = oAlterar.Listar();
 
+            ListarECalcularValores();
+        }
+
+        private void ListarECalcularValores()
+        {
+
 
             DataGridViewCellStyle vendainativa = new DataGridViewCellStyle();
             vendainativa.BackColor = Color.SlateGray;
@@ -46,27 +60,29 @@ namespace crud_teste.vieew.ListaDePedidos
 
             ValoresTotais valoresTotais = new ValoresTotais();
             valoresTotais.pedidosAtivos = new List<PedidoListagem>();
-           
+            ListarPedidos.Rows.Clear();
             var index = 0;
-            foreach(var pedido in pedidos)
+            foreach (var pedido in pedidos)
             {
                 ListarPedidos.Rows.Add();
                 ListarPedidos.Rows[index].Cells[0].Value = pedido.IdVenda;
                 ListarPedidos.Rows[index].Cells[1].Value = pedido.NomeCompletoCliente();
                 ListarPedidos.Rows[index].Cells[2].Value = pedido.NomeCompletoColaborador();
                 ListarPedidos.Rows[index].Cells[3].Value = pedido.TipoDeVenda;
-                ListarPedidos.Rows[index].Cells[4].Value = pedido.MesesAPrazo == 0? "-": pedido.MesesAPrazo.ToString();
+                ListarPedidos.Rows[index].Cells[4].Value = pedido.MesesAPrazo == 0 ? "-" : pedido.MesesAPrazo.ToString();
                 ListarPedidos.Rows[index].Cells[5].Value = pedido.TotalBruto.GetAsString();
                 ListarPedidos.Rows[index].Cells[6].Value = pedido.TotalDeDesconto.GetAsString();
                 ListarPedidos.Rows[index].Cells[7].Value = pedido.TotalLiquido.GetAsString();
                 ListarPedidos.Rows[index].Cells[8].Value = pedido.quantidadeunitario;
                 ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
+                ListarPedidos.Rows[index].Cells[10].Value = pedido.DiaDavenda.ToString("dd/MM/yyyy");
 
 
                 if (pedido.ativo)
                 {
                     valoresTotais.pedidosAtivos.Add(pedido);
-                }else
+                }
+                else
                 {
                     var j = 0;
                     while (j < 10)
@@ -83,21 +99,20 @@ namespace crud_teste.vieew.ListaDePedidos
             ListarPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ListarPedidos.AllowUserToAddRows = false;
-           
+
             NumeroDePedidos.Text = pedidos.Count().ToString();
             txtTotalBruto.Text = valoresTotais.totalBruto.ToString("C2");
             txtDesconto.Text = valoresTotais.totalDesconto.ToString("C2");
             txtTotalGasto.Text = valoresTotais.totalGasto.ToString("C2");
             txttotalLiquido.Text = valoresTotais.totalReceita.ToString("C2");
-            txtLucro.Text = valoresTotais.lucro.ToString("C2"); 
-            
-            if(valoresTotais.lucro > 0)
+            txtLucro.Text = valoresTotais.lucro.ToString("C2");
+
+            if (valoresTotais.lucro > 0)
                 txtLucro.ForeColor = Color.Green;
-            else if(valoresTotais.lucro < 0)
+            else if (valoresTotais.lucro < 0)
                 txtLucro.ForeColor = Color.Red;
             else
                 txtLucro.ForeColor = Global.FontColor;
-
         }
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,9 +139,19 @@ namespace crud_teste.vieew.ListaDePedidos
             new RelatorioDosProdutos().Show();
         }
 
-        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            pesquisar pesquisa = new pesquisar();
 
+            pesquisa.nomeCliente = txtCliente.Text;
+            pesquisa.nomeColaborador = txtColaborador.Text;
+            pesquisa.nomeProduto = txtProduto.Text;
+            pesquisa.dataInicial = dtpDataInicial.Value;
+            pesquisa.dataFinal = dtpDataFinal.Value;
+
+            pedidos = oAlterar.Listar(pesquisa);
+            ListarECalcularValores();
         }
+
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static crud_teste.vieew.ListaDePedidos.ListagemDePedidos;
 
 namespace crud_teste.controller
 {
@@ -61,5 +62,13 @@ namespace crud_teste.controller
         {
             stmt.MudarAtivacao(venda);
         }
+
+        public List<PedidoListagem> Listar(pesquisar pesquisa)
+        {
+
+            var pedidos = stmt.ListarPedidos(pesquisa);
+            return pedidos;
+        }
+
     }
 }

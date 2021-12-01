@@ -26,7 +26,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         }
 
-        private void preencherDataGrid(bool comAtivo)
+        private void PreencherDataGrid(bool comAtivo)
         {
             DataGridViewCellStyle  produtoinativo = new DataGridViewCellStyle();
             produtoinativo.BackColor = Color.SlateGray;
@@ -66,38 +66,25 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             DataGridRelatorioDeProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void calcularLucros(bool comInativo)
+        private void CalcularLucros(bool comInativo)
         {
-            if (comInativo)
-            {
-                txtMaisLucrativoTotal.Text = _produtos.Max(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-                txtMaisLucrativo.Text = _produtos.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).First().nomeProduto;
+            var lista = _produtos;
 
-                txtMaisVendidaTotal.Text = _produtos.Max(x => x.Quantidade).ToString();
-                txtMaisVendido.Text = _produtos.OrderByDescending(x => x.Quantidade).First().nomeProduto;
+            if (!comInativo)
+                lista = lista.Where(x => x.Ativo).ToList();
 
+            txtMaisLucrativoTotal.Text = lista.Max(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
+            txtMaisLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).First().nomeProduto;
 
-                txtMenosLucrativoTotal.Text = _produtos.Min(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-                txtMenosLucrativo.Text = _produtos.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).Last().nomeProduto;
-
-                txtMenosVendidaTotal.Text = _produtos.Min(x => x.Quantidade).ToString();
-                txtMenosVendido.Text = _produtos.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
-            }
-            else
-            {
-                txtMaisLucrativoTotal.Text = _produtos.Where(x => x.Ativo).Max(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-                txtMaisLucrativo.Text = _produtos.Where(x => x.Ativo).OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).First().nomeProduto;
-
-                txtMaisVendidaTotal.Text = _produtos.Where(x => x.Ativo).Max(x => x.Quantidade).ToString();
-                txtMaisVendido.Text = _produtos.Where(x => x.Ativo).OrderByDescending(x => x.Quantidade).First().nomeProduto;
+            txtMaisVendidaTotal.Text = lista.Max(x => x.Quantidade).ToString();
+            txtMaisVendido.Text = lista.OrderByDescending(x => x.Quantidade).First().nomeProduto;
 
 
-                txtMenosLucrativoTotal.Text = _produtos.Where(x => x.Ativo).Min(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-                txtMenosLucrativo.Text = _produtos.Where(x => x.Ativo).OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).Last().nomeProduto;
+            txtMenosLucrativoTotal.Text = lista.Min(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
+            txtMenosLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).Last().nomeProduto;
 
-                txtMenosVendidaTotal.Text = _produtos.Where(x => x.Ativo).Min(x => x.Quantidade).ToString();
-                txtMenosVendido.Text = _produtos.Where(x => x.Ativo).OrderByDescending(x => x.Quantidade).Last().nomeProduto;
-            }
+            txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
+            txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
 
         }
 
@@ -106,11 +93,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         private void RelatorioDosProdutos_Load(object sender, EventArgs e)
         {
             Global.AtribuirTema(this);
-            preencherDataGrid(false);
-            calcularLucros(false);
+            PreencherDataGrid(false);
+            CalcularLucros(false);
         }
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void VoltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
             new vieew.ListaDePedidos.ListagemDePedidos().Show();
@@ -118,7 +105,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            preencherDataGrid(checkBox1.Checked);
+            PreencherDataGrid(checkBox1.Checked);
             if(checkBox1.Checked)
             {
                 checkBox2.Visible = true;
@@ -126,14 +113,14 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             {
                 checkBox2.Visible = false;
                 checkBox2.Checked = false;
-                calcularLucros(false);
+                CalcularLucros(false);
             }
 
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            calcularLucros(checkBox2.Checked);
+            CalcularLucros(checkBox2.Checked);
         }
     }
 }

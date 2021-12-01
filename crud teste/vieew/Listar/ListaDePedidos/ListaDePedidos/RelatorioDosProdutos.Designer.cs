@@ -305,7 +305,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.DataGridRelatorioDeProduto.AllowUserToDeleteRows = false;
             this.DataGridRelatorioDeProduto.AllowUserToResizeColumns = false;
             this.DataGridRelatorioDeProduto.AllowUserToResizeRows = false;
-            this.DataGridRelatorioDeProduto.BackgroundColor = System.Drawing.Color.White;
+            this.DataGridRelatorioDeProduto.BackgroundColor = System.Drawing.Color.DimGray;
             this.DataGridRelatorioDeProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridRelatorioDeProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdProduto,
@@ -340,7 +340,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
             this.voltarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.voltarToolStripMenuItem.Text = "Voltar";
-            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.VoltarToolStripMenuItem_Click);
             // 
             // checkBox1
             // 

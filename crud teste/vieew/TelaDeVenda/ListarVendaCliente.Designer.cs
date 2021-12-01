@@ -79,6 +79,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // dataGridGeral
             // 
+            this.dataGridGeral.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridGeral.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridGeral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridGeral.Location = new System.Drawing.Point(12, 128);

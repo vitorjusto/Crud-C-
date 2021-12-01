@@ -77,6 +77,7 @@ namespace crud_teste.vieew
             // 
             // dataGridColaboradores
             // 
+            this.dataGridColaboradores.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridColaboradores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridColaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridColaboradores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

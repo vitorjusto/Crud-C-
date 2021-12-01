@@ -26,6 +26,8 @@ namespace crud_teste.Model
         public int QuantidadeUnitario{ get => Pedido_Produto.Count; }
         public string TipoDeVenda{ get; set; }
 
+        public DateTime DiaDaVenda { get; set; }
+
         public MyDinheiro DescontoAVIsta = new MyDinheiro();
 
         public List<Pedido_Produto> Pedido_Produto = new List<Pedido_Produto>();

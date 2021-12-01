@@ -1,4 +1,5 @@
 ﻿using crud_teste.Model.Object_Values;
+using System;
 using System.Collections.Generic;
 
 
@@ -7,8 +8,6 @@ namespace crud_teste.Model.Listagem
     public class PedidoListagem
     {
         public List<Pedido_Produto> carrinhos = new List<Pedido_Produto>();
-
-
 
          public MyDinheiro TotalBruto
         {
@@ -35,13 +34,14 @@ namespace crud_teste.Model.Listagem
 
         public string SobrenomeColaborador { get; set; }
 
-
         public   string nomeCliente { get; set; }
 
         public string sobrenomeCliente { get; set; }
 
         public long quantidadeunitario { get; set; }
         public long QuantidadeTotal { get; set; }
+
+        public DateTime DiaDavenda { get; set; }
 
         public float TotalGasto()
         {

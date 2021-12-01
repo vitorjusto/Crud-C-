@@ -48,6 +48,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // dataGridCarrinho
             // 
             this.dataGridCarrinho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridCarrinho.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridCarrinho.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCarrinho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

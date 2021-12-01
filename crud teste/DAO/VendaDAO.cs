@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-
+using static crud_teste.vieew.ListaDePedidos.ListagemDePedidos;
 
 namespace crud_teste.DAO
 {
@@ -24,8 +24,8 @@ namespace crud_teste.DAO
         {
 
 
-            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista) OUTPUT INSERTED.idVenda 
-                          Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista)";
+            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista, DiaDaVenda) OUTPUT INSERTED.idVenda 
+                          Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista, @DiaDaVenda)";
             var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
@@ -44,9 +44,10 @@ namespace crud_teste.DAO
                     quantidadedetotal = venda.QuantidadeDeTotal,
                     quantidadeunitario = venda.QuantidadeUnitario,
                     tipodevenda = venda.TipoDeVenda,
-                    idCliente = venda.cliente.idCliente,
+                    venda.cliente.idCliente,
                     IdColaborador = venda.colaborador.idColaborador,
                     DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
+                    venda.DiaDaVenda,
                 }
                 , tran).ToString());
                 
@@ -212,22 +213,15 @@ namespace crud_teste.DAO
             {
 
                 var query = @"select idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
-                            v.idCliente, v.idColaborador, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
+                            v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
                             P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador', v.ativo
                             from Venda v
                             Left outer join cliente Cl on Cl.idCliente = v.idCliente Left outer join pessoa P on Cl.IdPessoa = P.idPessoa
                             Left outer join Colaborador Co on Co.idColaborador = v.idColaborador Left outer join pessoa P2 on Co.IdPessoa = P2.idPessoa";
 
-
-
                 con.Open();
                 resultados = con.Query<PedidoListagem>(query).ToList();
                 con.Close();
-
-
-               
-
-
 
                 query = "select * from Carrinho where idVenda = @idVenda";
                 var index = 0;
@@ -240,12 +234,49 @@ namespace crud_teste.DAO
                         idVenda = resultado.IdVenda,
                     }).ToList() ;
                 }
-                
                 con.Close();
+                return resultados;
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                throw new Exception(ex.Message);
+            }
 
-                
+        }
 
+        public List<PedidoListagem> ListarPedidos(pesquisar pesquisa)
+        {
+            List<PedidoListagem> resultados = new List<PedidoListagem>();
+            try
+            {
 
+                var query = @"
+                            select v.idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
+                            v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
+                            P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador', v.ativo
+
+                            from Venda v 
+                            inner join cliente Cl on Cl.idCliente = v.idCliente inner join pessoa P on Cl.IdPessoa = P.idPessoa
+                            inner join Colaborador Co on Co.idColaborador = v.idColaborador inner join pessoa P2 on Co.IdPessoa = P2.idPessoa
+							inner join Carrinho ca on ca.idVenda = v.IdVenda inner join Produto pr on pr.IdProduto = ca.idProduto
+
+							where  P.nome like '@NomeCliente%' and P2.nome like '@NomeColaborador%' and pr.NomeProduto like '@NomeProduto%'
+							and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
+
+							group By v.idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
+                            v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome, P.Sobrenome,
+                            P2.Nome, P2.Sobrenome, v.ativo";
+                con.Open();
+                resultados = con.Query<PedidoListagem>(query, new
+                {
+                    NomeCliente = pesquisa.nomeCliente,
+                    NomeColaborador = pesquisa.nomeColaborador,
+                    NomeProduto = pesquisa.nomeProduto,
+                    DataInicial = pesquisa.dataInicial.ToString("yyyy/MM/dd"),
+                    DataFinal = pesquisa.dataFinal.ToString("yyyy/MM/dd"),
+                }).ToList();
+                con.Close();
 
                 return resultados;
             }
