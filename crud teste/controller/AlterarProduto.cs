@@ -91,5 +91,13 @@ namespace crud_teste.controller
             return resultado;
         }
 
+
+        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos(string nome, string produto, DateTime DataInicial, DateTime DataFinal)
+        {
+            var stmt = new DAOProduto();
+            var resultado = stmt.RelatorioDeVendaDosProdutos(nome, produto, DataInicial, DataFinal);
+
+            return resultado;
+        }
     }
 }

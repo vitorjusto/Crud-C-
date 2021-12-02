@@ -62,6 +62,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +82,7 @@
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\DAOProduto.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
+    <Compile Include="Model\Listagem\RelatorioClienteListagem.cs" />
     <Compile Include="Model\Listagem\RelatorioProdutosVendaListagem.cs" />
     <Compile Include="Model\Object Values\MyPorcento.cs" />
     <Compile Include="Model\Pedido_Produto.cs" />
@@ -122,6 +124,12 @@
     </Compile>
     <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.Designer.cs">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDoClientes.Designer.cs">
+      <DependentUpon>RelatorioDoClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDosProdutos.cs">
       <SubType>Form</SubType>
@@ -238,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.resx">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDoClientes.resx">
+      <DependentUpon>RelatorioDoClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\RelatorioDosProdutos.resx">
       <DependentUpon>RelatorioDosProdutos.cs</DependentUpon>

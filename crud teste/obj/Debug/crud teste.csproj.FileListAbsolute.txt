@@ -102,3 +102,4 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.ListaDeP
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.ListaDePedidos.ListarItens.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListarProduto.AlterarEstoque.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos.resources
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes.resources

@@ -63,10 +63,21 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtProduto = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridRelatorioDeProduto)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMenosVendido
@@ -253,51 +264,61 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // 
             this.LucroEmDinheiro.HeaderText = "Lucro (R$)";
             this.LucroEmDinheiro.Name = "LucroEmDinheiro";
+            this.LucroEmDinheiro.ReadOnly = true;
             // 
             // LucroEmPorcento
             // 
             this.LucroEmPorcento.HeaderText = "Lucro (%)";
             this.LucroEmPorcento.Name = "LucroEmPorcento";
+            this.LucroEmPorcento.ReadOnly = true;
             // 
             // PrecoVenda
             // 
             this.PrecoVenda.HeaderText = "Total Preco De Venda";
             this.PrecoVenda.Name = "PrecoVenda";
+            this.PrecoVenda.ReadOnly = true;
             // 
             // TotalCusto
             // 
             this.TotalCusto.HeaderText = "Total De Custo";
             this.TotalCusto.Name = "TotalCusto";
+            this.TotalCusto.ReadOnly = true;
             // 
             // TotalLiquido
             // 
             this.TotalLiquido.HeaderText = "Total Liquido";
             this.TotalLiquido.Name = "TotalLiquido";
+            this.TotalLiquido.ReadOnly = true;
             // 
             // TotalDesconto
             // 
             this.TotalDesconto.HeaderText = "Total De Desconto";
             this.TotalDesconto.Name = "TotalDesconto";
+            this.TotalDesconto.ReadOnly = true;
             // 
             // TotalBruto
             // 
             this.TotalBruto.HeaderText = "Total Bruto";
             this.TotalBruto.Name = "TotalBruto";
+            this.TotalBruto.ReadOnly = true;
             // 
             // Quantidade
             // 
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
             // 
             // nomeProduto
             // 
             this.nomeProduto.HeaderText = "Nome Do Produto";
             this.nomeProduto.Name = "nomeProduto";
+            this.nomeProduto.ReadOnly = true;
             // 
             // IdProduto
             // 
             this.IdProduto.HeaderText = "Id Do Produto";
             this.IdProduto.Name = "IdProduto";
+            this.IdProduto.ReadOnly = true;
             // 
             // DataGridRelatorioDeProduto
             // 
@@ -318,11 +339,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.PrecoVenda,
             this.LucroEmPorcento,
             this.LucroEmDinheiro});
-            this.DataGridRelatorioDeProduto.Location = new System.Drawing.Point(31, 39);
+            this.DataGridRelatorioDeProduto.Location = new System.Drawing.Point(31, 140);
             this.DataGridRelatorioDeProduto.Name = "DataGridRelatorioDeProduto";
             this.DataGridRelatorioDeProduto.ReadOnly = true;
             this.DataGridRelatorioDeProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridRelatorioDeProduto.Size = new System.Drawing.Size(1058, 327);
+            this.DataGridRelatorioDeProduto.Size = new System.Drawing.Size(1058, 226);
             this.DataGridRelatorioDeProduto.TabIndex = 12;
             // 
             // menuStrip1
@@ -365,11 +386,109 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.checkBox2.Visible = false;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtProduto);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.txtCliente);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.dtpDataFinal);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.dtpDataInicial);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Location = new System.Drawing.Point(31, 27);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1046, 107);
+            this.groupBox4.TabIndex = 42;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "groupBox4";
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(54, 45);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(150, 20);
+            this.txtCliente.TabIndex = 14;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(855, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(174, 68);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Pesquisar o Produto";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(610, 48);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Data Final: ";
+            // 
+            // dtpDataFinal
+            // 
+            this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataFinal.Location = new System.Drawing.Point(681, 45);
+            this.dtpDataFinal.Name = "dtpDataFinal";
+            this.dtpDataFinal.Size = new System.Drawing.Size(96, 20);
+            this.dtpDataFinal.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(432, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Data Inicial: ";
+            // 
+            // dtpDataInicial
+            // 
+            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataInicial.Location = new System.Drawing.Point(504, 45);
+            this.dtpDataInicial.Name = "dtpDataInicial";
+            this.dtpDataInicial.Size = new System.Drawing.Size(100, 20);
+            this.dtpDataInicial.TabIndex = 15;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 13);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Cliente: ";
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.Location = new System.Drawing.Point(263, 45);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.Size = new System.Drawing.Size(150, 20);
+            this.txtProduto.TabIndex = 42;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(212, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "Produto:";
+            // 
             // RelatorioDosProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 561);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.DataGridRelatorioDeProduto);
@@ -378,6 +497,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "RelatorioDosProdutos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RelatorioDosProdutos";
             this.Load += new System.EventHandler(this.RelatorioDosProdutos_Load);
             this.groupBox2.ResumeLayout(false);
@@ -387,6 +507,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             ((System.ComponentModel.ISupportInitialize)(this.DataGridRelatorioDeProduto)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +549,15 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtProduto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker dtpDataFinal;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpDataInicial;
+        private System.Windows.Forms.Label label13;
     }
 }

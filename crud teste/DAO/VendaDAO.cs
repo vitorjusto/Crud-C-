@@ -261,7 +261,7 @@ namespace crud_teste.DAO
                             inner join Colaborador Co on Co.idColaborador = v.idColaborador inner join pessoa P2 on Co.IdPessoa = P2.idPessoa
 							inner join Carrinho ca on ca.idVenda = v.IdVenda inner join Produto pr on pr.IdProduto = ca.idProduto
 
-							where  P.nome like '@NomeCliente%' and P2.nome like '@NomeColaborador%' and pr.NomeProduto like '@NomeProduto%'
+							where  P.nome like @NomeCliente + '%' and P2.nome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%'
 							and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
 
 							group By v.idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
@@ -273,8 +273,8 @@ namespace crud_teste.DAO
                     NomeCliente = pesquisa.nomeCliente,
                     NomeColaborador = pesquisa.nomeColaborador,
                     NomeProduto = pesquisa.nomeProduto,
-                    DataInicial = pesquisa.dataInicial.ToString("yyyy/MM/dd"),
-                    DataFinal = pesquisa.dataFinal.ToString("yyyy/MM/dd"),
+                    DataInicial = pesquisa.dataInicial.ToString("dd/MM/yyyy"),
+                    DataFinal = pesquisa.dataFinal.ToString("dd/MM/yyyy"),
                 }).ToList();
                 con.Close();
 

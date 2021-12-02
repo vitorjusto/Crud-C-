@@ -1,5 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model.Listagem;
+using crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos;
 using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
 using System;
 using System.Collections.Generic;
@@ -153,5 +154,10 @@ namespace crud_teste.vieew.ListaDePedidos
             ListarECalcularValores();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new RelatorioDoClientes().Show();
+        }
     }
 }

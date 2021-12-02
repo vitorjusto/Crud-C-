@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using crud_teste.DAO;
 using crud_teste.Model;
+using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
+using static crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes;
+
 namespace crud_teste.controller
 {
     public class AlterarCliente
@@ -72,6 +76,18 @@ namespace crud_teste.controller
         {
             ClienteDAO stmt = new ClienteDAO();
             stmt.AlterarAtivo(cliente);
+        }
+
+        public List<RelatorioClienteListagem> RelatorioDeVenda()
+        {
+            ClienteDAO stmt = new ClienteDAO();
+            return stmt.RelatorioDeVenda();
+        }
+
+        public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
+        {
+            ClienteDAO stmt = new ClienteDAO();
+            return stmt.RelatorioDeVenda(pesquisa);
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using crud_teste.Model;
+using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
 using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using static crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes;
 
 namespace crud_teste.DAO
 {
@@ -431,6 +433,59 @@ namespace crud_teste.DAO
 
             }
 
+        }
+
+        public List<RelatorioClienteListagem> RelatorioDeVenda()
+        {
+            using (con)
+            {
+                var query = @"select c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
+                            SUM(V.quantidadetotal) as 'QuantidadeTotal',
+                            SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
+                            sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
+                            c.LimiteRestante, p.Ativo
+                            from cliente c
+                            inner join pessoa p on p.idPessoa = c.IdPessoa
+                            inner join Venda v on v.idCliente = c.idCliente
+                            group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
+                
+                var resultado = con.Query<RelatorioClienteListagem>(query);
+                return resultado.ToList();
+            }
+        }
+
+        
+
+         public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
+        {
+            using (con)
+            {
+                var query = @"select c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
+                            SUM(V.quantidadetotal) as 'QuantidadeTotal',
+                            SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
+                            sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
+                            c.LimiteRestante, p.Ativo
+
+                            from cliente c
+                            inner join pessoa p on p.idPessoa = c.IdPessoa
+                            inner join Venda v on v.idCliente = c.idCliente
+
+                            where nome like @Nome + '%' and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
+                            
+                            group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo
+
+                            order by @Tipo @Crescente";
+
+                var resultado = con.Query<RelatorioClienteListagem>(query, new
+                {
+                    pesquisa.Nome,
+                    DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
+                    DataFinal = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
+                    Tipo = pesquisa.OrdernarPor,
+                    Crescente = pesquisa.crescente,
+                }) ;
+                return resultado.ToList();
+            }
         }
     }
 }

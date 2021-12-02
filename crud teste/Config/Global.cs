@@ -72,7 +72,22 @@ namespace crud_teste
                 GroupBoxBackColor = Color.FromArgb(245, 247, 247);
             }
         }
-        
+        public static void SetDataGridTema(DataGridView control)
+        {
+            control.BackgroundColor = BackgroundColor;
+            control.BorderStyle = BorderStyle.None;
+
+
+            control.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            control.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        public static void SetComboBoxTema(ComboBox control)
+        {
+            control.SelectedIndex = 0;
+            control.ForeColor = FontColor;
+            control.BackColor = TextBoxBackColor;
+        }
 
         public static void AlterarTemaSozinho(Control control)
         {
@@ -97,17 +112,22 @@ namespace crud_teste
                 }
 
             }
-            else if(control is TextBox || control is MaskedTextBox || control is ComboBox || control is DateTimePicker || control is NumericUpDown)
+            else if(control is TextBox || control is MaskedTextBox || control is DateTimePicker || control is NumericUpDown)
             {
                 control.ForeColor = FontColor;
                 control.BackColor = TextBoxBackColor;
+            }else if(control is DataGridView)
+            {
+                SetDataGridTema((DataGridView)control);
+            }else if(control is ComboBox)
+            {
+                SetComboBoxTema((ComboBox)control);
             }
         }
 
         public static void AtribuirTema(Control controls)
         {
             controls.BackColor = BackgroundColor;
-
             for(int i = 0; i < controls.Controls.Count; i++)
             {
                 AlterarTemaSozinho(controls.Controls[i]);

@@ -68,6 +68,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button2 = new System.Windows.Forms.Button();
             this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -298,12 +299,13 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 76);
             this.button1.TabIndex = 25;
-            this.button1.Text = "Relatorio de Produtos";
+            this.button1.Text = "Relatorio dos Produtos";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label3);
@@ -419,6 +421,19 @@ namespace crud_teste.vieew.ListaDePedidos
             this.dtpDataFinal.Size = new System.Drawing.Size(117, 20);
             this.dtpDataFinal.TabIndex = 41;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(261, 98);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(177, 76);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "Relatorio dos Clientes";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ListagemDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,5 +508,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataFinal;
+        private System.Windows.Forms.Button button3;
     }
 }

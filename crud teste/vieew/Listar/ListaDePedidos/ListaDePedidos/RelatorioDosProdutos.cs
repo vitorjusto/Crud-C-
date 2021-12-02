@@ -62,29 +62,44 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 }
                 index++;
             }
-            DataGridRelatorioDeProduto.AllowUserToAddRows = false;
-            DataGridRelatorioDeProduto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void CalcularLucros(bool comInativo)
         {
             var lista = _produtos;
+            if (lista.Count != 0)
+            {
+                if (!comInativo)
+                    lista = lista.Where(x => x.Ativo).ToList();
 
-            if (!comInativo)
-                lista = lista.Where(x => x.Ativo).ToList();
+                txtMaisLucrativoTotal.Text = lista.Max(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
+                txtMaisLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).First().nomeProduto;
 
-            txtMaisLucrativoTotal.Text = lista.Max(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-            txtMaisLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).First().nomeProduto;
-
-            txtMaisVendidaTotal.Text = lista.Max(x => x.Quantidade).ToString();
-            txtMaisVendido.Text = lista.OrderByDescending(x => x.Quantidade).First().nomeProduto;
+                txtMaisVendidaTotal.Text = lista.Max(x => x.Quantidade).ToString();
+                txtMaisVendido.Text = lista.OrderByDescending(x => x.Quantidade).First().nomeProduto;
 
 
-            txtMenosLucrativoTotal.Text = lista.Min(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
-            txtMenosLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).Last().nomeProduto;
+                txtMenosLucrativoTotal.Text = lista.Min(x => x.LucroEmDinheiro.GetAsDecimal()).ToString("C");
+                txtMenosLucrativo.Text = lista.OrderByDescending(x => x.LucroEmDinheiro.GetAsDecimal()).Last().nomeProduto;
 
-            txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
-            txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
+                txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
+                txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
+            }
+            else
+            {
+                txtMaisLucrativoTotal.Text = "";
+                txtMaisLucrativo.Text = "";
+
+                txtMaisVendidaTotal.Text = "";
+                txtMaisVendido.Text = "";
+
+                txtMenosLucrativoTotal.Text = "";
+                txtMenosLucrativo.Text = "";
+
+                txtMenosVendidaTotal.Text = "";
+                txtMenosVendido.Text = "";
+            }
 
         }
 
@@ -120,6 +135,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
+            CalcularLucros(checkBox2.Checked);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _produtos = oAlterar.RelatorioDeVendaDosProdutos(txtCliente.Text, txtProduto.Text, dtpDataInicial.Value, dtpDataFinal.Value);
+            PreencherDataGrid(checkBox1.Checked);
             CalcularLucros(checkBox2.Checked);
         }
     }
