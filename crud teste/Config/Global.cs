@@ -89,12 +89,36 @@ namespace crud_teste
             control.BackColor = TextBoxBackColor;
         }
 
+        public static void SetTextBoxTema(TextBox control)
+        {
+            control.ForeColor = FontColor;
+            control.BackColor = TextBoxBackColor;
+            control.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        public static void SetMenuStripTema(MenuStrip control)
+        {
+
+            control.BackColor = Strip;
+            control.ForeColor = FontColor;
+
+            foreach (var item in control.Items)
+            {
+                SetMenuStripTema((ToolStripMenuItem)item);
+            }
+
+        }
+
+        public static void SetMenuStripTema(ToolStripMenuItem control)
+        {
+            
+        }
+
         public static void AlterarTemaSozinho(Control control)
         {
             if(control is MenuStrip)
             {
-                control.BackColor = Strip;
-                control.ForeColor = FontColor;
+                SetMenuStripTema((MenuStrip)control);
             }else if(control is Label)
             {
                 control.ForeColor = FontColor;
@@ -112,7 +136,7 @@ namespace crud_teste
                 }
 
             }
-            else if(control is TextBox || control is MaskedTextBox || control is DateTimePicker || control is NumericUpDown)
+            else if( control is MaskedTextBox || control is DateTimePicker || control is NumericUpDown)
             {
                 control.ForeColor = FontColor;
                 control.BackColor = TextBoxBackColor;
@@ -122,6 +146,9 @@ namespace crud_teste
             }else if(control is ComboBox)
             {
                 SetComboBoxTema((ComboBox)control);
+            }else if(control is TextBox)
+            {
+                SetTextBoxTema((TextBox)control);
             }
         }
 

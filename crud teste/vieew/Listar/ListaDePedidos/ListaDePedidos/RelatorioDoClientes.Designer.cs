@@ -654,6 +654,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.txtTotalDeVendas.Location = new System.Drawing.Point(202, 86);
             this.txtTotalDeVendas.Name = "txtTotalDeVendas";
+            this.txtTotalDeVendas.ReadOnly = true;
             this.txtTotalDeVendas.Size = new System.Drawing.Size(100, 20);
             this.txtTotalDeVendas.TabIndex = 11;
             // 
@@ -661,6 +662,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.txtTotalBruto.Location = new System.Drawing.Point(440, 24);
             this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.ReadOnly = true;
             this.txtTotalBruto.Size = new System.Drawing.Size(194, 20);
             this.txtTotalBruto.TabIndex = 10;
             // 
@@ -668,6 +670,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.txtTotalDeDesconto.Location = new System.Drawing.Point(440, 90);
             this.txtTotalDeDesconto.Name = "txtTotalDeDesconto";
+            this.txtTotalDeDesconto.ReadOnly = true;
             this.txtTotalDeDesconto.Size = new System.Drawing.Size(194, 20);
             this.txtTotalDeDesconto.TabIndex = 9;
             // 
@@ -675,6 +678,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.txtTotalLiquido.Location = new System.Drawing.Point(797, 24);
             this.txtTotalLiquido.Name = "txtTotalLiquido";
+            this.txtTotalLiquido.ReadOnly = true;
             this.txtTotalLiquido.Size = new System.Drawing.Size(211, 20);
             this.txtTotalLiquido.TabIndex = 8;
             // 
@@ -682,6 +686,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.txtQuantidadesDeProdutos.Location = new System.Drawing.Point(202, 27);
             this.txtQuantidadesDeProdutos.Name = "txtQuantidadesDeProdutos";
+            this.txtQuantidadesDeProdutos.ReadOnly = true;
             this.txtQuantidadesDeProdutos.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidadesDeProdutos.TabIndex = 7;
             // 
@@ -689,6 +694,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             this.textBox1.Location = new System.Drawing.Point(797, 86);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(211, 20);
             this.textBox1.TabIndex = 6;
             // 

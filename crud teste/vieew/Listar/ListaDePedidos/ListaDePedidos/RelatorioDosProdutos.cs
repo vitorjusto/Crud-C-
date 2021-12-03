@@ -85,6 +85,12 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
                 txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
                 txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
+
+
+                //txtQuantidadesDeProdutos.Text = lista.Sum(x => x.Quantidade).ToString();
+                //txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C2");
+                //txtTotalDeDesconto.Text = lista.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.TotalDedescontoAVista.GetAsDecimal()).ToString("c2");
+                //txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
             }
             else
             {
@@ -143,6 +149,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             _produtos = oAlterar.RelatorioDeVendaDosProdutos(txtCliente.Text, txtProduto.Text, dtpDataInicial.Value, dtpDataFinal.Value);
             PreencherDataGrid(checkBox1.Checked);
             CalcularLucros(checkBox2.Checked);
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
