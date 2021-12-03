@@ -443,10 +443,15 @@ namespace crud_teste.DAO
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo
+                            c.LimiteRestante, p.Ativo, SUM(ca.PrecoDeCusto) * SUM(ca.Quantidade) as 'PrecoDeCusto'
+
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
+							inner join Carrinho ca on v.idVenda = ca.idVenda
+
+                            where p.ativo = 1
+
                             group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
                 
                 var resultado = con.Query<RelatorioClienteListagem>(query);
@@ -454,36 +459,64 @@ namespace crud_teste.DAO
             }
         }
 
-        
 
-         public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
+        public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
         {
-            using (con)
-            {
-                var query = @"select c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
+
+
+            var query = $@"select ";
+
+            if (pesquisa.considerarTopResults)
+                query += $@"Top (@TopResultado) ";
+
+            query += $@"c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo
+                            c.LimiteRestante, p.Ativo,  SUM(ca.PrecoDeVenda), sum(ca.PrecoDeCusto),
+                            SUM(ca.PrecoDeCusto) * SUM(ca.Quantidade) as 'PrecoDeCusto'
 
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
+                            inner join Carrinho ca on v.idVenda = ca.idVenda
 
-                            where nome like @Nome + '%' and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
-                            
-                            group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo
+                            where nome like @Nome +'%' and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
 
-                            order by @Tipo @Crescente";
 
+            if (pesquisa.comAtivo)
+                query += "and p.Ativo = 1";
+
+             query += "group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
+
+            if (!string.IsNullOrEmpty(pesquisa.condicao))
+            {
+                if (pesquisa.condicao.Equals("entre"))
+                {
+                    query += $@"Having sum(TotalLiquido) between @ValorInicial and @ValorFinal ";
+                }
+                else
+                {
+                    query += $@"Having sum(TotalLiquido) {pesquisa.condicao} @ValorInicial ";
+                }
+            }
+
+            query += $@"order by {pesquisa.OrdernarPor} {pesquisa.crescente}";
+
+            using (con)
+            {
+                
                 var resultado = con.Query<RelatorioClienteListagem>(query, new
                 {
                     pesquisa.Nome,
                     DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
-                    DataFinal = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
-                    Tipo = pesquisa.OrdernarPor,
-                    Crescente = pesquisa.crescente,
-                }) ;
+                    DataFinal = pesquisa.DataFinal.ToString("dd/MM/yyyy"),
+                    ValorInicial = pesquisa.valorLiquidoInicial.GetAsDecimal(),
+                    ValorFinal = pesquisa.ValorLiquidoFinal.GetAsDecimal(),
+                    TopResultado = pesquisa.topresultadosnumero,
+                }); ;
+
+                var oi = resultado.ToList();
                 return resultado.ToList();
             }
         }

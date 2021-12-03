@@ -86,7 +86,7 @@ namespace crud_teste
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
     }
 }

@@ -19,8 +19,6 @@ namespace crud_teste.vieew
         public Pedido_Produto carrinho = new Pedido_Produto();
         public Venda venda = new Venda();
 
-        public Cliente cliente = new Cliente();
-        public Colaborador colaborador = new Colaborador();
         public CadastroDePedidos()
         {
             InitializeComponent();
@@ -41,11 +39,11 @@ namespace crud_teste.vieew
             var listar = new ListarVendaCliente("cliente");
             listar.ShowDialog();
 
-            cliente = listar.cliente;
-            if (cliente.Aniversariante())
-                MessageBox.Show($"Parabéns {cliente.nomeCompleto()}, Hoje é seu aniversário", "Parabéns");
-            NomeCliente.Text = cliente.nomeCompleto();
-            LimiteDeCompraaPraso.Text = cliente.LimiteDeCompra.ToString();
+            venda.cliente = listar.cliente;
+            if (venda.cliente.Aniversariante())
+                MessageBox.Show($"Parabéns {venda.cliente.nomeCompleto()}, Hoje é seu aniversário", "Parabéns");
+            NomeCliente.Text = venda.cliente.nomeCompleto();
+            LimiteDeCompraaPraso.Text = venda.cliente.LimiteDeCompra.ToString();
         }
 
         private void textBox8_Click(object sender, EventArgs e)
@@ -73,9 +71,9 @@ namespace crud_teste.vieew
         {
             var listar = new ListarVendaCliente("colaborador");
             listar.ShowDialog();
-            colaborador = listar.colaborador;
-            NomeDoColaborador.Text = colaborador.nomeCompleto();
-            venda.colaborador.PorcentagemDeComissao = listar.colaborador.PorcentagemDeComissao;
+            venda.colaborador = listar.colaborador;
+            NomeDoColaborador.Text = venda.colaborador.nomeCompleto();
+            venda.colaborador.PorcentagemDeComissao = venda.colaborador.PorcentagemDeComissao;
         }
 
         public void preenchervaloresnoproduto()
@@ -228,7 +226,7 @@ namespace crud_teste.vieew
 
                 labelLimite.Visible = true;
                 LimiteDeCompraaPraso.Visible = true;
-                LimiteDeCompraaPraso.Text = cliente.LimiteRestante.ToString();
+                LimiteDeCompraaPraso.Text = venda.cliente.LimiteRestante.ToString();
             }
             else
             {
@@ -252,7 +250,7 @@ namespace crud_teste.vieew
         {
 
             receberCampos();
-            var validar = new VendaValidation((decimal)cliente.LimiteRestante.GetAsDouble(), venda);
+            var validar = new VendaValidation((decimal)venda.cliente.LimiteRestante.GetAsDouble(), venda);
             var validares = validar.Validate(venda);
 
             if (validares.IsValid)
@@ -265,9 +263,17 @@ namespace crud_teste.vieew
                         venda.DiaDaVenda = DateTime.Now;
                         alterarvenda.cadastrar(venda);
                         MessageBox.Show("venda efetuada com sucesso!");
+
+                        try
+                        {
+                            EnviarEmail.EnviarEmailDeVenda(venda);
+                        }catch
+                        {
+                            MessageBox.Show("Não Foi Possivel Enviar o email", "Atenção");
+                        }
+
                         LimparVenda();
                     }
-
 
                 }
                 catch (Exception ex)
@@ -285,8 +291,8 @@ namespace crud_teste.vieew
             venda.Pedido_Produto = new List<Pedido_Produto>();
             carrinho = new Pedido_Produto();
 
-            cliente = new Cliente();
-            colaborador = new Colaborador();
+            venda.cliente = new Cliente();
+            venda.colaborador = new Colaborador();
 
             NomeCliente.Text = "";
             NomeDoColaborador.Text = "";
@@ -305,8 +311,8 @@ namespace crud_teste.vieew
         public Venda receberCampos()
         {
 
-            venda.cliente.idCliente = cliente.idCliente;
-            venda.colaborador.idColaborador = colaborador.idColaborador;
+            venda.cliente.idCliente = venda.cliente.idCliente;
+            venda.colaborador.idColaborador = venda.colaborador.idColaborador;
             venda.TipoDeVenda = FormaDePagamento.Text;
 
             if (venda.TipoDeVenda.Equals("A vista"))

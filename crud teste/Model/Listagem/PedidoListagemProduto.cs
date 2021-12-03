@@ -53,6 +53,7 @@ namespace crud_teste.Model.Listagem
 
             return total;
         }
+       
 
         public float TotalReceita()
         {

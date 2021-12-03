@@ -72,14 +72,35 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cobTipo = new System.Windows.Forms.ComboBox();
-            this.cobCrescente = new System.Windows.Forms.ComboBox();
+            this.Filtrar = new System.Windows.Forms.GroupBox();
+            this.txtTop = new System.Windows.Forms.TextBox();
+            this.cbTop = new System.Windows.Forms.CheckBox();
+            this.txtValorFinal = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtValorInicial = new System.Windows.Forms.TextBox();
+            this.cobCondicao = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.cobCrescente = new System.Windows.Forms.ComboBox();
+            this.cobTipo = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtTotalDeVendas = new System.Windows.Forms.TextBox();
+            this.txtTotalBruto = new System.Windows.Forms.TextBox();
+            this.txtTotalDeDesconto = new System.Windows.Forms.TextBox();
+            this.txtTotalLiquido = new System.Windows.Forms.TextBox();
+            this.txtQuantidadesDeProdutos = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorioDosClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.Filtrar.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,9 +203,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 511);
+            this.groupBox1.Location = new System.Drawing.Point(12, 648);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 161);
+            this.groupBox1.Size = new System.Drawing.Size(513, 155);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Melhores Clientes";
@@ -301,9 +322,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(531, 511);
+            this.groupBox2.Location = new System.Drawing.Point(531, 648);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(527, 161);
+            this.groupBox2.Size = new System.Drawing.Size(527, 155);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Piores Clientes";
@@ -329,7 +350,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtMenosLucrativoValor.Location = new System.Drawing.Point(377, 31);
             this.txtMenosLucrativoValor.Name = "txtMenosLucrativoValor";
             this.txtMenosLucrativoValor.ReadOnly = true;
-            this.txtMenosLucrativoValor.Size = new System.Drawing.Size(81, 20);
+            this.txtMenosLucrativoValor.Size = new System.Drawing.Size(113, 20);
             this.txtMenosLucrativoValor.TabIndex = 5;
             // 
             // txtMenosVendidoQuantidade
@@ -337,7 +358,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtMenosVendidoQuantidade.Location = new System.Drawing.Point(377, 81);
             this.txtMenosVendidoQuantidade.Name = "txtMenosVendidoQuantidade";
             this.txtMenosVendidoQuantidade.ReadOnly = true;
-            this.txtMenosVendidoQuantidade.Size = new System.Drawing.Size(81, 20);
+            this.txtMenosVendidoQuantidade.Size = new System.Drawing.Size(113, 20);
             this.txtMenosVendidoQuantidade.TabIndex = 4;
             // 
             // label5
@@ -379,7 +400,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // cbListarInativo
             // 
             this.cbListarInativo.AutoSize = true;
-            this.cbListarInativo.Location = new System.Drawing.Point(12, 484);
+            this.cbListarInativo.Location = new System.Drawing.Point(421, 162);
             this.cbListarInativo.Name = "cbListarInativo";
             this.cbListarInativo.Size = new System.Drawing.Size(110, 17);
             this.cbListarInativo.TabIndex = 9;
@@ -390,13 +411,14 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // cbConsiderarInativo
             // 
             this.cbConsiderarInativo.AutoSize = true;
-            this.cbConsiderarInativo.Location = new System.Drawing.Point(171, 484);
+            this.cbConsiderarInativo.Location = new System.Drawing.Point(12, 486);
             this.cbConsiderarInativo.Name = "cbConsiderarInativo";
             this.cbConsiderarInativo.Size = new System.Drawing.Size(166, 17);
             this.cbConsiderarInativo.TabIndex = 10;
             this.cbConsiderarInativo.Text = "Considerar Inativo No Cálculo";
             this.cbConsiderarInativo.UseVisualStyleBackColor = true;
             this.cbConsiderarInativo.Visible = false;
+            this.cbConsiderarInativo.CheckedChanged += new System.EventHandler(this.cbConsiderarInativo_CheckedChanged);
             // 
             // label11
             // 
@@ -439,6 +461,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.dtpDataInicial.Name = "dtpDataInicial";
             this.dtpDataInicial.Size = new System.Drawing.Size(200, 20);
             this.dtpDataInicial.TabIndex = 15;
+            this.dtpDataInicial.Value = new System.DateTime(2001, 12, 25, 0, 0, 0, 0);
             // 
             // dtpDataFinal
             // 
@@ -461,38 +484,124 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // groupBox3
+            // Filtrar
             // 
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.cobCrescente);
-            this.groupBox3.Controls.Add(this.cobTipo);
-            this.groupBox3.Controls.Add(this.txtCliente);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.dtpDataFinal);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.dtpDataInicial);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Location = new System.Drawing.Point(12, 39);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1046, 195);
-            this.groupBox3.TabIndex = 41;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.Filtrar.Controls.Add(this.txtTop);
+            this.Filtrar.Controls.Add(this.cbTop);
+            this.Filtrar.Controls.Add(this.cbListarInativo);
+            this.Filtrar.Controls.Add(this.txtValorFinal);
+            this.Filtrar.Controls.Add(this.label16);
+            this.Filtrar.Controls.Add(this.label15);
+            this.Filtrar.Controls.Add(this.txtValorInicial);
+            this.Filtrar.Controls.Add(this.cobCondicao);
+            this.Filtrar.Controls.Add(this.label14);
+            this.Filtrar.Controls.Add(this.cobCrescente);
+            this.Filtrar.Controls.Add(this.cobTipo);
+            this.Filtrar.Controls.Add(this.txtCliente);
+            this.Filtrar.Controls.Add(this.button2);
+            this.Filtrar.Controls.Add(this.label11);
+            this.Filtrar.Controls.Add(this.dtpDataFinal);
+            this.Filtrar.Controls.Add(this.label12);
+            this.Filtrar.Controls.Add(this.dtpDataInicial);
+            this.Filtrar.Controls.Add(this.label13);
+            this.Filtrar.Location = new System.Drawing.Point(12, 39);
+            this.Filtrar.Name = "Filtrar";
+            this.Filtrar.Size = new System.Drawing.Size(1046, 211);
+            this.Filtrar.TabIndex = 41;
+            this.Filtrar.TabStop = false;
+            this.Filtrar.Text = "Filtrar";
             // 
-            // cobTipo
+            // txtTop
             // 
-            this.cobTipo.FormattingEnabled = true;
-            this.cobTipo.Items.AddRange(new object[] {
-            "Nenhum",
-            "Quantidade",
-            "Total Desconto",
-            "Total Lucro"});
-            this.cobTipo.Location = new System.Drawing.Point(81, 111);
-            this.cobTipo.Name = "cobTipo";
-            this.cobTipo.Size = new System.Drawing.Size(102, 21);
-            this.cobTipo.TabIndex = 41;
-            this.cobTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
+            this.txtTop.Location = new System.Drawing.Point(119, 159);
+            this.txtTop.Name = "txtTop";
+            this.txtTop.Size = new System.Drawing.Size(100, 20);
+            this.txtTop.TabIndex = 50;
+            this.txtTop.Visible = false;
+            this.txtTop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTop_KeyPress);
+            this.txtTop.Leave += new System.EventHandler(this.txtTop_Leave);
+            // 
+            // cbTop
+            // 
+            this.cbTop.AutoSize = true;
+            this.cbTop.Location = new System.Drawing.Point(14, 162);
+            this.cbTop.Name = "cbTop";
+            this.cbTop.Size = new System.Drawing.Size(99, 17);
+            this.cbTop.TabIndex = 49;
+            this.cbTop.Text = "Pegar Primeiros";
+            this.cbTop.UseVisualStyleBackColor = true;
+            this.cbTop.CheckedChanged += new System.EventHandler(this.cbTop_CheckedChanged);
+            // 
+            // txtValorFinal
+            // 
+            this.txtValorFinal.Location = new System.Drawing.Point(618, 111);
+            this.txtValorFinal.Name = "txtValorFinal";
+            this.txtValorFinal.Size = new System.Drawing.Size(100, 20);
+            this.txtValorFinal.TabIndex = 48;
+            this.txtValorFinal.Visible = false;
+            this.txtValorFinal.Leave += new System.EventHandler(this.txtValorFinal_Leave);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(599, 115);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 13);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "e";
+            this.label16.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(341, 115);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(74, 13);
+            this.label15.TabIndex = 46;
+            this.label15.Text = "Valor Liquido: ";
+            // 
+            // txtValorInicial
+            // 
+            this.txtValorInicial.Location = new System.Drawing.Point(493, 112);
+            this.txtValorInicial.Name = "txtValorInicial";
+            this.txtValorInicial.Size = new System.Drawing.Size(100, 20);
+            this.txtValorInicial.TabIndex = 45;
+            this.txtValorInicial.Leave += new System.EventHandler(this.txtValorInicial_Leave);
+            // 
+            // cobCondicao
+            // 
+            this.cobCondicao.AutoCompleteCustomSource.AddRange(new string[] {
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "=",
+            "!=",
+            "entre"});
+            this.cobCondicao.FormattingEnabled = true;
+            this.cobCondicao.Items.AddRange(new object[] {
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "=",
+            "!=",
+            "entre"});
+            this.cobCondicao.Location = new System.Drawing.Point(421, 112);
+            this.cobCondicao.Name = "cobCondicao";
+            this.cobCondicao.Size = new System.Drawing.Size(61, 21);
+            this.cobCondicao.TabIndex = 44;
+            this.cobCondicao.SelectedIndexChanged += new System.EventHandler(this.cobCondicao_SelectedIndexChanged);
+            this.cobCondicao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cobCondicao_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 114);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 43;
+            this.label14.Text = "Ordenar por: ";
             // 
             // cobCrescente
             // 
@@ -505,23 +614,146 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.cobCrescente.Size = new System.Drawing.Size(97, 21);
             this.cobCrescente.TabIndex = 42;
             // 
-            // label14
+            // cobTipo
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 114);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 13);
-            this.label14.TabIndex = 43;
-            this.label14.Text = "Ordenar por: ";
+            this.cobTipo.FormattingEnabled = true;
+            this.cobTipo.Items.AddRange(new object[] {
+            "Id Do Cliente",
+            "Nome",
+            "Quantidade",
+            "Total Desconto",
+            "Total Lucro"});
+            this.cobTipo.Location = new System.Drawing.Point(81, 111);
+            this.cobTipo.Name = "cobTipo";
+            this.cobTipo.Size = new System.Drawing.Size(102, 21);
+            this.cobTipo.TabIndex = 41;
+            this.cobTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtTotalDeVendas);
+            this.groupBox3.Controls.Add(this.txtTotalBruto);
+            this.groupBox3.Controls.Add(this.txtTotalDeDesconto);
+            this.groupBox3.Controls.Add(this.txtTotalLiquido);
+            this.groupBox3.Controls.Add(this.txtQuantidadesDeProdutos);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Location = new System.Drawing.Point(13, 510);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1045, 132);
+            this.groupBox3.TabIndex = 42;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Total";
+            // 
+            // txtTotalDeVendas
+            // 
+            this.txtTotalDeVendas.Location = new System.Drawing.Point(202, 86);
+            this.txtTotalDeVendas.Name = "txtTotalDeVendas";
+            this.txtTotalDeVendas.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalDeVendas.TabIndex = 11;
+            // 
+            // txtTotalBruto
+            // 
+            this.txtTotalBruto.Location = new System.Drawing.Point(440, 24);
+            this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.Size = new System.Drawing.Size(194, 20);
+            this.txtTotalBruto.TabIndex = 10;
+            // 
+            // txtTotalDeDesconto
+            // 
+            this.txtTotalDeDesconto.Location = new System.Drawing.Point(440, 90);
+            this.txtTotalDeDesconto.Name = "txtTotalDeDesconto";
+            this.txtTotalDeDesconto.Size = new System.Drawing.Size(194, 20);
+            this.txtTotalDeDesconto.TabIndex = 9;
+            // 
+            // txtTotalLiquido
+            // 
+            this.txtTotalLiquido.Location = new System.Drawing.Point(797, 24);
+            this.txtTotalLiquido.Name = "txtTotalLiquido";
+            this.txtTotalLiquido.Size = new System.Drawing.Size(211, 20);
+            this.txtTotalLiquido.TabIndex = 8;
+            // 
+            // txtQuantidadesDeProdutos
+            // 
+            this.txtQuantidadesDeProdutos.Location = new System.Drawing.Point(202, 27);
+            this.txtQuantidadesDeProdutos.Name = "txtQuantidadesDeProdutos";
+            this.txtQuantidadesDeProdutos.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantidadesDeProdutos.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(797, 86);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(211, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(17, 93);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(156, 13);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Quantidades Total De Vendas: ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(689, 30);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 13);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Total Liquido:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(689, 93);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(34, 13);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Lucro";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(319, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(62, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Total Bruto:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(319, 93);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Total De Desconto:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(17, 30);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(179, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Quantidades De Produtos Vendidos:";
             // 
             // RelatorioDoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 697);
+            this.ClientSize = new System.Drawing.Size(1076, 830);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.Filtrar);
             this.Controls.Add(this.cbConsiderarInativo);
-            this.Controls.Add(this.cbListarInativo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvRelatorioDosClientes);
@@ -538,6 +770,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.Filtrar.ResumeLayout(false);
+            this.Filtrar.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -570,15 +804,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox cbListarInativo;
         private System.Windows.Forms.CheckBox cbConsiderarInativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadetotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalBruto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Desconto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalDescontoavista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalLiquido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LimiteRestante;
         private System.Windows.Forms.TextBox txtClienteFiel;
         private System.Windows.Forms.TextBox txtMaximoDeVenda;
         private System.Windows.Forms.Label label9;
@@ -590,9 +815,38 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataFinal;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox Filtrar;
         private System.Windows.Forms.ComboBox cobTipo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cobCrescente;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtValorInicial;
+        private System.Windows.Forms.ComboBox cobCondicao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadetotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalBruto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desconto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalDescontoavista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalLiquido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LimiteRestante;
+        private System.Windows.Forms.TextBox txtValorFinal;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtTop;
+        private System.Windows.Forms.CheckBox cbTop;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtTotalDeVendas;
+        private System.Windows.Forms.TextBox txtTotalBruto;
+        private System.Windows.Forms.TextBox txtTotalDeDesconto;
+        private System.Windows.Forms.TextBox txtTotalLiquido;
+        private System.Windows.Forms.TextBox txtQuantidadesDeProdutos;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
     }
 }

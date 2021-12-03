@@ -26,9 +26,11 @@ namespace crud_teste.Model.Listagem
 
         public MyDinheiro LimiteRestante { get; set; }
 
+        public MyDinheiro PrecoDeCusto { get; set; }
+        
         public bool Ativo { get; set; }
 
-        public string NomeCompleto() => nome + sobrenome;
+        public string NomeCompleto() => nome + " "+ sobrenome;
 
 
     }

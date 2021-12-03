@@ -1,5 +1,6 @@
 ﻿using crud_teste.controller;
 using crud_teste.Model.Listagem;
+using crud_teste.Model.Object_Values;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,6 +25,18 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             public string OrdernarPor { get; set; }
 
             public string crescente { get; set; }
+
+            public string condicao { get; set; }
+
+            public MyDinheiro valorLiquidoInicial { get; set; }
+
+            public MyDinheiro ValorLiquidoFinal { get; set; }
+
+            public bool considerarTopResults { get; set; }
+
+            public long topresultadosnumero { get; set; }
+
+            public bool comAtivo { get; set; }
         }
 
         public RelatorioDoClientes()
@@ -37,11 +50,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
             Clientes = oAlterar.RelatorioDeVenda();
 
-            PreencherDataGrid(false);
+            PreencherDataGrid();
             CalcularLucros(false);
+            txtValorFinal.Text = MyDinheiro.SetTextBoxAsMoneyValue("");
+            txtValorInicial.Text = MyDinheiro.SetTextBoxAsMoneyValue("");
         }
 
-        private void PreencherDataGrid(bool comInativo)
+        private void PreencherDataGrid()
         {
             DataGridViewCellStyle clienteinativo = new DataGridViewCellStyle();
             clienteinativo.BackColor = Color.SlateGray;
@@ -62,7 +77,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 dgvRelatorioDosClientes.Rows[index].Cells[7].Value = cliente.TotalLiquido.GetAsString();
                 dgvRelatorioDosClientes.Rows[index].Cells[8].Value = cliente.LimiteRestante.GetAsString();
 
-                if (comInativo && !cliente.Ativo)
+                if (!cliente.Ativo)
                 {
                     var j = 0;
                     while (j < 9)
@@ -72,7 +87,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                         j++;
                     }
                 }
-                else if (!comInativo && !cliente.Ativo)
+                else if (!cliente.Ativo)
                     dgvRelatorioDosClientes.Rows[index].Visible = false;
              
 
@@ -100,6 +115,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtMenosLucrativoValor.Text = lista.Min(x => x.TotalLiquido.GetAsDecimal()).ToString("C");
                 txtMenosVendido.Text = lista.OrderByDescending(x => x.QuantidadeTotal).Last().NomeCompleto();
                 txtMenosVendidoQuantidade.Text = lista.Min(x => x.QuantidadeTotal).ToString();
+
+                txtQuantidadesDeProdutos.Text = lista.Sum(x => x.QuantidadeTotal).ToString();
+                txtTotalDeVendas.Text = lista.Sum(x => x.QuantidadeDeVenda).ToString();
+                txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C2");
+                txtTotalDeDesconto.Text = lista.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.TotalDedescontoAVista.GetAsDecimal()).ToString("c2");
+                txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
+
             }
             else
             {
@@ -127,7 +149,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            PreencherDataGrid(cbListarInativo.Checked);
+            PreencherDataGrid();
             cbConsiderarInativo.Visible = cbListarInativo.Checked;
 
             if (cbListarInativo.Checked)
@@ -157,15 +179,17 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                     pesquisa.OrdernarPor = "c.idCliente";
                     break;
                 case 1:
-                    pesquisa.OrdernarPor = "sum(v.quantidadeTotal)";
+                    pesquisa.OrdernarPor = "Nome";
                     break;
                 case 2:
-                    pesquisa.OrdernarPor = "sum(v.TotalDeDesconto)";
+                    pesquisa.OrdernarPor = "sum(v.quantidadeTotal)";
                     break;
                 case 3:
+                    pesquisa.OrdernarPor = "sum(v.TotalDeDesconto) + sum(v.DescontoAVista)";
+                    break;
+                case 4:
                     pesquisa.OrdernarPor = "SUM(ca.PrecoDeVenda) - sum(ca.PrecoDeCusto)";
                     break;
-
 
             }
 
@@ -179,13 +203,75 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                     break;
             }
 
+            pesquisa.condicao = cobCondicao.Text;
+
+            pesquisa.valorLiquidoInicial = txtValorInicial.Text;
+
+            pesquisa.ValorLiquidoFinal = txtValorFinal.Text;
+
+            if (cbTop.Checked)
+            {
+                pesquisa.considerarTopResults = true;
+                pesquisa.topresultadosnumero = Convert.ToInt64(txtTop.Text);
+            }
+
+            pesquisa.comAtivo = !cbListarInativo.Checked;
+
+
             Clientes = oAlterar.RelatorioDeVenda(pesquisa);
-            PreencherDataGrid(cbListarInativo.Checked);
+            PreencherDataGrid();
             CalcularLucros(cbConsiderarInativo.Visible);
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = true;
 
+        private void cbConsiderarInativo_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcularLucros(cbConsiderarInativo.Checked);
+        }
+
+        private void txtValorInicial_Leave(object sender, EventArgs e)
+        {
+            txtValorInicial.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorInicial.Text); 
+        }
+
+        private void cobCondicao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cobCondicao.SelectedIndex == 6)
+            {
+                txtValorFinal.Visible = true;
+                label16.Visible = true;
+            }else
+            {
+                txtValorFinal.Visible = false;
+                label16.Visible = false;
+            }
+        }
+
+        private void txtValorFinal_Leave(object sender, EventArgs e)
+        {
+            txtValorFinal.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorFinal.Text);
+        }
+
+        private void cobCondicao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTop_CheckedChanged(object sender, EventArgs e)
+        {
+            txtTop.Visible = cbTop.Checked;
+        }
+
+        private void txtTop_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Global.isNotIntText(e.KeyChar, txtTop.Text);
+        }
+
+        private void txtTop_Leave(object sender, EventArgs e)
+        {
+            txtTop.Text = txtTop.Text.Equals("") ? "0" : txtTop.Text;
+        }
     }
 }

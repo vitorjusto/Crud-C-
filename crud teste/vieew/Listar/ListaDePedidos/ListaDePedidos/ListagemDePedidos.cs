@@ -25,20 +25,6 @@ namespace crud_teste.vieew.ListaDePedidos
             public DateTime dataFinal { get; set; }
         }
 
-        public struct ValoresTotais
-        {
-            public List<PedidoListagem> pedidosAtivos { get; set; }
-            public double totalBruto { get => pedidosAtivos.Sum(x => x.TotalBruto.GetAsDouble()); }
-            public double totalDesconto { get => pedidosAtivos.Sum(x => x.TotalDeDesconto.GetAsDouble()); }
-
-            public double totalGasto { get => pedidosAtivos.Sum(x => x.TotalGasto()); }
-
-            public double totalReceita { get => pedidosAtivos.Sum(x => x.TotalReceita()); }
-
-            public double lucro { get => totalReceita - totalGasto; }
-
-        };
-
        
         public ListagemDePedidos()
         {
@@ -59,8 +45,6 @@ namespace crud_teste.vieew.ListaDePedidos
             vendainativa.BackColor = Color.SlateGray;
             vendainativa.ForeColor = Color.White;
 
-            ValoresTotais valoresTotais = new ValoresTotais();
-            valoresTotais.pedidosAtivos = new List<PedidoListagem>();
             ListarPedidos.Rows.Clear();
             var index = 0;
             foreach (var pedido in pedidos)
@@ -79,11 +63,8 @@ namespace crud_teste.vieew.ListaDePedidos
                 ListarPedidos.Rows[index].Cells[10].Value = pedido.DiaDavenda.ToString("dd/MM/yyyy");
 
 
-                if (pedido.ativo)
-                {
-                    valoresTotais.pedidosAtivos.Add(pedido);
-                }
-                else
+                
+                if(!pedido.ativo)
                 {
                     var j = 0;
                     while (j < 10)
@@ -102,15 +83,18 @@ namespace crud_teste.vieew.ListaDePedidos
             ListarPedidos.AllowUserToAddRows = false;
 
             NumeroDePedidos.Text = pedidos.Count().ToString();
-            txtTotalBruto.Text = valoresTotais.totalBruto.ToString("C2");
-            txtDesconto.Text = valoresTotais.totalDesconto.ToString("C2");
-            txtTotalGasto.Text = valoresTotais.totalGasto.ToString("C2");
-            txttotalLiquido.Text = valoresTotais.totalReceita.ToString("C2");
-            txtLucro.Text = valoresTotais.lucro.ToString("C2");
+            txtTotalBruto.Text = pedidos.Sum(x => x.ativo? x.TotalBruto.GetAsDecimal() : 0.0M).ToString("C2");
+            txtDesconto.Text = pedidos.Sum(x => x.ativo ? x.TotalDeDesconto.GetAsDecimal() + x.DescontoAVIsta.GetAsDecimal() : 0.0M).ToString("C2");
+            txtTotalGasto.Text = pedidos.Sum(x => x.ativo ? x.TotalGasto() : 0.0).ToString("C2");
+            txttotalLiquido.Text = pedidos.Sum(x => x.ativo ? x.TotalLiquido.GetAsDecimal() : 0.0M).ToString("C2");
 
-            if (valoresTotais.lucro > 0)
+            var lucro = pedidos.Sum(x => x.ativo ? x.TotalLiquido.GetAsDecimal() : 0.0M) - (decimal)pedidos.Sum(x => x.ativo ? x.TotalGasto() : 0.0);
+
+            txtLucro.Text = lucro.ToString("C2");
+            
+            if (lucro > 0)
                 txtLucro.ForeColor = Color.Green;
-            else if (valoresTotais.lucro < 0)
+            else if (lucro < 0)
                 txtLucro.ForeColor = Color.Red;
             else
                 txtLucro.ForeColor = Global.FontColor;
@@ -158,6 +142,11 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             this.Close();
             new RelatorioDoClientes().Show();
+        }
+
+        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -57,6 +57,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Cliente = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,7 +69,8 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button2 = new System.Windows.Forms.Button();
             this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -231,19 +233,19 @@ namespace crud_teste.vieew.ListaDePedidos
             // txtTotalBruto
             // 
             this.txtTotalBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalBruto.Location = new System.Drawing.Point(549, 29);
+            this.txtTotalBruto.Location = new System.Drawing.Point(583, 29);
             this.txtTotalBruto.Name = "txtTotalBruto";
             this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(217, 20);
+            this.txtTotalBruto.Size = new System.Drawing.Size(183, 20);
             this.txtTotalBruto.TabIndex = 19;
             // 
             // txtDesconto
             // 
             this.txtDesconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDesconto.Location = new System.Drawing.Point(549, 94);
+            this.txtDesconto.Location = new System.Drawing.Point(583, 94);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.ReadOnly = true;
-            this.txtDesconto.Size = new System.Drawing.Size(217, 20);
+            this.txtDesconto.Size = new System.Drawing.Size(183, 20);
             this.txtDesconto.TabIndex = 20;
             // 
             // txtTotalGasto
@@ -305,6 +307,8 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtQuantidade);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
@@ -325,6 +329,19 @@ namespace crud_teste.vieew.ListaDePedidos
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes do Lucro";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(261, 98);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(177, 76);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "Relatorio dos Clientes";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -421,18 +438,23 @@ namespace crud_teste.vieew.ListaDePedidos
             this.dtpDataFinal.Size = new System.Drawing.Size(117, 20);
             this.dtpDataFinal.TabIndex = 41;
             // 
-            // button3
+            // label11
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(261, 98);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(177, 76);
-            this.button3.TabIndex = 26;
-            this.button3.Text = "Relatorio dos Clientes";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(460, 156);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Quantidades Vendidas:";
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantidade.Location = new System.Drawing.Point(583, 149);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.ReadOnly = true;
+            this.txtQuantidade.Size = new System.Drawing.Size(183, 20);
+            this.txtQuantidade.TabIndex = 28;
             // 
             // ListagemDePedidos
             // 
@@ -457,6 +479,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ListagemDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListagemDePedidos";
+            this.Load += new System.EventHandler(this.ListagemDePedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -509,5 +532,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataFinal;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtQuantidade;
     }
 }
