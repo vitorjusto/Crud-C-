@@ -432,50 +432,6 @@ namespace crud_teste
             }
         }
 
-        public void ExcluirTudo()
-        {
-            con.Open();
-
-            var tran = con.BeginTransaction();
-            try
-            {
-                Colaborador colaborador = new Colaborador();
-                var query = $@"delete from colaborador";
-                con.Execute(query, colaborador, tran);
-
-
-                query = $@"delete from dadosBancarios";
-                con.Execute(query, colaborador, tran);
-                query = $@"delete from cliente";
-                con.Execute(query, colaborador, tran);
-
-                query = $@"delete from pessoa";
-                con.Execute(query, colaborador, tran);
-
-                query = $@"delete from endereco ";
-                con.Execute(query, colaborador.endereco, tran);
-
-                query = $@"delete from contato";
-                con.Execute(query, colaborador.contato, tran);
-
-                query = @"delete from carrinho";
-                con.Execute(query, colaborador, tran);
-
-                query = @"delete from venda";
-                con.Execute(query, colaborador, tran);
-
-                tran.Commit();
-            }
-            catch(Exception ex)
-            {
-                tran.Rollback();
-                con.Close();
-                throw new Exception(ex.Message);
-            }
-            con.Close();
-        
-    }
-
         public void AlterarAtivo(ColaboradorListagem colaborador)
         {
             try

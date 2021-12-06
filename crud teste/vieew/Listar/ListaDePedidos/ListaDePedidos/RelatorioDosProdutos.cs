@@ -2,13 +2,11 @@
 using crud_teste.Model.Listagem;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 {
@@ -18,11 +16,24 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         List<RelatorioProdutosVendaListagem> _produtos = new List<RelatorioProdutosVendaListagem>();
 
+        public struct pesquisar
+        {
+            public string nomeDoCliente { get; set; }
+
+            public string nomeDoProduto { get; set; }
+
+            public bool pesquisarPorData { get; set; }
+
+            public DateTime DataInicial { get; set; }
+            public DateTime DataFinal { get; set; }
+        }
+
         public RelatorioDosProdutos()
         {
             InitializeComponent();
             _produtos = oAlterar.RelatorioDeVendaDosProdutos();
 
+            gbListarPorData.Visible = false;
 
         }
 
@@ -86,11 +97,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
                 txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
 
-
-                //txtQuantidadesDeProdutos.Text = lista.Sum(x => x.Quantidade).ToString();
-                //txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C2");
-                //txtTotalDeDesconto.Text = lista.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.TotalDedescontoAVista.GetAsDecimal()).ToString("c2");
-                //txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
             }
             else
             {
@@ -113,7 +119,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         private void RelatorioDosProdutos_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
             PreencherDataGrid(false);
             CalcularLucros(false);
         }
@@ -146,14 +152,34 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _produtos = oAlterar.RelatorioDeVendaDosProdutos(txtCliente.Text, txtProduto.Text, dtpDataInicial.Value, dtpDataFinal.Value);
+
+            pesquisar pesquisa = new pesquisar();
+            pesquisa.nomeDoCliente = txtCliente.Text;
+            pesquisa.nomeDoProduto = txtProduto.Text;
+
+            if (chkPesquisarPorData.Checked)
+            {
+                pesquisa.pesquisarPorData = true;
+                pesquisa.DataInicial = dtpDataInicial.Value;
+                pesquisa.DataFinal = dtpDataFinal.Value;
+
+
+                if (!Global.ValidarDatas(dtpDataInicial.Value, dtpDataFinal.Value))
+                {
+                    MessageBox.Show("Data Inicial vem depois da data Final");
+                    return;
+                }
+            }
+
+
+            _produtos = oAlterar.RelatorioDeVendaDosProdutos(pesquisa);
             PreencherDataGrid(checkBox1.Checked);
             CalcularLucros(checkBox2.Checked);
         }
 
-        private void groupBox5_Enter(object sender, EventArgs e)
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            gbListarPorData.Visible = chkPesquisarPorData.Checked;
         }
     }
 }

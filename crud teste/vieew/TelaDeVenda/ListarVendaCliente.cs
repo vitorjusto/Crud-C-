@@ -5,6 +5,7 @@ using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.TelaDeVenda
 {
@@ -26,7 +27,7 @@ namespace crud_teste.vieew.TelaDeVenda
         {
             InitializeComponent();
 
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
 
             Buscar = busca;
@@ -50,9 +51,6 @@ namespace crud_teste.vieew.TelaDeVenda
 
 
             InitializeComponent();
-
-            this.BackColor = Global.BackgroundColor;
-            dataGridGeral.BackgroundColor = Global.BackgroundColor;
 
             dataGridGeral.Rows.Clear();
             dataGridGeral.Columns.Clear();
@@ -99,12 +97,8 @@ namespace crud_teste.vieew.TelaDeVenda
 
         private void ListarCliente_Load(object sender, EventArgs e)
         {
-            this.BackColor = Global.BackgroundColor;
-            dataGridGeral.BackgroundColor = Global.BackgroundColor;
+            Temas.AtribuirTema(this);
 
-
-            textBoxinstrucao.BackColor = Global.BackgroundColor;
-            textBoxinstrucao.ForeColor = Global.FontColor;
         }
 
 

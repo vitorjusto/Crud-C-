@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos;
 
 namespace crud_teste.DAO
 {
@@ -298,7 +299,7 @@ namespace crud_teste.DAO
             }
         }
 
-        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos(string nome, string produto, DateTime DataInicial, DateTime DataFinal)
+        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos(pesquisar pesquisa)
         {
             using (con)
             {
@@ -313,17 +314,19 @@ namespace crud_teste.DAO
 							  inner join cliente cl on cl.idCliente = v.idCliente
 							  inner join pessoa pe on pe.idPessoa = cl.IdPessoa
 
-							  where p.NomeProduto like @produto + '%' and pe.Nome + pe.Sobrenome like @nome + '%' and
-							  Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
+							  where p.NomeProduto like @produto + '%' and pe.Nome + pe.Sobrenome like @nome + '%' ";
 
-                              GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;";
+                if (pesquisa.pesquisarPorData)
+                    query += @"and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
+
+                query += @"GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;";
 
                 var resultado = con.Query<RelatorioProdutosVendaListagem>(query, new 
                 {
-                    nome = nome,
-                    produto,
-                    DataInicial = DataInicial.ToString("dd/MM/yyyy"),
-                    DataFinal = DataFinal.ToString("dd/MM/yyyy"),
+                    nome = pesquisa.nomeDoCliente,
+                    produto = pesquisa.nomeDoProduto,
+                    DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
+                    DataFinal = pesquisa.DataFinal.ToString("dd/MM/yyyy"),
                 });
                 return resultado.ToList();
 

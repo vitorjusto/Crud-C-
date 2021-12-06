@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew
 {
@@ -23,7 +24,7 @@ namespace crud_teste.vieew
         {
             InitializeComponent();
 
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             Desconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(Desconto.Text);
             PrecoUnitario.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
@@ -264,14 +265,18 @@ namespace crud_teste.vieew
                         alterarvenda.cadastrar(venda);
                         MessageBox.Show("venda efetuada com sucesso!");
 
-                        try
+                        if (MessageBox.Show("Deseja Mesmo Enviar Recibo Por Email?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            EnviarEmail.EnviarEmailDeVenda(venda);
-                        }catch
-                        {
-                            MessageBox.Show("Não Foi Possivel Enviar o email", "Atenção");
+                            try
+                            {
+                                EnviarEmail.EnviarEmailDeVenda(venda);
+                                MessageBox.Show("Enviado No Email Com Sucesso");
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Não Foi Possivel Enviar o email", "Atenção");
+                            }
                         }
-
                         LimparVenda();
                     }
 

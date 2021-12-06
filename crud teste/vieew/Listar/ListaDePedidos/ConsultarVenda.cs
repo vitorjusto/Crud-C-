@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.ListaDePedidos
 {
@@ -19,7 +20,7 @@ namespace crud_teste.vieew.ListaDePedidos
         public ConsultarVenda(int id)
         {
             InitializeComponent();
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             AlterarVenda oAlterar = new AlterarVenda();
 

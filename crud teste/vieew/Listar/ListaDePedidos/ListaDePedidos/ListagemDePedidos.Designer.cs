@@ -57,6 +57,8 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Cliente = new System.Windows.Forms.Label();
@@ -69,11 +71,12 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button2 = new System.Windows.Forms.Button();
             this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.gbPesquisarPorData = new System.Windows.Forms.GroupBox();
+            this.chkPesquisarPorData = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.gbPesquisarPorData.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListarPedidos
@@ -330,6 +333,24 @@ namespace crud_teste.vieew.ListaDePedidos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes do Lucro";
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantidade.Location = new System.Drawing.Point(583, 149);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.ReadOnly = true;
+            this.txtQuantidade.Size = new System.Drawing.Size(183, 20);
+            this.txtQuantidade.TabIndex = 28;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(460, 156);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Quantidades Vendidas:";
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -346,7 +367,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 69);
+            this.label1.Location = new System.Drawing.Point(183, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 27;
@@ -355,7 +376,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // Cliente
             // 
             this.Cliente.AutoSize = true;
-            this.Cliente.Location = new System.Drawing.Point(54, 69);
+            this.Cliente.Location = new System.Drawing.Point(19, 69);
             this.Cliente.Name = "Cliente";
             this.Cliente.Size = new System.Drawing.Size(39, 13);
             this.Cliente.TabIndex = 28;
@@ -364,7 +385,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(409, 69);
+            this.label9.Location = new System.Drawing.Point(374, 69);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 29;
@@ -373,7 +394,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(595, 69);
+            this.label10.Location = new System.Drawing.Point(6, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 13);
             this.label10.TabIndex = 30;
@@ -382,7 +403,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(802, 69);
+            this.label8.Location = new System.Drawing.Point(182, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 31;
@@ -390,21 +411,21 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // txtProduto
             // 
-            this.txtProduto.Location = new System.Drawing.Point(477, 66);
+            this.txtProduto.Location = new System.Drawing.Point(442, 66);
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.Size = new System.Drawing.Size(100, 20);
             this.txtProduto.TabIndex = 34;
             // 
             // txtColaborador
             // 
-            this.txtColaborador.Location = new System.Drawing.Point(288, 66);
+            this.txtColaborador.Location = new System.Drawing.Point(253, 66);
             this.txtColaborador.Name = "txtColaborador";
             this.txtColaborador.Size = new System.Drawing.Size(100, 20);
             this.txtColaborador.TabIndex = 35;
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(99, 66);
+            this.txtCliente.Location = new System.Drawing.Point(64, 66);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(100, 20);
             this.txtCliente.TabIndex = 36;
@@ -414,7 +435,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(970, 40);
+            this.button2.Location = new System.Drawing.Point(1063, 40);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(173, 68);
             this.button2.TabIndex = 39;
@@ -425,50 +446,54 @@ namespace crud_teste.vieew.ListaDePedidos
             // dtpDataInicial
             // 
             this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataInicial.Location = new System.Drawing.Point(679, 66);
+            this.dtpDataInicial.Location = new System.Drawing.Point(76, 26);
             this.dtpDataInicial.Name = "dtpDataInicial";
-            this.dtpDataInicial.Size = new System.Drawing.Size(117, 20);
+            this.dtpDataInicial.Size = new System.Drawing.Size(100, 20);
             this.dtpDataInicial.TabIndex = 40;
             // 
             // dtpDataFinal
             // 
             this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataFinal.Location = new System.Drawing.Point(836, 66);
+            this.dtpDataFinal.Location = new System.Drawing.Point(201, 26);
             this.dtpDataFinal.Name = "dtpDataFinal";
-            this.dtpDataFinal.Size = new System.Drawing.Size(117, 20);
+            this.dtpDataFinal.Size = new System.Drawing.Size(100, 20);
             this.dtpDataFinal.TabIndex = 41;
             // 
-            // label11
+            // gbPesquisarPorData
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(460, 156);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(117, 13);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Quantidades Vendidas:";
+            this.gbPesquisarPorData.Controls.Add(this.label10);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
+            this.gbPesquisarPorData.Controls.Add(this.label8);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
+            this.gbPesquisarPorData.Location = new System.Drawing.Point(717, 40);
+            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
+            this.gbPesquisarPorData.Size = new System.Drawing.Size(319, 68);
+            this.gbPesquisarPorData.TabIndex = 42;
+            this.gbPesquisarPorData.TabStop = false;
+            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
             // 
-            // txtQuantidade
+            // chkPesquisarPorData
             // 
-            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQuantidade.Location = new System.Drawing.Point(583, 149);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.ReadOnly = true;
-            this.txtQuantidade.Size = new System.Drawing.Size(183, 20);
-            this.txtQuantidade.TabIndex = 28;
+            this.chkPesquisarPorData.AutoSize = true;
+            this.chkPesquisarPorData.Location = new System.Drawing.Point(566, 68);
+            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
+            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
+            this.chkPesquisarPorData.TabIndex = 43;
+            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
+            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
+            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
             // 
             // ListagemDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 616);
-            this.Controls.Add(this.dtpDataFinal);
-            this.Controls.Add(this.dtpDataInicial);
+            this.Controls.Add(this.chkPesquisarPorData);
+            this.Controls.Add(this.gbPesquisarPorData);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.txtColaborador);
             this.Controls.Add(this.txtProduto);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Cliente);
             this.Controls.Add(this.label1);
@@ -479,12 +504,13 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ListagemDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListagemDePedidos";
-            this.Load += new System.EventHandler(this.ListagemDePedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gbPesquisarPorData.ResumeLayout(false);
+            this.gbPesquisarPorData.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -534,5 +560,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtQuantidade;
+        private System.Windows.Forms.GroupBox gbPesquisarPorData;
+        private System.Windows.Forms.CheckBox chkPesquisarPorData;
     }
 }

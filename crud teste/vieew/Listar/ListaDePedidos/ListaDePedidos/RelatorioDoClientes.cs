@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 {
@@ -17,6 +18,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         public struct Pesquisa
         {
             public string Nome { get; set; }
+
+            public bool PesquisarPorData { get; set; }
 
             public DateTime DataInicial { get; set; }
 
@@ -46,7 +49,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void RelatorioDoClientes_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
+            gbPesquisarPorData.Visible = false;
+
 
             Clientes = oAlterar.RelatorioDeVenda();
 
@@ -165,13 +170,26 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         }
 
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             Pesquisa pesquisa = new Pesquisa();
 
             pesquisa.Nome = txtCliente.Text;
-            pesquisa.DataInicial = dtpDataInicial.Value;
-            pesquisa.DataFinal = dtpDataFinal.Value;
+
+            if (chkPesquisarPorData.Checked)
+            {
+                pesquisa.PesquisarPorData = true;
+                pesquisa.DataInicial = dtpDataInicial.Value.Date;
+                pesquisa.DataFinal = dtpDataFinal.Value.Date;
+
+                if (!Global.ValidarDatas(pesquisa.DataInicial, pesquisa.DataFinal))
+                {
+                    MessageBox.Show("Data Inicial vem depois da Data Final");
+                    return;
+                }
+            }
 
             switch (cobTipo.SelectedIndex)
             { 
@@ -272,6 +290,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private void txtTop_Leave(object sender, EventArgs e)
         {
             txtTop.Text = txtTop.Text.Equals("") ? "0" : txtTop.Text;
+        }
+
+        private void chkPesquisarPorData_CheckedChanged(object sender, EventArgs e)
+        {
+            gbPesquisarPorData.Visible = chkPesquisarPorData.Checked;
         }
     }
 }

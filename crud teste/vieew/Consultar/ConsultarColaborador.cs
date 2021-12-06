@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using crud_teste.vieew;
 using crud_teste.Validation;
 using System.Linq;
+using Tema;
 
 namespace crud_teste
 {
@@ -131,7 +132,7 @@ namespace crud_teste
 
         private void ConsultarColaborador_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
         }
 
         public void preencherCampos()

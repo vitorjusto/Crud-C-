@@ -2,6 +2,7 @@
 using crud_teste.Model;
 using System;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.ListaDePedidos
 {
@@ -12,7 +13,7 @@ namespace crud_teste.vieew.ListaDePedidos
         public ListarItens(Venda carrinhosLparam)
         {
             InitializeComponent();
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
             this.venda = carrinhosLparam;
             AtualizarGrid();
 

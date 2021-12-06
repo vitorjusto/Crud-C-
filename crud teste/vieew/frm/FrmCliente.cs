@@ -5,6 +5,7 @@ using crud_teste.controller;
 using crud_teste.Validation;
 using System.Linq;
 using crud_teste.Model.Object_Values;
+using Tema;
 
 namespace crud_teste
 {
@@ -68,7 +69,7 @@ namespace crud_teste
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
 

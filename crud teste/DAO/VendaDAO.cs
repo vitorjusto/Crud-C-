@@ -261,12 +261,18 @@ namespace crud_teste.DAO
                             inner join Colaborador Co on Co.idColaborador = v.idColaborador inner join pessoa P2 on Co.IdPessoa = P2.idPessoa
 							inner join Carrinho ca on ca.idVenda = v.IdVenda inner join Produto pr on pr.IdProduto = ca.idProduto
 
-							where  P.nome like @NomeCliente + '%' and P2.nome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%'
-							and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal
+							where  P.nome like @NomeCliente + '%' and P2.nome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%' ";
 
-							group By v.idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda,
-                            v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome, P.Sobrenome,
-                            P2.Nome, P2.Sobrenome, v.ativo";
+                if(pesquisa.PesquisarPorData)
+                {
+                    query += @"and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal";
+                }
+
+                query += @" group By v.idVenda,TotalBruto, TotalDeDesconto, totalLiquido, mesesaprazo, quantidadetotal, quantidadeunitario, tipodevenda," +
+                         @"   v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome, P.Sobrenome," +
+                         @"  P2.Nome, P2.Sobrenome, v.ativo";
+
+
                 con.Open();
                 resultados = con.Query<PedidoListagem>(query, new
                 {

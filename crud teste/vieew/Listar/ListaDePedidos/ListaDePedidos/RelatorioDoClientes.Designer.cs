@@ -69,7 +69,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.Filtrar = new System.Windows.Forms.GroupBox();
@@ -96,12 +95,16 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
+            this.gbPesquisarPorData = new System.Windows.Forms.GroupBox();
+            this.chkPesquisarPorData = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorioDosClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Filtrar.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.gbPesquisarPorData.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -423,7 +426,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(516, 48);
+            this.label11.Location = new System.Drawing.Point(300, 32);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 13);
             this.label11.TabIndex = 11;
@@ -432,7 +435,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(210, 48);
+            this.label12.Location = new System.Drawing.Point(16, 32);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 12;
@@ -454,19 +457,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtCliente.Size = new System.Drawing.Size(150, 20);
             this.txtCliente.TabIndex = 14;
             // 
-            // dtpDataInicial
-            // 
-            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataInicial.Location = new System.Drawing.Point(299, 45);
-            this.dtpDataInicial.Name = "dtpDataInicial";
-            this.dtpDataInicial.Size = new System.Drawing.Size(200, 20);
-            this.dtpDataInicial.TabIndex = 15;
-            this.dtpDataInicial.Value = new System.DateTime(2001, 12, 25, 0, 0, 0, 0);
-            // 
             // dtpDataFinal
             // 
             this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataFinal.Location = new System.Drawing.Point(614, 45);
+            this.dtpDataFinal.Location = new System.Drawing.Point(367, 26);
             this.dtpDataFinal.Name = "dtpDataFinal";
             this.dtpDataFinal.Size = new System.Drawing.Size(200, 20);
             this.dtpDataFinal.TabIndex = 16;
@@ -486,6 +480,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             // Filtrar
             // 
+            this.Filtrar.Controls.Add(this.chkPesquisarPorData);
+            this.Filtrar.Controls.Add(this.gbPesquisarPorData);
             this.Filtrar.Controls.Add(this.txtTop);
             this.Filtrar.Controls.Add(this.cbTop);
             this.Filtrar.Controls.Add(this.cbListarInativo);
@@ -499,10 +495,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.Filtrar.Controls.Add(this.cobTipo);
             this.Filtrar.Controls.Add(this.txtCliente);
             this.Filtrar.Controls.Add(this.button2);
-            this.Filtrar.Controls.Add(this.label11);
-            this.Filtrar.Controls.Add(this.dtpDataFinal);
-            this.Filtrar.Controls.Add(this.label12);
-            this.Filtrar.Controls.Add(this.dtpDataInicial);
             this.Filtrar.Controls.Add(this.label13);
             this.Filtrar.Location = new System.Drawing.Point(12, 39);
             this.Filtrar.Name = "Filtrar";
@@ -752,6 +744,38 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.label17.TabIndex = 0;
             this.label17.Text = "Quantidades De Produtos Vendidos:";
             // 
+            // dtpDataInicial
+            // 
+            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataInicial.Location = new System.Drawing.Point(93, 26);
+            this.dtpDataInicial.Name = "dtpDataInicial";
+            this.dtpDataInicial.Size = new System.Drawing.Size(200, 20);
+            this.dtpDataInicial.TabIndex = 51;
+            // 
+            // gbPesquisarPorData
+            // 
+            this.gbPesquisarPorData.Controls.Add(this.label12);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
+            this.gbPesquisarPorData.Controls.Add(this.label11);
+            this.gbPesquisarPorData.Location = new System.Drawing.Point(450, 19);
+            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
+            this.gbPesquisarPorData.Size = new System.Drawing.Size(576, 76);
+            this.gbPesquisarPorData.TabIndex = 52;
+            this.gbPesquisarPorData.TabStop = false;
+            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
+            // 
+            // chkPesquisarPorData
+            // 
+            this.chkPesquisarPorData.AutoSize = true;
+            this.chkPesquisarPorData.Location = new System.Drawing.Point(299, 47);
+            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
+            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
+            this.chkPesquisarPorData.TabIndex = 53;
+            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
+            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
+            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
+            // 
             // RelatorioDoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -780,6 +804,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.Filtrar.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.gbPesquisarPorData.ResumeLayout(false);
+            this.gbPesquisarPorData.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -818,7 +844,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCliente;
-        private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataFinal;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox Filtrar;
@@ -854,5 +879,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dtpDataInicial;
+        private System.Windows.Forms.CheckBox chkPesquisarPorData;
+        private System.Windows.Forms.GroupBox gbPesquisarPorData;
     }
 }

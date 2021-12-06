@@ -1,11 +1,8 @@
 ﻿using crud_teste.vieew;
 using crud_teste.vieew.ListaDePedidos;
 using System;
-using System.Net.Mail;
-using System.Net.Mime;
-using System.Net.Configuration;
-using System.Net;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste
 {
@@ -18,7 +15,7 @@ namespace crud_teste
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
         }
 
         private void colaboradorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,15 +75,11 @@ namespace crud_teste
             new CadastroDePedidos().Show();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Global.AlterarTema(checkBox1.Checked);
-            Global.AtribuirTema(this);
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CobTema_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Temas.AlterarTema(CobTema.Text);
+            Temas.AtribuirTema(this);
         }
     }
 }

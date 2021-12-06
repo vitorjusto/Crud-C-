@@ -481,8 +481,10 @@ namespace crud_teste.DAO
                             inner join Venda v on v.idCliente = c.idCliente
                             inner join Carrinho ca on v.idVenda = ca.idVenda
 
-                            where nome like @Nome +'%' and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
+                            where nome like @Nome +'%' ";
 
+            if (pesquisa.PesquisarPorData)
+                query += "and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
 
             if (pesquisa.comAtivo)
                 query += "and p.Ativo = 1";

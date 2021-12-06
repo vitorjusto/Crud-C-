@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.ListaDePedidos
 {
@@ -21,6 +22,9 @@ namespace crud_teste.vieew.ListaDePedidos
             public string nomeCliente { get; set; }
             public string nomeColaborador { get; set; }
             public string nomeProduto { get; set; }
+
+            public bool PesquisarPorData { get; set; }
+
             public DateTime dataInicial { get; set; }
             public DateTime dataFinal { get; set; }
         }
@@ -30,11 +34,13 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             InitializeComponent();
 
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             pedidos = oAlterar.Listar();
 
             ListarECalcularValores();
+
+            gbPesquisarPorData.Visible = false;
         }
 
         private void ListarECalcularValores()
@@ -97,7 +103,7 @@ namespace crud_teste.vieew.ListaDePedidos
             else if (lucro < 0)
                 txtLucro.ForeColor = Color.Red;
             else
-                txtLucro.ForeColor = Global.FontColor;
+                txtLucro.ForeColor = Temas.FontColor;
         }
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,9 +137,19 @@ namespace crud_teste.vieew.ListaDePedidos
             pesquisa.nomeCliente = txtCliente.Text;
             pesquisa.nomeColaborador = txtColaborador.Text;
             pesquisa.nomeProduto = txtProduto.Text;
-            pesquisa.dataInicial = dtpDataInicial.Value;
-            pesquisa.dataFinal = dtpDataFinal.Value;
 
+            if (chkPesquisarPorData.Checked)
+            {
+                pesquisa.PesquisarPorData = true;
+                pesquisa.dataInicial = dtpDataInicial.Value.Date;
+                pesquisa.dataFinal = dtpDataFinal.Value.Date;
+
+                if (!Global.ValidarDatas(pesquisa.dataInicial, pesquisa.dataFinal))
+                {
+                    MessageBox.Show("Data Inicial vem depois da data Final");
+                    return;
+                }
+            }
             pedidos = oAlterar.Listar(pesquisa);
             ListarECalcularValores();
         }
@@ -144,9 +160,9 @@ namespace crud_teste.vieew.ListaDePedidos
             new RelatorioDoClientes().Show();
         }
 
-        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        private void chkPesquisarPorData_CheckedChanged(object sender, EventArgs e)
         {
-
+            gbPesquisarPorData.Visible = chkPesquisarPorData.Checked;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos;
 
 namespace crud_teste.controller
 {
@@ -92,10 +93,11 @@ namespace crud_teste.controller
         }
 
 
-        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos(string nome, string produto, DateTime DataInicial, DateTime DataFinal)
+        public List<RelatorioProdutosVendaListagem> RelatorioDeVendaDosProdutos(pesquisar pesquisa )
         {
+           
             var stmt = new DAOProduto();
-            var resultado = stmt.RelatorioDeVendaDosProdutos(nome, produto, DataInicial, DataFinal);
+            var resultado = stmt.RelatorioDeVendaDosProdutos(pesquisa);
 
             return resultado;
         }

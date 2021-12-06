@@ -5,6 +5,7 @@ using crud_teste.Validation;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew
 {
@@ -14,7 +15,7 @@ namespace crud_teste.vieew
         {
             InitializeComponent();
 
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
             PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using CRUD_teste.Model;
 using crud_teste.controller;
@@ -7,6 +6,7 @@ using crud_teste.vieew;
 using crud_teste.Validation;
 using System.Linq;
 using crud_teste.Model.Object_Values;
+using Tema;
 
 namespace crud_teste
 {
@@ -121,7 +121,7 @@ namespace crud_teste
 
         private void ConsultarCliente_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
 
 

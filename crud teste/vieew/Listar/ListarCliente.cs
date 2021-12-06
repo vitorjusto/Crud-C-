@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew
 {
@@ -71,7 +72,7 @@ namespace crud_teste.vieew
 
         private void ListarCliente_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
         }
 
         private void menuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)

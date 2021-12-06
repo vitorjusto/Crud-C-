@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew
 {
@@ -21,7 +22,7 @@ namespace crud_teste.vieew
         public ListarProduto()
         {
             InitializeComponent();
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             AlterarProduto oAlterar = new AlterarProduto();
             produtos = oAlterar.Listar();
@@ -112,7 +113,7 @@ namespace crud_teste.vieew
 
         private void dataGridProduto_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.ColumnIndex == -1)
+            if (e.RowIndex == -1)
                 return;
 
             if (e.ColumnIndex == 5)

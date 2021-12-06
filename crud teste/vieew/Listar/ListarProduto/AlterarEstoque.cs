@@ -2,6 +2,7 @@
 using crud_teste.Model.Listagem;
 using System;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.Listar.ListarProduto
 {
@@ -20,7 +21,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
 
         private void AlterarEstoque_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
         }
 
         private void button2_Click(object sender, EventArgs e)

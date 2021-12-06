@@ -2,6 +2,7 @@
 using crud_teste.Model.Listagem;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Tema;
 
 namespace crud_teste.vieew.TelaDeVenda
 {
@@ -18,7 +19,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.carrinhos = carrinhosparam;
             this.carrinhosL = carrinhosLparam;
 
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
 
             alterar = false;
             var i = 0;

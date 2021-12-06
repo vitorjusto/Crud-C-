@@ -5,6 +5,7 @@ using crud_teste.Validation;
 using crud_teste.Validation.Object_Values_Validations;
 using CRUD_teste.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Teste_de_unidade1
 {
@@ -1024,6 +1025,29 @@ namespace Teste_de_unidade1
 
             Assert.IsTrue(resultado.ToString().Contains("O Total Liquido é maior que o valor limite"));
 
+        }
+
+        [TestMethod]
+        public void Deve_retornar_True_se_A_Data_Inicial_For_Antes_Ou_Agora_Da_Data_Final()
+        {
+            DateTime Data1 = DateTime.Now;
+            DateTime Data2 = DateTime.Now;
+
+            var resultado = Global.ValidarDatas(Data1, Data2);
+
+            Assert.IsTrue(resultado);
+        }
+
+        [TestMethod]
+        public void Deve_retornar_Falso_se_A_Data_Inicial_For_depois_Da_Data_Final()
+        {
+            DateTime Data1 = DateTime.Now;
+            DateTime Data2 = DateTime.Now;
+            Data1 = Data1.AddDays(5);
+
+            var resultado = Global.ValidarDatas(Data1, Data2);
+
+            Assert.IsFalse(resultado);
         }
     }
 }

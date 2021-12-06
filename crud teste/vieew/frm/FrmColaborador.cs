@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using crud_teste.controller;
 using crud_teste.Validation;
 using System.Linq;
+using Tema;
 
 namespace crud_teste
 {
@@ -28,7 +29,7 @@ namespace crud_teste
 
         private void Colaborador_Load(object sender, EventArgs e)
         {
-            Global.AtribuirTema(this);
+            Temas.AtribuirTema(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

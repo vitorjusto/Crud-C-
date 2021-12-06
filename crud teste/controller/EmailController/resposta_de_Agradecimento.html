@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+      <head>
+            <meta charset="UTF-8" />
+            
+            <title>Titulo</title>
+      </head>
+      <body style="text-align: center; ">
+            <div style="background-color: aliceblue; width: 70%; margin: auto; line-height: 1.8;padding: 2%;line-height: 3;">
+            <h1>Obrigado por comprar no Augustus Fashion</h1>
+
+            <p>Olá, <strong>{Nome_Do_Cliente}</strong>, Obrigado por comprar na Augustus Fashion, Aqui está a lista de compra feita na nossa loja:</p>
+
+            <table style="width: 90%; margin: auto; border-collapse: collapse; border: 2px solid black; line-height: 1;">
+                  <thead>
+                        <tr><th></th><th>Nome Do Produto</th><th>Preço Unitário</th><th>Quantidade</th><th>Preço Bruto</th><th>Desconto</th><th>Preço Liquido</th></tr>
+                  </thead>
+                  <tbody>
+                        {Listagem_Dos_Produtos}
+                  </tbody>
+                  <tfoot>
+                        {Totais_da_Compra}
+                  </tfoot>
+            </table>
+
+            <h2>Mais Informações Da Compra</h2>
+            
+            <ul style="text-Align: left; line-height: 1.5;">
+                  <li>A compra foi feito {Tipo_DA_Compra}</li> 
+                  <li>foi feito com o nosso colaborador: {Nome_Do_Colaborador}</li>
+                  <li>Foi realizado no dia {Data_Da_Venda}</li>
+
+            </ul>
+
+            <p>Para Mais Informações visite o nosso site: <a href="#">Augutus-Fashion.com.br</a></p>
+            </div>
+      </body>
+</html>
