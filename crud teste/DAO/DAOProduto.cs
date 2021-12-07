@@ -292,6 +292,8 @@ namespace crud_teste.DAO
                               Sum(precoLiquido) as 'TotalLiquido',
                               Sum(c.precoDeCusto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
+                              inner join Venda v on v.IdVenda = c.idVenda
+                              where v.ativo = 1
                               GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;";
                 var resultado = con.Query<RelatorioProdutosVendaListagem>(query);
                 return resultado.ToList();
@@ -314,7 +316,7 @@ namespace crud_teste.DAO
 							  inner join cliente cl on cl.idCliente = v.idCliente
 							  inner join pessoa pe on pe.idPessoa = cl.IdPessoa
 
-							  where p.NomeProduto like @produto + '%' and pe.Nome + pe.Sobrenome like @nome + '%' ";
+							  where p.NomeProduto like @produto + '%' and pe.Nome + pe.Sobrenome like @nome + '%' and v.Ativo = 1";
 
                 if (pesquisa.pesquisarPorData)
                     query += @"and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";

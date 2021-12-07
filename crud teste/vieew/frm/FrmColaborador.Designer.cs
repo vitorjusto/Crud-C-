@@ -120,7 +120,6 @@ namespace crud_teste
             // 
             // Sexo
             // 
-            this.Sexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Sexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino",
@@ -129,6 +128,7 @@ namespace crud_teste
             this.Sexo.Name = "Sexo";
             this.Sexo.Size = new System.Drawing.Size(104, 21);
             this.Sexo.TabIndex = 5;
+            this.Sexo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sexo_KeyPress);
             // 
             // label3
             // 
@@ -226,7 +226,6 @@ namespace crud_teste
             // 
             // UF
             // 
-            this.UF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UF.FormattingEnabled = true;
             this.UF.Items.AddRange(new object[] {
             "AC",
@@ -254,6 +253,7 @@ namespace crud_teste
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(49, 21);
             this.UF.TabIndex = 21;
+            this.UF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UF_KeyPress);
             // 
             // label11
             // 

@@ -19,7 +19,7 @@ namespace crud_teste.Model
             get => Pedido_Produto.Sum(x => x.Desconto.GetAsDouble());
         }
         public MyDinheiro TotalLiquido {
-            get => Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble());
+            get => Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble()) - DescontoAVIsta.GetAsDouble();
         }
         public int MesesAPrazo{ get; set; }
         public long QuantidadeDeTotal{ get => Pedido_Produto.Sum(x => x.quantidade); }

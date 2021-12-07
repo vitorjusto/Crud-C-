@@ -94,5 +94,10 @@ namespace crud_teste.Model.Object_Values
             return dvalue.ToString("C2");
         }
 
+        public void Decrement(MyDinheiro value)
+        {
+            _value -= value.GetAsDecimal();
+        }
+
     }
 }

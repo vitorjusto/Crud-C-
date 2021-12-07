@@ -127,6 +127,14 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtTotalDeDesconto.Text = lista.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.TotalDedescontoAVista.GetAsDecimal()).ToString("c2");
                 txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
 
+                var lucro = lista.Sum(x => x.TotalLiquido.GetAsDecimal() - x.PrecoDeCusto.GetAsDecimal());
+                txtLucro.Text = lucro.ToString("C2");
+
+                if (lucro > 0M)
+                    txtLucro.ForeColor = Color.Green;
+                else if (lucro < 0M)
+                    txtLucro.ForeColor = Color.Red;
+
             }
             else
             {
@@ -141,6 +149,16 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtMenosLucrativoValor.Text = "";
                 txtMenosVendido.Text = "";
                 txtMenosVendidoQuantidade.Text = "";
+
+
+                txtQuantidadesDeProdutos.Text = "";
+                txtTotalDeVendas.Text = "";
+                txtTotalBruto.Text = "";
+                txtTotalDeDesconto.Text = "";
+                txtTotalLiquido.Text = "";
+                txtLucro.Text = "";
+
+                txtLucro.ForeColor = Color.Black;
             }
         }
 
@@ -230,7 +248,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             if (cbTop.Checked)
             {
                 pesquisa.considerarTopResults = true;
-                pesquisa.topresultadosnumero = Convert.ToInt64(txtTop.Text);
+                pesquisa.topresultadosnumero = Convert.ToInt64(txtTop.Text == ""? "0": txtTop.Text);
             }
 
             pesquisa.comAtivo = !cbListarInativo.Checked;
@@ -295,6 +313,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private void chkPesquisarPorData_CheckedChanged(object sender, EventArgs e)
         {
             gbPesquisarPorData.Visible = chkPesquisarPorData.Checked;
+        }
+
+        private void cobCrescente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

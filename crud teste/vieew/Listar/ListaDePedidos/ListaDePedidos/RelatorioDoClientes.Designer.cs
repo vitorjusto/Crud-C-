@@ -72,6 +72,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.Filtrar = new System.Windows.Forms.GroupBox();
+            this.chkPesquisarPorData = new System.Windows.Forms.CheckBox();
+            this.gbPesquisarPorData = new System.Windows.Forms.GroupBox();
+            this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.txtTop = new System.Windows.Forms.TextBox();
             this.cbTop = new System.Windows.Forms.CheckBox();
             this.txtValorFinal = new System.Windows.Forms.TextBox();
@@ -88,23 +91,20 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtTotalDeDesconto = new System.Windows.Forms.TextBox();
             this.txtTotalLiquido = new System.Windows.Forms.TextBox();
             this.txtQuantidadesDeProdutos = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLucro = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
-            this.gbPesquisarPorData = new System.Windows.Forms.GroupBox();
-            this.chkPesquisarPorData = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorioDosClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Filtrar.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.gbPesquisarPorData.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -503,6 +503,38 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.Filtrar.TabStop = false;
             this.Filtrar.Text = "Filtrar";
             // 
+            // chkPesquisarPorData
+            // 
+            this.chkPesquisarPorData.AutoSize = true;
+            this.chkPesquisarPorData.Location = new System.Drawing.Point(299, 47);
+            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
+            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
+            this.chkPesquisarPorData.TabIndex = 53;
+            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
+            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
+            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
+            // 
+            // gbPesquisarPorData
+            // 
+            this.gbPesquisarPorData.Controls.Add(this.label12);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
+            this.gbPesquisarPorData.Controls.Add(this.label11);
+            this.gbPesquisarPorData.Location = new System.Drawing.Point(450, 19);
+            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
+            this.gbPesquisarPorData.Size = new System.Drawing.Size(576, 76);
+            this.gbPesquisarPorData.TabIndex = 52;
+            this.gbPesquisarPorData.TabStop = false;
+            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
+            // 
+            // dtpDataInicial
+            // 
+            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataInicial.Location = new System.Drawing.Point(93, 26);
+            this.dtpDataInicial.Name = "dtpDataInicial";
+            this.dtpDataInicial.Size = new System.Drawing.Size(200, 20);
+            this.dtpDataInicial.TabIndex = 51;
+            // 
             // txtTop
             // 
             this.txtTop.Location = new System.Drawing.Point(119, 159);
@@ -605,6 +637,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.cobCrescente.Name = "cobCrescente";
             this.cobCrescente.Size = new System.Drawing.Size(97, 21);
             this.cobCrescente.TabIndex = 42;
+            this.cobCrescente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cobCrescente_KeyPress);
             // 
             // cobTipo
             // 
@@ -628,7 +661,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox3.Controls.Add(this.txtTotalDeDesconto);
             this.groupBox3.Controls.Add(this.txtTotalLiquido);
             this.groupBox3.Controls.Add(this.txtQuantidadesDeProdutos);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtLucro);
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
@@ -682,13 +715,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtQuantidadesDeProdutos.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidadesDeProdutos.TabIndex = 7;
             // 
-            // textBox1
+            // txtLucro
             // 
-            this.textBox1.Location = new System.Drawing.Point(797, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(211, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtLucro.Location = new System.Drawing.Point(797, 86);
+            this.txtLucro.Name = "txtLucro";
+            this.txtLucro.ReadOnly = true;
+            this.txtLucro.Size = new System.Drawing.Size(211, 20);
+            this.txtLucro.TabIndex = 6;
             // 
             // label22
             // 
@@ -744,38 +777,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.label17.TabIndex = 0;
             this.label17.Text = "Quantidades De Produtos Vendidos:";
             // 
-            // dtpDataInicial
-            // 
-            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataInicial.Location = new System.Drawing.Point(93, 26);
-            this.dtpDataInicial.Name = "dtpDataInicial";
-            this.dtpDataInicial.Size = new System.Drawing.Size(200, 20);
-            this.dtpDataInicial.TabIndex = 51;
-            // 
-            // gbPesquisarPorData
-            // 
-            this.gbPesquisarPorData.Controls.Add(this.label12);
-            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
-            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
-            this.gbPesquisarPorData.Controls.Add(this.label11);
-            this.gbPesquisarPorData.Location = new System.Drawing.Point(450, 19);
-            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
-            this.gbPesquisarPorData.Size = new System.Drawing.Size(576, 76);
-            this.gbPesquisarPorData.TabIndex = 52;
-            this.gbPesquisarPorData.TabStop = false;
-            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
-            // 
-            // chkPesquisarPorData
-            // 
-            this.chkPesquisarPorData.AutoSize = true;
-            this.chkPesquisarPorData.Location = new System.Drawing.Point(299, 47);
-            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
-            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
-            this.chkPesquisarPorData.TabIndex = 53;
-            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
-            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
-            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
-            // 
             // RelatorioDoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -802,10 +803,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox2.PerformLayout();
             this.Filtrar.ResumeLayout(false);
             this.Filtrar.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.gbPesquisarPorData.ResumeLayout(false);
             this.gbPesquisarPorData.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -872,7 +873,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.TextBox txtTotalDeDesconto;
         private System.Windows.Forms.TextBox txtTotalLiquido;
         private System.Windows.Forms.TextBox txtQuantidadesDeProdutos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLucro;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;

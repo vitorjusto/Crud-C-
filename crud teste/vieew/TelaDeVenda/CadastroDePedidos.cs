@@ -323,6 +323,7 @@ namespace crud_teste.vieew
             if (venda.TipoDeVenda.Equals("A vista"))
             {
                 venda.DescontoAVIsta = DescontoAVista.Text.Equals("") ? "0.0" : DescontoAVista.Text;
+
                 venda.MesesAPrazo = 0;
             }
             else if (venda.TipoDeVenda.Equals("A Prazo"))
@@ -362,15 +363,7 @@ namespace crud_teste.vieew
             if (FormaDePagamento.Text.Equals("A vista"))
                 DescontoAVista.Text = MyDinheiro.SetTextBoxAsMoneyValue(DescontoAVista.Text);
         }
+         private void FormaDePagamento_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
-        private void NomeCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CadastroDePedidos_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using crud_teste.Model;
+﻿
+using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
 using Dapper;
@@ -443,14 +444,14 @@ namespace crud_teste.DAO
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo, SUM(ca.PrecoDeCusto) * SUM(ca.Quantidade) as 'PrecoDeCusto'
+                            c.LimiteRestante, p.Ativo, SUM(ca.PrecoDeCusto * ca.Quantidade) as 'PrecoDeCusto'
 
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
 							inner join Carrinho ca on v.idVenda = ca.idVenda
 
-                            where p.ativo = 1
+                            where p.ativo = 1 and v.ativo = 1
 
                             group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
                 
@@ -473,7 +474,7 @@ namespace crud_teste.DAO
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo,  SUM(ca.PrecoDeVenda), sum(ca.PrecoDeCusto),
+                            c.LimiteRestante, p.Ativo,  SUM(ca.PrecoDeCusto * ca.Quantidade),
                             SUM(ca.PrecoDeCusto) * SUM(ca.Quantidade) as 'PrecoDeCusto'
 
                             from cliente c
@@ -481,7 +482,7 @@ namespace crud_teste.DAO
                             inner join Venda v on v.idCliente = c.idCliente
                             inner join Carrinho ca on v.idVenda = ca.idVenda
 
-                            where nome like @Nome +'%' ";
+                            where nome like @Nome +'%' and v.ativo = 1";
 
             if (pesquisa.PesquisarPorData)
                 query += "and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";

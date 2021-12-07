@@ -115,5 +115,10 @@ namespace crud_teste
 
         private void Salario_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
+
+        private void Sexo_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
+
+        private void UF_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
+
     }
 }

@@ -60,7 +60,6 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.ConsultarColab
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.ListarClientes.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.ListarCliente.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.ListarColaboradores.resources
-C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.Opcoes.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.Properties.Resources.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud teste.csproj.GenerateResource.cache
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud teste.csproj.CoreCompileInputs.cache

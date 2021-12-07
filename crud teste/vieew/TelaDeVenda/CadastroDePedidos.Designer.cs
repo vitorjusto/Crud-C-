@@ -88,7 +88,6 @@ namespace crud_teste.vieew
             this.NomeCliente.ReadOnly = true;
             this.NomeCliente.Size = new System.Drawing.Size(334, 20);
             this.NomeCliente.TabIndex = 0;
-            this.NomeCliente.TextChanged += new System.EventHandler(this.NomeCliente_TextChanged);
             this.NomeCliente.DoubleClick += new System.EventHandler(this.NomeCliente_DoubleClick);
             // 
             // label1
@@ -129,7 +128,6 @@ namespace crud_teste.vieew
             // 
             // FormaDePagamento
             // 
-            this.FormaDePagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FormaDePagamento.FormattingEnabled = true;
             this.FormaDePagamento.Items.AddRange(new object[] {
             "A vista",
@@ -142,6 +140,7 @@ namespace crud_teste.vieew
             this.FormaDePagamento.Size = new System.Drawing.Size(100, 21);
             this.FormaDePagamento.TabIndex = 6;
             this.FormaDePagamento.TextChanged += new System.EventHandler(this.FormaDePagamento_TextChanged);
+            this.FormaDePagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormaDePagamento_KeyPress);
             // 
             // groupBox1
             // 
@@ -560,7 +559,6 @@ namespace crud_teste.vieew
             this.Name = "CadastroDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroDePedidos";
-            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

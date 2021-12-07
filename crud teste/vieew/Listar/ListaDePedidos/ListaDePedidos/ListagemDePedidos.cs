@@ -73,7 +73,7 @@ namespace crud_teste.vieew.ListaDePedidos
                 if(!pedido.ativo)
                 {
                     var j = 0;
-                    while (j < 10)
+                    while (j < 11)
                     {
                         ListarPedidos.Rows[index].Cells[j].Style = vendainativa;
                         j++;
@@ -88,22 +88,23 @@ namespace crud_teste.vieew.ListaDePedidos
 
             ListarPedidos.AllowUserToAddRows = false;
 
-            NumeroDePedidos.Text = pedidos.Count().ToString();
-            txtTotalBruto.Text = pedidos.Sum(x => x.ativo? x.TotalBruto.GetAsDecimal() : 0.0M).ToString("C2");
-            txtDesconto.Text = pedidos.Sum(x => x.ativo ? x.TotalDeDesconto.GetAsDecimal() + x.DescontoAVIsta.GetAsDecimal() : 0.0M).ToString("C2");
-            txtTotalGasto.Text = pedidos.Sum(x => x.ativo ? x.TotalGasto() : 0.0).ToString("C2");
-            txttotalLiquido.Text = pedidos.Sum(x => x.ativo ? x.TotalLiquido.GetAsDecimal() : 0.0M).ToString("C2");
+            var Ativos = pedidos.Where(x => x.ativo);
 
-            var lucro = pedidos.Sum(x => x.ativo ? x.TotalLiquido.GetAsDecimal() : 0.0M) - (decimal)pedidos.Sum(x => x.ativo ? x.TotalGasto() : 0.0);
+            NumeroDePedidos.Text = Ativos.Count().ToString();
+            txtTotalBruto.Text = Ativos.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C");
+            txtDesconto.Text = Ativos.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.DescontoAVIsta.GetAsDecimal()).ToString("C");
+            txtQuantidade.Text = Ativos.Sum(x => x.carrinhos.Count()).ToString();
+            txtTotalGasto.Text = Ativos.Sum(x => x.TotalGasto).ToString("C");
+            txttotalLiquido.Text = Ativos.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
 
-            txtLucro.Text = lucro.ToString("C2");
-            
-            if (lucro > 0)
+            var lucro = Ativos.Sum(x => x.TotalLiquido.GetAsDecimal() - x.TotalGasto);
+            txtLucro.Text = lucro.ToString("c2");
+
+            if (lucro > 0M)
                 txtLucro.ForeColor = Color.Green;
-            else if (lucro < 0)
+            else if (lucro < 0M)
                 txtLucro.ForeColor = Color.Red;
-            else
-                txtLucro.ForeColor = Temas.FontColor;
+
         }
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,6 +164,11 @@ namespace crud_teste.vieew.ListaDePedidos
         private void chkPesquisarPorData_CheckedChanged(object sender, EventArgs e)
         {
             gbPesquisarPorData.Visible = chkPesquisarPorData.Checked;
+        }
+
+        private void ListagemDePedidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

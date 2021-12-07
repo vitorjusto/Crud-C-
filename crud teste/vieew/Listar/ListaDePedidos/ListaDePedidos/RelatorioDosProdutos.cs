@@ -97,6 +97,19 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtMenosVendidaTotal.Text = lista.Min(x => x.Quantidade).ToString();
                 txtMenosVendido.Text = lista.OrderByDescending(x => x.Quantidade).Last().nomeProduto;
 
+                txtQuantidadesDeProdutos.Text = lista.Sum(x => x.Quantidade).ToString();
+                txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C");
+                txtTotalDeDesconto.Text = lista.Sum(x => x.Desconto.GetAsDecimal()).ToString("C");
+                txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C");
+
+                var lucro = lista.Sum(x => x.LucroEmDinheiro.GetAsDecimal());
+                txtLucro.Text = lucro.ToString("C");
+
+                if (lucro > 0.0M)
+                    txtLucro.ForeColor = Color.Green;
+                else if (lucro < 0.0M)
+                    txtLucro.ForeColor = Color.Red;
+
             }
             else
             {
@@ -112,6 +125,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtMenosVendidaTotal.Text = "";
                 txtMenosVendido.Text = "";
             }
+
+
 
         }
 

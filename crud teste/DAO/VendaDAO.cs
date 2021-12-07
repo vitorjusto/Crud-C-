@@ -216,8 +216,8 @@ namespace crud_teste.DAO
                             v.idCliente, v.idColaborador, v.DiaDaVenda, DescontoAVista, P.Nome as 'NomeCliente', P.Sobrenome as 'sobrenomeCliente',
                             P2.Nome as 'nomeColaborador', P2.Sobrenome as 'sobrenomeColaborador', v.ativo
                             from Venda v
-                            Left outer join cliente Cl on Cl.idCliente = v.idCliente Left outer join pessoa P on Cl.IdPessoa = P.idPessoa
-                            Left outer join Colaborador Co on Co.idColaborador = v.idColaborador Left outer join pessoa P2 on Co.IdPessoa = P2.idPessoa";
+                            inner join cliente Cl on Cl.idCliente = v.idCliente inner join pessoa P on Cl.IdPessoa = P.idPessoa
+                            inner join Colaborador Co on Co.idColaborador = v.idColaborador inner join pessoa P2 on Co.IdPessoa = P2.idPessoa";
 
                 con.Open();
                 resultados = con.Query<PedidoListagem>(query).ToList();
@@ -233,6 +233,8 @@ namespace crud_teste.DAO
                     {
                         idVenda = resultado.IdVenda,
                     }).ToList() ;
+
+                    index++;
                 }
                 con.Close();
                 return resultados;

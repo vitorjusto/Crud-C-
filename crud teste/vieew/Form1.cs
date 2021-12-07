@@ -32,12 +32,6 @@ namespace crud_teste
 
         }
 
-        private void opçõesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new Opcoes().Show();
-        }
-
         private void colaboradoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();

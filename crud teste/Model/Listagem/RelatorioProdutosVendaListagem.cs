@@ -22,8 +22,8 @@ namespace crud_teste.Model.Listagem
 
         public MyDinheiro TotalPrecoDeVenda { get; set; }
 
-        public MyPorcento LucroEmPorcento { get => (( TotalPrecoDeVenda.GetAsDecimal() - TotalCusto.GetAsDecimal()) / TotalCusto.GetAsDecimal()) * 100; }
-        public MyDinheiro LucroEmDinheiro { get => TotalPrecoDeVenda.GetAsDecimal() - TotalCusto.GetAsDecimal(); }
+        public MyPorcento LucroEmPorcento { get => (( TotalLiquido.GetAsDecimal() - TotalCusto.GetAsDecimal()) / TotalCusto.GetAsDecimal()) * 100; }
+        public MyDinheiro LucroEmDinheiro { get => TotalLiquido.GetAsDecimal() - TotalCusto.GetAsDecimal(); }//este Lucro desconsidera o desconto a vista
 
         public bool Ativo { get; set; }
 

@@ -1,7 +1,7 @@
 ﻿using crud_teste.Model.Object_Values;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace crud_teste.Model.Listagem
 {
@@ -43,17 +43,10 @@ namespace crud_teste.Model.Listagem
 
         public DateTime DiaDavenda { get; set; }
 
-        public float TotalGasto()
+        public decimal TotalGasto
         {
-            float total = 0;
-            foreach(var carrinho in carrinhos)
-            {
-                total += (float)carrinho.precoDeCusto.GetAsDouble() * carrinho.quantidade;
-            }
-
-            return total;
+            get => carrinhos.Sum(x => x.precoDeCusto.GetAsDecimal() * x.quantidade);
         }
-       
 
         public float TotalReceita()
         {

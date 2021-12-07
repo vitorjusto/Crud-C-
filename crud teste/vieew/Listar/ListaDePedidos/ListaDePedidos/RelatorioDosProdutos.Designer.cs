@@ -76,13 +76,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtTotalDeVendas = new System.Windows.Forms.TextBox();
             this.txtTotalBruto = new System.Windows.Forms.TextBox();
             this.txtTotalDeDesconto = new System.Windows.Forms.TextBox();
             this.txtTotalLiquido = new System.Windows.Forms.TextBox();
             this.txtQuantidadesDeProdutos = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.txtLucro = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -525,13 +523,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.txtTotalDeVendas);
             this.groupBox5.Controls.Add(this.txtTotalBruto);
             this.groupBox5.Controls.Add(this.txtTotalDeDesconto);
             this.groupBox5.Controls.Add(this.txtTotalLiquido);
             this.groupBox5.Controls.Add(this.txtQuantidadesDeProdutos);
-            this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.txtLucro);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label19);
@@ -543,14 +539,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.groupBox5.TabIndex = 43;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Total";
-            // 
-            // txtTotalDeVendas
-            // 
-            this.txtTotalDeVendas.Location = new System.Drawing.Point(202, 86);
-            this.txtTotalDeVendas.Name = "txtTotalDeVendas";
-            this.txtTotalDeVendas.ReadOnly = true;
-            this.txtTotalDeVendas.Size = new System.Drawing.Size(100, 20);
-            this.txtTotalDeVendas.TabIndex = 11;
             // 
             // txtTotalBruto
             // 
@@ -584,22 +572,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtQuantidadesDeProdutos.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidadesDeProdutos.TabIndex = 7;
             // 
-            // textBox1
+            // txtLucro
             // 
-            this.textBox1.Location = new System.Drawing.Point(797, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(211, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(17, 93);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(156, 13);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "Quantidades Total De Vendas: ";
+            this.txtLucro.Location = new System.Drawing.Point(797, 86);
+            this.txtLucro.Name = "txtLucro";
+            this.txtLucro.ReadOnly = true;
+            this.txtLucro.Size = new System.Drawing.Size(211, 20);
+            this.txtLucro.TabIndex = 6;
             // 
             // label21
             // 
@@ -727,13 +706,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtTotalDeVendas;
         private System.Windows.Forms.TextBox txtTotalBruto;
         private System.Windows.Forms.TextBox txtTotalDeDesconto;
         private System.Windows.Forms.TextBox txtTotalLiquido;
         private System.Windows.Forms.TextBox txtQuantidadesDeProdutos;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtLucro;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
