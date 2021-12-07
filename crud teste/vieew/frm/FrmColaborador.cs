@@ -77,7 +77,7 @@ namespace crud_teste
             colaborador.Nome = Nome.Text;
             colaborador.SobreNome = Sobrenome.Text;
             colaborador.Sexo = Sexo.Text;
-            colaborador.Salario = decimal.Parse(Salario.Text);
+            colaborador.Salario = Salario.Text;
             colaborador.DataDeNascimento = Data.Value;
             colaborador.CPF = CPF.Text;
             colaborador.contato.Email = Email.Text;
@@ -85,7 +85,7 @@ namespace crud_teste
             colaborador.contato.Celular = Celular2.Text;
 
             colaborador.contato.Celular.DDI = Celular1.Text;
-            colaborador.PorcentagemDeComissao = decimal.Parse(Porcentagem.Text);
+            colaborador.PorcentagemDeComissao = decimal.Parse(Porcentagem.Text == ""? "0" : Porcentagem.Text);
 
             colaborador.endereco.Cep = CEP.Text;
             colaborador.endereco.Logradouro = Logradouro.Text;
@@ -106,19 +106,17 @@ namespace crud_teste
 
         }
 
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotIntChar(e.KeyChar);
+        private void Numero_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
 
 
-        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
+        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
 
-        private void Salario_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
+        private void Salario_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
 
         private void Sexo_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
         private void UF_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
+        private void Agencia_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
     }
 }

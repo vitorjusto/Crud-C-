@@ -9,12 +9,12 @@ namespace CRUD_teste.Model
     {
         public int idColaborador { get; set; }
 
-        public decimal PorcentagemDeComissao { get; set; }
+        public MyPorcento PorcentagemDeComissao { get; set; }
 
         public MyDinheiro comissao = new MyDinheiro();
 
         public DadosBancarios DadosBancarios = new DadosBancarios();
-        public decimal Salario{ get; set; }
+        public MyDinheiro Salario{ get; set; }
 
         
 

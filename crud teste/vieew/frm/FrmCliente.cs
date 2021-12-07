@@ -37,6 +37,8 @@ namespace crud_teste
             cliente = preencherCampos();
             ClienteValidation validar = new ClienteValidation();
 
+            //cliente.LimiteAcumulado = 
+
             var validateres = validar.Validate(cliente);
 
             if (validateres.IsValid)

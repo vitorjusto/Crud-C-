@@ -56,6 +56,7 @@ namespace crud_teste.controller
             SecureString pasword = new SecureString();
 
 
+
             for (int index = 0; index < File.ReadAllText("C:/Users/PC1/Desktop/C#/Segredo.txt").Length; index++)
                 pasword.AppendChar(File.ReadAllText("C:/Users/PC1/Desktop/C#/Segredo.txt")[index]);
             pasword.MakeReadOnly();

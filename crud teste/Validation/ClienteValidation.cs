@@ -14,6 +14,8 @@ namespace crud_teste.Validation
         public ClienteValidation()
         {
             RuleFor(x => x).SetValidator(new PessoaValidation());
+
+            RuleFor(x => x.LimiteDeCompra.GetAsDecimal() - x.LimiteRestante.GetAsDecimal()).GreaterThanOrEqualTo(0).WithMessage("Valor Acumulado não deve ser maior que o valor limite");
         }
     }
 }

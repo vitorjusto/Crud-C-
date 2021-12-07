@@ -162,9 +162,9 @@ namespace crud_teste
             colaboradorGlobal.endereco.Numero = i;
 
             colaboradorGlobal.DadosBancarios.Banco = Banco.Text;
-            colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text);
-            colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text);
-            colaboradorGlobal.DadosBancarios.Digito = int.Parse(Digito.Text);
+            colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0": Agencia.Text);
+            colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text == "" ? "0" : Conta.Text);
+            colaboradorGlobal.DadosBancarios.Digito = int.Parse(Digito.Text == "" ? "0" : Digito.Text);
         }
 
         private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) => 

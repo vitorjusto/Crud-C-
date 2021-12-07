@@ -150,7 +150,7 @@ namespace crud_teste
             clienteglobal.endereco.UF = UF.Text;
             clienteglobal.endereco.Complemento = Complemento.Text;
             clienteglobal.endereco.Bairro = Bairro.Text;
-            clienteglobal.endereco.Numero = int.Parse(Numero.Text);
+            clienteglobal.endereco.Numero = int.Parse(Numero.Text == "" ? "0" : Numero.Text);
 
             return clienteglobal;
 

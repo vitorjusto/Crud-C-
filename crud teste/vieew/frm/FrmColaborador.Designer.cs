@@ -477,6 +477,7 @@ namespace crud_teste
             // Numero
             // 
             this.Numero.Location = new System.Drawing.Point(687, 74);
+            this.Numero.MaxLength = 6;
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(43, 20);
             this.Numero.TabIndex = 27;
@@ -518,6 +519,7 @@ namespace crud_teste
             // Digito
             // 
             this.Digito.Location = new System.Drawing.Point(697, 34);
+            this.Digito.MaxLength = 1;
             this.Digito.Name = "Digito";
             this.Digito.Size = new System.Drawing.Size(32, 20);
             this.Digito.TabIndex = 8;
@@ -573,6 +575,7 @@ namespace crud_teste
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(35, 20);
             this.Agencia.TabIndex = 1;
+            this.Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Agencia_KeyPress);
             // 
             // Banco
             // 

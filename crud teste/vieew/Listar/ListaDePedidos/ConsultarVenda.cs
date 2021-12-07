@@ -36,6 +36,9 @@ namespace crud_teste.vieew.ListaDePedidos
 
             txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
 
+            btnAtivar.Visible = _venda.Ativo;
+            btnAlterarVenda.Visible = _venda.Ativo;
+
             preencherCampos();
 
         }

@@ -44,7 +44,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalBruto = new System.Windows.Forms.TextBox();
             this.txtTotalDesconto = new System.Windows.Forms.TextBox();
             this.txtTotalLiquido = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAlterarVenda = new System.Windows.Forms.Button();
             this.gbProduto = new System.Windows.Forms.GroupBox();
             this.btnAlterarProduto = new System.Windows.Forms.Button();
             this.ExcluirProduto = new System.Windows.Forms.Button();
@@ -203,18 +203,18 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalLiquido.Size = new System.Drawing.Size(206, 20);
             this.txtTotalLiquido.TabIndex = 15;
             // 
-            // button1
+            // btnAlterarVenda
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(874, 466);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 48);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Alterar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAlterarVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAlterarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterarVenda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAlterarVenda.Location = new System.Drawing.Point(874, 466);
+            this.btnAlterarVenda.Name = "btnAlterarVenda";
+            this.btnAlterarVenda.Size = new System.Drawing.Size(181, 48);
+            this.btnAlterarVenda.TabIndex = 16;
+            this.btnAlterarVenda.Text = "Alterar";
+            this.btnAlterarVenda.UseVisualStyleBackColor = false;
+            this.btnAlterarVenda.Click += new System.EventHandler(this.button1_Click);
             // 
             // gbProduto
             // 
@@ -491,7 +491,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbProduto);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAlterarVenda);
             this.Controls.Add(this.txtTotalLiquido);
             this.Controls.Add(this.txtTotalDesconto);
             this.Controls.Add(this.txtTotalBruto);
@@ -539,7 +539,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.TextBox txtTotalBruto;
         private System.Windows.Forms.TextBox txtTotalDesconto;
         private System.Windows.Forms.TextBox txtTotalLiquido;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAlterarVenda;
         private System.Windows.Forms.GroupBox gbProduto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;

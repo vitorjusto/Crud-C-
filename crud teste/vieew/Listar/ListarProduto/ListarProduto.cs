@@ -51,7 +51,6 @@ namespace crud_teste.vieew
                     var j = 0;
                     while (j < 5)
                     {
-
                         dataGridProduto.Rows[i].Cells[j].Style = colaboradorinativo;
                         j++;
                     }

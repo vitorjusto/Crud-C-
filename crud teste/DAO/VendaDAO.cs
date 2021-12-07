@@ -76,7 +76,7 @@ namespace crud_teste.DAO
 
                 con.Execute(DarCommissao, new
                 {
-                    comissao = venda.colaborador.PorcentagemDeComissao * venda.QuantidadeDeTotal,
+                    comissao = venda.colaborador.PorcentagemDeComissao.ToDecimal() * venda.QuantidadeDeTotal,
                     venda.colaborador.idColaborador,
                 }, tran);
 

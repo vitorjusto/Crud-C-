@@ -180,8 +180,8 @@ namespace crud_teste
                     query = $@"Insert  Into Colaborador(Salario, PorcentagemDeComissao, idPessoa, idDadosBancarios) OUTPUT INSERTED.idcolaborador Values( @Salario, @PorcentagemDeComissao, @idPessoa, @idDadosBancarios)";
                     colaborador.idColaborador = int.Parse(con.ExecuteScalar(query, new
                     {
-                        Salario = colaborador.Salario,
-                        PorcentagemDeComissao = colaborador.PorcentagemDeComissao,
+                        Salario = colaborador.Salario.GetAsDecimal(),
+                        PorcentagemDeComissao = colaborador.PorcentagemDeComissao.ToDecimal(),
                         idpessoa = idpessoa,
                         idDadosBancarios = idBanco,
 
@@ -215,7 +215,12 @@ namespace crud_teste
                 {
 
                 var query = $@"update colaborador set   salario = @Salario, porcentagemDecomissao = @PorcentagemDeComissao  where idColaborador = @idColaborador";
-                con.Execute(query, colaborador, tran);
+                    con.Execute(query, new
+                    {
+                        Salario = colaborador.Salario.GetAsDecimal(),
+                        PorcentagemDeComissao = colaborador.PorcentagemDeComissao.ToDecimal(),
+                    }, tran);
+                    
 
 
                 query = @"update DadosBancarios set Banco = @Banco, Agencia = @Agencia, Conta = @Conta, Digito = @Digito where  idDadosBancarios = @idDadosBancarios";

@@ -76,6 +76,9 @@ namespace crud_teste.vieew
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -84,16 +87,17 @@ namespace crud_teste.vieew
             // NomeCliente
             // 
             this.NomeCliente.Location = new System.Drawing.Point(167, 40);
+            this.NomeCliente.Multiline = true;
             this.NomeCliente.Name = "NomeCliente";
             this.NomeCliente.ReadOnly = true;
-            this.NomeCliente.Size = new System.Drawing.Size(334, 20);
+            this.NomeCliente.Size = new System.Drawing.Size(334, 31);
             this.NomeCliente.TabIndex = 0;
             this.NomeCliente.DoubleClick += new System.EventHandler(this.NomeCliente_DoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 43);
+            this.label1.Location = new System.Drawing.Point(24, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 1;
@@ -102,7 +106,7 @@ namespace crud_teste.vieew
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 97);
+            this.label2.Location = new System.Drawing.Point(24, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 13);
             this.label2.TabIndex = 2;
@@ -111,9 +115,10 @@ namespace crud_teste.vieew
             // NomeDoColaborador
             // 
             this.NomeDoColaborador.Location = new System.Drawing.Point(167, 90);
+            this.NomeDoColaborador.Multiline = true;
             this.NomeDoColaborador.Name = "NomeDoColaborador";
             this.NomeDoColaborador.ReadOnly = true;
-            this.NomeDoColaborador.Size = new System.Drawing.Size(334, 20);
+            this.NomeDoColaborador.Size = new System.Drawing.Size(334, 31);
             this.NomeDoColaborador.TabIndex = 3;
             this.NomeDoColaborador.DoubleClick += new System.EventHandler(this.NomeDoColaborador_DoubleClick);
             // 
@@ -144,6 +149,7 @@ namespace crud_teste.vieew
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.PrecoBruto);
             this.groupBox1.Controls.Add(this.QuantidadeRestante);
             this.groupBox1.Controls.Add(this.label20);
@@ -155,12 +161,12 @@ namespace crud_teste.vieew
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.Quantidade);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.NomeDoProduto);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.PrecoLiquido);
             this.groupBox1.Controls.Add(this.Desconto);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.NomeDoProduto);
             this.groupBox1.Location = new System.Drawing.Point(27, 166);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1002, 200);
@@ -170,7 +176,7 @@ namespace crud_teste.vieew
             // 
             // PrecoBruto
             // 
-            this.PrecoBruto.Location = new System.Drawing.Point(471, 65);
+            this.PrecoBruto.Location = new System.Drawing.Point(471, 73);
             this.PrecoBruto.Name = "PrecoBruto";
             this.PrecoBruto.ReadOnly = true;
             this.PrecoBruto.Size = new System.Drawing.Size(100, 20);
@@ -213,7 +219,7 @@ namespace crud_teste.vieew
             // 
             // PrecoUnitario
             // 
-            this.PrecoUnitario.Location = new System.Drawing.Point(471, 33);
+            this.PrecoUnitario.Location = new System.Drawing.Point(474, 37);
             this.PrecoUnitario.Name = "PrecoUnitario";
             this.PrecoUnitario.ReadOnly = true;
             this.PrecoUnitario.Size = new System.Drawing.Size(100, 20);
@@ -317,9 +323,10 @@ namespace crud_teste.vieew
             // NomeDoProduto
             // 
             this.NomeDoProduto.Location = new System.Drawing.Point(160, 33);
+            this.NomeDoProduto.Multiline = true;
             this.NomeDoProduto.Name = "NomeDoProduto";
             this.NomeDoProduto.ReadOnly = true;
-            this.NomeDoProduto.Size = new System.Drawing.Size(197, 20);
+            this.NomeDoProduto.Size = new System.Drawing.Size(172, 27);
             this.NomeDoProduto.TabIndex = 7;
             this.NomeDoProduto.DoubleClick += new System.EventHandler(this.NomeDoProduto_DoubleClick);
             // 
@@ -543,11 +550,49 @@ namespace crud_teste.vieew
             this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
             this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(501, 40);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(44, 31);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "🔎";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(501, 90);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(44, 31);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "🔎";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(332, 33);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(27, 27);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "🔎";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
             // CadastroDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 547);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -618,5 +663,8 @@ namespace crud_teste.vieew
         private System.Windows.Forms.TextBox PrecoBruto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
