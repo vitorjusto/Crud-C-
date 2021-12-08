@@ -290,7 +290,7 @@ namespace crud_teste.DAO
                 var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
                               Sum(precoLiquido) as 'TotalLiquido',
-                              Sum(c.precoDeCusto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' from Produto p 
+                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
                               inner join Venda v on v.IdVenda = c.idVenda
                               where v.ativo = 1
@@ -308,7 +308,7 @@ namespace crud_teste.DAO
                 var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
                               Sum(precoLiquido) as 'TotalLiquido',
-                              Sum(c.precoDeCusto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' 
+                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' 
 
                               from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 

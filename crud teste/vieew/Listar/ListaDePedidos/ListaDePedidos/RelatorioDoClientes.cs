@@ -1,4 +1,5 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.Model.Object_Values;
 using System;
@@ -31,9 +32,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
             public string condicao { get; set; }
 
-            public MyDinheiro valorLiquidoInicial { get; set; }
+            public bool comCondicao { get; set; }
 
-            public MyDinheiro ValorLiquidoFinal { get; set; }
+            public string condicaopor { get; set; }
+
+            public MyDinheiro valorInicial { get; set; }
+
+            public MyDinheiro ValorFinal { get; set; }
 
             public bool considerarTopResults { get; set; }
 
@@ -51,7 +56,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         {
             Temas.AtribuirTema(this);
             gbPesquisarPorData.Visible = false;
-
+            gbCondicao.Visible = false;
 
             Clientes = oAlterar.RelatorioDeVenda();
 
@@ -239,11 +244,37 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                     break;
             }
 
-            pesquisa.condicao = cobCondicao.Text;
+            if (chkCondicao.Checked)
+            {
+                pesquisa.comCondicao = true;
+                pesquisa.condicao = cobCondicao.Text;
 
-            pesquisa.valorLiquidoInicial = txtValorInicial.Text;
+                switch (cbcondicaopor.SelectedIndex)
+                {
+                    case 0:
+                        pesquisa.condicaopor = "SUM(V.TotalBruto)";
+                        break;
+                    case 1:
+                        pesquisa.condicaopor = "SUM(V.quantidadetotal)";
+                        break;
+                    case 2:
+                        pesquisa.condicaopor = "SUM(v.TotalDeDesconto) + sum(v.DescontoAVista)";
+                        break;
+                    case 3:
+                        pesquisa.condicaopor = "SUM(v.TotalLiquido)";
+                        break;
+                }
 
-            pesquisa.ValorLiquidoFinal = txtValorFinal.Text;
+                pesquisa.valorInicial = txtValorInicial.Text;
+
+                pesquisa.ValorFinal = txtValorFinal.Text;
+
+            }else
+            {
+                pesquisa.valorInicial = 0M;
+
+                pesquisa.ValorFinal = 0M;
+            }
 
             if (cbTop.Checked)
             {
@@ -269,7 +300,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void txtValorInicial_Leave(object sender, EventArgs e)
         {
-            txtValorInicial.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorInicial.Text); 
+            if (cbcondicaopor.SelectedIndex != 1)
+                txtValorInicial.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorInicial.Text);
+            else
+                txtValorInicial.Text = Global.setTextBoxAsIntText(txtValorInicial.Text);
         }
 
         private void cobCondicao_SelectedIndexChanged(object sender, EventArgs e)
@@ -287,7 +321,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void txtValorFinal_Leave(object sender, EventArgs e)
         {
-            txtValorFinal.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorFinal.Text);
+            if(cbcondicaopor.SelectedIndex != 1)
+                txtValorFinal.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtValorFinal.Text);
+            else
+                txtValorFinal.Text = Global.setTextBoxAsIntText(txtValorFinal.Text);
         }
 
         private void cobCondicao_KeyPress(object sender, KeyPressEventArgs e)
@@ -318,6 +355,26 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private void cobCrescente_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cbcondicaopor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbcondicaopor.SelectedIndex == 1)
+            {
+                txtValorInicial.Text = Global.setTextBoxAsIntText(txtValorInicial.Text);
+                txtValorFinal.Text = Global.setTextBoxAsIntText(txtValorFinal.Text);
+
+            }
+            else
+            {
+                txtValorInicial.Text = Dinheiro.converterParaDinheiro(txtValorInicial.Text);
+                txtValorFinal.Text = Dinheiro.converterParaDinheiro(txtValorFinal.Text);
+            }
+        }
+
+        private void chkCondicao_CheckedChanged(object sender, EventArgs e)
+        {
+            gbCondicao.Visible = chkCondicao.Checked;
         }
     }
 }

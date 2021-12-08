@@ -187,10 +187,11 @@ namespace crud_teste.vieew.ListaDePedidos
             var pedido = new Pedido_Produto();
             pedido.produto = _pedido.produto;
 
+            pedido.IdCarrinho = _pedido.IdCarrinho;
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.quantidade = Convert.ToInt64(txtquantidade.Text == "" ? "0" : txtquantidade.Text);
             pedido.quantidadeRestante = Convert.ToInt64(txtQuantidadeRestante.Text == "" ? "0" : txtQuantidadeRestante.Text);
-            pedido.precoDeCusto = txtPrecoUnitario.Text;
+            pedido.precoDeCusto = pedido.produto.PrecoDeCusto.GetAsDecimal();
             pedido.PrecoBruto = txtValorBruto.Text;
             pedido.Desconto = txtDesconto.Text;
             pedido.PrecoLiquido = txtPrecoLiquido.Text;
@@ -224,8 +225,6 @@ namespace crud_teste.vieew.ListaDePedidos
                 if (btnAlterarProduto.Text.Equals("Alterar Produto"))
                 {
                     _venda.Pedido_Produto.Remove(_pedido);
-
-                    receberCamposDoProduto();
 
                     _venda.Pedido_Produto.Add(pedido);
 

@@ -101,6 +101,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C");
                 txtTotalDeDesconto.Text = lista.Sum(x => x.Desconto.GetAsDecimal()).ToString("C");
                 txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C");
+                txtTotalGasto.Text = lista.Sum(x => x.TotalCusto.GetAsDecimal()).ToString("C");
+
 
                 var lucro = lista.Sum(x => x.LucroEmDinheiro.GetAsDecimal());
                 txtLucro.Text = lucro.ToString("C");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace crud_teste
@@ -46,6 +47,11 @@ namespace crud_teste
             {
                 return true;
             }
+        }
+
+        public static string setTextBoxAsIntText(string text)
+        {
+            return new string((from c in text where char.IsDigit(c) select c).ToArray());
         }
 
         public static bool ValidarDatas(DateTime DataInicial, DateTime DataFinal)

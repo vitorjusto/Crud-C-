@@ -26,7 +26,7 @@ namespace crud_teste.DAO
 
             var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista, DiaDaVenda) OUTPUT INSERTED.idVenda 
                           Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista, @DiaDaVenda)";
-            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
+            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda, totalgasto)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda, @totalgasto)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
             var AlterarLimite = @"update Cliente set LimiteRestante -= @ValorTotal where idCliente = @idCliente";
@@ -63,7 +63,8 @@ namespace crud_teste.DAO
                         carrinho.idVenda,
                         idProduto = carrinho.produto.IdProduto,
                         precodecusto = carrinho.precoDeCusto.GetAsDouble(),
-                        precodevenda = carrinho.precoDeVenda.GetAsDouble()
+                        precodevenda = carrinho.precoDeVenda.GetAsDouble(),
+                        totalGasto = carrinho.precoDeCusto.GetAsDouble() * carrinho.quantidade,
                     }, tran) ;
                     con.Execute(queryproduto, new
                     {
@@ -104,10 +105,10 @@ namespace crud_teste.DAO
                 "idCliente = @idCliente, idColaborador = @idColaborador, DescontoAVista = @DescontoAVista where idVenda = @idVenda";
 
             var queryPedido_Produto = "update Carrinho set Quantidade = @quantidade, Desconto = @desconto, precoBruto = @precoBruto, precoLiquido = @precoLiquido, " +
-                "PrecoDeCusto = @precoDeCusto, PrecoDeVenda = @PrecoDeVenda where idVenda = @idVenda";
+                "PrecoDeCusto = @precoDeCusto, PrecoDeVenda = @PrecoDeVenda, totalgasto = @totalgasto  where idCarrinho = @idCarrinho";
 
-            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda)  
-                                Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda)";
+            var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda, totalgasto)  
+                                Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda, @totalgasto)";
 
             var updateEstoque = @"update Produto set Estoque = @estoque where idProduto = @idProduto";
 
@@ -147,6 +148,7 @@ namespace crud_teste.DAO
                             precoDeVenda = pedido.precoDeVenda.GetAsDouble(),
                             idVenda = venda.IdVenda,
                             idProduto = pedido.produto.IdProduto,
+                            totalGasto = pedido.precoDeCusto.GetAsDouble() * pedido.quantidade,
                         }, tran);
                     }
                     else
@@ -159,7 +161,8 @@ namespace crud_teste.DAO
                             precoLiquido = pedido.PrecoLiquido.GetAsDouble(),
                             precoDeCusto = pedido.precoDeCusto.GetAsDouble(),
                             precoDeVenda = pedido.precoDeVenda.GetAsDouble(),
-                            idVenda = pedido.idVenda,
+                            idCarrinho = pedido.IdCarrinho,
+                            totalGasto = pedido.precoDeCusto.GetAsDouble() * pedido.quantidade,
                         }, tran);
                     }
 

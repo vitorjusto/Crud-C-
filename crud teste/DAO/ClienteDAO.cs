@@ -492,15 +492,15 @@ namespace crud_teste.DAO
 
              query += "group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
 
-            if (!string.IsNullOrEmpty(pesquisa.condicao))
+            if (pesquisa.comCondicao)
             {
                 if (pesquisa.condicao.Equals("entre"))
                 {
-                    query += $@"Having sum(TotalLiquido) between @ValorInicial and @ValorFinal ";
+                    query += $@"Having {pesquisa.condicaopor} between @ValorInicial and @ValorFinal ";
                 }
                 else
                 {
-                    query += $@"Having sum(TotalLiquido) {pesquisa.condicao} @ValorInicial ";
+                    query += $@"Having {pesquisa.condicaopor} {pesquisa.condicao} @ValorInicial ";
                 }
             }
 
@@ -514,8 +514,8 @@ namespace crud_teste.DAO
                     pesquisa.Nome,
                     DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
                     DataFinal = pesquisa.DataFinal.ToString("dd/MM/yyyy"),
-                    ValorInicial = pesquisa.valorLiquidoInicial.GetAsDecimal(),
-                    ValorFinal = pesquisa.ValorLiquidoFinal.GetAsDecimal(),
+                    ValorInicial = pesquisa.valorInicial.GetAsDecimal(),
+                    ValorFinal = pesquisa.ValorFinal.GetAsDecimal(),
                     TopResultado = pesquisa.topresultadosnumero,
                 }); ;
 

@@ -86,6 +86,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.txtTotalGasto = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridRelatorioDeProduto)).BeginInit();
@@ -523,6 +525,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtTotalGasto);
+            this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.txtTotalBruto);
             this.groupBox5.Controls.Add(this.txtTotalDeDesconto);
             this.groupBox5.Controls.Add(this.txtTotalLiquido);
@@ -542,15 +546,15 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // 
             // txtTotalBruto
             // 
-            this.txtTotalBruto.Location = new System.Drawing.Point(440, 24);
+            this.txtTotalBruto.Location = new System.Drawing.Point(202, 86);
             this.txtTotalBruto.Name = "txtTotalBruto";
             this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(194, 20);
+            this.txtTotalBruto.Size = new System.Drawing.Size(100, 20);
             this.txtTotalBruto.TabIndex = 10;
             // 
             // txtTotalDeDesconto
             // 
-            this.txtTotalDeDesconto.Location = new System.Drawing.Point(440, 90);
+            this.txtTotalDeDesconto.Location = new System.Drawing.Point(449, 27);
             this.txtTotalDeDesconto.Name = "txtTotalDeDesconto";
             this.txtTotalDeDesconto.ReadOnly = true;
             this.txtTotalDeDesconto.Size = new System.Drawing.Size(194, 20);
@@ -558,7 +562,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // 
             // txtTotalLiquido
             // 
-            this.txtTotalLiquido.Location = new System.Drawing.Point(797, 24);
+            this.txtTotalLiquido.Location = new System.Drawing.Point(432, 85);
             this.txtTotalLiquido.Name = "txtTotalLiquido";
             this.txtTotalLiquido.ReadOnly = true;
             this.txtTotalLiquido.Size = new System.Drawing.Size(211, 20);
@@ -583,7 +587,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(689, 30);
+            this.label21.Location = new System.Drawing.Point(324, 91);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(71, 13);
             this.label21.TabIndex = 4;
@@ -601,7 +605,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(319, 30);
+            this.label19.Location = new System.Drawing.Point(28, 92);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(62, 13);
             this.label19.TabIndex = 2;
@@ -610,7 +614,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(319, 93);
+            this.label18.Location = new System.Drawing.Point(328, 30);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(100, 13);
             this.label18.TabIndex = 1;
@@ -624,6 +628,23 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.label17.Size = new System.Drawing.Size(179, 13);
             this.label17.TabIndex = 0;
             this.label17.Text = "Quantidades De Produtos Vendidos:";
+            // 
+            // txtTotalGasto
+            // 
+            this.txtTotalGasto.Location = new System.Drawing.Point(797, 23);
+            this.txtTotalGasto.Name = "txtTotalGasto";
+            this.txtTotalGasto.ReadOnly = true;
+            this.txtTotalGasto.Size = new System.Drawing.Size(211, 20);
+            this.txtTotalGasto.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(689, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Total Gasto:";
             // 
             // RelatorioDosProdutos
             // 
@@ -718,5 +739,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox chkPesquisarPorData;
         private System.Windows.Forms.GroupBox gbListarPorData;
+        private System.Windows.Forms.TextBox txtTotalGasto;
+        private System.Windows.Forms.Label label10;
     }
 }
