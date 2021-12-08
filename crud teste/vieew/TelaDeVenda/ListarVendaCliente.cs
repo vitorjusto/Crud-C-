@@ -52,6 +52,8 @@ namespace crud_teste.vieew.TelaDeVenda
 
             InitializeComponent();
 
+            Temas.AtribuirTema(this);
+
             dataGridGeral.Rows.Clear();
             dataGridGeral.Columns.Clear();
 
@@ -77,8 +79,7 @@ namespace crud_teste.vieew.TelaDeVenda
                 {
                     if (produto.IdProduto == item.produto.IdProduto)
                     {
-                        produto.Estoque -= item.quantidade;
-                        produtos[i].Estoque = produto.Estoque;
+                        dataGridGeral.Rows[i].Visible = false;
                     }
 
                 }

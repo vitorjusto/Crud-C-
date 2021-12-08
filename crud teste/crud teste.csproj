@@ -160,6 +160,12 @@
     <Compile Include="vieew\Listar\ListarProduto\AlterarEstoque.Designer.cs">
       <DependentUpon>AlterarEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="vieew\TelaDeVenda\AlterarProdutoDoCarrinho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\TelaDeVenda\AlterarProdutoDoCarrinho.Designer.cs">
+      <DependentUpon>AlterarProdutoDoCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\TelaDeVenda\CadastroDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListarProduto\AlterarEstoque.resx">
       <DependentUpon>AlterarEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\TelaDeVenda\AlterarProdutoDoCarrinho.resx">
+      <DependentUpon>AlterarProdutoDoCarrinho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\CadastroDePedidos.resx">
       <DependentUpon>CadastroDePedidos.cs</DependentUpon>

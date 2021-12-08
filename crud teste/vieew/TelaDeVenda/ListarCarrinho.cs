@@ -20,10 +20,16 @@ namespace crud_teste.vieew.TelaDeVenda
             this.carrinhosL = carrinhosLparam;
 
             Temas.AtribuirTema(this);
+            colocarValoresNaDataGrid();
+            
+        }
 
-            alterar = false;
+
+        public void colocarValoresNaDataGrid()
+        {
             var i = 0;
 
+            dataGridCarrinho.Rows.Clear();
             foreach (var carrinho in carrinhosL)
             {
                 dataGridCarrinho.Rows.Add();
@@ -51,11 +57,12 @@ namespace crud_teste.vieew.TelaDeVenda
                 }
             }else if(e.ColumnIndex == 6)
             {
-                carrinho = carrinhos[e.RowIndex];
-                carrinhos.RemoveRange(e.RowIndex, 1);
-                carrinhosL.RemoveRange(e.RowIndex, 1);
-                alterar = true;
-                this.Dispose();
+                var alterar = new AlterarProdutoDoCarrinho(carrinhos[e.RowIndex]);
+                alterar.ShowDialog();
+
+                carrinhos[e.RowIndex] = alterar.produto;
+                carrinhosL[e.RowIndex] = alterar.produtoL;
+                colocarValoresNaDataGrid();
             }
         }
 

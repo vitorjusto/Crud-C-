@@ -37,6 +37,7 @@ namespace crud_teste.vieew
             this.label3 = new System.Windows.Forms.Label();
             this.FormaDePagamento = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.PrecoBruto = new System.Windows.Forms.TextBox();
             this.QuantidadeRestante = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -48,12 +49,12 @@ namespace crud_teste.vieew
             this.button1 = new System.Windows.Forms.Button();
             this.Quantidade = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.NomeDoProduto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.PrecoLiquido = new System.Windows.Forms.TextBox();
             this.Desconto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.NomeDoProduto = new System.Windows.Forms.TextBox();
             this.DescontoAVista = new System.Windows.Forms.TextBox();
             this.labeledit = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -78,7 +79,6 @@ namespace crud_teste.vieew
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -173,6 +173,18 @@ namespace crud_teste.vieew
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(332, 33);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(27, 27);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "🔎";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // PrecoBruto
             // 
@@ -275,6 +287,16 @@ namespace crud_teste.vieew
             this.label10.TabIndex = 18;
             this.label10.Text = "Quantidade:";
             // 
+            // NomeDoProduto
+            // 
+            this.NomeDoProduto.Location = new System.Drawing.Point(160, 33);
+            this.NomeDoProduto.Multiline = true;
+            this.NomeDoProduto.Name = "NomeDoProduto";
+            this.NomeDoProduto.ReadOnly = true;
+            this.NomeDoProduto.Size = new System.Drawing.Size(172, 27);
+            this.NomeDoProduto.TabIndex = 7;
+            this.NomeDoProduto.DoubleClick += new System.EventHandler(this.NomeDoProduto_DoubleClick);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -319,16 +341,6 @@ namespace crud_teste.vieew
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Nome Do Produto";
-            // 
-            // NomeDoProduto
-            // 
-            this.NomeDoProduto.Location = new System.Drawing.Point(160, 33);
-            this.NomeDoProduto.Multiline = true;
-            this.NomeDoProduto.Name = "NomeDoProduto";
-            this.NomeDoProduto.ReadOnly = true;
-            this.NomeDoProduto.Size = new System.Drawing.Size(172, 27);
-            this.NomeDoProduto.TabIndex = 7;
-            this.NomeDoProduto.DoubleClick += new System.EventHandler(this.NomeDoProduto_DoubleClick);
             // 
             // DescontoAVista
             // 
@@ -573,18 +585,6 @@ namespace crud_teste.vieew
             this.button5.TabIndex = 13;
             this.button5.Text = "🔎";
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(332, 33);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(27, 27);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "🔎";
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // CadastroDePedidos
             // 

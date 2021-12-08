@@ -26,5 +26,31 @@ namespace crud_teste.Model
 
         public string Fabricante { get; set; }
 
+        public Produto(Produto produto)
+        {
+            IdProduto = produto.IdProduto;
+
+            CodigoDeBarras = produto.CodigoDeBarras;
+
+            NomeDoProduto = produto.NomeDoProduto;
+
+            PrecoDeCusto = produto.PrecoDeCusto.GetAsDecimal();
+
+            PrecoDeVenda = produto.PrecoDeVenda.GetAsDecimal();
+
+            Estoque = produto.Estoque;
+
+            Ativo = produto.Ativo;
+
+            Fabricante = produto.Fabricante;
+
+        }
+
+        public Produto()
+        {
+
+        }
+
+
     }
 }
