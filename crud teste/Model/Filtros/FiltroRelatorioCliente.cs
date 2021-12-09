@@ -99,7 +99,6 @@ namespace crud_teste.Model
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
-                            inner join Carrinho ca on v.idVenda = ca.idVenda
 
                             where nome like @Nome +'%' and v.ativo = 1";
 

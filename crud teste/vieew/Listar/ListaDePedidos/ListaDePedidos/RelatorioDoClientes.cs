@@ -171,27 +171,32 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         {
             FiltroRelatorioCliente pesquisa = new FiltroRelatorioCliente();
 
-            pesquisa.GerarSql
-                (
-                    txtCliente.Text,
-                    chkPesquisarPorData.Checked,
-                    dtpDataInicial.Value,
-                    dtpDataFinal.Value,
-                    cobTipo.SelectedIndex,
-                    cobCrescente.SelectedIndex,
-                    cobCondicao.SelectedIndex,
-                    cbcondicaopor.SelectedIndex,
-                    chkCondicao.Checked,
-                    txtValorInicial.Text,
-                    txtValorFinal.Text,
-                    cbTop.Checked,
-                    long.Parse(txtTop.Text == ""? "0": txtTop.Text),
-                    !cbListarInativo.Checked
-                );
+            if (!chkPesquisarPorData.Checked || Global.ValidarDatas(dtpDataInicial.Value, dtpDataFinal.Value))
+            {
+                pesquisa.GerarSql
+                    (
+                        txtCliente.Text,
+                        chkPesquisarPorData.Checked,
+                        dtpDataInicial.Value,
+                        dtpDataFinal.Value,
+                        cobTipo.SelectedIndex,
+                        cobCrescente.SelectedIndex,
+                        cobCondicao.SelectedIndex,
+                        cbcondicaopor.SelectedIndex,
+                        chkCondicao.Checked,
+                        txtValorInicial.Text,
+                        txtValorFinal.Text,
+                        cbTop.Checked,
+                        long.Parse(txtTop.Text == "" ? "0" : txtTop.Text),
+                        !cbListarInativo.Checked
+                    );
 
-            Clientes = oAlterar.RelatorioDeVenda(pesquisa);
-            PreencherDataGrid();
-            CalcularLucros(cbConsiderarInativo.Checked);
+                Clientes = oAlterar.RelatorioDeVenda(pesquisa);
+                PreencherDataGrid();
+                CalcularLucros(cbConsiderarInativo.Checked);
+            }
+            else
+                MessageBox.Show("Data Inicial é maior que a Data Final");
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e) =>
