@@ -103,3 +103,8 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.L
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.TelaDeVenda.AlterarProdutoDoCarrinho.resources
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\Enums.NET.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\Enums.NET.pdb
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\Enums.NET.xml
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

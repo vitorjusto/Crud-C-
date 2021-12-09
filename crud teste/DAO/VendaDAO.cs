@@ -24,8 +24,8 @@ namespace crud_teste.DAO
         {
 
 
-            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista, DiaDaVenda) OUTPUT INSERTED.idVenda 
-                          Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista, @DiaDaVenda)";
+            var query = @"Insert Into Venda(TotalBruto, TotalDeDesconto, TotalLiquido, MesesAPrazo, quantidadetotal, quantidadeunitario, tipodevenda, idCliente, idColaborador, DescontoAVista, DiaDaVenda, TotalGasto) OUTPUT INSERTED.idVenda 
+                          Values(@TotalBruto, @TotalDeDesconto, @TotalLiquido, @mesesaprazo, @quantidadedetotal, @quantidadeunitario, @tipodevenda, @idCliente, @IdColaborador, @DescontoAVista, @DiaDaVenda, @TotalGasto)";
             var querycarrinho = @"Insert Into Carrinho(Quantidade, Desconto, precoBruto, precoliquido, idVenda, idproduto, precodecusto, precodevenda, totalgasto)  Values(@Quantidade, @Desconto, @precoBruto, @precoliquido, @idVenda, @idProduto,  @precodecusto, @precodevenda, @totalgasto)";
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
@@ -35,8 +35,9 @@ namespace crud_teste.DAO
             var tran = con.BeginTransaction();
             try
             {
-                
-                var idVenda = int.Parse(con.ExecuteScalar(query, new {
+
+                var idVenda = int.Parse(con.ExecuteScalar(query, new
+                {
                     TotalBruto = venda.TotalBruto.GetAsDouble(),
                     TotalDeDesconto = venda.TotalDeDesconto.GetAsDouble(),
                     TotalLiquido = venda.TotalLiquido.GetAsDouble(),
@@ -48,8 +49,9 @@ namespace crud_teste.DAO
                     IdColaborador = venda.colaborador.idColaborador,
                     DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
                     venda.DiaDaVenda,
+                    TotalGasto = venda.Pedido_Produto.Sum(x => x.precoDeCusto.GetAsDecimal() * x.quantidade)
                 }
-                , tran).ToString());
+                , tran).ToString()) ;
                 
                 foreach (var carrinho in venda.Pedido_Produto)
                 {

@@ -139,16 +139,16 @@ namespace crud_teste
             // 
             this.Porcentagem.Location = new System.Drawing.Point(367, 100);
             this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
+            this.Porcentagem.Size = new System.Drawing.Size(133, 20);
             this.Porcentagem.TabIndex = 75;
             this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
             // 
             // Data
             // 
             this.Data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Data.Location = new System.Drawing.Point(339, 60);
+            this.Data.Location = new System.Drawing.Point(367, 60);
             this.Data.Name = "Data";
-            this.Data.Size = new System.Drawing.Size(161, 20);
+            this.Data.Size = new System.Drawing.Size(133, 20);
             this.Data.TabIndex = 74;
             // 
             // label17
@@ -226,9 +226,9 @@ namespace crud_teste
             // 
             // Sobrenome
             // 
-            this.Sobrenome.Location = new System.Drawing.Point(339, 20);
+            this.Sobrenome.Location = new System.Drawing.Point(367, 20);
             this.Sobrenome.Name = "Sobrenome";
-            this.Sobrenome.Size = new System.Drawing.Size(416, 20);
+            this.Sobrenome.Size = new System.Drawing.Size(388, 20);
             this.Sobrenome.TabIndex = 4;
             // 
             // label2

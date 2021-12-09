@@ -1,5 +1,6 @@
 ﻿using crud_teste.Config;
 using crud_teste.controller;
+using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using crud_teste.Model.Object_Values;
 using System;
@@ -16,36 +17,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         AlterarCliente oAlterar = new AlterarCliente();
         List<RelatorioClienteListagem> Clientes = new List<RelatorioClienteListagem>();
 
-        public struct Pesquisa
-        {
-            public string Nome { get; set; }
-
-            public bool PesquisarPorData { get; set; }
-
-            public DateTime DataInicial { get; set; }
-
-            public DateTime DataFinal { get; set; }
-
-            public string OrdernarPor { get; set; }
-
-            public string crescente { get; set; }
-
-            public string condicao { get; set; }
-
-            public bool comCondicao { get; set; }
-
-            public string condicaopor { get; set; }
-
-            public MyDinheiro valorInicial { get; set; }
-
-            public MyDinheiro ValorFinal { get; set; }
-
-            public bool considerarTopResults { get; set; }
-
-            public long topresultadosnumero { get; set; }
-
-            public bool comAtivo { get; set; }
-        }
+       
 
         public RelatorioDoClientes()
         {
@@ -197,97 +169,29 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Pesquisa pesquisa = new Pesquisa();
+            FiltroRelatorioCliente pesquisa = new FiltroRelatorioCliente();
 
-            pesquisa.Nome = txtCliente.Text;
-
-            if (chkPesquisarPorData.Checked)
-            {
-                pesquisa.PesquisarPorData = true;
-                pesquisa.DataInicial = dtpDataInicial.Value.Date;
-                pesquisa.DataFinal = dtpDataFinal.Value.Date;
-
-                if (!Global.ValidarDatas(pesquisa.DataInicial, pesquisa.DataFinal))
-                {
-                    MessageBox.Show("Data Inicial vem depois da Data Final");
-                    return;
-                }
-            }
-
-            switch (cobTipo.SelectedIndex)
-            { 
-                case 0:
-                    pesquisa.OrdernarPor = "c.idCliente";
-                    break;
-                case 1:
-                    pesquisa.OrdernarPor = "Nome";
-                    break;
-                case 2:
-                    pesquisa.OrdernarPor = "sum(v.quantidadeTotal)";
-                    break;
-                case 3:
-                    pesquisa.OrdernarPor = "sum(v.TotalDeDesconto) + sum(v.DescontoAVista)";
-                    break;
-                case 4:
-                    pesquisa.OrdernarPor = "SUM(ca.PrecoDeVenda) - sum(ca.PrecoDeCusto)";
-                    break;
-
-            }
-
-            switch(cobCrescente.SelectedIndex)
-            {
-                case 0:
-                    pesquisa.crescente = "ASC";
-                    break;
-                case 1:
-                    pesquisa.crescente = "DESC";
-                    break;
-            }
-
-            if (chkCondicao.Checked)
-            {
-                pesquisa.comCondicao = true;
-                pesquisa.condicao = cobCondicao.Text;
-
-                switch (cbcondicaopor.SelectedIndex)
-                {
-                    case 0:
-                        pesquisa.condicaopor = "SUM(V.TotalBruto)";
-                        break;
-                    case 1:
-                        pesquisa.condicaopor = "SUM(V.quantidadetotal)";
-                        break;
-                    case 2:
-                        pesquisa.condicaopor = "SUM(v.TotalDeDesconto) + sum(v.DescontoAVista)";
-                        break;
-                    case 3:
-                        pesquisa.condicaopor = "SUM(v.TotalLiquido)";
-                        break;
-                }
-
-                pesquisa.valorInicial = txtValorInicial.Text;
-
-                pesquisa.ValorFinal = txtValorFinal.Text;
-
-            }else
-            {
-                pesquisa.valorInicial = 0M;
-
-                pesquisa.ValorFinal = 0M;
-            }
-
-            if (cbTop.Checked)
-            {
-                pesquisa.considerarTopResults = true;
-                pesquisa.topresultadosnumero = Convert.ToInt64(txtTop.Text == ""? "0": txtTop.Text);
-            }
-
-            pesquisa.comAtivo = !cbListarInativo.Checked;
-
+            pesquisa.GerarSql
+                (
+                    txtCliente.Text,
+                    chkPesquisarPorData.Checked,
+                    dtpDataInicial.Value,
+                    dtpDataFinal.Value,
+                    cobTipo.SelectedIndex,
+                    cobCrescente.SelectedIndex,
+                    cobCondicao.SelectedIndex,
+                    cbcondicaopor.SelectedIndex,
+                    chkCondicao.Checked,
+                    txtValorInicial.Text,
+                    txtValorFinal.Text,
+                    cbTop.Checked,
+                    long.Parse(txtTop.Text == ""? "0": txtTop.Text),
+                    !cbListarInativo.Checked
+                );
 
             Clientes = oAlterar.RelatorioDeVenda(pesquisa);
             PreencherDataGrid();
-            CalcularLucros(cbConsiderarInativo.Visible);
+            CalcularLucros(cbConsiderarInativo.Checked);
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e) =>
@@ -375,6 +279,11 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private void chkCondicao_CheckedChanged(object sender, EventArgs e)
         {
             gbCondicao.Visible = chkCondicao.Checked;
+        }
+
+        private void cbcondicaopor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

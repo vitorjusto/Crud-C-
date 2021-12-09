@@ -541,6 +541,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.cbcondicaopor.Size = new System.Drawing.Size(102, 21);
             this.cbcondicaopor.TabIndex = 54;
             this.cbcondicaopor.SelectedIndexChanged += new System.EventHandler(this.cbcondicaopor_SelectedIndexChanged);
+            this.cbcondicaopor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbcondicaopor_KeyPress);
             // 
             // cobCondicao
             // 

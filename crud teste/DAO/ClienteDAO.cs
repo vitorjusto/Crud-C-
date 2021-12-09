@@ -440,16 +440,15 @@ namespace crud_teste.DAO
         {
             using (con)
             {
-                var query = @"select c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
+                var query = @"select c.idcliente, nome, sobrenome, count(V.idvenda) as 'QuantidadeDeVenda',
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo, SUM(ca.PrecoDeCusto * ca.Quantidade) as 'PrecoDeCusto'
+                            c.LimiteRestante, p.Ativo, SUM(v.Totalgasto) as 'PrecoDeCusto'
 
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
-							inner join Carrinho ca on v.idVenda = ca.idVenda
 
                             where p.ativo = 1 and v.ativo = 1
 
@@ -461,55 +460,15 @@ namespace crud_teste.DAO
         }
 
 
-        public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
+        public List<RelatorioClienteListagem> RelatorioDeVenda(FiltroRelatorioCliente pesquisa)
         {
 
 
-            var query = $@"select ";
-
-            if (pesquisa.considerarTopResults)
-                query += $@"Top (@TopResultado) ";
-
-            query += $@"c.idcliente, nome, sobrenome, COUNT(V.idvenda) as 'QuantidadeDeVenda',
-                            SUM(V.quantidadetotal) as 'QuantidadeTotal',
-                            SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
-                            sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo,  SUM(ca.PrecoDeCusto * ca.Quantidade),
-                            SUM(ca.PrecoDeCusto) * SUM(ca.Quantidade) as 'PrecoDeCusto'
-
-                            from cliente c
-                            inner join pessoa p on p.idPessoa = c.IdPessoa
-                            inner join Venda v on v.idCliente = c.idCliente
-                            inner join Carrinho ca on v.idVenda = ca.idVenda
-
-                            where nome like @Nome +'%' and v.ativo = 1";
-
-            if (pesquisa.PesquisarPorData)
-                query += "and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
-
-            if (pesquisa.comAtivo)
-                query += "and p.Ativo = 1";
-
-             query += "group by c.idCliente, Nome, Sobrenome, LimiteRestante, p.ativo ";
-
-            if (pesquisa.comCondicao)
-            {
-                if (pesquisa.condicao.Equals("entre"))
-                {
-                    query += $@"Having {pesquisa.condicaopor} between @ValorInicial and @ValorFinal ";
-                }
-                else
-                {
-                    query += $@"Having {pesquisa.condicaopor} {pesquisa.condicao} @ValorInicial ";
-                }
-            }
-
-            query += $@"order by {pesquisa.OrdernarPor} {pesquisa.crescente}";
-
+            
             using (con)
             {
                 
-                var resultado = con.Query<RelatorioClienteListagem>(query, new
+                var resultado = con.Query<RelatorioClienteListagem>(pesquisa.query, new
                 {
                     pesquisa.Nome,
                     DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
@@ -519,7 +478,6 @@ namespace crud_teste.DAO
                     TopResultado = pesquisa.topresultadosnumero,
                 }); ;
 
-                var oi = resultado.ToList();
                 return resultado.ToList();
             }
         }

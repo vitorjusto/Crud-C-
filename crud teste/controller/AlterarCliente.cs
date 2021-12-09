@@ -84,7 +84,7 @@ namespace crud_teste.controller
             return stmt.RelatorioDeVenda();
         }
 
-        public List<RelatorioClienteListagem> RelatorioDeVenda(Pesquisa pesquisa)
+        public List<RelatorioClienteListagem> RelatorioDeVenda(FiltroRelatorioCliente pesquisa)
         {
             ClienteDAO stmt = new ClienteDAO();
             return stmt.RelatorioDeVenda(pesquisa);
