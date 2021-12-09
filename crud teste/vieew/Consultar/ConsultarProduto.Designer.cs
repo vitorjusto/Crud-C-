@@ -71,7 +71,7 @@ namespace crud_teste.vieew.Consultar
             // 
             this.Estoque.Location = new System.Drawing.Point(116, 170);
             this.Estoque.Name = "Estoque";
-            this.Estoque.Size = new System.Drawing.Size(238, 20);
+            this.Estoque.Size = new System.Drawing.Size(343, 20);
             this.Estoque.TabIndex = 29;
             // 
             // label6
@@ -86,7 +86,7 @@ namespace crud_teste.vieew.Consultar
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(378, 134);
+            this.label5.Location = new System.Drawing.Point(244, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 27;
@@ -94,7 +94,7 @@ namespace crud_teste.vieew.Consultar
             // 
             // PrecoDeCusto
             // 
-            this.PrecoDeCusto.Location = new System.Drawing.Point(493, 130);
+            this.PrecoDeCusto.Location = new System.Drawing.Point(359, 130);
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.TabIndex = 26;

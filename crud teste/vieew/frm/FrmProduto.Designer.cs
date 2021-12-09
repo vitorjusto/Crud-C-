@@ -67,15 +67,15 @@ namespace crud_teste.vieew
             // 
             // NomeDoProduto
             // 
-            this.NomeDoProduto.Location = new System.Drawing.Point(113, 40);
+            this.NomeDoProduto.Location = new System.Drawing.Point(113, 50);
             this.NomeDoProduto.Name = "NomeDoProduto";
-            this.NomeDoProduto.Size = new System.Drawing.Size(675, 20);
+            this.NomeDoProduto.Size = new System.Drawing.Size(660, 20);
             this.NomeDoProduto.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 43);
+            this.label1.Location = new System.Drawing.Point(15, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 2;
@@ -84,7 +84,7 @@ namespace crud_teste.vieew
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 96);
+            this.label2.Location = new System.Drawing.Point(15, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 3;
@@ -92,15 +92,15 @@ namespace crud_teste.vieew
             // 
             // CodigoDeBarras
             // 
-            this.CodigoDeBarras.Location = new System.Drawing.Point(114, 93);
+            this.CodigoDeBarras.Location = new System.Drawing.Point(114, 90);
             this.CodigoDeBarras.MaxLength = 15;
             this.CodigoDeBarras.Name = "CodigoDeBarras";
-            this.CodigoDeBarras.Size = new System.Drawing.Size(674, 20);
+            this.CodigoDeBarras.Size = new System.Drawing.Size(659, 20);
             this.CodigoDeBarras.TabIndex = 4;
             // 
             // PrecoDeVenda
             // 
-            this.PrecoDeVenda.Location = new System.Drawing.Point(114, 147);
+            this.PrecoDeVenda.Location = new System.Drawing.Point(114, 130);
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.TabIndex = 5;
@@ -109,7 +109,7 @@ namespace crud_teste.vieew
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 150);
+            this.label3.Location = new System.Drawing.Point(15, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 6;
@@ -117,7 +117,7 @@ namespace crud_teste.vieew
             // 
             // PrecoDeCusto
             // 
-            this.PrecoDeCusto.Location = new System.Drawing.Point(372, 147);
+            this.PrecoDeCusto.Location = new System.Drawing.Point(372, 130);
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.TabIndex = 9;
@@ -127,7 +127,7 @@ namespace crud_teste.vieew
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(257, 150);
+            this.label5.Location = new System.Drawing.Point(257, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 10;
@@ -136,7 +136,7 @@ namespace crud_teste.vieew
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 202);
+            this.label6.Location = new System.Drawing.Point(15, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 11;
@@ -144,17 +144,17 @@ namespace crud_teste.vieew
             // 
             // Estoque
             // 
-            this.Estoque.Location = new System.Drawing.Point(113, 202);
+            this.Estoque.Location = new System.Drawing.Point(113, 170);
             this.Estoque.MaxLength = 14;
             this.Estoque.Name = "Estoque";
-            this.Estoque.Size = new System.Drawing.Size(238, 20);
+            this.Estoque.Size = new System.Drawing.Size(359, 20);
             this.Estoque.TabIndex = 12;
             this.Estoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Estoque_KeyPress);
             // 
             // Ativo
             // 
             this.Ativo.AutoSize = true;
-            this.Ativo.Location = new System.Drawing.Point(422, 205);
+            this.Ativo.Location = new System.Drawing.Point(554, 172);
             this.Ativo.Name = "Ativo";
             this.Ativo.Size = new System.Drawing.Size(50, 17);
             this.Ativo.TabIndex = 14;
@@ -164,7 +164,7 @@ namespace crud_teste.vieew
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 261);
+            this.label7.Location = new System.Drawing.Point(15, 214);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 15;
@@ -172,19 +172,19 @@ namespace crud_teste.vieew
             // 
             // Fabricante
             // 
-            this.Fabricante.Location = new System.Drawing.Point(113, 258);
+            this.Fabricante.Location = new System.Drawing.Point(113, 210);
             this.Fabricante.Name = "Fabricante";
-            this.Fabricante.Size = new System.Drawing.Size(669, 20);
+            this.Fabricante.Size = new System.Drawing.Size(660, 20);
             this.Fabricante.TabIndex = 16;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(15, 339);
+            this.button1.Location = new System.Drawing.Point(15, 258);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 54);
+            this.button1.Size = new System.Drawing.Size(224, 78);
             this.button1.TabIndex = 48;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -194,7 +194,7 @@ namespace crud_teste.vieew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 349);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Fabricante);
             this.Controls.Add(this.label7);
