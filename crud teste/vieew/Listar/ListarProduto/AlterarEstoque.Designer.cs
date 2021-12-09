@@ -37,7 +37,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
             // 
             // nudEstoque
             // 
-            this.nudEstoque.Location = new System.Drawing.Point(12, 51);
+            this.nudEstoque.Location = new System.Drawing.Point(13, 51);
             this.nudEstoque.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -50,11 +50,11 @@ namespace crud_teste.vieew.Listar.ListarProduto
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(13, 119);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 51);
+            this.button1.Size = new System.Drawing.Size(128, 67);
             this.button1.TabIndex = 1;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
@@ -63,11 +63,11 @@ namespace crud_teste.vieew.Listar.ListarProduto
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(157, 119);
+            this.button2.Location = new System.Drawing.Point(147, 119);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 51);
+            this.button2.Size = new System.Drawing.Size(119, 67);
             this.button2.TabIndex = 2;
             this.button2.Text = "Alterar";
             this.button2.UseVisualStyleBackColor = false;

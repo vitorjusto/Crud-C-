@@ -125,7 +125,7 @@ namespace crud_teste.vieew
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(543, 44);
+            this.label3.Location = new System.Drawing.Point(522, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 5;
@@ -140,7 +140,7 @@ namespace crud_teste.vieew
             "Cartão De Credito",
             "Cheque",
             "Vale"});
-            this.FormaDePagamento.Location = new System.Drawing.Point(674, 36);
+            this.FormaDePagamento.Location = new System.Drawing.Point(674, 30);
             this.FormaDePagamento.Name = "FormaDePagamento";
             this.FormaDePagamento.Size = new System.Drawing.Size(100, 21);
             this.FormaDePagamento.TabIndex = 6;
@@ -179,7 +179,7 @@ namespace crud_teste.vieew
             this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(332, 33);
+            this.button6.Location = new System.Drawing.Point(332, 30);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(27, 27);
             this.button6.TabIndex = 14;
@@ -188,15 +188,15 @@ namespace crud_teste.vieew
             // 
             // PrecoBruto
             // 
-            this.PrecoBruto.Location = new System.Drawing.Point(471, 73);
+            this.PrecoBruto.Location = new System.Drawing.Point(471, 70);
             this.PrecoBruto.Name = "PrecoBruto";
             this.PrecoBruto.ReadOnly = true;
-            this.PrecoBruto.Size = new System.Drawing.Size(100, 20);
+            this.PrecoBruto.Size = new System.Drawing.Size(144, 20);
             this.PrecoBruto.TabIndex = 26;
             // 
             // QuantidadeRestante
             // 
-            this.QuantidadeRestante.Location = new System.Drawing.Point(160, 158);
+            this.QuantidadeRestante.Location = new System.Drawing.Point(160, 150);
             this.QuantidadeRestante.Name = "QuantidadeRestante";
             this.QuantidadeRestante.ReadOnly = true;
             this.QuantidadeRestante.Size = new System.Drawing.Size(197, 20);
@@ -205,7 +205,7 @@ namespace crud_teste.vieew
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(28, 161);
+            this.label20.Location = new System.Drawing.Point(28, 154);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(114, 13);
             this.label20.TabIndex = 24;
@@ -214,7 +214,7 @@ namespace crud_teste.vieew
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(378, 73);
+            this.label5.Location = new System.Drawing.Point(378, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 10;
@@ -223,7 +223,7 @@ namespace crud_teste.vieew
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(378, 36);
+            this.label12.Location = new System.Drawing.Point(378, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 13);
             this.label12.TabIndex = 23;
@@ -231,16 +231,16 @@ namespace crud_teste.vieew
             // 
             // PrecoUnitario
             // 
-            this.PrecoUnitario.Location = new System.Drawing.Point(474, 37);
+            this.PrecoUnitario.Location = new System.Drawing.Point(471, 30);
             this.PrecoUnitario.Name = "PrecoUnitario";
             this.PrecoUnitario.ReadOnly = true;
-            this.PrecoUnitario.Size = new System.Drawing.Size(100, 20);
+            this.PrecoUnitario.Size = new System.Drawing.Size(144, 20);
             this.PrecoUnitario.TabIndex = 22;
             this.PrecoUnitario.TextChanged += new System.EventHandler(this.PrecoUnitario_TextChanged);
             // 
             // QuantidadeEmEstoque
             // 
-            this.QuantidadeEmEstoque.Location = new System.Drawing.Point(160, 116);
+            this.QuantidadeEmEstoque.Location = new System.Drawing.Point(160, 110);
             this.QuantidadeEmEstoque.Name = "QuantidadeEmEstoque";
             this.QuantidadeEmEstoque.ReadOnly = true;
             this.QuantidadeEmEstoque.Size = new System.Drawing.Size(197, 20);
@@ -249,7 +249,7 @@ namespace crud_teste.vieew
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(28, 119);
+            this.label11.Location = new System.Drawing.Point(28, 114);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 13);
             this.label11.TabIndex = 20;
@@ -270,7 +270,7 @@ namespace crud_teste.vieew
             // 
             // Quantidade
             // 
-            this.Quantidade.Location = new System.Drawing.Point(160, 72);
+            this.Quantidade.Location = new System.Drawing.Point(160, 70);
             this.Quantidade.MaxLength = 14;
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.Size = new System.Drawing.Size(197, 20);
@@ -281,7 +281,7 @@ namespace crud_teste.vieew
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(28, 73);
+            this.label10.Location = new System.Drawing.Point(28, 74);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 18;
@@ -289,7 +289,7 @@ namespace crud_teste.vieew
             // 
             // NomeDoProduto
             // 
-            this.NomeDoProduto.Location = new System.Drawing.Point(160, 33);
+            this.NomeDoProduto.Location = new System.Drawing.Point(160, 30);
             this.NomeDoProduto.Multiline = true;
             this.NomeDoProduto.Name = "NomeDoProduto";
             this.NomeDoProduto.ReadOnly = true;
@@ -300,7 +300,7 @@ namespace crud_teste.vieew
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(378, 161);
+            this.label7.Location = new System.Drawing.Point(378, 154);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 13);
             this.label7.TabIndex = 14;
@@ -308,17 +308,17 @@ namespace crud_teste.vieew
             // 
             // PrecoLiquido
             // 
-            this.PrecoLiquido.Location = new System.Drawing.Point(471, 161);
+            this.PrecoLiquido.Location = new System.Drawing.Point(471, 150);
             this.PrecoLiquido.Name = "PrecoLiquido";
             this.PrecoLiquido.ReadOnly = true;
-            this.PrecoLiquido.Size = new System.Drawing.Size(100, 20);
+            this.PrecoLiquido.Size = new System.Drawing.Size(144, 20);
             this.PrecoLiquido.TabIndex = 13;
             // 
             // Desconto
             // 
-            this.Desconto.Location = new System.Drawing.Point(471, 116);
+            this.Desconto.Location = new System.Drawing.Point(471, 110);
             this.Desconto.Name = "Desconto";
-            this.Desconto.Size = new System.Drawing.Size(100, 20);
+            this.Desconto.Size = new System.Drawing.Size(144, 20);
             this.Desconto.TabIndex = 12;
             this.Desconto.TextChanged += new System.EventHandler(this.Desconto_TextChanged);
             this.Desconto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Desconto_KeyPress);
@@ -327,7 +327,7 @@ namespace crud_teste.vieew
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(378, 123);
+            this.label6.Location = new System.Drawing.Point(378, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 11;
@@ -336,7 +336,7 @@ namespace crud_teste.vieew
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 39);
+            this.label4.Location = new System.Drawing.Point(28, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 8;
@@ -344,7 +344,7 @@ namespace crud_teste.vieew
             // 
             // DescontoAVista
             // 
-            this.DescontoAVista.Location = new System.Drawing.Point(674, 79);
+            this.DescontoAVista.Location = new System.Drawing.Point(674, 80);
             this.DescontoAVista.Name = "DescontoAVista";
             this.DescontoAVista.Size = new System.Drawing.Size(100, 20);
             this.DescontoAVista.TabIndex = 16;
@@ -356,7 +356,7 @@ namespace crud_teste.vieew
             // labeledit
             // 
             this.labeledit.AutoSize = true;
-            this.labeledit.Location = new System.Drawing.Point(560, 82);
+            this.labeledit.Location = new System.Drawing.Point(522, 84);
             this.labeledit.Name = "labeledit";
             this.labeledit.Size = new System.Drawing.Size(91, 13);
             this.labeledit.TabIndex = 15;
@@ -420,7 +420,7 @@ namespace crud_teste.vieew
             // 
             // LimiteDeCompraaPraso
             // 
-            this.LimiteDeCompraaPraso.Location = new System.Drawing.Point(674, 126);
+            this.LimiteDeCompraaPraso.Location = new System.Drawing.Point(674, 130);
             this.LimiteDeCompraaPraso.Name = "LimiteDeCompraaPraso";
             this.LimiteDeCompraaPraso.ReadOnly = true;
             this.LimiteDeCompraaPraso.Size = new System.Drawing.Size(100, 20);
@@ -430,7 +430,7 @@ namespace crud_teste.vieew
             // labelLimite
             // 
             this.labelLimite.AutoSize = true;
-            this.labelLimite.Location = new System.Drawing.Point(522, 133);
+            this.labelLimite.Location = new System.Drawing.Point(522, 134);
             this.labelLimite.Name = "labelLimite";
             this.labelLimite.Size = new System.Drawing.Size(132, 13);
             this.labelLimite.TabIndex = 12;
@@ -439,7 +439,7 @@ namespace crud_teste.vieew
             // 
             // TotalLiquido
             // 
-            this.TotalLiquido.Location = new System.Drawing.Point(415, 127);
+            this.TotalLiquido.Location = new System.Drawing.Point(415, 130);
             this.TotalLiquido.Name = "TotalLiquido";
             this.TotalLiquido.ReadOnly = true;
             this.TotalLiquido.Size = new System.Drawing.Size(100, 20);
@@ -447,7 +447,7 @@ namespace crud_teste.vieew
             // 
             // TotalDesconto
             // 
-            this.TotalDesconto.Location = new System.Drawing.Point(415, 79);
+            this.TotalDesconto.Location = new System.Drawing.Point(415, 80);
             this.TotalDesconto.Name = "TotalDesconto";
             this.TotalDesconto.ReadOnly = true;
             this.TotalDesconto.Size = new System.Drawing.Size(100, 20);
@@ -455,7 +455,7 @@ namespace crud_teste.vieew
             // 
             // TotalBruto
             // 
-            this.TotalBruto.Location = new System.Drawing.Point(415, 37);
+            this.TotalBruto.Location = new System.Drawing.Point(415, 30);
             this.TotalBruto.Name = "TotalBruto";
             this.TotalBruto.ReadOnly = true;
             this.TotalBruto.Size = new System.Drawing.Size(100, 20);
@@ -464,7 +464,7 @@ namespace crud_teste.vieew
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(297, 130);
+            this.label18.Location = new System.Drawing.Point(297, 134);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(71, 13);
             this.label18.TabIndex = 8;
@@ -473,7 +473,7 @@ namespace crud_teste.vieew
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(297, 82);
+            this.label17.Location = new System.Drawing.Point(297, 84);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 13);
             this.label17.TabIndex = 7;
@@ -482,7 +482,7 @@ namespace crud_teste.vieew
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(295, 39);
+            this.label16.Location = new System.Drawing.Point(295, 34);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 13);
             this.label16.TabIndex = 6;
@@ -491,7 +491,7 @@ namespace crud_teste.vieew
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(34, 133);
+            this.label15.Location = new System.Drawing.Point(34, 134);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 5;
@@ -499,7 +499,7 @@ namespace crud_teste.vieew
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(160, 127);
+            this.textBox8.Location = new System.Drawing.Point(160, 130);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(100, 20);
@@ -508,7 +508,7 @@ namespace crud_teste.vieew
             // 
             // QuantidadeTotal
             // 
-            this.QuantidadeTotal.Location = new System.Drawing.Point(160, 79);
+            this.QuantidadeTotal.Location = new System.Drawing.Point(160, 80);
             this.QuantidadeTotal.Name = "QuantidadeTotal";
             this.QuantidadeTotal.ReadOnly = true;
             this.QuantidadeTotal.Size = new System.Drawing.Size(100, 20);
@@ -517,7 +517,7 @@ namespace crud_teste.vieew
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 82);
+            this.label14.Location = new System.Drawing.Point(31, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 13);
             this.label14.TabIndex = 2;
@@ -526,7 +526,7 @@ namespace crud_teste.vieew
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 40);
+            this.label13.Location = new System.Drawing.Point(31, 34);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(102, 13);
             this.label13.TabIndex = 1;
@@ -534,7 +534,7 @@ namespace crud_teste.vieew
             // 
             // QuantidadeUnitario
             // 
-            this.QuantidadeUnitario.Location = new System.Drawing.Point(160, 34);
+            this.QuantidadeUnitario.Location = new System.Drawing.Point(160, 30);
             this.QuantidadeUnitario.Name = "QuantidadeUnitario";
             this.QuantidadeUnitario.ReadOnly = true;
             this.QuantidadeUnitario.Size = new System.Drawing.Size(100, 20);

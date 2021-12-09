@@ -52,7 +52,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // textBoxinstrucao
             // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
+            this.textBoxinstrucao.Location = new System.Drawing.Point(670, 32);
             this.textBoxinstrucao.Multiline = true;
             this.textBoxinstrucao.Name = "textBoxinstrucao";
             this.textBoxinstrucao.ReadOnly = true;
@@ -64,7 +64,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 63);
+            this.label1.Location = new System.Drawing.Point(12, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 10;
@@ -88,7 +88,7 @@ namespace crud_teste.vieew.TelaDeVenda
             this.dataGridGeral.ReadOnly = true;
             this.dataGridGeral.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridGeral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridGeral.Size = new System.Drawing.Size(776, 310);
+            this.dataGridGeral.Size = new System.Drawing.Size(782, 310);
             this.dataGridGeral.TabIndex = 8;
             this.dataGridGeral.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseDoubleClick_1);
             // 

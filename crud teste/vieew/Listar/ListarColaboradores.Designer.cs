@@ -57,7 +57,7 @@ namespace crud_teste.vieew
             this.menuPrincipalToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(985, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,7 +70,7 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 32);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(86, 64);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
             this.CampoDePesquisa.Size = new System.Drawing.Size(325, 20);
             this.CampoDePesquisa.TabIndex = 2;
@@ -93,7 +93,7 @@ namespace crud_teste.vieew
             this.dataGridColaboradores.Name = "dataGridColaboradores";
             this.dataGridColaboradores.ReadOnly = true;
             this.dataGridColaboradores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridColaboradores.Size = new System.Drawing.Size(776, 310);
+            this.dataGridColaboradores.Size = new System.Drawing.Size(961, 316);
             this.dataGridColaboradores.TabIndex = 3;
             this.dataGridColaboradores.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseClick);
             this.dataGridColaboradores.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridColaboradores_CellMouseDoubleClick_1);
@@ -168,7 +168,7 @@ namespace crud_teste.vieew
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 35);
+            this.label.Location = new System.Drawing.Point(12, 68);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(56, 13);
             this.label.TabIndex = 4;
@@ -176,7 +176,7 @@ namespace crud_teste.vieew
             // 
             // textBoxinstrucao
             // 
-            this.textBoxinstrucao.Location = new System.Drawing.Point(648, 32);
+            this.textBoxinstrucao.Location = new System.Drawing.Point(849, 32);
             this.textBoxinstrucao.Multiline = true;
             this.textBoxinstrucao.Name = "textBoxinstrucao";
             this.textBoxinstrucao.ReadOnly = true;
@@ -190,7 +190,7 @@ namespace crud_teste.vieew
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(437, 32);
+            this.button1.Location = new System.Drawing.Point(633, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 69);
             this.button1.TabIndex = 6;
@@ -201,7 +201,7 @@ namespace crud_teste.vieew
             // cbAtivo
             // 
             this.cbAtivo.AutoSize = true;
-            this.cbAtivo.Location = new System.Drawing.Point(86, 86);
+            this.cbAtivo.Location = new System.Drawing.Point(435, 65);
             this.cbAtivo.Name = "cbAtivo";
             this.cbAtivo.Size = new System.Drawing.Size(118, 17);
             this.cbAtivo.TabIndex = 7;
@@ -213,7 +213,7 @@ namespace crud_teste.vieew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 456);
+            this.ClientSize = new System.Drawing.Size(985, 456);
             this.Controls.Add(this.cbAtivo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxinstrucao);

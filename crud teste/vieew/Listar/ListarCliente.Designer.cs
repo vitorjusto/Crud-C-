@@ -71,7 +71,7 @@ namespace crud_teste.vieew
             this.dataGridCliente.Name = "dataGridCliente";
             this.dataGridCliente.ReadOnly = true;
             this.dataGridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridCliente.Size = new System.Drawing.Size(1012, 310);
+            this.dataGridCliente.Size = new System.Drawing.Size(1012, 325);
             this.dataGridCliente.TabIndex = 0;
             this.dataGridCliente.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseClick);
             this.dataGridCliente.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridCliente_CellMouseDoubleClick);
@@ -166,15 +166,15 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(98, 48);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(98, 64);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(415, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(373, 20);
             this.CampoDePesquisa.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 51);
+            this.label1.Location = new System.Drawing.Point(12, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 3;
@@ -207,7 +207,7 @@ namespace crud_teste.vieew
             // cbInativo
             // 
             this.cbInativo.AutoSize = true;
-            this.cbInativo.Location = new System.Drawing.Point(176, 84);
+            this.cbInativo.Location = new System.Drawing.Point(487, 65);
             this.cbInativo.Name = "cbInativo";
             this.cbInativo.Size = new System.Drawing.Size(118, 17);
             this.cbInativo.TabIndex = 8;

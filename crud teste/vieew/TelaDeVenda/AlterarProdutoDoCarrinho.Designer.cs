@@ -70,22 +70,22 @@ namespace crud_teste.vieew.TelaDeVenda
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(37, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(622, 200);
+            this.groupBox1.Size = new System.Drawing.Size(622, 223);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
             // 
             // txtPrecoBruto
             // 
-            this.txtPrecoBruto.Location = new System.Drawing.Point(471, 73);
+            this.txtPrecoBruto.Location = new System.Drawing.Point(471, 80);
             this.txtPrecoBruto.Name = "txtPrecoBruto";
             this.txtPrecoBruto.ReadOnly = true;
-            this.txtPrecoBruto.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecoBruto.Size = new System.Drawing.Size(124, 20);
             this.txtPrecoBruto.TabIndex = 26;
             // 
             // txtQuantidadeRestante
             // 
-            this.txtQuantidadeRestante.Location = new System.Drawing.Point(160, 158);
+            this.txtQuantidadeRestante.Location = new System.Drawing.Point(160, 180);
             this.txtQuantidadeRestante.Name = "txtQuantidadeRestante";
             this.txtQuantidadeRestante.ReadOnly = true;
             this.txtQuantidadeRestante.Size = new System.Drawing.Size(197, 20);
@@ -94,7 +94,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(28, 161);
+            this.label20.Location = new System.Drawing.Point(28, 184);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(114, 13);
             this.label20.TabIndex = 24;
@@ -103,7 +103,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(378, 73);
+            this.label5.Location = new System.Drawing.Point(378, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 10;
@@ -112,7 +112,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(378, 36);
+            this.label12.Location = new System.Drawing.Point(378, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 13);
             this.label12.TabIndex = 23;
@@ -120,15 +120,15 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // txtPrecoUnitario
             // 
-            this.txtPrecoUnitario.Location = new System.Drawing.Point(474, 37);
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(474, 30);
             this.txtPrecoUnitario.Name = "txtPrecoUnitario";
             this.txtPrecoUnitario.ReadOnly = true;
-            this.txtPrecoUnitario.Size = new System.Drawing.Size(97, 20);
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(121, 20);
             this.txtPrecoUnitario.TabIndex = 22;
             // 
             // txtQuantidadeEmEstoque
             // 
-            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(160, 116);
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(160, 130);
             this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
             this.txtQuantidadeEmEstoque.ReadOnly = true;
             this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(197, 20);
@@ -137,7 +137,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(28, 119);
+            this.label11.Location = new System.Drawing.Point(28, 134);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 13);
             this.label11.TabIndex = 20;
@@ -145,7 +145,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(160, 72);
+            this.txtQuantidade.Location = new System.Drawing.Point(160, 80);
             this.txtQuantidade.MaxLength = 14;
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(197, 20);
@@ -155,7 +155,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(28, 73);
+            this.label10.Location = new System.Drawing.Point(28, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 18;
@@ -163,7 +163,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // txtNomeDoProduto
             // 
-            this.txtNomeDoProduto.Location = new System.Drawing.Point(160, 33);
+            this.txtNomeDoProduto.Location = new System.Drawing.Point(160, 30);
             this.txtNomeDoProduto.Multiline = true;
             this.txtNomeDoProduto.Name = "txtNomeDoProduto";
             this.txtNomeDoProduto.ReadOnly = true;
@@ -173,7 +173,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(378, 161);
+            this.label7.Location = new System.Drawing.Point(378, 184);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 13);
             this.label7.TabIndex = 14;
@@ -181,24 +181,24 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             // txtPrecoLiquido
             // 
-            this.txtPrecoLiquido.Location = new System.Drawing.Point(471, 161);
+            this.txtPrecoLiquido.Location = new System.Drawing.Point(471, 180);
             this.txtPrecoLiquido.Name = "txtPrecoLiquido";
             this.txtPrecoLiquido.ReadOnly = true;
-            this.txtPrecoLiquido.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecoLiquido.Size = new System.Drawing.Size(124, 20);
             this.txtPrecoLiquido.TabIndex = 13;
             // 
             // txtDesconto
             // 
-            this.txtDesconto.Location = new System.Drawing.Point(471, 116);
+            this.txtDesconto.Location = new System.Drawing.Point(471, 130);
             this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(100, 20);
+            this.txtDesconto.Size = new System.Drawing.Size(124, 20);
             this.txtDesconto.TabIndex = 12;
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(378, 123);
+            this.label6.Location = new System.Drawing.Point(378, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 11;
@@ -207,7 +207,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 39);
+            this.label4.Location = new System.Drawing.Point(28, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 8;
@@ -216,11 +216,11 @@ namespace crud_teste.vieew.TelaDeVenda
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(494, 271);
+            this.button1.Location = new System.Drawing.Point(481, 277);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 72);
+            this.button1.Size = new System.Drawing.Size(178, 81);
             this.button1.TabIndex = 17;
             this.button1.Text = "Alterar no carrinho";
             this.button1.UseVisualStyleBackColor = false;

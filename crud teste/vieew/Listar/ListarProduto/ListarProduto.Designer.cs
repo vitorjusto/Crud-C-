@@ -79,7 +79,7 @@ namespace crud_teste.vieew
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 70);
+            this.label1.Location = new System.Drawing.Point(12, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 10;
@@ -87,9 +87,9 @@ namespace crud_teste.vieew
             // 
             // CampoDePesquisa
             // 
-            this.CampoDePesquisa.Location = new System.Drawing.Point(89, 67);
+            this.CampoDePesquisa.Location = new System.Drawing.Point(89, 64);
             this.CampoDePesquisa.Name = "CampoDePesquisa";
-            this.CampoDePesquisa.Size = new System.Drawing.Size(414, 20);
+            this.CampoDePesquisa.Size = new System.Drawing.Size(327, 20);
             this.CampoDePesquisa.TabIndex = 9;
             // 
             // dataGridProduto
@@ -106,12 +106,12 @@ namespace crud_teste.vieew
             this.Alterar,
             this.AlterarEstoque,
             this.Inativar});
-            this.dataGridProduto.Location = new System.Drawing.Point(15, 138);
+            this.dataGridProduto.Location = new System.Drawing.Point(15, 127);
             this.dataGridProduto.MultiSelect = false;
             this.dataGridProduto.Name = "dataGridProduto";
             this.dataGridProduto.ReadOnly = true;
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProduto.Size = new System.Drawing.Size(917, 310);
+            this.dataGridProduto.Size = new System.Drawing.Size(917, 329);
             this.dataGridProduto.TabIndex = 8;
             this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseClick_1);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
@@ -212,7 +212,7 @@ namespace crud_teste.vieew
             // BuscarAtivo
             // 
             this.BuscarAtivo.AutoSize = true;
-            this.BuscarAtivo.Location = new System.Drawing.Point(89, 103);
+            this.BuscarAtivo.Location = new System.Drawing.Point(433, 65);
             this.BuscarAtivo.Name = "BuscarAtivo";
             this.BuscarAtivo.Size = new System.Drawing.Size(117, 17);
             this.BuscarAtivo.TabIndex = 14;

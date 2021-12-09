@@ -71,7 +71,7 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridCarrinho.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridCarrinho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridCarrinho.Size = new System.Drawing.Size(776, 310);
+            this.dataGridCarrinho.Size = new System.Drawing.Size(860, 320);
             this.dataGridCarrinho.TabIndex = 13;
             this.dataGridCarrinho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCarrinho_CellContentClick);
             // 
@@ -147,7 +147,7 @@ namespace crud_teste.vieew.TelaDeVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(884, 450);
             this.Controls.Add(this.dataGridCarrinho);
             this.Name = "ListarCarrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
