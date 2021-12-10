@@ -1,4 +1,5 @@
 ﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
@@ -196,7 +197,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 CalcularLucros(cbConsiderarInativo.Checked);
             }
             else
-                MessageBox.Show("Data Inicial é maior que a Data Final");
+                new CaixaDeAviso().MensagemDeOk("Data Inicial é maior que a Data Final");
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e) =>

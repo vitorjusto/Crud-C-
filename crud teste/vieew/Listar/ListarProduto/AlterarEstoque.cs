@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using System;
 using System.Windows.Forms;
@@ -34,7 +36,7 @@ namespace crud_teste.vieew.Listar.ListarProduto
             }
             catch
             {
-                MessageBox.Show("Falha ao conectar com o banco de dados");
+                new CaixaDeErro().FalhaNoBancoDeDados();
             }
             finally
             {

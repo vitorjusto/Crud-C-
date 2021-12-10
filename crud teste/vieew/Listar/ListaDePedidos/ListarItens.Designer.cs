@@ -161,7 +161,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Name = "ListarItens";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarItens";
-            this.Load += new System.EventHandler(this.ListarItens_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrinho)).EndInit();
             this.ResumeLayout(false);
 

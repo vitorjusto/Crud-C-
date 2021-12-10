@@ -6,6 +6,8 @@ using crud_teste.Validation;
 using System.Linq;
 using crud_teste.Model.Object_Values;
 using Tema;
+using crud_teste.Config;
+using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -19,7 +21,7 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo voltar a pagina principal?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal?"))
             {
                 this.Close();
                 new ListarClientes().Show();
@@ -37,35 +39,33 @@ namespace crud_teste
             cliente = preencherCampos();
             ClienteValidation validar = new ClienteValidation();
 
-            //cliente.LimiteAcumulado = 
-
             var validateres = validar.Validate(cliente);
 
             if (validateres.IsValid)
             {
-                if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo cadastrar os dados?"))
                 {
                     try
                     {
                         AlterarCliente oAlterar = new AlterarCliente();
                         var id = oAlterar.conectarComDAO(cliente);
 
-                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {id}");
+                        new CaixaDeInformacao().MensagemDeOk($"Dados cadastrados com sucesso !!!\n id = {id}");
 
 
                         new ListarClientes().Show();
                         this.Close();
 
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
             }
             else
             {
-                MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
+                new CaixaDeAviso().MensagemDeOk(validateres.Errors.FirstOrDefault().ToString());
             }
         }
 

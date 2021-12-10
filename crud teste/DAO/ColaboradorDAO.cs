@@ -219,6 +219,7 @@ namespace crud_teste
                     {
                         Salario = colaborador.Salario.GetAsDecimal(),
                         PorcentagemDeComissao = colaborador.PorcentagemDeComissao.ToDecimal(),
+                        idColaborador = colaborador.idColaborador,
                     }, tran);
                     
 

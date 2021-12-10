@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
@@ -60,28 +62,28 @@ namespace crud_teste.vieew.Consultar
             {
                 try
                 {
-                    if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo alterar os dados?"))
                     {
                         oAlterar.Salvar(produtoGlobal);
-                        MessageBox.Show("Produto alterado com sucesso");
+                        new CaixaDeInformacao().MensagemDeOk("Dados salvos com sucesso !!");
                         new ListarProduto().Show();
                         this.Close();
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
             else
             {
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
             }
         }
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo voltar a pagina de listagem?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal Listagem?"))
             {
                 new ListarProduto().Show();
                 this.Hide();
@@ -92,17 +94,17 @@ namespace crud_teste.vieew.Consultar
         {
             try
             {
-                if (MessageBox.Show("Deseja mesmo Excluir os dados (Serão excluidos Permanentemente)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDeAviso().MensagemDeSimENao("Deseja excluir os dados (Dados Serão excluidos permanente)?"))
                 {
                     oAlterar.Excluir(produtoGlobal.IdProduto);
-                    MessageBox.Show("Produto excluido com sucesso");
+                    new CaixaDeInformacao().MensagemDeOk("Dados excluidos com sucesso !!"); 
                     new ListarProduto().Show();
                     this.Close();
                 }
             }
             catch
             {
-                MessageBox.Show("Fala ao conectar com o banco de dados");
+                new CaixaDeErro().FalhaNoBancoDeDados(); 
             }
         }
 

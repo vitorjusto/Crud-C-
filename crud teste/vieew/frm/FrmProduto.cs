@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
@@ -32,24 +34,22 @@ namespace crud_teste.vieew
                 {
                     var oProduto = new AlterarProduto();
 
-                    if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo cadastrar os dados?"))
                     {
                         produto.IdProduto = oProduto.Inserir(produto);
-                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {produto.IdProduto}");
+                        new CaixaDeInformacao().MensagemDeOk($"Dados Cadastrados com sucesso\nid = {produto.IdProduto}");
 
                         new ListarClientes().Show();
                         this.Close();
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message, "Atenção");
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
             else
-            {
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
-            }
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
 
         }
 
@@ -71,7 +71,7 @@ namespace crud_teste.vieew
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja Mesmo Sair?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal?"))
             {
                 new ListarClientes().Show();
                 this.Close();

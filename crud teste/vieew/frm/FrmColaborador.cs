@@ -6,6 +6,9 @@ using crud_teste.controller;
 using crud_teste.Validation;
 using System.Linq;
 using Tema;
+using crud_teste.Config;
+using crud_teste.Model.Object_Values;
+using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -19,7 +22,7 @@ namespace crud_teste
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (MessageBox.Show("Deseja mesmo sair?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal?"))
             {
                 this.Close();
                 new ListarClientes().Show();
@@ -35,9 +38,8 @@ namespace crud_teste
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Colaborador colaborador = new Colaborador();
+            Colaborador colaborador = preencherCampos();
             AlterarColaborador oCadastrar = new AlterarColaborador();
-            colaborador = preencherCampos();
             ColaboradorValidator validar = new ColaboradorValidator();
 
             var validateres = validar.Validate(colaborador);
@@ -47,25 +49,25 @@ namespace crud_teste
                 try
                 {
 
-                    if (MessageBox.Show("Deseja Cadastrar dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo cadastrar os dados?"))
                     {
                         colaborador.idColaborador = oCadastrar.conectarComDAO(colaborador);
-                        MessageBox.Show($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
+                        new CaixaDeInformacao().MensagemDeOk($"Dados Cadastrados com sucesso\nid = {colaborador.idColaborador}");
 
                         new ListarClientes().Show();
                         this.Close();
 
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message, "Atenção");
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
 
             }
             else
             {
-                MessageBox.Show(validateres.Errors.FirstOrDefault().ToString(), "Atenção");
+                new CaixaDeAviso().MensagemDeOk(validateres.Errors.FirstOrDefault().ToString());
             }
 
         }
@@ -118,5 +120,7 @@ namespace crud_teste
         private void UF_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
         private void Agencia_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
+
+        private void Salario_Leave(object sender, EventArgs e) => Salario.Text = MyDinheiro.SetTextBoxAsMoneyValue(Salario.Text);
     }
 }

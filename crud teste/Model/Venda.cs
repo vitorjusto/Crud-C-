@@ -19,7 +19,7 @@ namespace crud_teste.Model
             get => Pedido_Produto.Sum(x => x.Desconto.GetAsDouble());
         }
         public MyDinheiro TotalLiquido {
-            get => Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble()) - DescontoAVIsta.GetAsDouble();
+            get => Pedido_Produto.Sum(x => x.PrecoLiquido.GetAsDouble()) - DescontoAVista.GetAsDouble();
         }
         public int MesesAPrazo{ get; set; }
         public long QuantidadeDeTotal{ get => Pedido_Produto.Sum(x => x.quantidade); }
@@ -28,7 +28,7 @@ namespace crud_teste.Model
 
         public DateTime DiaDaVenda { get; set; }
 
-        public MyDinheiro DescontoAVIsta = new MyDinheiro();
+        public MyDinheiro DescontoAVista = new MyDinheiro();
 
         public List<Pedido_Produto> Pedido_Produto = new List<Pedido_Produto>();
 

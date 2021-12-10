@@ -7,6 +7,8 @@ using crud_teste.vieew;
 using crud_teste.Validation;
 using System.Linq;
 using Tema;
+using crud_teste.Config;
+using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -31,9 +33,9 @@ namespace crud_teste
 
                 this.Text = "Consultando: " + colaboradorGlobal.nomeCompleto();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                new CaixaDeErro().FalhaNoBancoDeDados();
             }
 
         }
@@ -78,7 +80,7 @@ namespace crud_teste
 
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja mesmo voltar a pagina de listagem?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal?"))
             {
                 this.Close();
                 new ListarColaboradores().Show();
@@ -98,24 +100,24 @@ namespace crud_teste
                 {
                     AlterarColaborador oColaborador = new AlterarColaborador();
 
-                    if (MessageBox.Show("Deseja mesmo Alterar os dados?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo alterar os dados?"))
                     {
                         oColaborador.SalvarColaborador(colaboradorGlobal);
-                        MessageBox.Show("Dados Salvos com sucesso");
+                        new CaixaDeInformacao().MensagemDeOk("Dados salvos com sucesso !!");
                         new ListarColaboradores().Show();
                         this.Close();
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
                 
             }
             else
             {
-                
-                MessageBox.Show(validadores.Errors.FirstOrDefault().ToString(), "Atenção");
+
+                new CaixaDeAviso().MensagemDeOk(validadores.Errors.FirstOrDefault().ToString());
 
             }
 
@@ -142,8 +144,7 @@ namespace crud_teste
             colaboradorGlobal.SobreNome = Sobrenome.Text;
             colaboradorGlobal.Sexo = Sexo.Text;
 
-            decimal.TryParse(Salario.Text, out decimal x);
-            colaboradorGlobal.Salario = x;
+            colaboradorGlobal.Salario = Salario.Text;
 
             colaboradorGlobal.DataDeNascimento = Data.Value;
             colaboradorGlobal.CPF = CPF.Text;

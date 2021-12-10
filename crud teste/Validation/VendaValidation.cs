@@ -45,7 +45,7 @@ namespace crud_teste.Validation
 
             if ((venda.TipoDeVenda) == "A vista")
             {
-                RuleFor(x => x.DescontoAVIsta.GetAsDouble()).GreaterThan(0).WithMessage("O desconto a vista não pode ser nulo");
+                RuleFor(x => x.DescontoAVista.GetAsDouble()).GreaterThan(0).WithMessage("O desconto a vista não pode ser nulo");
             }
             else if (venda.TipoDeVenda == "A Prazo")
             {

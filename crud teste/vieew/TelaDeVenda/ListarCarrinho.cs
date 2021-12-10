@@ -1,4 +1,6 @@
-﻿using crud_teste.Model;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -49,7 +51,7 @@ namespace crud_teste.vieew.TelaDeVenda
         {
             if(e.ColumnIndex == 7)
             {
-                if(MessageBox.Show("Deseja mesmo remover esse item?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if(new CaixaDeAviso().MensagemDeSimENao("deseja mesmo remover esse item?"))
                 {
                     dataGridCarrinho.Rows.RemoveAt(e.RowIndex);
                     carrinhos.RemoveRange(e.RowIndex, 1);

@@ -88,6 +88,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Mensagem\CaixaDeAviso.cs" />
+    <Compile Include="Config\Mensagem\CaixaDeErro.cs" />
+    <Compile Include="Config\Mensagem\CaixaDeInformacao.cs" />
+    <Compile Include="Config\Mensagem\CaixaDePergunta.cs" />
+    <Compile Include="Config\Mensagem\CaixasDeMensagem.cs" />
     <Compile Include="Config\Dinheiro.cs" />
     <Compile Include="Config\Tema\MenuStripCores.cs" />
     <Compile Include="Config\Tema\Temas.cs" />

@@ -1,15 +1,11 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Consultar;
 using crud_teste.vieew.Listar.ListarProduto;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tema;
 
@@ -126,7 +122,7 @@ namespace crud_teste.vieew
             {
                 var mensagem = produtos[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {produtos[e.RowIndex].nomeProduto}" : $"Deseja Mesmo Reativar o {produtos[e.RowIndex].nomeProduto}";
 
-                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDeAviso().MensagemDeSimENao(mensagem))
                 {
                     AlterarProduto oAlterar = new AlterarProduto();
                     try
@@ -138,9 +134,9 @@ namespace crud_teste.vieew
 
                         preencherDataGrid(BuscarAtivo.Checked);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
             }else if(e.ColumnIndex == 6)

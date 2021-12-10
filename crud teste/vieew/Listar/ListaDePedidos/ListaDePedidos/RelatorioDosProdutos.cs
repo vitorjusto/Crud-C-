@@ -1,4 +1,5 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using System;
 using System.Collections.Generic;
@@ -183,7 +184,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
                 if (!Global.ValidarDatas(dtpDataInicial.Value, dtpDataFinal.Value))
                 {
-                    MessageBox.Show("Data Inicial vem depois da data Final");
+                    new CaixaDeAviso().MensagemDeOk("Data Inicial vem depois da data Final");
                     return;
                 }
             }

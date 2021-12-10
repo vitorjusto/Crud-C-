@@ -23,7 +23,7 @@ namespace crud_teste.vieew.TelaDeVenda
         public Produto produto = new Produto();
         public Cliente cliente = new Cliente();
         public Colaborador colaborador = new Colaborador();
-        public ListarVendaCliente(string busca)
+        public ListarVendaCliente(string busca, string entrada)
         {
             InitializeComponent();
 
@@ -31,11 +31,13 @@ namespace crud_teste.vieew.TelaDeVenda
 
 
             Buscar = busca;
-            
+
+            CampoDePesquisa.Text = entrada;
+
             if (Buscar == "cliente")
-                ListarClientes(oAlterar.ListarClientesAtivos());
+                ListarClientes(oAlterar.ListarClienteAtivos(entrada, "nome"));
             else if (Buscar == "colaborador")
-                ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos());
+                ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(entrada, "nome"));
             else if (Buscar == "produto")
             {
                 ListarProdutos(oAlterarProduto.ListarAtivo());

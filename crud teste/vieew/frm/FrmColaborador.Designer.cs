@@ -442,6 +442,7 @@ namespace crud_teste
             this.Salario.Size = new System.Drawing.Size(101, 20);
             this.Salario.TabIndex = 45;
             this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
+            this.Salario.Leave += new System.EventHandler(this.Salario_Leave);
             // 
             // Porcentagem
             // 

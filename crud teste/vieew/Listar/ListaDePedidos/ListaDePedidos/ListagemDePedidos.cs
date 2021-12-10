@@ -1,4 +1,5 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos;
 using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
@@ -147,7 +148,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
                 if (!Global.ValidarDatas(pesquisa.dataInicial, pesquisa.dataFinal))
                 {
-                    MessageBox.Show("Data Inicial vem depois da data Final");
+                    new CaixaDeAviso().MensagemDeOk("Data Inicial vem depois da data Final");
                     return;
                 }
             }

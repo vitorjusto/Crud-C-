@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using System;
 using System.Collections.Generic;
@@ -119,7 +121,7 @@ namespace crud_teste.vieew
             {
                 var mensagem = listagem[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {listagem[e.RowIndex].NomeCompleto}" : $"Deseja Mesmo Reativar o {listagem[e.RowIndex].NomeCompleto}";
 
-                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDeAviso().MensagemDeSimENao(mensagem))
                 {
                     AlterarColaborador oColaborador = new AlterarColaborador();
                     try
@@ -130,9 +132,9 @@ namespace crud_teste.vieew
 
                         listarNaGrid(cbAtivo.Checked);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                     
                 }

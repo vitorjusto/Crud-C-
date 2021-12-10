@@ -1,4 +1,5 @@
 ﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
@@ -37,14 +38,29 @@ namespace crud_teste.vieew
 
         private void NomeCliente_DoubleClick(object sender, EventArgs e)
         {
-            var listar = new ListarVendaCliente("cliente");
+            PesquisarPorCliente("");
+        }
+
+        public void PesquisarPorCliente(string entrada)
+        {
+            var listar = new ListarVendaCliente("cliente", entrada);
             listar.ShowDialog();
 
             venda.cliente = listar.cliente;
             if (venda.cliente.Aniversariante())
-                MessageBox.Show($"Parabéns {venda.cliente.nomeCompleto()}, Hoje é seu aniversário", "Parabéns");
+                new CaixaDeInformacao().MensagemDeOk($"Parabéns {venda.cliente.nomeCompleto()}, Hoje é seu aniversário");
             NomeCliente.Text = venda.cliente.nomeCompleto();
             LimiteDeCompraaPraso.Text = venda.cliente.LimiteDeCompra.ToString();
+        }
+
+        public void PesquisarPorColaborador(string entrada)
+        {
+
+            var listar = new ListarVendaCliente("colaborador", entrada);
+            listar.ShowDialog();
+            venda.colaborador = listar.colaborador;
+            NomeDoColaborador.Text = venda.colaborador.nomeCompleto();
+            venda.colaborador.PorcentagemDeComissao = venda.colaborador.PorcentagemDeComissao;
         }
 
         private void textBox8_Click(object sender, EventArgs e)
@@ -70,11 +86,7 @@ namespace crud_teste.vieew
         }
         private void NomeDoColaborador_DoubleClick(object sender, EventArgs e)
         {
-            var listar = new ListarVendaCliente("colaborador");
-            listar.ShowDialog();
-            venda.colaborador = listar.colaborador;
-            NomeDoColaborador.Text = venda.colaborador.nomeCompleto();
-            venda.colaborador.PorcentagemDeComissao = venda.colaborador.PorcentagemDeComissao;
+            PesquisarPorColaborador("");
         }
 
         public void preenchervaloresnoproduto()
@@ -171,7 +183,7 @@ namespace crud_teste.vieew
 
             }
             else
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
 
         }
 
@@ -258,36 +270,36 @@ namespace crud_teste.vieew
             {
                 try
                 {
-                    if (MessageBox.Show("Deseja Mesmo Efetuar Venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("deseja mesmo efetuar venda?"))
                     {
                         AlterarVenda alterarvenda = new AlterarVenda();
                         venda.DiaDaVenda = DateTime.Now;
                         alterarvenda.cadastrar(venda);
-                        MessageBox.Show("venda efetuada com sucesso!");
+                        new CaixaDeInformacao().MensagemDeOk("venda efetuada com sucesso!");
 
-                        if (MessageBox.Show("Deseja Mesmo Enviar Recibo Por Email?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (new CaixaDePergunta().MensagemDeSimENao("deseja enviar recibo por email?"))
                         {
                             try
                             {
                                 EnviarEmail.EnviarEmailDeVenda(venda);
-                                MessageBox.Show("Enviado No Email Com Sucesso");
+                                new CaixaDeInformacao().MensagemDeOk("Enviado No Email Com Sucesso");
                             }
                             catch
                             {
-                                MessageBox.Show("Não Foi Possivel Enviar o email", "Atenção");
+                                new CaixaDeErro().MensagemDeOk("Não foi possivel enviar o Email, certifique-se se o usuario cadastrou o Email correto");
                             }
                         }
                         LimparVenda();
                     }
 
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
             else
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
         }
 
         public void LimparVenda()
@@ -322,13 +334,13 @@ namespace crud_teste.vieew
 
             if (venda.TipoDeVenda.Equals("A vista"))
             {
-                venda.DescontoAVIsta = DescontoAVista.Text.Equals("") ? "0.0" : DescontoAVista.Text;
+                venda.DescontoAVista = DescontoAVista.Text.Equals("") ? "0.0" : DescontoAVista.Text;
 
                 venda.MesesAPrazo = 0;
             }
             else if (venda.TipoDeVenda.Equals("A Prazo"))
             {
-                venda.DescontoAVIsta = 0.0F;
+                venda.DescontoAVista = 0.0F;
                 venda.MesesAPrazo = DescontoAVista.Text.Equals("") ? 0 : int.Parse(DescontoAVista.Text);
             }
 
@@ -347,8 +359,12 @@ namespace crud_teste.vieew
             AdicionarNaVenda();
 
 
-        private void button3_Click(object sender, EventArgs e) =>
-            LimparVenda();
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(new CaixaDeAviso().MensagemDeSimENao("Deseja Mesmo Cancelar A Venda?"))
+                LimparVenda();
+        }
+
 
 
         private void Desconto_Leave(object sender, EventArgs e) =>
@@ -365,5 +381,47 @@ namespace crud_teste.vieew
         }
          private void FormaDePagamento_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
+        private void NomeCliente_Enter(object sender, EventArgs e)
+        {
+            NomeCliente.Text = "";
+        }
+
+        private void NomeCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                PesquisarPorCliente(NomeCliente.Text);
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            PesquisarPorCliente("");
+        }
+
+        private void NomeDoColaborador_Enter(object sender, EventArgs e)
+        {
+            NomeDoColaborador.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            PesquisarPorColaborador("");
+        }
+
+        private void NomeDoColaborador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                PesquisarPorColaborador(NomeDoColaborador.Text);
+        }
+
+        private void NomeCliente_Leave(object sender, EventArgs e)
+        {
+            NomeCliente.Text = venda.cliente.nomeCompleto();
+        }
+
+        private void NomeDoColaborador_Leave(object sender, EventArgs e)
+        {
+            NomeDoColaborador.Text = venda.colaborador.nomeCompleto();
+        }
     }
 }

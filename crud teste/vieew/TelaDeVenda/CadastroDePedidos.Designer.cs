@@ -89,10 +89,12 @@ namespace crud_teste.vieew
             this.NomeCliente.Location = new System.Drawing.Point(167, 40);
             this.NomeCliente.Multiline = true;
             this.NomeCliente.Name = "NomeCliente";
-            this.NomeCliente.ReadOnly = true;
             this.NomeCliente.Size = new System.Drawing.Size(334, 31);
             this.NomeCliente.TabIndex = 0;
             this.NomeCliente.DoubleClick += new System.EventHandler(this.NomeCliente_DoubleClick);
+            this.NomeCliente.Enter += new System.EventHandler(this.NomeCliente_Enter);
+            this.NomeCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NomeCliente_KeyDown);
+            this.NomeCliente.Leave += new System.EventHandler(this.NomeCliente_Leave);
             // 
             // label1
             // 
@@ -117,10 +119,12 @@ namespace crud_teste.vieew
             this.NomeDoColaborador.Location = new System.Drawing.Point(167, 90);
             this.NomeDoColaborador.Multiline = true;
             this.NomeDoColaborador.Name = "NomeDoColaborador";
-            this.NomeDoColaborador.ReadOnly = true;
             this.NomeDoColaborador.Size = new System.Drawing.Size(334, 31);
             this.NomeDoColaborador.TabIndex = 3;
             this.NomeDoColaborador.DoubleClick += new System.EventHandler(this.NomeDoColaborador_DoubleClick);
+            this.NomeDoColaborador.Enter += new System.EventHandler(this.NomeDoColaborador_Enter);
+            this.NomeDoColaborador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NomeDoColaborador_KeyDown);
+            this.NomeDoColaborador.Leave += new System.EventHandler(this.NomeDoColaborador_Leave);
             // 
             // label3
             // 
@@ -573,6 +577,7 @@ namespace crud_teste.vieew
             this.button4.TabIndex = 12;
             this.button4.Text = "🔎";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -585,6 +590,7 @@ namespace crud_teste.vieew
             this.button5.TabIndex = 13;
             this.button5.Text = "🔎";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // CadastroDePedidos
             // 

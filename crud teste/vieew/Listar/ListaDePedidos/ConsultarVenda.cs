@@ -1,4 +1,5 @@
 ﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Object_Values;
@@ -125,7 +126,7 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             if (!txtnomeProduto.Visible)
             {
-                if (MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDeAviso().MensagemDeSimENao("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?"))
                 {
                     try
                     {
@@ -136,9 +137,9 @@ namespace crud_teste.vieew.ListaDePedidos
                         _venda.Pedido_Produto.Remove(_pedido);
                         oldList.Remove(_pedido);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
             }
@@ -159,7 +160,8 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             if (_venda.Pedido_Produto.Count == 0)
             {
-                if (MessageBox.Show("Esta venda resultou em 0 (zero) produtos listados, deseja excluir venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                
+                if (new CaixaDePergunta().MensagemDeSimENao("Esta venda resultou em 0 (zero) produtos listados, deseja excluir venda?"))
                 {
 
                     AlterarVenda oAlterar = new AlterarVenda();
@@ -169,9 +171,9 @@ namespace crud_teste.vieew.ListaDePedidos
                         this.Close();
                         new ListagemDePedidos().Show();
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
             }
@@ -235,7 +237,7 @@ namespace crud_teste.vieew.ListaDePedidos
             }
             else
             {
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
             }
         }
 
@@ -253,7 +255,7 @@ namespace crud_teste.vieew.ListaDePedidos
             {
                 try
                 {
-                    if (MessageBox.Show("Deseja Mesmo Alterar esta venda?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo Alterar os dados?"))
                     {
                         AlterarVenda oAlterar = new AlterarVenda();
                         oAlterar.SalvarProduto(_venda);
@@ -263,14 +265,14 @@ namespace crud_teste.vieew.ListaDePedidos
 
 
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
             else
             {
-                MessageBox.Show(validares.Errors.FirstOrDefault().ToString());
+                new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
             }
         }
 
@@ -289,7 +291,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
             var mensagem = _venda.Ativo ? "Deseja Mesmo Inativar esta venda, todos os produtos retornarão no estoque e não fazerá parte do lucro?" : "Deseja Mesmo Reativar Venda?";
 
-            if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (new CaixaDePergunta().MensagemDeSimENao(mensagem))
             {
                 try
                 {
@@ -300,16 +302,12 @@ namespace crud_teste.vieew.ListaDePedidos
 
                     txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
         }
 
-        private void ConsultarVenda_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

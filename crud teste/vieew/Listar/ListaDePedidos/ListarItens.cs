@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using System;
 using System.Windows.Forms;
@@ -49,7 +51,8 @@ namespace crud_teste.vieew.ListaDePedidos
             }
             else if (e.ColumnIndex == 8)
             {
-                if (MessageBox.Show("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+               
+                if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo remover esse item (será considerado como reembolso a quantidade em estoque será alterada)?"))
                 {
                     try
                     {
@@ -59,18 +62,14 @@ namespace crud_teste.vieew.ListaDePedidos
                         dataGridCarrinho.Rows.RemoveAt(e.RowIndex);
                         venda.Pedido_Produto.RemoveRange(e.RowIndex, 1);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
             }
         }
 
-        private void ListarItens_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

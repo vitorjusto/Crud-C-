@@ -47,7 +47,7 @@ namespace crud_teste.DAO
                     tipodevenda = venda.TipoDeVenda,
                     venda.cliente.idCliente,
                     IdColaborador = venda.colaborador.idColaborador,
-                    DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
+                    DescontoAVista = venda.DescontoAVista.GetAsDouble(),
                     venda.DiaDaVenda,
                     TotalGasto = venda.Pedido_Produto.Sum(x => x.precoDeCusto.GetAsDecimal() * x.quantidade)
                 }
@@ -132,7 +132,7 @@ namespace crud_teste.DAO
                     TipoDeVenda = venda.TipoDeVenda,
                     idCliente = venda.cliente.idCliente,
                     idColaborador = venda.colaborador.idColaborador,
-                    DescontoAVista = venda.DescontoAVIsta.GetAsDouble(),
+                    DescontoAVista = venda.DescontoAVista.GetAsDouble(),
                     idVenda = venda.IdVenda,
                 }, tran) ;
 
@@ -319,7 +319,7 @@ namespace crud_teste.DAO
                     venda.MesesAPrazo = (int)reader["mesesaprazo"];
                     venda.cliente.idCliente = (int)reader["idCliente"];
                     venda.colaborador.idColaborador = (int)reader["idColaborador"];
-                    venda.DescontoAVIsta = (double)reader["DescontoAVista"];
+                    venda.DescontoAVista = (double)reader["DescontoAVista"];
                     venda.TipoDeVenda = (string)reader["TipoDeVenda"];
                     venda.Ativo = (bool)reader["ativo"];
                 }

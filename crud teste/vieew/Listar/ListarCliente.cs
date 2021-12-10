@@ -1,4 +1,6 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config;
+using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using System;
 using System.Collections.Generic;
@@ -129,7 +131,7 @@ namespace crud_teste.vieew
 
                 var mensagem = clientes[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {clientes[e.RowIndex].nomecompleto}" : $"Deseja Mesmo Reativar o {clientes[e.RowIndex].nomecompleto}";
 
-                if (MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (new CaixaDeAviso().MensagemDeSimENao(mensagem))
                 {
                     AlterarCliente oAlterar = new AlterarCliente();
                     oAlterar.AlterarAtivo(clientes[e.RowIndex]);
