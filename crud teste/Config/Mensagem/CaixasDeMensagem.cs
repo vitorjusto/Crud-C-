@@ -1,7 +1,5 @@
 ﻿
 
-using System.Windows.Forms;
-
 namespace crud_teste.Config
 {
     public abstract class CaixasDeMensagem

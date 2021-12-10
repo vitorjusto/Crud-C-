@@ -1,5 +1,7 @@
-﻿using CRUD_teste.Model;
+﻿using crud_teste.Model;
+using CRUD_teste.Model;
 using FluentValidation;
+using System.Linq;
 
 namespace crud_teste.Validation
 {
@@ -20,12 +22,19 @@ namespace crud_teste.Validation
 
             RuleFor(x => x.endereco).SetValidator(new EnderecoValidation()).WithMessage("Endereços invalidos");
 
-          
 
-            RuleFor(x => x.contato).SetValidator(new ContatoValidation()).WithMessage("Digite pelo menos um campo de contato");
+            RuleFor(x => x.contato).Must(ContatoValido).WithMessage("Preencha pelo menos um campo de contato");
 
         }
 
-        
+        private bool ContatoValido(Contato contato)
+        {
+            ContatoValidation validar = new ContatoValidation();
+            var validares = validar.Validate(contato);
+
+            return validares.Errors.Count() < 3;
+
+        }
+
     }
 }

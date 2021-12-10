@@ -102,9 +102,9 @@ namespace crud_teste.vieew.ListaDePedidos
             txtLucro.Text = lucro.ToString("c2");
 
             if (lucro > 0M)
-                txtLucro.ForeColor = Color.Green;
+                txtLucro.ForeColor = Temas.Positive;
             else if (lucro < 0M)
-                txtLucro.ForeColor = Color.Red;
+                txtLucro.ForeColor = Temas.Negative;
 
         }
 

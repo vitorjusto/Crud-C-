@@ -145,5 +145,10 @@ namespace crud_teste.vieew
         {
             listarNaGrid(cbAtivo.Checked);
         }
+
+        private void dataGridColaboradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

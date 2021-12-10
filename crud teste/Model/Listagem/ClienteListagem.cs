@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_teste.Model.Object_Values;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,9 +35,9 @@ namespace crud_teste.Model
         public string Endereço { get { return $"{this.Cidade} - {this.UF} \n Bairro: {this.bairro}  Rua: {this.logradouro}  Numero: {this.numero}"; } set { } }
         
         
-        private string telefone { get; set; }
+        private MyTelefone telefone { get; set; }
         
-        private string celular { get; set; }
+        private MyCelular celular { get; set; }
         private string email { get; set; }
 
         public string Contato { get { return $"{procurarContato()}"; } set { } }
@@ -45,10 +46,11 @@ namespace crud_teste.Model
 
         private string procurarContato()
         {
-            if (new Regex(@"[0-9]{4} - [0-9]{4}").Match(this.telefone).Success)
-                return this.telefone;
-            else if (new Regex(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").Match(this.celular).Success)
-                return this.celular;
+            if (new Regex(@"\([0-9]{2}\) 9[0-9]{3} - [0-9]{4}").Match(this.celular.RetornarCelularComFormatacao()).Success)
+                return this.celular.RetornarCelularComFormatacao();
+            else if (new Regex(@"[0-9]{4} - [0-9]{4}").Match(this.telefone.RetornarFormatado()).Success)
+                return this.telefone.RetornarFormatado();
+            
             else
             {
                 return this.email;

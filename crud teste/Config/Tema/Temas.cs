@@ -12,6 +12,9 @@ namespace Tema
         public static Color TextBoxBackColor = Color.White;
         public static Color GroupBoxBackColor = Color.FromArgb(245, 247, 247);
         public static Color LinkColor = Color.Blue;
+
+        public static Color Positive = Color.Green;
+        public static Color Negative = Color.Red;
         public static string Tema { get; set; }
 
         public static void AlterarTema(string tema)
@@ -26,6 +29,9 @@ namespace Tema
                 GroupBoxBackColor = Color.FromArgb(40, 40, 40);
 
                 LinkColor = Color.LightBlue;
+
+                Positive = Color.LightGreen;
+                Negative = Color.FromArgb(255, 77, 77);
             }
             else if (Tema.Equals("Standard"))
             {
@@ -34,6 +40,10 @@ namespace Tema
                 Strip = Color.LightBlue;
                 TextBoxBackColor = Color.White;
                 GroupBoxBackColor = Color.FromArgb(245, 247, 247);
+
+
+                Positive = Color.Green;
+                Negative = Color.Red;
 
             }
             else if (Tema.Equals("Sunset"))
@@ -44,6 +54,9 @@ namespace Tema
                 TextBoxBackColor = Color.FromArgb(255, 204, 153);
                 GroupBoxBackColor = Color.Orange;
 
+
+                Positive = Color.FromArgb(0, 100, 0);
+                Negative = Color.Red;
             }
             else if (Tema.Equals("Sea"))
             {
@@ -53,6 +66,10 @@ namespace Tema
                 TextBoxBackColor = Color.FromArgb(66, 146, 168);
                 GroupBoxBackColor = Color.FromArgb(91, 166, 114);
 
+
+
+                Positive = Color.LightGreen;
+                Negative = Color.FromArgb(200, 0, 0);
             }
             else if (Tema.Equals("Neutral"))
             {
@@ -61,6 +78,10 @@ namespace Tema
                 Strip = Color.FromArgb(102, 102, 102);
                 TextBoxBackColor = Color.FromArgb(204, 204, 204);
                 GroupBoxBackColor = Color.FromArgb(140, 140, 140);
+
+
+                Positive = Color.Green;
+                Negative = Color.Red;
             }
             else if (Tema.Equals("Blue"))
             {
@@ -69,6 +90,10 @@ namespace Tema
                 Strip = Color.FromArgb(2, 25, 75);
                 TextBoxBackColor = Color.FromArgb(50, 50, 150);
                 GroupBoxBackColor = Color.FromArgb(0, 30, 90);
+
+
+                Positive = Color.LightGreen;
+                Negative = Color.FromArgb(255, 150, 150);
             }
         }
         private static void SetDataGridTema(DataGridView control)
@@ -82,7 +107,10 @@ namespace Tema
             control.ColumnHeadersDefaultCellStyle.ForeColor = FontColor;
             control.ColumnHeadersDefaultCellStyle.SelectionBackColor = Strip;
             control.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            control.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            //control.RowsDefaultCellStyle.BackColor = TextBoxBackColor;
+            //control.RowsDefaultCellStyle.ForeColor = FontColor;
 
             control.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             control.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
