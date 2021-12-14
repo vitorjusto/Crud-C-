@@ -21,8 +21,15 @@ namespace crud_teste.vieew
             Temas.AtribuirTema(this);
 
             AlterarProduto oAlterar = new AlterarProduto();
-            produtos = oAlterar.Listar();
-            preencherDataGrid(BuscarAtivo.Checked);
+            try
+            {
+                produtos = oAlterar.Listar();
+                preencherDataGrid(BuscarAtivo.Checked);
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
         }
 
         public void preencherDataGrid(bool comAtivo)
@@ -73,23 +80,29 @@ namespace crud_teste.vieew
         {
             AlterarProduto oAlterar = new AlterarProduto();
 
+            try
+            {
+                int.TryParse(CampoDePesquisa.Text, out int id);
 
-            int.TryParse(CampoDePesquisa.Text, out int id);
-
-            if (CampoDePesquisa.Text == "")
-            {
-                produtos = oAlterar.Listar();
-                preencherDataGrid(BuscarAtivo.Checked);
+                if (CampoDePesquisa.Text == "")
+                {
+                    produtos = oAlterar.Listar();
+                    preencherDataGrid(BuscarAtivo.Checked);
+                }
+                else if (id == 0)
+                {
+                    produtos = oAlterar.Listar(CampoDePesquisa.Text, "nome");
+                    preencherDataGrid(BuscarAtivo.Checked);
+                }
+                else
+                {
+                    produtos = oAlterar.Listar(CampoDePesquisa.Text, "id");
+                    preencherDataGrid(BuscarAtivo.Checked);
+                }
             }
-            else if (id == 0)
+            catch
             {
-                produtos = oAlterar.Listar(CampoDePesquisa.Text, "nome");
-                preencherDataGrid(BuscarAtivo.Checked);
-            }
-            else
-            {
-                produtos = oAlterar.Listar(CampoDePesquisa.Text, "id");
-                preencherDataGrid(BuscarAtivo.Checked);
+                new CaixaDeErro().FalhaNoBancoDeDados();
             }
         }
 
@@ -139,7 +152,8 @@ namespace crud_teste.vieew
                         new CaixaDeErro().FalhaNoBancoDeDados();
                     }
                 }
-            }else if(e.ColumnIndex == 6)
+            }
+            else if (e.ColumnIndex == 6)
             {
                 AlterarEstoque formAlterar = new AlterarEstoque(produtos[e.RowIndex]);
 
@@ -147,16 +161,6 @@ namespace crud_teste.vieew
 
                 dataGridProduto.Rows[e.RowIndex].Cells[3].Value = formAlterar.Produto.Estoque;
             }
-        }
-
-        private void ListarProduto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

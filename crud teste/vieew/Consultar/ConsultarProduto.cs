@@ -19,13 +19,19 @@ namespace crud_teste.vieew.Consultar
         {
             InitializeComponent();
             Temas.AtribuirTema(this);
+            try
+            {
 
-            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
-            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
 
-            produtoGlobal.IdProduto = id;
-            produtoGlobal = oAlterar.Consultar(id);
-            atribuirCampos(produtoGlobal);
+                produtoGlobal.IdProduto = id;
+                produtoGlobal = oAlterar.Consultar(id);
+                atribuirCampos(produtoGlobal);
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+                new ListarProduto().Show();
+                this.Hide();
+            }
 
         }
 

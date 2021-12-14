@@ -21,21 +21,16 @@ namespace crud_teste
             AlterarColaborador oColaborador = new AlterarColaborador();
             try
             {
-
-
-
                 colaboradorGlobal.idColaborador = id;
-
                 colaboradorGlobal = oColaborador.consultarColaborador(colaboradorGlobal.idColaborador);
-
                 AtribuirCampos(colaboradorGlobal);
-
-
                 this.Text = "Consultando: " + colaboradorGlobal.nomeCompleto();
             }
             catch
             {
                 new CaixaDeErro().FalhaNoBancoDeDados();
+                this.Close();
+                new ListarColaboradores().Show();
             }
 
         }

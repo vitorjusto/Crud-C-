@@ -28,15 +28,13 @@ namespace crud_teste
                 clienteglobal = oAlterar.consultarCliente(clienteglobal.idCliente);
 
                 AtribuirCamposClientes(clienteglobal);
-
-
                 this.Text = "Consultando: " + clienteglobal.nomeCompleto();
-
             }
             catch 
             {
                 new CaixaDeErro().FalhaNoBancoDeDados();
-
+                new ListarCliente().Show();
+                this.Close();
             }
         }
 
@@ -125,9 +123,6 @@ namespace crud_teste
         private void ConsultarCliente_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
-
-
-
             ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
         }
         public Cliente SalvarCampos()

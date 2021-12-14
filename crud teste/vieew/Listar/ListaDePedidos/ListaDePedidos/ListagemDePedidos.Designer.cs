@@ -103,7 +103,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListarPedidos.Size = new System.Drawing.Size(1226, 276);
             this.ListarPedidos.TabIndex = 0;
-            this.ListarPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellContentClick);
             this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
             // 
             // IdVenda

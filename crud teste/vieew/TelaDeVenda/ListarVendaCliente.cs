@@ -1,4 +1,5 @@
-﻿using crud_teste.controller;
+﻿using crud_teste.Config.Mensagem;
+using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using CRUD_teste.Model;
@@ -28,21 +29,23 @@ namespace crud_teste.vieew.TelaDeVenda
             InitializeComponent();
 
             Temas.AtribuirTema(this);
-
-
             Buscar = busca;
-
             CampoDePesquisa.Text = entrada;
-
-            if (Buscar == "cliente")
-                ListarClientes(oAlterar.ListarClienteAtivos(entrada, "nome"));
-            else if (Buscar == "colaborador")
-                ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(entrada, "nome"));
-            else if (Buscar == "produto")
+            try
             {
-                ListarProdutos(oAlterarProduto.ListarAtivo());
+                if (Buscar == "cliente")
+                    ListarClientes(oAlterar.ListarClienteAtivos(entrada, "nome"));
+                else if (Buscar == "colaborador")
+                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(entrada, "nome"));
+                else if (Buscar == "produto")
+                {
+                    ListarProdutos(oAlterarProduto.ListarAtivo());
+                }
             }
-
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
             dataGridGeral.AllowUserToAddRows = false;
             dataGridGeral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -50,8 +53,6 @@ namespace crud_teste.vieew.TelaDeVenda
 
         public ListarVendaCliente(string busca, List<Pedido_Produto> carrinhos)
         {
-
-
             InitializeComponent();
 
             Temas.AtribuirTema(this);
@@ -85,12 +86,8 @@ namespace crud_teste.vieew.TelaDeVenda
                     }
 
                 }
-
                 dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
-
                 i++;
-
-
             }
 
 
@@ -135,7 +132,7 @@ namespace crud_teste.vieew.TelaDeVenda
 
             }
         }
-        
+
 
         public void ListarColaboradores(List<ColaboradorListagem> colaboradores)
         {
@@ -169,7 +166,7 @@ namespace crud_teste.vieew.TelaDeVenda
             }
         }
 
-       
+
         public void ListarProdutos(List<ProdutoListagem> produtos)
         {
 
@@ -182,78 +179,78 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridGeral.Columns.Add("Estoque", "Estoque");
             dataGridGeral.Columns.Add("Fabricante", "Fabricante");
 
-  
+
             int i = 0;
             foreach (var produto in produtos)
             {
-               
-                    dataGridGeral.Rows.Add();
-                    dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
-                    dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
-                    dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
-                    dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
-                    dataGridGeral.Rows[i].Cells[4].Value = produto.fabricante;
-                    i++;
-               
+
+                dataGridGeral.Rows.Add();
+                dataGridGeral.Rows[i].Cells[0].Value = produto.IdProduto;
+                dataGridGeral.Rows[i].Cells[1].Value = produto.nomeProduto;
+                dataGridGeral.Rows[i].Cells[2].Value = produto.PrecodeVenda;
+                dataGridGeral.Rows[i].Cells[3].Value = produto.Estoque;
+                dataGridGeral.Rows[i].Cells[4].Value = produto.fabricante;
+                i++;
+
 
             }
-        }  
-        
-        public void ListarCarrinhos(List<Pedido_Produto> carrinho)
-        {
-            
-           
         }
-        
 
         private void dataGridCliente_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
                 return;
-
-            var x = int.Parse(dataGridGeral.Rows[e.RowIndex].Cells[0].Value.ToString());
-            if (Buscar == "cliente")
-                cliente = oAlterar.consultarCliente(x);
-            else if (Buscar == "colaborador")
-                colaborador = oAlterarColaborador.consultarColaborador(x);
-            else if (Buscar == "produto")
+            try
             {
-                produto = oAlterarProduto.Consultar(x);
-                produto.Estoque = produtos[e.RowIndex].Estoque;
-            }
+                var x = int.Parse(dataGridGeral.Rows[e.RowIndex].Cells[0].Value.ToString());
+                if (Buscar == "cliente")
+                    cliente = oAlterar.consultarCliente(x);
+                else if (Buscar == "colaborador")
+                    colaborador = oAlterarColaborador.consultarColaborador(x);
+                else if (Buscar == "produto")
+                {
+                    produto = oAlterarProduto.Consultar(x);
+                    produto.Estoque = produtos[e.RowIndex].Estoque;
+                }
 
-            this.Dispose();
+                this.Dispose();
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
 
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             AlterarCliente oAlterar = new AlterarCliente();
-
-            int.TryParse(CampoDePesquisa.Text, out int id);
-            if (id > 0)
+            try
             {
-                if (Buscar == "cliente")
-                    ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "id"));
-                else if (Buscar == "colaborador")
-                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "id"));
-                else if (Buscar == "produto")
-                    ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "id"));
+                int.TryParse(CampoDePesquisa.Text, out int id);
+                if (id > 0)
+                {
+                    if (Buscar == "cliente")
+                        ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "id"));
+                    else if (Buscar == "colaborador")
+                        ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "id"));
+                    else if (Buscar == "produto")
+                        ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "id"));
+                }
+                else
+                {
+                    if (Buscar == "cliente")
+                        ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "nome"));
+                    else if (Buscar == "colaborador")
+                        ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "nome"));
+                    else if (Buscar == "produto")
+                        ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "nome"));
+                }
             }
-            else
+            catch
             {
-                if (Buscar == "cliente")
-                    ListarClientes(oAlterar.ListarClienteAtivos(CampoDePesquisa.Text, "nome"));
-                else if (Buscar == "colaborador")
-                    ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(CampoDePesquisa.Text, "nome"));
-                else if (Buscar == "produto")
-                    ListarProdutos(oAlterarProduto.ListarAtivos(CampoDePesquisa.Text, "nome"));
+                new CaixaDeErro().FalhaNoBancoDeDados();
             }
-        }
-
-        private void ListarVendaCliente_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

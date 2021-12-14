@@ -17,26 +17,26 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
     {
         AlterarCliente oAlterar = new AlterarCliente();
         List<RelatorioClienteListagem> Clientes = new List<RelatorioClienteListagem>();
-
-       
-
         public RelatorioDoClientes()
         {
             InitializeComponent();
         }
-
         private void RelatorioDoClientes_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
             gbPesquisarPorData.Visible = false;
             gbCondicao.Visible = false;
-
+            try
+            { 
             Clientes = oAlterar.RelatorioDeVenda();
 
             PreencherDataGrid();
             CalcularLucros(false);
-            txtValorFinal.Text = MyDinheiro.SetTextBoxAsMoneyValue("");
-            txtValorInicial.Text = MyDinheiro.SetTextBoxAsMoneyValue("");
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
         }
 
         private void PreencherDataGrid()
@@ -117,13 +117,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtClienteMaisLucrativoValor.Text = "";
                 txtClienteFiel.Text = "";
                 txtMaximoDeVenda.Text = "";
-
                 txtMenosLucrativo.Text = "";
                 txtMenosLucrativoValor.Text = "";
                 txtMenosVendido.Text = "";
                 txtMenosVendidoQuantidade.Text = "";
-
-
                 txtQuantidadesDeProdutos.Text = "";
                 txtTotalDeVendas.Text = "";
                 txtTotalBruto.Text = "";
@@ -138,8 +135,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         {
             this.Close();
             new vieew.ListaDePedidos.ListagemDePedidos().Show();
-
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -157,11 +152,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 cbConsiderarInativo.Checked = false;
                 CalcularLucros(false);
             }
-
         }
-
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             FiltroRelatorioCliente pesquisa = new FiltroRelatorioCliente();
@@ -185,10 +176,15 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                         long.Parse(txtTop.Text == "" ? "0" : txtTop.Text),
                         !cbListarInativo.Checked
                     );
-
-                Clientes = oAlterar.RelatorioDeVenda(pesquisa);
-                PreencherDataGrid();
-                CalcularLucros(cbConsiderarInativo.Checked);
+                try
+                {
+                    Clientes = oAlterar.RelatorioDeVenda(pesquisa);
+                    PreencherDataGrid();
+                    CalcularLucros(cbConsiderarInativo.Checked);
+                }catch
+                {
+                    new CaixaDeErro().FalhaNoBancoDeDados();
+                }
             }
             else
                 new CaixaDeAviso().MensagemDeOk("Data Inicial é maior que a Data Final");
@@ -212,15 +208,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
 
         private void cobCondicao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cobCondicao.SelectedIndex == 6)
-            {
-                txtValorFinal.Visible = true;
-                label16.Visible = true;
-            }else
-            {
-                txtValorFinal.Visible = false;
-                label16.Visible = false;
-            }
+
+                txtValorFinal.Visible = cobCondicao.SelectedIndex == 6;
+                label16.Visible = cobCondicao.SelectedIndex == 6;
         }
 
         private void txtValorFinal_Leave(object sender, EventArgs e)

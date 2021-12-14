@@ -32,8 +32,13 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         public RelatorioDosProdutos()
         {
             InitializeComponent();
-            _produtos = oAlterar.RelatorioDeVendaDosProdutos();
-
+            try
+            {
+                _produtos = oAlterar.RelatorioDeVendaDosProdutos();
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
             gbListarPorData.Visible = false;
 
         }
@@ -74,7 +79,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 }
                 index++;
             }
-
         }
 
         private void CalcularLucros(bool comInativo)
@@ -103,8 +107,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtTotalDeDesconto.Text = lista.Sum(x => x.Desconto.GetAsDecimal()).ToString("C");
                 txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C");
                 txtTotalGasto.Text = lista.Sum(x => x.TotalCusto.GetAsDecimal()).ToString("C");
-
-
                 var lucro = lista.Sum(x => x.LucroEmDinheiro.GetAsDecimal());
                 txtLucro.Text = lucro.ToString("C");
 
@@ -123,13 +125,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 txtMenosVendidaTotal.Text = "";
                 txtMenosVendido.Text = "";
             }
-
-
-
         }
-
-
-
         private void RelatorioDosProdutos_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
@@ -155,7 +151,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 checkBox2.Checked = false;
                 CalcularLucros(false);
             }
-
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -184,10 +179,15 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 }
             }
 
-
-            _produtos = oAlterar.RelatorioDeVendaDosProdutos(pesquisa);
-            PreencherDataGrid(checkBox1.Checked);
-            CalcularLucros(checkBox2.Checked);
+            try
+            {
+                _produtos = oAlterar.RelatorioDeVendaDosProdutos(pesquisa);
+                PreencherDataGrid(checkBox1.Checked);
+                CalcularLucros(checkBox2.Checked);
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

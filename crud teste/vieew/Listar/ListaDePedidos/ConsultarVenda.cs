@@ -24,9 +24,15 @@ namespace crud_teste.vieew.ListaDePedidos
             Temas.AtribuirTema(this);
 
             AlterarVenda oAlterar = new AlterarVenda();
-
-            _venda = oAlterar.Consultar(id);
-
+            try
+            {
+                _venda = oAlterar.Consultar(id);
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+                this.Close();
+                new ListagemDePedidos().Show();
+            }
 
             txtCliente.Text = _venda.cliente.nomeCompleto();
             txtColaborador.Text = _venda.colaborador.nomeCompleto();
@@ -156,9 +162,6 @@ namespace crud_teste.vieew.ListaDePedidos
 
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e) => sair();
-
-
-
         private void sair()
         {
             if (_venda.Pedido_Produto.Count == 0)

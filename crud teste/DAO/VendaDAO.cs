@@ -304,7 +304,20 @@ namespace crud_teste.DAO
                     DataFinal = pesquisa.dataFinal.ToString("dd/MM/yyyy"),
                 }).ToList();
                 con.Close();
+                query = "select * from Carrinho where idVenda = @idVenda";
+                var index = 0;
+                con.Open();
+                foreach (var resultado in resultados)
+                {
 
+                    resultados[index].carrinhos = con.Query<Pedido_Produto>(query, new
+                    {
+                        idVenda = resultado.IdVenda,
+                    }).ToList();
+
+                    index++;
+                }
+                con.Close();
                 return resultados;
             }
             catch (Exception ex)

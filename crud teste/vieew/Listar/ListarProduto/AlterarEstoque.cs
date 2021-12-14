@@ -30,7 +30,6 @@ namespace crud_teste.vieew.Listar.ListarProduto
         {
             try
             {
-
                 oAltetar.AlterarEstoque(Produto.IdProduto, (long)nudEstoque.Value);
                 Produto.Estoque = (long)nudEstoque.Value;
             }

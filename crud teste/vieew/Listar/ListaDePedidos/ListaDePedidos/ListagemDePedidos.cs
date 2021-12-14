@@ -30,25 +30,23 @@ namespace crud_teste.vieew.ListaDePedidos
             public DateTime dataInicial { get; set; }
             public DateTime dataFinal { get; set; }
         }
-
-       
         public ListagemDePedidos()
         {
             InitializeComponent();
-
-
-
-            pedidos = oAlterar.Listar();
-
-            ListarECalcularValores();
-
+            try
+            {
+                pedidos = oAlterar.Listar();
+                ListarECalcularValores();
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
+            
             gbPesquisarPorData.Visible = false;
         }
 
         private void ListarECalcularValores()
         {
-
-
             DataGridViewCellStyle vendainativa = new DataGridViewCellStyle();
             vendainativa.BackColor = Color.SlateGray;
             vendainativa.ForeColor = Color.White;
@@ -69,9 +67,6 @@ namespace crud_teste.vieew.ListaDePedidos
                 ListarPedidos.Rows[index].Cells[8].Value = pedido.quantidadeunitario;
                 ListarPedidos.Rows[index].Cells[9].Value = pedido.QuantidadeTotal;
                 ListarPedidos.Rows[index].Cells[10].Value = pedido.DiaDavenda.ToString("dd/MM/yyyy");
-
-
-                
                 if(!pedido.ativo)
                 {
                     var j = 0;
@@ -81,9 +76,7 @@ namespace crud_teste.vieew.ListaDePedidos
                         j++;
                     }
                 }
-
                 index++;
-
             }
 
             ListarPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -149,8 +142,14 @@ namespace crud_teste.vieew.ListaDePedidos
                     return;
                 }
             }
-            pedidos = oAlterar.Listar(pesquisa);
-            ListarECalcularValores();
+            try
+            {
+                pedidos = oAlterar.Listar(pesquisa);
+                ListarECalcularValores();
+            }catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -169,16 +168,10 @@ namespace crud_teste.vieew.ListaDePedidos
 
                 Temas.AtribuirTema(this);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (new CaixaDePergunta().MensagemDeSimENao("Deseja Realmente Criar um Arquvo do relatório completo de todas as vendas?"))
                 MexerComExcel.criararquivo();
-        }
-
-        private void ListarPedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
