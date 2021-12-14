@@ -79,8 +79,6 @@ namespace crud_teste.DAO
 
                     }, tran);
 
-
-
                     cliente.IdPessoa = int.Parse(idpessoa.ToString());
                     query = @"Insert  Into  cliente( valorlimite, idPessoa, LimiteRestante) OUTPUT INSERTED.idcliente Values(@LimiteDeCompra, @IdPessoa, @LimiteRestante)";
                     cliente.idCliente = int.Parse(con.ExecuteScalar(query, new

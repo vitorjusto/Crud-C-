@@ -62,12 +62,12 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
             this.Bairro = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ValorLimite = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,7 +94,7 @@ namespace crud_teste
             // 
             this.Sobrenome.Location = new System.Drawing.Point(363, 20);
             this.Sobrenome.Name = "Sobrenome";
-            this.Sobrenome.Size = new System.Drawing.Size(310, 20);
+            this.Sobrenome.Size = new System.Drawing.Size(330, 20);
             this.Sobrenome.TabIndex = 2;
             // 
             // label2
@@ -282,7 +282,7 @@ namespace crud_teste
             // 
             this.Email.Location = new System.Drawing.Point(509, 20);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(163, 20);
+            this.Email.Size = new System.Drawing.Size(184, 20);
             this.Email.TabIndex = 45;
             // 
             // label16
@@ -375,7 +375,7 @@ namespace crud_teste
             this.data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.data.Location = new System.Drawing.Point(363, 100);
             this.data.Name = "data";
-            this.data.Size = new System.Drawing.Size(310, 20);
+            this.data.Size = new System.Drawing.Size(330, 20);
             this.data.TabIndex = 49;
             // 
             // groupBox1
@@ -398,15 +398,6 @@ namespace crud_teste
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
-            // 
-            // ValorLimite
-            // 
-            this.ValorLimite.Location = new System.Drawing.Point(363, 60);
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Size = new System.Drawing.Size(310, 20);
-            this.ValorLimite.TabIndex = 53;
-            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
-            this.ValorLimite.Leave += new System.EventHandler(this.ValorLimite_Leave);
             // 
             // CPF
             // 
@@ -443,7 +434,7 @@ namespace crud_teste
             // 
             this.Numero.Location = new System.Drawing.Point(586, 59);
             this.Numero.Name = "Numero";
-            this.Numero.Size = new System.Drawing.Size(86, 20);
+            this.Numero.Size = new System.Drawing.Size(107, 20);
             this.Numero.TabIndex = 23;
             this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
@@ -451,7 +442,7 @@ namespace crud_teste
             // 
             this.Bairro.Location = new System.Drawing.Point(586, 19);
             this.Bairro.Name = "Bairro";
-            this.Bairro.Size = new System.Drawing.Size(86, 20);
+            this.Bairro.Size = new System.Drawing.Size(107, 20);
             this.Bairro.TabIndex = 21;
             // 
             // groupBox3
@@ -469,6 +460,22 @@ namespace crud_teste
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
+            // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(363, 60);
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Negative = System.Drawing.Color.Red;
+            this.ValorLimite.Positive = System.Drawing.Color.Green;
+            this.ValorLimite.Size = new System.Drawing.Size(330, 20);
+            this.ValorLimite.StyleText = false;
+            this.ValorLimite.TabIndex = 54;
+            this.ValorLimite.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.ValorLimite.Zero = System.Drawing.Color.Black;
             // 
             // FrmCliente
             // 
@@ -539,6 +546,6 @@ namespace crud_teste
         private System.Windows.Forms.MaskedTextBox CPF;
         private System.Windows.Forms.TextBox Bairro;
         private System.Windows.Forms.TextBox Numero;
-        private System.Windows.Forms.TextBox ValorLimite;
+        private Config.Custom_Controls.MoneyTextBox ValorLimite;
     }
 }

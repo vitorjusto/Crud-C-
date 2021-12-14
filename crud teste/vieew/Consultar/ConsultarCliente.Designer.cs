@@ -34,8 +34,6 @@ namespace crud_teste
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtLimiteRestante = new System.Windows.Forms.TextBox();
-            this.ValorLimite = new System.Windows.Forms.TextBox();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.Nome = new System.Windows.Forms.TextBox();
@@ -75,6 +73,8 @@ namespace crud_teste
             this.label13 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ValorLimite = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtLimiteRestante = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -101,9 +101,9 @@ namespace crud_teste
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtLimiteRestante);
             this.groupBox1.Controls.Add(this.ValorLimite);
+            this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.data);
             this.groupBox1.Controls.Add(this.CPF);
             this.groupBox1.Controls.Add(this.Nome);
@@ -130,24 +130,6 @@ namespace crud_teste
             this.label18.Size = new System.Drawing.Size(110, 13);
             this.label18.TabIndex = 89;
             this.label18.Text = "Valor Limite Restante:";
-            // 
-            // txtLimiteRestante
-            // 
-            this.txtLimiteRestante.Location = new System.Drawing.Point(654, 68);
-            this.txtLimiteRestante.Name = "txtLimiteRestante";
-            this.txtLimiteRestante.ReadOnly = true;
-            this.txtLimiteRestante.Size = new System.Drawing.Size(102, 20);
-            this.txtLimiteRestante.TabIndex = 88;
-            // 
-            // ValorLimite
-            // 
-            this.ValorLimite.Location = new System.Drawing.Point(413, 68);
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
-            this.ValorLimite.TabIndex = 87;
-            this.ValorLimite.TextChanged += new System.EventHandler(this.ValorLimite_TextChanged);
-            this.ValorLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorLimite_KeyPress);
-            this.ValorLimite.Leave += new System.EventHandler(this.ValorLimite_Leave);
             // 
             // data
             // 
@@ -528,6 +510,39 @@ namespace crud_teste
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(413, 68);
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Negative = System.Drawing.Color.Red;
+            this.ValorLimite.Positive = System.Drawing.Color.Green;
+            this.ValorLimite.Size = new System.Drawing.Size(100, 20);
+            this.ValorLimite.StyleText = false;
+            this.ValorLimite.TabIndex = 90;
+            this.ValorLimite.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.ValorLimite.Zero = System.Drawing.Color.Black;
+            // 
+            // txtLimiteRestante
+            // 
+            this.txtLimiteRestante.Location = new System.Drawing.Point(654, 68);
+            this.txtLimiteRestante.Name = "txtLimiteRestante";
+            this.txtLimiteRestante.Negative = System.Drawing.Color.Red;
+            this.txtLimiteRestante.Positive = System.Drawing.Color.Green;
+            this.txtLimiteRestante.ReadOnly = true;
+            this.txtLimiteRestante.Size = new System.Drawing.Size(102, 20);
+            this.txtLimiteRestante.StyleText = false;
+            this.txtLimiteRestante.TabIndex = 91;
+            this.txtLimiteRestante.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtLimiteRestante.Zero = System.Drawing.Color.Black;
+            // 
             // ConsultarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,11 +616,11 @@ namespace crud_teste
         private System.Windows.Forms.DateTimePicker data;
         private System.Windows.Forms.MaskedTextBox DDI;
         private System.Windows.Forms.TextBox Numero;
-        private System.Windows.Forms.TextBox ValorLimite;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtAtivo;
-        private System.Windows.Forms.TextBox txtLimiteRestante;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label18;
+        private Config.Custom_Controls.MoneyTextBox txtLimiteRestante;
+        private Config.Custom_Controls.MoneyTextBox ValorLimite;
     }
 }

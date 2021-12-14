@@ -70,5 +70,14 @@ namespace crud_teste.controller
             return pedidos;
         }
 
+        public List<Pedido_Produto> ListarProdutosDaVendas()
+        {
+            var resultado = stmt.ListarProdutosDaVendas();
+
+            foreach (var item in resultado)
+                item.produto = new AlterarProduto().Consultar(item.IdProduto);
+
+            return resultado;
+        }
     }
 }

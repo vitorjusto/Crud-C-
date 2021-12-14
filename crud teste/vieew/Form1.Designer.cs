@@ -42,6 +42,7 @@ namespace crud_teste
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.clienteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -172,7 +173,8 @@ namespace crud_teste
             // vendaToolStripMenuItem
             // 
             this.vendaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoPedidoToolStripMenuItem});
+            this.novoPedidoToolStripMenuItem,
+            this.relatóriosDePedidosToolStripMenuItem});
             this.vendaToolStripMenuItem.Name = "vendaToolStripMenuItem";
             this.vendaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.vendaToolStripMenuItem.Text = "Venda";
@@ -180,9 +182,16 @@ namespace crud_teste
             // novoPedidoToolStripMenuItem
             // 
             this.novoPedidoToolStripMenuItem.Name = "novoPedidoToolStripMenuItem";
-            this.novoPedidoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.novoPedidoToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.novoPedidoToolStripMenuItem.Text = "Novo Pedido";
             this.novoPedidoToolStripMenuItem.Click += new System.EventHandler(this.novoPedidoToolStripMenuItem_Click);
+            // 
+            // relatóriosDePedidosToolStripMenuItem
+            // 
+            this.relatóriosDePedidosToolStripMenuItem.Name = "relatóriosDePedidosToolStripMenuItem";
+            this.relatóriosDePedidosToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.relatóriosDePedidosToolStripMenuItem.Text = "Relatórios de Pedidos";
+            this.relatóriosDePedidosToolStripMenuItem.Click += new System.EventHandler(this.relatóriosDePedidosToolStripMenuItem_Click);
             // 
             // clienteBindingSource
             // 
@@ -376,6 +385,7 @@ namespace crud_teste
         private System.Windows.Forms.ToolStripMenuItem novoPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ComboBox CobTema;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosDePedidosToolStripMenuItem;
     }
 }
 

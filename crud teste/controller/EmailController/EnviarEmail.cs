@@ -1,8 +1,11 @@
-﻿using crud_teste.Model;
+﻿using crud_teste.DAO;
+using crud_teste.Model;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Security;
+using System.Security.Cryptography;
 
 namespace crud_teste.controller
 {
@@ -54,13 +57,12 @@ namespace crud_teste.controller
 
 
             SecureString pasword = new SecureString();
+           
 
-
-
-            for (int index = 0; index < File.ReadAllText("C:/Users/PC1/Desktop/C#/Segredo.txt").Length; index++)
-                pasword.AppendChar(File.ReadAllText("C:/Users/PC1/Desktop/C#/Segredo.txt")[index]);
-            pasword.MakeReadOnly();
-
+            foreach (var c in DecryptStringFromBytes(new DAOConfig().recuperarSenha(), 
+                new byte[] { 21, 32, 53, 124, 45, 76, 47, 238, 59, 120, 131, 162, 183, 174, 165, 56, 97, 56, 48, 45, 222, 234, 123, 29, 78, 34, 23, 65, 67, 132, 131, 212 },
+                new byte[] { 121, 22, 53, 47, 45, 69, 77, 85, 97, 160, 151, 212, 13, 4, 215, 160 }))
+                    pasword.AppendChar(c);
 
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
@@ -69,6 +71,80 @@ namespace crud_teste.controller
             smtp.Credentials = new System.Net.NetworkCredential("vitorhugojusto1@gmail.com", pasword);
 
             smtp.Send(mail);
+        }
+
+        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        {
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("Key");
+
+            string plaintext = null;
+
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+                rijAlg.Mode = CipherMode.CBC;
+                rijAlg.Padding = PaddingMode.Zeros;
+
+                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+
+            }
+
+            return plaintext;
+        }
+
+
+        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        {
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("Key");
+            byte[] encrypted;
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+                rijAlg.Mode = CipherMode.CBC;
+                rijAlg.Padding = PaddingMode.Zeros;
+
+                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+
+            return encrypted;
+
         }
 
     }

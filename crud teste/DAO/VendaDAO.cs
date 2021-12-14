@@ -444,5 +444,22 @@ namespace crud_teste.DAO
             }
         }
 
+        public List<Pedido_Produto> ListarProdutosDaVendas()
+        {
+            try
+            {
+                var query = @"select * from Carrinho";
+
+                con.Open();
+                var resultado = con.Query<Pedido_Produto>(query).ToList();
+                con.Close();
+                return resultado;
+            }catch(Exception ex)
+            {
+                con.Close();
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

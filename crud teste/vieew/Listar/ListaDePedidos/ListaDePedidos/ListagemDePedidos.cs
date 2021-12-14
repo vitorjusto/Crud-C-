@@ -1,4 +1,5 @@
-﻿using crud_teste.Config.Mensagem;
+﻿using crud_teste.Config.Gerenciar_Excel;
+using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos;
@@ -35,7 +36,7 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             InitializeComponent();
 
-            Temas.AtribuirTema(this);
+
 
             pedidos = oAlterar.Listar();
 
@@ -101,11 +102,7 @@ namespace crud_teste.vieew.ListaDePedidos
             var lucro = Ativos.Sum(x => x.TotalLiquido.GetAsDecimal() - x.TotalGasto);
             txtLucro.Text = lucro.ToString("c2");
 
-            if (lucro > 0M)
-                txtLucro.ForeColor = Temas.Positive;
-            else if (lucro < 0M)
-                txtLucro.ForeColor = Temas.Negative;
-
+            
         }
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,6 +167,14 @@ namespace crud_teste.vieew.ListaDePedidos
         private void ListagemDePedidos_Load(object sender, EventArgs e)
         {
 
+                Temas.AtribuirTema(this);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (new CaixaDePergunta().MensagemDeSimENao("Deseja Realmente Criar um Arquvo do relatório completo de todas as vendas?"))
+                MexerComExcel.criararquivo();
+        }
+
     }
 }

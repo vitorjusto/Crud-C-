@@ -19,6 +19,8 @@ namespace crud_teste.Model
 
         public MyDinheiro precoDeVenda = new MyDinheiro();
 
+        public int IdProduto { get; set; }
+
         public long quantidade { get; set; }
         public MyDinheiro PrecoBruto = new MyDinheiro();
         public MyDinheiro PrecoBrutoAtual

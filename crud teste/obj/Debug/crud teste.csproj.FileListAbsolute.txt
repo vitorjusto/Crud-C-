@@ -108,3 +108,11 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\System.Runtime.CompilerSe
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\Enums.NET.pdb
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\Enums.NET.xml
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ClosedXML.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ExcelNumberFormat.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\System.IO.Packaging.dll
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ClosedXML.pdb
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ClosedXML.xml
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ExcelNumberFormat.xml

@@ -46,3 +46,15 @@ C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\obj\Debug\Teste de unidade1.
 C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\obj\Debug\Teste de unidade1.csproj.CopyComplete
 C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\obj\Debug\Teste de unidade1.dll
 C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\obj\Debug\Teste de unidade1.pdb
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\ClosedXML.dll
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\Enums.NET.dll
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\ExcelNumberFormat.dll
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\ClosedXML.pdb
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\ClosedXML.xml
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\Enums.NET.pdb
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\Enums.NET.xml
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\ExcelNumberFormat.xml
+C:\Users\PC1\Desktop\Comitar Crud\Teste de unidade1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

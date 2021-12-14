@@ -34,9 +34,7 @@ namespace crud_teste.vieew.Consultar
             this.Estoque = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.PrecoDeCusto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.PrecoDeVenda = new System.Windows.Forms.TextBox();
             this.CodigoDeBarras = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +46,8 @@ namespace crud_teste.vieew.Consultar
             this.btnAtivo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
+            this.PrecoDeVenda = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.PrecoDeCusto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,15 +92,6 @@ namespace crud_teste.vieew.Consultar
             this.label5.TabIndex = 27;
             this.label5.Text = "Preco De Custo:";
             // 
-            // PrecoDeCusto
-            // 
-            this.PrecoDeCusto.Location = new System.Drawing.Point(359, 130);
-            this.PrecoDeCusto.Name = "PrecoDeCusto";
-            this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
-            this.PrecoDeCusto.TabIndex = 26;
-            this.PrecoDeCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeCusto_KeyPress);
-            this.PrecoDeCusto.Leave += new System.EventHandler(this.PrecoDeCusto_Leave);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -109,15 +100,6 @@ namespace crud_teste.vieew.Consultar
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Preço De Venda:";
-            // 
-            // PrecoDeVenda
-            // 
-            this.PrecoDeVenda.Location = new System.Drawing.Point(117, 130);
-            this.PrecoDeVenda.Name = "PrecoDeVenda";
-            this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
-            this.PrecoDeVenda.TabIndex = 22;
-            this.PrecoDeVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoDeVenda_KeyPress);
-            this.PrecoDeVenda.Leave += new System.EventHandler(this.PrecoDeVenda_Leave);
             // 
             // CodigoDeBarras
             // 
@@ -225,11 +207,45 @@ namespace crud_teste.vieew.Consultar
             this.txtAtivo.Size = new System.Drawing.Size(186, 20);
             this.txtAtivo.TabIndex = 72;
             // 
+            // PrecoDeVenda
+            // 
+            this.PrecoDeVenda.Location = new System.Drawing.Point(117, 130);
+            this.PrecoDeVenda.Name = "PrecoDeVenda";
+            this.PrecoDeVenda.Negative = System.Drawing.Color.Red;
+            this.PrecoDeVenda.Positive = System.Drawing.Color.Green;
+            this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
+            this.PrecoDeVenda.StyleText = false;
+            this.PrecoDeVenda.TabIndex = 73;
+            this.PrecoDeVenda.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.PrecoDeVenda.Zero = System.Drawing.Color.Black;
+            // 
+            // PrecoDeCusto
+            // 
+            this.PrecoDeCusto.Location = new System.Drawing.Point(359, 130);
+            this.PrecoDeCusto.Name = "PrecoDeCusto";
+            this.PrecoDeCusto.Negative = System.Drawing.Color.Red;
+            this.PrecoDeCusto.Positive = System.Drawing.Color.Green;
+            this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
+            this.PrecoDeCusto.StyleText = false;
+            this.PrecoDeCusto.TabIndex = 74;
+            this.PrecoDeCusto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.PrecoDeCusto.Zero = System.Drawing.Color.Black;
+            // 
             // ConsultarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 418);
+            this.Controls.Add(this.PrecoDeCusto);
+            this.Controls.Add(this.PrecoDeVenda);
             this.Controls.Add(this.txtAtivo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnAtivo);
@@ -240,9 +256,7 @@ namespace crud_teste.vieew.Consultar
             this.Controls.Add(this.Estoque);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.PrecoDeCusto);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.PrecoDeVenda);
             this.Controls.Add(this.CodigoDeBarras);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -266,9 +280,7 @@ namespace crud_teste.vieew.Consultar
         private System.Windows.Forms.TextBox Estoque;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox PrecoDeCusto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox PrecoDeVenda;
         private System.Windows.Forms.TextBox CodigoDeBarras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -280,5 +292,7 @@ namespace crud_teste.vieew.Consultar
         private System.Windows.Forms.Button btnAtivo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtAtivo;
+        private Config.Custom_Controls.MoneyTextBox PrecoDeVenda;
+        private Config.Custom_Controls.MoneyTextBox PrecoDeCusto;
     }
 }

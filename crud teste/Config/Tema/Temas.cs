@@ -174,6 +174,12 @@ namespace Tema
 
         }
 
+        private static void SetMenuStripTema(ToolStripMenuItem control)
+        {
+            foreach (var items in control.DropDownItems)
+                SetMenuStripDropDownItems((ToolStripDropDownItem)items);
+
+        }
         private static void SetGroupBoxTema(GroupBox control)
         {
             control.ForeColor = FontColor;
@@ -186,12 +192,11 @@ namespace Tema
 
         }
 
+         private static void SetMenuStripDropDownItems(ToolStripDropDownItem control)
+         {
+            control.ForeColor = FontColor;
+         }
 
-        private static void SetMenuStripTema(ToolStripMenuItem control)
-        {
-            control.BackColor = Strip;
-
-        }
 
 
 

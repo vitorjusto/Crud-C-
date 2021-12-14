@@ -65,8 +65,6 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Salario = new System.Windows.Forms.TextBox();
-            this.Porcentagem = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -79,6 +77,8 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
+            this.Salario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -414,8 +414,8 @@ namespace crud_teste
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Salario);
             this.groupBox1.Controls.Add(this.Porcentagem);
+            this.groupBox1.Controls.Add(this.Salario);
             this.groupBox1.Controls.Add(this.Sobrenome);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.Nome);
@@ -434,23 +434,6 @@ namespace crud_teste
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
-            // 
-            // Salario
-            // 
-            this.Salario.Location = new System.Drawing.Point(59, 100);
-            this.Salario.Name = "Salario";
-            this.Salario.Size = new System.Drawing.Size(101, 20);
-            this.Salario.TabIndex = 45;
-            this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
-            this.Salario.Leave += new System.EventHandler(this.Salario_Leave);
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Location = new System.Drawing.Point(303, 100);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(112, 20);
-            this.Porcentagem.TabIndex = 44;
-            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
             // 
             // groupBox2
             // 
@@ -585,6 +568,34 @@ namespace crud_teste
             this.Banco.Size = new System.Drawing.Size(90, 20);
             this.Banco.TabIndex = 0;
             // 
+            // Salario
+            // 
+            this.Salario.Location = new System.Drawing.Point(59, 100);
+            this.Salario.Name = "Salario";
+            this.Salario.Negative = System.Drawing.Color.Red;
+            this.Salario.Positive = System.Drawing.Color.Green;
+            this.Salario.Size = new System.Drawing.Size(101, 20);
+            this.Salario.StyleText = false;
+            this.Salario.TabIndex = 46;
+            this.Salario.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.Salario.Zero = System.Drawing.Color.Black;
+            // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(303, 100);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(112, 20);
+            this.Porcentagem.TabIndex = 47;
+            this.Porcentagem.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,7 +677,7 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Banco;
         private System.Windows.Forms.TextBox Digito;
         private System.Windows.Forms.TextBox Numero;
-        private System.Windows.Forms.TextBox Porcentagem;
-        private System.Windows.Forms.TextBox Salario;
+        private Config.Custom_Controls.PercentTextBox Porcentagem;
+        private Config.Custom_Controls.MoneyTextBox Salario;
     }
 }

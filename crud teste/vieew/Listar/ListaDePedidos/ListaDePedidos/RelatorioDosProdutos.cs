@@ -108,11 +108,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 var lucro = lista.Sum(x => x.LucroEmDinheiro.GetAsDecimal());
                 txtLucro.Text = lucro.ToString("C");
 
-                if (lucro > 0.0M)
-                    txtLucro.ForeColor = Temas.Positive;
-                else if (lucro < 0.0M)
-                    txtLucro.ForeColor = Temas.Negative;
-
             }
             else
             {

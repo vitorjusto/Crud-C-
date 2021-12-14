@@ -73,7 +73,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 else if (!cliente.Ativo)
                     dgvRelatorioDosClientes.Rows[index].Visible = false;
              
-
                 index++;
             }
 
@@ -108,10 +107,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 var lucro = lista.Sum(x => x.TotalLiquido.GetAsDecimal() - x.PrecoDeCusto.GetAsDecimal());
                 txtLucro.Text = lucro.ToString("C2");
 
-                if (lucro > 0M)
-                    txtLucro.ForeColor = Temas.Positive;
-                else if (lucro < 0M)
-                    txtLucro.ForeColor = Temas.Negative;
 
             }
             else
@@ -136,7 +131,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtTotalLiquido.Text = "";
                 txtLucro.Text = "";
 
-                txtLucro.ForeColor = Color.Black;
             }
         }
 

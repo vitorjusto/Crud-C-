@@ -31,9 +31,7 @@ namespace crud_teste
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtcomissao = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.Porcentagem = new System.Windows.Forms.TextBox();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.Salario = new System.Windows.Forms.TextBox();
@@ -86,6 +84,8 @@ namespace crud_teste
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
+            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
+            this.txtcomissao = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,8 +96,8 @@ namespace crud_teste
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtcomissao);
-            this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.Porcentagem);
+            this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.Data);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.Salario);
@@ -118,14 +118,6 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
-            // txtcomissao
-            // 
-            this.txtcomissao.Location = new System.Drawing.Point(635, 100);
-            this.txtcomissao.Name = "txtcomissao";
-            this.txtcomissao.ReadOnly = true;
-            this.txtcomissao.Size = new System.Drawing.Size(120, 20);
-            this.txtcomissao.TabIndex = 77;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -134,14 +126,6 @@ namespace crud_teste
             this.label23.Size = new System.Drawing.Size(58, 13);
             this.label23.TabIndex = 76;
             this.label23.Text = "Comissão: ";
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Location = new System.Drawing.Point(367, 100);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(133, 20);
-            this.Porcentagem.TabIndex = 75;
-            this.Porcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Porcentagem_KeyPress);
             // 
             // Data
             // 
@@ -641,6 +625,35 @@ namespace crud_teste
             this.txtAtivo.Size = new System.Drawing.Size(193, 20);
             this.txtAtivo.TabIndex = 70;
             // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(367, 100);
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
+            this.Porcentagem.TabIndex = 78;
+            this.Porcentagem.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            // 
+            // txtcomissao
+            // 
+            this.txtcomissao.Location = new System.Drawing.Point(635, 100);
+            this.txtcomissao.Name = "txtcomissao";
+            this.txtcomissao.Negative = System.Drawing.Color.Red;
+            this.txtcomissao.Positive = System.Drawing.Color.Green;
+            this.txtcomissao.ReadOnly = true;
+            this.txtcomissao.Size = new System.Drawing.Size(120, 20);
+            this.txtcomissao.StyleText = false;
+            this.txtcomissao.TabIndex = 0;
+            this.txtcomissao.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtcomissao.Zero = System.Drawing.Color.Black;
+            // 
             // ConsultarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,12 +739,12 @@ namespace crud_teste
         private System.Windows.Forms.TextBox Agencia;
         private System.Windows.Forms.TextBox Banco;
         private System.Windows.Forms.TextBox Digito;
-        private System.Windows.Forms.TextBox Porcentagem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox Numero;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtAtivo;
-        private System.Windows.Forms.TextBox txtcomissao;
         private System.Windows.Forms.Label label23;
+        private Config.Custom_Controls.MoneyTextBox txtcomissao;
+        private Config.Custom_Controls.PercentTextBox Porcentagem;
     }
 }

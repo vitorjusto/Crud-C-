@@ -952,7 +952,7 @@ namespace Teste_de_unidade1
         {
             Venda venda = new Venda();
             venda.TipoDeVenda = "A vista";
-            venda.DescontoAVIsta = 1.2;
+            venda.DescontoAVista = 1.2;
             VendaValidation validar = new VendaValidation(12, venda);
 
             var resultado = validar.Validate(venda);
@@ -967,7 +967,7 @@ namespace Teste_de_unidade1
         {
             Venda venda = new Venda();
             venda.TipoDeVenda = "A vista";
-            venda.DescontoAVIsta = desconto;
+            venda.DescontoAVista = desconto;
             VendaValidation validar = new VendaValidation(12, venda);
 
             var resultado = validar.Validate(venda);
@@ -1050,5 +1050,6 @@ namespace Teste_de_unidade1
 
             Assert.IsFalse(resultado);
         }
+
     }
 }

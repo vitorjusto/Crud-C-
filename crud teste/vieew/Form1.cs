@@ -1,4 +1,5 @@
 ﻿using crud_teste.Config;
+using crud_teste.Config.Gerenciar_Excel;
 using crud_teste.vieew;
 using crud_teste.vieew.ListaDePedidos;
 using System;
@@ -60,8 +61,7 @@ namespace crud_teste
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
-            new ListagemDePedidos().Show();
+            
         }
 
         private void novoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,6 +75,13 @@ namespace crud_teste
         {
             Temas.AlterarTema(CobTema.Text);
             Temas.AtribuirTema(this);
+        }
+
+
+        private void relatóriosDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListagemDePedidos().Show();
         }
     }
 }

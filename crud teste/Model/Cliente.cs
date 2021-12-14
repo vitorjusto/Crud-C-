@@ -30,7 +30,5 @@ namespace CRUD_teste.Model
         {
             LimiteRestante = LimiteDeCompra.GetAsDecimal() - LimiteAcumulado.GetAsDecimal();
         }
-
-
-}
+    }
 }

@@ -284,7 +284,7 @@ namespace crud_teste.vieew
                                 EnviarEmail.EnviarEmailDeVenda(venda);
                                 new CaixaDeInformacao().MensagemDeOk("Enviado No Email Com Sucesso");
                             }
-                            catch
+                            catch(Exception ex)
                             {
                                 new CaixaDeErro().MensagemDeOk("Não foi possivel enviar o Email, certifique-se se o usuario cadastrou o Email correto");
                             }

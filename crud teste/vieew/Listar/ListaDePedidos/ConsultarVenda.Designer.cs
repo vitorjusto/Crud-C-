@@ -41,23 +41,16 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtTotalBruto = new System.Windows.Forms.TextBox();
-            this.txtTotalDesconto = new System.Windows.Forms.TextBox();
-            this.txtTotalLiquido = new System.Windows.Forms.TextBox();
             this.btnAlterarVenda = new System.Windows.Forms.Button();
             this.gbProduto = new System.Windows.Forms.GroupBox();
             this.btnAlterarProduto = new System.Windows.Forms.Button();
             this.ExcluirProduto = new System.Windows.Forms.Button();
             this.txtQuantidadeRestante = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtPrecoUnitario = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtquantidadeemestoque = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtquantidade = new System.Windows.Forms.TextBox();
-            this.txtDesconto = new System.Windows.Forms.TextBox();
-            this.txtValorBruto = new System.Windows.Forms.TextBox();
-            this.txtPrecoLiquido = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -71,6 +64,13 @@ namespace crud_teste.vieew.ListaDePedidos
             this.btnAtivar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
+            this.txtPrecoUnitario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtValorBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtPrecoLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.gbProduto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -179,30 +179,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label8.TabIndex = 12;
             this.label8.Text = "Total Liquido:";
             // 
-            // txtTotalBruto
-            // 
-            this.txtTotalBruto.Location = new System.Drawing.Point(528, 375);
-            this.txtTotalBruto.Name = "txtTotalBruto";
-            this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(206, 20);
-            this.txtTotalBruto.TabIndex = 13;
-            // 
-            // txtTotalDesconto
-            // 
-            this.txtTotalDesconto.Location = new System.Drawing.Point(528, 425);
-            this.txtTotalDesconto.Name = "txtTotalDesconto";
-            this.txtTotalDesconto.ReadOnly = true;
-            this.txtTotalDesconto.Size = new System.Drawing.Size(206, 20);
-            this.txtTotalDesconto.TabIndex = 14;
-            // 
-            // txtTotalLiquido
-            // 
-            this.txtTotalLiquido.Location = new System.Drawing.Point(528, 475);
-            this.txtTotalLiquido.Name = "txtTotalLiquido";
-            this.txtTotalLiquido.ReadOnly = true;
-            this.txtTotalLiquido.Size = new System.Drawing.Size(206, 20);
-            this.txtTotalLiquido.TabIndex = 15;
-            // 
             // btnAlterarVenda
             // 
             this.btnAlterarVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -218,18 +194,18 @@ namespace crud_teste.vieew.ListaDePedidos
             // 
             // gbProduto
             // 
+            this.gbProduto.Controls.Add(this.txtDesconto);
+            this.gbProduto.Controls.Add(this.txtPrecoLiquido);
+            this.gbProduto.Controls.Add(this.txtValorBruto);
+            this.gbProduto.Controls.Add(this.txtPrecoUnitario);
             this.gbProduto.Controls.Add(this.btnAlterarProduto);
             this.gbProduto.Controls.Add(this.ExcluirProduto);
             this.gbProduto.Controls.Add(this.txtQuantidadeRestante);
             this.gbProduto.Controls.Add(this.label16);
-            this.gbProduto.Controls.Add(this.txtPrecoUnitario);
             this.gbProduto.Controls.Add(this.label15);
             this.gbProduto.Controls.Add(this.txtquantidadeemestoque);
             this.gbProduto.Controls.Add(this.label14);
             this.gbProduto.Controls.Add(this.txtquantidade);
-            this.gbProduto.Controls.Add(this.txtDesconto);
-            this.gbProduto.Controls.Add(this.txtValorBruto);
-            this.gbProduto.Controls.Add(this.txtPrecoLiquido);
             this.gbProduto.Controls.Add(this.label13);
             this.gbProduto.Controls.Add(this.label12);
             this.gbProduto.Controls.Add(this.label11);
@@ -286,14 +262,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label16.TabIndex = 15;
             this.label16.Text = "Quantidade Restante:";
             // 
-            // txtPrecoUnitario
-            // 
-            this.txtPrecoUnitario.Location = new System.Drawing.Point(513, 30);
-            this.txtPrecoUnitario.Name = "txtPrecoUnitario";
-            this.txtPrecoUnitario.ReadOnly = true;
-            this.txtPrecoUnitario.Size = new System.Drawing.Size(170, 20);
-            this.txtPrecoUnitario.TabIndex = 13;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -329,31 +297,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtquantidade.TabIndex = 9;
             this.txtquantidade.TextChanged += new System.EventHandler(this.txtquantidade_TextChanged);
             this.txtquantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtquantidade_KeyPress);
-            // 
-            // txtDesconto
-            // 
-            this.txtDesconto.Location = new System.Drawing.Point(513, 110);
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(170, 20);
-            this.txtDesconto.TabIndex = 8;
-            this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
-            this.txtDesconto.Leave += new System.EventHandler(this.txtDesconto_Leave);
-            // 
-            // txtValorBruto
-            // 
-            this.txtValorBruto.Location = new System.Drawing.Point(513, 70);
-            this.txtValorBruto.Name = "txtValorBruto";
-            this.txtValorBruto.ReadOnly = true;
-            this.txtValorBruto.Size = new System.Drawing.Size(170, 20);
-            this.txtValorBruto.TabIndex = 7;
-            // 
-            // txtPrecoLiquido
-            // 
-            this.txtPrecoLiquido.Location = new System.Drawing.Point(513, 150);
-            this.txtPrecoLiquido.Name = "txtPrecoLiquido";
-            this.txtPrecoLiquido.ReadOnly = true;
-            this.txtPrecoLiquido.Size = new System.Drawing.Size(170, 20);
-            this.txtPrecoLiquido.TabIndex = 6;
             // 
             // label13
             // 
@@ -480,11 +423,132 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtAtivo.Size = new System.Drawing.Size(181, 20);
             this.txtAtivo.TabIndex = 23;
             // 
+            // txtPrecoUnitario
+            // 
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(513, 30);
+            this.txtPrecoUnitario.Name = "txtPrecoUnitario";
+            this.txtPrecoUnitario.Negative = System.Drawing.Color.Red;
+            this.txtPrecoUnitario.Positive = System.Drawing.Color.Green;
+            this.txtPrecoUnitario.ReadOnly = true;
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(170, 20);
+            this.txtPrecoUnitario.StyleText = false;
+            this.txtPrecoUnitario.TabIndex = 19;
+            this.txtPrecoUnitario.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtPrecoUnitario.Zero = System.Drawing.Color.Black;
+            // 
+            // txtValorBruto
+            // 
+            this.txtValorBruto.Location = new System.Drawing.Point(513, 70);
+            this.txtValorBruto.Name = "txtValorBruto";
+            this.txtValorBruto.Negative = System.Drawing.Color.Red;
+            this.txtValorBruto.Positive = System.Drawing.Color.Green;
+            this.txtValorBruto.ReadOnly = true;
+            this.txtValorBruto.Size = new System.Drawing.Size(170, 20);
+            this.txtValorBruto.StyleText = false;
+            this.txtValorBruto.TabIndex = 20;
+            this.txtValorBruto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtValorBruto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtPrecoLiquido
+            // 
+            this.txtPrecoLiquido.Location = new System.Drawing.Point(513, 150);
+            this.txtPrecoLiquido.Name = "txtPrecoLiquido";
+            this.txtPrecoLiquido.Negative = System.Drawing.Color.Red;
+            this.txtPrecoLiquido.Positive = System.Drawing.Color.Green;
+            this.txtPrecoLiquido.ReadOnly = true;
+            this.txtPrecoLiquido.Size = new System.Drawing.Size(170, 20);
+            this.txtPrecoLiquido.StyleText = false;
+            this.txtPrecoLiquido.TabIndex = 21;
+            this.txtPrecoLiquido.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtPrecoLiquido.Zero = System.Drawing.Color.Black;
+            // 
+            // txtTotalBruto
+            // 
+            this.txtTotalBruto.Location = new System.Drawing.Point(528, 375);
+            this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.Negative = System.Drawing.Color.Red;
+            this.txtTotalBruto.Positive = System.Drawing.Color.Green;
+            this.txtTotalBruto.ReadOnly = true;
+            this.txtTotalBruto.Size = new System.Drawing.Size(206, 20);
+            this.txtTotalBruto.StyleText = false;
+            this.txtTotalBruto.TabIndex = 22;
+            this.txtTotalBruto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtTotalBruto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtTotalDesconto
+            // 
+            this.txtTotalDesconto.Location = new System.Drawing.Point(528, 425);
+            this.txtTotalDesconto.Name = "txtTotalDesconto";
+            this.txtTotalDesconto.Negative = System.Drawing.Color.Red;
+            this.txtTotalDesconto.Positive = System.Drawing.Color.Green;
+            this.txtTotalDesconto.ReadOnly = true;
+            this.txtTotalDesconto.Size = new System.Drawing.Size(206, 20);
+            this.txtTotalDesconto.StyleText = false;
+            this.txtTotalDesconto.TabIndex = 24;
+            this.txtTotalDesconto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtTotalDesconto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtTotalLiquido
+            // 
+            this.txtTotalLiquido.Location = new System.Drawing.Point(528, 475);
+            this.txtTotalLiquido.Name = "txtTotalLiquido";
+            this.txtTotalLiquido.Negative = System.Drawing.Color.Red;
+            this.txtTotalLiquido.Positive = System.Drawing.Color.Green;
+            this.txtTotalLiquido.ReadOnly = true;
+            this.txtTotalLiquido.Size = new System.Drawing.Size(206, 20);
+            this.txtTotalLiquido.StyleText = false;
+            this.txtTotalLiquido.TabIndex = 25;
+            this.txtTotalLiquido.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtTotalLiquido.Zero = System.Drawing.Color.Black;
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(513, 110);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Negative = System.Drawing.Color.Red;
+            this.txtDesconto.Positive = System.Drawing.Color.Green;
+            this.txtDesconto.Size = new System.Drawing.Size(170, 20);
+            this.txtDesconto.StyleText = false;
+            this.txtDesconto.TabIndex = 22;
+            this.txtDesconto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtDesconto.Zero = System.Drawing.Color.Black;
+            // 
             // ConsultarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 531);
+            this.Controls.Add(this.txtTotalLiquido);
+            this.Controls.Add(this.txtTotalDesconto);
+            this.Controls.Add(this.txtTotalBruto);
             this.Controls.Add(this.txtAtivo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnAtivar);
@@ -492,9 +556,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbProduto);
             this.Controls.Add(this.btnAlterarVenda);
-            this.Controls.Add(this.txtTotalLiquido);
-            this.Controls.Add(this.txtTotalDesconto);
-            this.Controls.Add(this.txtTotalBruto);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -535,25 +596,18 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtTotalBruto;
-        private System.Windows.Forms.TextBox txtTotalDesconto;
-        private System.Windows.Forms.TextBox txtTotalLiquido;
         private System.Windows.Forms.Button btnAlterarVenda;
         private System.Windows.Forms.GroupBox gbProduto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtnomeProduto;
         private System.Windows.Forms.Label lbNomeProduto;
-        private System.Windows.Forms.TextBox txtPrecoLiquido;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtquantidade;
-        private System.Windows.Forms.TextBox txtDesconto;
-        private System.Windows.Forms.TextBox txtValorBruto;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtquantidadeemestoque;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtPrecoUnitario;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtQuantidadeRestante;
         private System.Windows.Forms.Label label16;
@@ -565,5 +619,12 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Button btnAtivar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtAtivo;
+        private Config.Custom_Controls.MoneyTextBox txtPrecoLiquido;
+        private Config.Custom_Controls.MoneyTextBox txtValorBruto;
+        private Config.Custom_Controls.MoneyTextBox txtPrecoUnitario;
+        private Config.Custom_Controls.MoneyTextBox txtTotalBruto;
+        private Config.Custom_Controls.MoneyTextBox txtTotalDesconto;
+        private Config.Custom_Controls.MoneyTextBox txtTotalLiquido;
+        private Config.Custom_Controls.MoneyTextBox txtDesconto;
     }
 }
