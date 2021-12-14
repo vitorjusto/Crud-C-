@@ -42,6 +42,7 @@ namespace crud_teste
             this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.clienteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -63,7 +64,6 @@ namespace crud_teste
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.CobTema = new System.Windows.Forms.ComboBox();
-            this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
@@ -145,21 +145,21 @@ namespace crud_teste
             // colaboradoresToolStripMenuItem
             // 
             this.colaboradoresToolStripMenuItem.Name = "colaboradoresToolStripMenuItem";
-            this.colaboradoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colaboradoresToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.colaboradoresToolStripMenuItem.Text = "Colaboradores";
             this.colaboradoresToolStripMenuItem.Click += new System.EventHandler(this.colaboradoresToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.produtoToolStripMenuItem1.Text = "Produto";
             this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
             // 
@@ -185,6 +185,13 @@ namespace crud_teste
             this.relatóriosDePedidosToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.relatóriosDePedidosToolStripMenuItem.Text = "Relatórios de Pedidos";
             this.relatóriosDePedidosToolStripMenuItem.Click += new System.EventHandler(this.relatóriosDePedidosToolStripMenuItem_Click);
+            // 
+            // contasAPagarToolStripMenuItem
+            // 
+            this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
+            this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.contasAPagarToolStripMenuItem.Text = "Contas A Pagar";
+            this.contasAPagarToolStripMenuItem.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem_Click);
             // 
             // clienteBindingSource
             // 
@@ -279,13 +286,6 @@ namespace crud_teste
             this.CobTema.Size = new System.Drawing.Size(121, 21);
             this.CobTema.TabIndex = 1;
             this.CobTema.SelectedIndexChanged += new System.EventHandler(this.CobTema_SelectedIndexChanged);
-            // 
-            // contasAPagarToolStripMenuItem
-            // 
-            this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
-            this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.contasAPagarToolStripMenuItem.Text = "Contas A Pagar";
-            this.contasAPagarToolStripMenuItem.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem_Click);
             // 
             // ListarClientes
             // 

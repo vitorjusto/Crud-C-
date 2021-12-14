@@ -102,13 +102,16 @@ namespace crud_teste.vieew
 
         private void NomeDoProduto_DoubleClick(object sender, EventArgs e)
         {
-            var listar = new ListarVendaCliente("produto", venda.Pedido_Produto);
+            ListarProduto("");
+        }
+
+        public void ListarProduto(string texto)
+        {
+            var listar = new ListarVendaCliente("produto", venda.Pedido_Produto, texto);
             listar.ShowDialog();
             carrinho.produto = listar.produto;
             preenchervaloresnoproduto();
-
         }
-
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntText(e.KeyChar, Quantidade.Text);
 
@@ -422,6 +425,21 @@ namespace crud_teste.vieew
         private void NomeDoColaborador_Leave(object sender, EventArgs e)
         {
             NomeDoColaborador.Text = venda.colaborador.nomeCompleto();
+        }
+
+        private void NomeDoProduto_Enter(object sender, EventArgs e)
+        {
+            NomeDoProduto.Text = "";
+        }
+        private void NomeDoProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                ListarProduto(NomeDoProduto.Text);
+        }
+
+        private void NomeDoProduto_Leave(object sender, EventArgs e)
+        {
+            NomeDoProduto.Text = carrinho.produto.NomeDoProduto;
         }
     }
 }

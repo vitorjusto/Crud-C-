@@ -30,6 +30,7 @@ namespace crud_teste.vieew.TelaDeVenda
 
             Temas.AtribuirTema(this);
             Buscar = busca;
+            entrada = entrada.Trim();
             CampoDePesquisa.Text = entrada;
             try
             {
@@ -39,7 +40,7 @@ namespace crud_teste.vieew.TelaDeVenda
                     ListarColaboradores(oAlterarColaborador.ListarColaboradoresAtivos(entrada, "nome"));
                 else if (Buscar == "produto")
                 {
-                    ListarProdutos(oAlterarProduto.ListarAtivo());
+                    ListarProdutos(oAlterarProduto.ListarAtivos(entrada, "nome"));
                 }
             }
             catch
@@ -51,7 +52,7 @@ namespace crud_teste.vieew.TelaDeVenda
         }
 
 
-        public ListarVendaCliente(string busca, List<Pedido_Produto> carrinhos)
+        public ListarVendaCliente(string busca, List<Pedido_Produto> carrinhos, string entrada)
         {
             InitializeComponent();
 
@@ -67,7 +68,7 @@ namespace crud_teste.vieew.TelaDeVenda
             dataGridGeral.Columns.Add("PrecoDeVenda", "Preço de venda");
             dataGridGeral.Columns.Add("Estoque", "Estoque");
             dataGridGeral.Columns.Add("Fabricante", "Fabricante");
-            produtos = oAlterarProduto.ListarAtivo();
+            produtos = oAlterarProduto.ListarAtivos(entrada, "nome");
 
             int i = 0;
             foreach (var produto in produtos)

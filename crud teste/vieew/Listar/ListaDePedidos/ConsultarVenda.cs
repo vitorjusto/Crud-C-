@@ -108,7 +108,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void txtnomeProduto_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var listadeProduto = new ListarVendaCliente("produto", _venda.Pedido_Produto);
+            var listadeProduto = new ListarVendaCliente("produto", _venda.Pedido_Produto, "");
             listadeProduto.ShowDialog();
             _pedido.produto = listadeProduto.produto;
 
