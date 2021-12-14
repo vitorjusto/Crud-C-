@@ -38,7 +38,7 @@ namespace crud_teste.Model
 
         public int idVenda { get; set; }
 
-        public long quantidadeRestante { get; set; }
+        public long quantidadeRestante { get => produto.Estoque - quantidade; set { } }
 
         public Pedido_Produto()
         {

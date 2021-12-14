@@ -2,6 +2,7 @@
 using crud_teste.Config.Gerenciar_Excel;
 using crud_teste.vieew;
 using crud_teste.vieew.ListaDePedidos;
+using crud_teste.vieew.Listar;
 using System;
 using System.Windows.Forms;
 using Tema;
@@ -82,6 +83,12 @@ namespace crud_teste
         {
             this.Hide();
             new ListagemDePedidos().Show();
+        }
+
+        private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ListarVendaAPrazo().Show();
         }
     }
 }

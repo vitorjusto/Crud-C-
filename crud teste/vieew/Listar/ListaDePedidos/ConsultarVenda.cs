@@ -33,6 +33,9 @@ namespace crud_teste.vieew.ListaDePedidos
 
             oldList.AddRange(_venda.Pedido_Produto);
 
+            foreach(var item in oldList)
+                item.produto.Estoque += item.quantidade;
+
             gbProduto.Visible = false;
 
             txtAtivo.Text = _venda.Ativo ? "Ativo" : "Inativo";
@@ -69,7 +72,7 @@ namespace crud_teste.vieew.ListaDePedidos
                 txtnomeProduto.Visible = false;
                 _venda = janeladocarrinho.venda;
                 _pedido = _venda.Pedido_Produto[janeladocarrinho.selectedIndex];
-                _pedido.produto.Estoque += _pedido.quantidade;
+
 
                 abrirProduto();
             }

@@ -18,8 +18,14 @@ namespace crud_teste.vieew
             InitializeComponent();
             AlterarCliente oAlterar = new AlterarCliente();
 
-            clientes = oAlterar.ListarCliente();
-
+            try
+            {
+                clientes = oAlterar.ListarCliente();
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
 
             ListarNaDatagrid(cbInativo.Checked);
         }
@@ -29,8 +35,6 @@ namespace crud_teste.vieew
             DataGridViewCellStyle clienteinativo = new DataGridViewCellStyle();
             clienteinativo.BackColor = Color.SlateGray;
             clienteinativo.ForeColor = Color.White;
-
-
 
             var index = 0;
             dataGridCliente.Rows.Clear();
@@ -82,16 +86,13 @@ namespace crud_teste.vieew
             new ListarClientes().Show();
             this.Close();
         }
-
         private void dataGridCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
                 return;
 
             var x = int.Parse(dataGridCliente.Rows[e.RowIndex].Cells[0].Value.ToString());
-
             Consultar(x);
-
         }
 
         private void Consultar(int index)
@@ -105,15 +106,19 @@ namespace crud_teste.vieew
             AlterarCliente oAlterar = new AlterarCliente();
 
             int.TryParse(CampoDePesquisa.Text, out int id);
-            if (id > 0)
+            try
             {
-                clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
+                if (id > 0)
+                    clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "id");
+                else
+                    clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
+
+                ListarNaDatagrid(cbInativo.Checked);
             }
-            else
+            catch
             {
-                clientes = oAlterar.ListarCliente(CampoDePesquisa.Text, "nome");
+                new CaixaDeErro().FalhaNoBancoDeDados();
             }
-            ListarNaDatagrid(cbInativo.Checked);
 
         }
 
@@ -128,16 +133,22 @@ namespace crud_teste.vieew
             }
             else if (e.ColumnIndex == 7)
             {
-
-                var mensagem = clientes[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {clientes[e.RowIndex].nomecompleto}" : $"Deseja Mesmo Reativar o {clientes[e.RowIndex].nomecompleto}";
-
-                if (new CaixaDeAviso().MensagemDeSimENao(mensagem))
+                try
                 {
-                    AlterarCliente oAlterar = new AlterarCliente();
-                    oAlterar.AlterarAtivo(clientes[e.RowIndex]);
-                    clientes[e.RowIndex].Ativo = !clientes[e.RowIndex].Ativo;
+                    var mensagem = clientes[e.RowIndex].Ativo ? $"Deseja Mesmo Inativar o {clientes[e.RowIndex].nomecompleto}" : $"Deseja Mesmo Reativar o {clientes[e.RowIndex].nomecompleto}";
 
-                    ListarNaDatagrid(cbInativo.Checked);
+                    if (new CaixaDeAviso().MensagemDeSimENao(mensagem))
+                    {
+                        AlterarCliente oAlterar = new AlterarCliente();
+                        oAlterar.AlterarAtivo(clientes[e.RowIndex]);
+                        clientes[e.RowIndex].Ativo = !clientes[e.RowIndex].Ativo;
+
+                        ListarNaDatagrid(cbInativo.Checked);
+                    }
+                }
+                catch
+                {
+                    new CaixaDeErro().FalhaNoBancoDeDados();
                 }
             }
         }

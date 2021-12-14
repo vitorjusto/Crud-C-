@@ -52,6 +52,12 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLucro = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txttotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalGasto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -68,12 +74,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
             this.gbPesquisarPorData = new System.Windows.Forms.GroupBox();
             this.chkPesquisarPorData = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtTotalGasto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txttotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtLucro = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,6 +103,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListarPedidos.Size = new System.Drawing.Size(1226, 276);
             this.ListarPedidos.TabIndex = 0;
+            this.ListarPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellContentClick);
             this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
             // 
             // IdVenda
@@ -290,6 +291,110 @@ namespace crud_teste.vieew.ListaDePedidos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes do Lucro";
             // 
+            // txtLucro
+            // 
+            this.txtLucro.ForeColor = System.Drawing.Color.Black;
+            this.txtLucro.Location = new System.Drawing.Point(1018, 135);
+            this.txtLucro.Name = "txtLucro";
+            this.txtLucro.Negative = System.Drawing.Color.Red;
+            this.txtLucro.Positive = System.Drawing.Color.Green;
+            this.txtLucro.ReadOnly = true;
+            this.txtLucro.Size = new System.Drawing.Size(203, 20);
+            this.txtLucro.StyleText = true;
+            this.txtLucro.TabIndex = 34;
+            this.txtLucro.Text = "0,00";
+            this.txtLucro.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtLucro.Zero = System.Drawing.Color.Black;
+            // 
+            // txttotalLiquido
+            // 
+            this.txttotalLiquido.Location = new System.Drawing.Point(1018, 80);
+            this.txttotalLiquido.Name = "txttotalLiquido";
+            this.txttotalLiquido.Negative = System.Drawing.Color.Red;
+            this.txttotalLiquido.Positive = System.Drawing.Color.Green;
+            this.txttotalLiquido.ReadOnly = true;
+            this.txttotalLiquido.Size = new System.Drawing.Size(203, 20);
+            this.txttotalLiquido.StyleText = false;
+            this.txttotalLiquido.TabIndex = 33;
+            this.txttotalLiquido.Text = "0,00";
+            this.txttotalLiquido.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txttotalLiquido.Zero = System.Drawing.Color.Black;
+            // 
+            // txtTotalGasto
+            // 
+            this.txtTotalGasto.Location = new System.Drawing.Point(1018, 25);
+            this.txtTotalGasto.Name = "txtTotalGasto";
+            this.txtTotalGasto.Negative = System.Drawing.Color.Red;
+            this.txtTotalGasto.Positive = System.Drawing.Color.Green;
+            this.txtTotalGasto.ReadOnly = true;
+            this.txtTotalGasto.Size = new System.Drawing.Size(203, 20);
+            this.txtTotalGasto.StyleText = false;
+            this.txtTotalGasto.TabIndex = 32;
+            this.txtTotalGasto.Text = "0,00";
+            this.txtTotalGasto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtTotalGasto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(700, 80);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Negative = System.Drawing.Color.Red;
+            this.txtDesconto.Positive = System.Drawing.Color.Green;
+            this.txtDesconto.ReadOnly = true;
+            this.txtDesconto.Size = new System.Drawing.Size(183, 20);
+            this.txtDesconto.StyleText = false;
+            this.txtDesconto.TabIndex = 31;
+            this.txtDesconto.Text = "0,00";
+            this.txtDesconto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtDesconto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtTotalBruto
+            // 
+            this.txtTotalBruto.Location = new System.Drawing.Point(700, 25);
+            this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.Negative = System.Drawing.Color.Red;
+            this.txtTotalBruto.Positive = System.Drawing.Color.Green;
+            this.txtTotalBruto.ReadOnly = true;
+            this.txtTotalBruto.Size = new System.Drawing.Size(183, 20);
+            this.txtTotalBruto.StyleText = false;
+            this.txtTotalBruto.TabIndex = 30;
+            this.txtTotalBruto.Text = "0,00";
+            this.txtTotalBruto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtTotalBruto.Zero = System.Drawing.Color.Black;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Location = new System.Drawing.Point(362, 84);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 90);
+            this.button4.TabIndex = 29;
+            this.button4.Text = "Gerar Relatório Xlsx";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // txtQuantidade
             // 
             this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -439,104 +544,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.chkPesquisarPorData.Text = "Pesquisar Por Data";
             this.chkPesquisarPorData.UseVisualStyleBackColor = true;
             this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(362, 84);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 90);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Gerar Relatório Xlsx";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // txtTotalBruto
-            // 
-            this.txtTotalBruto.Location = new System.Drawing.Point(700, 25);
-            this.txtTotalBruto.Name = "txtTotalBruto";
-            this.txtTotalBruto.Negative = System.Drawing.Color.Red;
-            this.txtTotalBruto.Positive = System.Drawing.Color.Green;
-            this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(183, 20);
-            this.txtTotalBruto.StyleText = false;
-            this.txtTotalBruto.TabIndex = 30;
-            this.txtTotalBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtTotalBruto.Zero = System.Drawing.Color.Black;
-            // 
-            // txtDesconto
-            // 
-            this.txtDesconto.Location = new System.Drawing.Point(700, 80);
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Negative = System.Drawing.Color.Red;
-            this.txtDesconto.Positive = System.Drawing.Color.Green;
-            this.txtDesconto.ReadOnly = true;
-            this.txtDesconto.Size = new System.Drawing.Size(183, 20);
-            this.txtDesconto.StyleText = false;
-            this.txtDesconto.TabIndex = 31;
-            this.txtDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtDesconto.Zero = System.Drawing.Color.Black;
-            // 
-            // txtTotalGasto
-            // 
-            this.txtTotalGasto.Location = new System.Drawing.Point(1018, 25);
-            this.txtTotalGasto.Name = "txtTotalGasto";
-            this.txtTotalGasto.Negative = System.Drawing.Color.Red;
-            this.txtTotalGasto.Positive = System.Drawing.Color.Green;
-            this.txtTotalGasto.ReadOnly = true;
-            this.txtTotalGasto.Size = new System.Drawing.Size(203, 20);
-            this.txtTotalGasto.StyleText = false;
-            this.txtTotalGasto.TabIndex = 32;
-            this.txtTotalGasto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtTotalGasto.Zero = System.Drawing.Color.Black;
-            // 
-            // txttotalLiquido
-            // 
-            this.txttotalLiquido.Location = new System.Drawing.Point(1018, 80);
-            this.txttotalLiquido.Name = "txttotalLiquido";
-            this.txttotalLiquido.Negative = System.Drawing.Color.Red;
-            this.txttotalLiquido.Positive = System.Drawing.Color.Green;
-            this.txttotalLiquido.ReadOnly = true;
-            this.txttotalLiquido.Size = new System.Drawing.Size(203, 20);
-            this.txttotalLiquido.StyleText = false;
-            this.txttotalLiquido.TabIndex = 33;
-            this.txttotalLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txttotalLiquido.Zero = System.Drawing.Color.Black;
-            // 
-            // txtLucro
-            // 
-            this.txtLucro.Location = new System.Drawing.Point(1018, 135);
-            this.txtLucro.Name = "txtLucro";
-            this.txtLucro.Negative = System.Drawing.Color.Red;
-            this.txtLucro.Positive = System.Drawing.Color.Green;
-            this.txtLucro.ReadOnly = true;
-            this.txtLucro.Size = new System.Drawing.Size(203, 20);
-            this.txtLucro.StyleText = true;
-            this.txtLucro.TabIndex = 34;
-            this.txtLucro.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtLucro.Zero = System.Drawing.Color.Black;
             // 
             // ListagemDePedidos
             // 

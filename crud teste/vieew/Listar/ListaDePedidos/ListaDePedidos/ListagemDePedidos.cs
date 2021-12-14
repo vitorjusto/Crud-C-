@@ -176,5 +176,9 @@ namespace crud_teste.vieew.ListaDePedidos
                 MexerComExcel.criararquivo();
         }
 
+        private void ListarPedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

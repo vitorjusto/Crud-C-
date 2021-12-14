@@ -113,6 +113,7 @@ namespace crud_teste.vieew
             this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProduto.Size = new System.Drawing.Size(917, 329);
             this.dataGridProduto.TabIndex = 8;
+            this.dataGridProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduto_CellContentClick);
             this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseClick_1);
             this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridProduto_CellMouseDoubleClick);
             // 

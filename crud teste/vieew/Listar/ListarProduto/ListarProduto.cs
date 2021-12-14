@@ -153,5 +153,10 @@ namespace crud_teste.vieew
         {
 
         }
+
+        private void dataGridProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

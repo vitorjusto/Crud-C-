@@ -151,6 +151,7 @@
     <Compile Include="Model\Object Values\MyTelefone.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\Venda.cs" />
+    <Compile Include="Model\VendaAPrazo.cs" />
     <Compile Include="Validation\CarrinhoValidation.cs" />
     <Compile Include="Validation\DadosBancariosValidation.cs" />
     <Compile Include="Validation\ProdutoValidation.cs" />
@@ -199,6 +200,18 @@
     </Compile>
     <Compile Include="vieew\Listar\ListarProduto\AlterarEstoque.Designer.cs">
       <DependentUpon>AlterarEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\Listar\ListarVendaAPrazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Listar\ListarVendaAPrazo.Designer.cs">
+      <DependentUpon>ListarVendaAPrazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vieew\Listar\PagarMeses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Listar\PagarMeses.Designer.cs">
+      <DependentUpon>PagarMeses.cs</DependentUpon>
     </Compile>
     <Compile Include="vieew\TelaDeVenda\AlterarProdutoDoCarrinho.cs">
       <SubType>Form</SubType>
@@ -309,6 +322,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListarProduto\AlterarEstoque.resx">
       <DependentUpon>AlterarEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Listar\ListarVendaAPrazo.resx">
+      <DependentUpon>ListarVendaAPrazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Listar\PagarMeses.resx">
+      <DependentUpon>PagarMeses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\TelaDeVenda\AlterarProdutoDoCarrinho.resx">
       <DependentUpon>AlterarProdutoDoCarrinho.cs</DependentUpon>

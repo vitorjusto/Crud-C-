@@ -39,7 +39,6 @@ namespace crud_teste
             this.colaboradoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +63,7 @@ namespace crud_teste
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.CobTema = new System.Windows.Forms.ComboBox();
+            this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
@@ -93,7 +93,8 @@ namespace crud_teste
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inserirToolStripMenuItem,
             this.listarToolStripMenuItem,
-            this.vendaToolStripMenuItem});
+            this.vendaToolStripMenuItem,
+            this.contasAPagarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1283, 24);
@@ -136,8 +137,7 @@ namespace crud_teste
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colaboradoresToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.produtoToolStripMenuItem1,
-            this.pedidosToolStripMenuItem});
+            this.produtoToolStripMenuItem1});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.listarToolStripMenuItem.Text = "Listar";
@@ -145,30 +145,23 @@ namespace crud_teste
             // colaboradoresToolStripMenuItem
             // 
             this.colaboradoresToolStripMenuItem.Name = "colaboradoresToolStripMenuItem";
-            this.colaboradoresToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.colaboradoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.colaboradoresToolStripMenuItem.Text = "Colaboradores";
             this.colaboradoresToolStripMenuItem.Click += new System.EventHandler(this.colaboradoresToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem1.Text = "Produto";
             this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
-            // 
-            // pedidosToolStripMenuItem
-            // 
-            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.pedidosToolStripMenuItem.Text = "Pedidos";
-            this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidosToolStripMenuItem_Click);
             // 
             // vendaToolStripMenuItem
             // 
@@ -287,6 +280,13 @@ namespace crud_teste
             this.CobTema.TabIndex = 1;
             this.CobTema.SelectedIndexChanged += new System.EventHandler(this.CobTema_SelectedIndexChanged);
             // 
+            // contasAPagarToolStripMenuItem
+            // 
+            this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
+            this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.contasAPagarToolStripMenuItem.Text = "Contas A Pagar";
+            this.contasAPagarToolStripMenuItem.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem_Click);
+            // 
             // ListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,9 +383,9 @@ namespace crud_teste
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem vendaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novoPedidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ComboBox CobTema;
         private System.Windows.Forms.ToolStripMenuItem relatóriosDePedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contasAPagarToolStripMenuItem;
     }
 }
 

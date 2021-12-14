@@ -23,7 +23,7 @@ namespace crud_teste.controller
 
         public List<PedidoListagem> Listar()
         {
-            
+
             var pedidos = stmt.ListarPedidos();
             return pedidos;
         }
@@ -78,6 +78,50 @@ namespace crud_teste.controller
                 item.produto = new AlterarProduto().Consultar(item.IdProduto);
 
             return resultado;
+        }
+
+        public List<VendaAPrazo> ListarVendaAPrazo()
+        {
+            var resultado = stmt.ListarVendaAPrazo();
+
+            VendaDAO stmtvenda = new VendaDAO();
+            ClienteDAO stmtCliente = new ClienteDAO();
+            foreach(var item in resultado)
+            {
+                item.cliente = stmtCliente.ConsultarCliente(item.idCliente);
+                item.Venda = stmtvenda.ConsultarVenda(item.idVenda);
+                stmtCliente = new ClienteDAO();
+                stmtvenda = new VendaDAO();
+            }
+
+            return resultado;
+        }
+
+        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa)
+        {
+            var resultado = stmt.ListarVendaAPrazo(pesquisa);
+
+            VendaDAO stmtvenda = new VendaDAO();
+            ClienteDAO stmtCliente = new ClienteDAO();
+            foreach (var item in resultado)
+            {
+                item.cliente = stmtCliente.ConsultarCliente(item.idCliente);
+                item.Venda = stmtvenda.ConsultarVenda(item.idVenda);
+                stmtCliente = new ClienteDAO();
+                stmtvenda = new VendaDAO();
+            }
+
+            return resultado;
+        }
+
+        public VendaAPrazo PagarMeses(VendaAPrazo venda, int quantidade)
+        {
+            venda.mesesrestantes -= quantidade;
+            venda.quantidaderestante = venda.mesesrestantes * venda.ValorPorMes.GetAsDecimal();
+            if (venda.mesesrestantes == 0)
+                venda.Pendente = false;
+            stmt.PagarMeses(venda, quantidade);
+            return venda;
         }
     }
 }

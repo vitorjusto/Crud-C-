@@ -162,16 +162,8 @@ namespace crud_teste
         private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
                 e.Handled = Global.isNotIntChar(e.KeyChar);
 
-        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
 
-        private void ValorLimite_Leave(object sender, EventArgs e)
-        {
-            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
-            
-        }
-
-        private void ValorLimite_TextChanged(object sender, EventArgs e)
+        private void ValorLimite_TextChanged_1(object sender, EventArgs e)
         {
             clienteglobal.LimiteDeCompra = ValorLimite.Text;
             clienteglobal.CalcularRestante();

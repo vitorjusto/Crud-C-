@@ -18,7 +18,7 @@ namespace crud_teste.DAO
             con.ConnectionString = "Data Source=ESTAGIO1;Initial Catalog=crud;Integrated Security=True";
         }
 
-        
+
 
         public void cadastrar(Venda venda)
         {
@@ -30,7 +30,7 @@ namespace crud_teste.DAO
             var queryproduto = @"update Produto set Estoque -= @Quantidade where idProduto = @IdProduto";
             var DarCommissao = @"update Colaborador set comissao = @comissao where idColaborador = @idColaborador";
             var AlterarLimite = @"update Cliente set LimiteRestante -= @ValorTotal where idCliente = @idCliente";
-
+            var inserirVendaAPrazo = @"Insert into vendaAPrazo(valorTotal, valorPorMes, quantidadeDemeses, idvenda, idcliente, mesesrestantes, quantidaderestante) Values(@valorTotal, @valorPorMes, @quantidadeDemeses, @idvenda, @idcliente, @quantidadeDemeses, @valorTotal)";
             con.Open();
             var tran = con.BeginTransaction();
             try
@@ -51,8 +51,10 @@ namespace crud_teste.DAO
                     venda.DiaDaVenda,
                     TotalGasto = venda.Pedido_Produto.Sum(x => x.precoDeCusto.GetAsDecimal() * x.quantidade)
                 }
-                , tran).ToString()) ;
-                
+                , tran).ToString());
+
+                venda.IdVenda = idVenda;
+
                 foreach (var carrinho in venda.Pedido_Produto)
                 {
                     carrinho.idVenda = idVenda;
@@ -67,7 +69,7 @@ namespace crud_teste.DAO
                         precodecusto = carrinho.precoDeCusto.GetAsDouble(),
                         precodevenda = carrinho.precoDeVenda.GetAsDouble(),
                         totalGasto = carrinho.precoDeCusto.GetAsDouble() * carrinho.quantidade,
-                    }, tran) ;
+                    }, tran);
                     con.Execute(queryproduto, new
                     {
                         Quantidade = carrinho.quantidade,
@@ -84,15 +86,27 @@ namespace crud_teste.DAO
                 }, tran);
 
                 if (venda.TipoDeVenda.Equals("A Prazo"))
+                {
                     con.Execute(AlterarLimite, new
                     {
                         ValorTotal = venda.TotalLiquido.GetAsDecimal(),
                         venda.cliente.idCliente,
                     }, tran);
 
+                    con.Execute(inserirVendaAPrazo, new
+                    {
+                        ValorTotal = venda.TotalLiquido.GetAsDecimal(),
+                        venda.cliente.idCliente,
+                        venda.IdVenda,
+                        valorPorMes = venda.TotalLiquido.GetAsDecimal() / venda.MesesAPrazo,
+                        quantidadedemeses = venda.MesesAPrazo,
+
+                    }, tran);
+                }
+
                 tran.Commit();
                 con.Close();
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 tran.Rollback();
                 con.Close();
@@ -114,13 +128,13 @@ namespace crud_teste.DAO
 
             var updateEstoque = @"update Produto set Estoque = @estoque where idProduto = @idProduto";
 
-          
+
             con.Open();
             var tran = con.BeginTransaction();
             try
             {
-                
-                
+
+
                 con.Execute(query, new
                 {
                     TotalBruto = venda.TotalBruto.GetAsDouble(),
@@ -134,9 +148,9 @@ namespace crud_teste.DAO
                     idColaborador = venda.colaborador.idColaborador,
                     DescontoAVista = venda.DescontoAVista.GetAsDouble(),
                     idVenda = venda.IdVenda,
-                }, tran) ;
+                }, tran);
 
-                foreach(var pedido in venda.Pedido_Produto)
+                foreach (var pedido in venda.Pedido_Produto)
                 {
                     if (pedido.IdCarrinho == 0)
                     {
@@ -174,16 +188,16 @@ namespace crud_teste.DAO
                         idProduto = pedido.produto.IdProduto,
                     }, tran);
 
-                    
+
 
                 }
-                
+
                 tran.Commit();
                 con.Close();
-               
-            }catch(Exception ex)
+
+            } catch (Exception ex)
             {
-                
+
                 tran.Rollback();
                 con.Close();
                 throw new Exception(ex.Message);
@@ -203,10 +217,10 @@ namespace crud_teste.DAO
                 });
                 con.Close();
 
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 con.Close();
-                throw new Exception(ex.Message); 
+                throw new Exception(ex.Message);
             }
         }
 
@@ -237,7 +251,7 @@ namespace crud_teste.DAO
                     resultados[index].carrinhos = con.Query<Pedido_Produto>(query, new
                     {
                         idVenda = resultado.IdVenda,
-                    }).ToList() ;
+                    }).ToList();
 
                     index++;
                 }
@@ -270,7 +284,7 @@ namespace crud_teste.DAO
 
 							where  P.nome like @NomeCliente + '%' and P2.nome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%' ";
 
-                if(pesquisa.PesquisarPorData)
+                if (pesquisa.PesquisarPorData)
                 {
                     query += @"and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal";
                 }
@@ -308,11 +322,11 @@ namespace crud_teste.DAO
             venda.IdVenda = id;
             using (con)
             {
-               
+
                 var query = @"select * from venda where idvenda = @IdVenda";
                 con.Open();
                 var reader = con.ExecuteReader(query, venda);
-                
+
                 reader.Read();
                 using (reader)
                 {
@@ -335,7 +349,7 @@ namespace crud_teste.DAO
                 });
                 con.Close();
 
-                
+
                 foreach (var resultado in resultados)
                 {
                     Pedido_Produto lista = new Pedido_Produto();
@@ -361,13 +375,7 @@ namespace crud_teste.DAO
                     venda.Pedido_Produto.Add(lista);
                 }
 
-
                 ConexaoDAO stmt = new ConexaoDAO();
-
-
-          
-
-
 
                 return venda;
             }
@@ -382,7 +390,7 @@ namespace crud_teste.DAO
             var tran = con.BeginTransaction();
             try
             {
-                
+
                 con.Execute(query, new
                 {
                     quantidade = pedido.quantidade,
@@ -404,7 +412,7 @@ namespace crud_teste.DAO
                 con.Execute(query, new
                 {
                     idCarrinho = pedido.IdCarrinho,
-                }, tran) ;
+                }, tran);
                 tran.Commit();
                 con.Close();
 
@@ -426,7 +434,7 @@ namespace crud_teste.DAO
                 if (venda.Ativo)
                 {
                     query = @"Update venda set Ativo = 0 where idVenda = @IdVenda";
-                }else
+                } else
                 {
                     query = @"Update venda set Ativo = 1 where idVenda = @idVenda";
                 }
@@ -437,7 +445,7 @@ namespace crud_teste.DAO
                     idVenda = venda.IdVenda,
                 });
                 con.Close();
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 con.Close();
                 throw new Exception(ex.Message);
@@ -454,9 +462,82 @@ namespace crud_teste.DAO
                 var resultado = con.Query<Pedido_Produto>(query).ToList();
                 con.Close();
                 return resultado;
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 con.Close();
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VendaAPrazo> ListarVendaAPrazo()
+        {
+            try
+            {
+                var query = @"select * from vendaAPrazo";
+
+                con.Open();
+                var resultado = con.Query<VendaAPrazo>(query).ToList();
+                con.Close();
+                return resultado;
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa)
+        {
+
+            try
+            {
+                var query = $@"select * from vendaAPrazo vp 
+                             inner join Cliente c on c.idCliente = vp.idCliente 
+                             inner join pessoa p on p.idPessoa = c.idPessoa
+                              where p.nome + p.sobrenome like '{pesquisa}' + '%'";
+
+                con.Open();
+                var resultado = con.Query<VendaAPrazo>(query).ToList();
+                con.Close();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+        public void PagarMeses(VendaAPrazo venda, int meses)
+        {
+            con.Open();
+            var tran = con.BeginTransaction();
+            try
+            {
+                var query = @"update vendaAPrazo set mesesrestantes = @mesesrestantes, pendente = @pendente, quantidaderestante = @quantidaderestante where idvendaAprazo = @idvendaAPrazo";
+                var valoresAcumulados = @"update Cliente set limiterestante += @valor where idcliente = @idcliente";
+
+
+                con.Execute(query, new { 
+                
+                    mesesrestantes = venda.mesesrestantes, 
+                    pendente = venda.Pendente,
+                    quantidaderestante = venda.quantidaderestante.GetAsDecimal(),
+                    idvendaAPrazo = venda.idVendaAPrazo,
+                }, tran);
+                con.Execute(valoresAcumulados, new
+                {
+                    valor = venda.ValorPorMes.GetAsDecimal() * meses,
+                    idcliente = venda.idCliente,
+                }, tran); ;
+
+                tran.Commit();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
                 throw new Exception(ex.Message);
             }
         }

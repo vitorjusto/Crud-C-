@@ -49,6 +49,9 @@ namespace crud_teste.vieew.TelaDeVenda
 
         private void dataGridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
+
             if(e.ColumnIndex == 7)
             {
                 if(new CaixaDeAviso().MensagemDeSimENao("deseja mesmo remover esse item?"))

@@ -10,7 +10,5 @@ namespace crud_teste.Config.Mensagem
 
         public override bool MensagemDeSimENao(string mensagem) =>
             MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-
-
     }
 }

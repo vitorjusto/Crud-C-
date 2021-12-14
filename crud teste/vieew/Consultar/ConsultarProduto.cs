@@ -129,14 +129,5 @@ namespace crud_teste.vieew.Consultar
 
         }
 
-        private void PrecoDeVenda_Leave(object sender, EventArgs e)
-        {
-            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
-        }
-
-        private void PrecoDeCusto_Leave(object sender, EventArgs e)
-        {
-            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
-        }
     }
 }

@@ -165,7 +165,7 @@ namespace crud_teste.DAO
                 cliente.contato.Celular = (string)reader["celular"];
                 cliente.contato.Celular.DDI = (string)reader["DDI"];
             }
-
+            con.Close();
             return cliente;
 
         }
@@ -371,8 +371,6 @@ namespace crud_teste.DAO
             {
                 try
                 {
-
-
                     var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
                                inner join contato co on co.idContato = p.idContato where Ativo = 1;";
@@ -429,7 +427,6 @@ namespace crud_teste.DAO
                                Left outer join contato co on co.idContato = p.idContato where {queryWhere} and Ativo = 1 ";
                 var resultado = con.Query<ClienteListagem>(query);
                 return resultado.ToList();
-
             }
 
         }

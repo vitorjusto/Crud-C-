@@ -44,6 +44,8 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void dataGridCarrinho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             if (e.ColumnIndex == 7)
             {
                 selectedIndex = e.RowIndex;
@@ -70,6 +72,10 @@ namespace crud_teste.vieew.ListaDePedidos
             }
         }
 
+        private void ListarItens_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

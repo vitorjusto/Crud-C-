@@ -18,8 +18,14 @@ namespace crud_teste.vieew
 
             InitializeComponent();
             AlterarColaborador oAlterar = new AlterarColaborador();
-            listagem = oAlterar.ListarColaboradores();
-
+            try
+            {
+                listagem = oAlterar.ListarColaboradores();
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
             listarNaGrid(cbAtivo.Checked);
         }
         public void listarNaGrid(bool comAtivo)
@@ -99,13 +105,22 @@ namespace crud_teste.vieew
         private void button1_Click(object sender, EventArgs e)
         {
             AlterarColaborador oAlterar = new AlterarColaborador();
-            int.TryParse(CampoDePesquisa.Text, out int id);
-            if (id > 0)
-                listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
-            else
-                listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
+            try
+            {
 
-            listarNaGrid(cbAtivo.Checked);
+
+                int.TryParse(CampoDePesquisa.Text, out int id);
+                if (id > 0)
+                    listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "id");
+                else
+                    listagem = oAlterar.ListarColaboradoresPesquisado(CampoDePesquisa.Text, "Nome");
+
+                listarNaGrid(cbAtivo.Checked);
+            }
+            catch
+            {
+                new CaixaDeErro().FalhaNoBancoDeDados();
+            }
         }
 
         private void dataGridColaboradores_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -136,7 +151,6 @@ namespace crud_teste.vieew
                     {
                         new CaixaDeErro().FalhaNoBancoDeDados();
                     }
-                    
                 }
             }
         }
@@ -144,11 +158,6 @@ namespace crud_teste.vieew
         private void cbAtivo_CheckedChanged(object sender, EventArgs e)
         {
             listarNaGrid(cbAtivo.Checked);
-        }
-
-        private void dataGridColaboradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
