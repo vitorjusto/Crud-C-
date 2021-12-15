@@ -27,8 +27,8 @@ namespace crud_teste.controller
             var numProduto = 0;
             foreach(var produto in venda.Pedido_Produto)
             {
-                produtos += $"<tr><td>{numProduto}</td><td>{produto.produto.NomeDoProduto}</td><td>{produto.precoDeVenda.GetAsString()}</td><td>{produto.quantidade}</td><td>{produto.PrecoBruto.GetAsString()}</td><td>{produto.Desconto.GetAsString()}</td><td>{produto.PrecoLiquido.GetAsString()}</td>";
                 numProduto++;
+                produtos += $"<tr><td>{numProduto}</td><td>{produto.produto.NomeDoProduto}</td><td>{produto.precoDeVenda.GetAsString()}</td><td>{produto.quantidade}</td><td>{produto.PrecoBruto.GetAsString()}</td><td>{produto.Desconto.GetAsString()}</td><td>{produto.PrecoLiquido.GetAsString()}</td>";
             }
                
             corpoDoEmail = corpoDoEmail.Replace("{Listagem_Dos_Produtos}", produtos);
@@ -146,6 +146,7 @@ namespace crud_teste.controller
             return encrypted;
 
         }
+
 
     }
 }

@@ -30,7 +30,7 @@ namespace crud_teste.Model
 
         private string bairro { get; set; }
 
-        private int numero { get; set; }
+        private string numero { get; set; }
 
         public int PorcentagemDeComissao { get; set; }
 

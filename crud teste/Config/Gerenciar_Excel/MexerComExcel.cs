@@ -79,6 +79,27 @@ namespace crud_teste.Config.Gerenciar_Excel
                 index++;
             }
 
+            arquivo.Worksheets.Add(criarRelatorioDeProduto(), "Relatório dos Produtos");
+
+            var planilha3 = arquivo.Worksheets.Worksheet("Relatório de venda");
+
+            planilha3.ColumnsUsed().Width = 20;
+            planilha3.Column(1).Width = 5;
+            planilha3.Column(2).Width = 5;
+            planilha3.Column(4).Width = 10;
+
+            planilha3.Rows("1").CellsUsed().Style.Fill.BackgroundColor = XLColor.FromArgb(51, 153, 255);
+            planilha3.Rows("1").CellsUsed().Style.Font.FontColor = XLColor.FromTheme(XLThemeColor.Text1);
+
+            index = 2;
+            while (index <= planilha2.Rows().Count())
+            {
+                planilha3.Rows(index.ToString()).CellsUsed().Style.Fill.BackgroundColor = index % 2 == 0 ? XLColor.AliceBlue : XLColor.LightBlue;
+                planilha3.Cell(index, 1).DataType = XLDataType.Number;
+                planilha3.Cell(index, 2).DataType = XLDataType.Number;
+                index++;
+            }
+
             arquivo.SaveAs(destino.FileName);
 
         }
@@ -97,21 +118,14 @@ namespace crud_teste.Config.Gerenciar_Excel
             produtos.Columns.Add("Desconto");
             produtos.Columns.Add("Preço Liquido");
 
-
-            
             var row = 1;
             foreach(var item in relatorio)
             {
-                produtos.Rows.Add(row, item.IdCarrinho, item.produto.NomeDoProduto, item.precoDeCusto.GetAsDecimal(), item.precoDeVenda.GetAsDecimal(), item.quantidade, item.PrecoBruto.GetAsDecimal(), item.Desconto.GetAsDecimal(), item.PrecoLiquido.GetAsDecimal());
+                produtos.Rows.Add(row, item.IdCarrinho, item.produto.NomeDoProduto, item.precoDeCusto.GetAsDouble(), item.precoDeVenda.GetAsDouble(), item.quantidade, item.PrecoBruto.GetAsDouble(), item.Desconto.GetAsDouble(), item.PrecoLiquido.GetAsDouble());
                 row++;
             }
-
-
             return produtos;
-
         }
-
-
         public static DataTable criarRelatorioDeVenda()
         {
             DataTable venda = new DataTable();
@@ -131,10 +145,47 @@ namespace crud_teste.Config.Gerenciar_Excel
             var row = 1;
             foreach(var item in relatorio)
             {
-                venda.Rows.Add(row, item.IdVenda, item.NomeCompletoColaborador(), item.NomeCompletoCliente(), item.QuantidadeTotal, item.TotalBruto.GetAsDecimal(), item.TotalDeDesconto.GetAsDecimal(), item.TotalLiquido.GetAsDecimal(), item.TipoDeVenda) ;
+                venda.Rows.Add(row, item.IdVenda, item.NomeCompletoColaborador(), item.NomeCompletoCliente(), item.QuantidadeTotal, item.TotalBruto.GetAsDouble(), item.TotalDeDesconto.GetAsDouble(), item.TotalLiquido.GetAsDouble(), item.TipoDeVenda) ;
+                row++;
             }
 
             return venda;
+        }
+
+        public static DataTable criarRelatorioDeProduto()
+        {
+            DataTable produtos = new DataTable();
+            var relatorio = new AlterarProduto().RelatorioDeVendaDosProdutos();
+
+            produtos.Columns.Add(" ");
+            produtos.Columns.Add("Id");
+            produtos.Columns.Add("Nome Do Produto");
+            produtos.Columns.Add("Quantidade Vendida");
+            produtos.Columns.Add("Total Bruto");
+            produtos.Columns.Add("Total De Desconto");
+            produtos.Columns.Add("Total Liquido");
+            produtos.Columns.Add("Lucro (R$)");
+            produtos.Columns.Add("Lucro (%)");
+
+            var row = 1;
+            foreach(var item in relatorio)
+            {
+                produtos.Rows.Add
+                    (
+                        row,
+                        item.idProduto,
+                        item.nomeProduto,
+                        item.Quantidade,
+                        item.TotalBruto.GetAsString(),
+                        item.DescontoTotal.GetAsString(),
+                        item.TotalLiquido.GetAsString(),
+                        item.LucroEmDinheiro.GetAsString(),
+                        item.LucroEmPorcento.ToString()
+                    );
+                row++;
+            }
+
+            return produtos;
         }
     }
 }

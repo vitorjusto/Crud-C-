@@ -148,15 +148,11 @@ namespace crud_teste
             clienteglobal.endereco.UF = UF.Text;
             clienteglobal.endereco.Complemento = Complemento.Text;
             clienteglobal.endereco.Bairro = Bairro.Text;
-            clienteglobal.endereco.Numero = int.Parse(Numero.Text == "" ? "0" : Numero.Text);
+            clienteglobal.endereco.Numero = Numero.Text;
 
             return clienteglobal;
 
         }
-
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
-                e.Handled = Global.isNotIntChar(e.KeyChar);
-
 
         private void ValorLimite_TextChanged_1(object sender, EventArgs e)
         {

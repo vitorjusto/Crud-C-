@@ -87,7 +87,7 @@ namespace crud_teste
             colaborador.contato.Celular = Celular2.Text;
 
             colaborador.contato.Celular.DDI = Celular1.Text;
-            colaborador.PorcentagemDeComissao = decimal.Parse(Porcentagem.Text == ""? "0" : Porcentagem.Text);
+            colaborador.PorcentagemDeComissao =  Porcentagem.Text;
 
             colaborador.endereco.Cep = CEP.Text;
             colaborador.endereco.Logradouro = Logradouro.Text;
@@ -95,9 +95,9 @@ namespace crud_teste
             colaborador.endereco.UF = UF.Text;
             colaborador.endereco.Complemento = Complemento.Text;
             colaborador.endereco.Bairro = Bairro.Text;
-            int.TryParse(Numero.Text, out int i);
 
-            colaborador.endereco.Numero = i;
+
+            colaborador.endereco.Numero = Numero.Text;
 
             colaborador.DadosBancarios.Banco = Banco.Text;
             colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0" : Agencia.Text);
@@ -108,19 +108,11 @@ namespace crud_teste
 
         }
 
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
-
-
-        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
-
-        private void Salario_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotFloatText(e.KeyChar, Salario.Text);
-
         private void Sexo_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
         private void UF_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
         private void Agencia_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
 
-        private void Salario_Leave(object sender, EventArgs e) => Salario.Text = MyDinheiro.SetTextBoxAsMoneyValue(Salario.Text);
     }
 }

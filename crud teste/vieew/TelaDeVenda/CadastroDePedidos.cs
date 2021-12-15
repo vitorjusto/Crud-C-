@@ -134,12 +134,7 @@ namespace crud_teste.vieew
 
             PrecoLiquido.Text = carrinho.PrecoLiquido.GetAsString();
         }
-
-        private void Desconto_KeyPress(object sender, KeyPressEventArgs e)=>
-            e.Handled = Global.isNotFloatText(e.KeyChar, Desconto.Text);
-
-
-        private void Desconto_TextChanged(object sender, EventArgs e)
+        private void Desconto_TextChanged_1(object sender, EventArgs e)
         {
             carrinho.Desconto = Desconto.Text;
             PreencherValoresCarrinhos();
@@ -441,5 +436,6 @@ namespace crud_teste.vieew
         {
             NomeDoProduto.Text = carrinho.produto.NomeDoProduto;
         }
+
     }
 }

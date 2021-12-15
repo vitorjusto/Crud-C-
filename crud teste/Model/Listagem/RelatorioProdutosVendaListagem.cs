@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace crud_teste.Model.Listagem
 {
     public class RelatorioProdutosVendaListagem
-    { 
+    {
         public int idProduto { get; set; }
         public string nomeProduto { get; set; }
 
@@ -17,6 +17,9 @@ namespace crud_teste.Model.Listagem
         public MyDinheiro TotalBruto { get; set; }
 
         public MyDinheiro Desconto { get; set; }
+        public MyDinheiro DescontoAVista { get; set; }
+
+        public MyDinheiro DescontoTotal { get => Desconto.GetAsDecimal() + DescontoAVista.GetAsDecimal(); }
         public MyDinheiro TotalLiquido { get; set; }
         public MyDinheiro TotalCusto { get; set; }
 

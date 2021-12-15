@@ -154,20 +154,14 @@ namespace crud_teste
             colaboradorGlobal.endereco.Complemento = Complemento.Text;
             colaboradorGlobal.endereco.Bairro = Bairro.Text;
 
-            int.TryParse(Numero.Text, out int i);
-            colaboradorGlobal.endereco.Numero = i;
+
+            colaboradorGlobal.endereco.Numero = Numero.Text;
 
             colaboradorGlobal.DadosBancarios.Banco = Banco.Text;
             colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0": Agencia.Text);
             colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text == "" ? "0" : Conta.Text);
             colaboradorGlobal.DadosBancarios.Digito = int.Parse(Digito.Text == "" ? "0" : Digito.Text);
         }
-
-        private void Porcentagem_KeyPress(object sender, KeyPressEventArgs e) => 
-            e.Handled = Global.isNotFloatText(e.KeyChar, Porcentagem.Text);
-
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotIntChar(e.KeyChar);
 
         private void Agencia_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotFloatText(e.KeyChar, Agencia.Text);

@@ -24,6 +24,7 @@ namespace crud_teste.Config.Custom_Controls
         public PercentTextBox()
         {
             Text = 0.0 + " %";
+            this.MaxLength = 15;
         }
     }
 }

@@ -290,11 +290,12 @@ namespace crud_teste.DAO
                 var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
                               Sum(precoLiquido) as 'TotalLiquido',
-                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' from Produto p 
+                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda', SUM(v.DescontoAVista / v.quantidadeunitario) as 'DescontoAVista' from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
                               inner join Venda v on v.IdVenda = c.idVenda
                               where v.ativo = 1
-                              GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;";
+                              GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;
+";
                 var resultado = con.Query<RelatorioProdutosVendaListagem>(query);
                 return resultado.ToList();
 
@@ -309,7 +310,7 @@ namespace crud_teste.DAO
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
                               Sum(precoLiquido) as 'TotalLiquido',
                               Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' 
-
+                              SUM(v.DescontoAVista / v.quantidadeunitario) as 'DescontoAVista'
                               from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
 							  inner join Venda v on v.IdVenda = c.idVenda

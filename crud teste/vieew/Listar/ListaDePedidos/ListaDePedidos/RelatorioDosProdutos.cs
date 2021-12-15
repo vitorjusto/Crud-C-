@@ -58,7 +58,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
                 DataGridRelatorioDeProduto.Rows[index].Cells[1].Value = produto.nomeProduto;
                 DataGridRelatorioDeProduto.Rows[index].Cells[2].Value = produto.Quantidade;
                 DataGridRelatorioDeProduto.Rows[index].Cells[3].Value = produto.TotalBruto;
-                DataGridRelatorioDeProduto.Rows[index].Cells[4].Value = produto.Desconto;
+                DataGridRelatorioDeProduto.Rows[index].Cells[4].Value = produto.DescontoTotal;
                 DataGridRelatorioDeProduto.Rows[index].Cells[5].Value = produto.TotalLiquido;
                 DataGridRelatorioDeProduto.Rows[index].Cells[6].Value = produto.TotalCusto;
                 DataGridRelatorioDeProduto.Rows[index].Cells[7].Value = produto.TotalPrecoDeVenda;
@@ -104,7 +104,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
                 txtQuantidadesDeProdutos.Text = lista.Sum(x => x.Quantidade).ToString();
                 txtTotalBruto.Text = lista.Sum(x => x.TotalBruto.GetAsDecimal()).ToString("C");
-                txtTotalDeDesconto.Text = lista.Sum(x => x.Desconto.GetAsDecimal()).ToString("C");
+                txtTotalDeDesconto.Text = lista.Sum(x => x.DescontoTotal.GetAsDecimal()).ToString("C");
                 txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C");
                 txtTotalGasto.Text = lista.Sum(x => x.TotalCusto.GetAsDecimal()).ToString("C");
                 var lucro = lista.Sum(x => x.LucroEmDinheiro.GetAsDecimal());

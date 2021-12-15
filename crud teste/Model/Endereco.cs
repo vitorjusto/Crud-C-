@@ -14,9 +14,9 @@ namespace CRUD_teste.Model
         public string UF { get; set; }
         public string Complemento { get; set; }
         public string Bairro { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
 
-        public Endereco(int idEndereco, string cep, string logradouro, string cidade, string uF, string complemento, string bairro, int numero)
+        public Endereco(int idEndereco, string cep, string logradouro, string cidade, string uF, string complemento, string bairro, string numero)
         {
             IdEndereco = idEndereco;
             Cep = cep;

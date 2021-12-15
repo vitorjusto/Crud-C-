@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using crud_teste.Config.Custom_Controls;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Tema
@@ -141,9 +142,19 @@ namespace Tema
             control.ForeColor = FontColor;
             control.BackColor = TextBoxBackColor;
             control.BorderStyle = BorderStyle.FixedSingle;
+
+            if(control is MoneyTextBox)
+            {
+                SetMoneyBoxTema((MoneyTextBox)control);
+            }
         }
 
-
+        private static void SetMoneyBoxTema(MoneyTextBox control)
+        {
+            control.Negative = Negative;
+            control.Positive = Positive;
+            control.Zero = FontColor;
+        }
         private static void SetMaskedTextBoxTema(MaskedTextBox control)
         {
             control.ForeColor = FontColor;

@@ -36,10 +36,14 @@ namespace crud_teste.vieew.ListaDePedidos
             try
             {
                 pedidos = oAlterar.Listar();
-                ListarECalcularValores();
-            }catch
+
+            }
+            catch
             {
                 new CaixaDeErro().FalhaNoBancoDeDados();
+                this.Close();
+                new ListarClientes().Show();
+
             }
             
             gbPesquisarPorData.Visible = false;
@@ -165,8 +169,8 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void ListagemDePedidos_Load(object sender, EventArgs e)
         {
-
-                Temas.AtribuirTema(this);
+            Temas.AtribuirTema(this); 
+            ListarECalcularValores();
         }
         private void button4_Click(object sender, EventArgs e)
         {

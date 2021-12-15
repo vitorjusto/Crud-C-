@@ -96,23 +96,12 @@ namespace crud_teste
             cliente.endereco.Complemento = Complemento.Text;
             cliente.endereco.Bairro = Bairro.Text;
 
-            int.TryParse(Numero.Text, out int i);
-            cliente.endereco.Numero = i;
+
+            cliente.endereco.Numero = Numero.Text;
 
             return cliente;
 
         }
-
-        private void Numero_KeyPress(object sender, KeyPressEventArgs e)=>
-            e.Handled = Global.isNotIntChar(e.KeyChar);
-
-
-        private void ValorLimite_KeyPress(object sender, KeyPressEventArgs e)=>
-            e.Handled = Global.isNotFloatText(e.KeyChar, ValorLimite.Text);
-
-        private void ValorLimite_Leave(object sender, EventArgs e) =>
-            ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
-
 
         private void Sexo_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = true;

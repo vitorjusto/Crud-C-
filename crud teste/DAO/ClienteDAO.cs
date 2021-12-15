@@ -151,7 +151,7 @@ namespace crud_teste.DAO
                 cliente.endereco.Cidade = (string)reader["Cidade"];
                 cliente.endereco.Complemento = (string)reader["Complemento"];
                 cliente.endereco.Bairro = (string)reader["bairro"];
-                cliente.endereco.Numero = (int)reader["numero"];
+                cliente.endereco.Numero = (string)reader["numero"];
             }
 
             query = @"select * from Contato where idcontato = @idContato ";
@@ -349,12 +349,12 @@ namespace crud_teste.DAO
             {
                 try
                 {
-
-
+                    con.Open();
                     var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  Left outer join pessoa p on p.IdPessoa = c.IdPessoa Left outer join Endereco e on e.idEndereco = p.IdEndereco
                                Left outer join contato co on co.idContato = p.idContato;";
                     var resultado = con.Query<ClienteListagem>(query);
+                    con.Close();
                     return resultado.ToList();
                 }
                 catch (Exception ex)
@@ -371,10 +371,12 @@ namespace crud_teste.DAO
             {
                 try
                 {
+                    con.Open();
                     var query = @"select idcliente, p.idPessoa, Nome, Sobrenome, Sexo, ValorLimite, DataDeNascimento, Cidade, UF, celular,logradouro, bairro, numero, email, telefone, Ativo
                                from cliente c  inner join pessoa p on p.IdPessoa = c.IdPessoa inner join Endereco e on e.idEndereco = p.IdEndereco
                                inner join contato co on co.idContato = p.idContato where Ativo = 1;";
                     var resultado = con.Query<ClienteListagem>(query);
+                    con.Close();
                     return resultado.ToList();
                 }
                 catch (Exception ex)

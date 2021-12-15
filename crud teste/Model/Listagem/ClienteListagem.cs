@@ -30,7 +30,7 @@ namespace crud_teste.Model
 
         private string bairro { get; set; }
 
-        private int numero { get; set; }
+        private string numero { get; set; }
 
         public string Endereço { get { return $"{this.Cidade} - {this.UF} \n Bairro: {this.bairro}  Rua: {this.logradouro}  Numero: {this.numero}"; } set { } }
         

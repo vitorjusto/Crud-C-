@@ -465,7 +465,6 @@ namespace crud_teste
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(104, 20);
             this.Numero.TabIndex = 27;
-            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // groupBox3
             // 

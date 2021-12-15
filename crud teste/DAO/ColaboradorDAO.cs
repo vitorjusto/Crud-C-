@@ -105,7 +105,7 @@ namespace crud_teste
                     colaborador.endereco.Cidade = (string)reader["Cidade"];
                     colaborador.endereco.Complemento = (string)reader["Complemento"];
                     colaborador.endereco.Bairro = (string)reader["bairro"];
-                    colaborador.endereco.Numero = (int)reader["numero"];
+                    colaborador.endereco.Numero = (string)reader["numero"];
                 }
 
                 query = $"select * from Contato where idcontato = @idContato ";

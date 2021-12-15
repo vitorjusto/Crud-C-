@@ -23,10 +23,7 @@ namespace crud_teste.Validation
 
             RuleFor(x => x.Bairro).NotEmpty().Matches(@"[a-zA-ZÀ-úÀ-ÿ]+").WithMessage("Campo bairro é obrigatório");
 
-            RuleFor(x => x.Numero).GreaterThan(0).WithMessage("Digite um numero válido");
+            RuleFor(x => x.Numero).Matches(@"[a-z0-9/]+").WithMessage("Digite um numero válido");
         }
-
-
-
     }
 }

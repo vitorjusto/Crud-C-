@@ -55,6 +55,8 @@ namespace crud_teste.Config.Custom_Controls
             Positive = Color.Green;
             Negative = Color.Red;
             Zero = Color.Black;
+
+            this.MaxLength = 15;
         }
     }
 }

@@ -436,7 +436,6 @@ namespace crud_teste
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(107, 20);
             this.Numero.TabIndex = 23;
-            this.Numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // Bairro
             // 
