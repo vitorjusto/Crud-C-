@@ -19,11 +19,13 @@ namespace crud_teste.vieew.Listar.ListarProduto
             Produto = produto;
             nudEstoque.Value = Produto.Estoque;
 
+
         }
 
         private void AlterarEstoque_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
+            label2.ForeColor = Temas.MainColor;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,6 +48,16 @@ namespace crud_teste.vieew.Listar.ListarProduto
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            if (nudEstoque.Value == 50)
+            {
+                Temas.AlterarTema("Innova");
+                Temas.AtribuirTema(this);
+                label2.ForeColor = Temas.MainColor;
+            }
         }
     }
 }

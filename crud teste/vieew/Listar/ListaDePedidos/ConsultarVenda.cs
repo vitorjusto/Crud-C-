@@ -68,27 +68,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private void textBox1_DoubleClick(object sender, EventArgs e)
         {
 
-            var janeladocarrinho = new ListarItens(_venda);
-            janeladocarrinho.ShowDialog();
-
-
-            if (janeladocarrinho.selectedIndex != -1)
-            {
-                lbNomeProduto.Visible = false;
-                txtnomeProduto.Visible = false;
-                _venda = janeladocarrinho.venda;
-                _pedido = _venda.Pedido_Produto[janeladocarrinho.selectedIndex];
-
-
-                abrirProduto();
-            }
-            else
-            {
-                ApagarCampoDoProduto();
-            }
-
-            preencherCampos();
-
         }
 
         private void abrirProduto()
@@ -157,9 +136,6 @@ namespace crud_teste.vieew.ListaDePedidos
         }
 
         private void txtquantidade_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntText(e.KeyChar, txtquantidade.Text);
-
-        private void txtDesconto_Leave(object sender, EventArgs e) => txtDesconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(txtDesconto.Text);
-
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e) => sair();
         private void sair()
@@ -247,11 +223,6 @@ namespace crud_teste.vieew.ListaDePedidos
             }
         }
 
-        private void txtDesconto_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCampos();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var validar = new VendaValidation((decimal)_venda.cliente.LimiteDeCompra.GetAsDouble(), _venda);
@@ -268,8 +239,6 @@ namespace crud_teste.vieew.ListaDePedidos
                         this.Close();
                         new ListagemDePedidos().Show();
                     }
-
-
                 }
                 catch
                 {
@@ -315,5 +284,30 @@ namespace crud_teste.vieew.ListaDePedidos
             }
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            var janeladocarrinho = new ListarItens(_venda);
+            janeladocarrinho.ShowDialog();
+
+
+            if (janeladocarrinho.selectedIndex != -1)
+            {
+                lbNomeProduto.Visible = false;
+                txtnomeProduto.Visible = false;
+                _venda = janeladocarrinho.venda;
+                _pedido = _venda.Pedido_Produto[janeladocarrinho.selectedIndex];
+
+
+                abrirProduto();
+            }
+            else
+            {
+                ApagarCampoDoProduto();
+            }
+
+            preencherCampos();
+
+        }
     }
 }

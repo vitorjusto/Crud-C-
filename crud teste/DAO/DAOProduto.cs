@@ -289,7 +289,7 @@ namespace crud_teste.DAO
             {
                 var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
-                              Sum(precoLiquido) as 'TotalLiquido',
+                              Sum(precoLiquido) - SUM(v.DescontoAVista / v.quantidadeunitario) as 'TotalLiquido',
                               Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda', SUM(v.DescontoAVista / v.quantidadeunitario) as 'DescontoAVista' from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
                               inner join Venda v on v.IdVenda = c.idVenda
@@ -308,8 +308,8 @@ namespace crud_teste.DAO
             {
                 var query = @"select p.idProduto, p.nomeProduto, p.Ativo,
                               Sum(Quantidade) as 'Quantidade', sum(precobruto) as 'TotalBruto', Sum(Desconto) as 'Desconto',
-                              Sum(precoLiquido) as 'TotalLiquido',
-                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda' 
+                              Sum(precoLiquido) - SUM(v.DescontoAVista / v.quantidadeunitario) as 'TotalLiquido',
+                              Sum(c.TotalGasto) as 'TotalCusto', Sum(c.PrecoDeVenda) as 'TotalPrecoDeVenda',
                               SUM(v.DescontoAVista / v.quantidadeunitario) as 'DescontoAVista'
                               from Produto p 
                               inner join Carrinho c on c.idProduto = p.idProduto 
@@ -317,21 +317,23 @@ namespace crud_teste.DAO
 							  inner join cliente cl on cl.idCliente = v.idCliente
 							  inner join pessoa pe on pe.idPessoa = cl.IdPessoa
 
-							  where p.NomeProduto like @produto + '%' and pe.Nome + pe.Sobrenome like @nome + '%' and v.Ativo = 1";
+							  where p.NomeProduto like @produto + '%' and pe.Nome + ' ' + pe.Sobrenome like @nome + '%' and v.Ativo = 1";
 
                 if (pesquisa.pesquisarPorData)
                     query += @"and Cast(DiaDaVenda as date) between @DataInicial and @DataFinal ";
 
                 query += @"GROUP BY p.IdProduto, p.NomeProduto, p.Ativo;";
+                con.Open();
+                    var resultado = con.Query<RelatorioProdutosVendaListagem>(query, new
+                    {
+                        nome = pesquisa.nomeDoCliente,
+                        produto = pesquisa.nomeDoProduto,
+                        DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
+                        DataFinal = pesquisa.DataFinal.ToString("dd/MM/yyyy"),
+                    });
+                con.Close();
+                    return resultado.ToList();
 
-                var resultado = con.Query<RelatorioProdutosVendaListagem>(query, new 
-                {
-                    nome = pesquisa.nomeDoCliente,
-                    produto = pesquisa.nomeDoProduto,
-                    DataInicial = pesquisa.DataInicial.ToString("dd/MM/yyyy"),
-                    DataFinal = pesquisa.DataFinal.ToString("dd/MM/yyyy"),
-                });
-                return resultado.ToList();
 
             }
         }

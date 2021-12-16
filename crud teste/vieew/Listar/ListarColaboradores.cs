@@ -18,15 +18,6 @@ namespace crud_teste.vieew
 
             InitializeComponent();
             AlterarColaborador oAlterar = new AlterarColaborador();
-            try
-            {
-                listagem = oAlterar.ListarColaboradores();
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
-            listarNaGrid(cbAtivo.Checked);
         }
         public void listarNaGrid(bool comAtivo)
         {

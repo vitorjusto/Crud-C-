@@ -17,17 +17,6 @@ namespace crud_teste.vieew
         {
             InitializeComponent();
             AlterarCliente oAlterar = new AlterarCliente();
-
-            try
-            {
-                clientes = oAlterar.ListarCliente();
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
-
-            ListarNaDatagrid(cbInativo.Checked);
         }
 
         public void ListarNaDatagrid(bool comAtivo)

@@ -21,15 +21,6 @@ namespace crud_teste.vieew
             Temas.AtribuirTema(this);
 
             AlterarProduto oAlterar = new AlterarProduto();
-            try
-            {
-                produtos = oAlterar.Listar();
-                preencherDataGrid(BuscarAtivo.Checked);
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
         }
 
         public void preencherDataGrid(bool comAtivo)
@@ -158,7 +149,7 @@ namespace crud_teste.vieew
                 AlterarEstoque formAlterar = new AlterarEstoque(produtos[e.RowIndex]);
 
                 formAlterar.ShowDialog();
-
+                Temas.AtribuirTema(this);
                 dataGridProduto.Rows[e.RowIndex].Cells[3].Value = formAlterar.Produto.Estoque;
             }
         }

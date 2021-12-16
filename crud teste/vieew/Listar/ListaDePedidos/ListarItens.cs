@@ -58,7 +58,6 @@ namespace crud_teste.vieew.ListaDePedidos
                 {
                     try
                     {
-
                         AlterarVenda oalterar = new AlterarVenda();
                         oalterar.aumentarEstoque(venda.Pedido_Produto[e.RowIndex]);
                         dataGridCarrinho.Rows.RemoveAt(e.RowIndex);

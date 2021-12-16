@@ -1,6 +1,7 @@
 ﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model.Listagem;
+using crud_teste.vieew.TelaDeVenda;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,13 +33,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         public RelatorioDosProdutos()
         {
             InitializeComponent();
-            try
-            {
-                _produtos = oAlterar.RelatorioDeVendaDosProdutos();
-            }catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
             gbListarPorData.Visible = false;
 
         }
@@ -162,8 +156,8 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
         {
 
             pesquisar pesquisa = new pesquisar();
-            pesquisa.nomeDoCliente = txtCliente.Text;
-            pesquisa.nomeDoProduto = txtProduto.Text;
+            pesquisa.nomeDoCliente = txtCliente.Text.Trim();
+            pesquisa.nomeDoProduto = txtProduto.Text.Trim();
 
             if (chkPesquisarPorData.Checked)
             {
@@ -174,7 +168,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
 
                 if (!Global.ValidarDatas(dtpDataInicial.Value, dtpDataFinal.Value))
                 {
-                    new CaixaDeAviso().MensagemDeOk("Data Inicial vem depois da data Final");
+                    new CaixaDeAviso().MensagemDeOk("Data Inicial é maior que a Data Final ou a DataFinal vem Depois de Hoje");
                     return;
                 }
             }
@@ -190,9 +184,32 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             }
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)=>
             gbListarPorData.Visible = chkPesquisarPorData.Checked;
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Global.pesquisar("produto", txtProduto.Text, txtProduto);
+        }
+
+        
+
+        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+                Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void txtProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                Global.pesquisar("produto", txtProduto.Text, txtProduto);
         }
     }
 }

@@ -35,7 +35,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtQuantidadeTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,6 +42,10 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label8 = new System.Windows.Forms.Label();
             this.btnAlterarVenda = new System.Windows.Forms.Button();
             this.gbProduto = new System.Windows.Forms.GroupBox();
+            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtPrecoLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtValorBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtPrecoUnitario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.btnAlterarProduto = new System.Windows.Forms.Button();
             this.ExcluirProduto = new System.Windows.Forms.Button();
             this.txtQuantidadeRestante = new System.Windows.Forms.TextBox();
@@ -57,20 +60,16 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label10 = new System.Windows.Forms.Label();
             this.txtnomeProduto = new System.Windows.Forms.TextBox();
             this.lbNomeProduto = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAtivar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
-            this.txtPrecoUnitario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtValorBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtPrecoLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.txtTotalDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.txtTotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.gbProduto.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -124,15 +123,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Colaborador:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Produtos:";
             // 
             // label4
             // 
@@ -219,14 +209,89 @@ namespace crud_teste.vieew.ListaDePedidos
             this.gbProduto.TabStop = false;
             this.gbProduto.Text = "Produto";
             // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(513, 110);
+            this.txtDesconto.MaxLength = 15;
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Negative = System.Drawing.Color.Red;
+            this.txtDesconto.Positive = System.Drawing.Color.Green;
+            this.txtDesconto.Size = new System.Drawing.Size(170, 20);
+            this.txtDesconto.StyleText = false;
+            this.txtDesconto.TabIndex = 22;
+            this.txtDesconto.Text = "0,00";
+            this.txtDesconto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtDesconto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtPrecoLiquido
+            // 
+            this.txtPrecoLiquido.Location = new System.Drawing.Point(513, 150);
+            this.txtPrecoLiquido.MaxLength = 15;
+            this.txtPrecoLiquido.Name = "txtPrecoLiquido";
+            this.txtPrecoLiquido.Negative = System.Drawing.Color.Red;
+            this.txtPrecoLiquido.Positive = System.Drawing.Color.Green;
+            this.txtPrecoLiquido.ReadOnly = true;
+            this.txtPrecoLiquido.Size = new System.Drawing.Size(170, 20);
+            this.txtPrecoLiquido.StyleText = false;
+            this.txtPrecoLiquido.TabIndex = 21;
+            this.txtPrecoLiquido.Text = "0,00";
+            this.txtPrecoLiquido.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtPrecoLiquido.Zero = System.Drawing.Color.Black;
+            // 
+            // txtValorBruto
+            // 
+            this.txtValorBruto.Location = new System.Drawing.Point(513, 70);
+            this.txtValorBruto.MaxLength = 15;
+            this.txtValorBruto.Name = "txtValorBruto";
+            this.txtValorBruto.Negative = System.Drawing.Color.Red;
+            this.txtValorBruto.Positive = System.Drawing.Color.Green;
+            this.txtValorBruto.ReadOnly = true;
+            this.txtValorBruto.Size = new System.Drawing.Size(170, 20);
+            this.txtValorBruto.StyleText = false;
+            this.txtValorBruto.TabIndex = 20;
+            this.txtValorBruto.Text = "0,00";
+            this.txtValorBruto.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtValorBruto.Zero = System.Drawing.Color.Black;
+            // 
+            // txtPrecoUnitario
+            // 
+            this.txtPrecoUnitario.Location = new System.Drawing.Point(513, 30);
+            this.txtPrecoUnitario.MaxLength = 15;
+            this.txtPrecoUnitario.Name = "txtPrecoUnitario";
+            this.txtPrecoUnitario.Negative = System.Drawing.Color.Red;
+            this.txtPrecoUnitario.Positive = System.Drawing.Color.Green;
+            this.txtPrecoUnitario.ReadOnly = true;
+            this.txtPrecoUnitario.Size = new System.Drawing.Size(170, 20);
+            this.txtPrecoUnitario.StyleText = false;
+            this.txtPrecoUnitario.TabIndex = 19;
+            this.txtPrecoUnitario.Text = "0,00";
+            this.txtPrecoUnitario.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtPrecoUnitario.Zero = System.Drawing.Color.Black;
+            // 
             // btnAlterarProduto
             // 
             this.btnAlterarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnAlterarProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterarProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAlterarProduto.Location = new System.Drawing.Point(878, 110);
+            this.btnAlterarProduto.Location = new System.Drawing.Point(859, 110);
             this.btnAlterarProduto.Name = "btnAlterarProduto";
-            this.btnAlterarProduto.Size = new System.Drawing.Size(146, 66);
+            this.btnAlterarProduto.Size = new System.Drawing.Size(181, 74);
             this.btnAlterarProduto.TabIndex = 18;
             this.btnAlterarProduto.Text = "Alterar Produto";
             this.btnAlterarProduto.UseVisualStyleBackColor = false;
@@ -237,9 +302,9 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ExcluirProduto.BackColor = System.Drawing.Color.Red;
             this.ExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExcluirProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ExcluirProduto.Location = new System.Drawing.Point(878, 30);
+            this.ExcluirProduto.Location = new System.Drawing.Point(859, 19);
             this.ExcluirProduto.Name = "ExcluirProduto";
-            this.ExcluirProduto.Size = new System.Drawing.Size(146, 60);
+            this.ExcluirProduto.Size = new System.Drawing.Size(181, 71);
             this.ExcluirProduto.TabIndex = 17;
             this.ExcluirProduto.Text = "Excluir Produto";
             this.ExcluirProduto.UseVisualStyleBackColor = false;
@@ -352,17 +417,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.lbNomeProduto.TabIndex = 0;
             this.lbNomeProduto.Text = "Nome";
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(123, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(368, 24);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1.DoubleClick += new System.EventHandler(this.textBox1_DoubleClick);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -383,11 +437,11 @@ namespace crud_teste.vieew.ListaDePedidos
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(694, 78);
+            this.button2.Location = new System.Drawing.Point(874, 78);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 64);
+            this.button2.Size = new System.Drawing.Size(181, 64);
             this.button2.TabIndex = 20;
             this.button2.Text = "Adicionar Produto";
             this.button2.UseVisualStyleBackColor = false;
@@ -423,60 +477,10 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtAtivo.Size = new System.Drawing.Size(181, 20);
             this.txtAtivo.TabIndex = 23;
             // 
-            // txtPrecoUnitario
-            // 
-            this.txtPrecoUnitario.Location = new System.Drawing.Point(513, 30);
-            this.txtPrecoUnitario.Name = "txtPrecoUnitario";
-            this.txtPrecoUnitario.Negative = System.Drawing.Color.Red;
-            this.txtPrecoUnitario.Positive = System.Drawing.Color.Green;
-            this.txtPrecoUnitario.ReadOnly = true;
-            this.txtPrecoUnitario.Size = new System.Drawing.Size(170, 20);
-            this.txtPrecoUnitario.StyleText = false;
-            this.txtPrecoUnitario.TabIndex = 19;
-            this.txtPrecoUnitario.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtPrecoUnitario.Zero = System.Drawing.Color.Black;
-            // 
-            // txtValorBruto
-            // 
-            this.txtValorBruto.Location = new System.Drawing.Point(513, 70);
-            this.txtValorBruto.Name = "txtValorBruto";
-            this.txtValorBruto.Negative = System.Drawing.Color.Red;
-            this.txtValorBruto.Positive = System.Drawing.Color.Green;
-            this.txtValorBruto.ReadOnly = true;
-            this.txtValorBruto.Size = new System.Drawing.Size(170, 20);
-            this.txtValorBruto.StyleText = false;
-            this.txtValorBruto.TabIndex = 20;
-            this.txtValorBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtValorBruto.Zero = System.Drawing.Color.Black;
-            // 
-            // txtPrecoLiquido
-            // 
-            this.txtPrecoLiquido.Location = new System.Drawing.Point(513, 150);
-            this.txtPrecoLiquido.Name = "txtPrecoLiquido";
-            this.txtPrecoLiquido.Negative = System.Drawing.Color.Red;
-            this.txtPrecoLiquido.Positive = System.Drawing.Color.Green;
-            this.txtPrecoLiquido.ReadOnly = true;
-            this.txtPrecoLiquido.Size = new System.Drawing.Size(170, 20);
-            this.txtPrecoLiquido.StyleText = false;
-            this.txtPrecoLiquido.TabIndex = 21;
-            this.txtPrecoLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtPrecoLiquido.Zero = System.Drawing.Color.Black;
-            // 
             // txtTotalBruto
             // 
             this.txtTotalBruto.Location = new System.Drawing.Point(528, 375);
+            this.txtTotalBruto.MaxLength = 15;
             this.txtTotalBruto.Name = "txtTotalBruto";
             this.txtTotalBruto.Negative = System.Drawing.Color.Red;
             this.txtTotalBruto.Positive = System.Drawing.Color.Green;
@@ -484,6 +488,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalBruto.Size = new System.Drawing.Size(206, 20);
             this.txtTotalBruto.StyleText = false;
             this.txtTotalBruto.TabIndex = 22;
+            this.txtTotalBruto.Text = "0,00";
             this.txtTotalBruto.Value = new decimal(new int[] {
             0,
             0,
@@ -494,6 +499,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // txtTotalDesconto
             // 
             this.txtTotalDesconto.Location = new System.Drawing.Point(528, 425);
+            this.txtTotalDesconto.MaxLength = 15;
             this.txtTotalDesconto.Name = "txtTotalDesconto";
             this.txtTotalDesconto.Negative = System.Drawing.Color.Red;
             this.txtTotalDesconto.Positive = System.Drawing.Color.Green;
@@ -501,6 +507,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalDesconto.Size = new System.Drawing.Size(206, 20);
             this.txtTotalDesconto.StyleText = false;
             this.txtTotalDesconto.TabIndex = 24;
+            this.txtTotalDesconto.Text = "0,00";
             this.txtTotalDesconto.Value = new decimal(new int[] {
             0,
             0,
@@ -511,6 +518,7 @@ namespace crud_teste.vieew.ListaDePedidos
             // txtTotalLiquido
             // 
             this.txtTotalLiquido.Location = new System.Drawing.Point(528, 475);
+            this.txtTotalLiquido.MaxLength = 15;
             this.txtTotalLiquido.Name = "txtTotalLiquido";
             this.txtTotalLiquido.Negative = System.Drawing.Color.Red;
             this.txtTotalLiquido.Positive = System.Drawing.Color.Green;
@@ -518,6 +526,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalLiquido.Size = new System.Drawing.Size(206, 20);
             this.txtTotalLiquido.StyleText = false;
             this.txtTotalLiquido.TabIndex = 25;
+            this.txtTotalLiquido.Text = "0,00";
             this.txtTotalLiquido.Value = new decimal(new int[] {
             0,
             0,
@@ -525,27 +534,25 @@ namespace crud_teste.vieew.ListaDePedidos
             131072});
             this.txtTotalLiquido.Zero = System.Drawing.Color.Black;
             // 
-            // txtDesconto
+            // button7
             // 
-            this.txtDesconto.Location = new System.Drawing.Point(513, 110);
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Negative = System.Drawing.Color.Red;
-            this.txtDesconto.Positive = System.Drawing.Color.Green;
-            this.txtDesconto.Size = new System.Drawing.Size(170, 20);
-            this.txtDesconto.StyleText = false;
-            this.txtDesconto.TabIndex = 22;
-            this.txtDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtDesconto.Zero = System.Drawing.Color.Black;
+            this.button7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button7.Location = new System.Drawing.Point(694, 78);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(165, 64);
+            this.button7.TabIndex = 36;
+            this.button7.Text = "Produtos Selecionados";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // ConsultarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 531);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.txtTotalLiquido);
             this.Controls.Add(this.txtTotalDesconto);
             this.Controls.Add(this.txtTotalBruto);
@@ -553,7 +560,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnAtivar);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbProduto);
             this.Controls.Add(this.btnAlterarVenda);
             this.Controls.Add(this.label8);
@@ -561,7 +567,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtQuantidadeTotal);
@@ -590,7 +595,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.TextBox txtQuantidadeTotal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -605,7 +609,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtquantidade;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtquantidadeemestoque;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -626,5 +629,6 @@ namespace crud_teste.vieew.ListaDePedidos
         private Config.Custom_Controls.MoneyTextBox txtTotalDesconto;
         private Config.Custom_Controls.MoneyTextBox txtTotalLiquido;
         private Config.Custom_Controls.MoneyTextBox txtDesconto;
+        private System.Windows.Forms.Button button7;
     }
 }

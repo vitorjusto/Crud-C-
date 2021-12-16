@@ -1,8 +1,6 @@
-﻿using crud_teste.Config;
-using crud_teste.Config.Mensagem;
+﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model;
-using crud_teste.Model.Object_Values;
 using crud_teste.Validation;
 using System;
 using System.Linq;
@@ -21,8 +19,6 @@ namespace crud_teste.vieew.Consultar
             Temas.AtribuirTema(this);
             try
             {
-
-
                 produtoGlobal.IdProduto = id;
                 produtoGlobal = oAlterar.Consultar(id);
                 atribuirCampos(produtoGlobal);
@@ -113,27 +109,11 @@ namespace crud_teste.vieew.Consultar
                 new CaixaDeErro().FalhaNoBancoDeDados(); 
             }
         }
-
-        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
-
-        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
-
-        private void btnAtivo_Click(object sender, EventArgs e) 
+        private void btnAtivo_Click(object sender, EventArgs e)
         {
             produtoGlobal.Ativo = !produtoGlobal.Ativo;
-
-
             txtAtivo.Text = produtoGlobal.Ativo ? "Ativo" : "Inativo";
             btnAtivo.Text = produtoGlobal.Ativo ? "Inativar" : "Reativar";
-
         }
-
-        private void ConsultarProduto_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

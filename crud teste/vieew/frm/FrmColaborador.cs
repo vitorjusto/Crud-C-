@@ -1,14 +1,11 @@
-﻿using System;
-using CRUD_teste.Model;
-using System.Windows.Forms;
-using System.Collections.Generic;
+﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Validation;
+using CRUD_teste.Model;
+using System;
 using System.Linq;
+using System.Windows.Forms;
 using Tema;
-using crud_teste.Config;
-using crud_teste.Model.Object_Values;
-using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -95,10 +92,7 @@ namespace crud_teste
             colaborador.endereco.UF = UF.Text;
             colaborador.endereco.Complemento = Complemento.Text;
             colaborador.endereco.Bairro = Bairro.Text;
-
-
             colaborador.endereco.Numero = Numero.Text;
-
             colaborador.DadosBancarios.Banco = Banco.Text;
             colaborador.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0" : Agencia.Text);
             colaborador.DadosBancarios.Conta = int.Parse(Conta.Text == "" ? "0" : Conta.Text);
@@ -114,5 +108,6 @@ namespace crud_teste
 
         private void Agencia_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
 
+        private void Conta_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = Global.isNotIntChar(e.KeyChar);
     }
 }

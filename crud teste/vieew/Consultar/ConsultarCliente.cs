@@ -7,7 +7,6 @@ using crud_teste.Validation;
 using System.Linq;
 using crud_teste.Model.Object_Values;
 using Tema;
-using crud_teste.Config;
 using crud_teste.Config.Mensagem;
 
 namespace crud_teste
@@ -114,7 +113,6 @@ namespace crud_teste
         {
             clienteglobal.Ativo = !clienteglobal.Ativo;
 
-
             txtAtivo.Text = clienteglobal.Ativo ? "Ativo" : "Não Ativo";
             Excluir.Text = clienteglobal.Ativo ? "Desativar" : "Ativar";
 
@@ -136,12 +134,8 @@ namespace crud_teste
             clienteglobal.contato.Email = Email.Text;
             clienteglobal.DataDeNascimento = data.Value;
             clienteglobal.LimiteDeCompra = ValorLimite.Text;
-
-
             clienteglobal.contato.Celular = Celular.Text;
-
             clienteglobal.contato.Celular.DDI = DDI.Text;
-
             clienteglobal.endereco.Cep = CEP.Text;
             clienteglobal.endereco.Logradouro = Logradouro.Text;
             clienteglobal.endereco.Cidade = Cidade.Text;
@@ -153,16 +147,13 @@ namespace crud_teste
             return clienteglobal;
 
         }
-
         private void ValorLimite_TextChanged_1(object sender, EventArgs e)
         {
             clienteglobal.LimiteDeCompra = ValorLimite.Text;
             clienteglobal.CalcularRestante();
             txtLimiteRestante.Text = clienteglobal.LimiteRestante.ToString();
         }
-    }
-      
-        
+    } 
 }
 
 

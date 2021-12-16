@@ -65,6 +65,8 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
+            this.Salario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -77,8 +79,6 @@ namespace crud_teste
             this.Conta = new System.Windows.Forms.TextBox();
             this.Agencia = new System.Windows.Forms.TextBox();
             this.Banco = new System.Windows.Forms.TextBox();
-            this.Salario = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -195,6 +195,7 @@ namespace crud_teste
             // Logradouro
             // 
             this.Logradouro.Location = new System.Drawing.Point(79, 60);
+            this.Logradouro.MaxLength = 99;
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(85, 20);
             this.Logradouro.TabIndex = 16;
@@ -435,6 +436,38 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(303, 100);
+            this.Porcentagem.MaxLength = 15;
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(112, 20);
+            this.Porcentagem.TabIndex = 47;
+            this.Porcentagem.Text = "0,00";
+            this.Porcentagem.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            // 
+            // Salario
+            // 
+            this.Salario.Location = new System.Drawing.Point(59, 100);
+            this.Salario.MaxLength = 15;
+            this.Salario.Name = "Salario";
+            this.Salario.Negative = System.Drawing.Color.Red;
+            this.Salario.Positive = System.Drawing.Color.Green;
+            this.Salario.Size = new System.Drawing.Size(101, 20);
+            this.Salario.StyleText = false;
+            this.Salario.TabIndex = 46;
+            this.Salario.Text = "0,00";
+            this.Salario.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.Salario.Zero = System.Drawing.Color.Black;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Numero);
@@ -506,6 +539,7 @@ namespace crud_teste
             this.Digito.Name = "Digito";
             this.Digito.Size = new System.Drawing.Size(32, 20);
             this.Digito.TabIndex = 8;
+            this.Digito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // label22
             // 
@@ -550,6 +584,7 @@ namespace crud_teste
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(120, 20);
             this.Conta.TabIndex = 2;
+            this.Conta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // Agencia
             // 
@@ -563,37 +598,10 @@ namespace crud_teste
             // Banco
             // 
             this.Banco.Location = new System.Drawing.Point(79, 20);
+            this.Banco.MaxLength = 99;
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(90, 20);
             this.Banco.TabIndex = 0;
-            // 
-            // Salario
-            // 
-            this.Salario.Location = new System.Drawing.Point(59, 100);
-            this.Salario.Name = "Salario";
-            this.Salario.Negative = System.Drawing.Color.Red;
-            this.Salario.Positive = System.Drawing.Color.Green;
-            this.Salario.Size = new System.Drawing.Size(101, 20);
-            this.Salario.StyleText = false;
-            this.Salario.TabIndex = 46;
-            this.Salario.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.Salario.Zero = System.Drawing.Color.Black;
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Location = new System.Drawing.Point(303, 100);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(112, 20);
-            this.Porcentagem.TabIndex = 47;
-            this.Porcentagem.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             // 
             // FrmColaborador
             // 

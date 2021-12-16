@@ -1,14 +1,12 @@
-﻿using CRUD_teste.Model;
-using System;
-using System.Collections.Generic;
+﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
-using System.Windows.Forms;
-using crud_teste.vieew;
 using crud_teste.Validation;
+using crud_teste.vieew;
+using CRUD_teste.Model;
+using System;
 using System.Linq;
+using System.Windows.Forms;
 using Tema;
-using crud_teste.Config;
-using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -48,14 +46,10 @@ namespace crud_teste
             DDI.Text = colaborador.contato.Celular.DDI;
             emailText.Text = colaborador.contato.Email;
             Data.Value = colaborador.DataDeNascimento;
-
             txtcomissao.Text = colaborador.comissao.GetAsString();
             txtAtivo.Text = colaboradorGlobal.Ativo ? "Ativo" : "Não Ativo";
             Excluir.Text = colaboradorGlobal.Ativo ? "Desativar" : "Ativar";
-
             AtribuirCamposEnderecos(colaborador.endereco);
-
-
             Banco.Text = colaborador.DadosBancarios.Banco;
             Agencia.Text = colaborador.DadosBancarios.Agencia.ToString() ;
             Conta.Text = colaborador.DadosBancarios.Conta.ToString();
@@ -111,9 +105,7 @@ namespace crud_teste
             }
             else
             {
-
                 new CaixaDeAviso().MensagemDeOk(validadores.Errors.FirstOrDefault().ToString());
-
             }
 
         }
@@ -127,10 +119,9 @@ namespace crud_teste
             Excluir.Text = colaboradorGlobal.Ativo ? "Desativar" : "Ativar";
         }
 
-        private void ConsultarColaborador_Load(object sender, EventArgs e)
-        {
+        private void ConsultarColaborador_Load(object sender, EventArgs e) =>
             Temas.AtribuirTema(this);
-        }
+
 
         public void preencherCampos()
         {
@@ -140,7 +131,6 @@ namespace crud_teste
             colaboradorGlobal.Sexo = Sexo.Text;
 
             colaboradorGlobal.Salario = Salario.Text;
-
             colaboradorGlobal.DataDeNascimento = Data.Value;
             colaboradorGlobal.CPF = CPF.Text;
             colaboradorGlobal.contato.Email = emailText.Text;
@@ -153,10 +143,7 @@ namespace crud_teste
             colaboradorGlobal.endereco.UF = UF.Text;
             colaboradorGlobal.endereco.Complemento = Complemento.Text;
             colaboradorGlobal.endereco.Bairro = Bairro.Text;
-
-
             colaboradorGlobal.endereco.Numero = Numero.Text;
-
             colaboradorGlobal.DadosBancarios.Banco = Banco.Text;
             colaboradorGlobal.DadosBancarios.Agencia = int.Parse(Agencia.Text == "" ? "0": Agencia.Text);
             colaboradorGlobal.DadosBancarios.Conta = int.Parse(Conta.Text == "" ? "0" : Conta.Text);

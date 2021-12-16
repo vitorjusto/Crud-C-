@@ -1,13 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using CRUD_teste.Model;
+﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
-using crud_teste.Validation;
-using System.Linq;
 using crud_teste.Model.Object_Values;
+using crud_teste.Validation;
+using CRUD_teste.Model;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 using Tema;
-using crud_teste.Config;
-using crud_teste.Config.Mensagem;
 
 namespace crud_teste
 {
@@ -16,9 +15,7 @@ namespace crud_teste
         public FrmCliente()
         {
             InitializeComponent();
-
         }
-
         private void paginaInicialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo voltar a pagina principal?"))
@@ -26,21 +23,13 @@ namespace crud_teste
                 this.Close();
                 new ListarClientes().Show();
             }
-
         }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-            var cliente = new Cliente();
-            cliente = preencherCampos();
+            var cliente = preencherCampos();
             ClienteValidation validar = new ClienteValidation();
 
             var validateres = validar.Validate(cliente);
-
             if (validateres.IsValid)
             {
                 if (new CaixaDePergunta().MensagemDeSimENao("Deseja mesmo cadastrar os dados?"))
@@ -51,8 +40,6 @@ namespace crud_teste
                         var id = oAlterar.conectarComDAO(cliente);
 
                         new CaixaDeInformacao().MensagemDeOk($"Dados cadastrados com sucesso !!!\n id = {id}");
-
-
                         new ListarClientes().Show();
                         this.Close();
 
@@ -72,9 +59,7 @@ namespace crud_teste
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
-
             ValorLimite.Text = MyDinheiro.SetTextBoxAsMoneyValue(ValorLimite.Text);
-
         }
         public Cliente preencherCampos()
         {
@@ -95,12 +80,9 @@ namespace crud_teste
             cliente.endereco.UF = UF.Text;
             cliente.endereco.Complemento = Complemento.Text;
             cliente.endereco.Bairro = Bairro.Text;
-
-
             cliente.endereco.Numero = Numero.Text;
 
             return cliente;
-
         }
 
         private void Sexo_KeyPress(object sender, KeyPressEventArgs e) =>

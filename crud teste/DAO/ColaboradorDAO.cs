@@ -426,7 +426,7 @@ namespace crud_teste
                 }
                 else
                 {
-                    queryWhere = $"Nome like '{nome}%'";
+                    queryWhere = $"Nome + ' ' + Sobrenome like '{nome}%'";
                 }
 
                 var query = $@"select idcolaborador, p.idpessoa, Nome, SobreNome, Sexo, Salario,  DataDeNascimento, Cidade, UF ,bairro, logradouro, numero, celular, email, telefone, Ativo

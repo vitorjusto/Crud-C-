@@ -22,15 +22,6 @@ namespace crud_teste.vieew.Listar
         private void ListarVendaAPrazo_Load(object sender, EventArgs e)
         {
             Temas.AtribuirTema(this);
-            try
-            {
-                listadevenda = oAlterar.ListarVendaAPrazo();
-                AtualizarLista(false);
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
         }
 
         private void AtualizarLista(bool comPago)

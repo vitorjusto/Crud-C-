@@ -4,6 +4,7 @@ using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
 using crud_teste.Model.Object_Values;
+using crud_teste.vieew.TelaDeVenda;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,17 +27,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             Temas.AtribuirTema(this);
             gbPesquisarPorData.Visible = false;
             gbCondicao.Visible = false;
-            try
-            { 
-            Clientes = oAlterar.RelatorioDeVenda();
-
-            PreencherDataGrid();
-            CalcularLucros(false);
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-            }
         }
 
         private void PreencherDataGrid()
@@ -104,7 +94,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 txtTotalDeDesconto.Text = lista.Sum(x => x.TotalDeDesconto.GetAsDecimal() + x.TotalDedescontoAVista.GetAsDecimal()).ToString("c2");
                 txtTotalLiquido.Text = lista.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
 
-                var lucro = lista.Sum(x => x.TotalLiquido.GetAsDecimal() - x.PrecoDeCusto.GetAsDecimal());
+                var lucro = lista.Sum(x => (rbPrecoBruto.Checked ? x.TotalBruto.GetAsDecimal(): x.TotalLiquido.GetAsDecimal()) - x.PrecoDeCusto.GetAsDecimal());
                 txtLucro.Text = lucro.ToString("C2");
 
 
@@ -187,7 +177,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
                 }
             }
             else
-                new CaixaDeAviso().MensagemDeOk("Data Inicial é maior que a Data Final");
+                new CaixaDeAviso().MensagemDeOk("Data Inicial é maior que a Data Final ou a DataFinal vem Depois de Hoje");
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e) =>
@@ -274,6 +264,31 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private void cbcondicaopor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+                Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            var lista = Clientes;
+            if (lista.Count == 0)
+                return;
+
+            if (!cbConsiderarInativo.Checked)
+                lista = lista.Where(x => x.Ativo).ToList();
+
+            var lucro = lista.Sum(x => (rbPrecoBruto.Checked ? x.TotalBruto.GetAsDecimal(): x.TotalLiquido.GetAsDecimal()) - x.PrecoDeCusto.GetAsDecimal());
+            txtLucro.Text = lucro.ToString("C2");
+
         }
     }
 }

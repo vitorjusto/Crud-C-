@@ -31,6 +31,8 @@ namespace crud_teste
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtcomissao = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.Data = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@ namespace crud_teste
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.txtAtivo = new System.Windows.Forms.TextBox();
-            this.Porcentagem = new crud_teste.Config.Custom_Controls.PercentTextBox();
-            this.txtcomissao = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,6 +117,39 @@ namespace crud_teste
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
+            // 
+            // txtcomissao
+            // 
+            this.txtcomissao.Location = new System.Drawing.Point(635, 100);
+            this.txtcomissao.MaxLength = 15;
+            this.txtcomissao.Name = "txtcomissao";
+            this.txtcomissao.Negative = System.Drawing.Color.Red;
+            this.txtcomissao.Positive = System.Drawing.Color.Green;
+            this.txtcomissao.ReadOnly = true;
+            this.txtcomissao.Size = new System.Drawing.Size(120, 20);
+            this.txtcomissao.StyleText = false;
+            this.txtcomissao.TabIndex = 0;
+            this.txtcomissao.Text = "0,00";
+            this.txtcomissao.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.txtcomissao.Zero = System.Drawing.Color.Black;
+            // 
+            // Porcentagem
+            // 
+            this.Porcentagem.Location = new System.Drawing.Point(367, 100);
+            this.Porcentagem.MaxLength = 15;
+            this.Porcentagem.Name = "Porcentagem";
+            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
+            this.Porcentagem.TabIndex = 78;
+            this.Porcentagem.Text = "0,00";
+            this.Porcentagem.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
             // 
             // label23
             // 
@@ -340,6 +373,7 @@ namespace crud_teste
             // Logradouro
             // 
             this.Logradouro.Location = new System.Drawing.Point(90, 60);
+            this.Logradouro.MaxLength = 99;
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(75, 20);
             this.Logradouro.TabIndex = 42;
@@ -598,6 +632,7 @@ namespace crud_teste
             // Banco
             // 
             this.Banco.Location = new System.Drawing.Point(65, 20);
+            this.Banco.MaxLength = 99;
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(221, 20);
             this.Banco.TabIndex = 0;
@@ -623,35 +658,6 @@ namespace crud_teste
             this.txtAtivo.ReadOnly = true;
             this.txtAtivo.Size = new System.Drawing.Size(193, 20);
             this.txtAtivo.TabIndex = 70;
-            // 
-            // Porcentagem
-            // 
-            this.Porcentagem.Location = new System.Drawing.Point(367, 100);
-            this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
-            this.Porcentagem.TabIndex = 78;
-            this.Porcentagem.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            // 
-            // txtcomissao
-            // 
-            this.txtcomissao.Location = new System.Drawing.Point(635, 100);
-            this.txtcomissao.Name = "txtcomissao";
-            this.txtcomissao.Negative = System.Drawing.Color.Red;
-            this.txtcomissao.Positive = System.Drawing.Color.Green;
-            this.txtcomissao.ReadOnly = true;
-            this.txtcomissao.Size = new System.Drawing.Size(120, 20);
-            this.txtcomissao.StyleText = false;
-            this.txtcomissao.TabIndex = 0;
-            this.txtcomissao.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.txtcomissao.Zero = System.Drawing.Color.Black;
             // 
             // ConsultarColaborador
             // 

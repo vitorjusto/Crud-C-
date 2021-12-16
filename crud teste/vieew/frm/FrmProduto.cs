@@ -1,5 +1,4 @@
-﻿using crud_teste.Config;
-using crud_teste.Config.Mensagem;
+﻿using crud_teste.Config.Mensagem;
 using crud_teste.controller;
 using crud_teste.Model;
 using crud_teste.Model.Object_Values;
@@ -18,9 +17,6 @@ namespace crud_teste.vieew
             InitializeComponent();
 
             Temas.AtribuirTema(this);
-
-            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
-            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -80,26 +76,5 @@ namespace crud_teste.vieew
 
         private void Estoque_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntChar(e.KeyChar);
-
-        private void PrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeVenda.Text);
-
-        private void PrecoDeCusto_KeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = Global.isNotFloatText(e.KeyChar, PrecoDeCusto.Text);
-
-        private void PrecoDeVenda_Leave(object sender, EventArgs e)
-        {
-            PrecoDeVenda.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeVenda.Text);
-        }
-
-        private void PrecoDeCusto_Leave(object sender, EventArgs e)
-        {
-            PrecoDeCusto.Text = MyDinheiro.SetTextBoxAsMoneyValue(PrecoDeCusto.Text);
-        }
-
-        private void FrmProduto_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

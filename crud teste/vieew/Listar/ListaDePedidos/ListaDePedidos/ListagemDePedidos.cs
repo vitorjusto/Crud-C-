@@ -4,6 +4,7 @@ using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos;
 using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
+using crud_teste.vieew.TelaDeVenda;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -33,19 +34,6 @@ namespace crud_teste.vieew.ListaDePedidos
         public ListagemDePedidos()
         {
             InitializeComponent();
-            try
-            {
-                pedidos = oAlterar.Listar();
-
-            }
-            catch
-            {
-                new CaixaDeErro().FalhaNoBancoDeDados();
-                this.Close();
-                new ListarClientes().Show();
-
-            }
-            
             gbPesquisarPorData.Visible = false;
         }
 
@@ -96,7 +84,7 @@ namespace crud_teste.vieew.ListaDePedidos
             txtTotalGasto.Text = Ativos.Sum(x => x.TotalGasto).ToString("C");
             txttotalLiquido.Text = Ativos.Sum(x => x.TotalLiquido.GetAsDecimal()).ToString("C2");
 
-            var lucro = Ativos.Sum(x => x.TotalLiquido.GetAsDecimal() - x.TotalGasto);
+            var lucro = Ativos.Sum(x => (rbPrecoBruto.Checked ? x.TotalBruto.GetAsDecimal() : x.TotalLiquido.GetAsDecimal()) - x.TotalGasto);
             txtLucro.Text = lucro.ToString("c2");
 
             
@@ -128,11 +116,11 @@ namespace crud_teste.vieew.ListaDePedidos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pesquisar pesquisa = new pesquisar();
+           pesquisar pesquisa = new pesquisar();
 
-            pesquisa.nomeCliente = txtCliente.Text;
-            pesquisa.nomeColaborador = txtColaborador.Text;
-            pesquisa.nomeProduto = txtProduto.Text;
+            pesquisa.nomeCliente = txtCliente.Text.Trim();
+            pesquisa.nomeColaborador = txtColaborador.Text.Trim();
+            pesquisa.nomeProduto = txtProduto.Text.Trim();
 
             if (chkPesquisarPorData.Checked)
             {
@@ -142,7 +130,7 @@ namespace crud_teste.vieew.ListaDePedidos
 
                 if (!Global.ValidarDatas(pesquisa.dataInicial, pesquisa.dataFinal))
                 {
-                    new CaixaDeAviso().MensagemDeOk("Data Inicial vem depois da data Final");
+                    new CaixaDeAviso().MensagemDeOk("Data Inicial vem depois da data Final ou a Data Final Vem Depois de Hoje");
                     return;
                 }
             }
@@ -176,6 +164,46 @@ namespace crud_teste.vieew.ListaDePedidos
         {
             if (new CaixaDePergunta().MensagemDeSimENao("Deseja Realmente Criar um Arquvo do relatório completo de todas as vendas?"))
                 MexerComExcel.criararquivo();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Global.pesquisar("colaborador", txtColaborador.Text, txtColaborador);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Global.pesquisar("produto", txtProduto.Text, txtProduto);
+        }
+
+        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+                Global.pesquisar("cliente", txtCliente.Text, txtCliente);
+        }
+
+        private void txtColaborador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                Global.pesquisar("colaborador", txtColaborador.Text, txtColaborador);
+        }
+
+        private void txtProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                Global.pesquisar("produto", txtProduto.Text, txtProduto);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            var Ativos = pedidos.Where(x => x.ativo);
+            var lucro = Ativos.Sum(x => (rbPrecoBruto.Checked ? x.TotalBruto.GetAsDecimal(): x.TotalLiquido.GetAsDecimal()) - x.TotalGasto) ;
+            txtLucro.Text = lucro.ToString("c2");
         }
     }
 }

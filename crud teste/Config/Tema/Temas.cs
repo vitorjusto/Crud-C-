@@ -95,6 +95,16 @@ namespace Tema
 
                 Positive = Color.LightGreen;
                 Negative = Color.FromArgb(255, 150, 150);
+            }else if (Tema.Equals("Innova"))
+            {
+                MainColor = Color.White;
+                FontColor = Color.Black;
+                Strip = Color.FromArgb(26, 198, 255);
+                TextBoxBackColor = Color.White;
+                GroupBoxBackColor = Color.White;
+
+                Positive = Color.Green;
+                Negative = Color.Red;
             }
         }
         private static void SetDataGridTema(DataGridView control)
@@ -130,7 +140,7 @@ namespace Tema
             control.ForeColor = FontColor;
             control.BackColor = TextBoxBackColor;
 
-            if (Tema.Equals("Standard"))
+            if (Tema.Equals("Standard") || Tema.Equals("Innova"))
                 control.FlatStyle = FlatStyle.System;
             else
                 control.FlatStyle = FlatStyle.Flat;

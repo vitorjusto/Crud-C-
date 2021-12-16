@@ -65,24 +65,7 @@ namespace crud_teste.vieew
 
         private void textBox8_Click(object sender, EventArgs e)
         {
-            var listar = new ListarCarrinho(carrinhosL, venda.Pedido_Produto);
-            listar.ShowDialog();
 
-            carrinhosL = listar.carrinhosL;
-            venda.Pedido_Produto = listar.carrinhos;
-            if (listar.alterar)
-            {
-                carrinho = listar.carrinho;
-
-                Desconto.Text = carrinho.Desconto.GetAsString();
-                Quantidade.Text = carrinho.quantidade.ToString();
-
-                preenchervaloresnoproduto();
-
-                PreencherValoresCarrinhos();
-            }
-
-            AdicionarNaVenda();
         }
         private void NomeDoColaborador_DoubleClick(object sender, EventArgs e)
         {
@@ -111,6 +94,29 @@ namespace crud_teste.vieew
             listar.ShowDialog();
             carrinho.produto = listar.produto;
             preenchervaloresnoproduto();
+        }
+
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var listar = new ListarCarrinho(carrinhosL, venda.Pedido_Produto);
+            listar.ShowDialog();
+
+            carrinhosL = listar.carrinhosL;
+            venda.Pedido_Produto = listar.carrinhos;
+            if (listar.alterar)
+            {
+                carrinho = listar.carrinho;
+
+                Desconto.Text = carrinho.Desconto.GetAsString();
+                Quantidade.Text = carrinho.quantidade.ToString();
+
+                preenchervaloresnoproduto();
+
+                PreencherValoresCarrinhos();
+            }
+
+            AdicionarNaVenda();
         }
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e) =>
             e.Handled = Global.isNotIntText(e.KeyChar, Quantidade.Text);
@@ -362,15 +368,6 @@ namespace crud_teste.vieew
             if(new CaixaDeAviso().MensagemDeSimENao("Deseja Mesmo Cancelar A Venda?"))
                 LimparVenda();
         }
-
-
-
-        private void Desconto_Leave(object sender, EventArgs e) =>
-            Desconto.Text = MyDinheiro.SetTextBoxAsMoneyValue(Desconto.Text);
-
-
-        private void PrecoUnitario_TextChanged(object sender, EventArgs e) =>
-            PreencherValoresCarrinhos();
 
         private void DescontoAVista_Leave(object sender, EventArgs e)
         {

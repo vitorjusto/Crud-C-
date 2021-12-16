@@ -56,6 +56,7 @@ namespace crud_teste.vieew.Listar
             // txtquantidadeTotal
             // 
             this.txtquantidadeTotal.Location = new System.Drawing.Point(12, 105);
+            this.txtquantidadeTotal.MaxLength = 15;
             this.txtquantidadeTotal.Name = "txtquantidadeTotal";
             this.txtquantidadeTotal.Negative = System.Drawing.Color.Red;
             this.txtquantidadeTotal.Positive = System.Drawing.Color.Green;
@@ -93,6 +94,7 @@ namespace crud_teste.vieew.Listar
             this.Controls.Add(this.txtquantidadeTotal);
             this.Controls.Add(this.nudMeses);
             this.Name = "PagarMeses";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PagarMeses";
             this.Load += new System.EventHandler(this.PagarMeses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudMeses)).EndInit();

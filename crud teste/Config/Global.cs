@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_teste.vieew.TelaDeVenda;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -56,8 +57,22 @@ namespace crud_teste
 
         public static bool ValidarDatas(DateTime DataInicial, DateTime DataFinal)
         {
-            return DateTime.Compare(DataInicial.Date, DataFinal.Date) <= 0;
+            return DateTime.Compare(DataInicial.Date, DataFinal.Date) <= 0 && DateTime.Compare(DataFinal.Date, DateTime.Today) <= 0;
         }
 
+        public static void pesquisar(string nome, string entrada, TextBox control)
+        {
+            var listar = new ListarVendaCliente(nome, entrada);
+            listar.ShowDialog();
+            if (nome == "produto" && !string.IsNullOrEmpty(listar.produto.NomeDoProduto))
+            {
+                control.Text = listar.produto.NomeDoProduto;
+            }
+            else if (nome == "cliente" && !string.IsNullOrEmpty(listar.cliente.Nome))
+                control.Text = listar.cliente.nomeCompleto();
+            else if(nome == "colaborador" && !string.IsNullOrEmpty(listar.colaborador.Nome))
+                control.Text = listar.colaborador.nomeCompleto();
+
+        }
     }
 }

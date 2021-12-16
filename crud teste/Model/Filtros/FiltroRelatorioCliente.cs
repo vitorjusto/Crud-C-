@@ -94,13 +94,14 @@ namespace crud_teste.Model
                             SUM(V.quantidadetotal) as 'QuantidadeTotal',
                             SUM(V.TotalBruto) as 'TotalBruto', SUM(v.TotalDeDesconto) as 'TotalDeDesconto',
                             sum(v.DescontoAVista) as 'TotalDedescontoAVista', SUM(v.TotalLiquido) as 'TotalLiquido',
-                            c.LimiteRestante, p.Ativo,  SUM(v.Totalgasto) as 'PrecoDeCusto'
+                            c.LimiteRestante, p.Ativo,  SUM(ca.Totalgasto) as 'PrecoDeCusto'
 
                             from cliente c
                             inner join pessoa p on p.idPessoa = c.IdPessoa
                             inner join Venda v on v.idCliente = c.idCliente
+                            inner join Carrinho ca on ca.idVenda = v.idVenda
 
-                            where nome like @Nome +'%' and v.ativo = 1";
+                            where nome + ' ' + sobrenome like @Nome +'%' and v.ativo = 1";
 
             if (PesquisarPorData)
             {

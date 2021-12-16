@@ -211,7 +211,6 @@ namespace crud_teste.vieew.TelaDeVenda
                 else if (Buscar == "produto")
                 {
                     produto = oAlterarProduto.Consultar(x);
-                    produto.Estoque = produtos[e.RowIndex].Estoque;
                 }
 
                 this.Dispose();

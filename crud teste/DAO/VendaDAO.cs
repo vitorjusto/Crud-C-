@@ -282,7 +282,7 @@ namespace crud_teste.DAO
                             inner join Colaborador Co on Co.idColaborador = v.idColaborador inner join pessoa P2 on Co.IdPessoa = P2.idPessoa
 							inner join Carrinho ca on ca.idVenda = v.IdVenda inner join Produto pr on pr.IdProduto = ca.idProduto
 
-							where  P.nome like @NomeCliente + '%' and P2.nome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%' ";
+							where  P.nome + ' ' + P.sobrenome like @NomeCliente + '%' and P2.nome + ' ' + P2.sobrenome like @NomeColaborador + '%' and pr.NomeProduto like @NomeProduto + '%' ";
 
                 if (pesquisa.PesquisarPorData)
                 {
