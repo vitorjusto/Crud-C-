@@ -498,16 +498,22 @@ namespace crud_teste.DAO
             }
         }
 
-        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa)
+        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa, string Tipo)
         {
+
+
+            var query = $@"select * from vendaAPrazo vp 
+                             inner join Cliente c on c.idCliente = vp.idCliente 
+                             inner join pessoa p on p.idPessoa = c.idPessoa";
+
+            if (Tipo == "nome")
+                query += $"where p.nome + p.sobrenome like '{pesquisa}' + '%'";
+            else
+                query += $"where c.idcliente = {pesquisa}";
 
             try
             {
-                var query = $@"select * from vendaAPrazo vp 
-                             inner join Cliente c on c.idCliente = vp.idCliente 
-                             inner join pessoa p on p.idPessoa = c.idPessoa
-                              where p.nome + p.sobrenome like '{pesquisa}' + '%'";
-
+                
                 con.Open();
                 var resultado = con.Query<VendaAPrazo>(query).ToList();
                 con.Close();

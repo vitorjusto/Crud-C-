@@ -74,7 +74,14 @@ namespace crud_teste.vieew.Listar
         {
             try
             {
-                listadevenda = oAlterar.ListarVendaAPrazo(txtCliente.Text);
+                int.TryParse(txtCliente.Text, out int id);
+                if (id == 0)
+                {
+                    listadevenda = oAlterar.ListarVendaAPrazo(txtCliente.Text, "nome");
+                }else
+                {
+                    listadevenda = oAlterar.ListarVendaAPrazo(txtCliente.Text, "id");
+                }
                 AtualizarLista(cbInativo.Checked);
             }
             catch

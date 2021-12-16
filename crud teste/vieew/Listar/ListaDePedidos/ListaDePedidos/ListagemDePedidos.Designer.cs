@@ -306,7 +306,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 90);
             this.button4.TabIndex = 29;
-            this.button4.Text = "Gerar Relatório Xlsx";
+            this.button4.Text = "Gerar Relatório Excel";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

@@ -91,7 +91,7 @@ namespace crud_teste.DAO
                     queryWhere = $"IdProduto = {pesquisa}";
                 }
 
-                var query = $@"select idproduto, nomeProduto, precodevenda, fabricante, estoque from produto where {queryWhere}";
+                var query = $@"select idproduto, nomeProduto, precodevenda, fabricante, estoque, ativo from produto where {queryWhere}";
                 var resultado = con.Query<ProdutoListagem>(query);
                 return resultado.ToList();
 

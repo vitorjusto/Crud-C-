@@ -97,9 +97,9 @@ namespace crud_teste.controller
             return resultado;
         }
 
-        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa)
+        public List<VendaAPrazo> ListarVendaAPrazo(string pesquisa, string Tipo)
         {
-            var resultado = stmt.ListarVendaAPrazo(pesquisa);
+            var resultado = stmt.ListarVendaAPrazo(pesquisa, Tipo);
 
             VendaDAO stmtvenda = new VendaDAO();
             ClienteDAO stmtCliente = new ClienteDAO();

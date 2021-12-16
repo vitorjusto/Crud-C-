@@ -64,6 +64,7 @@ namespace crud_teste
             this.clienteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.colaboradorBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.CobTema = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboradorBindingSource1)).BeginInit();
@@ -281,11 +282,20 @@ namespace crud_teste
             "Sea",
             "Neutral",
             "Blue"});
-            this.CobTema.Location = new System.Drawing.Point(676, 283);
+            this.CobTema.Location = new System.Drawing.Point(98, 44);
             this.CobTema.Name = "CobTema";
             this.CobTema.Size = new System.Drawing.Size(121, 21);
             this.CobTema.TabIndex = 1;
             this.CobTema.SelectedIndexChanged += new System.EventHandler(this.CobTema_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Alterar Tema:";
             // 
             // ListarClientes
             // 
@@ -293,6 +303,7 @@ namespace crud_teste
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1283, 656);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CobTema);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -386,6 +397,7 @@ namespace crud_teste
         private System.Windows.Forms.ComboBox CobTema;
         private System.Windows.Forms.ToolStripMenuItem relatóriosDePedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contasAPagarToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 

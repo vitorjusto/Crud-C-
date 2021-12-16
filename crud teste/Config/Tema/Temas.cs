@@ -62,7 +62,7 @@ namespace Tema
             else if (Tema.Equals("Sea"))
             {
                 MainColor = Color.FromArgb(64, 143, 124);
-                FontColor = Color.Black;
+                FontColor = Color.White;
                 Strip = Color.FromArgb(84, 158, 65);
                 TextBoxBackColor = Color.FromArgb(66, 146, 168);
                 GroupBoxBackColor = Color.FromArgb(91, 166, 114);

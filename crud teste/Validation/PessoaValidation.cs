@@ -1,6 +1,7 @@
 ﻿using crud_teste.Model;
 using CRUD_teste.Model;
 using FluentValidation;
+using System;
 using System.Linq;
 
 namespace crud_teste.Validation
@@ -15,7 +16,7 @@ namespace crud_teste.Validation
             RuleFor(x => x.Sexo).NotEmpty().WithMessage("Sexo não pode ser vazio");
 
 
-            RuleFor(x => x.DataDeNascimento).NotEmpty().WithMessage("Data Não pode ser vazio");
+            RuleFor(x => x.DataDeNascimento).Must(ValidarData).WithMessage("Data Não pode vir depois do dia atual");
 
             RuleFor(x => x.CPF).SetValidator(new CPFValidation()).WithMessage("CPF inválida");
 
@@ -34,6 +35,11 @@ namespace crud_teste.Validation
 
             return validares.Errors.Count() < 3;
 
+        }
+
+        private bool ValidarData(DateTime DataDeNascimento)
+        {
+            return DateTime.Compare(DataDeNascimento, DateTime.Today) < 0;
         }
 
     }

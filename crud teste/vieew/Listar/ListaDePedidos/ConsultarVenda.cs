@@ -121,7 +121,6 @@ namespace crud_teste.vieew.ListaDePedidos
 
                         AlterarVenda oalterar = new AlterarVenda();
                         oalterar.aumentarEstoque(_pedido);
-
                         _venda.Pedido_Produto.Remove(_pedido);
                         oldList.Remove(_pedido);
                     }
