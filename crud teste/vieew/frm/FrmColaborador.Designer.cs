@@ -443,13 +443,6 @@ namespace crud_teste
             this.Porcentagem.Name = "Porcentagem";
             this.Porcentagem.Size = new System.Drawing.Size(112, 20);
             this.Porcentagem.TabIndex = 7;
-            this.Porcentagem.Text = "0,00";
-            this.Porcentagem.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            // 
             // Salario
             // 
             this.Salario.Location = new System.Drawing.Point(59, 100);
@@ -460,12 +453,6 @@ namespace crud_teste
             this.Salario.Size = new System.Drawing.Size(101, 20);
             this.Salario.StyleText = false;
             this.Salario.TabIndex = 6;
-            this.Salario.Text = "0,00";
-            this.Salario.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.Salario.Zero = System.Drawing.Color.Black;
             // 
             // groupBox2

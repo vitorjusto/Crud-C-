@@ -204,12 +204,6 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.StyleText = false;
             this.PrecoDeVenda.TabIndex = 3;
-            this.PrecoDeVenda.Text = "0,00";
-            this.PrecoDeVenda.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.PrecoDeVenda.Zero = System.Drawing.Color.Black;
             // 
             // PrecoDeCusto
@@ -222,12 +216,6 @@ namespace crud_teste.vieew.Consultar
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.StyleText = false;
             this.PrecoDeCusto.TabIndex = 4;
-            this.PrecoDeCusto.Text = "0,00";
-            this.PrecoDeCusto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.PrecoDeCusto.Zero = System.Drawing.Color.Black;
             // 
             // ConsultarProduto

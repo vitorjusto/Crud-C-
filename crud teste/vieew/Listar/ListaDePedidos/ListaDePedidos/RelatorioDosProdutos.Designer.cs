@@ -162,12 +162,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtMenosLucrativoTotal.Size = new System.Drawing.Size(94, 20);
             this.txtMenosLucrativoTotal.StyleText = false;
             this.txtMenosLucrativoTotal.TabIndex = 11;
-            this.txtMenosLucrativoTotal.Text = "0,00";
-            this.txtMenosLucrativoTotal.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtMenosLucrativoTotal.Zero = System.Drawing.Color.Black;
             // 
             // groupBox3
@@ -284,12 +278,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtMaisLucrativoTotal.Size = new System.Drawing.Size(94, 20);
             this.txtMaisLucrativoTotal.StyleText = false;
             this.txtMaisLucrativoTotal.TabIndex = 10;
-            this.txtMaisLucrativoTotal.Text = "0,00";
-            this.txtMaisLucrativoTotal.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtMaisLucrativoTotal.Zero = System.Drawing.Color.Black;
             // 
             // label1
@@ -610,12 +598,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtLucro.Size = new System.Drawing.Size(243, 20);
             this.txtLucro.StyleText = true;
             this.txtLucro.TabIndex = 18;
-            this.txtLucro.Text = "0,00";
-            this.txtLucro.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtLucro.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalGasto
@@ -629,12 +611,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtTotalGasto.Size = new System.Drawing.Size(243, 20);
             this.txtTotalGasto.StyleText = false;
             this.txtTotalGasto.TabIndex = 17;
-            this.txtTotalGasto.Text = "0,00";
-            this.txtTotalGasto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalGasto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalLiquido
@@ -648,12 +624,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtTotalLiquido.Size = new System.Drawing.Size(194, 20);
             this.txtTotalLiquido.StyleText = false;
             this.txtTotalLiquido.TabIndex = 16;
-            this.txtTotalLiquido.Text = "0,00";
-            this.txtTotalLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalLiquido.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalDeDesconto
@@ -667,12 +637,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtTotalDeDesconto.Size = new System.Drawing.Size(194, 20);
             this.txtTotalDeDesconto.StyleText = false;
             this.txtTotalDeDesconto.TabIndex = 15;
-            this.txtTotalDeDesconto.Text = "0,00";
-            this.txtTotalDeDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalDeDesconto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalBruto
@@ -686,12 +650,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtTotalBruto.Size = new System.Drawing.Size(100, 20);
             this.txtTotalBruto.StyleText = false;
             this.txtTotalBruto.TabIndex = 14;
-            this.txtTotalBruto.Text = "0,00";
-            this.txtTotalBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalBruto.Zero = System.Drawing.Color.Black;
             // 
             // txtQuantidadesDeProdutos
@@ -705,12 +663,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             this.txtQuantidadesDeProdutos.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidadesDeProdutos.StyleText = false;
             this.txtQuantidadesDeProdutos.TabIndex = 13;
-            this.txtQuantidadesDeProdutos.Text = "0,00";
-            this.txtQuantidadesDeProdutos.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtQuantidadesDeProdutos.Zero = System.Drawing.Color.Black;
             // 
             // label10

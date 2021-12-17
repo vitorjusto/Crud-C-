@@ -6,7 +6,6 @@ namespace crud_teste.Config.Custom_Controls
 {
     class DecimalBox : TextBox
     {
-        public decimal Value { get => ConverterDecimal(this.Text); set => this.Text = value.ToString(); }
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
@@ -18,7 +17,6 @@ namespace crud_teste.Config.Custom_Controls
             base.OnTextChanged(e);
             if (this.Text.Contains("-") && this.Text.IndexOf('-') != 0)
                 this.Text = this.Text.Replace("-", "");
-
         }
 
         protected decimal ConverterDecimal(string value)
@@ -34,9 +32,13 @@ namespace crud_teste.Config.Custom_Controls
             }
         }
 
+        public decimal PegarValorEmDecimal()
+        {
+            return ConverterDecimal(this.Text);
+        }
         protected bool stringvalida(string value)
         {
-            if (value == "-" || value == "," || value == ".")
+            if (value == "-" || value == "," || value == "." || value == "")
                 return false;
             else if (value.Contains("-,") || value.Contains("-."))
                 return false;

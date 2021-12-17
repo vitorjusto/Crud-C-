@@ -219,12 +219,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtDesconto.Size = new System.Drawing.Size(170, 20);
             this.txtDesconto.StyleText = false;
             this.txtDesconto.TabIndex = 22;
-            this.txtDesconto.Text = "0,00";
-            this.txtDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtDesconto.Zero = System.Drawing.Color.Black;
             // 
             // txtPrecoLiquido
@@ -238,12 +232,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtPrecoLiquido.Size = new System.Drawing.Size(170, 20);
             this.txtPrecoLiquido.StyleText = false;
             this.txtPrecoLiquido.TabIndex = 21;
-            this.txtPrecoLiquido.Text = "0,00";
-            this.txtPrecoLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtPrecoLiquido.Zero = System.Drawing.Color.Black;
             // 
             // txtValorBruto
@@ -257,12 +245,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtValorBruto.Size = new System.Drawing.Size(170, 20);
             this.txtValorBruto.StyleText = false;
             this.txtValorBruto.TabIndex = 20;
-            this.txtValorBruto.Text = "0,00";
-            this.txtValorBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtValorBruto.Zero = System.Drawing.Color.Black;
             // 
             // txtPrecoUnitario
@@ -276,12 +258,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtPrecoUnitario.Size = new System.Drawing.Size(170, 20);
             this.txtPrecoUnitario.StyleText = false;
             this.txtPrecoUnitario.TabIndex = 19;
-            this.txtPrecoUnitario.Text = "0,00";
-            this.txtPrecoUnitario.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtPrecoUnitario.Zero = System.Drawing.Color.Black;
             // 
             // btnAlterarProduto
@@ -488,12 +464,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalBruto.Size = new System.Drawing.Size(206, 20);
             this.txtTotalBruto.StyleText = false;
             this.txtTotalBruto.TabIndex = 22;
-            this.txtTotalBruto.Text = "0,00";
-            this.txtTotalBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalBruto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalDesconto
@@ -507,12 +477,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalDesconto.Size = new System.Drawing.Size(206, 20);
             this.txtTotalDesconto.StyleText = false;
             this.txtTotalDesconto.TabIndex = 24;
-            this.txtTotalDesconto.Text = "0,00";
-            this.txtTotalDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalDesconto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalLiquido
@@ -526,12 +490,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalLiquido.Size = new System.Drawing.Size(206, 20);
             this.txtTotalLiquido.StyleText = false;
             this.txtTotalLiquido.TabIndex = 25;
-            this.txtTotalLiquido.Text = "0,00";
-            this.txtTotalLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalLiquido.Zero = System.Drawing.Color.Black;
             // 
             // button7

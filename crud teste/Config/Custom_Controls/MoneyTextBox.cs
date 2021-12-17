@@ -14,7 +14,7 @@ namespace crud_teste.Config.Custom_Controls
         public Color Positive { get; set; }
         public Color Negative { get; set; }
         public Color Zero { get; set; }
-
+        
 
         protected override void OnEnter(EventArgs e)
         {
@@ -39,13 +39,16 @@ namespace crud_teste.Config.Custom_Controls
 
             if (StyleText)
             {
-                if (Value < 0.0M)
+                if (PegarValorEmDecimal() < 0.0M)
                     this.ForeColor = Negative;
-                else if (Value > 0.0M)
+                else if (PegarValorEmDecimal() > 0.0M)
                     this.ForeColor = Positive;
                 else
                     this.ForeColor = Zero;
             }
+
+            if (this.Text.Contains("-") && this.Text.IndexOf('-') != 0)
+                this.Text = this.Text.Replace("-", "");
         }
 
         public MoneyTextBox()

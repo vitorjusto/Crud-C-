@@ -130,12 +130,6 @@ namespace crud_teste
             this.txtcomissao.StyleText = false;
             this.txtcomissao.TabIndex = 8;
             this.txtcomissao.TabStop = false;
-            this.txtcomissao.Text = "0,00";
-            this.txtcomissao.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtcomissao.Zero = System.Drawing.Color.Black;
             // 
             // Porcentagem
@@ -145,12 +139,6 @@ namespace crud_teste
             this.Porcentagem.Name = "Porcentagem";
             this.Porcentagem.Size = new System.Drawing.Size(133, 20);
             this.Porcentagem.TabIndex = 7;
-            this.Porcentagem.Text = "0,00";
-            this.Porcentagem.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             // 
             // label23
             // 

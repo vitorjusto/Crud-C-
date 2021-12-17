@@ -233,11 +233,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtClienteMaisLucrativoValor.StyleText = false;
             this.txtClienteMaisLucrativoValor.TabIndex = 18;
             this.txtClienteMaisLucrativoValor.Text = "0,00";
-            this.txtClienteMaisLucrativoValor.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtClienteMaisLucrativoValor.Zero = System.Drawing.Color.Black;
             // 
             // txtClienteFiel
@@ -363,11 +358,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtMenosLucrativoValor.StyleText = false;
             this.txtMenosLucrativoValor.TabIndex = 19;
             this.txtMenosLucrativoValor.Text = "0,00";
-            this.txtMenosLucrativoValor.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtMenosLucrativoValor.Zero = System.Drawing.Color.Black;
             // 
             // txtMenosVendido
@@ -761,11 +751,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtLucro.StyleText = true;
             this.txtLucro.TabIndex = 17;
             this.txtLucro.Text = "0,00";
-            this.txtLucro.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtLucro.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalLiquido
@@ -780,11 +765,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtTotalLiquido.StyleText = false;
             this.txtTotalLiquido.TabIndex = 16;
             this.txtTotalLiquido.Text = "0,00";
-            this.txtTotalLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalLiquido.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalDeDesconto
@@ -799,11 +779,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtTotalDeDesconto.StyleText = false;
             this.txtTotalDeDesconto.TabIndex = 15;
             this.txtTotalDeDesconto.Text = "0,00";
-            this.txtTotalDeDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalDeDesconto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalBruto
@@ -818,11 +793,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtTotalBruto.StyleText = false;
             this.txtTotalBruto.TabIndex = 14;
             this.txtTotalBruto.Text = "0,00";
-            this.txtTotalBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalBruto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalDeVendas
@@ -837,11 +807,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtTotalDeVendas.StyleText = false;
             this.txtTotalDeVendas.TabIndex = 13;
             this.txtTotalDeVendas.Text = "0,00";
-            this.txtTotalDeVendas.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalDeVendas.Zero = System.Drawing.Color.Black;
             // 
             // txtQuantidadesDeProdutos
@@ -856,11 +821,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.txtQuantidadesDeProdutos.StyleText = false;
             this.txtQuantidadesDeProdutos.TabIndex = 12;
             this.txtQuantidadesDeProdutos.Text = "0,00";
-            this.txtQuantidadesDeProdutos.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtQuantidadesDeProdutos.Zero = System.Drawing.Color.Black;
             // 
             // label22

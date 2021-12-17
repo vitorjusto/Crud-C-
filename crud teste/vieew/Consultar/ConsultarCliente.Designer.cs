@@ -135,11 +135,6 @@ namespace crud_teste
             this.txtLimiteRestante.TabIndex = 5;
             this.txtLimiteRestante.TabStop = false;
             this.txtLimiteRestante.Text = "0,00";
-            this.txtLimiteRestante.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtLimiteRestante.Zero = System.Drawing.Color.Black;
             // 
             // ValorLimite
@@ -153,11 +148,6 @@ namespace crud_teste
             this.ValorLimite.StyleText = false;
             this.ValorLimite.TabIndex = 4;
             this.ValorLimite.Text = "0,00";
-            this.ValorLimite.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.ValorLimite.Zero = System.Drawing.Color.Black;
             this.ValorLimite.TextChanged += new System.EventHandler(this.ValorLimite_TextChanged_1);
             // 

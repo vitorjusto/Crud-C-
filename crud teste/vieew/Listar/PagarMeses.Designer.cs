@@ -65,11 +65,6 @@ namespace crud_teste.vieew.Listar
             this.txtquantidadeTotal.StyleText = false;
             this.txtquantidadeTotal.TabIndex = 1;
             this.txtquantidadeTotal.Text = "0,00";
-            this.txtquantidadeTotal.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtquantidadeTotal.Zero = System.Drawing.Color.Black;
             // 
             // button1

@@ -409,12 +409,6 @@ namespace crud_teste
             this.ValorLimite.Size = new System.Drawing.Size(330, 20);
             this.ValorLimite.StyleText = false;
             this.ValorLimite.TabIndex = 4;
-            this.ValorLimite.Text = "0,00";
-            this.ValorLimite.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.ValorLimite.Zero = System.Drawing.Color.Black;
             // 
             // CPF

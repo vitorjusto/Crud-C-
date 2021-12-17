@@ -312,11 +312,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtLucro.TabIndex = 34;
             this.txtLucro.TabStop = false;
             this.txtLucro.Text = "0,00";
-            this.txtLucro.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtLucro.Zero = System.Drawing.Color.Black;
             // 
             // txttotalLiquido
@@ -332,11 +327,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txttotalLiquido.TabIndex = 33;
             this.txttotalLiquido.TabStop = false;
             this.txttotalLiquido.Text = "0,00";
-            this.txttotalLiquido.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txttotalLiquido.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalGasto
@@ -352,11 +342,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalGasto.TabIndex = 32;
             this.txtTotalGasto.TabStop = false;
             this.txtTotalGasto.Text = "0,00";
-            this.txtTotalGasto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalGasto.Zero = System.Drawing.Color.Black;
             // 
             // txtDesconto
@@ -372,11 +357,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtDesconto.TabIndex = 31;
             this.txtDesconto.TabStop = false;
             this.txtDesconto.Text = "0,00";
-            this.txtDesconto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtDesconto.Zero = System.Drawing.Color.Black;
             // 
             // txtTotalBruto
@@ -392,11 +372,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalBruto.TabIndex = 30;
             this.txtTotalBruto.TabStop = false;
             this.txtTotalBruto.Text = "0,00";
-            this.txtTotalBruto.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
             this.txtTotalBruto.Zero = System.Drawing.Color.Black;
             // 
             // button4
