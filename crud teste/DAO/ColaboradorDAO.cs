@@ -1,9 +1,9 @@
-﻿using System.Data.SqlClient;
+﻿using crud_teste.Model;
 using CRUD_teste.Model;
-using System.Collections.Generic;
 using Dapper;
 using System;
-using crud_teste.Model;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace crud_teste

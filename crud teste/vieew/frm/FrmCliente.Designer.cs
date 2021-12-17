@@ -62,12 +62,12 @@ namespace crud_teste
             this.button1 = new System.Windows.Forms.Button();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ValorLimite = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.CPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Numero = new System.Windows.Forms.TextBox();
             this.Bairro = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ValorLimite = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,7 +125,7 @@ namespace crud_teste
             this.Sexo.Location = new System.Drawing.Point(54, 60);
             this.Sexo.Name = "Sexo";
             this.Sexo.Size = new System.Drawing.Size(125, 21);
-            this.Sexo.TabIndex = 5;
+            this.Sexo.TabIndex = 3;
             this.Sexo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sexo_KeyPress);
             // 
             // label4
@@ -161,7 +161,7 @@ namespace crud_teste
             this.CEP.Mask = "00000-000";
             this.CEP.Name = "CEP";
             this.CEP.Size = new System.Drawing.Size(82, 20);
-            this.CEP.TabIndex = 11;
+            this.CEP.TabIndex = 7;
             // 
             // label7
             // 
@@ -177,14 +177,14 @@ namespace crud_teste
             this.Logradouro.Location = new System.Drawing.Point(96, 60);
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(82, 20);
-            this.Logradouro.TabIndex = 13;
+            this.Logradouro.TabIndex = 11;
             // 
             // Cidade
             // 
             this.Cidade.Location = new System.Drawing.Point(292, 20);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(136, 20);
-            this.Cidade.TabIndex = 14;
+            this.Cidade.TabIndex = 8;
             // 
             // label8
             // 
@@ -232,7 +232,7 @@ namespace crud_teste
             this.UF.Location = new System.Drawing.Point(463, 20);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(48, 21);
-            this.UF.TabIndex = 17;
+            this.UF.TabIndex = 9;
             this.UF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UF_KeyPress);
             // 
             // label10
@@ -249,7 +249,7 @@ namespace crud_teste
             this.Complemento.Location = new System.Drawing.Point(292, 60);
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(219, 20);
-            this.Complemento.TabIndex = 19;
+            this.Complemento.TabIndex = 12;
             // 
             // label11
             // 
@@ -283,7 +283,7 @@ namespace crud_teste
             this.Email.Location = new System.Drawing.Point(509, 20);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(184, 20);
-            this.Email.TabIndex = 45;
+            this.Email.TabIndex = 17;
             // 
             // label16
             // 
@@ -310,7 +310,7 @@ namespace crud_teste
             this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(86, 20);
-            this.Celular2.TabIndex = 42;
+            this.Celular2.TabIndex = 16;
             // 
             // Celular1
             // 
@@ -318,7 +318,7 @@ namespace crud_teste
             this.Celular1.Mask = "+00";
             this.Celular1.Name = "Celular1";
             this.Celular1.Size = new System.Drawing.Size(41, 20);
-            this.Celular1.TabIndex = 41;
+            this.Celular1.TabIndex = 15;
             this.Celular1.Text = "55";
             // 
             // Telefone
@@ -327,7 +327,7 @@ namespace crud_teste
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(103, 20);
-            this.Telefone.TabIndex = 40;
+            this.Telefone.TabIndex = 14;
             // 
             // label14
             // 
@@ -365,7 +365,7 @@ namespace crud_teste
             this.button1.Location = new System.Drawing.Point(12, 347);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(224, 78);
-            this.button1.TabIndex = 47;
+            this.button1.TabIndex = 18;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -376,7 +376,7 @@ namespace crud_teste
             this.data.Location = new System.Drawing.Point(363, 100);
             this.data.Name = "data";
             this.data.Size = new System.Drawing.Size(330, 20);
-            this.data.TabIndex = 49;
+            this.data.TabIndex = 6;
             // 
             // groupBox1
             // 
@@ -399,13 +399,31 @@ namespace crud_teste
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
+            // ValorLimite
+            // 
+            this.ValorLimite.Location = new System.Drawing.Point(363, 60);
+            this.ValorLimite.MaxLength = 15;
+            this.ValorLimite.Name = "ValorLimite";
+            this.ValorLimite.Negative = System.Drawing.Color.Red;
+            this.ValorLimite.Positive = System.Drawing.Color.Green;
+            this.ValorLimite.Size = new System.Drawing.Size(330, 20);
+            this.ValorLimite.StyleText = false;
+            this.ValorLimite.TabIndex = 4;
+            this.ValorLimite.Text = "0,00";
+            this.ValorLimite.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.ValorLimite.Zero = System.Drawing.Color.Black;
+            // 
             // CPF
             // 
             this.CPF.Location = new System.Drawing.Point(54, 100);
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
             this.CPF.Size = new System.Drawing.Size(125, 20);
-            this.CPF.TabIndex = 52;
+            this.CPF.TabIndex = 5;
             // 
             // groupBox2
             // 
@@ -435,14 +453,14 @@ namespace crud_teste
             this.Numero.Location = new System.Drawing.Point(586, 59);
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(107, 20);
-            this.Numero.TabIndex = 23;
+            this.Numero.TabIndex = 13;
             // 
             // Bairro
             // 
             this.Bairro.Location = new System.Drawing.Point(586, 19);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(107, 20);
-            this.Bairro.TabIndex = 21;
+            this.Bairro.TabIndex = 10;
             // 
             // groupBox3
             // 
@@ -459,22 +477,6 @@ namespace crud_teste
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato";
-            // 
-            // ValorLimite
-            // 
-            this.ValorLimite.Location = new System.Drawing.Point(363, 60);
-            this.ValorLimite.Name = "ValorLimite";
-            this.ValorLimite.Negative = System.Drawing.Color.Red;
-            this.ValorLimite.Positive = System.Drawing.Color.Green;
-            this.ValorLimite.Size = new System.Drawing.Size(330, 20);
-            this.ValorLimite.StyleText = false;
-            this.ValorLimite.TabIndex = 54;
-            this.ValorLimite.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.ValorLimite.Zero = System.Drawing.Color.Black;
             // 
             // FrmCliente
             // 

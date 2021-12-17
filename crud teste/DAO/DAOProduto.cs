@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos;
 
 namespace crud_teste.DAO

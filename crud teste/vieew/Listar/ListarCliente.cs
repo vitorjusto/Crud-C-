@@ -43,13 +43,10 @@ namespace crud_teste.vieew
                     var j = 0;
                     while (j < 6)
                     {
-
                         dataGridCliente.Rows[index].Cells[j].Style = clienteinativo;
                         j++;
                     }
-
                     dataGridCliente.Rows[index].Cells[7].Value = "Ativar";
-
                 }
                 else if (!comAtivo && !cliente.Ativo)
                 {
@@ -59,7 +56,6 @@ namespace crud_teste.vieew
                 {
                     dataGridCliente.Rows[index].Cells[7].Value = "Inativar";
                 }
-
                 index++;
             }
             dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

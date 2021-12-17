@@ -96,7 +96,7 @@ namespace crud_teste.vieew
             this.CodigoDeBarras.MaxLength = 15;
             this.CodigoDeBarras.Name = "CodigoDeBarras";
             this.CodigoDeBarras.Size = new System.Drawing.Size(659, 20);
-            this.CodigoDeBarras.TabIndex = 4;
+            this.CodigoDeBarras.TabIndex = 2;
             // 
             // label3
             // 
@@ -131,7 +131,7 @@ namespace crud_teste.vieew
             this.Estoque.MaxLength = 14;
             this.Estoque.Name = "Estoque";
             this.Estoque.Size = new System.Drawing.Size(359, 20);
-            this.Estoque.TabIndex = 12;
+            this.Estoque.TabIndex = 5;
             this.Estoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Estoque_KeyPress);
             // 
             // Ativo
@@ -140,7 +140,7 @@ namespace crud_teste.vieew
             this.Ativo.Location = new System.Drawing.Point(554, 172);
             this.Ativo.Name = "Ativo";
             this.Ativo.Size = new System.Drawing.Size(50, 17);
-            this.Ativo.TabIndex = 14;
+            this.Ativo.TabIndex = 6;
             this.Ativo.Text = "Ativo";
             this.Ativo.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +158,7 @@ namespace crud_teste.vieew
             this.Fabricante.Location = new System.Drawing.Point(113, 210);
             this.Fabricante.Name = "Fabricante";
             this.Fabricante.Size = new System.Drawing.Size(660, 20);
-            this.Fabricante.TabIndex = 16;
+            this.Fabricante.TabIndex = 7;
             // 
             // button1
             // 
@@ -168,7 +168,7 @@ namespace crud_teste.vieew
             this.button1.Location = new System.Drawing.Point(15, 258);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(224, 78);
-            this.button1.TabIndex = 48;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -176,12 +176,14 @@ namespace crud_teste.vieew
             // PrecoDeVenda
             // 
             this.PrecoDeVenda.Location = new System.Drawing.Point(114, 130);
+            this.PrecoDeVenda.MaxLength = 15;
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Negative = System.Drawing.Color.Red;
             this.PrecoDeVenda.Positive = System.Drawing.Color.Green;
             this.PrecoDeVenda.Size = new System.Drawing.Size(125, 20);
             this.PrecoDeVenda.StyleText = false;
-            this.PrecoDeVenda.TabIndex = 49;
+            this.PrecoDeVenda.TabIndex = 3;
+            this.PrecoDeVenda.Text = "0,00";
             this.PrecoDeVenda.Value = new decimal(new int[] {
             0,
             0,
@@ -192,12 +194,14 @@ namespace crud_teste.vieew
             // PrecoDeCusto
             // 
             this.PrecoDeCusto.Location = new System.Drawing.Point(348, 130);
+            this.PrecoDeCusto.MaxLength = 15;
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Negative = System.Drawing.Color.Red;
             this.PrecoDeCusto.Positive = System.Drawing.Color.Green;
             this.PrecoDeCusto.Size = new System.Drawing.Size(124, 20);
             this.PrecoDeCusto.StyleText = false;
-            this.PrecoDeCusto.TabIndex = 50;
+            this.PrecoDeCusto.TabIndex = 4;
+            this.PrecoDeCusto.Text = "0,00";
             this.PrecoDeCusto.Value = new decimal(new int[] {
             0,
             0,

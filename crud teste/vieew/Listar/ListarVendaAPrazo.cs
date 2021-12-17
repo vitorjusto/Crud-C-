@@ -54,6 +54,8 @@ namespace crud_teste.vieew.Listar
                         j++;
                     }
                     dgvedasaprazo.Rows[index].Cells[8].Value = "Pago";
+                    dgvedasaprazo.Rows[index].Cells[8].Style.SelectionBackColor = Color.Gray;
+
                 }
                 else if (!comPago && !venda.Pendente)
                 {

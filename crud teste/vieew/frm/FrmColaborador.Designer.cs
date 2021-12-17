@@ -91,7 +91,7 @@ namespace crud_teste
             this.Nome.Location = new System.Drawing.Point(59, 20);
             this.Nome.Name = "Nome";
             this.Nome.Size = new System.Drawing.Size(101, 20);
-            this.Nome.TabIndex = 0;
+            this.Nome.TabIndex = 1;
             // 
             // label1
             // 
@@ -116,7 +116,7 @@ namespace crud_teste
             this.Sobrenome.Location = new System.Drawing.Point(303, 20);
             this.Sobrenome.Name = "Sobrenome";
             this.Sobrenome.Size = new System.Drawing.Size(427, 20);
-            this.Sobrenome.TabIndex = 3;
+            this.Sobrenome.TabIndex = 2;
             // 
             // Sexo
             // 
@@ -127,7 +127,7 @@ namespace crud_teste
             this.Sexo.Location = new System.Drawing.Point(59, 60);
             this.Sexo.Name = "Sexo";
             this.Sexo.Size = new System.Drawing.Size(101, 21);
-            this.Sexo.TabIndex = 5;
+            this.Sexo.TabIndex = 3;
             this.Sexo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sexo_KeyPress);
             // 
             // label3
@@ -181,7 +181,7 @@ namespace crud_teste
             this.CEP.Mask = "00000-000";
             this.CEP.Name = "CEP";
             this.CEP.Size = new System.Drawing.Size(84, 20);
-            this.CEP.TabIndex = 14;
+            this.CEP.TabIndex = 8;
             // 
             // label8
             // 
@@ -198,7 +198,7 @@ namespace crud_teste
             this.Logradouro.MaxLength = 99;
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(85, 20);
-            this.Logradouro.TabIndex = 16;
+            this.Logradouro.TabIndex = 12;
             // 
             // label9
             // 
@@ -214,7 +214,7 @@ namespace crud_teste
             this.Cidade.Location = new System.Drawing.Point(273, 20);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(142, 20);
-            this.Cidade.TabIndex = 18;
+            this.Cidade.TabIndex = 9;
             // 
             // label10
             // 
@@ -253,7 +253,7 @@ namespace crud_teste
             this.UF.Location = new System.Drawing.Point(486, 20);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(49, 21);
-            this.UF.TabIndex = 21;
+            this.UF.TabIndex = 10;
             this.UF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UF_KeyPress);
             // 
             // label11
@@ -270,14 +270,14 @@ namespace crud_teste
             this.Complemento.Location = new System.Drawing.Point(273, 60);
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(262, 20);
-            this.Complemento.TabIndex = 23;
+            this.Complemento.TabIndex = 13;
             // 
             // Bairro
             // 
             this.Bairro.Location = new System.Drawing.Point(625, 20);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(105, 20);
-            this.Bairro.TabIndex = 24;
+            this.Bairro.TabIndex = 11;
             // 
             // label12
             // 
@@ -312,7 +312,7 @@ namespace crud_teste
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(90, 20);
-            this.Telefone.TabIndex = 29;
+            this.Telefone.TabIndex = 15;
             // 
             // Celular1
             // 
@@ -320,7 +320,7 @@ namespace crud_teste
             this.Celular1.Mask = "+00";
             this.Celular1.Name = "Celular1";
             this.Celular1.Size = new System.Drawing.Size(39, 20);
-            this.Celular1.TabIndex = 30;
+            this.Celular1.TabIndex = 16;
             this.Celular1.Text = "55";
             // 
             // Celular2
@@ -329,7 +329,7 @@ namespace crud_teste
             this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(95, 20);
-            this.Celular2.TabIndex = 31;
+            this.Celular2.TabIndex = 17;
             // 
             // label15
             // 
@@ -354,7 +354,7 @@ namespace crud_teste
             this.Email.Location = new System.Drawing.Point(527, 20);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(203, 20);
-            this.Email.TabIndex = 34;
+            this.Email.TabIndex = 18;
             // 
             // CPF
             // 
@@ -362,7 +362,7 @@ namespace crud_teste
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
             this.CPF.Size = new System.Drawing.Size(104, 20);
-            this.CPF.TabIndex = 35;
+            this.CPF.TabIndex = 5;
             // 
             // label17
             // 
@@ -400,7 +400,7 @@ namespace crud_teste
             this.button1.Location = new System.Drawing.Point(23, 408);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(224, 78);
-            this.button1.TabIndex = 41;
+            this.button1.TabIndex = 23;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -411,7 +411,7 @@ namespace crud_teste
             this.Data.Location = new System.Drawing.Point(303, 60);
             this.Data.Name = "Data";
             this.Data.Size = new System.Drawing.Size(112, 20);
-            this.Data.TabIndex = 42;
+            this.Data.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -442,7 +442,7 @@ namespace crud_teste
             this.Porcentagem.MaxLength = 15;
             this.Porcentagem.Name = "Porcentagem";
             this.Porcentagem.Size = new System.Drawing.Size(112, 20);
-            this.Porcentagem.TabIndex = 47;
+            this.Porcentagem.TabIndex = 7;
             this.Porcentagem.Text = "0,00";
             this.Porcentagem.Value = new decimal(new int[] {
             0,
@@ -459,7 +459,7 @@ namespace crud_teste
             this.Salario.Positive = System.Drawing.Color.Green;
             this.Salario.Size = new System.Drawing.Size(101, 20);
             this.Salario.StyleText = false;
-            this.Salario.TabIndex = 46;
+            this.Salario.TabIndex = 6;
             this.Salario.Text = "0,00";
             this.Salario.Value = new decimal(new int[] {
             0,
@@ -497,7 +497,7 @@ namespace crud_teste
             this.Numero.MaxLength = 6;
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(104, 20);
-            this.Numero.TabIndex = 27;
+            this.Numero.TabIndex = 14;
             // 
             // groupBox3
             // 
@@ -538,7 +538,7 @@ namespace crud_teste
             this.Digito.MaxLength = 1;
             this.Digito.Name = "Digito";
             this.Digito.Size = new System.Drawing.Size(32, 20);
-            this.Digito.TabIndex = 8;
+            this.Digito.TabIndex = 22;
             this.Digito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // label22
@@ -571,7 +571,7 @@ namespace crud_teste
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(178, 24);
+            this.label19.Location = new System.Drawing.Point(285, 26);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(49, 13);
             this.label19.TabIndex = 4;
@@ -583,16 +583,16 @@ namespace crud_teste
             this.Conta.MaxLength = 5;
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(120, 20);
-            this.Conta.TabIndex = 2;
+            this.Conta.TabIndex = 21;
             this.Conta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // Agencia
             // 
-            this.Agencia.Location = new System.Drawing.Point(273, 20);
+            this.Agencia.Location = new System.Drawing.Point(380, 23);
             this.Agencia.MaxLength = 3;
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(35, 20);
-            this.Agencia.TabIndex = 1;
+            this.Agencia.TabIndex = 20;
             this.Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Agencia_KeyPress);
             // 
             // Banco
@@ -601,7 +601,7 @@ namespace crud_teste
             this.Banco.MaxLength = 99;
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(90, 20);
-            this.Banco.TabIndex = 0;
+            this.Banco.TabIndex = 19;
             // 
             // FrmColaborador
             // 

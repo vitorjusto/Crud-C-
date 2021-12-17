@@ -128,7 +128,8 @@ namespace crud_teste
             this.txtcomissao.ReadOnly = true;
             this.txtcomissao.Size = new System.Drawing.Size(120, 20);
             this.txtcomissao.StyleText = false;
-            this.txtcomissao.TabIndex = 0;
+            this.txtcomissao.TabIndex = 8;
+            this.txtcomissao.TabStop = false;
             this.txtcomissao.Text = "0,00";
             this.txtcomissao.Value = new decimal(new int[] {
             0,
@@ -142,8 +143,8 @@ namespace crud_teste
             this.Porcentagem.Location = new System.Drawing.Point(367, 100);
             this.Porcentagem.MaxLength = 15;
             this.Porcentagem.Name = "Porcentagem";
-            this.Porcentagem.Size = new System.Drawing.Size(100, 20);
-            this.Porcentagem.TabIndex = 78;
+            this.Porcentagem.Size = new System.Drawing.Size(133, 20);
+            this.Porcentagem.TabIndex = 7;
             this.Porcentagem.Text = "0,00";
             this.Porcentagem.Value = new decimal(new int[] {
             0,
@@ -166,7 +167,7 @@ namespace crud_teste
             this.Data.Location = new System.Drawing.Point(367, 60);
             this.Data.Name = "Data";
             this.Data.Size = new System.Drawing.Size(133, 20);
-            this.Data.TabIndex = 74;
+            this.Data.TabIndex = 4;
             // 
             // label17
             // 
@@ -181,8 +182,8 @@ namespace crud_teste
             // 
             this.Salario.Location = new System.Drawing.Point(51, 100);
             this.Salario.Name = "Salario";
-            this.Salario.Size = new System.Drawing.Size(98, 20);
-            this.Salario.TabIndex = 71;
+            this.Salario.Size = new System.Drawing.Size(140, 20);
+            this.Salario.TabIndex = 6;
             this.Salario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Salario_KeyPress);
             // 
             // CPF
@@ -191,7 +192,7 @@ namespace crud_teste
             this.CPF.Mask = "000.000.000-00";
             this.CPF.Name = "CPF";
             this.CPF.Size = new System.Drawing.Size(120, 20);
-            this.CPF.TabIndex = 66;
+            this.CPF.TabIndex = 5;
             // 
             // label6
             // 
@@ -229,8 +230,8 @@ namespace crud_teste
             "Outros"});
             this.Sexo.Location = new System.Drawing.Point(49, 60);
             this.Sexo.Name = "Sexo";
-            this.Sexo.Size = new System.Drawing.Size(100, 21);
-            this.Sexo.TabIndex = 6;
+            this.Sexo.Size = new System.Drawing.Size(142, 21);
+            this.Sexo.TabIndex = 3;
             // 
             // label3
             // 
@@ -246,7 +247,7 @@ namespace crud_teste
             this.Sobrenome.Location = new System.Drawing.Point(367, 20);
             this.Sobrenome.Name = "Sobrenome";
             this.Sobrenome.Size = new System.Drawing.Size(388, 20);
-            this.Sobrenome.TabIndex = 4;
+            this.Sobrenome.TabIndex = 2;
             // 
             // label2
             // 
@@ -301,7 +302,7 @@ namespace crud_teste
             this.Numero.Location = new System.Drawing.Point(668, 60);
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(87, 20);
-            this.Numero.TabIndex = 60;
+            this.Numero.TabIndex = 15;
             // 
             // CEP
             // 
@@ -309,7 +310,7 @@ namespace crud_teste
             this.CEP.Mask = "00000-000";
             this.CEP.Name = "CEP";
             this.CEP.Size = new System.Drawing.Size(75, 20);
-            this.CEP.TabIndex = 59;
+            this.CEP.TabIndex = 9;
             // 
             // label19
             // 
@@ -325,7 +326,7 @@ namespace crud_teste
             this.Complemento.Location = new System.Drawing.Point(262, 60);
             this.Complemento.Name = "Complemento";
             this.Complemento.Size = new System.Drawing.Size(331, 20);
-            this.Complemento.TabIndex = 55;
+            this.Complemento.TabIndex = 14;
             // 
             // label13
             // 
@@ -350,7 +351,7 @@ namespace crud_teste
             this.Bairro.Location = new System.Drawing.Point(569, 20);
             this.Bairro.Name = "Bairro";
             this.Bairro.Size = new System.Drawing.Size(186, 20);
-            this.Bairro.TabIndex = 49;
+            this.Bairro.TabIndex = 12;
             // 
             // label8
             // 
@@ -376,7 +377,7 @@ namespace crud_teste
             this.Logradouro.MaxLength = 99;
             this.Logradouro.Name = "Logradouro";
             this.Logradouro.Size = new System.Drawing.Size(75, 20);
-            this.Logradouro.TabIndex = 42;
+            this.Logradouro.TabIndex = 13;
             // 
             // UF
             // 
@@ -406,7 +407,7 @@ namespace crud_teste
             this.UF.Location = new System.Drawing.Point(448, 20);
             this.UF.Name = "UF";
             this.UF.Size = new System.Drawing.Size(52, 21);
-            this.UF.TabIndex = 46;
+            this.UF.TabIndex = 11;
             // 
             // label9
             // 
@@ -431,7 +432,7 @@ namespace crud_teste
             this.Cidade.Location = new System.Drawing.Point(262, 20);
             this.Cidade.Name = "Cidade";
             this.Cidade.Size = new System.Drawing.Size(120, 20);
-            this.Cidade.TabIndex = 44;
+            this.Cidade.TabIndex = 10;
             // 
             // groupBox3
             // 
@@ -455,7 +456,7 @@ namespace crud_teste
             this.DDI.Mask = "+00";
             this.DDI.Name = "DDI";
             this.DDI.Size = new System.Drawing.Size(24, 20);
-            this.DDI.TabIndex = 72;
+            this.DDI.TabIndex = 17;
             // 
             // Celular2
             // 
@@ -463,7 +464,7 @@ namespace crud_teste
             this.Celular2.Mask = "(00) 0000 - 0000";
             this.Celular2.Name = "Celular2";
             this.Celular2.Size = new System.Drawing.Size(123, 20);
-            this.Celular2.TabIndex = 71;
+            this.Celular2.TabIndex = 18;
             // 
             // label14
             // 
@@ -480,14 +481,14 @@ namespace crud_teste
             this.Telefone.Mask = "0000 - 0000";
             this.Telefone.Name = "Telefone";
             this.Telefone.Size = new System.Drawing.Size(75, 20);
-            this.Telefone.TabIndex = 59;
+            this.Telefone.TabIndex = 16;
             // 
             // emailText
             // 
             this.emailText.Location = new System.Drawing.Point(486, 20);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(269, 20);
-            this.emailText.TabIndex = 64;
+            this.emailText.TabIndex = 19;
             // 
             // label16
             // 
@@ -533,7 +534,7 @@ namespace crud_teste
             this.BotaoSalvar.Location = new System.Drawing.Point(9, 467);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(259, 96);
-            this.BotaoSalvar.TabIndex = 66;
+            this.BotaoSalvar.TabIndex = 24;
             this.BotaoSalvar.Text = "Salvar";
             this.BotaoSalvar.UseVisualStyleBackColor = false;
             this.BotaoSalvar.Click += new System.EventHandler(this.BotaoSalvar_Click_1);
@@ -546,7 +547,7 @@ namespace crud_teste
             this.Excluir.Location = new System.Drawing.Point(508, 467);
             this.Excluir.Name = "Excluir";
             this.Excluir.Size = new System.Drawing.Size(280, 96);
-            this.Excluir.TabIndex = 67;
+            this.Excluir.TabIndex = 25;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = false;
             this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
@@ -564,7 +565,7 @@ namespace crud_teste
             this.groupBox4.Location = new System.Drawing.Point(12, 357);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(776, 64);
-            this.groupBox4.TabIndex = 68;
+            this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dados Bancários";
             // 
@@ -573,7 +574,7 @@ namespace crud_teste
             this.Digito.Location = new System.Drawing.Point(712, 20);
             this.Digito.Name = "Digito";
             this.Digito.Size = new System.Drawing.Size(42, 20);
-            this.Digito.TabIndex = 8;
+            this.Digito.TabIndex = 23;
             this.Digito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digito_KeyPress);
             // 
             // label22
@@ -618,7 +619,7 @@ namespace crud_teste
             this.Conta.Location = new System.Drawing.Point(550, 20);
             this.Conta.Name = "Conta";
             this.Conta.Size = new System.Drawing.Size(98, 20);
-            this.Conta.TabIndex = 2;
+            this.Conta.TabIndex = 22;
             this.Conta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Conta_KeyPress);
             // 
             // Agencia
@@ -626,7 +627,7 @@ namespace crud_teste
             this.Agencia.Location = new System.Drawing.Point(432, 20);
             this.Agencia.Name = "Agencia";
             this.Agencia.Size = new System.Drawing.Size(35, 20);
-            this.Agencia.TabIndex = 1;
+            this.Agencia.TabIndex = 21;
             this.Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Agencia_KeyPress);
             // 
             // Banco
@@ -635,7 +636,7 @@ namespace crud_teste
             this.Banco.MaxLength = 99;
             this.Banco.Name = "Banco";
             this.Banco.Size = new System.Drawing.Size(221, 20);
-            this.Banco.TabIndex = 0;
+            this.Banco.TabIndex = 20;
             // 
             // contextMenuStrip1
             // 
@@ -658,6 +659,7 @@ namespace crud_teste
             this.txtAtivo.ReadOnly = true;
             this.txtAtivo.Size = new System.Drawing.Size(193, 20);
             this.txtAtivo.TabIndex = 70;
+            this.txtAtivo.TabStop = false;
             // 
             // ConsultarColaborador
             // 

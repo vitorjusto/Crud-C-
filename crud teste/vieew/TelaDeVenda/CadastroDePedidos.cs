@@ -9,6 +9,7 @@ using crud_teste.vieew.TelaDeVenda;
 using CRUD_teste.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Tema;
@@ -50,7 +51,7 @@ namespace crud_teste.vieew
             if (venda.cliente.Aniversariante())
                 new CaixaDeInformacao().MensagemDeOk($"Parabéns {venda.cliente.nomeCompleto()}, Hoje é seu aniversário");
             NomeCliente.Text = venda.cliente.nomeCompleto();
-            LimiteDeCompraaPraso.Text = venda.cliente.LimiteDeCompra.ToString();
+            LimiteDeCompraaPraso.Text = venda.cliente.LimiteRestante.ToString();
         }
 
         public void PesquisarPorColaborador(string entrada)
@@ -434,5 +435,14 @@ namespace crud_teste.vieew
             NomeDoProduto.Text = carrinho.produto.NomeDoProduto;
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ListarProduto(NomeDoProduto.Text);
+        }
+
+        private void CadastroDePedidos_Load(object sender, EventArgs e)
+        {
+            button6.ForeColor = Color.Black;
+        }
     }
 }

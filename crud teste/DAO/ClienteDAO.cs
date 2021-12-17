@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using static crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes;
 
 namespace crud_teste.DAO
 {

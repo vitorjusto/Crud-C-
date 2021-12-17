@@ -67,8 +67,6 @@ namespace Tema
                 TextBoxBackColor = Color.FromArgb(66, 146, 168);
                 GroupBoxBackColor = Color.FromArgb(91, 166, 114);
 
-
-
                 Positive = Color.LightGreen;
                 Negative = Color.FromArgb(200, 0, 0);
             }
@@ -119,9 +117,6 @@ namespace Tema
             control.ColumnHeadersDefaultCellStyle.SelectionBackColor = Strip;
             control.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             control.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            //control.RowsDefaultCellStyle.BackColor = TextBoxBackColor;
-            //control.RowsDefaultCellStyle.ForeColor = FontColor;
 
             control.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             control.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -212,14 +207,10 @@ namespace Tema
             }
 
         }
-
          private static void SetMenuStripDropDownItems(ToolStripDropDownItem control)
          {
             control.ForeColor = FontColor;
          }
-
-
-
 
         public static void AlterarTemaSozinho(Control control)
         {

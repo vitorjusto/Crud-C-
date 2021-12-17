@@ -41,7 +41,6 @@ namespace crud_teste.vieew.Consultar
             this.NomeDoProduto = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Excluir = new System.Windows.Forms.Button();
             this.BotaoSalvar = new System.Windows.Forms.Button();
             this.btnAtivo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +55,7 @@ namespace crud_teste.vieew.Consultar
             this.Fabricante.Location = new System.Drawing.Point(116, 210);
             this.Fabricante.Name = "Fabricante";
             this.Fabricante.Size = new System.Drawing.Size(669, 20);
-            this.Fabricante.TabIndex = 32;
+            this.Fabricante.TabIndex = 6;
             // 
             // label7
             // 
@@ -71,8 +70,8 @@ namespace crud_teste.vieew.Consultar
             // 
             this.Estoque.Location = new System.Drawing.Point(116, 170);
             this.Estoque.Name = "Estoque";
-            this.Estoque.Size = new System.Drawing.Size(343, 20);
-            this.Estoque.TabIndex = 29;
+            this.Estoque.Size = new System.Drawing.Size(669, 20);
+            this.Estoque.TabIndex = 5;
             // 
             // label6
             // 
@@ -107,7 +106,7 @@ namespace crud_teste.vieew.Consultar
             this.CodigoDeBarras.MaxLength = 15;
             this.CodigoDeBarras.Name = "CodigoDeBarras";
             this.CodigoDeBarras.Size = new System.Drawing.Size(674, 20);
-            this.CodigoDeBarras.TabIndex = 21;
+            this.CodigoDeBarras.TabIndex = 2;
             // 
             // label2
             // 
@@ -132,7 +131,7 @@ namespace crud_teste.vieew.Consultar
             this.NomeDoProduto.Location = new System.Drawing.Point(116, 50);
             this.NomeDoProduto.Name = "NomeDoProduto";
             this.NomeDoProduto.Size = new System.Drawing.Size(675, 20);
-            this.NomeDoProduto.TabIndex = 18;
+            this.NomeDoProduto.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -151,19 +150,6 @@ namespace crud_teste.vieew.Consultar
             this.paginaInicialToolStripMenuItem.Text = "Pagina Inicial";
             this.paginaInicialToolStripMenuItem.Click += new System.EventHandler(this.paginaInicialToolStripMenuItem_Click);
             // 
-            // Excluir
-            // 
-            this.Excluir.BackColor = System.Drawing.Color.Red;
-            this.Excluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Excluir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Excluir.Location = new System.Drawing.Point(283, 325);
-            this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(264, 79);
-            this.Excluir.TabIndex = 69;
-            this.Excluir.Text = "Excluir";
-            this.Excluir.UseVisualStyleBackColor = false;
-            this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
-            // 
             // BotaoSalvar
             // 
             this.BotaoSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -172,7 +158,7 @@ namespace crud_teste.vieew.Consultar
             this.BotaoSalvar.Location = new System.Drawing.Point(18, 325);
             this.BotaoSalvar.Name = "BotaoSalvar";
             this.BotaoSalvar.Size = new System.Drawing.Size(259, 79);
-            this.BotaoSalvar.TabIndex = 68;
+            this.BotaoSalvar.TabIndex = 7;
             this.BotaoSalvar.Text = "Salvar";
             this.BotaoSalvar.UseVisualStyleBackColor = false;
             this.BotaoSalvar.Click += new System.EventHandler(this.BotaoSalvar_Click);
@@ -185,7 +171,7 @@ namespace crud_teste.vieew.Consultar
             this.btnAtivo.Location = new System.Drawing.Point(553, 325);
             this.btnAtivo.Name = "btnAtivo";
             this.btnAtivo.Size = new System.Drawing.Size(232, 79);
-            this.btnAtivo.TabIndex = 70;
+            this.btnAtivo.TabIndex = 8;
             this.btnAtivo.Text = "Inativar";
             this.btnAtivo.UseVisualStyleBackColor = false;
             this.btnAtivo.Click += new System.EventHandler(this.btnAtivo_Click);
@@ -206,16 +192,19 @@ namespace crud_teste.vieew.Consultar
             this.txtAtivo.ReadOnly = true;
             this.txtAtivo.Size = new System.Drawing.Size(186, 20);
             this.txtAtivo.TabIndex = 72;
+            this.txtAtivo.TabStop = false;
             // 
             // PrecoDeVenda
             // 
             this.PrecoDeVenda.Location = new System.Drawing.Point(117, 130);
+            this.PrecoDeVenda.MaxLength = 15;
             this.PrecoDeVenda.Name = "PrecoDeVenda";
             this.PrecoDeVenda.Negative = System.Drawing.Color.Red;
             this.PrecoDeVenda.Positive = System.Drawing.Color.Green;
             this.PrecoDeVenda.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeVenda.StyleText = false;
-            this.PrecoDeVenda.TabIndex = 73;
+            this.PrecoDeVenda.TabIndex = 3;
+            this.PrecoDeVenda.Text = "0,00";
             this.PrecoDeVenda.Value = new decimal(new int[] {
             0,
             0,
@@ -226,12 +215,14 @@ namespace crud_teste.vieew.Consultar
             // PrecoDeCusto
             // 
             this.PrecoDeCusto.Location = new System.Drawing.Point(359, 130);
+            this.PrecoDeCusto.MaxLength = 15;
             this.PrecoDeCusto.Name = "PrecoDeCusto";
             this.PrecoDeCusto.Negative = System.Drawing.Color.Red;
             this.PrecoDeCusto.Positive = System.Drawing.Color.Green;
             this.PrecoDeCusto.Size = new System.Drawing.Size(100, 20);
             this.PrecoDeCusto.StyleText = false;
-            this.PrecoDeCusto.TabIndex = 74;
+            this.PrecoDeCusto.TabIndex = 4;
+            this.PrecoDeCusto.Text = "0,00";
             this.PrecoDeCusto.Value = new decimal(new int[] {
             0,
             0,
@@ -249,7 +240,6 @@ namespace crud_teste.vieew.Consultar
             this.Controls.Add(this.txtAtivo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnAtivo);
-            this.Controls.Add(this.Excluir);
             this.Controls.Add(this.BotaoSalvar);
             this.Controls.Add(this.Fabricante);
             this.Controls.Add(this.label7);
@@ -286,7 +276,6 @@ namespace crud_teste.vieew.Consultar
         private System.Windows.Forms.TextBox NomeDoProduto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem paginaInicialToolStripMenuItem;
-        private System.Windows.Forms.Button Excluir;
         private System.Windows.Forms.Button BotaoSalvar;
         private System.Windows.Forms.Button btnAtivo;
         private System.Windows.Forms.Label label4;

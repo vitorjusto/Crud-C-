@@ -1,11 +1,7 @@
 ﻿using crud_teste.DAO;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos;
 
 namespace crud_teste.controller

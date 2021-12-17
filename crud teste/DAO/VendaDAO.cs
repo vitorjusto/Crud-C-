@@ -504,7 +504,7 @@ namespace crud_teste.DAO
 
             var query = $@"select * from vendaAPrazo vp 
                              inner join Cliente c on c.idCliente = vp.idCliente 
-                             inner join pessoa p on p.idPessoa = c.idPessoa";
+                             inner join pessoa p on p.idPessoa = c.idPessoa ";
 
             if (Tipo == "nome")
                 query += $"where p.nome + p.sobrenome like '{pesquisa}' + '%'";

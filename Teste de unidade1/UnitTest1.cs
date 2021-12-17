@@ -78,7 +78,7 @@ namespace Teste_de_unidade1
         [TestMethod]
         public void Quando_O_CPF_Tiver_Texto_Especifico_Entao_O_CPF_E_Valido()
         {
-            MyCPF CPF = new MyCPF("123,456,789-90");
+            MyCPF CPF = new MyCPF("555,555,551-21");
             CPFValidation validacao = new CPFValidation();
 
             var resultado = validacao.Validate(CPF); 
@@ -665,12 +665,12 @@ namespace Teste_de_unidade1
         }
 
         [DataTestMethod]
-        [DataRow(-1)]
-        [DataRow(-15)]
+        [DataRow(1)]
+        [DataRow(15)]
         public void Quando_A_Quantidade_Restante_For_Menor_Que_Zero_Então_A_Quantidade_é_Invalido(int quantidade)
         {
             Pedido_Produto pedido = new Pedido_Produto();
-            pedido.quantidadeRestante = quantidade;
+            pedido.quantidade= quantidade;
             CarrinhoValidation validar = new CarrinhoValidation();
 
             var resultado = validar.Validate(pedido);

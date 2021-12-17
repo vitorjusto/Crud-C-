@@ -37,6 +37,7 @@ namespace crud_teste.vieew
             this.label3 = new System.Windows.Forms.Label();
             this.FormaDePagamento = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.PrecoLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.Desconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.PrecoBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
@@ -77,7 +78,6 @@ namespace crud_teste.vieew
             this.paginaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -178,6 +178,19 @@ namespace crud_teste.vieew
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto";
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button7.Location = new System.Drawing.Point(814, 114);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(165, 68);
+            this.button7.TabIndex = 35;
+            this.button7.Text = "Produtos Selecionados";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // PrecoLiquido
             // 
             this.PrecoLiquido.Location = new System.Drawing.Point(471, 150);
@@ -265,6 +278,7 @@ namespace crud_teste.vieew
             this.button6.TabIndex = 14;
             this.button6.Text = "🔎";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // QuantidadeRestante
             // 
@@ -658,19 +672,6 @@ namespace crud_teste.vieew
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(814, 114);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(165, 68);
-            this.button7.TabIndex = 35;
-            this.button7.Text = "Produtos Selecionados";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // CadastroDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,6 +690,7 @@ namespace crud_teste.vieew
             this.Name = "CadastroDePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroDePedidos";
+            this.Load += new System.EventHandler(this.CadastroDePedidos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
