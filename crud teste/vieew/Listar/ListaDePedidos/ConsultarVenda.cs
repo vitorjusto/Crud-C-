@@ -64,12 +64,7 @@ namespace crud_teste.vieew.ListaDePedidos
             txtTotalLiquido.Text = _venda.TotalLiquido.GetAsString();
 
         }
-
-        private void textBox1_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void abrirProduto()
         {
             txtnomeProduto.Text = _pedido.produto.NomeDoProduto;
@@ -100,6 +95,14 @@ namespace crud_teste.vieew.ListaDePedidos
             _pedido.quantidade = Convert.ToInt64(txtquantidade.Text == "" ? "0" : txtquantidade.Text);
             txtQuantidadeRestante.Text = (_pedido.produto.Estoque - _pedido.quantidade).ToString();
 
+            CalcularCampos();
+        }
+
+
+        private void txtDesconto_TextChanged(object sender, EventArgs e)
+        {
+
+            _pedido.Desconto = txtDesconto.Text;
             CalcularCampos();
         }
 
@@ -182,21 +185,6 @@ namespace crud_teste.vieew.ListaDePedidos
             return pedido;
         }
 
-        private void ApagarCampoDoProduto()
-        {
-            gbProduto.Visible = false;
-
-            txtnomeProduto.Text = "" ;
-            txtquantidade.Text = "";
-            txtquantidadeemestoque.Text = "";
-            txtQuantidadeRestante.Text = "";
-
-            txtPrecoUnitario.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
-            txtValorBruto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
-            txtDesconto.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
-            txtPrecoLiquido.Text = MyDinheiro.SetTextBoxAsMoneyValue("0");
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             var validar = new CarrinhoValidation();
@@ -211,7 +199,8 @@ namespace crud_teste.vieew.ListaDePedidos
 
                     _venda.Pedido_Produto.Add(pedido);
 
-                    ApagarCampoDoProduto();
+                    Global.LimparCampos(gbProduto);
+                    gbProduto.Visible = false;
 
                     preencherCampos();
                 }
@@ -253,7 +242,8 @@ namespace crud_teste.vieew.ListaDePedidos
         private void button2_Click_1(object sender, EventArgs e)
         {
             _pedido = new Pedido_Produto();
-            ApagarCampoDoProduto();
+
+            Global.LimparCampos(gbProduto);
             lbNomeProduto.Visible = true;
             txtnomeProduto.Visible = true;
             gbProduto.Visible = true;
@@ -297,16 +287,17 @@ namespace crud_teste.vieew.ListaDePedidos
                 _venda = janeladocarrinho.venda;
                 _pedido = _venda.Pedido_Produto[janeladocarrinho.selectedIndex];
 
-
                 abrirProduto();
             }
             else
             {
-                ApagarCampoDoProduto();
+                Global.LimparCampos(gbProduto);
+                gbProduto.Visible = false;
             }
 
             preencherCampos();
 
         }
+
     }
 }

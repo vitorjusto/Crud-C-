@@ -290,5 +290,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             txtLucro.Text = lucro.ToString("C2");
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Global.LimparCampos(Filtrar);
+        }
     }
 }

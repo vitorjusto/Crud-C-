@@ -74,5 +74,45 @@ namespace crud_teste
                 control.Text = listar.colaborador.nomeCompleto();
 
         }
+
+        public static void LimparCampos(Control componentes)
+        {
+            foreach (var item in componentes.Controls)
+            {
+                Limpar((Control)item);
+            }
+        }
+
+        private static void Limpar(Control item)
+        {
+            if (item is TextBox || item is MaskedTextBox)
+            {
+                item.Text = string.Empty;
+            }
+            else if (item is DateTimePicker picker)
+            {
+                picker.Value = System.DateTime.Today;
+            }
+            else if (item is NumericUpDown valor)
+            {
+                valor.Value = 0;
+            }
+            else if (item is ComboBox campo)
+            {
+                campo.SelectedIndex = 0;
+            }
+            else if (item is RadioButton radioButton)
+            {
+                radioButton.Checked = false;
+            }
+            else if (item is CheckBox checkBox)
+            {
+                checkBox.Checked = false;
+            }
+            else if (item is GroupBox)
+            {
+                LimparCampos(item);
+            }
+        }
     }
 }

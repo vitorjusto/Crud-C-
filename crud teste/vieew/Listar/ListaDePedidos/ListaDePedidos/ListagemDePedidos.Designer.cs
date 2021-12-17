@@ -52,11 +52,6 @@ namespace crud_teste.vieew.ListaDePedidos
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtLucro = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txttotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtTotalGasto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
-            this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -80,11 +75,19 @@ namespace crud_teste.vieew.ListaDePedidos
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.rbPrecoBruto = new System.Windows.Forms.RadioButton();
+            this.button8 = new System.Windows.Forms.Button();
+            this.gbFiltros = new System.Windows.Forms.GroupBox();
+            this.txtLucro = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txttotalLiquido = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalGasto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtDesconto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
+            this.txtTotalBruto = new crud_teste.Config.Custom_Controls.MoneyTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListarPedidos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbPesquisarPorData.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gbFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListarPedidos
@@ -110,7 +113,7 @@ namespace crud_teste.vieew.ListaDePedidos
             this.ListarPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListarPedidos.Size = new System.Drawing.Size(1226, 276);
             this.ListarPedidos.TabIndex = 0;
-            this.ListarPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
+            this.ListarPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListarPedidos_CellDoubleClick);
             // 
             // IdVenda
             // 
@@ -298,6 +301,282 @@ namespace crud_teste.vieew.ListaDePedidos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes do Lucro";
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Location = new System.Drawing.Point(362, 84);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 90);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Gerar Relatório Excel";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantidade.Location = new System.Drawing.Point(700, 135);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.ReadOnly = true;
+            this.txtQuantidade.Size = new System.Drawing.Size(183, 20);
+            this.txtQuantidade.TabIndex = 28;
+            this.txtQuantidade.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(577, 139);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Quantidades Vendidas:";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(184, 84);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(160, 90);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Relatorio dos Clientes";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(172, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Colaborador";
+            // 
+            // Cliente
+            // 
+            this.Cliente.AutoSize = true;
+            this.Cliente.Location = new System.Drawing.Point(8, 40);
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Size = new System.Drawing.Size(39, 13);
+            this.Cliente.TabIndex = 28;
+            this.Cliente.Text = "Cliente";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(363, 40);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Produto";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Data Entre: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(182, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 13);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "e";
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.Location = new System.Drawing.Point(431, 29);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.Size = new System.Drawing.Size(100, 20);
+            this.txtProduto.TabIndex = 5;
+            this.txtProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProduto_KeyPress);
+            // 
+            // txtColaborador
+            // 
+            this.txtColaborador.Location = new System.Drawing.Point(242, 29);
+            this.txtColaborador.Name = "txtColaborador";
+            this.txtColaborador.Size = new System.Drawing.Size(100, 20);
+            this.txtColaborador.TabIndex = 3;
+            this.txtColaborador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColaborador_KeyPress);
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(53, 29);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtCliente.TabIndex = 1;
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(1041, 10);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 73);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Pesquisar a venda";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dtpDataInicial
+            // 
+            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataInicial.Location = new System.Drawing.Point(76, 26);
+            this.dtpDataInicial.Name = "dtpDataInicial";
+            this.dtpDataInicial.Size = new System.Drawing.Size(100, 20);
+            this.dtpDataInicial.TabIndex = 8;
+            // 
+            // dtpDataFinal
+            // 
+            this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataFinal.Location = new System.Drawing.Point(201, 26);
+            this.dtpDataFinal.Name = "dtpDataFinal";
+            this.dtpDataFinal.Size = new System.Drawing.Size(100, 20);
+            this.dtpDataFinal.TabIndex = 9;
+            // 
+            // gbPesquisarPorData
+            // 
+            this.gbPesquisarPorData.Controls.Add(this.label10);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
+            this.gbPesquisarPorData.Controls.Add(this.label8);
+            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
+            this.gbPesquisarPorData.Location = new System.Drawing.Point(706, 15);
+            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
+            this.gbPesquisarPorData.Size = new System.Drawing.Size(319, 68);
+            this.gbPesquisarPorData.TabIndex = 2;
+            this.gbPesquisarPorData.TabStop = false;
+            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
+            // 
+            // chkPesquisarPorData
+            // 
+            this.chkPesquisarPorData.AutoSize = true;
+            this.chkPesquisarPorData.Location = new System.Drawing.Point(555, 38);
+            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
+            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
+            this.chkPesquisarPorData.TabIndex = 7;
+            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
+            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
+            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(109, 58);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(44, 31);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "🔎";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(298, 58);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(44, 31);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "🔎";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(487, 58);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(44, 31);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "🔎";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.rbPrecoBruto);
+            this.groupBox2.Location = new System.Drawing.Point(976, 417);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(266, 56);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Calcular Lucro Por";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(161, 26);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(90, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Preço Liquido";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // rbPrecoBruto
+            // 
+            this.rbPrecoBruto.AutoSize = true;
+            this.rbPrecoBruto.Location = new System.Drawing.Point(16, 26);
+            this.rbPrecoBruto.Name = "rbPrecoBruto";
+            this.rbPrecoBruto.Size = new System.Drawing.Size(81, 17);
+            this.rbPrecoBruto.TabIndex = 1;
+            this.rbPrecoBruto.Text = "Preço Bruto";
+            this.rbPrecoBruto.UseVisualStyleBackColor = true;
+            this.rbPrecoBruto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Red;
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button8.Location = new System.Drawing.Point(1150, 49);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(69, 34);
+            this.button8.TabIndex = 40;
+            this.button8.Text = "Limpar";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // gbFiltros
+            // 
+            this.gbFiltros.Controls.Add(this.Cliente);
+            this.gbFiltros.Controls.Add(this.button8);
+            this.gbFiltros.Controls.Add(this.label1);
+            this.gbFiltros.Controls.Add(this.label9);
+            this.gbFiltros.Controls.Add(this.button7);
+            this.gbFiltros.Controls.Add(this.txtProduto);
+            this.gbFiltros.Controls.Add(this.button6);
+            this.gbFiltros.Controls.Add(this.txtColaborador);
+            this.gbFiltros.Controls.Add(this.button5);
+            this.gbFiltros.Controls.Add(this.txtCliente);
+            this.gbFiltros.Controls.Add(this.chkPesquisarPorData);
+            this.gbFiltros.Controls.Add(this.button2);
+            this.gbFiltros.Controls.Add(this.gbPesquisarPorData);
+            this.gbFiltros.Location = new System.Drawing.Point(13, 25);
+            this.gbFiltros.Name = "gbFiltros";
+            this.gbFiltros.Size = new System.Drawing.Size(1225, 92);
+            this.gbFiltros.TabIndex = 41;
+            this.gbFiltros.TabStop = false;
+            this.gbFiltros.Text = "Filtros";
+            // 
             // txtLucro
             // 
             this.txtLucro.ForeColor = System.Drawing.Color.Black;
@@ -374,265 +653,13 @@ namespace crud_teste.vieew.ListaDePedidos
             this.txtTotalBruto.Text = "0,00";
             this.txtTotalBruto.Zero = System.Drawing.Color.Black;
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(362, 84);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 90);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Gerar Relatório Excel";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQuantidade.Location = new System.Drawing.Point(700, 135);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.ReadOnly = true;
-            this.txtQuantidade.Size = new System.Drawing.Size(183, 20);
-            this.txtQuantidade.TabIndex = 28;
-            this.txtQuantidade.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(577, 139);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(117, 13);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Quantidades Vendidas:";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(184, 84);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 90);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Relatorio dos Clientes";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(183, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Colaborador";
-            // 
-            // Cliente
-            // 
-            this.Cliente.AutoSize = true;
-            this.Cliente.Location = new System.Drawing.Point(19, 70);
-            this.Cliente.Name = "Cliente";
-            this.Cliente.Size = new System.Drawing.Size(39, 13);
-            this.Cliente.TabIndex = 28;
-            this.Cliente.Text = "Cliente";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(374, 70);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Produto";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 13);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Data Entre: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(182, 29);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 13);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "e";
-            // 
-            // txtProduto
-            // 
-            this.txtProduto.Location = new System.Drawing.Point(442, 59);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(100, 20);
-            this.txtProduto.TabIndex = 5;
-            this.txtProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProduto_KeyPress);
-            // 
-            // txtColaborador
-            // 
-            this.txtColaborador.Location = new System.Drawing.Point(253, 59);
-            this.txtColaborador.Name = "txtColaborador";
-            this.txtColaborador.Size = new System.Drawing.Size(100, 20);
-            this.txtColaborador.TabIndex = 3;
-            this.txtColaborador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColaborador_KeyPress);
-            // 
-            // txtCliente
-            // 
-            this.txtCliente.Location = new System.Drawing.Point(64, 59);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtCliente.TabIndex = 1;
-            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(1063, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 68);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Pesquisar a venda";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dtpDataInicial
-            // 
-            this.dtpDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataInicial.Location = new System.Drawing.Point(76, 26);
-            this.dtpDataInicial.Name = "dtpDataInicial";
-            this.dtpDataInicial.Size = new System.Drawing.Size(100, 20);
-            this.dtpDataInicial.TabIndex = 8;
-            // 
-            // dtpDataFinal
-            // 
-            this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataFinal.Location = new System.Drawing.Point(201, 26);
-            this.dtpDataFinal.Name = "dtpDataFinal";
-            this.dtpDataFinal.Size = new System.Drawing.Size(100, 20);
-            this.dtpDataFinal.TabIndex = 9;
-            // 
-            // gbPesquisarPorData
-            // 
-            this.gbPesquisarPorData.Controls.Add(this.label10);
-            this.gbPesquisarPorData.Controls.Add(this.dtpDataFinal);
-            this.gbPesquisarPorData.Controls.Add(this.label8);
-            this.gbPesquisarPorData.Controls.Add(this.dtpDataInicial);
-            this.gbPesquisarPorData.Location = new System.Drawing.Point(717, 40);
-            this.gbPesquisarPorData.Name = "gbPesquisarPorData";
-            this.gbPesquisarPorData.Size = new System.Drawing.Size(319, 68);
-            this.gbPesquisarPorData.TabIndex = 2;
-            this.gbPesquisarPorData.TabStop = false;
-            this.gbPesquisarPorData.Text = "Pesquisar Por Data";
-            // 
-            // chkPesquisarPorData
-            // 
-            this.chkPesquisarPorData.AutoSize = true;
-            this.chkPesquisarPorData.Location = new System.Drawing.Point(566, 68);
-            this.chkPesquisarPorData.Name = "chkPesquisarPorData";
-            this.chkPesquisarPorData.Size = new System.Drawing.Size(117, 17);
-            this.chkPesquisarPorData.TabIndex = 7;
-            this.chkPesquisarPorData.Text = "Pesquisar Por Data";
-            this.chkPesquisarPorData.UseVisualStyleBackColor = true;
-            this.chkPesquisarPorData.CheckedChanged += new System.EventHandler(this.chkPesquisarPorData_CheckedChanged);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(120, 88);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(44, 31);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "🔎";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(309, 88);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(44, 31);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "🔎";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(498, 88);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(44, 31);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "🔎";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.rbPrecoBruto);
-            this.groupBox2.Location = new System.Drawing.Point(976, 417);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(266, 56);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Calcular Lucro Por";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(161, 26);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(90, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Preço Liquido";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // rbPrecoBruto
-            // 
-            this.rbPrecoBruto.AutoSize = true;
-            this.rbPrecoBruto.Location = new System.Drawing.Point(16, 26);
-            this.rbPrecoBruto.Name = "rbPrecoBruto";
-            this.rbPrecoBruto.Size = new System.Drawing.Size(81, 17);
-            this.rbPrecoBruto.TabIndex = 1;
-            this.rbPrecoBruto.Text = "Preço Bruto";
-            this.rbPrecoBruto.UseVisualStyleBackColor = true;
-            this.rbPrecoBruto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
             // ListagemDePedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 676);
+            this.Controls.Add(this.gbFiltros);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.chkPesquisarPorData);
-            this.Controls.Add(this.gbPesquisarPorData);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.txtCliente);
-            this.Controls.Add(this.txtColaborador);
-            this.Controls.Add(this.txtProduto);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.Cliente);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ListarPedidos);
             this.Controls.Add(this.menuStrip1);
@@ -650,6 +677,8 @@ namespace crud_teste.vieew.ListaDePedidos
             this.gbPesquisarPorData.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gbFiltros.ResumeLayout(false);
+            this.gbFiltros.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -708,5 +737,7 @@ namespace crud_teste.vieew.ListaDePedidos
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton rbPrecoBruto;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox gbFiltros;
     }
 }

@@ -90,5 +90,10 @@ namespace crud_teste
             this.Hide();
             new ListarVendaAPrazo().Show();
         }
+
+        private void vendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

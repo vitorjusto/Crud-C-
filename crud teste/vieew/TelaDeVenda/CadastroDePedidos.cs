@@ -181,7 +181,7 @@ namespace crud_teste.vieew
                 carrinhosL.Add(carrinhoL);
 
 
-                LimparGroupBoxProduto();
+                Global.LimparCampos(groupBox1);
 
 
                 AdicionarNaVenda();
@@ -190,20 +190,6 @@ namespace crud_teste.vieew
             else
                 new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
 
-        }
-
-        private void LimparGroupBoxProduto()
-        {
-            NomeDoProduto.Text = "";
-            Quantidade.Text = "";
-            QuantidadeEmEstoque.Text = "";
-            QuantidadeRestante.Text = "";
-            PrecoBruto.Text = "";
-            PrecoLiquido.Text = "";
-            PrecoUnitario.Text = "";
-            Desconto.Text = "";
-
-            carrinho.produto = new Produto();
         }
 
         public void AdicionarNaVenda()
@@ -294,7 +280,7 @@ namespace crud_teste.vieew
                                 new CaixaDeErro().MensagemDeOk("Não foi possivel enviar o Email, certifique-se se o usuario cadastrou o Email correto");
                             }
                         }
-                        LimparVenda();
+                        Global.LimparCampos(this);
                     }
 
                 }
@@ -306,30 +292,6 @@ namespace crud_teste.vieew
             else
                 new CaixaDeAviso().MensagemDeOk(validares.Errors.FirstOrDefault().ToString());
         }
-
-        public void LimparVenda()
-        {
-            carrinhosL = new List<CarrinhoListagem>();
-            venda.Pedido_Produto = new List<Pedido_Produto>();
-            carrinho = new Pedido_Produto();
-
-            venda.cliente = new Cliente();
-            venda.colaborador = new Colaborador();
-
-            NomeCliente.Text = "";
-            NomeDoColaborador.Text = "";
-
-            QuantidadeUnitario.Text = "";
-            QuantidadeTotal.Text = "";
-            TotalBruto.Text = "";
-            TotalDesconto.Text = "";
-            TotalLiquido.Text = "";
-
-            FormaDePagamento.Text = "";
-            LimparGroupBoxProduto();
-
-        }
-
         public Venda receberCampos()
         {
 
@@ -367,7 +329,7 @@ namespace crud_teste.vieew
         private void button3_Click(object sender, EventArgs e)
         {
             if(new CaixaDeAviso().MensagemDeSimENao("Deseja Mesmo Cancelar A Venda?"))
-                LimparVenda();
+                Global.LimparCampos(this);
         }
 
         private void DescontoAVista_Leave(object sender, EventArgs e)

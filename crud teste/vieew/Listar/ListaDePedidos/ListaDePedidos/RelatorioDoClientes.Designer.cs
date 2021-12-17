@@ -104,6 +104,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.rbPrecoBruto = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorioDosClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -491,9 +492,9 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(853, 90);
+            this.button2.Location = new System.Drawing.Point(835, 90);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 68);
+            this.button2.Size = new System.Drawing.Size(126, 68);
             this.button2.TabIndex = 40;
             this.button2.Text = "Pesquisar o Cliente";
             this.button2.UseVisualStyleBackColor = false;
@@ -501,6 +502,7 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             // 
             // Filtrar
             // 
+            this.Filtrar.Controls.Add(this.button1);
             this.Filtrar.Controls.Add(this.button5);
             this.Filtrar.Controls.Add(this.chkCondicao);
             this.Filtrar.Controls.Add(this.gbCondicao);
@@ -911,6 +913,19 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
             this.rbPrecoBruto.Text = "Preço Bruto";
             this.rbPrecoBruto.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(967, 116);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 42);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "Limpar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RelatorioDoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1028,5 +1043,6 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton rbPrecoBruto;
+        private System.Windows.Forms.Button button1;
     }
 }

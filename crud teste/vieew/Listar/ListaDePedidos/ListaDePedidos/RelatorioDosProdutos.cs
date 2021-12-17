@@ -211,5 +211,10 @@ namespace crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos
             if (e.KeyChar == 13)
                 Global.pesquisar("produto", txtProduto.Text, txtProduto);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Global.LimparCampos(gbFiltrar);
+        }
     }
 }

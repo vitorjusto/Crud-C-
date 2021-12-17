@@ -4,7 +4,6 @@ using crud_teste.controller;
 using crud_teste.Model.Listagem;
 using crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos;
 using crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos;
-using crud_teste.vieew.TelaDeVenda;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -204,6 +203,11 @@ namespace crud_teste.vieew.ListaDePedidos
             var Ativos = pedidos.Where(x => x.ativo);
             var lucro = Ativos.Sum(x => (rbPrecoBruto.Checked ? x.TotalBruto.GetAsDecimal(): x.TotalLiquido.GetAsDecimal()) - x.TotalGasto) ;
             txtLucro.Text = lucro.ToString("c2");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Global.LimparCampos(gbFiltros);
         }
     }
 }
