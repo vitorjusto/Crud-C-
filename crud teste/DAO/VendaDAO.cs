@@ -465,14 +465,14 @@ namespace crud_teste.DAO
             }
         }
 
-        public List<Pedido_Produto> ListarProdutosDaVendas()
+        public List<Pedido_Produto> ListarProdutosDaVendas(DateTime DataInicial, DateTime DataFinal)
         {
             try
             {
-                var query = @"select * from Carrinho";
+                var query = @"select * from Carrinho c inner join Venda v on v.idVenda = c.idVenda where Cast(DiaDaVenda as date) between @DataInicial and @DataFinal";
 
                 con.Open();
-                var resultado = con.Query<Pedido_Produto>(query).ToList();
+                var resultado = con.Query<Pedido_Produto>(query, new { DataInicial = DataInicial.Date, DataFinal = DataFinal.Date}).ToList();
                 con.Close();
                 return resultado;
             } catch (Exception ex)

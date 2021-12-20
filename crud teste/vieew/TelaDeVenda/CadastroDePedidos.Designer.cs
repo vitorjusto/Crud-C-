@@ -202,6 +202,7 @@ namespace crud_teste.vieew
             this.PrecoLiquido.Size = new System.Drawing.Size(144, 20);
             this.PrecoLiquido.StyleText = false;
             this.PrecoLiquido.TabIndex = 30;
+            this.PrecoLiquido.Text = "R$ 0,00";
             this.PrecoLiquido.Zero = System.Drawing.Color.Black;
             // 
             // Desconto
@@ -214,6 +215,7 @@ namespace crud_teste.vieew
             this.Desconto.Size = new System.Drawing.Size(144, 20);
             this.Desconto.StyleText = false;
             this.Desconto.TabIndex = 29;
+            this.Desconto.Text = "R$ 0,00";
             this.Desconto.Zero = System.Drawing.Color.Black;
             this.Desconto.TextChanged += new System.EventHandler(this.Desconto_TextChanged_1);
             // 
@@ -228,6 +230,7 @@ namespace crud_teste.vieew
             this.PrecoBruto.Size = new System.Drawing.Size(144, 20);
             this.PrecoBruto.StyleText = false;
             this.PrecoBruto.TabIndex = 28;
+            this.PrecoBruto.Text = "R$ 0,00";
             this.PrecoBruto.Zero = System.Drawing.Color.Black;
             // 
             // PrecoUnitario
@@ -383,6 +386,7 @@ namespace crud_teste.vieew
             // DescontoAVista
             // 
             this.DescontoAVista.Location = new System.Drawing.Point(674, 80);
+            this.DescontoAVista.MaxLength = 7;
             this.DescontoAVista.Name = "DescontoAVista";
             this.DescontoAVista.Size = new System.Drawing.Size(100, 20);
             this.DescontoAVista.TabIndex = 16;
@@ -453,6 +457,7 @@ namespace crud_teste.vieew
             this.TotalLiquido.Size = new System.Drawing.Size(100, 20);
             this.TotalLiquido.StyleText = false;
             this.TotalLiquido.TabIndex = 33;
+            this.TotalLiquido.Text = "R$ 0,00";
             this.TotalLiquido.Zero = System.Drawing.Color.Black;
             // 
             // TotalDesconto
@@ -466,6 +471,7 @@ namespace crud_teste.vieew
             this.TotalDesconto.Size = new System.Drawing.Size(100, 20);
             this.TotalDesconto.StyleText = false;
             this.TotalDesconto.TabIndex = 32;
+            this.TotalDesconto.Text = "R$ 0,00";
             this.TotalDesconto.Zero = System.Drawing.Color.Black;
             // 
             // TotalBruto
@@ -479,6 +485,7 @@ namespace crud_teste.vieew
             this.TotalBruto.Size = new System.Drawing.Size(100, 20);
             this.TotalBruto.StyleText = false;
             this.TotalBruto.TabIndex = 31;
+            this.TotalBruto.Text = "R$ 0,00";
             this.TotalBruto.Zero = System.Drawing.Color.Black;
             // 
             // button3

@@ -162,7 +162,12 @@ namespace crud_teste.vieew.ListaDePedidos
         private void button4_Click(object sender, EventArgs e)
         {
             if (new CaixaDePergunta().MensagemDeSimENao("Deseja Realmente Criar um Arquvo do relatório completo de todas as vendas?"))
-                MexerComExcel.criararquivo();
+            {
+                var escolherdata = new EscolherData();
+                escolherdata.ShowDialog();
+                if(escolherdata.DialogResult == DialogResult.OK)
+                    MexerComExcel.criararquivo(escolherdata.DataInicial, escolherdata.DataFinal);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)

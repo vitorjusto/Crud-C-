@@ -118,3 +118,4 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\DocumentFormat.OpenXml.xm
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ExcelNumberFormat.xml
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListarVendaAPrazo.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.PagarMeses.resources
+C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.EscolherData.resources

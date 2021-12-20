@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using crud_teste.controller;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,13 +9,18 @@ namespace crud_teste.Config.Gerenciar_Excel
 {
     public class MexerComExcel
     {
-
-        public static void criararquivo()
+        public static DateTime DataInicial { get; set; }
+        public static DateTime DataFinal { get; set; }
+        public static void criararquivo(DateTime dataInicial, DateTime dataFinal)
         {
             SaveFileDialog destino = new SaveFileDialog();
             destino.Filter = "Arquivo xlsx|*.xlsx";
             destino.Title = "Salvar relatório";
             destino.ShowDialog();
+
+            DataInicial = dataInicial;
+            DataFinal = dataFinal;
+
 
             if (destino.FileName == "")
                 return;
@@ -22,7 +28,7 @@ namespace crud_teste.Config.Gerenciar_Excel
             var arquivo = new XLWorkbook();
             DataTable produtos = new DataTable();
 
-            arquivo.Worksheets.Add(CriarHistoricoDeProduto(), "Relatório Completo");
+            arquivo.Worksheets.Add(CriarHistoricoDeCarrinhos(), "Relatório Completo");
             var planilha1 = arquivo.Worksheets.Worksheet("Relatório Completo");
 
             planilha1.ColumnsUsed().Width = 20;
@@ -104,10 +110,10 @@ namespace crud_teste.Config.Gerenciar_Excel
 
         }
 
-        public static DataTable CriarHistoricoDeProduto()
+        public static DataTable CriarHistoricoDeCarrinhos()
         {
             DataTable produtos = new DataTable();
-            var relatorio = new AlterarVenda().ListarProdutosDaVendas();
+            var relatorio = new AlterarVenda().ListarProdutosDaVendas(DataInicial, DataFinal);
             produtos.Columns.Add(" ");
             produtos.Columns.Add("Id");
             produtos.Columns.Add("Nome Do Produto");
@@ -129,7 +135,7 @@ namespace crud_teste.Config.Gerenciar_Excel
         public static DataTable criarRelatorioDeVenda()
         {
             DataTable venda = new DataTable();
-            var relatorio = new AlterarVenda().Listar();
+            var relatorio = new AlterarVenda().Listar(new crud_teste.vieew.ListaDePedidos.ListagemDePedidos.pesquisar { dataInicial = DataInicial, dataFinal = DataFinal } );
 
             venda.Columns.Add(" ");
             venda.Columns.Add("Id");
@@ -155,7 +161,7 @@ namespace crud_teste.Config.Gerenciar_Excel
         public static DataTable criarRelatorioDeProduto()
         {
             DataTable produtos = new DataTable();
-            var relatorio = new AlterarProduto().RelatorioDeVendaDosProdutos();
+            var relatorio = new AlterarProduto().RelatorioDeVendaDosProdutos(new vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos.pesquisar { DataInicial = DataInicial, DataFinal = DataFinal});
 
             produtos.Columns.Add(" ");
             produtos.Columns.Add("Id");

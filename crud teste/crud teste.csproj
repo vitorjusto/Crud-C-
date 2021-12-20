@@ -171,6 +171,12 @@
     <Compile Include="vieew\Listar\ListaDePedidos\ConsultarVenda.Designer.cs">
       <DependentUpon>ConsultarVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\EscolherData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\EscolherData.Designer.cs">
+      <DependentUpon>EscolherData.cs</DependentUpon>
+    </Compile>
     <Compile Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </Compile>
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ConsultarVenda.resx">
       <DependentUpon>ConsultarVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\EscolherData.resx">
+      <DependentUpon>EscolherData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vieew\Listar\ListaDePedidos\ListaDePedidos\ListagemDePedidos.resx">
       <DependentUpon>ListagemDePedidos.cs</DependentUpon>

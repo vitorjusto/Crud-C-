@@ -1,6 +1,7 @@
 ﻿using crud_teste.DAO;
 using crud_teste.Model;
 using crud_teste.Model.Listagem;
+using System;
 using System.Collections.Generic;
 using static crud_teste.vieew.ListaDePedidos.ListagemDePedidos;
 
@@ -66,9 +67,9 @@ namespace crud_teste.controller
             return pedidos;
         }
 
-        public List<Pedido_Produto> ListarProdutosDaVendas()
+        public List<Pedido_Produto> ListarProdutosDaVendas(DateTime dataInicial, DateTime dataFinal)
         {
-            var resultado = stmt.ListarProdutosDaVendas();
+            var resultado = stmt.ListarProdutosDaVendas(dataInicial, dataFinal);
 
             foreach (var item in resultado)
                 item.produto = new AlterarProduto().Consultar(item.IdProduto);
