@@ -119,3 +119,70 @@ C:\Users\PC1\Desktop\Comitar Crud\crud teste\bin\Debug\ExcelNumberFormat.xml
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListarVendaAPrazo.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.PagarMeses.resources
 C:\Users\PC1\Desktop\Comitar Crud\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.EscolherData.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\crud teste.exe.config
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\crud teste.exe
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\crud teste.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ClosedXML.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Dapper.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Enums.NET.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ExcelNumberFormat.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\FluentValidation.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OOXML.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\System.IO.Packaging.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ClosedXML.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ClosedXML.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Dapper.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Enums.NET.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Enums.NET.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ExcelNumberFormat.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\FluentValidation.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OOXML.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OOXML.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OpenXml4Net.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\NPOI.OpenXmlFormats.pdb
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.csproj.AssemblyReference.cache
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListaDePedidos.ConsultarVenda.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.EscolherData.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListaDePedidos.ListagemDePedidos.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListaDePedidos.RelatorioDoClientes.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.ListaDePedidos.ListagemDePedidos.RelatorioDosProdutos.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListaDePedidos.ListarItens.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.ListarProduto.AlterarEstoque.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.ListarVendaAPrazo.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Listar.PagarMeses.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.TelaDeVenda.AlterarProdutoDoCarrinho.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.CadastroDePedidos.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.ConsultarCliente.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.Consultar.ConsultarProduto.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.FrmCliente.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.FrmColaborador.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.ConsultarColaborador.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.ListarClientes.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.FrmProduto.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListarProduto.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListarCliente.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.ListarColaboradores.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.Properties.Resources.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.TelaDeVenda.ListarCarrinho.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud_teste.vieew.TelaDeVenda.ListarVendaCliente.resources
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.csproj.GenerateResource.cache
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.csproj.CoreCompileInputs.cache
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.csproj.CopyComplete
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.exe
+C:\Users\VitorJusto\Desktop\projetinhos\Crud-C-\crud teste\obj\Debug\crud teste.pdb
